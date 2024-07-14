@@ -6,9 +6,7 @@
 
 
     <data>
-        <variable
-            name="viewModel"
-            type="mnshat.dev.myproject.auth.SharedAuthViewModel" />
+
     </data>
 
 
@@ -69,7 +67,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/reading_book"
                 android:textColor="@color/black"
                 android:layout_margin="@dimen/margin_large"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -93,7 +90,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/writing_story"
                 android:textColor="@color/black"
                 android:layout_margin="@dimen/margin_large"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -118,7 +114,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bed_making"
                 android:textColor="@color/black"
                android:layout_margin="@dimen/margin_large"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -142,7 +137,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/walking"
                 android:textColor="@color/black"
                 android:layout_margin="@dimen/margin_large"
                 app:layout_constraintBottom_toBottomOf="parent"

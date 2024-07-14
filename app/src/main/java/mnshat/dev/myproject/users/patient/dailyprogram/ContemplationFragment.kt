@@ -1,5 +1,6 @@
 package mnshat.dev.myproject.users.patient.dailyprogram
 
+import android.graphics.Color
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
@@ -58,6 +59,7 @@ class ContemplationFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 //            changeColorOfTaskImage(1, binding.constraintTask1, binding.imageTask1)
 //        }
 
+        if (status.contemplation == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
         changeColorOfTaskImage(2, binding.constraintTask1, binding.imageTask1)
         changeColorOfTaskImage(status.activity, binding.constraintTask2, binding.imageTask2)
         changeColorOfTaskImage(

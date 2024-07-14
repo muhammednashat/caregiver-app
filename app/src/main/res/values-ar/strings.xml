@@ -218,7 +218,7 @@
     <string name="its_k">لا بأس به</string>
     <string name="send">ارسال</string>
     <string name="back_to_task">العودة الى المهمة</string>
-    <string name="you_will_not_go_to_the_next_day">if you do not finish this task, you will not  go to the next day</string>
+    <string name="you_will_not_go_to_the_next_day">يجب انهاء هذه المهمة حتى تتمكن من الانتقال الى اليوم التالى</string>
 
 
 </resources>

@@ -7,18 +7,20 @@ import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.RadioGroup
 import androidx.navigation.fragment.findNavController
+import android.widget.RadioGroup
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButton.OnCheckedChangeListener
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.auth.AgeFragment
 import mnshat.dev.myproject.databinding.DialogDoCompleteTaskBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.model.Task
 
+
 class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
-
+    private var currentStatus: Boolean = true
     override fun getLayout() = R.layout.layout_task
     override fun initializeViews() {
 
@@ -56,9 +58,11 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>() {
         }
 
         binding.btnRecommend.setOnClickListener {
-            val currentIndex=  getNextTask(status.currentIndexActivity!!,2)
-            status.currentIndexActivity = currentIndex
-            updateCurrentTaskLocally()
+            SuggestedChallengesFragment().show(childFragmentManager, SuggestedChallengesFragment::class.java.name)
+//            val currentIndex=  getNextTask(status.currentIndexActivity!!,2)
+//            status.currentIndexActivity = currentIndex
+//            updateCurrentTaskLocally()
+
 
         }
         binding.btnPrevious.setOnClickListener {
@@ -74,17 +78,24 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>() {
 //            changeColorOfTaskImage(1,binding.constraintTask2,binding.imageTask2)
 //        }
 
+        if (status.contemplation == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
+//        if (status.activity == 1) binding.line2.setBackgroundColor(Color.parseColor("#6db7d3"))
+
         changeColorOfTaskImage(2,binding.constraintTask2,binding.imageTask2)
         changeColorOfTaskImage(status.contemplation,binding.constraintTask1, binding.imageTask1)
         changeColorOfTaskImage(status.behaviorOrSpiritual,binding.constraintTask3, binding.imageTask3)
 
     }
 
-    private fun updateStatus() {
+    private fun updateStatus(boolean: Boolean) {
+        if (boolean) {
             status.remaining = status.remaining?.minus(1)
             status.completionRate = status.completionRate?.plus(40)
             status.activity = 1
             updateCurrentTaskLocally()
+        }
+        findNavController().navigate(R.id.action_activityFragment_to_behaviorOrSpiritualFragment)
+
     }
 
     private fun showDialogAskingForCompletion(){
@@ -102,7 +113,8 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
         }
         dialogBinding.btNext.setOnClickListener{
-            updateStatus()
+            dialog.dismiss()
+            updateStatus(currentStatus)
         }
         dialogBinding.textBackToContinue.setOnClickListener{
             dialog.dismiss()
@@ -110,7 +122,6 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>() {
         dialogBinding.radioGroup.setOnCheckedChangeListener( object: OnCheckedChangeListener,
             RadioGroup.OnCheckedChangeListener {
             override fun onCheckedChanged(button: MaterialButton?, isChecked: Boolean) {
-
 
             }
 
@@ -127,7 +138,7 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>() {
     }
 
     private fun changeStateOfMassage(binding: DialogDoCompleteTaskBinding,status:Boolean) {
-
+        currentStatus = status
         if (status){
             binding.textView.text = getString(R.string.well_done_you_will_get_a_star_when_you_complete_each_task_so_you_will_get_a_full_mark)
             binding.textView.setTextColor(Color.parseColor("#197ea5"))
