@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/intro_navigation.xml"
+    app:startDestination="@id/intro1Fragment">
+
+    <fragment
+        android:id="@+id/intro1Fragment"
+        android:name="mnshat.dev.myproject.users.patient.intro.Intro1Fragment"
+        android:label="fragment_intro1"
+        tools:layout="@layout/fragment_intro1" >
+        <action
+            android:id="@+id/action_intro1Fragment_to_intro2Fragment"
+            app:destination="@id/intro2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/intro2Fragment"
+        android:name="mnshat.dev.myproject.users.patient.intro.Intro2Fragment"
+        android:label="fragment_intro2"
+        tools:layout="@layout/fragment_intro2" >
+        <action
+            android:id="@+id/action_intro2Fragment_to_intro3Fragment"
+            app:destination="@id/intro3Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/intro3Fragment"
+        android:name="mnshat.dev.myproject.users.patient.intro.Intro3Fragment"
+        android:label="fragment_intro3"
+        tools:layout="@layout/fragment_intro3" >
+        <action
+            android:id="@+id/action_intro3Fragment_to_intro4Fragment"
+            app:destination="@id/intro4Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/intro4Fragment"
+        android:name="mnshat.dev.myproject.users.patient.intro.Intro4Fragment"
+        android:label="fragment_intro4"
+        tools:layout="@layout/fragment_intro4" >
+        <action
+            android:id="@+id/action_intro4Fragment_to_intro5Fragment"
+            app:destination="@id/intro5Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/intro5Fragment"
+        android:name="mnshat.dev.myproject.users.patient.intro.Intro5Fragment"
+        android:label="fragment_intro5"
+        tools:layout="@layout/fragment_intro5" />
+</navigation>

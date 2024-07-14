@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/adminHomeFragment">
+    <fragment
+        android:id="@+id/adminHomeFragment"
+        android:name="mnshat.dev.myproject.users.admin.home.AdminHomeFragment"
+        android:label="fragment_admin_home"
+        tools:layout="@layout/fragment_admin_home" />
+    <fragment
+        android:id="@+id/adminSettingsFragment"
+        android:name="mnshat.dev.myproject.users.admin.settings.AdminSettingsFragment"
+        android:label="fragment_admin_settings"
+        tools:layout="@layout/fragment_admin_settings" />
+</navigation>

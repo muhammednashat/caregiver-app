@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/supportesFragment">
+
+    <fragment
+        android:id="@+id/supportesFragment"
+        android:name="mnshat.dev.myproject.users.patient.supporters.SupportersFragment"
+        android:label="fragment_supportes"
+        tools:layout="@layout/fragment_supporters" >
+        <action
+            android:id="@+id/action_supportesFragment_to_addSupporterFragment"
+            app:destination="@id/addSupporterFragment" />
+        <action
+            android:id="@+id/action_supportesFragment_to_suppporterRecoveryFragment"
+            app:destination="@id/suppporterRecoveryFragment" />
+        <action
+            android:id="@+id/action_supportesFragment_to_supporterDetailsFragment"
+            app:destination="@id/supporterDetailsFragment">
+
+
+        </action>
+
+    </fragment>
+    <fragment
+        android:id="@+id/suppporterRecoveryFragment"
+        android:name="mnshat.dev.myproject.users.patient.supporters.SuppporterRecoveryFragment"
+        android:label="fragment_suppporter_recovery"
+        tools:layout="@layout/fragment_suppporter_recovery" />
+    <fragment
+        android:id="@+id/addSupporterFragment"
+      tools:layout="@layout/fragment_add_supporter"
+        android:name="mnshat.dev.myproject.users.patient.supporters.AddSupporterFragment"
+        android:label="AddSupporterFragment" />
+    <fragment
+        tools:layout="@layout/fragment_supporter_details"
+        android:id="@+id/supporterDetailsFragment"
+        android:name="mnshat.dev.myproject.users.patient.supporters.SupporterDetailsFragment"
+        android:label="SupporterDetailsFragment" >
+        <argument
+            android:name="supporter"
+            app:argType="mnshat.dev.myproject.model.RegistrationData" />
+        <action
+            android:id="@+id/action_supporterDetailsFragment_to_setViewReportingPermissionFragment"
+            app:destination="@id/setViewReportingPermissionFragment" />
+        <action
+            android:id="@+id/action_supporterDetailsFragment_to_setNotificationPermissionFragment"
+            app:destination="@id/setNotificationPermissionFragment" />
+
+    </fragment>
+
+    <fragment
+        tools:layout="@layout/fragment_reporting_permission"
+        android:id="@+id/setViewReportingPermissionFragment"
+        android:name="mnshat.dev.myproject.users.patient.supporters.ReportingPermissionFragment"
+        android:label="SetViewReportingPermissionFragment" >
+        <argument
+            android:name="permission"
+            app:argType="mnshat.dev.myproject.model.Permissions" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_notification_permission"
+        android:id="@+id/setNotificationPermissionFragment"
+        android:name="mnshat.dev.myproject.users.patient.supporters.NotificationPermissionFragment"
+        android:label="SetNotificationPermissionFragment">
+
+
+        <argument
+            android:name="permission"
+            app:argType="mnshat.dev.myproject.model.Permissions" />
+    </fragment>
+</navigation>

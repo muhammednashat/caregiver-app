@@ -1,0 +1,260 @@
+<resources>
+    <string name="app_name">My Project</string>
+    <string name="arabic" translatable="false">اللغة العربية</string>
+    <string name="forgot_password_text">Forgot Password?</string>
+    <string name="login_title">Login</string>
+    <string name="welcome_back_text">Welcome back</string>
+    <string name="login_instruction">Please enter your information below to log in</string>
+    <string name="sign_in">Sign in</string>
+    <string name="no_account_text">Do not have an account?</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="gender">Gender</string>
+    <string name="age_group">Age Group</string>
+    <string name="young_adulthood1">Young</string>
+    <string name="middle_age1">Middle</string>
+    <string name="young_adulthood">Young Adulthood (Under 40)</string>
+    <string name="middle_age">Middle Age (Under 60)</string>
+    <string name="older">Older Adults</string>
+    <string name="english" translatable="false">English Language</string>
+    <string name="label_choose_language">Choose your preferred language</string>
+    <string name="sign_up">Sign up</string>
+    <string name="current_lang">English</string>
+    <string name="password_hint">Password</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="save_registration_info">Save Registration Info</string>
+    <string name="email_hint">Email</string>
+    <string name="please_select_account_type">Please select account type</string>
+    <string name="invitation_code_hint">Invitation code</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="user_name">User Name</string>
+    <string name="user">User</string>
+    <string name="caregiver">Caregiver</string>
+    <string name="ar" translatable="false">ar</string>
+    <string name="en" translatable="false">en</string>
+    <string name="forgot_password">Forgot your password?</string>
+    <string name="reset_password_instruction">Please enter the email you used to register, and we\'ll send you a link to reset your password.</string>
+    <string name="next">Next</string>
+    <string name="need_assistance">Need assistance?</string>
+    <string name="user_not_found">User not found</string>
+    <string name="enter_email">Please enter your email</string>
+    <string name="enter_valid_invitation">Please enter a valid invitation</string>
+    <string name="enter_password">Please enter a password</string>
+    <string name="select_age_group">Please select an age group</string>
+    <string name="verify_email_password">Please verify your email and password</string>
+    <string name="password_reset_email_sent">Password reset email sent successfully</string>
+    <string name="password_reset_email_failed">Failed to send password reset email</string>
+    <string name="pass_error">Please enter at least 6 letters or numbers</string>
+    <string name="email_error">Please enter a valid email address</string>
+    <string name="reset_password_success">Password reset email sent successfully</string>
+    <string name="reset_password_failure">Failed to send password reset email</string>
+    <string name="gender_selection">Gender Selection</string>
+    <string name="profile_title">My Profile</string>
+    <string name="home_title">Home</string>
+    <string name="messages_title">Messages</string>
+    <string name="points_text">Points</string>
+    <string name="supporters_text">Supporters</string>
+    <string name="emergency_help_text">Emergency</string>
+    <string name="edit_profile_text">Edit Profile</string>
+    <string name="profile_text">Profile</string>
+    <string name="shared_media_text">Shared Media</string>
+    <string name="settings_text">Settings</string>
+    <string name="logout_text">Logout</string>
+    <string name="help_text">How can I help you?</string>
+    <string name="reviews_text">My Reviews</string>
+    <string name="reports_text">My Reports</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="save">Save</string>
+    <string name="edit_profile_picture">Edit Profile Picture</string>
+    <string name="dialect">Dialect</string>
+    <string name="arabic_standard">Arabic (Standard)</string>
+    <string name="religious_content">Do you want religious content?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="enter_invitation">Please enter a valid invitation</string>
+    <string name="enter_username">Please enter a username</string>
+    <string name="select_gender">Please select gender</string>
+    <string name="select_age_category">Please select age category</string>
+    <string name="select_user_type">Please select user type</string>
+    <string name="enter_the_new_name">Please enter the new name</string>
+    <string name="the_username_has_been_changed_successfully">The username has been changed successfully</string>
+    <string name="update_failed">Update failed</string>
+    <string name="share_user_code">Share your user code with the person you want to be your supporter</string>
+    <string name="copy_code">Copy Code</string>
+    <string name="create_new_code">Create New Code</string>
+    <string name="add_supporter">Add Supporter</string>
+    <string name="supporter_code_is">The supporter\'s user code is</string>
+    <string name="code_already_used">This code has been used, please create a new code</string>
+    <string name="cannot_change_first_four">You cannot change the first four characters. Please enter four digits or letters only.</string>
+    <string name="current_code_hint">Current Code</string>
+    <string name="new_code_hint">New Code</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="enter_four_digits_or_letters">Please enter four characters</string>
+    <string name="enter_new_code">Please enter a new code.</string>
+    <string name="new_code_created_successfully">New code created successfully.</string>
+    <string name="code_copied">Code copied successfully.</string>
+    <string name="new_code_length_exceeded">The new code must not exceed 4 characters</string>
+    <string name="no_supporters_text">You have not added any supporters yet</string>
+    <string name="add_supporter_instruction">You can add one or more supporters (up to 3 supporters maximum)</string>
+
+    <string name="understood">Okay</string>
+    <string name="supporters_count">Number of Supporters</string>
+    <string name="max_supporters_limit">The maximum limit for addition is 3 only. You cannot add more than 3 people as supporters</string>
+    <string name="add_new_supporter_hint">If you want to add a supporter who has not been added to your account before, click here</string>
+    <string name="add_new_supporter">Add New Supporter</string>
+    <string name="restore_supporter_hint">If you want to restore a supporter that you have previously removed, click here</string>
+    <string name="restore_supporter_with_account">Restore supporter has account</string>
+    <string name="active">Active</string>
+    <string name="not_active">Not Active</string>
+
+
+    <string name="view_reports">View Reports</string>
+    <string name="notifications">Notifications</string>
+    <string name="view_daily_program_details">View Daily Program Details</string>
+    <string name="view_mood_tracking_details">View Mood Tracking Details</string>
+    <string name="allow_encouragement_reply">Allow Encouragement Reply</string>
+    <string name="allow_video_voice_call">Allow Video/Voice Call</string>
+    <string name="allow_private_messages">Allow Private Messages</string>
+
+    <string name="allow_supporter_to">Allow supporter to</string>
+
+
+    <string name="notification_type">Notification Type</string>
+    <string name="daily_program_completion_notification">Supporter Notification on Completing Daily Program</string>
+    <string name="mood_tracking_update_notification">Supporter Notification on Mood Tracking Update</string>
+    <string name="psychological_test_result_notification">Supporter Notification on Psychological Test Result</string>
+
+
+    <string name="report_type">Report Type</string>
+    <string name="mood_report_only">Mood Report Only</string>
+    <string name="psychological_test_report_only">Psychological Test Report Only</string>
+    <string name="all">All</string>
+    <string name="time_range">Time Range</string>
+    <string name="annual_reports_only">Annual Reports Only</string>
+    <string name="monthly_reports_only">Monthly Reports Only</string>
+    <string name="weekly_reports_only">Weekly Reports Only</string>
+
+
+    <string name="confirm_temporarily_suspend_supporter">Are you sure you want to temporarily suspend the supporter? This means the supporter will not be able to see any of your activities or reports until you unsuspend them.</string>
+    <string name="suspend_temporarily">Suspend Temporarily</string>
+    <string name="suspend_supporter_temporarily">Suspend ... Temporarily</string>
+
+
+    <string name="confirm_remove_supporter">Are you sure you want to permanently remove the supporter?</string>
+    <string name="remove_supporter_confirmation">Yes, Remove Supporter</string>
+    <string name="remove_supporter">Remove ...</string>
+
+
+    <string name="confirm_remove_temporary_suspend">Are you sure you want to remove the temporary suspension from the supporter? This means the supporter will be able to see your activities and reports again.</string>
+    <string name="remove_temporary_suspend">Remove Temporary Suspension</string>
+
+
+    <string name="view_encouragement_messages">View Encouragement Messages</string>
+    <string name="remove_supporter_permanently">Remove Supporter Permanently</string>
+
+    <string name="logout_confirmation">Logout?</string>
+    <string name="logout_confirmation_dialog">Are you sure you want to logout from your account?</string>
+
+    <string name="confirm_new_password_hint">Confirm New Password</string>
+    <string name="new_password_hint">New Password</string>
+    <string name="current_password_hint">Current Password</string>
+    <string name="enter_current_password">Please enter your current password</string>
+    <string name="enter_new_password">Please enter a new password</string>
+    <string name="confirm_new_password">Please confirm your new password</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="password_changed_successfully">Password changed successfully</string>
+    <string name="password_change_failed">Failed to change password, please try again</string>
+
+    <string name="check_entered_password">Please check the  current password  you entered or try again later</string>
+    <string name="choose_your_preferred_dialect">Choose your preferred dialect</string>
+    <string name="gulf_dialect">Gulf Dialect</string>
+    <string name="syrian_dialect">Syrian Dialect</string>
+    <string name="iraqi_dialect">Iraqi Dialect</string>
+    <string name="egyptian_dialect">Egyptian Dialect</string>
+    <string name="standard_arabic">Standard Arabic</string>
+    <string name="gender_changed_successfully">Gender changed successfully</string>
+    <string name="age_group_changed_successfully">Age group changed successfully</string>
+    <string name="change_gender">Change Gender</string>
+    <string name="change_age_group">Change Age Group</string>
+    <string name="change_preferred_dialect">Change Your Preferred Dialect</string>
+    <string name="preferred_dialect">Preferred Dialect</string>
+    <string name="preferred_dialect_changed_successfully">Your preferred dialect has been changed successfully</string>
+    <string name="educational_content">Educational Content</string>
+    <string name="learn_more">Learn More</string>
+    <string name="track_mood_status">Track Mood Status</string>
+    <string name="verified">Verified</string>
+    <string name="psychological_test">Psychological Test</string>
+    <string name="know_yourself_better">Know Yourself Better</string>
+    <string name="tasks_remaining">You have %1$d tasks remaining</string>
+    <string name="daily_program">Daily Program</string>
+    <string name="continue1">Continue</string>
+    <string name="completion_percentage">Completion Percentage</string>
+    <string name="welcome_message">Welcome</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="completion_message">Well done %1$s! You have completed the daily program and received a full mark. We hope you continue doing this every day.</string>
+    <string name="view_level">View Level</string>
+    <string name="okay">Okay</string>
+
+    <string name="first_level">First Level</string>
+    <string name="daily_program2">Daily Program</string>
+    <string name="start">Start</string>
+    <string name="task_1">Task 1: </string>
+    <string name="watch_video">Watch Video</string>
+    <string name="watch_video_description">In this task, you need to watch the video completely and then move on to the next task.</string>
+    <string name="test1" translatable="false">
+قال عالم النفس الألماني «فرانك لوباخ»:
+ "مهما بلغ شعورك بوحدة نفسك، فاعلم أنك لست بمفردك أبدًا."
+
+ قد تكون هذه الرسالة أمامك اليوم كي لا تتوقف مهما كان الشعور الذي يسكن بداخلك، الجميع هُنا يشعر بمشاعرك ويسعى للتخلص منها دون خجل.
+
+ (تأكد أن استسلامك للخجل من مشاعر لم تخترها بنفسك هو الذي ستخجل منه في الأصل يومًا ما).
+
+
+
+
+    </string>
+    <string name="test2" translatable="false">دعنا نتعرف على ما تشعر به معًا (تكون بخط عريض)
+
+ لا تظن أن مشاعرك غريبة ومختلفة، فالحياة تجبرنا أحيانًا على الشعور بها لنلحق بقطار القوة الذي يأتي فيما بعد.
+
+ هل أنت مستعد!
+
+</string>
+    <string name="previous">previous</string>
+    <string name="day">Day %1$d </string>
+    <string name="current_level">Level %1$d </string>
+    <string name="another_challenge">Another challenge</string>
+    <string name="mission">Mission %1$d:  %2$s</string>
+    <string name="take_a_few_minutes_and_write">Take a few minutes and write down what you are grateful for</string>
+    <string name="you_must_complete_all_previous_tasks">You must complete all the previous tasks for the day</string>
+    <string name="finish">Finish</string>
+    <string name="done">Done</string>
+    <string name="the_first_task_was_completed_successfully">The first task was completed successfully</string>
+    <string name="the_second_task_was_completed_successfully">The second task was completed successfully</string>
+    <string name="the_third_task_was_completed_successfully">The third task was completed successfully</string>
+    <string name="please_answer_the_question">Please answer the question</string>
+    <string name="gratitude">Gratitude</string>
+    <string name="do_you_want_to_pause_this_task_temporarily">Do You want to pause this task temporarily?</string>
+    <string name="you_can_exit_this_task_and_come_back_again_whatever_you_want">You can exit this task and come back again whatever you want</string>
+    <string name="pause_task_temporarily">Pause task temporarily</string>
+    <string name="suggested_challenges">Suggested Challenges</string>
+    <string name="well_done_you_will_get_a_star_when_you_complete_each_task_so_you_will_get_a_full_mark">Well done, you will get a star when you complete each task, so you will get a full mark</string>
+    <string name="did_you_complete_this_task_today_s_challenge">Did you complete this task</string>
+    <string name="yes_i_accomplished_it">Yes, I did</string>
+    <string name="no_i_didn_t_accomplished_it">No,I didn\'t</string>
+    <string name="bed_making">Bed making</string>
+    <string name="reading_book">Reading book</string>
+    <string name="writing_story">Writing story</string>
+    <string name="walking">Walking 1000 steps</string>
+    <string name="how_was_your_day">How was your day?</string>
+    <string name="tell_us_how_was_your_daily_program_did_it_go_well">Tell us how was your daily program? Did it go well?</string>
+    <string name="satisfied">satisfied</string>
+    <string name="unsatisfied">unSatisfied</string>
+    <string name="its_k">it\'s OK</string>
+    <string name="send">Send</string>
+    <string name="back_to_task">Bask to task</string>
+    <string name="you_will_not_go_to_the_next_day">if you do not finish this task, you will not  go to the next day</string>
+
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialy_program_navigation.xml"
+    app:startDestination="@id/contemplationFragment">
+    <fragment
+        android:id="@+id/contemplationFragment"
+        android:name="mnshat.dev.myproject.users.patient.dailyprogram.ContemplationFragment"
+        android:label="ContemplationFragment" >
+        <action
+            android:id="@+id/action_contemplationFragment_to_activityFragment"
+            app:destination="@id/activityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/activityFragment"
+        android:name="mnshat.dev.myproject.users.patient.dailyprogram.ActivityFragment"
+        android:label="ActivityFragment" >
+        <action
+            android:id="@+id/action_activityFragment_to_behaviorOrSpiritualFragment"
+            app:destination="@id/behaviorOrSpiritualFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/behaviorOrSpiritualFragment"
+        android:name="mnshat.dev.myproject.users.patient.dailyprogram.BehaviorOrSpiritualFragment"
+        android:label="BehaviorFragment" >
+        <action
+            android:id="@+id/action_behaviorOrSpiritualFragment_to_congratulationsFragment"
+            app:destination="@id/congratulationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/congratulationsFragment"
+        android:name="mnshat.dev.myproject.users.patient.dailyprogram.CongratulationsFragment"
+        android:label="CongratulationsFragment" />
+</navigation>

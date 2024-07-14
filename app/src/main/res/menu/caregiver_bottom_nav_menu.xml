@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/caregiverProfileFragment"
+        android:icon="@drawable/ic_user"
+        android:title="@string/profile_title" />
+
+    <item
+        android:id="@+id/caregiverHomeFragment"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/home_title" />
+
+    <item
+        android:id="@+id/messagesFragment"
+        android:icon="@drawable/ic_mail"
+        android:title="@string/messages_title" />
+
+
+
+
+</menu>
