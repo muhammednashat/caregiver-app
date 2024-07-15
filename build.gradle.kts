@@ -3,8 +3,10 @@ buildscript {
         google()
     }
     dependencies {
-        classpath("com.google.gms:google-services:4.4.0")
         val nav_version = "2.7.3"
+        val hilt_version = "2.40"
+
+        classpath("com.google.gms:google-services:4.4.0")
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
     }
 }
@@ -16,5 +18,4 @@ plugins {
     id("com.android.library") version "8.1.0" apply false
     id("com.google.gms.google-services") version "4.3.15" apply false
     id("com.google.dagger.hilt.android") version "2.44" apply false
-
 }

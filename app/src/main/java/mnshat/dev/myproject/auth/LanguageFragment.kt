@@ -3,11 +3,11 @@ package mnshat.dev.myproject.auth
 import android.os.Bundle
 import android.view.View
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.databinding.FragmentLangauageBinding
 import mnshat.dev.myproject.util.ENGLISH_KEY
 
-class LanguageFragment : BaseBottomSheetDialogFragment<FragmentLangauageBinding>() {
+class LanguageFragment : BaseBottomSheetDialogFragment2<FragmentLangauageBinding>() {
     override fun setupClickListener() {
         binding.close.setOnClickListener{
             dismiss()
