@@ -4,8 +4,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
     id("androidx.navigation.safeargs.kotlin")
-    id ("kotlin-kapt")
-    id("com.google.dagger.hilt.android")
 }
 android {
     namespace = "mnshat.dev.myproject"
@@ -41,8 +39,6 @@ android {
 }
 
 dependencies {
-    val hilt_version = "2.40"
-
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
@@ -76,9 +72,7 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging:23.4.1")
     implementation("com.google.firebase:firebase-inappmessaging-display:20.4.1")
 
-    //hilt
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+
 
 }
 
