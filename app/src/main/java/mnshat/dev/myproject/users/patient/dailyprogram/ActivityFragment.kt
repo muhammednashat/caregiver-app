@@ -9,36 +9,40 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.navigation.fragment.findNavController
 import android.widget.RadioGroup
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButton.OnCheckedChangeListener
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.auth.AgeFragment
 import mnshat.dev.myproject.databinding.DialogDoCompleteTaskBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
+import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
 import mnshat.dev.myproject.model.Task
 
 
 class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
     private var currentStatus: Boolean = true
+
     override fun getLayout() = R.layout.layout_task
+
     override fun initializeViews() {
+        val factory = DailyProgramViewModelFactory(sharedPreferences,activity?.application!!)
+        _viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
 
-        _currentTask = getCurrentTask()!!
-        listOfTasks = _currentTask.dayTask?.activity as List<Task>
-        status = _currentTask.status!!
-
-        if (listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
-        getTaskFromList(status.currentIndexActivity!!,2)
-        changeColorStatus()
+        _viewModel.currentTask.let {
+            _viewModel.listOfTasks = it.dayTask?.activity as List<Task>
+            if ( _viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
+            getTaskFromList(_viewModel.status.currentIndexActivity!!, 2)
+            changeColorStatus()
+        }
     }
-
 
     override fun setupClickListener() {
 
         binding.btnNext.setOnClickListener {
 
-            if (status.activity != 1){
+            if (_viewModel.status.activity != 1){
                 showDialogAskingForCompletion()
             }else{
                 findNavController().navigate(R.id.action_activityFragment_to_behaviorOrSpiritualFragment)
@@ -59,11 +63,6 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
         binding.btnRecommend.setOnClickListener {
             SuggestedChallengesFragment().show(childFragmentManager, SuggestedChallengesFragment::class.java.name)
-//            val currentIndex=  getNextTask(status.currentIndexActivity!!,2)
-//            status.currentIndexActivity = currentIndex
-//            updateCurrentTaskLocally()
-
-
         }
         binding.btnPrevious.setOnClickListener {
             findNavController().popBackStack()
@@ -71,28 +70,19 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
     }
     private fun changeColorStatus() {
-
-//        if (status.activity == 0) {
-//            changeColorOfTaskImage(2,binding.constraintTask2,binding.imageTask2)
-//        } else {
-//            changeColorOfTaskImage(1,binding.constraintTask2,binding.imageTask2)
-//        }
-
-        if (status.contemplation == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
-//        if (status.activity == 1) binding.line2.setBackgroundColor(Color.parseColor("#6db7d3"))
-
+        if (_viewModel.status.contemplation == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
         changeColorOfTaskImage(2,binding.constraintTask2,binding.imageTask2)
-        changeColorOfTaskImage(status.contemplation,binding.constraintTask1, binding.imageTask1)
-        changeColorOfTaskImage(status.behaviorOrSpiritual,binding.constraintTask3, binding.imageTask3)
+        changeColorOfTaskImage(_viewModel.status.contemplation,binding.constraintTask1, binding.imageTask1)
+        changeColorOfTaskImage(_viewModel.status.behaviorOrSpiritual,binding.constraintTask3, binding.imageTask3)
 
     }
 
     private fun updateStatus(boolean: Boolean) {
         if (boolean) {
-            status.remaining = status.remaining?.minus(1)
-            status.completionRate = status.completionRate?.plus(40)
-            status.activity = 1
-            updateCurrentTaskLocally()
+            _viewModel.status.remaining = _viewModel.status.remaining?.minus(1)
+            _viewModel.status.completionRate = _viewModel.status.completionRate?.plus(40)
+            _viewModel.status.activity = 1
+            _viewModel.updateCurrentTaskLocally()
         }
         findNavController().navigate(R.id.action_activityFragment_to_behaviorOrSpiritualFragment)
 

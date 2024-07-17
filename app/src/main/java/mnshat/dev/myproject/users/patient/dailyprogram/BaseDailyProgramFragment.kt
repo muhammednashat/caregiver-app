@@ -31,40 +31,43 @@ import mnshat.dev.myproject.util.log
     lateinit var _viewModel: DailyProgramViewModel
 
     lateinit var task: Task
-    lateinit var _currentTask: CurrentTask
-    lateinit var status: StatusDailyProgram
-    lateinit var listOfTasks: List<Task>
     var player: ExoPlayer? = null
     var isSyncNeeded = false
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-        val factory = DailyProgramViewModelFactory(sharedPreferences,activity?.application!!)
-        _viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
+
         super.onActivityCreated(savedInstanceState)
     }
 
     fun getTaskFromList(index: Int, numberTask: Int) {
+        Log.e("TAG" , "12")
+
         val binding = binding as LayoutTaskBinding
         showProgressDialog()
-        task = listOfTasks.get(index)
-        task.let {
-            if (currentLang != ENGLISH_KEY) {
-                binding.textTitle.text = getString(R.string.mission, numberTask, task.arTitle)
-                binding.textDescription.text = task.arDescription
-            } else {
-                binding.textTitle.text = getString(R.string.mission, 1, task.enTitle)
-                binding.textDescription.text = task.enDescription
+        _viewModel.listOfTasks.let { listOfTasks ->
+             task = listOfTasks[index]
+            task.let {
+                if (currentLang != ENGLISH_KEY) {
+                    binding.textTitle.text = getString(R.string.mission, numberTask, task.arTitle)
+                    binding.textDescription.text = task.arDescription
+                } else {
+                    binding.textTitle.text = getString(R.string.mission, numberTask, task.enTitle)
+                    binding.textDescription.text = task.enDescription
+                }
+                Log.e("TAG" , "12322")
+                checkType(task.type)
             }
-            val type = task.type
-            checkType(type)
+            Log.e("TAG" , "1232")
+
         }
+        Log.e("TAG" , "312")
 
     }
+
     fun getNextTask(index: Int, numberTask: Int):Int {
          player?.pause()
-
-      return  if (listOfTasks.isNotEmpty()) {
-            val currentTaskIndex = (index + 1) % listOfTasks.size
+      return  if (_viewModel.listOfTasks != null) {
+            val currentTaskIndex = (index + 1) % _viewModel.listOfTasks.size
             getTaskFromList(currentTaskIndex,numberTask)
           currentTaskIndex
         }else 0
@@ -144,38 +147,12 @@ import mnshat.dev.myproject.util.log
         }
     }
 
-    fun changeColo3r() {
-        val binding = binding as LayoutTaskBinding
-//        changeColorOfTaskImage(status.contemplation, binding.task1)
-//        changeColorOfTaskImage(status.activity, binding.task2)
-//        changeColorOfTaskImage(status.behaviorOrSpiritual, binding.task3)
-//        changeColorOfTaskImage(status.gratitude, binding.task4)
-    }
-
-    fun updateCurrentTaskLocally() {
-        Log.e("TAG", "updateCurrentTaskLocally")
-        sharedPreferences.storeObject(CURRENT_TASK, _currentTask)
-        isSyncNeeded = true
-    }
-
-    fun updateCurrentTaskRemotely() {
-        Log.e("TAG", "updateCurrentTaskRemotely")
-        val map = mapOf(DAY_TASK to _currentTask.dayTask!!, STATUS to _currentTask.status!!)
-        FirebaseService.updateTasksUser(FirebaseService.userId, map) {
-            if (it) {
-                Log.e("TAG", " updateCurrentTaskRemotely true")
-            } else {
-                Log.e("TAG", " updateCurrentTaskRemotely false")
-            }
-        }
-    }
-
     override fun onStop() {
         super.onStop()
         player?.pause()
-        if (isSyncNeeded){
-            log("isSyncNeeded")
-            updateCurrentTaskRemotely()
+        if (_viewModel._isSyncNeeded.value == true){
+            _viewModel.updateCurrentTaskRemotely()
+            _viewModel._isSyncNeeded.value = false
         }
     }
 

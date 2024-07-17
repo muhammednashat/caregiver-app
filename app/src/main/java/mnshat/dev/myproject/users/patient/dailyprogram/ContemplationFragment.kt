@@ -2,9 +2,11 @@ package mnshat.dev.myproject.users.patient.dailyprogram
 
 import android.graphics.Color
 import android.view.View
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
+import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
 import mnshat.dev.myproject.model.Task
 
 class ContemplationFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
@@ -12,15 +14,15 @@ class ContemplationFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
     override fun getLayout() = R.layout.layout_task
 
     override fun initializeViews() {
-
-        _currentTask = getCurrentTask()!!
-        listOfTasks = _currentTask.dayTask?.contemplation as List<Task>
-        status = _currentTask.status!!
-
-        if (listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
-        getTaskFromList(status.currentIndexContemplation!!, 1)
+        val factory = DailyProgramViewModelFactory(sharedPreferences,activity?.application!!)
+        _viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
         binding.btnPrevious.visibility = View.GONE
-        setStatusColor()
+        _viewModel.currentTask.let {
+            _viewModel.listOfTasks = it.dayTask?.contemplation as List<Task>
+            if ( _viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
+            getTaskFromList(_viewModel.status.currentIndexContemplation!!, 2)
+            changeColorStatus()
+        }
     }
 
 
@@ -43,27 +45,22 @@ class ContemplationFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         }
 
         binding.btnRecommend.setOnClickListener {
-            val currentIndex = getNextTask(status.currentIndexContemplation!!, 1)
-            status.currentIndexContemplation = currentIndex
-            updateCurrentTaskLocally()
+            val currentIndex = getNextTask(_viewModel.status.currentIndexContemplation!!, 1)
+            _viewModel.status.currentIndexContemplation = currentIndex
+            _viewModel.updateCurrentTaskLocally()
         }
 
 
 
     }
 
-    private fun setStatusColor() {
-//        if (status.contemplation == 0) {
-//            changeColorOfTaskImage(2, binding.constraintTask1, binding.imageTask1)
-//        } else {
-//            changeColorOfTaskImage(1, binding.constraintTask1, binding.imageTask1)
-//        }
+    private fun changeColorStatus() {
 
-        if (status.contemplation == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
+        if (_viewModel.status.contemplation == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
         changeColorOfTaskImage(2, binding.constraintTask1, binding.imageTask1)
-        changeColorOfTaskImage(status.activity, binding.constraintTask2, binding.imageTask2)
+        changeColorOfTaskImage(_viewModel.status.activity, binding.constraintTask2, binding.imageTask2)
         changeColorOfTaskImage(
-            status.behaviorOrSpiritual,
+            _viewModel.status.behaviorOrSpiritual,
             binding.constraintTask3,
             binding.imageTask3
         )
@@ -71,12 +68,12 @@ class ContemplationFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
     }
 
     private fun updateStatus() {
-        if (status.contemplation != 1){
-            status.remaining = status.remaining?.minus(1)
-            status.completionRate = status.completionRate?.plus(30)
-            status.contemplation = 1
+        if (_viewModel.status.contemplation != 1){
+            _viewModel.status.remaining = _viewModel.status.remaining?.minus(1)
+            _viewModel.status.completionRate = _viewModel.status.completionRate?.plus(30)
+            _viewModel.status.contemplation = 1
             showToast(getString(R.string.the_first_task_was_completed_successfully))
-            updateCurrentTaskLocally()
+            _viewModel.updateCurrentTaskLocally()
         }
         findNavController().navigate(R.id.action_contemplationFragment_to_activityFragment)
     }
