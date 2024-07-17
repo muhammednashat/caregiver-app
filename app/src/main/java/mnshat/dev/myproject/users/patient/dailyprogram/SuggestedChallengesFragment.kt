@@ -12,7 +12,7 @@ class SuggestedChallengesFragment :
 
     override fun getLayout() = R.layout.fragment_suggested_challenges
 
-    private lateinit var viewMode: SharedDailyProgramViewModel
+    private lateinit var viewMode: DailyProgramViewModel
 
 
     override fun initializeViews() {
@@ -29,7 +29,7 @@ class SuggestedChallengesFragment :
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewMode = ViewModelProvider(requireActivity())[SharedDailyProgramViewModel::class.java]
+        viewMode = ViewModelProvider(requireActivity())[DailyProgramViewModel::class.java]
 
     }
 

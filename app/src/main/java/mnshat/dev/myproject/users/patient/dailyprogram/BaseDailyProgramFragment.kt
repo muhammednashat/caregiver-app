@@ -12,20 +12,23 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
+import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
+import mnshat.dev.myproject.factories.PatientViewModelFactory
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.CurrentTask
 import mnshat.dev.myproject.model.StatusDailyProgram
 import mnshat.dev.myproject.model.Task
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
+import mnshat.dev.myproject.users.patient.main.PatientViewModel
 import mnshat.dev.myproject.util.CURRENT_TASK
 import mnshat.dev.myproject.util.DAY_TASK
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.STATUS
 import mnshat.dev.myproject.util.log
 
-open abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragment<T>() {
+ abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragment<T>() {
 
-    lateinit var _viewModel: SharedDailyProgramViewModel
+    lateinit var _viewModel: DailyProgramViewModel
 
     lateinit var task: Task
     lateinit var _currentTask: CurrentTask
@@ -35,7 +38,8 @@ open abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientF
     var isSyncNeeded = false
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-        _viewModel = ViewModelProvider(requireActivity())[SharedDailyProgramViewModel::class.java]
+        val factory = DailyProgramViewModelFactory(sharedPreferences,activity?.application!!)
+        _viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
         super.onActivityCreated(savedInstanceState)
     }
 

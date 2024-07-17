@@ -9,16 +9,20 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.gson.Gson
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.factories.PatientViewModelFactory
 import mnshat.dev.myproject.model.CurrentTask
 import mnshat.dev.myproject.util.CURRENT_TASK
 
-open abstract class BasePatientFragment<T : ViewDataBinding> : BaseFragment<T>() {
+ abstract class BasePatientFragment<T : ViewDataBinding> : BaseFragment<T>() {
 
     lateinit var sharedUserDialog: Dialog
     lateinit var viewModel: PatientViewModel
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-        viewModel = ViewModelProvider(requireActivity()).get(PatientViewModel::class.java)
+
+        val factory = PatientViewModelFactory(sharedPreferences,activity?.application!!)
+        viewModel = ViewModelProvider(requireActivity(), factory)[PatientViewModel::class.java]
+
         binding.lifecycleOwner = this
         super.onActivityCreated(savedInstanceState)
     }

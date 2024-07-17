@@ -4,15 +4,21 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import mnshat.dev.myproject.base.BaseViewModel
+import mnshat.dev.myproject.util.SharedPreferencesManager
 
-open class PatientViewModel(application: Application)
-
-    : BaseViewModel(application) {
+open class PatientViewModel(
+    private val sharedPreferences: SharedPreferencesManager,
+    application: Application
+)
+    : BaseViewModel(
+    sharedPreferences,
+    application
+    ) {
 
     private var _toolsClick = MutableLiveData<Boolean>()
     val toolsClick:LiveData<Boolean> get()= _toolsClick
 
-   private var _continueClick = MutableLiveData<Boolean>()
+    private var _continueClick = MutableLiveData<Boolean>()
     val continueClick:LiveData<Boolean> get()= _continueClick
 
 
@@ -34,3 +40,4 @@ open class PatientViewModel(application: Application)
 
 
     }
+

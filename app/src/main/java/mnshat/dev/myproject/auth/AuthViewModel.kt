@@ -17,7 +17,14 @@ import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER_NAME
 
-class SharedAuthViewModel(application: Application) : BaseViewModel(application) {
+class AuthViewModel(
+    private val sharedPreferences: SharedPreferencesManager,
+    application: Application
+
+) : BaseViewModel(
+    sharedPreferences,
+    application
+) {
 
     var idPartner: String? = null
     var emailPartner: String? = null

@@ -11,14 +11,15 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import mnshat.dev.myproject.util.MyApplication
-import mnshat.dev.myproject.auth.SharedAuthViewModel
+import mnshat.dev.myproject.auth.AuthViewModel
+import mnshat.dev.myproject.factories.AuthViewModelFactory
 import mnshat.dev.myproject.util.SplashActivity
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.SharedPreferencesManager
 
 open abstract class BaseBottomSheetDialogFragment2<T:ViewDataBinding> : BottomSheetDialogFragment()  {
 
-    lateinit var _viewModel: SharedAuthViewModel
+    lateinit var _viewModel: AuthViewModel
     lateinit var currentLang:String
     lateinit var sharedPreferences: SharedPreferencesManager
     lateinit var binding: T
@@ -44,8 +45,11 @@ open abstract class BaseBottomSheetDialogFragment2<T:ViewDataBinding> : BottomSh
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        _viewModel = ViewModelProvider(requireActivity())[SharedAuthViewModel::class.java]
+        val factory = AuthViewModelFactory(sharedPreferences,activity?.application!!)
+        _viewModel = ViewModelProvider(requireActivity(), factory)[AuthViewModel::class.java]
+
         observing()
+
     }
 
    open  fun observing(){

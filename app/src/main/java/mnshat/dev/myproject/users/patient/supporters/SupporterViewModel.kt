@@ -1,10 +1,14 @@
 package mnshat.dev.myproject.users.patient.supporters
 
 import android.app.Application
-import mnshat.dev.myproject.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 
-class SupporterViewModel (application: Application)
-    : BaseViewModel(application) {
+class SupporterViewModel (
+
+      )
+    : ViewModel(
+
+    ) {
 
     init {
 

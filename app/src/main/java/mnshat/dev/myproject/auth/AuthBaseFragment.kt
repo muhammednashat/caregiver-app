@@ -5,10 +5,13 @@ import android.os.Bundle
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.factories.AuthViewModelFactory
+import mnshat.dev.myproject.factories.PatientViewModelFactory
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.users.caregiver.CaregiverScreenActivity
 import mnshat.dev.myproject.users.patient.intro.IntroActivity
+import mnshat.dev.myproject.users.patient.main.PatientViewModel
 import mnshat.dev.myproject.users.patient.main.UserScreensActivity
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.CODE_USED
@@ -22,11 +25,13 @@ import mnshat.dev.myproject.util.USER
 
 open abstract class AuthBaseFragment<T : ViewDataBinding> : BaseFragment<T>() {
 
-    lateinit var _viewModel: SharedAuthViewModel
+    lateinit var _viewModel: AuthViewModel
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
 
-        _viewModel = ViewModelProvider(requireActivity()).get(SharedAuthViewModel::class.java)
+        val factory = AuthViewModelFactory(sharedPreferences,activity?.application!!)
+        _viewModel = ViewModelProvider(requireActivity(), factory)[AuthViewModel::class.java]
+
         super.onActivityCreated(savedInstanceState)
 
     }

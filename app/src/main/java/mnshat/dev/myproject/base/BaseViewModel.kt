@@ -18,17 +18,15 @@ import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.log
 
 open class BaseViewModel(
+    private val sharedPreferences: SharedPreferencesManager,
     application: Application
 
 ) : AndroidViewModel(application) {
-
-
     var intGender = MutableLiveData<Int?>()
     var strGender = MutableLiveData<String?>()
     var intAge = MutableLiveData<Int?>()
     var strAge = MutableLiveData<String?>()
     val currentLang = MutableLiveData<String>()
-
     var strDialect = MutableLiveData<String?>()
     var intDialect = MutableLiveData<Int?>()
 
