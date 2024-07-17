@@ -16,5 +16,6 @@
     <dimen name="margin_large">16dp</dimen>
     <dimen name="margin_super">24dp</dimen>
     <dimen name="margin_2_super">32dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 </resources>
