@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
+import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
 import mnshat.dev.myproject.model.CurrentTask
@@ -31,6 +32,8 @@ class HomeFragment : BaseUserFragment<FragmentUserHomeBinding>() {
         binding.btnContinue.setOnClickListener {
             startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
         }
+        binding.rootTools.setOnClickListener {
+findNavController().navigate(R.id.action_patientHomeFragment_to_mainAzcarFragment)        }
     }
 
 

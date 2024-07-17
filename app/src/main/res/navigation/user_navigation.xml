@@ -7,7 +7,11 @@
         android:id="@+id/patientHomeFragment"
         android:name="mnshat.dev.myproject.users.patient.main.HomeFragment"
         android:label="fragment_patient_home"
-        tools:layout="@layout/fragment_user_home" />
+        tools:layout="@layout/fragment_user_home" >
+        <action
+            android:id="@+id/action_patientHomeFragment_to_mainAzcarFragment"
+            app:destination="@id/mainAzcarFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/profileFragment"
@@ -27,8 +31,14 @@
         tools:layout="@layout/fragment_messages" />
     <fragment
         android:id="@+id/gratitudeListFragment"
+       tools:layout="@layout/fragment_gratitude_list"
         android:name="mnshat.dev.myproject.users.patient.main.GratitudeListFragment"
         android:label="GratitudeListFragment"
         app:popUpTo="@id/profileFragment"
         app:popUpToInclusive="false" />
+    <fragment
+        android:id="@+id/mainAzcarFragment"
+        tools:layout="@layout/fragment_main_azcar"
+        android:name="mnshat.dev.myproject.users.patient.main.tools.MainAzcarFragment"
+        android:label="MainAzcarFragment" />
 </navigation>
