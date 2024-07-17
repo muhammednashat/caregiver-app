@@ -71,8 +71,8 @@ open abstract class AuthBaseFragment<T : ViewDataBinding> : BaseFragment<T>() {
         }
     }
 
-    override fun observing() {
-        super.observing()
+    override fun observeViewModel() {
+        super.observeViewModel()
         _viewModel.name.value?.let {
             _viewModel.invitationCode.observe(viewLifecycleOwner) {
         }

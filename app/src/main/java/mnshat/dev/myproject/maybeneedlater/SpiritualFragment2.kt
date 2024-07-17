@@ -3,9 +3,9 @@ package mnshat.dev.myproject.maybeneedlater
 import com.google.android.exoplayer2.ExoPlayer
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
-import mnshat.dev.myproject.users.patient.main.BaseUserFragment
+import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 
-class SpiritualFragment2 : BaseUserFragment<LayoutTaskBinding>() {
+class SpiritualFragment2 : BasePatientFragment<LayoutTaskBinding>() {
 
     private var player: ExoPlayer? = null
     private val urlVideo =

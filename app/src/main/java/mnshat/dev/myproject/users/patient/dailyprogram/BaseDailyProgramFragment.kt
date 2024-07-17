@@ -16,14 +16,14 @@ import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.CurrentTask
 import mnshat.dev.myproject.model.StatusDailyProgram
 import mnshat.dev.myproject.model.Task
-import mnshat.dev.myproject.users.patient.main.BaseUserFragment
+import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.CURRENT_TASK
 import mnshat.dev.myproject.util.DAY_TASK
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.STATUS
 import mnshat.dev.myproject.util.log
 
-open abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BaseUserFragment<T>() {
+open abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragment<T>() {
 
     lateinit var _viewModel: SharedDailyProgramViewModel
 

@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+    <variable
+        name="viewModel"
+        type="mnshat.dev.myproject.users.patient.main.PatientViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -264,7 +266,8 @@
                         android:textColor="@color/white"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tasksRemaining" />
+                        app:layout_constraintTop_toBottomOf="@+id/tasksRemaining"
+                        android:onClick="@{() -> viewModel.onContinueClick()}"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -384,7 +387,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/root_educational_content"
             app:layout_constraintHorizontal_bias="0.5"
-
+           android:onClick="@{() -> viewModel.onToolsClick()}"
             app:layout_constraintStart_toStartOf="@+id/root_educational_content"
             app:layout_constraintTop_toBottomOf="@+id/root_educational_content">
 

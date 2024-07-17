@@ -46,7 +46,7 @@ open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
         return binding.root
     }
 
-    abstract fun setupClickListener()
+   open  fun setupClickListener(){}
     abstract fun initializeViews()
     abstract fun getLayout(): Int
     override fun onAttach(context: Context) {
@@ -57,9 +57,9 @@ open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        observing()
+        observeViewModel()
     }
-    open fun observing() {
+    open fun observeViewModel() {
     }
 
     fun getTextAge( age: Int?):String? {

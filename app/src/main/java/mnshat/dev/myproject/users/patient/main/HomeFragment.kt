@@ -11,31 +11,37 @@ import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
 import mnshat.dev.myproject.model.CurrentTask
 import mnshat.dev.myproject.users.patient.dailyprogram.DailyProgramActivity
 import mnshat.dev.myproject.util.USER_NAME
+import mnshat.dev.myproject.util.log
 
-class HomeFragment : BaseUserFragment<FragmentUserHomeBinding>() {
-
+class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
 
     override fun getLayout() = R.layout.fragment_user_home
     override fun initializeViews() {
         binding.nameUser.text = sharedPreferences.getString(USER_NAME)
     }
-
     override fun onStart() {
         setStatusOfCurrentTask(getCurrentTask())
         super.onStart()
     }
 
+    override fun observeViewModel(){
+        binding.viewModel = viewModel
 
-
-    override fun setupClickListener() {
-
-        binding.btnContinue.setOnClickListener {
-            startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
+        viewModel.toolsClick.observe(viewLifecycleOwner){
+            if (it){
+                findNavController().navigate(R.id.action_patientHomeFragment_to_mainAzcarFragment)
+                viewModel.restToolsClick()
+            }
         }
-        binding.rootTools.setOnClickListener {
-findNavController().navigate(R.id.action_patientHomeFragment_to_mainAzcarFragment)        }
-    }
 
+        viewModel.continueClick.observe(viewLifecycleOwner){
+            if (it){
+                startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
+                viewModel.restContinueClick()
+            }
+        }
+
+    }
 
 
     fun setStatusOfCurrentTask(currentTask: CurrentTask?){

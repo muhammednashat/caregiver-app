@@ -22,8 +22,8 @@ class SignUpFragment : AuthBaseFragment<FragmentSignUpBinding>(){
         binding.viewModel = _viewModel
 
     }
-    override fun observing() {
-        super.observing()
+    override fun observeViewModel() {
+        super.observeViewModel()
         _viewModel.strGender.value = getString(R.string.gender)
         _viewModel.strAge.value = getString(R.string.age_group)
         _viewModel.typeOfUser.observe(viewLifecycleOwner) {
@@ -34,7 +34,8 @@ class SignUpFragment : AuthBaseFragment<FragmentSignUpBinding>(){
         }
     }
 
-    override fun setupClickListener() {
+
+     override fun setupClickListener() {
         binding.chooseUser.user.setOnClickListener {
             _viewModel.typeOfUser.value = USER
         }

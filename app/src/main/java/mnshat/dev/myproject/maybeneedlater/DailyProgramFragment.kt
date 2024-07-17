@@ -6,11 +6,11 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentDailyProgramBinding
 import mnshat.dev.myproject.model.DayTask
 import mnshat.dev.myproject.model.Task
-import mnshat.dev.myproject.users.patient.main.BaseUserFragment
+import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.ENGLISH_KEY
 
 
-class DailyProgramFragment : BaseUserFragment<FragmentDailyProgramBinding>() {
+class DailyProgramFragment : BasePatientFragment<FragmentDailyProgramBinding>() {
 
 
     override fun getLayout() = R.layout.fragment_daily_program

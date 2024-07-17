@@ -763,8 +763,20 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-176" />
-                            <option name="y" value="282" />
+                            <option name="x" value="155" />
+                            <option name="y" value="743" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="mainAzcarFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-334" />
+                            <option name="y" value="-347" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -775,8 +787,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="296" />
-                            <option name="y" value="-41" />
+                            <option name="x" value="344" />
+                            <option name="y" value="-248" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -787,9 +799,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-116" />
-                            <option name="y" value="-33" />
+                            <option name="x" value="-724" />
+                            <option name="y" value="-215" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_patientHomeFragment_to_mainAzcarFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -799,9 +820,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="100" />
-                            <option name="y" value="286" />
+                            <option name="x" value="-167" />
+                            <option name="y" value="552" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_profileFragment_to_gratitudeListFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

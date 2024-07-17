@@ -14,7 +14,7 @@ import mnshat.dev.myproject.users.patient.editprofile.EditProfileActivity
 import mnshat.dev.myproject.users.patient.supporters.SupportersActivity
 import mnshat.dev.myproject.util.USER_NAME
 
-class ProfileFragment : BaseUserFragment<FragmentProfileBinding>() {
+class ProfileFragment : BasePatientFragment<FragmentProfileBinding>() {
 
     override fun getLayout() = R.layout.fragment_profile
     override fun setupClickListener() {

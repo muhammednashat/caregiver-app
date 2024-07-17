@@ -5,7 +5,7 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentGratitudeListBinding
 import mnshat.dev.myproject.firebase.FirebaseService
 
-class GratitudeListFragment : BaseUserFragment<FragmentGratitudeListBinding>() {
+class GratitudeListFragment : BasePatientFragment<FragmentGratitudeListBinding>() {
 
 
     override fun getLayout() = R.layout.fragment_gratitude_list

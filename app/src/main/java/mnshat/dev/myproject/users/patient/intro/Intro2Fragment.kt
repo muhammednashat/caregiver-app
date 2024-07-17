@@ -3,9 +3,9 @@ package mnshat.dev.myproject.users.patient.intro
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentIntro2Binding
-import mnshat.dev.myproject.users.patient.main.BaseUserFragment
+import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 
-class Intro2Fragment : BaseUserFragment<FragmentIntro2Binding>() {
+class Intro2Fragment : BasePatientFragment<FragmentIntro2Binding>() {
 
     override fun getLayout()= R.layout.fragment_intro2
 
