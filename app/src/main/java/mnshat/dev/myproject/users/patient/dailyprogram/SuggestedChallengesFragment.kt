@@ -1,6 +1,5 @@
 package mnshat.dev.myproject.users.patient.dailyprogram
 
-import android.content.Context
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -9,6 +8,7 @@ import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentSuggestedChallengesBinding
 import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
 import mnshat.dev.myproject.model.Task
+import mnshat.dev.myproject.model.TestD
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import kotlin.properties.Delegates
 
@@ -38,57 +38,71 @@ class SuggestedChallengesFragment() :
         arguments?.let {
             tasks = it.getParcelableArrayList(ARG_TASKS) ?: emptyList()
             currentIndex = it.getInt(ARG_CURRENT_INDEX)
-            val remainingTasks = tasks.filterIndexed { index, _ -> index != currentIndex }
-            displayRemainingTasks(remainingTasks)
+            val newListOfTasks = mutableListOf<TestD>()
+            for (index in tasks.indices) {
+                if (index != currentIndex) newListOfTasks.add(TestD(index, tasks[index].image!!))
+            }
+            setUpImageTask1(newListOfTasks)
+            setUpImageTask2(newListOfTasks)
+            setUpImageTask3(newListOfTasks)
+            setUpImageTask4(newListOfTasks)
+
         }
     }
 
-    private fun displayRemainingTasks(remainingTasks: List<Task>) {
-        if (remainingTasks.size >= 4) {
-            Glide.with(binding.root)
-                .load(remainingTasks[0].image)
-                .centerCrop()
-                .into(binding.imageTask1)
-
-            Glide.with(binding.root)
-                .load(remainingTasks[1].image)
-                .centerCrop()
-                .into(binding.imageTask2)
-
-            Glide.with(binding.root)
-                .load(remainingTasks[2].image)
-                .centerCrop()
-                .into(binding.imageTask3)
-
-            Glide.with(binding.root)
-                .load(remainingTasks[3].image)
-                .centerCrop()
-                .into(binding.imageTask4)
+    private fun setUpImageTask1(list: List<TestD>) {
+        Glide.with(binding.root)
+            .load(list[0].image)
+            .centerCrop()
+            .into(binding.imageTask1)
+        binding.imageTask1.setOnClickListener {
+            onItemClick(list[0].index)
         }
+
+    }
+    private fun setUpImageTask2(list: List<TestD>) {
+        Glide.with(binding.root)
+            .load(list[1].image)
+            .centerCrop()
+            .into(binding.imageTask2)
+        binding.imageTask2.setOnClickListener {
+            onItemClick(list[1].index)
+        }
+
+    }
+    private fun setUpImageTask3(list: List<TestD>) {
+        Glide.with(binding.root)
+            .load(list[2].image)
+            .centerCrop()
+            .into(binding.imageTask3)
+        binding.imageTask3.setOnClickListener {
+            onItemClick(list[2].index)
+        }
+
+    }
+    private fun setUpImageTask4(list: List<TestD>) {
+        Glide.with(binding.root)
+            .load(list[3].image)
+            .centerCrop()
+            .into(binding.imageTask4)
+        binding.imageTask4.setOnClickListener {
+            onItemClick(list[3].index)
+        }
+
     }
 
+    override fun setupClickListener() {
+        super.setupClickListener()
+      binding.close.setOnClickListener{
+          dismiss()
+      }
+    }
     private fun initViewModel() {
         val factory = DailyProgramViewModelFactory(sharedPreferences, activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
     }
 
-    override fun setupClickListener() {
-        binding.close.setOnClickListener {
-            dismiss()
-        }
-        binding.imageTask1.setOnClickListener {
-            onItemClick(0)
-        }
-        binding.imageTask2.setOnClickListener {
-            onItemClick(1)
-        }
-        binding.imageTask3.setOnClickListener {
-            onItemClick(2)
-        }
-        binding.imageTask4.setOnClickListener {
-            onItemClick(3)
-        }
-    }
+
 
     private fun onItemClick(position: Int) {
         _itemClickListener?.onTaskItemClicked(position)

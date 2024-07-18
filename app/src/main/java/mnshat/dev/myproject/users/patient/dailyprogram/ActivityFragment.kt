@@ -7,9 +7,9 @@ import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import androidx.navigation.fragment.findNavController
 import android.widget.RadioGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButton.OnCheckedChangeListener
 import mnshat.dev.myproject.R
@@ -17,7 +17,6 @@ import mnshat.dev.myproject.databinding.DialogDoCompleteTaskBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
 import mnshat.dev.myproject.model.Task
-import mnshat.dev.myproject.util.log
 
 
 class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>(),  SuggestedChallengesFragment.OnTaskItemClickListener {
@@ -27,7 +26,6 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>(),  Sugges
     override fun getLayout() = R.layout.layout_task
 
     override fun initializeViews() {
-       log("initializeViews")
         val factory = DailyProgramViewModelFactory(sharedPreferences,activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
 
@@ -40,15 +38,12 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>(),  Sugges
     }
 
     override fun setupClickListener() {
-
         binding.btnNext.setOnClickListener {
-
             if (viewModel.status.activity != 1){
                 showDialogAskingForCompletion()
             }else{
                 findNavController().navigate(R.id.action_activityFragment_to_behaviorOrSpiritualFragment)
             }
-
         }
         binding.icPause.setOnClickListener {
             showTemporallyDialog(
@@ -69,13 +64,19 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>(),  Sugges
         binding.btnPrevious.setOnClickListener {
             findNavController().popBackStack()
         }
-
     }
 
     private fun  showSuggestedChallengesFragment(){
 
-      val suggestedChallengesFragment = SuggestedChallengesFragment.newInstance(this,viewModel.status.currentIndexActivity!!,viewModel.listOfTasks)
-        suggestedChallengesFragment.show(childFragmentManager, SuggestedChallengesFragment::class.java.name)
+        val suggestedChallengesFragment = SuggestedChallengesFragment.newInstance(
+            this,
+            viewModel.status.currentIndexActivity!!,
+            viewModel.listOfTasks
+        )
+        suggestedChallengesFragment.show(
+            childFragmentManager,
+            SuggestedChallengesFragment::class.java.name
+        )
     }
 
     private fun changeColorStatus() {
@@ -153,7 +154,8 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>(),  Sugges
 
     override fun onTaskItemClicked(position: Int) {
         getTaskFromList(position, 2)
-
+        viewModel.status.currentIndexActivity = position
+        viewModel.updateCurrentTaskLocally()
     }
 
 

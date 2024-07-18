@@ -14,6 +14,7 @@ import mnshat.dev.myproject.util.CURRENT_TASK
 import mnshat.dev.myproject.util.DAY_TASK
 import mnshat.dev.myproject.util.STATUS
 import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.log
 
 class DailyProgramViewModel(
     private val sharedPreferences: SharedPreferencesManager,
@@ -24,12 +25,13 @@ class DailyProgramViewModel(
     application
 ) {
     var currentTask: CurrentTask
-    val status: StatusDailyProgram = StatusDailyProgram()
+    lateinit var status: StatusDailyProgram
    lateinit var listOfTasks: List<Task>
     val _isSyncNeeded: MutableLiveData<Boolean> = MutableLiveData()
 
     init {
         currentTask = getCurrntTask()
+        status= currentTask.status!!
     }
 
     private fun getCurrntTask(): CurrentTask {

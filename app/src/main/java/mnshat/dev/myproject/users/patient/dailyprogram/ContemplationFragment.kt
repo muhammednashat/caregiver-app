@@ -16,7 +16,9 @@ class ContemplationFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
     override fun initializeViews() {
         val factory = DailyProgramViewModelFactory(sharedPreferences,activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
+
         binding.btnPrevious.visibility = View.GONE
+
         viewModel.currentTask.let {
             viewModel.listOfTasks = it.dayTask?.contemplation as List<Task>
             if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
