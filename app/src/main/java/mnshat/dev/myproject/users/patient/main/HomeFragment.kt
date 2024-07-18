@@ -2,19 +2,22 @@ package mnshat.dev.myproject.users.patient.main
 
 import android.content.Intent
 import android.graphics.Color
+import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
+import mnshat.dev.myproject.factories.PatientViewModelFactory
 import mnshat.dev.myproject.model.CurrentTask
 import mnshat.dev.myproject.users.patient.dailyprogram.DailyProgramActivity
 import mnshat.dev.myproject.util.USER_NAME
 import mnshat.dev.myproject.util.log
 
 class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
-
+private lateinit var viewModel:PatientViewModel
     override fun getLayout() = R.layout.fragment_user_home
     override fun initializeViews() {
         binding.nameUser.text = sharedPreferences.getString(USER_NAME)
@@ -23,7 +26,13 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
         setStatusOfCurrentTask(getCurrentTask())
         super.onStart()
     }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
 
+        val factory = PatientViewModelFactory(sharedPreferences,activity?.application!!)
+        viewModel = ViewModelProvider(requireActivity(), factory)[PatientViewModel::class.java]
+        binding.lifecycleOwner = this
+        super.onActivityCreated(savedInstanceState)
+    }
     override fun observeViewModel(){
         binding.viewModel = viewModel
 

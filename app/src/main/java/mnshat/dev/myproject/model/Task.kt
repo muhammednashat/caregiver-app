@@ -1,5 +1,9 @@
 package mnshat.dev.myproject.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Task(
     var id: String? = null,
     var type: Int? = null,
@@ -14,6 +18,6 @@ data class Task(
     var gender: Int? = null,
     var ageGroup: Int? = null,
     var religion: Boolean? = null,
-)
+) : Parcelable
 
 

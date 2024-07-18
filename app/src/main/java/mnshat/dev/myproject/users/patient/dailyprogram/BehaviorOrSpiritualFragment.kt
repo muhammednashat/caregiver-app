@@ -17,12 +17,12 @@ class BehaviorOrSpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>(
 
     override fun initializeViews() {
         val factory = DailyProgramViewModelFactory(sharedPreferences,activity?.application!!)
-        _viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
 
-        _viewModel.currentTask.let {
-            _viewModel.listOfTasks =if (sharedPreferences.getBoolean(RELIGION)) it.dayTask?.spiritual as List<Task> else it.dayTask?.behavior as List<Task>
-            if ( _viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
-            getTaskFromList(_viewModel.status.currentIndexBehavior!!, 2)
+        viewModel.currentTask.let {
+            viewModel.listOfTasks =if (sharedPreferences.getBoolean(RELIGION)) it.dayTask?.spiritual as List<Task> else it.dayTask?.behavior as List<Task>
+            if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
+            getTaskFromList(viewModel.status.currentIndexBehavior!!, 2)
             changeColorStatus()
         }
     }
@@ -48,26 +48,26 @@ class BehaviorOrSpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>(
 
         }
         binding.btnRecommend.setOnClickListener {
-            val currentIndex = getNextTask(_viewModel.status.currentIndexBehavior!!, 3)
-            _viewModel.status.currentIndexBehavior = currentIndex
-            _viewModel.updateCurrentTaskLocally()
+            val currentIndex = getNextTask(viewModel.status.currentIndexBehavior!!, 3)
+            viewModel.status.currentIndexBehavior = currentIndex
+            viewModel.updateCurrentTaskLocally()
         }
     }
 
 
     private fun changeColorStatus() {
-        if (_viewModel.status.contemplation == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
-        if (_viewModel.status.activity == 1) binding.line2.setBackgroundColor(Color.parseColor("#6db7d3"))
+        if (viewModel.status.contemplation == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
+        if (viewModel.status.activity == 1) binding.line2.setBackgroundColor(Color.parseColor("#6db7d3"))
 
         changeColorOfTaskImage(2, binding.constraintTask3, binding.imageTask3)
-        changeColorOfTaskImage(_viewModel.status.activity, binding.constraintTask2, binding.imageTask2)
-        changeColorOfTaskImage(_viewModel.status.contemplation, binding.constraintTask1, binding.imageTask1)
+        changeColorOfTaskImage(viewModel.status.activity, binding.constraintTask2, binding.imageTask2)
+        changeColorOfTaskImage(viewModel.status.contemplation, binding.constraintTask1, binding.imageTask1)
     }
 
 
 
     private fun validation(): Boolean {
-        if (_viewModel.status.contemplation != 1 || _viewModel.status.activity != 1) {
+        if (viewModel.status.contemplation != 1 || viewModel.status.activity != 1) {
             showToast(getString(R.string.you_must_complete_all_previous_tasks))
             return false
         }
@@ -77,18 +77,18 @@ class BehaviorOrSpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>(
 
     private fun updateStatus() {
         showProgressDialog()
-        if (_viewModel.status.behaviorOrSpiritual != 1) {
-            _viewModel.status.remaining = _viewModel.status.remaining?.minus(1)
-            _viewModel.status.completionRate = _viewModel.status.completionRate?.plus(30)
-            _viewModel.status.behaviorOrSpiritual = 1
-            _viewModel.updateCurrentTaskLocally()
+        if (viewModel.status.behaviorOrSpiritual != 1) {
+            viewModel.status.remaining = viewModel.status.remaining?.minus(1)
+            viewModel.status.completionRate = viewModel.status.completionRate?.plus(30)
+            viewModel.status.behaviorOrSpiritual = 1
+            viewModel.updateCurrentTaskLocally()
         }
-        retrieveNextDay(_viewModel.status.day?.plus(1).toString())
+        retrieveNextDay(viewModel.status.day?.plus(1).toString())
     }
 
 
     private fun retrieveNextDay(day: String?) {
-        _viewModel.retrieveTaskDayFromDatabase(
+        viewModel.retrieveTaskDayFromDatabase(
             day!!, FirebaseService.userEmail!!, FirebaseService.userId!!, sharedPreferences
         ) {
             findNavController().navigate(R.id.action_behaviorOrSpiritualFragment_to_congratulationsFragment)

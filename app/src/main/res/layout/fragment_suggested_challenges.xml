@@ -50,101 +50,102 @@
             app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraint_reading"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/task1"
             android:layout_width="0dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="2dp"
             android:layout_height="170dp"
             android:layout_marginTop="48dp"
             android:layout_marginEnd="@dimen/margin_large"
             android:layout_marginStart="@dimen/margin_medium"
             android:background="@drawable/corner_large"
-            android:backgroundTint="@color/teal_blue"
+            android:backgroundTint="@color/white"
             android:padding="@dimen/margin_medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/constraint_bedMaking"
+            app:layout_constraintStart_toEndOf="@+id/task2"
             app:layout_constraintTop_toBottomOf="@+id/view2">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_margin="@dimen/margin_large"
+            <ImageView
+                android:id="@+id/image_task1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:id="@+id/constraint_writing"
+            android:id="@+id/task4"
             android:layout_height="170dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="2dp"
             android:layout_marginEnd="@dimen/margin_large"
            android:layout_marginTop="@dimen/margin_large"
             android:background="@drawable/corner_large"
-            android:backgroundTint="@color/teal_blue"
+            android:backgroundTint="@color/white"
             android:padding="@dimen/margin_medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.646"
-            app:layout_constraintStart_toStartOf="@+id/constraint_reading"
-            app:layout_constraintTop_toBottomOf="@+id/constraint_reading">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_margin="@dimen/margin_large"
+            app:layout_constraintStart_toStartOf="@+id/task1"
+            app:layout_constraintTop_toBottomOf="@+id/task1">
+            <ImageView
+                android:id="@+id/image_task4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraint_bedMaking"
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/task2"
             android:layout_width="0dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="2dp"
             android:layout_height="170dp"
             android:layout_marginEnd="@dimen/margin_medium"
             android:layout_marginStart="16dp"
             android:background="@drawable/corner_large"
-            android:backgroundTint="@color/teal_blue"
+            android:backgroundTint="@color/white"
             android:padding="@dimen/margin_medium"
-            app:layout_constraintEnd_toStartOf="@+id/constraint_reading"
+            app:layout_constraintEnd_toStartOf="@+id/task1"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/constraint_reading">
+            app:layout_constraintTop_toTopOf="@+id/task1">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-               android:layout_margin="@dimen/margin_large"
+            <ImageView
+                android:id="@+id/image_task2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout13"
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/task3"
             android:layout_width="0dp"
             android:layout_height="170dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="@dimen/margin_large"
-
+            app:cardCornerRadius="24dp"
+            app:cardElevation="2dp"
             android:background="@drawable/corner_large"
-            android:backgroundTint="@color/teal_blue"
+            android:backgroundTint="@color/white"
             android:padding="@dimen/margin_medium"
-            app:layout_constraintEnd_toEndOf="@+id/constraint_bedMaking"
+            app:layout_constraintEnd_toEndOf="@+id/task2"
             app:layout_constraintHorizontal_bias="0.595"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraint_bedMaking">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_margin="@dimen/margin_large"
+            app:layout_constraintTop_toBottomOf="@+id/task2">
+            <ImageView
+                android:id="@+id/image_task3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

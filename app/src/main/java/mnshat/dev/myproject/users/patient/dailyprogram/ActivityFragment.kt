@@ -13,27 +13,28 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButton.OnCheckedChangeListener
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.auth.AgeFragment
 import mnshat.dev.myproject.databinding.DialogDoCompleteTaskBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
 import mnshat.dev.myproject.model.Task
+import mnshat.dev.myproject.util.log
 
 
-class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>() {
+class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>(),  SuggestedChallengesFragment.OnTaskItemClickListener {
 
     private var currentStatus: Boolean = true
 
     override fun getLayout() = R.layout.layout_task
 
     override fun initializeViews() {
+       log("initializeViews")
         val factory = DailyProgramViewModelFactory(sharedPreferences,activity?.application!!)
-        _viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
 
-        _viewModel.currentTask.let {
-            _viewModel.listOfTasks = it.dayTask?.activity as List<Task>
-            if ( _viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
-            getTaskFromList(_viewModel.status.currentIndexActivity!!, 2)
+        viewModel.currentTask.let {
+            viewModel.listOfTasks = it.dayTask?.activity as List<Task>
+            if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
+            getTaskFromList(viewModel.status.currentIndexActivity!!, 2)
             changeColorStatus()
         }
     }
@@ -42,7 +43,7 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
         binding.btnNext.setOnClickListener {
 
-            if (_viewModel.status.activity != 1){
+            if (viewModel.status.activity != 1){
                 showDialogAskingForCompletion()
             }else{
                 findNavController().navigate(R.id.action_activityFragment_to_behaviorOrSpiritualFragment)
@@ -62,27 +63,35 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>() {
         }
 
         binding.btnRecommend.setOnClickListener {
-            SuggestedChallengesFragment().show(childFragmentManager, SuggestedChallengesFragment::class.java.name)
+            showSuggestedChallengesFragment()
+
         }
         binding.btnPrevious.setOnClickListener {
             findNavController().popBackStack()
         }
 
     }
+
+    private fun  showSuggestedChallengesFragment(){
+
+      val suggestedChallengesFragment = SuggestedChallengesFragment.newInstance(this,viewModel.status.currentIndexActivity!!,viewModel.listOfTasks)
+        suggestedChallengesFragment.show(childFragmentManager, SuggestedChallengesFragment::class.java.name)
+    }
+
     private fun changeColorStatus() {
-        if (_viewModel.status.contemplation == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
+        if (viewModel.status.contemplation == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
         changeColorOfTaskImage(2,binding.constraintTask2,binding.imageTask2)
-        changeColorOfTaskImage(_viewModel.status.contemplation,binding.constraintTask1, binding.imageTask1)
-        changeColorOfTaskImage(_viewModel.status.behaviorOrSpiritual,binding.constraintTask3, binding.imageTask3)
+        changeColorOfTaskImage(viewModel.status.contemplation,binding.constraintTask1, binding.imageTask1)
+        changeColorOfTaskImage(viewModel.status.behaviorOrSpiritual,binding.constraintTask3, binding.imageTask3)
 
     }
 
     private fun updateStatus(boolean: Boolean) {
         if (boolean) {
-            _viewModel.status.remaining = _viewModel.status.remaining?.minus(1)
-            _viewModel.status.completionRate = _viewModel.status.completionRate?.plus(40)
-            _viewModel.status.activity = 1
-            _viewModel.updateCurrentTaskLocally()
+            viewModel.status.remaining = viewModel.status.remaining?.minus(1)
+            viewModel.status.completionRate = viewModel.status.completionRate?.plus(40)
+            viewModel.status.activity = 1
+            viewModel.updateCurrentTaskLocally()
         }
         findNavController().navigate(R.id.action_activityFragment_to_behaviorOrSpiritualFragment)
 
@@ -140,6 +149,11 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>() {
         binding.imageView.setImageDrawable(resources.getDrawable(R.drawable.ic_danger))
         binding.constraintLayout.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#f9f2e1"))
        }
+    }
+
+    override fun onTaskItemClicked(position: Int) {
+        getTaskFromList(position, 2)
+
     }
 
 

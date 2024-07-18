@@ -1,50 +1,33 @@
 package mnshat.dev.myproject.users.patient.dailyprogram
 
 import android.net.Uri
-import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
-import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
-import mnshat.dev.myproject.factories.PatientViewModelFactory
-import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.model.CurrentTask
-import mnshat.dev.myproject.model.StatusDailyProgram
 import mnshat.dev.myproject.model.Task
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
-import mnshat.dev.myproject.users.patient.main.PatientViewModel
-import mnshat.dev.myproject.util.CURRENT_TASK
-import mnshat.dev.myproject.util.DAY_TASK
 import mnshat.dev.myproject.util.ENGLISH_KEY
-import mnshat.dev.myproject.util.STATUS
-import mnshat.dev.myproject.util.log
 
- abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragment<T>() {
+abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragment<T>() {
 
-    lateinit var _viewModel: DailyProgramViewModel
-
+    lateinit var viewModel: DailyProgramViewModel
     lateinit var task: Task
     var player: ExoPlayer? = null
     var isSyncNeeded = false
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
 
-        super.onActivityCreated(savedInstanceState)
-    }
 
     fun getTaskFromList(index: Int, numberTask: Int) {
         Log.e("TAG" , "12")
-
         val binding = binding as LayoutTaskBinding
         showProgressDialog()
-        _viewModel.listOfTasks.let { listOfTasks ->
+        viewModel.listOfTasks.let { listOfTasks ->
              task = listOfTasks[index]
             task.let {
                 if (currentLang != ENGLISH_KEY) {
@@ -66,8 +49,8 @@ import mnshat.dev.myproject.util.log
 
     fun getNextTask(index: Int, numberTask: Int):Int {
          player?.pause()
-      return  if (_viewModel.listOfTasks != null) {
-            val currentTaskIndex = (index + 1) % _viewModel.listOfTasks.size
+      return  if (viewModel.listOfTasks != null) {
+            val currentTaskIndex = (index + 1) % viewModel.listOfTasks.size
             getTaskFromList(currentTaskIndex,numberTask)
           currentTaskIndex
         }else 0
@@ -150,9 +133,9 @@ import mnshat.dev.myproject.util.log
     override fun onStop() {
         super.onStop()
         player?.pause()
-        if (_viewModel._isSyncNeeded.value == true){
-            _viewModel.updateCurrentTaskRemotely()
-            _viewModel._isSyncNeeded.value = false
+        if (viewModel._isSyncNeeded.value == true){
+            viewModel.updateCurrentTaskRemotely()
+            viewModel._isSyncNeeded.value = false
         }
     }
 

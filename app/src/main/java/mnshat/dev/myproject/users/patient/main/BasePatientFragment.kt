@@ -16,16 +16,6 @@ import mnshat.dev.myproject.util.CURRENT_TASK
  abstract class BasePatientFragment<T : ViewDataBinding> : BaseFragment<T>() {
 
     lateinit var sharedUserDialog: Dialog
-    lateinit var viewModel: PatientViewModel
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-
-        val factory = PatientViewModelFactory(sharedPreferences,activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[PatientViewModel::class.java]
-
-        binding.lifecycleOwner = this
-        super.onActivityCreated(savedInstanceState)
-    }
 
     fun getCurrentTask(): CurrentTask? {
         val string = sharedPreferences.getString(CURRENT_TASK, null.toString())

@@ -15,12 +15,12 @@ class ContemplationFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
     override fun initializeViews() {
         val factory = DailyProgramViewModelFactory(sharedPreferences,activity?.application!!)
-        _viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
         binding.btnPrevious.visibility = View.GONE
-        _viewModel.currentTask.let {
-            _viewModel.listOfTasks = it.dayTask?.contemplation as List<Task>
-            if ( _viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
-            getTaskFromList(_viewModel.status.currentIndexContemplation!!, 2)
+        viewModel.currentTask.let {
+            viewModel.listOfTasks = it.dayTask?.contemplation as List<Task>
+            if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
+            getTaskFromList(viewModel.status.currentIndexContemplation!!, 2)
             changeColorStatus()
         }
     }
@@ -45,9 +45,9 @@ class ContemplationFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         }
 
         binding.btnRecommend.setOnClickListener {
-            val currentIndex = getNextTask(_viewModel.status.currentIndexContemplation!!, 1)
-            _viewModel.status.currentIndexContemplation = currentIndex
-            _viewModel.updateCurrentTaskLocally()
+            val currentIndex = getNextTask(viewModel.status.currentIndexContemplation!!, 1)
+            viewModel.status.currentIndexContemplation = currentIndex
+            viewModel.updateCurrentTaskLocally()
         }
 
 
@@ -56,11 +56,11 @@ class ContemplationFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
     private fun changeColorStatus() {
 
-        if (_viewModel.status.contemplation == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
+        if (viewModel.status.contemplation == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
         changeColorOfTaskImage(2, binding.constraintTask1, binding.imageTask1)
-        changeColorOfTaskImage(_viewModel.status.activity, binding.constraintTask2, binding.imageTask2)
+        changeColorOfTaskImage(viewModel.status.activity, binding.constraintTask2, binding.imageTask2)
         changeColorOfTaskImage(
-            _viewModel.status.behaviorOrSpiritual,
+            viewModel.status.behaviorOrSpiritual,
             binding.constraintTask3,
             binding.imageTask3
         )
@@ -68,12 +68,12 @@ class ContemplationFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
     }
 
     private fun updateStatus() {
-        if (_viewModel.status.contemplation != 1){
-            _viewModel.status.remaining = _viewModel.status.remaining?.minus(1)
-            _viewModel.status.completionRate = _viewModel.status.completionRate?.plus(30)
-            _viewModel.status.contemplation = 1
+        if (viewModel.status.contemplation != 1){
+            viewModel.status.remaining = viewModel.status.remaining?.minus(1)
+            viewModel.status.completionRate = viewModel.status.completionRate?.plus(30)
+            viewModel.status.contemplation = 1
             showToast(getString(R.string.the_first_task_was_completed_successfully))
-            _viewModel.updateCurrentTaskLocally()
+            viewModel.updateCurrentTaskLocally()
         }
         findNavController().navigate(R.id.action_contemplationFragment_to_activityFragment)
     }

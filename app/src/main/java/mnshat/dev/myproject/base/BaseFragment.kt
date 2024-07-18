@@ -26,6 +26,7 @@ import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.MyApplication
 import mnshat.dev.myproject.util.PASSWORD
 import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.log
 
 open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
 
@@ -36,6 +37,7 @@ open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
     lateinit var binding: T
 
     override fun onCreateView(
+
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,6 +45,8 @@ open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
         binding = DataBindingUtil.inflate(inflater, getLayout(), container, false)
         initializeViews()
         setupClickListener()
+        log("onCreateView")
+
         return binding.root
     }
 
@@ -60,6 +64,8 @@ open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
         observeViewModel()
     }
     open fun observeViewModel() {
+        log("observeViewModel")
+
     }
 
     fun getTextAge( age: Int?):String? {

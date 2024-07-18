@@ -30,7 +30,7 @@ abstract class BaseBottomSheetDialogFragment<T : ViewDataBinding> : BottomSheetD
         return binding.root
     }
 
-    abstract fun setupClickListener()
+    open fun setupClickListener(){}
     abstract fun initializeViews()
     abstract fun getLayout(): Int
     override fun onAttach(context: Context) {
