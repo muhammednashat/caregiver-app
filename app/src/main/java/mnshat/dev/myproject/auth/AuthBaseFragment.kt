@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.inappmessaging.dagger.Provides
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.factories.AuthViewModelFactory
 import mnshat.dev.myproject.factories.PatientViewModelFactory
@@ -22,18 +23,17 @@ import mnshat.dev.myproject.util.IS_SIGNING
 import mnshat.dev.myproject.util.NUMBER_SUPPORTERS
 import mnshat.dev.myproject.util.SUPPORTERS
 import mnshat.dev.myproject.util.USER
+import javax.inject.Inject
 
 open abstract class AuthBaseFragment<T : ViewDataBinding> : BaseFragment<T>() {
 
     lateinit var _viewModel: AuthViewModel
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
         val factory = AuthViewModelFactory(sharedPreferences,activity?.application!!)
         _viewModel = ViewModelProvider(requireActivity(), factory)[AuthViewModel::class.java]
-
         super.onActivityCreated(savedInstanceState)
-
     }
 
 

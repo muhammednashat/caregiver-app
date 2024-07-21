@@ -27,9 +27,7 @@ class ContemplationFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         }
     }
 
-
     override fun setupClickListener() {
-
         binding.btnNext.setOnClickListener {
             updateStatus()
         }

@@ -20,7 +20,6 @@ import mnshat.dev.myproject.util.log
 open class BaseViewModel(
     private val sharedPreferences: SharedPreferencesManager,
     application: Application
-
 ) : AndroidViewModel(application) {
     var intGender = MutableLiveData<Int?>()
     var strGender = MutableLiveData<String?>()

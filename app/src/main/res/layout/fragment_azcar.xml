@@ -61,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/corner_normal"
-android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_large"
             android:layout_marginBottom="@dimen/margin_2_super"
             android:backgroundTint="#b9dae6"
             android:padding="@dimen/padding_small"

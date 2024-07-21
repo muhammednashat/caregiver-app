@@ -9,7 +9,10 @@ import mnshat.dev.myproject.util.SharedPreferencesManager
 
 
 class AuthViewModelFactory
-    (private val sharedPreferences: SharedPreferencesManager,
+
+    (
+
+     private val sharedPreferences: SharedPreferencesManager,
      private val application: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(AuthViewModel::class.java)) {

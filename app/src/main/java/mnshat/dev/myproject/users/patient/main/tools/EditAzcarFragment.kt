@@ -12,6 +12,7 @@ import mnshat.dev.myproject.databinding.FragmentEditAzcarBinding
 
 
 class EditAzcarFragment : BaseBottomSheetDialogFragment<FragmentEditAzcarBinding>() {
+
     override fun initializeViews() {
 
     }

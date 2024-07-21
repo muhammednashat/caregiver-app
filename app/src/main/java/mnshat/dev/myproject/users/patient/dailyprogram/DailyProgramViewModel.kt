@@ -25,7 +25,7 @@ class DailyProgramViewModel(
     application
 ) {
     var currentTask: CurrentTask
-    lateinit var status: StatusDailyProgram
+   lateinit var status: StatusDailyProgram
    lateinit var listOfTasks: List<Task>
     val _isSyncNeeded: MutableLiveData<Boolean> = MutableLiveData()
 
@@ -34,6 +34,7 @@ class DailyProgramViewModel(
         status= currentTask.status!!
     }
 
+    //get Data
     private fun getCurrntTask(): CurrentTask {
         val string = sharedPreferences.getString(CURRENT_TASK, null.toString())
         val gson = Gson()
