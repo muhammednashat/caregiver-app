@@ -219,6 +219,11 @@
     <string name="send">ارسال</string>
     <string name="back_to_task">العودة الى المهمة</string>
     <string name="you_will_not_go_to_the_next_day">يجب انهاء هذه المهمة حتى تتمكن من الانتقال الى اليوم التالى</string>
+    <string name="show_all">عرض الكل</string>
+    <string name="azcar">الأذكار</string>
+    <string name="you_have_not_created_any_zecer_so_far">لم تقم بإنشاء اى ذكر حتى الان...</string>
+    <string name="your_list">قائمتك</string>
+    <string name="suggested_supplications">أذكار مقترحة</string>
 
 
 </resources>

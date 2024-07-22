@@ -38,7 +38,7 @@
         app:popUpToInclusive="false" />
     <fragment
         android:id="@+id/mainAzcarFragment"
-        tools:layout="@layout/fragment_main_azcar"
-        android:name="mnshat.dev.myproject.users.patient.main.tools.MainAzcarFragment"
+        tools:layout="@layout/fragment_main_supplications"
+        android:name="mnshat.dev.myproject.users.patient.main.tools.MainSupplicationsFragment"
         android:label="MainAzcarFragment" />
 </navigation>
