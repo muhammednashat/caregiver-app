@@ -15,9 +15,6 @@ class CongratulationsFragment: BaseDailyProgramFragment<FragmentCongratulationsB
 
     override fun getLayout() = R.layout.fragment_congratulations
 
-    override fun setupClickListener() {
-      }
-
     override fun initializeViews() {
        val nameUser= sharedPreferences.getString(USER_NAME)
         binding.textView.text= getString(R.string.completion_message,nameUser)
@@ -75,8 +72,6 @@ class CongratulationsFragment: BaseDailyProgramFragment<FragmentCongratulationsB
         dialogBinding.textOk.setTextColor(getResources().getColor(R.color.white))
         dialogBinding.textSatisfied.setTextColor(getResources().getColor(R.color.white))
         dialogBinding.textUnSatisfied.setTextColor(getResources().getColor(R.color.white))
-
-
 
     }
 

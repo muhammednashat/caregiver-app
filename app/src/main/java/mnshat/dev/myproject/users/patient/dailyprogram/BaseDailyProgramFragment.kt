@@ -130,14 +130,7 @@ abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragme
         }
     }
 
-    override fun onStop() {
-        super.onStop()
-        player?.pause()
-        if (viewModel._isSyncNeeded.value == true){
-            viewModel.updateCurrentTaskRemotely()
-            viewModel._isSyncNeeded.value = false
-        }
-    }
+
 
     override fun onDestroy() {
         super.onDestroy()

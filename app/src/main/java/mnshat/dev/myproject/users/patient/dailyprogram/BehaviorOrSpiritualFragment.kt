@@ -95,5 +95,12 @@ class BehaviorOrSpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>(
             dismissProgressDialog()
         }
     }
-
+    override fun onStop() {
+        super.onStop()
+        player?.pause()
+        if (viewModel._isSyncNeeded.value == true){
+            viewModel.updateCurrentTaskRemotely()
+            viewModel._isSyncNeeded.value = false
+        }
+    }
 }
