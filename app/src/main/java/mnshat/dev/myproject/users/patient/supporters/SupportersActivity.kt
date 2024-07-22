@@ -1,13 +1,16 @@
 package mnshat.dev.myproject.users.patient.supporters
 
-import android.os.Bundle
-import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseActivity2
+import mnshat.dev.myproject.base.BaseActivity
+import mnshat.dev.myproject.databinding.ActivitySupportersBinding
 
-class SupportersActivity : BaseActivity2() {
+class SupportersActivity : BaseActivity<ActivitySupportersBinding>() {
+    override fun getLayout(): ActivitySupportersBinding {
+     return ActivitySupportersBinding.inflate(layoutInflater)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_supporters)
     }
+
+    override fun initializeViews() {
+    }
+
+
 }

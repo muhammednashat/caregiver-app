@@ -1,21 +1,15 @@
 package mnshat.dev.myproject.util
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseFragment2
+import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.databinding.FragmentContactUsBinding
 
 
-class ContactUsFragment : BaseFragment2() {
+class ContactUsFragment: BaseFragment<FragmentContactUsBinding>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contact_us, container, false)
+    override fun initializeViews() {
+
     }
 
+    override fun getLayout()= R.layout.fragment_contact_us
 }

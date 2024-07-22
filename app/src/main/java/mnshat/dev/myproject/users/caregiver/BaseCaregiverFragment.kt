@@ -1,12 +1,8 @@
 package mnshat.dev.myproject.users.caregiver
 
-import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
-import mnshat.dev.myproject.base.BaseFragment2
+import androidx.databinding.ViewDataBinding
+import mnshat.dev.myproject.base.BaseFragment
 
-open class BaseCaregiverFragment: BaseFragment2() {
+abstract class BaseCaregiverFragment<T : ViewDataBinding>: BaseFragment<T>() {
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
 }

@@ -1,15 +1,18 @@
 package mnshat.dev.myproject.auth
 
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentAgeBinding
+import mnshat.dev.myproject.factories.AuthViewModelFactory
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.ENGLISH_KEY
 
 
-class AgeFragment : BaseBottomSheetDialogFragment2<FragmentAgeBinding>() {
+class AgeFragment : BaseBottomSheetDialogFragment<FragmentAgeBinding>() {
 
+   private lateinit var viewModel: AuthViewModel
 
     override fun setupClickListener() {
         binding.close.setOnClickListener {
@@ -37,11 +40,11 @@ class AgeFragment : BaseBottomSheetDialogFragment2<FragmentAgeBinding>() {
 
 
     override fun getLayout() = R.layout.fragment_age
-    override fun observing() {
-        super.observing()
-        _viewModel.intAge.observe(viewLifecycleOwner) {
+
+    private fun observeViewModel() {
+        viewModel.intAge.observe(viewLifecycleOwner) {
             it?.let {
-                _viewModel.setStrAge(requireActivity(),sharedPreferences,it)
+                viewModel.setStrAge(requireActivity(),sharedPreferences,it)
                 setChoosenAge(it)
             }
         }
@@ -51,8 +54,11 @@ class AgeFragment : BaseBottomSheetDialogFragment2<FragmentAgeBinding>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val factory = AuthViewModelFactory(sharedPreferences,activity?.application!!)
+        viewModel = ViewModelProvider(requireActivity(), factory)[AuthViewModel::class.java]
         binding.lifecycleOwner = this
-        binding.viewModel = _viewModel
+        binding.viewModel = viewModel
+        observeViewModel()
     }
 
 

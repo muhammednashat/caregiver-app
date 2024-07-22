@@ -5,25 +5,26 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.drawable.Drawable
-import android.os.Bundle
 import android.os.Handler
 import android.util.DisplayMetrics
 import android.view.WindowManager
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.auth.AuthActivity
-import mnshat.dev.myproject.base.BaseActivity2
+import mnshat.dev.myproject.base.BaseActivity
+import mnshat.dev.myproject.databinding.ActivitySplashBinding
 import mnshat.dev.myproject.users.admin.AdminScreenActivity
 import mnshat.dev.myproject.users.caregiver.CaregiverScreenActivity
 import mnshat.dev.myproject.users.patient.main.UserScreensActivity
 import java.util.Locale
 
 
-class SplashActivity : BaseActivity2() {
+class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
+    override fun getLayout(): ActivitySplashBinding {
+        return ActivitySplashBinding.inflate(layoutInflater)
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+    override fun initializeViews() {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = Color.TRANSPARENT
         val background: Drawable =
@@ -31,9 +32,8 @@ class SplashActivity : BaseActivity2() {
         window.setBackgroundDrawable(background)
         Handler().postDelayed({
             isLogged()
-        setLocale(if (sharedPreferences.getString(LANGUAGE) == "en") "en" else "ar")
+            setLocale(if (sharedPreferences.getString(LANGUAGE) == "en") "en" else "ar")
         }, 2000)
-
     }
 
     private fun isLogged() {

@@ -4,36 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import mnshat.dev.myproject.R
+import mnshat.dev.myproject.databinding.FragmentCaregiverHomeBinding
 import mnshat.dev.myproject.databinding.FragmentCaregiverProfileBinding
+import mnshat.dev.myproject.util.NAME_PARTNER
 import mnshat.dev.myproject.util.USER_NAME
 
 
-class CaregiverProfileFragment : BaseCaregiverFragment() {
-    lateinit var binding: FragmentCaregiverProfileBinding
+class CaregiverProfileFragment : BaseCaregiverFragment<FragmentCaregiverProfileBinding>() {
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun initializeViews() {
 
-        binding = FragmentCaregiverProfileBinding.inflate(inflater)
-        initialize()
-        setupListener()
-        return binding.root
+     }
 
-    }
-    private fun initialize(){
-
-    }
-      private fun setupListener(){
-          binding.logOut.setOnClickListener {
-              logOut()
-          }
-    }
-    override fun onStart() {
-        binding.nameUser.text = sharedPreferences.getString(USER_NAME)
-        super.onStart()
-    }
-
+    override fun getLayout() = R.layout.fragment_caregiver_profile
 }

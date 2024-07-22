@@ -6,7 +6,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseActivity
-import mnshat.dev.myproject.base.BaseActivity2
 import mnshat.dev.myproject.databinding.ActivityUserScreensBinding
 
 class UserScreensActivity : BaseActivity<ActivityUserScreensBinding>() {

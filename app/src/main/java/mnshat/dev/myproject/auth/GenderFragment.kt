@@ -2,13 +2,17 @@ package mnshat.dev.myproject.auth
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.ViewModelProvider
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentGenderBinding
+import mnshat.dev.myproject.factories.AuthViewModelFactory
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.GENDER
 
-class GenderFragment  :  BaseBottomSheetDialogFragment2<FragmentGenderBinding>() {
+class GenderFragment  :  BaseBottomSheetDialogFragment<FragmentGenderBinding>() {
+    lateinit var viewModel: AuthViewModel
+
     override fun setupClickListener() {
         binding.close.setOnClickListener{
             dismiss()
@@ -23,10 +27,9 @@ class GenderFragment  :  BaseBottomSheetDialogFragment2<FragmentGenderBinding>()
     }
     override fun getLayout()= R.layout.fragment_gender
 
-  override fun observing(){
-      super.observing()
-        _viewModel.intGender.observe(viewLifecycleOwner) {
-            _viewModel.setStrGender(requireActivity(),sharedPreferences,it)
+  private fun observeViewModel(){
+        viewModel.intGender.observe(viewLifecycleOwner) {
+            viewModel.setStrGender(requireActivity(),sharedPreferences,it)
             changeUserUi(it)
         }
     }
@@ -60,8 +63,11 @@ class GenderFragment  :  BaseBottomSheetDialogFragment2<FragmentGenderBinding>()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val factory = AuthViewModelFactory(sharedPreferences,activity?.application!!)
+        viewModel = ViewModelProvider(requireActivity(), factory)[AuthViewModel::class.java]
         binding.lifecycleOwner = this
-        binding.viewModel = _viewModel
+        binding.viewModel = viewModel
+        observeViewModel()
     }
 
 }
