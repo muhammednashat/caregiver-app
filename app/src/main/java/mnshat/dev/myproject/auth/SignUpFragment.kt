@@ -20,10 +20,10 @@ class SignUpFragment : AuthBaseFragment<FragmentSignUpBinding>(){
         super.onActivityCreated(savedInstanceState)
         binding.lifecycleOwner = this
         binding.viewModel = _viewModel
-
+        observeViewModel()
     }
-    override fun observeViewModel() {
-        super.observeViewModel()
+
+    private fun observeViewModel() {
         _viewModel.strGender.value = getString(R.string.gender)
         _viewModel.strAge.value = getString(R.string.age_group)
         _viewModel.typeOfUser.observe(viewLifecycleOwner) {

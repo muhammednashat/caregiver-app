@@ -86,31 +86,31 @@
             app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/mainRecyclerView"
+            android:id="@+id/userSupplicationRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_margin="@dimen/margin_large"
             android:padding="8dp"
+            tools:listitem="@layout/item_view_user_supplications"
+             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
-        <!-- Suggested items recycler view -->
 
-        <!-- Floating action button -->
 
         <TextView
             android:id="@+id/suggestedItemsTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/mainRecyclerView"
+            android:layout_below="@id/userSupplicationRecyclerView"
             android:layout_marginTop="16dp"
             android:text="@string/suggested_supplications"
             android:textSize="18sp"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@+id/textView31"
-            app:layout_constraintTop_toBottomOf="@+id/mainRecyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/userSupplicationRecyclerView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/suggestedRecyclerView"
@@ -119,7 +119,9 @@
             android:layout_below="@id/suggestedItemsTitleTextView"
             android:layout_margin="@dimen/margin_large"
             android:padding="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 
+  tools:listitem="@layout/item_view_suggested_supplications"
             app:layout_constraintBottom_toTopOf="@+id/fab"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

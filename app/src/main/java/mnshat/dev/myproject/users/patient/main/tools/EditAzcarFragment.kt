@@ -2,10 +2,10 @@ package mnshat.dev.myproject.users.patient.main.tools
 
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
-import mnshat.dev.myproject.databinding.FragmentEditAzcarBinding
+import mnshat.dev.myproject.databinding.FragmentEditSupplicationsBinding
 
 
-class EditAzcarFragment : BaseBottomSheetDialogFragment<FragmentEditAzcarBinding>() {
+class EditAzcarFragment : BaseBottomSheetDialogFragment<FragmentEditSupplicationsBinding>() {
 
     override fun initializeViews() {
 

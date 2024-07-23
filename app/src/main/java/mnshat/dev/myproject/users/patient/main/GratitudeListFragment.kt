@@ -2,6 +2,7 @@ package mnshat.dev.myproject.users.patient.main
 
 import android.view.View
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.adapters.GratitudeAdapter
 import mnshat.dev.myproject.databinding.FragmentGratitudeListBinding
 import mnshat.dev.myproject.firebase.FirebaseService
 

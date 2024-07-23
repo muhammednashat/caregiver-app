@@ -40,5 +40,14 @@
         android:id="@+id/mainAzcarFragment"
         tools:layout="@layout/fragment_main_supplications"
         android:name="mnshat.dev.myproject.users.patient.main.tools.MainSupplicationsFragment"
-        android:label="MainAzcarFragment" />
+        android:label="MainAzcarFragment" >
+        <action
+            android:id="@+id/action_mainAzcarFragment_to_userSupplicationsFragment"
+            app:destination="@id/userSupplicationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userSupplicationsFragment"
+        tools:layout="@layout/fragment_user_supplications"
+        android:name="mnshat.dev.myproject.users.patient.main.tools.UserSupplicationsFragment"
+        android:label="UserSupplicationsFragment" />
 </navigation>

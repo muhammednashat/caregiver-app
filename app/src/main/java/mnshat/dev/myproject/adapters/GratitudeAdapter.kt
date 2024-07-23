@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.main
+package mnshat.dev.myproject.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

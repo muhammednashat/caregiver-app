@@ -34,6 +34,7 @@ open abstract class AuthBaseFragment<T : ViewDataBinding> : BaseFragment<T>() {
         val factory = AuthViewModelFactory(sharedPreferences,activity?.application!!)
         _viewModel = ViewModelProvider(requireActivity(), factory)[AuthViewModel::class.java]
         super.onActivityCreated(savedInstanceState)
+        observeViewModel()
     }
 
 
@@ -76,8 +77,7 @@ open abstract class AuthBaseFragment<T : ViewDataBinding> : BaseFragment<T>() {
         }
     }
 
-    override fun observeViewModel() {
-        super.observeViewModel()
+    private fun observeViewModel() {
         _viewModel.name.value?.let {
             _viewModel.invitationCode.observe(viewLifecycleOwner) {
         }

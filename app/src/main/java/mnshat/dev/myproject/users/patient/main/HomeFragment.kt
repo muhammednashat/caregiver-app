@@ -31,9 +31,10 @@ private lateinit var viewModel:PatientViewModel
         val factory = PatientViewModelFactory(sharedPreferences,activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[PatientViewModel::class.java]
         binding.lifecycleOwner = this
+        observeViewModel()
         super.onActivityCreated(savedInstanceState)
     }
-    override fun observeViewModel(){
+    private fun observeViewModel(){
         binding.viewModel = viewModel
 
         viewModel.toolsClick.observe(viewLifecycleOwner){

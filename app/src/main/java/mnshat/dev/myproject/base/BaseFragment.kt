@@ -61,12 +61,8 @@ open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        observeViewModel()
     }
-    open fun observeViewModel() {
-        log("observeViewModel")
 
-    }
 
     fun getTextAge( age: Int?):String? {
       return  when(age){

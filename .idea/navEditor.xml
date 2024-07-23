@@ -836,6 +836,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="userSupplicationsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-70" />
+                            <option name="y" value="-454" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                 </map>
               </option>
             </LayoutPositions>
