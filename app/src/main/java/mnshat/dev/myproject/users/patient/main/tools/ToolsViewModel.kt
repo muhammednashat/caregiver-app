@@ -12,6 +12,9 @@ class ToolsViewModel(private val sharedPreferences: SharedPreferencesManager,
                      application: Application
 ):BaseViewModel(sharedPreferences,application) {
 
+
+
+
     private val _suggestedSupplication = MutableLiveData<List<Supplication>>()
     val suggestedSupplication: LiveData<List<Supplication>>
         get() = _suggestedSupplication
@@ -26,7 +29,7 @@ class ToolsViewModel(private val sharedPreferences: SharedPreferencesManager,
         _userSupplication.value = supplications
     }
 
-
+    fun getUserSupplication()= supplications
 
 
 }

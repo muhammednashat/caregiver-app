@@ -38,16 +38,45 @@
         app:popUpToInclusive="false" />
     <fragment
         android:id="@+id/mainAzcarFragment"
-        tools:layout="@layout/fragment_main_supplications"
-        android:name="mnshat.dev.myproject.users.patient.main.tools.MainSupplicationsFragment"
+        tools:layout="@layout/fragment_tools"
+        android:name="mnshat.dev.myproject.users.patient.main.tools.ToolsFragment"
         android:label="MainAzcarFragment" >
         <action
-            android:id="@+id/action_mainAzcarFragment_to_userSupplicationsFragment"
+            android:id="@+id/action_mainAzcarFragment_to_mainSupplicationsFragment"
+            app:destination="@id/mainSupplicationsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mainSupplicationsFragment"
+        tools:layout="@layout/fragment_main_supplications"
+        android:name="mnshat.dev.myproject.users.patient.main.tools.MainSupplicationsFragment"
+        android:label="MainSupplicationsFragment" >
+        <action
+            android:id="@+id/action_mainSupplicationsFragment_to_supplicationsFragment"
+            app:destination="@id/supplicationsFragment" />
+
+        <action
+            android:id="@+id/action_mainSupplicationsFragment_to_userSupplicationsFragment"
             app:destination="@id/userSupplicationsFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/supplicationsFragment"
+        tools:layout="@layout/fragment_supplications"
+        android:name="mnshat.dev.myproject.users.patient.main.tools.SupplicationsFragment"
+        android:label="SupplicationsFragment" >
+        <argument
+            android:name="supplication"
+            app:argType="mnshat.dev.myproject.model.Supplication" />
+    </fragment>
+
     <fragment
         android:id="@+id/userSupplicationsFragment"
-        tools:layout="@layout/fragment_user_supplications"
+         tools:layout="@layout/fragment_user_supplications"
         android:name="mnshat.dev.myproject.users.patient.main.tools.UserSupplicationsFragment"
-        android:label="UserSupplicationsFragment" />
+        android:label="UserSupplicationsFragment" >
+        <argument
+            android:name="listOfSupplications"
+            app:argType="mnshat.dev.myproject.model.Supplication[]" />
+    </fragment>
 </navigation>
