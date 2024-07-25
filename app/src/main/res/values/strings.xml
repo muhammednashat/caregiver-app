@@ -263,12 +263,13 @@
     <string name="suggested_supplications">suggested supplications</string>
     <string name="add">add</string>
     <string name="infinite_repetition">Infinite repetition</string>
-    <string name="write_the_supplication_that_you_want">write a supplication that you want</string>
+    <string name="write_the_supplication_that_you_want">Write a supplication that you want</string>
     <string name="write_the_supplication_you_want_and_specify_the_number_of_repetitions_you_can_modify_that_at_any_time_you_want">Write the supplication you want and specify the number of repetitions. You can modify that at any time you want</string>
     <string name="write_the_number_of_repetitions_you_want_to_reach">Write the number of repetitions you want to reach</string>
     <string name="enter_the_number_here">Enter the number here...</string>
     <string name="write_here">write here...</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="number_not_valid">The number is not valid</string>
+    <string name="please_write_the_supplication_that_you_want">Please write a supplication that you want</string>
+    <string name="please_write_the_number_of_repetitions_you_want_to_reach">Please rite the number of repetitions you want to reach</string>
 
 </resources>

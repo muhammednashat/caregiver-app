@@ -231,6 +231,9 @@
     <string name="write_the_number_of_repetitions_you_want_to_reach">اكتب عدد التكرارات المراد الوصول اليه</string>
     <string name="enter_the_number_here">أدخل العدد هنا...</string>
     <string name="write_here">اكتب هنا...</string>
+    <string name="please_write_the_number_of_repetitions_you_want_to_reach">رجاءا اكتب عدد التكرارات المراد الوصول اليه</string>
+    <string name="number_not_valid">الرقم الذى ادخلته غير صالح</string>
+    <string name="please_write_the_supplication_that_you_want">رجاءا اكتب الذكر المراد</string>
 
 
 </resources>

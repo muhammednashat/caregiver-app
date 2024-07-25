@@ -8,7 +8,7 @@ import mnshat.dev.myproject.databinding.FragmentAddAzcarBinding
 import mnshat.dev.myproject.factories.ToolsViewModelFactory
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.util.ENGLISH_KEY
-import kotlin.properties.Delegates
+import mnshat.dev.myproject.util.isValidInput
 
 
 class AddSupplicationsFragment : BaseBottomSheetDialogFragment<FragmentAddAzcarBinding>() {
@@ -16,7 +16,10 @@ class AddSupplicationsFragment : BaseBottomSheetDialogFragment<FragmentAddAzcarB
     private lateinit var viewModel: ToolsViewModel
     private lateinit var nameSupplication:String
     private lateinit var numberSupplicationText:String
-    private var numberSupplication by Delegates.notNull<Int>()
+    private var isCheckedBox: Boolean = false
+    private var numberSupplication:Int = 0
+
+
     override fun initializeViews() {
         intiBackgroundBasedOnLang()
     }
@@ -28,20 +31,38 @@ class AddSupplicationsFragment : BaseBottomSheetDialogFragment<FragmentAddAzcarB
             dismiss()
         }
         binding.addButton.setOnClickListener{
-            validation()
-          viewModel.onAddSupplicationClick( getInstanceSupplication())
+           if (validation()){
+               viewModel.onAddSupplicationClick( getInstanceSupplication())
+           }
+
         }
     }
 
-    private fun validation() {
+    private fun validation(): Boolean {
+        saveInputDataToVariables()
+        return if (!isValidInput(nameSupplication)) {
+            showToast(getString(R.string.please_write_the_supplication_that_you_want))
+            false
+        } else if (!isValidInput(numberSupplicationText) && !isCheckedBox) {
+            showToast(getString(R.string.please_write_the_number_of_repetitions_you_want_to_reach))
+            false
+        } else if (numberSupplicationText.startsWith("0")) {
+            showToast(getString(R.string.number_not_valid))
+            false
+        }
+        else
+            true
+    }
+
+    private fun saveInputDataToVariables() {
         nameSupplication = binding.nameEditText.text.toString()
         numberSupplicationText = binding.numberEditText.text.toString()
+        isCheckedBox = binding.infiniteRepeatCheckBox.isChecked
 
-        val isCheckedBox = binding.infiniteRepeatCheckBox.isChecked
-        val numberSupplication = if (isCheckedBox) 0 else numberSupplicationText.toIntOrNull()
     }
 
     private fun getInstanceSupplication():Supplication {
+        numberSupplication = if (isCheckedBox) 0 else numberSupplicationText.toInt()
         return Supplication(nameSupplication, numberSupplication)
     }
 

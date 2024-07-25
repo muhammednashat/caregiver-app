@@ -9,10 +9,13 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessaging
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.model.CurrentTask
 import mnshat.dev.myproject.model.RegistrationData
+import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.EMAIL
 import mnshat.dev.myproject.util.INVITATION_CODE
@@ -20,8 +23,11 @@ import mnshat.dev.myproject.util.INVITATION_CODE
 object FirebaseService {
 
     private val firebaseDatabase = FirebaseDatabase.getInstance()
+
     val usersDatabase = firebaseDatabase.getReference("users")
     val tasksUsersDatabase = firebaseDatabase.getReference("tasks_users")
+    val supplicationsUsersDatabase = firebaseDatabase.getReference("supplications_users")
+
     private val fireAuth = FirebaseAuth.getInstance()
     private val currentUser = fireAuth.currentUser
     val userEmail = currentUser?.email
@@ -52,6 +58,8 @@ object FirebaseService {
                 }
             }
     }
+
+
 
     fun getToken(callback: (String?) -> Unit) {
         FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
