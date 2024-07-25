@@ -37,16 +37,14 @@ class ToolsViewModel(private val sharedPreferences: SharedPreferencesManager,
     fun onAddSupplicationClick(instanceSupplication: Supplication) {
         val firestore = Firebase.firestore
         val supplicationsUsers = firestore.collection("supplications_users")
-        // Add the supplication instance to the collection
+
         supplicationsUsers.add(instanceSupplication)
             .addOnSuccessListener { documentReference ->
-                // Handle successful addition
-                // You can show a success message or perform other actions
+
                 println("Supplication added with ID: ${documentReference.id}")
             }
             .addOnFailureListener { e ->
-                // Handle failure
-                // You can show an error message or perform other actions
+
                 println("Error adding supplication: $e")
             }
     }
