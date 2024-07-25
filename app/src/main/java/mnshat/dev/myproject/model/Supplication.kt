@@ -4,4 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Supplication(val name: String, val number: Int):Parcelable
+data class Supplication(
+    var name: String,
+    var number: Int)
+    :Parcelable

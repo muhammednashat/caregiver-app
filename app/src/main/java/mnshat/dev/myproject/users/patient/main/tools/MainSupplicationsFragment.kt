@@ -21,12 +21,14 @@ class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsB
     private lateinit var viewModel: ToolsViewModel
 
     override fun initializeViews() {
+        intiBackgroundBasedOnLang()
+    }
+    private fun intiBackgroundBasedOnLang() {
         if (currentLang != ENGLISH_KEY) {
             binding.backArrow.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
             binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
         }
     }
-
     override fun setupClickListener() {
         super.setupClickListener()
         binding.fab.setOnClickListener{

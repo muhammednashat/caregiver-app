@@ -763,8 +763,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="155" />
-                            <option name="y" value="743" />
+                            <option name="x" value="-660" />
+                            <option name="y" value="1063" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -775,9 +775,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-334" />
-                            <option name="y" value="-347" />
+                            <option name="x" value="-774" />
+                            <option name="y" value="-203" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_mainAzcarFragment_to_userSupplicationsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -787,8 +796,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="344" />
-                            <option name="y" value="-248" />
+                            <option name="x" value="894" />
+                            <option name="y" value="172" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -799,8 +808,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-724" />
-                            <option name="y" value="-215" />
+                            <option name="x" value="-1376" />
+                            <option name="y" value="-187" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -820,8 +829,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-167" />
-                            <option name="y" value="552" />
+                            <option name="x" value="-2122" />
+                            <option name="y" value="1042" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -836,13 +845,25 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="supplicationsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-235" />
+                            <option name="y" value="-203" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="userSupplicationsFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-70" />
-                            <option name="y" value="-454" />
+                            <option name="x" value="-585" />
+                            <option name="y" value="-585" />
                           </Point>
                         </option>
                       </LayoutPositions>
