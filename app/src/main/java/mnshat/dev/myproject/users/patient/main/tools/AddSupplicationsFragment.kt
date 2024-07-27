@@ -6,6 +6,7 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentAddAzcarBinding
 import mnshat.dev.myproject.factories.ToolsViewModelFactory
+import mnshat.dev.myproject.interfaces.DataReLoader
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.isValidInput
@@ -15,8 +16,10 @@ class AddSupplicationsFragment : BaseBottomSheetDialogFragment<FragmentAddAzcarB
 
     private lateinit var viewModel: ToolsViewModel
     private lateinit var nameSupplication:String
+    private lateinit var dataReLoader: DataReLoader
     private lateinit var numberSupplicationText:String
     private var isCheckedBox: Boolean = false
+    private var isNeedingReload: Boolean = false
     private var numberSupplication:Int = 0
 
 
@@ -39,13 +42,31 @@ class AddSupplicationsFragment : BaseBottomSheetDialogFragment<FragmentAddAzcarB
         }
     }
 
+
+    override fun onStop() {
+        super.onStop()
+        if (isNeedingReload){
+            dataReLoader.reloadData()
+        }
+
+    }
+
+    fun setDataReLoader(dataReLoader: DataReLoader) {
+        this.dataReLoader = dataReLoader
+    }
     private fun observeViewModel() {
 
         viewModel.isDismissProgressDialog.observe(viewLifecycleOwner) { isDismissProgressDialog ->
+            println("isDismissProgressDialog")
+            isNeedingReload = true
             if (isDismissProgressDialog) {
+                println("isDismissProgressDialog  if ")
                 clearEditTexts()
                 dismissProgressDialog()
                 viewModel.resetIsDismissProgressDialog()
+            }else{
+                println("isDismissProgressDialog  else ")
+
             }
 
         }

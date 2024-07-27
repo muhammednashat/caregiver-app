@@ -34,8 +34,6 @@ class ToolsViewModel(private val sharedPreferences: SharedPreferencesManager,
 
 
     fun onAddSupplicationClick(instanceSupplication: Supplication) {
-        _isDismissProgressDialog.value = false
-
         supplicationsUsersDoc.get()
             .addOnSuccessListener { documentSnapshot ->
                 val supplicationsList: MutableList<Supplication> = if (documentSnapshot.exists()) {

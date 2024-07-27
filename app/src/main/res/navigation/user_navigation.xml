@@ -75,8 +75,9 @@
          tools:layout="@layout/fragment_user_supplications"
         android:name="mnshat.dev.myproject.users.patient.main.tools.UserSupplicationsFragment"
         android:label="UserSupplicationsFragment" >
+
         <argument
-            android:name="listOfSupplications"
+            android:name="supplications"
             app:argType="mnshat.dev.myproject.model.Supplication[]" />
     </fragment>
 </navigation>

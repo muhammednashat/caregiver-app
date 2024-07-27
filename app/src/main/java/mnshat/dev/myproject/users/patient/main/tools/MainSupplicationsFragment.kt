@@ -9,6 +9,7 @@ import mnshat.dev.myproject.adapters.SuggestedSupplicationAdapter
 import mnshat.dev.myproject.adapters.UserSupplicationAdapter
 import mnshat.dev.myproject.databinding.FragmentMainSupplicationsBinding
 import mnshat.dev.myproject.factories.ToolsViewModelFactory
+import mnshat.dev.myproject.interfaces.DataReLoader
 import mnshat.dev.myproject.interfaces.ItemSupplicationClicked
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
@@ -17,12 +18,11 @@ import mnshat.dev.myproject.util.ENGLISH_KEY
 
 class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsBinding>(),
 
-    ItemSupplicationClicked {
+    ItemSupplicationClicked,DataReLoader {
 
     private lateinit var viewModel: ToolsViewModel
 
     override fun initializeViews() {
-        showProgressDialog()
         intiBackgroundBasedOnLang()
     }
 
@@ -35,19 +35,26 @@ class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsB
 
     override fun setupClickListener() {
         super.setupClickListener()
-        binding.fab.setOnClickListener{
-            AddSupplicationsFragment().show(childFragmentManager, AddSupplicationsFragment::class.java.name)
+        binding.fab.setOnClickListener {
+            val addFragment = AddSupplicationsFragment()
+            addFragment.setDataReLoader(this)
+            addFragment.show(childFragmentManager, AddSupplicationsFragment::class.java.name)
         }
         binding.backArrow.setOnClickListener{
            findNavController().popBackStack()
         }
         binding.textShowAll.setOnClickListener{
-//            val action = MainSupplicationsFragmentDirections
-//                .actionMainSupplicationsFragmentToUserSupplicationsFragment(viewModel.getUserSupplication().toTypedArray())
-//            findNavController().navigate(action)
+            navigateToUserSupplications()
         }
 
     }
+
+    private fun navigateToUserSupplications() {
+        val action = MainSupplicationsFragmentDirections
+            .actionMainSupplicationsFragmentToUserSupplicationsFragment(viewModel.userSupplication.value?.toTypedArray()!!)
+        findNavController().navigate(action)
+    }
+
     override fun getLayout()= R.layout.fragment_main_supplications
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -55,16 +62,19 @@ class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsB
         val factory = ToolsViewModelFactory(sharedPreferences, activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[ToolsViewModel::class.java]
         binding.lifecycleOwner = this
+        retrieveSupplicationsData()
+        observeViewModel()
 
-        viewModel.getSuggestedSupplications() {
+    }
+
+    private fun retrieveSupplicationsData() {
+        showProgressDialog()
+        viewModel.getSuggestedSupplications {
             setupSuggestedSupplicationRecyclerView(it)
         }
         viewModel.getUserSupplications {
             setupUserSupplicationRecyclerView(it)
         }
-
-        observeViewModel()
-
     }
 
     private fun setupSuggestedSupplicationRecyclerView(
@@ -110,6 +120,10 @@ class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsB
         val action = MainSupplicationsFragmentDirections
             .actionMainSupplicationsFragmentToSupplicationsFragment(supplication)
         findNavController().navigate(action)
+    }
+
+    override fun reloadData() {
+        retrieveSupplicationsData()
     }
 
 }
