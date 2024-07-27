@@ -1,109 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout5"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/margin_2_super"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/back_arrow"
+            style="@style/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back_ios" />
 
         <TextView
-            android:id="@+id/text2"
+            android:id="@+id/textView3"
+            style="@style/TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:text="@string/how_was_your_day"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:gravity="center"
+            android:text="@string/azcar"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/back_arrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/back_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/back_arrow"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:layout_marginTop="@dimen/margin_large"
+            android:background="@drawable/line"
+            android:backgroundTint="@color/light_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:text="@string/tell_us_how_was_your_daily_program_did_it_go_well"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/constraintData"
+            app:layout_constraintBottom_toTopOf="@+id/fab"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text2" />
+            app:layout_constraintTop_toBottomOf="@+id/line">
 
-        <ImageView
-            android:id="@+id/img_ok"
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:text="@string/your_list"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textShowAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_large"
+                android:text="@string/show_all"
+                android:textColor="@color/shade_orange"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textNoItems"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="@dimen/margin_2_super"
+                android:background="@drawable/corner_four_dark_blue"
+                android:backgroundTint="@color/light_gray"
+                android:gravity="center"
+                android:text="@string/you_have_not_created_any_zecer_so_far"
+                app:layout_constraintBottom_toTopOf="@+id/suggestedItemsTitleTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/userSupplicationRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/margin_large"
+                android:padding="8dp"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@+id/suggestedItemsTitleTextView"
+                app:layout_constraintEnd_toEndOf="@+id/textShowAll"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/textView31"
+                app:layout_constraintTop_toBottomOf="@+id/textView31"
+                tools:listitem="@layout/item_view_user_supplications" />
+
+
+            <TextView
+                android:id="@+id/suggestedItemsTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/userSupplicationRecyclerView"
+                android:layout_marginTop="16dp"
+              android:layout_marginBottom="@dimen/margin_medium"
+                android:text="@string/suggested_supplications"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/suggestedRecyclerView"
+                app:layout_constraintStart_toStartOf="@+id/textView31"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/suggestedRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_below="@id/suggestedItemsTitleTextView"
+                android:layout_margin="@dimen/margin_large"
+                android:padding="8dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.531"
+                tools:listitem="@layout/item_view_suggested_supplications" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:layout_constraintEnd_toStartOf="@+id/img_un_satisfied"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/img_satisfied"
-            app:layout_constraintTop_toTopOf="@+id/img_satisfied"
-            app:srcCompat="@drawable/ic_sweat2" />
-
-        <ImageView
-            android:id="@+id/img_un_satisfied"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/img_ok"
-            app:layout_constraintTop_toTopOf="@+id/img_ok"
-            app:srcCompat="@drawable/ic_cry" />
-
-        <ImageView
-            android:id="@+id/img_satisfied"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toStartOf="@+id/img_ok"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView15"
-            app:srcCompat="@drawable/ic_gestures1" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            android:text="@string/unsatisfied"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/img_un_satisfied"
-            app:layout_constraintStart_toStartOf="@+id/img_un_satisfied"
-            app:layout_constraintTop_toBottomOf="@+id/img_un_satisfied" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            android:text="@string/its_k"
-            android:textColor="@color/black"
-
-            app:layout_constraintEnd_toEndOf="@+id/img_ok"
-            app:layout_constraintStart_toStartOf="@+id/img_ok"
-            app:layout_constraintTop_toBottomOf="@+id/img_ok" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            android:text="@string/satisfied"
-
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/img_satisfied"
-            app:layout_constraintStart_toStartOf="@+id/img_satisfied"
-            app:layout_constraintTop_toBottomOf="@+id/img_satisfied" />
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/shade_orange"
+            android:src="@drawable/ic_add2"
+            android:tint="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </layout>
+
+

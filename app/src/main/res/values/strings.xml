@@ -256,10 +256,10 @@
     <string name="send">Send</string>
     <string name="back_to_task">Bask to task</string>
     <string name="you_will_not_go_to_the_next_day">if you do not finish this task, you will not  go to the next day</string>
-    <string name="show_all">show all</string>
+    <string name="show_all">Show All</string>
     <string name="azcar">Supplications</string>
     <string name="you_have_not_created_any_zecer_so_far">You haven\'t created any zecer yet...</string>
-    <string name="your_list">you list</string>
+    <string name="your_list">Your List</string>
     <string name="suggested_supplications">suggested supplications</string>
     <string name="add">add</string>
     <string name="infinite_repetition">Infinite repetition</string>

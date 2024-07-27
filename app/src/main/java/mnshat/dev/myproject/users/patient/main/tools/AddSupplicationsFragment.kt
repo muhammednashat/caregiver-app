@@ -32,12 +32,31 @@ class AddSupplicationsFragment : BaseBottomSheetDialogFragment<FragmentAddAzcarB
         }
         binding.addButton.setOnClickListener{
            if (validation()){
+               showProgressDialog()
                viewModel.onAddSupplicationClick( getInstanceSupplication())
            }
 
         }
     }
 
+    private fun observeViewModel() {
+
+        viewModel.isDismissProgressDialog.observe(viewLifecycleOwner) { isDismissProgressDialog ->
+            if (isDismissProgressDialog) {
+                clearEditTexts()
+                dismissProgressDialog()
+                viewModel.resetIsDismissProgressDialog()
+            }
+
+        }
+
+    }
+
+    private fun clearEditTexts() {
+        binding.nameEditText.text.clear()
+        binding.numberEditText.text.clear()
+        binding.infiniteRepeatCheckBox.isChecked = false
+    }
     private fun validation(): Boolean {
         saveInputDataToVariables()
         return if (!isValidInput(nameSupplication)) {
@@ -73,6 +92,7 @@ class AddSupplicationsFragment : BaseBottomSheetDialogFragment<FragmentAddAzcarB
         val factory = ToolsViewModelFactory(sharedPreferences, activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[ToolsViewModel::class.java]
         binding.lifecycleOwner = this
+        observeViewModel()
 
     }
 

@@ -1,11 +1,15 @@
 package mnshat.dev.myproject.base
 
+import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -21,6 +25,7 @@ abstract class BaseBottomSheetDialogFragment<T : ViewDataBinding> : BottomSheetD
     lateinit var currentLang:String
     lateinit var sharedPreferences: SharedPreferencesManager
     lateinit var binding: T
+    private lateinit var progressDialog: Dialog
 
 
     override fun onCreateView(
@@ -41,6 +46,8 @@ abstract class BaseBottomSheetDialogFragment<T : ViewDataBinding> : BottomSheetD
         super.onAttach(context)
         sharedPreferences = (requireActivity().application as MyApplication).sharedPreferences
         currentLang = sharedPreferences.getString(LANGUAGE)
+        progressDialog = Dialog(requireContext())
+
     }
     fun showToast(message: String) {
         val layoutInflater = layoutInflater
@@ -54,7 +61,22 @@ abstract class BaseBottomSheetDialogFragment<T : ViewDataBinding> : BottomSheetD
             show()
         }
     }
+    fun showProgressDialog() {
+        if (progressDialog.ownerActivity == null){
+            progressDialog = Dialog(requireContext())
+        }
+        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        progressDialog.setContentView(R.layout.dialog_progress)
+        progressDialog.setCanceledOnTouchOutside(false)
+        val window = progressDialog.window
+        window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        progressDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        progressDialog.show()
+    }
 
+    fun dismissProgressDialog() {
+        progressDialog.dismiss()
+    }
 
 }
 

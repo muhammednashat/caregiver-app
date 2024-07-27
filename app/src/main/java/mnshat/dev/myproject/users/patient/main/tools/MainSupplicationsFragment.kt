@@ -1,6 +1,7 @@
 package mnshat.dev.myproject.users.patient.main.tools
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
@@ -21,14 +22,17 @@ class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsB
     private lateinit var viewModel: ToolsViewModel
 
     override fun initializeViews() {
+        showProgressDialog()
         intiBackgroundBasedOnLang()
     }
+
     private fun intiBackgroundBasedOnLang() {
         if (currentLang != ENGLISH_KEY) {
             binding.backArrow.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
             binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
         }
     }
+
     override fun setupClickListener() {
         super.setupClickListener()
         binding.fab.setOnClickListener{
@@ -51,6 +55,14 @@ class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsB
         val factory = ToolsViewModelFactory(sharedPreferences, activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[ToolsViewModel::class.java]
         binding.lifecycleOwner = this
+
+        viewModel.getSuggestedSupplications() {
+            setupSuggestedSupplicationRecyclerView(it)
+        }
+        viewModel.getUserSupplications {
+            setupUserSupplicationRecyclerView(it)
+        }
+
         observeViewModel()
 
     }
@@ -65,21 +77,31 @@ class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsB
     private fun setupUserSupplicationRecyclerView(
         userSupplication: List<Supplication>
     ) {
-        val adapterUserSupplication = UserSupplicationAdapter(userSupplication,this)
-        binding.userSupplicationRecyclerView.adapter = adapterUserSupplication
-    }
 
+
+        if(userSupplication.isNotEmpty()){
+
+            val adapterUserSupplication = UserSupplicationAdapter(userSupplication,this)
+            binding.userSupplicationRecyclerView.adapter = adapterUserSupplication
+            binding.textNoItems.visibility = View.GONE
+            binding.textShowAll.visibility = View.VISIBLE
+            binding.userSupplicationRecyclerView.visibility = View.VISIBLE
+
+        }else{
+            binding.userSupplicationRecyclerView.visibility = View.GONE
+            binding.textShowAll.visibility = View.GONE
+            binding.textNoItems.visibility = View.VISIBLE
+        }
+
+    }
 
     private fun observeViewModel() {
 
-        viewModel.userSupplication.observe(viewLifecycleOwner) { items ->
-            items.let {
-                setupUserSupplicationRecyclerView(items)
-            }
-        }
-        viewModel.suggestedSupplication.observe(viewLifecycleOwner) { items ->
-            items.let {
-                setupSuggestedSupplicationRecyclerView(items)
+        viewModel.isDismissProgressDialog.observe(viewLifecycleOwner) { isDismissProgressDialog ->
+            if (isDismissProgressDialog) {
+                dismissProgressDialog()
+                binding.constraintData.visibility = View.VISIBLE
+                viewModel.resetIsDismissProgressDialog()
             }
         }
     }

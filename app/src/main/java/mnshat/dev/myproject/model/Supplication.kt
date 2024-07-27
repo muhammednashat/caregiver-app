@@ -5,6 +5,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Supplication(
-    var name: String,
-    var number: Int)
+    var name: String? = null,
+    var number: Int? = null )
     :Parcelable

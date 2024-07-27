@@ -59,9 +59,6 @@ open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
         currentLang = sharedPreferences.getString(LANGUAGE)
         progressDialog = Dialog(requireContext())
     }
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
 
 
     fun getTextAge( age: Int?):String? {

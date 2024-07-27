@@ -8,15 +8,19 @@ import com.google.firebase.ktx.Firebase
 import mnshat.dev.myproject.base.BaseViewModel
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Supplication
+import mnshat.dev.myproject.model.SupplicationsUser
 import mnshat.dev.myproject.util.SharedPreferencesManager
-import mnshat.dev.myproject.util.log
 
 class ToolsViewModel(private val sharedPreferences: SharedPreferencesManager,
                      application: Application
 ):BaseViewModel(sharedPreferences,application) {
 
+    val firestore = Firebase.firestore
+    var supplicationsUsersDoc =
+        firestore.collection("supplications").document(FirebaseService.userEmail!!)
 
-
+    private val _isDismissProgressDialog = MutableLiveData<Boolean>()
+    val isDismissProgressDialog: LiveData<Boolean> get() = _isDismissProgressDialog
 
     private val _suggestedSupplication = MutableLiveData<List<Supplication>>()
     val suggestedSupplication: LiveData<List<Supplication>>
@@ -28,27 +32,92 @@ class ToolsViewModel(private val sharedPreferences: SharedPreferencesManager,
         get() = _userSupplication
 
     init {
-        _suggestedSupplication.value = supplications
-        _userSupplication.value = supplications
     }
 
     fun getUserSupplication()= supplications
 
     fun onAddSupplicationClick(instanceSupplication: Supplication) {
-        val firestore = Firebase.firestore
-        val supplicationsUsers = firestore.collection("supplications_users")
+        _isDismissProgressDialog.value = false
 
-        supplicationsUsers.add(instanceSupplication)
-            .addOnSuccessListener { documentReference ->
+        supplicationsUsersDoc.get()
+            .addOnSuccessListener { documentSnapshot ->
+                val supplicationsList: MutableList<Supplication> = if (documentSnapshot.exists()) {
+                    documentSnapshot.toObject(SupplicationsUser::class.java)?.supplications
+                        ?: mutableListOf()
+                } else {
+                    mutableListOf()
+                }
 
-                println("Supplication added with ID: ${documentReference.id}")
+                supplicationsList.add(instanceSupplication)
+
+                supplicationsUsersDoc.set(SupplicationsUser(supplicationsList))
+                    .addOnSuccessListener {
+                        println("Supplication added successfully")
+                        _isDismissProgressDialog.value = true
+                    }
+                    .addOnFailureListener { e ->
+                        println("Error adding supplication: $e")
+                        _isDismissProgressDialog.value = true
+                    }
             }
             .addOnFailureListener { e ->
-
-                println("Error adding supplication: $e")
+                println("Error retrieving document: $e")
+                _isDismissProgressDialog.value = true
             }
     }
 
+    private fun getSupplicationsList(
+        document: String,
+        onResult: (List<Supplication>, Exception?) -> Unit
+    ) {
+
+        val supplicationsUsersDoc = firestore.collection("supplications").document(document)
+
+        supplicationsUsersDoc.get()
+            .addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot.exists()) {
+                    val supplicationsUser = documentSnapshot.toObject(SupplicationsUser::class.java)
+                    val supplicationsList = supplicationsUser?.supplications ?: emptyList()
+                    onResult(supplicationsList, null)
+                    _isDismissProgressDialog.value = true
+
+                } else {
+                    onResult(emptyList(), null)
+                    _isDismissProgressDialog.value = true
+
+                }
+            }
+            .addOnFailureListener { exception ->
+                onResult(emptyList(), exception)
+                _isDismissProgressDialog.value = true
+            }
+    }
+
+    fun getSuggestedSupplications(onResult: (List<Supplication>) -> Unit) {
+        getSupplicationsList("app"
+        ) { items, exception ->
+            items.let {
+                _suggestedSupplication.value = items
+                onResult(items)
+            }
+        }
+
+
+    }
+
+    fun getUserSupplications(onResult: (List<Supplication>) -> Unit){
+        getSupplicationsList(FirebaseService.userEmail!!
+        ) { items, exception ->
+            _userSupplication.value = items
+            onResult(items)
+        }
+
+
+    }
+
+    fun resetIsDismissProgressDialog() {
+        _isDismissProgressDialog.value = false
+    }
 
 }
 
