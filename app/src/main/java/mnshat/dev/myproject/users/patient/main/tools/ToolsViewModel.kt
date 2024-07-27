@@ -31,10 +31,7 @@ class ToolsViewModel(private val sharedPreferences: SharedPreferencesManager,
     val userSupplication: LiveData<List<Supplication>>
         get() = _userSupplication
 
-    init {
-    }
 
-    fun getUserSupplication()= supplications
 
     fun onAddSupplicationClick(instanceSupplication: Supplication) {
         _isDismissProgressDialog.value = false
@@ -49,7 +46,6 @@ class ToolsViewModel(private val sharedPreferences: SharedPreferencesManager,
                 }
 
                 supplicationsList.add(instanceSupplication)
-
                 supplicationsUsersDoc.set(SupplicationsUser(supplicationsList))
                     .addOnSuccessListener {
                         println("Supplication added successfully")
@@ -72,7 +68,6 @@ class ToolsViewModel(private val sharedPreferences: SharedPreferencesManager,
     ) {
 
         val supplicationsUsersDoc = firestore.collection("supplications").document(document)
-
         supplicationsUsersDoc.get()
             .addOnSuccessListener { documentSnapshot ->
                 if (documentSnapshot.exists()) {
@@ -122,11 +117,3 @@ class ToolsViewModel(private val sharedPreferences: SharedPreferencesManager,
 }
 
 
-val supplications = listOf(
-    Supplication("Supplication 1", 10),
-    Supplication("Supplication 2",34 ),
-    Supplication("Supplication 3", 45),
-    Supplication("Supplication 1", 54),
-    Supplication("Supplication 2", 5),
-    Supplication("Supplication 3", 3)
-)

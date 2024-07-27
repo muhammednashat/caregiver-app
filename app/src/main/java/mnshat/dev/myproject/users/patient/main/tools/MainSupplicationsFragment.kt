@@ -42,9 +42,9 @@ class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsB
            findNavController().popBackStack()
         }
         binding.textShowAll.setOnClickListener{
-            val action = MainSupplicationsFragmentDirections
-                .actionMainSupplicationsFragmentToUserSupplicationsFragment(viewModel.getUserSupplication().toTypedArray())
-            findNavController().navigate(action)
+//            val action = MainSupplicationsFragmentDirections
+//                .actionMainSupplicationsFragmentToUserSupplicationsFragment(viewModel.getUserSupplication().toTypedArray())
+//            findNavController().navigate(action)
         }
 
     }
