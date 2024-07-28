@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.main.tools
+package mnshat.dev.myproject.users.patient.main.tools.supplications
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
@@ -7,7 +7,7 @@ import androidx.navigation.fragment.navArgs
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.UserSupplicationAdapter
 import mnshat.dev.myproject.databinding.FragmentUserSupplicationsBinding
-import mnshat.dev.myproject.factories.ToolsViewModelFactory
+import mnshat.dev.myproject.factories.SupplicationsViewModelFactory
 import mnshat.dev.myproject.interfaces.DataReLoader
 import mnshat.dev.myproject.interfaces.ItemSupplicationClicked
 import mnshat.dev.myproject.model.Supplication
@@ -18,7 +18,7 @@ import mnshat.dev.myproject.util.ENGLISH_KEY
 class UserSupplicationsFragment : BasePatientFragment<FragmentUserSupplicationsBinding>(),
     ItemSupplicationClicked, DataReLoader {
 
-    private lateinit var viewModel: ToolsViewModel
+    private lateinit var viewModel: SupplicationsViewModel
 
     override fun initializeViews() {
 
@@ -56,10 +56,10 @@ class UserSupplicationsFragment : BasePatientFragment<FragmentUserSupplicationsB
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val factory = ToolsViewModelFactory(sharedPreferences, activity?.application!!)
+        val factory = SupplicationsViewModelFactory(sharedPreferences, activity?.application!!)
         retrieveDataFromArguments()
 
-        viewModel = ViewModelProvider(requireActivity(), factory)[ToolsViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity(), factory)[SupplicationsViewModel::class.java]
         binding.lifecycleOwner = this
         observeViewModel()
 

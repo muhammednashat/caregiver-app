@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.main.tools
+package mnshat.dev.myproject.users.patient.main.tools.supplications
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -11,11 +11,13 @@ import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.model.SupplicationsUser
 import mnshat.dev.myproject.util.SharedPreferencesManager
 
-class ToolsViewModel(private val sharedPreferences: SharedPreferencesManager,
-                     application: Application
+class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesManager,
+                             application: Application
 ):BaseViewModel(sharedPreferences,application) {
 
-    val firestore = Firebase.firestore
+    private val firestore = Firebase.firestore
+
+    //TODo chane the way of getting email
     var supplicationsUsersDoc =
         firestore.collection("supplications").document(FirebaseService.userEmail!!)
 

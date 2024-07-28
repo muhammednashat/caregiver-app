@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.main.tools
+package mnshat.dev.myproject.users.patient.main.tools.supplications
 
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment

@@ -44,17 +44,8 @@
             android:padding="10dp"
             app:layout_constraintStart_toEndOf="@+id/appCompatImageView5"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_eee" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/circle_blue"
-            android:padding="10dp"
-            android:layout_marginStart="@dimen/margin_medium"
-            app:layout_constraintStart_toEndOf="@+id/appCompatImageView6"
-            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_hand3" />
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"

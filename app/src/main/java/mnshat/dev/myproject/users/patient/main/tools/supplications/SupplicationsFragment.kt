@@ -1,13 +1,13 @@
-package mnshat.dev.myproject.users.patient.main.tools
+package mnshat.dev.myproject.users.patient.main.tools.supplications
 
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.databinding.FragmentAddAzcarBinding
+import mnshat.dev.myproject.databinding.FragmentSupplicationsBinding
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 
 
 
-class SupplicationsFragment : BasePatientFragment<FragmentAddAzcarBinding>() {
+class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>() {
 
     private lateinit var supplication: Supplication
 

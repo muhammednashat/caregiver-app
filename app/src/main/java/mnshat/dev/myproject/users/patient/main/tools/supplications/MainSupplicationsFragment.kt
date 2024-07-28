@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.main.tools
+package mnshat.dev.myproject.users.patient.main.tools.supplications
 
 import android.os.Bundle
 import android.view.View
@@ -8,7 +8,7 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.SuggestedSupplicationAdapter
 import mnshat.dev.myproject.adapters.UserSupplicationAdapter
 import mnshat.dev.myproject.databinding.FragmentMainSupplicationsBinding
-import mnshat.dev.myproject.factories.ToolsViewModelFactory
+import mnshat.dev.myproject.factories.SupplicationsViewModelFactory
 import mnshat.dev.myproject.interfaces.DataReLoader
 import mnshat.dev.myproject.interfaces.ItemSupplicationClicked
 import mnshat.dev.myproject.model.Supplication
@@ -20,7 +20,7 @@ class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsB
 
     ItemSupplicationClicked,DataReLoader {
 
-    private lateinit var viewModel: ToolsViewModel
+    private lateinit var viewModel: SupplicationsViewModel
 
     override fun initializeViews() {
         intiBackgroundBasedOnLang()
@@ -59,8 +59,8 @@ class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsB
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val factory = ToolsViewModelFactory(sharedPreferences, activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[ToolsViewModel::class.java]
+        val factory = SupplicationsViewModelFactory(sharedPreferences, activity?.application!!)
+        viewModel = ViewModelProvider(requireActivity(), factory)[SupplicationsViewModel::class.java]
         binding.lifecycleOwner = this
         retrieveSupplicationsData()
         observeViewModel()
@@ -69,11 +69,17 @@ class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsB
 
     private fun retrieveSupplicationsData() {
         showProgressDialog()
-        viewModel.getSuggestedSupplications {
-            setupSuggestedSupplicationRecyclerView(it)
+        viewModel.getSuggestedSupplications { items ->
+
+            setupSuggestedSupplicationRecyclerView(items)
+
         }
         viewModel.getUserSupplications {
+
+
             setupUserSupplicationRecyclerView(it)
+
+
         }
     }
 

@@ -1,11 +1,11 @@
-package mnshat.dev.myproject.users.patient.main.tools
+package mnshat.dev.myproject.users.patient.main.tools.supplications
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentAddAzcarBinding
-import mnshat.dev.myproject.factories.ToolsViewModelFactory
+import mnshat.dev.myproject.factories.SupplicationsViewModelFactory
 import mnshat.dev.myproject.interfaces.DataReLoader
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.util.ENGLISH_KEY
@@ -14,7 +14,7 @@ import mnshat.dev.myproject.util.isValidInput
 
 class AddSupplicationsFragment : BaseBottomSheetDialogFragment<FragmentAddAzcarBinding>() {
 
-    private lateinit var viewModel: ToolsViewModel
+    private lateinit var viewModel: SupplicationsViewModel
     private lateinit var nameSupplication:String
     private lateinit var dataReLoader: DataReLoader
     private lateinit var numberSupplicationText:String
@@ -110,8 +110,8 @@ class AddSupplicationsFragment : BaseBottomSheetDialogFragment<FragmentAddAzcarB
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val factory = ToolsViewModelFactory(sharedPreferences, activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[ToolsViewModel::class.java]
+        val factory = SupplicationsViewModelFactory(sharedPreferences, activity?.application!!)
+        viewModel = ViewModelProvider(requireActivity(), factory)[SupplicationsViewModel::class.java]
         binding.lifecycleOwner = this
         observeViewModel()
 
