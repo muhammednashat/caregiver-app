@@ -10,7 +10,7 @@ class ToolsFragment : BaseFragment<FragmentToolsBinding>() {
 
     override fun setupClickListener() {
 
-        binding.supplication.setOnClickListener{
+        binding.imageSupplications.setOnClickListener{
             findNavController().navigate(R.id.action_mainAzcarFragment_to_mainSupplicationsFragment)
         }
 
