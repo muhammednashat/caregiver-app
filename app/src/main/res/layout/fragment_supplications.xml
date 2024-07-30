@@ -9,10 +9,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-     android:padding="@dimen/padding_large"
         android:layout_height="match_parent"
         android:background="@drawable/ic_backgraound8"
-        >
+        android:padding="@dimen/margin_large">
 
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -46,14 +45,118 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_hand3" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="114dp"
+            android:layout_marginEnd="100dp"
+            android:background="@drawable/corner_border_yelow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView6">
+
+            <TextView
+                android:id="@+id/textNameSupplication"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="@dimen/margin_medium"
+                android:text="سبحان الله الحمد لله الله اكبر لله الحمد"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/icShowFullSupplication"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icShowFullSupplication"
+                android:layout_width="18dp"
+
+                android:layout_height="18dp"
+                android:layout_marginStart="@dimen/margin_large"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_down"
+                app:tint="@color/white" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner_bottom_lift_right"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout11"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout11"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout11">
+
+            <TextView
+                android:id="@+id/textRemaining"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:gravity="center"
+                android:padding="@dimen/margin_medium"
+                android:text="45"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_large"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="/"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textRemaining"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/textBaseNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingEnd="@dimen/margin_large"
+                android:text="100"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView36"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <ImageView
+            android:id="@+id/handImageView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_hand3"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView6" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/corner_normal"
-            android:layout_marginStart="@dimen/margin_large"
-            android:layout_marginBottom="@dimen/margin_2_super"
             android:backgroundTint="#b9dae6"
             android:padding="@dimen/padding_small"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -87,10 +190,9 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_large"
-            android:layout_marginBottom="@dimen/margin_2_super"
             android:background="@drawable/gradient_orange"
             android:padding="@dimen/padding_small"
             app:layout_constraintBottom_toBottomOf="parent"

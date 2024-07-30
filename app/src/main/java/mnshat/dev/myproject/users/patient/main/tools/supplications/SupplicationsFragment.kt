@@ -6,7 +6,6 @@ import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 
 
-
 class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>() {
 
     private lateinit var supplication: Supplication
@@ -19,6 +18,5 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
 
 
     override fun getLayout()= R.layout.fragment_supplications
-
 
 }
