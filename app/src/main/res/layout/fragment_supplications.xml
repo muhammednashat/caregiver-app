@@ -62,7 +62,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_small"
-                android:layout_marginEnd="@dimen/margin_medium"
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
@@ -70,19 +69,19 @@
                 android:text="سبحان الله الحمد لله الله اكبر لله الحمد"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/icShowFullSupplication"
+                app:layout_constraintEnd_toStartOf="@+id/icShowFullSupplication"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/icShowFullSupplication"
                 android:layout_width="18dp"
+                android:layout_marginEnd="@dimen/margin_small"
 
                 android:layout_height="18dp"
-                android:layout_marginStart="@dimen/margin_large"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_down"
                 app:tint="@color/white" />
@@ -90,6 +89,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/corner_bottom_lift_right"
@@ -104,7 +104,7 @@
                 android:layout_marginStart="@dimen/margin_large"
                 android:gravity="center"
                 android:padding="@dimen/margin_medium"
-                android:text="45"
+                android:text="0"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_large"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -145,12 +145,11 @@
             android:layout_height="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_hand3"
-            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView6" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout12" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"

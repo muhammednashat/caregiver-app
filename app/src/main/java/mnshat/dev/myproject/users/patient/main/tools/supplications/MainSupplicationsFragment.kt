@@ -51,7 +51,7 @@ class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsB
 
     private fun navigateToUserSupplications() {
         val action = MainSupplicationsFragmentDirections
-            .actionMainSupplicationsFragmentToUserSupplicationsFragment(viewModel.userSupplication.value?.toTypedArray()!!)
+            .actionMainSupplicationsFragmentToUserSupplicationsFragment(viewModel.userSupplications.value?.toTypedArray()!!)
         findNavController().navigate(action)
     }
 

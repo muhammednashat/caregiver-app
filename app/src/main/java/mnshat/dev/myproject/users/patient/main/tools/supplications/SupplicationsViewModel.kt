@@ -9,6 +9,7 @@ import mnshat.dev.myproject.base.BaseViewModel
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.model.SupplicationsUser
+import mnshat.dev.myproject.util.EMAIL
 import mnshat.dev.myproject.util.SharedPreferencesManager
 
 class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesManager,
@@ -18,7 +19,7 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
     private val firestore = Firebase.firestore
 
     //TODo chane the way of getting email
-    var supplicationsUsersDoc =
+    private var supplicationsUsersDoc =
         firestore.collection("supplications").document(FirebaseService.userEmail!!)
 
     private val _isDismissProgressDialog = MutableLiveData<Boolean>()
@@ -28,10 +29,14 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
     val suggestedSupplication: LiveData<List<Supplication>>
         get() = _suggestedSupplication
 
+    private val _supplication = MutableLiveData<Supplication>()
+    val supplication: LiveData<Supplication>
+        get() = _supplication
 
-    private val _userSupplication = MutableLiveData<List<Supplication>>()
-    val userSupplication: LiveData<List<Supplication>>
-        get() = _userSupplication
+
+    private val _userSupplications = MutableLiveData<List<Supplication>>()
+    val userSupplications: LiveData<List<Supplication>>
+        get() = _userSupplications
 
 
 
@@ -87,6 +92,9 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
                 _isDismissProgressDialog.value = true
             }
     }
+    fun setSupplication(supplication: Supplication){
+        _supplication.value = supplication
+    }
 
     fun getSuggestedSupplications(onResult: (List<Supplication>) -> Unit) {
         getSupplicationsList("app"
@@ -103,7 +111,7 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
     fun getUserSupplications(onResult: (List<Supplication>) -> Unit){
         getSupplicationsList(FirebaseService.userEmail!!
         ) { items, exception ->
-            _userSupplication.value = items
+            _userSupplications.value = items
             onResult(items)
         }
 
