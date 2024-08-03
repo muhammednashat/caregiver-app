@@ -9,14 +9,20 @@ import mnshat.dev.myproject.base.BaseViewModel
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.model.SupplicationsUser
-import mnshat.dev.myproject.util.EMAIL
 import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.getListHands
+import mnshat.dev.myproject.util.log
+
+
+//ToDo Clear Data after onStop called
 
 class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesManager,
                              application: Application
 ):BaseViewModel(sharedPreferences,application) {
 
     private val firestore = Firebase.firestore
+    private var currentIndexListImages = 0
+    private val listHandImages = getListHands()
 
     //TODo chane the way of getting email
     private var supplicationsUsersDoc =
@@ -32,6 +38,12 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
     private val _supplication = MutableLiveData<Supplication>()
     val supplication: LiveData<Supplication>
         get() = _supplication
+    private val _numberRemaining = MutableLiveData<Int>()
+    val numberRemaining: LiveData<Int>
+        get() = _numberRemaining
+    private val _newImageSupplication = MutableLiveData<Int>()
+    val newImageSupplication: LiveData<Int>
+        get() = _newImageSupplication
 
 
     private val _userSupplications = MutableLiveData<List<Supplication>>()
@@ -39,7 +51,10 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
         get() = _userSupplications
 
 
-
+    init {
+        log("resetCounter")
+        resetCounter()
+    }
     fun onAddSupplicationClick(instanceSupplication: Supplication) {
         supplicationsUsersDoc.get()
             .addOnSuccessListener { documentSnapshot ->
@@ -121,6 +136,41 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
     fun resetIsDismissProgressDialog() {
         _isDismissProgressDialog.value = false
     }
+    fun onHandClick() {
+
+        if (supplication.value?.number == 0) {
+            getImage()
+        } else {
+            if (_numberRemaining.value!! < supplication.value?.number!!) {
+                getImage()
+            } else {
+            }
+        }
+
+
+
+    }
+
+    private fun getImage() {
+
+        log(currentIndexListImages.toString())
+        log(listHandImages.size.toString())
+        if (currentIndexListImages == listHandImages.size - 1) {
+            currentIndexListImages = 0
+        }
+        currentIndexListImages++
+        _newImageSupplication.value = listHandImages[currentIndexListImages]
+        _numberRemaining.value = _numberRemaining.value?.plus(1)
+
+    }
+
+    fun resetCounter(){
+        _numberRemaining.value = 0
+        currentIndexListImages = 0
+        _newImageSupplication.value = listHandImages[currentIndexListImages]
+    }
+
+
 
 }
 

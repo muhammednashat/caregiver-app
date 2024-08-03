@@ -8,16 +8,20 @@ import mnshat.dev.myproject.databinding.FragmentSupplicationsBinding
 import mnshat.dev.myproject.factories.SupplicationsViewModelFactory
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
-import mnshat.dev.myproject.util.log
 
 
 class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>() {
 
-    private lateinit var supplication: Supplication
     private lateinit var viewModel: SupplicationsViewModel
 
 
     override fun initializeViews() {
+
+    }
+
+    fun setUiData(supplication: Supplication) {
+        binding.textNameSupplication.text = supplication.name
+        binding.textBaseNumber.text = supplication.number.toString()
     }
 
     private fun retrieveDataFromArguments() {
@@ -27,12 +31,25 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
     }
 
     override fun getLayout()= R.layout.fragment_supplications
+
     private fun observeViewModel() {
         viewModel.supplication.observe(viewLifecycleOwner) {
-            log(it.name!!)
-
+            setUiData(it)
         }
 
+        viewModel.newImageSupplication.observe(viewLifecycleOwner) {
+            binding.handImageView.setImageResource(it)
+        }
+
+        viewModel.numberRemaining.observe(viewLifecycleOwner) {
+            binding.textRemaining.text = it.toString()
+        }
+
+    }
+
+
+    override fun setupClickListener() {
+        super.setupClickListener()
     }
 
 
@@ -48,10 +65,12 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
         val factory = SupplicationsViewModelFactory(sharedPreferences, activity?.application!!)
         viewModel =
             ViewModelProvider(requireActivity(), factory)[SupplicationsViewModel::class.java]
+        binding.viewModel = viewModel
         binding.lifecycleOwner = this
     }
 
     fun showFulltext(){
 
     }
+
 }

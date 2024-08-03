@@ -9,6 +9,7 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
+import mnshat.dev.myproject.R
 
 fun isInternetAvailable(context: Context): Boolean {
     val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -47,3 +48,22 @@ fun setLocale( lang:String? , context: Context){
     }
     res?.updateConfiguration(conf, dm)
 }
+
+fun getListHands()= listOf(
+    R.drawable.image_hand1,
+    R.drawable.image_hand2,
+    R.drawable.image_hand3,
+    R.drawable.image_hand4,
+    R.drawable.image_hand5,
+    R.drawable.image_hand6,
+    R.drawable.image_hand7,
+    R.drawable.image_hand8,
+    R.drawable.image_hand9,
+    R.drawable.image_hand10,
+    R.drawable.image_hand11,
+    R.drawable.image_hand12,
+    R.drawable.image_hand13,
+    R.drawable.image_hand14,
+    R.drawable.image_hand15,
+    R.drawable.image_hand16,
+)
