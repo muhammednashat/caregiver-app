@@ -235,6 +235,8 @@
     <string name="number_not_valid">الرقم الذى ادخلته غير صالح</string>
     <string name="please_write_the_supplication_that_you_want">رجاءا اكتب الذكر المراد</string>
     <string name="tools_that_help_you_change_your_mood_and_psychological_state_and_get_rid_of_overthinking_and_stress">ادوات تساعدك على تغير حالتك المزاجية والنفسية والتخلص من التفكير الزائد والتوتر.....</string>
+    <string name="finish_exercise">إنهاء التمرين</string>
+    <string name="starting_over">البدء من جديد</string>
 
 
 </resources>

@@ -34,7 +34,7 @@ class DailyProgramViewModel(
         status= currentTask.status!!
     }
 
-    //get Data
+    //get Data // 1
     private fun getCurrntTask(): CurrentTask {
         val string = sharedPreferences.getString(CURRENT_TASK, null.toString())
         val gson = Gson()

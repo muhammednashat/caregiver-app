@@ -63,7 +63,7 @@
                 android:id="@+id/textNameSupplication"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:laimplementyout_marginStart="@dimen/margin_small"
+                android:layout_marginStart="@dimen/margin_small"
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"

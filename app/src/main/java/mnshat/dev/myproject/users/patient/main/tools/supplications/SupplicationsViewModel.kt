@@ -55,6 +55,7 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
         log("resetCounter")
         resetCounter()
     }
+
     fun onAddSupplicationClick(instanceSupplication: Supplication) {
         supplicationsUsersDoc.get()
             .addOnSuccessListener { documentSnapshot ->
@@ -107,6 +108,7 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
                 _isDismissProgressDialog.value = true
             }
     }
+
     fun setSupplication(supplication: Supplication){
         _supplication.value = supplication
     }
@@ -136,30 +138,32 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
     fun resetIsDismissProgressDialog() {
         _isDismissProgressDialog.value = false
     }
+
     fun onHandClick() {
 
         if (supplication.value?.number == 0) {
             getImage()
-        } else {
+        }
+
+        else {
             if (_numberRemaining.value!! < supplication.value?.number!!) {
                 getImage()
             } else {
+
             }
         }
-
-
 
     }
 
     private fun getImage() {
-
-        log(currentIndexListImages.toString())
-        log(listHandImages.size.toString())
+          //  15  == 15
         if (currentIndexListImages == listHandImages.size - 1) {
             currentIndexListImages = 0
         }
-        currentIndexListImages++
+
+        currentIndexListImages++  // 1
         _newImageSupplication.value = listHandImages[currentIndexListImages]
+
         _numberRemaining.value = _numberRemaining.value?.plus(1)
 
     }

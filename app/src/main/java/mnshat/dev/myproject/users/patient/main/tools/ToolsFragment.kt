@@ -13,6 +13,9 @@ class ToolsFragment : BaseFragment<FragmentToolsBinding>() {
         binding.imageSupplications.setOnClickListener{
             findNavController().navigate(R.id.action_mainAzcarFragment_to_mainSupplicationsFragment)
         }
+        binding.imageBreath.setOnClickListener{
+            findNavController().navigate(R.id.action_mainAzcarFragment_to_mainBreathFragment)
+        }
 
     }
 

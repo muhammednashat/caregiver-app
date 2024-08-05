@@ -51,7 +51,7 @@ open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
     }
 
    open  fun setupClickListener(){}
-    abstract fun initializeViews()
+    open  fun initializeViews(){}
     abstract fun getLayout(): Int
     override fun onAttach(context: Context) {
         super.onAttach(context)

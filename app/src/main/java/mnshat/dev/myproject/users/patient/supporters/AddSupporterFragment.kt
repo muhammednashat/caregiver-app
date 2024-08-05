@@ -149,4 +149,5 @@ class AddSupporterFragment : BaseSupporterFragment<FragmentAddSupporterBinding>(
         }
         sharedUserDialog.show()
     }
+
 }

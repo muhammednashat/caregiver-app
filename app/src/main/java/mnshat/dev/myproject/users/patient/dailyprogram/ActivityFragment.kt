@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
@@ -17,6 +18,7 @@ import mnshat.dev.myproject.databinding.DialogDoCompleteTaskBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
 import mnshat.dev.myproject.model.Task
+import mnshat.dev.myproject.util.ENGLISH_KEY
 
 
 class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>(),  SuggestedChallengesFragment.OnTaskItemClickListener {
@@ -26,14 +28,13 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>(),  Sugges
     override fun getLayout() = R.layout.layout_task
 
     override fun initializeViews() {
+
         val factory = DailyProgramViewModelFactory(sharedPreferences,activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
 
         viewModel.currentTask.let {
             viewModel.listOfTasks = it.dayTask?.activity as List<Task>
-            if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
-            getTaskFromList(viewModel.status.currentIndexActivity!!, 2)
-            changeColorStatus()
+
         }
     }
 

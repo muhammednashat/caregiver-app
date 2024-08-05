@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_mainAzcarFragment_to_mainSupplicationsFragment"
             app:destination="@id/mainSupplicationsFragment" />
+        <action
+            android:id="@+id/action_mainAzcarFragment_to_mainBreathFragment"
+            app:destination="@id/mainBreathFragment" />
     </fragment>
 
     <fragment
@@ -80,4 +83,9 @@
             android:name="supplications"
             app:argType="mnshat.dev.myproject.model.Supplication[]" />
     </fragment>
+    <fragment
+        android:id="@+id/mainBreathFragment"
+        android:name="mnshat.dev.myproject.users.patient.main.tools.breath.MainBreathFragment"
+        android:label="fragment_main_breath"
+        tools:layout="@layout/fragment_main_breath" />
 </navigation>
