@@ -237,6 +237,8 @@
     <string name="tools_that_help_you_change_your_mood_and_psychological_state_and_get_rid_of_overthinking_and_stress">ادوات تساعدك على تغير حالتك المزاجية والنفسية والتخلص من التفكير الزائد والتوتر.....</string>
     <string name="finish_exercise">إنهاء التمرين</string>
     <string name="starting_over">البدء من جديد</string>
+    <string name="duration_of_exercise">مدة التمرين</string>
+    <string name="remaining_time_format">%1$d \n%2$s</string>
 
 
 </resources>

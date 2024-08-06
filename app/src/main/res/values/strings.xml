@@ -276,5 +276,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="finish_exercise">Finish exercise</string>
     <string name="starting_over">Starting over</string>
+    <string name="duration_of_exercise">Duration of exercise</string>
+        <string name="remaining_time_format">%1$d \n%2$s</string>
 
 </resources>
