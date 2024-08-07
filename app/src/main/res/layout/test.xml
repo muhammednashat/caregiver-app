@@ -18,7 +18,7 @@
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:indeterminateOnly="false"
-                android:progress="100"
+                android:progress="500"
                 android:progressDrawable="@drawable/progress_drawable"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
