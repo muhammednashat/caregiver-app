@@ -53,6 +53,8 @@ dependencies {
     implementation("com.google.android.exoplayer:exoplayer:2.16.1")
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
+
+
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-android:2.8.3")

@@ -17,10 +17,12 @@
         android:padding="@dimen/margin_large">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#c2dce6"
+           android:layout_margin="@dimen/margin_large"
             android:background="@drawable/corner_four_dark_blue"
+            android:backgroundTint="#c2dce6"
             android:padding="@dimen/margin_small"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -54,9 +56,9 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:padding="3dp"
                 android:layout_marginStart="@dimen/margin_large"
                 android:background="@drawable/circle_blue"
+                android:padding="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView34"
                 app:layout_constraintTop_toTopOf="parent"
@@ -66,6 +68,65 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <FrameLayout
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView35"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout13">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".MainActivity">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:indeterminateOnly="false"
+                    android:progress="100"
+                    android:progressDrawable="@drawable/progress_drawable"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#ddeaf0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent"
+                    android:background="#ddeaf0"
+                    android:backgroundTint="#ddeaf0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin_large"
+                    android:src="@drawable/image_test" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </FrameLayout>
 
         <TextView
             android:id="@+id/textView35"
@@ -73,6 +134,7 @@
             android:layout_height="wrap_content"
             android:text="قم بالضغط على الخانة بالاسفل للبدء"
             android:textColor="#083d5c"
+            android:layout_margin="@dimen/margin_2_super"
             app:layout_constraintBottom_toTopOf="@+id/remaining_time_format"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -81,15 +143,15 @@
         <TextView
             android:id="@+id/remaining_time_format"
             android:layout_width="160dp"
-            android:text="@string/remaining_time_format"
-            android:textColor="@color/white"
-            android:gravity="center"
             android:layout_height="160dp"
             android:background="@drawable/image_alarm"
+            android:gravity="center"
+            android:text="@string/remaining_time_format"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/starting_over"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
