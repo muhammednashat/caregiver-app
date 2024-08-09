@@ -55,6 +55,7 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="22dp"
+                android:id="@+id/icon_chooseDuration"
                 android:layout_height="22dp"
                 android:layout_marginStart="@dimen/margin_large"
                 android:background="@drawable/circle_blue"
@@ -122,7 +123,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/margin_large"
-                    android:src="@drawable/image_test" />
+                    android:src="@drawable/imageBreath2" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

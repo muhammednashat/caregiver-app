@@ -1,14 +1,17 @@
 package mnshat.dev.myproject.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.model.Duration
 
 
-class DurationAdapter(private val mData: List<String>) :
+class DurationAdapter(private val durations: List<Duration>) :
     RecyclerView.Adapter<DurationAdapter.ViewHolder>() {
     private var selectedPosition = -1
 
@@ -19,14 +22,20 @@ class DurationAdapter(private val mData: List<String>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textView.text = mData[position]
+        val duration = durations[position]
+        holder.textView.text = duration.text
 
         if (selectedPosition == position) {
-            holder.itemView.layoutParams.height = 200 // Example height
-            holder.itemView.setBackgroundColor(holder.itemView.context.resources.getColor(R.color.burnt_orange))
+            holder.imageView.setImageResource(R.drawable.icon_accept8)
+            holder.textView.setTextColor(Color.parseColor("#438fb3"))
+            holder.itemView.setBackgroundDrawable(holder.itemView.context.resources.getDrawable(R.drawable.corner_four_dark_blue))
+
+
         } else {
-            holder.itemView.layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
-            holder.itemView.setBackgroundColor(holder.itemView.context.resources.getColor(R.color.white))
+            holder.imageView.setImageResource(R.drawable.circle_white)
+            holder.textView.setTextColor(Color.BLACK)
+            holder.itemView.setBackgroundDrawable(holder.itemView.context.resources.getDrawable(R.drawable.corner_four_gray))
+
         }
 
         holder.itemView.setOnClickListener { v: View? ->
@@ -37,10 +46,11 @@ class DurationAdapter(private val mData: List<String>) :
     }
 
     override fun getItemCount(): Int {
-        return mData.size
+        return durations.size
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var textView: TextView = itemView.findViewById<TextView>(R.id.item_text)
+        var imageView: ImageView = itemView.findViewById<ImageView>(R.id.item_image)
     }
 }
