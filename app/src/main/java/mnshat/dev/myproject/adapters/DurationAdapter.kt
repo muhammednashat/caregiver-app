@@ -11,9 +11,8 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.model.Duration
 
 
-class DurationAdapter(private val durations: List<Duration>) :
+class DurationAdapter(private val durations: List<Duration>,private var selectedPosition:Int) :
     RecyclerView.Adapter<DurationAdapter.ViewHolder>() {
-    private var selectedPosition = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View =

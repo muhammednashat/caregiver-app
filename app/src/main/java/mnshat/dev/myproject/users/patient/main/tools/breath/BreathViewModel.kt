@@ -1,6 +1,8 @@
 package mnshat.dev.myproject.users.patient.main.tools.breath
 
 import android.app.Application
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import mnshat.dev.myproject.base.BaseViewModel
 import mnshat.dev.myproject.model.Duration
 import mnshat.dev.myproject.util.SharedPreferencesManager
@@ -9,6 +11,23 @@ class BreathViewModel(
     private val sharedPreferences: SharedPreferencesManager,
     application: Application
 ) : BaseViewModel(sharedPreferences, application) {
+
+    private var _selectedPosition:Int=0
+
+    fun getSelectedPosition() = _selectedPosition
+
+
+    private val  _currentDuration = MutableLiveData<String>()
+    val currentDuration: LiveData<String>
+        get() = _currentDuration
+
+
+
+
+    fun setCurrentDuration(index:Int){
+        _selectedPosition = index
+        _currentDuration.value=getListOfDurations()[index].text
+    }
 
 
     fun getListOfDurations(): List<Duration> {

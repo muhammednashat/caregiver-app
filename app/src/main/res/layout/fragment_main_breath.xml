@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:gravity="center"
-                android:text="2 / 00 دقيقة/ دقائق"
+                android:text="@{viewModel.currentDuration}"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView33"
@@ -72,7 +72,7 @@
         <FrameLayout
             android:layout_width="200dp"
             android:layout_height="200dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView35"
+            app:layout_constraintBottom_toTopOf="@+id/textInstructions"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -123,17 +123,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/margin_large"
-                    android:src="@drawable/imageBreath2" />
+                    android:src="@drawable/ic_hand3" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </FrameLayout>
 
         <TextView
-            android:id="@+id/textView35"
+            android:id="@+id/textInstructions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="قم بالضغط على الخانة بالاسفل للبدء"
+            android:text="@string/click_on_the_box_below_to_get_started"
             android:textColor="#083d5c"
             android:layout_margin="@dimen/margin_2_super"
             app:layout_constraintBottom_toTopOf="@+id/remaining_time_format"
@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_medium"
                 android:gravity="center"
-                android:text="@string/starting_over"
+                android:text="@string/click_to_start"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -182,10 +182,10 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="@dimen/margin_medium"
-                android:src="@drawable/ic_sync"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="12dp"
+                android:src="@drawable/ic_play"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -219,8 +219,8 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:layout_marginStart="@dimen/margin_medium"
                 android:src="@drawable/ic_logout2"
                 app:layout_constraintBottom_toBottomOf="parent"

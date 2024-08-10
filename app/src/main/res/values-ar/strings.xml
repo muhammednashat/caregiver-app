@@ -239,6 +239,8 @@
     <string name="starting_over">البدء من جديد</string>
     <string name="duration_of_exercise">مدة التمرين</string>
     <string name="remaining_time_format">%1$d \n%2$s</string>
+    <string name="click_on_the_box_below_to_get_started">قم بالضغط على الخانة بالاسفل للبدء</string>
+    <string name="click_to_start">اضغط هنا للبدء</string>
 
 
 </resources>

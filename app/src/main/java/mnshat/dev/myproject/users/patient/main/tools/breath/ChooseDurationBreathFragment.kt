@@ -1,19 +1,13 @@
 package mnshat.dev.myproject.users.patient.main.tools.breath
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.DurationAdapter
-import mnshat.dev.myproject.auth.AuthViewModel
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentChooseDurationBreathBinding
-import mnshat.dev.myproject.factories.AuthViewModelFactory
 import mnshat.dev.myproject.factories.BreathViewModelFactory
-import mnshat.dev.myproject.util.AGE_GROUP
+import mnshat.dev.myproject.model.Duration
 import mnshat.dev.myproject.util.ENGLISH_KEY
 
 
@@ -42,12 +36,12 @@ class ChooseDurationBreathFragment : BaseBottomSheetDialogFragment<FragmentChoos
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initViewModel()
-        setUpRecyclerview()
+        setUpRecyclerview(viewModel.getListOfDurations(),viewModel.getSelectedPosition())
 
     }
 
-    private fun setUpRecyclerview() {
-     val adapter = DurationAdapter(viewModel.getListOfDurations())
+    private fun setUpRecyclerview(listOfDurations: List<Duration>, selectedPosition: Int) {
+     val adapter = DurationAdapter(listOfDurations,selectedPosition)
         binding.recyclerViewDurations.adapter= adapter
     }
 
