@@ -8,11 +8,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.interfaces.OnItemSelectedListener
 import mnshat.dev.myproject.model.Duration
 
 
-class DurationAdapter(private val durations: List<Duration>,private var selectedPosition:Int) :
+class DurationAdapter(private val durations: List<Duration>,private var selectedPosition:Int,private val onItemSelectedListener: OnItemSelectedListener) :
     RecyclerView.Adapter<DurationAdapter.ViewHolder>() {
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View =
@@ -38,10 +41,16 @@ class DurationAdapter(private val durations: List<Duration>,private var selected
         }
 
         holder.itemView.setOnClickListener { v: View? ->
+
             notifyItemChanged(selectedPosition)
             selectedPosition = holder.adapterPosition
             notifyItemChanged(selectedPosition)
+            onItemSelectedListener.onItemSelected(selectedPosition)
         }
+
+
+
+
     }
 
     override fun getItemCount(): Int {

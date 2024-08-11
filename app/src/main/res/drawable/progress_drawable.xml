@@ -3,10 +3,10 @@
     <item>
         <shape
             android:shape="ring"
-            android:thicknessRatio="75"
+            android:thicknessRatio="25"
             android:useLevel="false">
 
-            <solid android:color="@color/white" />
+            <solid android:color="#ffb370" />
         </shape>
 
     </item>
@@ -19,10 +19,10 @@
 
             <shape
                 android:shape="ring"
-                android:thicknessRatio="75"
+                android:thicknessRatio="25"
                 android:useLevel="true">
 
-                <solid android:color="@color/teal_blue" />
+                <solid android:color="#bcd5e1" />
             </shape>
         </rotate>
 

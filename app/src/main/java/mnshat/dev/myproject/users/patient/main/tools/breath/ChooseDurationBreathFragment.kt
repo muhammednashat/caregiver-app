@@ -7,11 +7,13 @@ import mnshat.dev.myproject.adapters.DurationAdapter
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentChooseDurationBreathBinding
 import mnshat.dev.myproject.factories.BreathViewModelFactory
+import mnshat.dev.myproject.interfaces.OnItemSelectedListener
 import mnshat.dev.myproject.model.Duration
 import mnshat.dev.myproject.util.ENGLISH_KEY
 
 
-class ChooseDurationBreathFragment : BaseBottomSheetDialogFragment<FragmentChooseDurationBreathBinding>() {
+class ChooseDurationBreathFragment :
+    BaseBottomSheetDialogFragment<FragmentChooseDurationBreathBinding>(),OnItemSelectedListener{
     private lateinit var viewModel: BreathViewModel
 
 
@@ -21,6 +23,10 @@ class ChooseDurationBreathFragment : BaseBottomSheetDialogFragment<FragmentChoos
     override fun setupClickListener() {
         binding.close.setOnClickListener {
             dismiss()
+        }
+
+        binding.buttonConfirm.setOnClickListener {
+            viewModel.setCurrentDuration(viewModel.getSelectedPosition())
         }
     }
 
@@ -32,7 +38,6 @@ class ChooseDurationBreathFragment : BaseBottomSheetDialogFragment<FragmentChoos
     }
 
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initViewModel()
@@ -41,7 +46,7 @@ class ChooseDurationBreathFragment : BaseBottomSheetDialogFragment<FragmentChoos
     }
 
     private fun setUpRecyclerview(listOfDurations: List<Duration>, selectedPosition: Int) {
-     val adapter = DurationAdapter(listOfDurations,selectedPosition)
+        val adapter = DurationAdapter(listOfDurations, selectedPosition, this)
         binding.recyclerViewDurations.adapter= adapter
     }
 
@@ -50,4 +55,11 @@ class ChooseDurationBreathFragment : BaseBottomSheetDialogFragment<FragmentChoos
         viewModel = ViewModelProvider(requireActivity(), factory)[BreathViewModel::class.java]
         binding.lifecycleOwner = this
     }
+
+    override fun onItemSelected(index: Int) {
+        viewModel.setSelectedPosition(index)
+    }
+
+
+
 }
