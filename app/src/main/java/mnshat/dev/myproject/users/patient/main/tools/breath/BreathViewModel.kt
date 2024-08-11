@@ -22,6 +22,7 @@ class BreathViewModel(
     val currentDuration: LiveData<String>
         get() = _currentDuration
 
+
     private val _progressState = MutableLiveData<Long>()
     val progressState: LiveData<Long>
         get() = _progressState
@@ -42,9 +43,12 @@ class BreathViewModel(
 
 
     fun setCurrentDuration(index:Int){
+
         if (index != _selectedPosition) {
             setSelectedPosition(index)
         }
+
+
         _currentDuration.value = getListOfDurations()[index].text
     }
 
@@ -63,13 +67,17 @@ class BreathViewModel(
 
 
     private fun getSelectedDurationInMillis(): Long {
+
+
         val duration = getListOfDurations()[_selectedPosition].duration
-        return duration * 60 * 1000L
+        return duration * 60 * 1000L   // 60,0000
     }
 
 
     private fun startCountdown(durationInMillis: Long) {
         _progressState.value = durationInMillis
+
+
         countdownTimer?.cancel() // Cancel any existing timer
 
         countdownTimer = object : CountDownTimer(durationInMillis, 1000) {

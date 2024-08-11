@@ -113,8 +113,6 @@
                     android:layout_width="10dp"
                     android:layout_height="match_parent"
                     android:background="#ddeaf0"
-
-
                     android:backgroundTint="#ddeaf0"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -126,6 +124,7 @@
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:layout_margin="@dimen/margin_large"
+
                     android:src="@drawable/ic_gestures1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

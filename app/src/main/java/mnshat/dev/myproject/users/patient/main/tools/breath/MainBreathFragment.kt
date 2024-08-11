@@ -25,12 +25,17 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
     override fun setupClickListener() {
         super.setupClickListener()
 
+
         binding.iconChooseDuration.setOnClickListener {
+
             ChooseDurationBreathFragment().show(
                 childFragmentManager,
                 ChooseDurationBreathFragment::class.java.name
             )
+
         }
+
+
 
     }
 
@@ -49,9 +54,12 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
         binding.lifecycleOwner = this
     }
     private fun observeViewModel(){
-        val t = 1 * 60 * 1000L
+
+        val t = 4 * 60 * 1000L
+
         viewModel.progressState.observe(viewLifecycleOwner) {
-            log(it.toInt().toString())
+
+
             binding.progressBar.progress = it.toDouble().div(t.toDouble()).times(100).toInt()
 
         }

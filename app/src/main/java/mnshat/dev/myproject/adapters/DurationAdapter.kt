@@ -12,7 +12,10 @@ import mnshat.dev.myproject.interfaces.OnItemSelectedListener
 import mnshat.dev.myproject.model.Duration
 
 
-class DurationAdapter(private val durations: List<Duration>,private var selectedPosition:Int,private val onItemSelectedListener: OnItemSelectedListener) :
+class DurationAdapter(
+    private val durations: List<Duration>,
+    private var selectedPosition:Int,
+    private val onItemSelectedListener: OnItemSelectedListener) :
     RecyclerView.Adapter<DurationAdapter.ViewHolder>() {
 
 
@@ -26,14 +29,16 @@ class DurationAdapter(private val durations: List<Duration>,private var selected
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val duration = durations[position]
         holder.textView.text = duration.text
-
+           // 1 == 3
         if (selectedPosition == position) {
+
             holder.imageView.setImageResource(R.drawable.icon_accept8)
             holder.textView.setTextColor(Color.parseColor("#438fb3"))
             holder.itemView.setBackgroundDrawable(holder.itemView.context.resources.getDrawable(R.drawable.corner_four_dark_blue))
 
 
         } else {
+
             holder.imageView.setImageResource(R.drawable.circle_white)
             holder.textView.setTextColor(Color.BLACK)
             holder.itemView.setBackgroundDrawable(holder.itemView.context.resources.getDrawable(R.drawable.corner_four_gray))
@@ -45,7 +50,9 @@ class DurationAdapter(private val durations: List<Duration>,private var selected
             notifyItemChanged(selectedPosition)
             selectedPosition = holder.adapterPosition
             notifyItemChanged(selectedPosition)
+
             onItemSelectedListener.onItemSelected(selectedPosition)
+
         }
 
 

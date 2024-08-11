@@ -25,7 +25,6 @@
                 <solid android:color="#bcd5e1" />
             </shape>
         </rotate>
-
     </item>
 
 </layer-list>
