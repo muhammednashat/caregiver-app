@@ -15,6 +15,7 @@ import mnshat.dev.myproject.util.ENGLISH_KEY
 class ChooseDurationBreathFragment :
     BaseBottomSheetDialogFragment<FragmentChooseDurationBreathBinding>(),OnItemSelectedListener{
     private lateinit var viewModel: BreathViewModel
+    private lateinit var adapter: DurationAdapter
 
 
     override fun getLayout() = R.layout.fragment_choose_duration_breath
@@ -26,7 +27,10 @@ class ChooseDurationBreathFragment :
         }
 
         binding.buttonConfirm.setOnClickListener {
-            viewModel.setCurrentDuration(viewModel.getSelectedPosition())
+
+            viewModel.setCurrentDuration(adapter.getSelectedPosition())
+            dismiss()
+
         }
     }
 
@@ -46,7 +50,7 @@ class ChooseDurationBreathFragment :
     }
 
     private fun setUpRecyclerview(listOfDurations: List<Duration>, selectedPosition: Int) {
-        val adapter = DurationAdapter(listOfDurations, selectedPosition, this)
+         adapter = DurationAdapter(listOfDurations, selectedPosition, this)
         binding.recyclerViewDurations.adapter= adapter
     }
 
@@ -57,7 +61,7 @@ class ChooseDurationBreathFragment :
     }
 
     override fun onItemSelected(index: Int) {
-        viewModel.setSelectedPosition(index)
+//        viewModel.setSelectedPosition(index)
     }
 
 

@@ -51,7 +51,7 @@ class DurationAdapter(
             selectedPosition = holder.adapterPosition
             notifyItemChanged(selectedPosition)
 
-            onItemSelectedListener.onItemSelected(selectedPosition)
+//            onItemSelectedListener.onItemSelected(selectedPosition)
 
         }
 
@@ -63,6 +63,8 @@ class DurationAdapter(
     override fun getItemCount(): Int {
         return durations.size
     }
+
+    fun getSelectedPosition() = selectedPosition
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var textView: TextView = itemView.findViewById<TextView>(R.id.item_text)

@@ -55,7 +55,7 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
     }
     private fun observeViewModel(){
 
-        val t = 4 * 60 * 1000L
+
 
         viewModel.progressState.observe(viewLifecycleOwner) {
 

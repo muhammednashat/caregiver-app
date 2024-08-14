@@ -58,11 +58,11 @@ class BreathViewModel(
 
 
     fun onStartButtonClicked() {
-        if (_isTimerRunning.value == true) {
-            _showDialog.value = true
-        } else {
+//        if (_isTimerRunning.value == true) {
+//            _showDialog.value = true
+//        } else {
             startCountdown(getSelectedDurationInMillis())
-        }
+//        }
     }
 
 
@@ -70,15 +70,14 @@ class BreathViewModel(
 
 
         val duration = getListOfDurations()[_selectedPosition].duration
-        return duration * 60 * 1000L   // 60,0000
+        println(duration)
+        return duration * 60 * 1000L
     }
 
 
     private fun startCountdown(durationInMillis: Long) {
         _progressState.value = durationInMillis
-
-
-        countdownTimer?.cancel() // Cancel any existing timer
+        countdownTimer?.cancel()
 
         countdownTimer = object : CountDownTimer(durationInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
