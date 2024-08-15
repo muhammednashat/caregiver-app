@@ -272,8 +272,6 @@
     <string name="please_write_the_supplication_that_you_want">Please write a supplication that you want</string>
     <string name="please_write_the_number_of_repetitions_you_want_to_reach">Please rite the number of repetitions you want to reach</string>
     <string name="tools_that_help_you_change_your_mood_and_psychological_state_and_get_rid_of_overthinking_and_stress">Tools that help you change your mood and psychological state and get rid of overthinking and stress.....</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="finish_exercise">Finish exercise</string>
     <string name="starting_over">Starting over</string>
     <string name="duration_of_exercise">Duration of exercise</string>
@@ -282,9 +280,9 @@
     <string name="click_to_start">Click to start</string>
     <string name="would_you_like_to_repeat_the_exercise_again">Would you like to repeat the exercise again?</string>
     <string name="this_procedure_will_delete_the_current_exercise_data_and_replace_it_with_the_new_exercise_data">This procedure will delete the current exercise data and replace it with the new exercise data</string>
-    <string name="exhale_slowly">Exhale slowly for 17 seconds</string>
-    <string name="inhale">Inhale</string>
-    <string name="take_rest">Rest for 232 seconds</string>
-    <string name="hold_air">Hold the air for 3 seconds</string>
+    <string name="exhale_slowly">Exhale slowly  for  %1$d seconds</string>
+    <string name="inhale">Inhale  for  %1$d seconds</string>
+    <string name="take_rest">Rest for  %1$d seconds</string>
+    <string name="hold_air">Hold the air  for  %1$d seconds</string>
 
 </resources>

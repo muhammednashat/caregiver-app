@@ -23,8 +23,8 @@ class BreathViewModel(
         get() = _currentDuration
 
 
-    private val _progressState = MutableLiveData<Long>()
-    val progressState: LiveData<Long>
+    private val _progressState = MutableLiveData<Long?>()
+    val progressState: LiveData<Long?>
         get() = _progressState
 
     private val _isTimerRunning = MutableLiveData<Boolean>()
@@ -85,15 +85,16 @@ class BreathViewModel(
             override fun onTick(millisUntilFinished: Long) {
 
                 _progressState.value = millisUntilFinished
-
                 calcRemainingTime(millisUntilFinished)
 
 
             }
 
             override fun onFinish() {
+                resetProgress()
+                resetRemainingTime()
                 _progressState.value = 0
-                _remainingTime.value = 0
+
             }
         }.start()
 
@@ -120,10 +121,10 @@ class BreathViewModel(
         val phase = durationInSeconds.div(4)
         return listOf(
             durationInSeconds.minus(1),
-            durationInSeconds.minus(phase),
-            durationInSeconds.minus(phase).minus(phase),
-            durationInSeconds.minus(phase).minus(phase).minus(phase),
-            durationInSeconds.minus(phase).minus(phase).minus(phase).minus(phase),
+            durationInSeconds.minus(phase).minus(1),
+            durationInSeconds.minus(phase).minus(phase).minus(1),
+            durationInSeconds.minus(phase).minus(phase).minus(phase).minus(1),
+            durationInSeconds.minus(phase).minus(phase).minus(phase).minus(phase).minus(1),
         )
     }
 
@@ -150,4 +151,14 @@ class BreathViewModel(
     fun resetRemainingTime(){
         _remainingTime.value = 0
     }
+
+    fun clearData(){
+        cancelCountdown()
+        resetRemainingTime()
+        _isTimerRunning.value = false
+        _progressState.value = null
+
+    }
+
+
 }

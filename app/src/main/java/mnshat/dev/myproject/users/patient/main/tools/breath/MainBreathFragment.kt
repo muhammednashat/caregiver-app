@@ -58,8 +58,10 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
         viewModel.progressState.observe(viewLifecycleOwner) {
 
             val selectedDuration = viewModel.getSelectedDurationInMillis().toDouble()
-            binding.progressBar.progress = it.toDouble().div(selectedDuration).times(100).toInt()
-
+            it?.let {
+                binding.progressBar.progress =
+                    it.toDouble().div(selectedDuration).times(100).toInt()
+            }
         }
 
         viewModel.showDialog.observe(viewLifecycleOwner) {
@@ -115,6 +117,7 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
     }
 
     private fun resetProgress(){
+        binding.imageViewFace.setImageResource(R.drawable.image_face0)
         binding.progressBar.progress = 100
         binding.textInstructions.text = getString(R.string.click_on_the_box_below_to_get_started)
 
@@ -122,33 +125,37 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
 
     private fun updateUiBaseCurrentPhase(remainingTime: Int) {
         val listPhases = viewModel.gitDurationAsPhases()
-
+        val phase = listPhases[3].plus(1)
         when(remainingTime){
             listPhases[0] -> {
                 binding.imageViewFace.setImageResource(R.drawable.image_face1)
-                binding.textInstructions.text = getString(R.string.
-                inhale)
+                binding.textInstructions.text = getString(R.string.inhale, phase)
             }
             listPhases[1] -> {
                 binding.imageViewFace.setImageResource(R.drawable.image_face2)
-                binding.textInstructions.text = getString(R.string.
-                hold_air)
+
+                binding.textInstructions.text = getString(R.string.hold_air, phase)
             }
             listPhases[2] -> {
                 binding.imageViewFace.setImageResource(R.drawable.image_face3)
 
-                binding.textInstructions.text = getString(R.string.
-                exhale_slowly)
+                binding.textInstructions.text = getString(R.string.exhale_slowly, phase)
             }
             listPhases[3] -> {
                 binding.imageViewFace.setImageResource(R.drawable.image_face0)
-                binding.textInstructions.text = getString(R.string.
-                take_rest)
+
+                binding.textInstructions.text = getString(R.string.take_rest, phase)
             }
 
 
         }
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.progressBar.progress = 100
+        viewModel.clearData()
     }
 
 
