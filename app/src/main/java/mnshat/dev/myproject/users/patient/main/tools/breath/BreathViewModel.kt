@@ -31,12 +31,16 @@ class BreathViewModel(
     val isTimerRunning: LiveData<Boolean>
         get() = _isTimerRunning
 
+    private val _resetProgress = MutableLiveData<Boolean>()
+    val resetProgress: LiveData<Boolean>
+        get() = _resetProgress
+
     private val _showDialog = MutableLiveData<Boolean>()
     val showDialog: LiveData<Boolean>
         get() = _showDialog
 
-    private val _remainingTime = MutableLiveData<String>()
-    val remainingTime: LiveData<String>
+    private val _remainingTime = MutableLiveData<Int>()
+    val remainingTime: LiveData<Int>
         get() = _remainingTime
 
     private var countdownTimer: CountDownTimer? = null
@@ -66,9 +70,7 @@ class BreathViewModel(
     }
 
 
-    private fun getSelectedDurationInMillis(): Long {
-
-
+     fun getSelectedDurationInMillis(): Long {
         val duration = getListOfDurations()[_selectedPosition].duration
         println(duration)
         return duration * 60 * 1000L
@@ -81,33 +83,49 @@ class BreathViewModel(
 
         countdownTimer = object : CountDownTimer(durationInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
+
                 _progressState.value = millisUntilFinished
-                val secondsRemaining = millisUntilFinished / 1000
-                _remainingTime.value = String.format(
-                    "%02d:%02d",
-                    secondsRemaining / 60,
-                    secondsRemaining % 60
-                )
+
+                calcRemainingTime(millisUntilFinished)
+
+
             }
 
             override fun onFinish() {
                 _progressState.value = 0
-                _remainingTime.value = "00:00"
+                _remainingTime.value = 0
             }
         }.start()
 
         _isTimerRunning.value = true
     }
 
+    private fun calcRemainingTime(millisUntilFinished: Long) {
+        val secondsRemaining = (millisUntilFinished / 1000).toInt()
+        _remainingTime.value = secondsRemaining
+    }
+
     fun cancelCountdown() {
         countdownTimer?.cancel()
     }
+
 
     override fun onCleared() {
         super.onCleared()
         countdownTimer?.cancel()
     }
 
+    fun gitDurationAsPhases(): List<Int>{
+        val durationInSeconds= getSelectedDurationInMillis().div(1000).toInt()
+        val phase = durationInSeconds.div(4)
+        return listOf(
+            durationInSeconds.minus(1),
+            durationInSeconds.minus(phase),
+            durationInSeconds.minus(phase).minus(phase),
+            durationInSeconds.minus(phase).minus(phase).minus(phase),
+            durationInSeconds.minus(phase).minus(phase).minus(phase).minus(phase),
+        )
+    }
 
     fun getListOfDurations(): List<Duration> {
         return listOf(
@@ -121,5 +139,15 @@ class BreathViewModel(
             Duration(8,"8.00 دقيقه / دقائق"),
 
             )
+    }
+
+    fun resetProgress() {
+        _resetProgress.value = true
+    }
+    fun resetRestProgress(){
+        _resetProgress.value = false
+    }
+    fun resetRemainingTime(){
+        _remainingTime.value = 0
     }
 }

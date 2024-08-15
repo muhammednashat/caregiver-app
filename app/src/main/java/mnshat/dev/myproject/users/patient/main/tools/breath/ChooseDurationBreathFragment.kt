@@ -29,6 +29,9 @@ class ChooseDurationBreathFragment :
         binding.buttonConfirm.setOnClickListener {
 
             viewModel.setCurrentDuration(adapter.getSelectedPosition())
+            viewModel.cancelCountdown()
+            viewModel.resetProgress()
+            viewModel.resetRemainingTime()
             dismiss()
 
         }

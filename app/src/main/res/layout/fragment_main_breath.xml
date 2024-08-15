@@ -121,11 +121,12 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
                     android:layout_margin="@dimen/margin_large"
-
-                    android:src="@drawable/ic_gestures1"
+                    android:id="@+id/imageViewFace"
+                    android:background="@drawable/circle_white_border_blue"
+                    android:src="@drawable/image_face0"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -206,7 +207,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/gradient_orange"
-
             android:backgroundTint="#b9dae6"
             android:padding="4dp"
             app:layout_constraintBottom_toBottomOf="parent"

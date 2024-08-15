@@ -282,5 +282,9 @@
     <string name="click_to_start">Click to start</string>
     <string name="would_you_like_to_repeat_the_exercise_again">Would you like to repeat the exercise again?</string>
     <string name="this_procedure_will_delete_the_current_exercise_data_and_replace_it_with_the_new_exercise_data">This procedure will delete the current exercise data and replace it with the new exercise data</string>
+    <string name="exhale_slowly">Exhale slowly for 17 seconds</string>
+    <string name="inhale">Inhale</string>
+    <string name="take_rest">Rest for 232 seconds</string>
+    <string name="hold_air">Hold the air for 3 seconds</string>
 
 </resources>

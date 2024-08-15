@@ -243,6 +243,10 @@
     <string name="click_to_start">اضغط هنا للبدء</string>
     <string name="would_you_like_to_repeat_the_exercise_again">هل تود اعاده التمرين الحالى و البدء من جديد؟</string>
     <string name="this_procedure_will_delete_the_current_exercise_data_and_replace_it_with_the_new_exercise_data">سوف يؤدى هذا الاجراء الى حذف بيانات التمرين الحالى واستبدالها ببيانات التمرين الجديد</string>
+    <string name="exhale_slowly">Exhale slowly for 17 seconds</string>
+    <string name="inhale">قم بالشهيق</string>
+    <string name="take_rest">Rest for 232 seconds</string>
+    <string name="hold_air">Hold the air for 3 seconds</string>
 
 
 </resources>

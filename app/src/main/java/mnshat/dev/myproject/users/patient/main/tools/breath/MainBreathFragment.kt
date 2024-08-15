@@ -6,7 +6,6 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentMainBreathBinding
 import mnshat.dev.myproject.factories.BreathViewModelFactory
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
-import mnshat.dev.myproject.util.log
 
 
 class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
@@ -56,16 +55,35 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
     private fun observeViewModel(){
 
 
-
         viewModel.progressState.observe(viewLifecycleOwner) {
 
-
-            binding.progressBar.progress = it.toDouble().div(t.toDouble()).times(100).toInt()
+            val selectedDuration = viewModel.getSelectedDurationInMillis().toDouble()
+            binding.progressBar.progress = it.toDouble().div(selectedDuration).times(100).toInt()
 
         }
+
         viewModel.showDialog.observe(viewLifecycleOwner) {
          it?.let {
              showRepeatedExerciseDialog()
+         }
+
+        }
+
+        viewModel.remainingTime.observe(viewLifecycleOwner){
+            it?.let{
+                binding.remainingTimeFormat.text =
+                    getString(R.string.remaining_time_format, it, "ثواني متبقية")
+                updateUiBaseCurrentPhase(it)
+            }
+        }
+
+        viewModel.resetProgress.observe(viewLifecycleOwner) {
+         it?.let {
+            if (it){
+                resetProgress()
+                viewModel.resetRestProgress()
+
+            }
          }
 
         }
@@ -95,6 +113,44 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
        binding.textView.text = text
        binding.imageView.setImageResource(imageResource)
     }
+
+    private fun resetProgress(){
+        binding.progressBar.progress = 100
+        binding.textInstructions.text = getString(R.string.click_on_the_box_below_to_get_started)
+
+    }
+
+    private fun updateUiBaseCurrentPhase(remainingTime: Int) {
+        val listPhases = viewModel.gitDurationAsPhases()
+
+        when(remainingTime){
+            listPhases[0] -> {
+                binding.imageViewFace.setImageResource(R.drawable.image_face1)
+                binding.textInstructions.text = getString(R.string.
+                inhale)
+            }
+            listPhases[1] -> {
+                binding.imageViewFace.setImageResource(R.drawable.image_face2)
+                binding.textInstructions.text = getString(R.string.
+                hold_air)
+            }
+            listPhases[2] -> {
+                binding.imageViewFace.setImageResource(R.drawable.image_face3)
+
+                binding.textInstructions.text = getString(R.string.
+                exhale_slowly)
+            }
+            listPhases[3] -> {
+                binding.imageViewFace.setImageResource(R.drawable.image_face0)
+                binding.textInstructions.text = getString(R.string.
+                take_rest)
+            }
+
+
+        }
+
+    }
+
 
 
 
