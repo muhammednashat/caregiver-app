@@ -95,7 +95,7 @@ open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
         temporallyDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialogBinding.button.setOnClickListener {
             temporallyDialog.dismiss()
-                showProgressDialog()
+//                showProgressDialog()
             callBack()
         }
         dialogBinding.icClose.setOnClickListener {

@@ -52,7 +52,6 @@ class BreathViewModel(
             setSelectedPosition(index)
         }
 
-
         _currentDuration.value = getListOfDurations()[index].text
     }
 
@@ -62,11 +61,11 @@ class BreathViewModel(
 
 
     fun onStartButtonClicked() {
-//        if (_isTimerRunning.value == true) {
-//            _showDialog.value = true
-//        } else {
+        if (_isTimerRunning.value == true) {
+            _showDialog.value = true
+        } else {
             startCountdown(getSelectedDurationInMillis())
-//        }
+        }
     }
 
 
@@ -109,7 +108,9 @@ class BreathViewModel(
     fun cancelCountdown() {
         countdownTimer?.cancel()
     }
-
+    fun resetIsTimerRunning() {
+        _isTimerRunning.value = false
+    }
 
     override fun onCleared() {
         super.onCleared()
@@ -151,11 +152,15 @@ class BreathViewModel(
     fun resetRemainingTime(){
         _remainingTime.value = 0
     }
+    fun restShowDialog() {
+        _showDialog.value = false
+
+    }
 
     fun clearData(){
         cancelCountdown()
         resetRemainingTime()
-        _isTimerRunning.value = false
+        resetIsTimerRunning()
         _progressState.value = null
 
     }

@@ -2,6 +2,7 @@ package mnshat.dev.myproject.users.patient.main.tools.breath
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentMainBreathBinding
 import mnshat.dev.myproject.factories.BreathViewModelFactory
@@ -14,7 +15,6 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
     override fun initializeViews() {
         super.initializeViews()
         binding.remainingTimeFormat.text = getString(R.string.remaining_time_format,0,"ثواني متبقية")
-
     }
 
 
@@ -32,6 +32,11 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
                 ChooseDurationBreathFragment::class.java.name
             )
 
+        }
+
+        binding.finishExercise.setOnClickListener {
+            viewModel.clearData()
+            findNavController().popBackStack()
         }
 
 
@@ -66,7 +71,10 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
 
         viewModel.showDialog.observe(viewLifecycleOwner) {
          it?.let {
-             showRepeatedExerciseDialog()
+             if (it) {
+                 showRepeatedExerciseDialog()
+                 viewModel.restShowDialog()
+             }
          }
 
         }
@@ -105,7 +113,8 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
             R.drawable.ic_refresh,
             getString(R.string.starting_over)
         ) {
-            requireActivity().finish()
+            viewModel.resetIsTimerRunning()
+            viewModel.onStartButtonClicked()
         }
     }
 
@@ -120,6 +129,7 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
         binding.imageViewFace.setImageResource(R.drawable.image_face0)
         binding.progressBar.progress = 100
         binding.textInstructions.text = getString(R.string.click_on_the_box_below_to_get_started)
+        viewModel.resetIsTimerRunning()
 
     }
 
