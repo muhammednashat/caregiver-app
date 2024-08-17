@@ -78,7 +78,7 @@
             android:layout_marginTop="@dimen/margin_2_super"
             app:layout_constraintBottom_toTopOf="@+id/textInstructions"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="#d4e6ee"
+            android:background="#e0ecf2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout13">
@@ -106,7 +106,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="10dp"
-                    android:background="#d4e6ee"
+                    android:background="#e0ecf2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -118,7 +118,7 @@
                     android:layout_width="10dp"
                     android:layout_height="match_parent"
                     android:background="#ddeaf0"
-                    android:backgroundTint="#d4e6ee"
+                    android:backgroundTint="#e0ecf2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
