@@ -8,8 +8,9 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
 import mnshat.dev.myproject.model.Task
+import mnshat.dev.myproject.util.RELIGION
 
-class ContemplationFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
+class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
     override fun getLayout() = R.layout.layout_task
 
@@ -75,7 +76,12 @@ class ContemplationFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
             showToast(getString(R.string.the_first_task_was_completed_successfully))
             viewModel.updateCurrentTaskLocally()
         }
-        findNavController().navigate(R.id.action_contemplationFragment_to_activityFragment)
+        if(sharedPreferences.getBoolean(RELIGION)){
+            findNavController().navigate(R.id.action_contemplationFragment_to_behaviorOrSpiritualFragment)
+        }else{
+            findNavController().navigate(R.id.action_contemplationFragment_to_activityFragment)
+        }
+
     }
     override fun onStop() {
         super.onStop()

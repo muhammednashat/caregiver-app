@@ -4,8 +4,6 @@ import android.app.Dialog
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.util.Log
-import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.RadioGroup
@@ -18,10 +16,9 @@ import mnshat.dev.myproject.databinding.DialogDoCompleteTaskBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
 import mnshat.dev.myproject.model.Task
-import mnshat.dev.myproject.util.ENGLISH_KEY
 
 
-class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>(),  SuggestedChallengesFragment.OnTaskItemClickListener {
+class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBinding>(),  SuggestedChallengesFragment.OnTaskItemClickListener {
 
     private var currentStatus: Boolean = true
 
@@ -43,7 +40,7 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>(),  Sugges
             if (viewModel.status.activity != 1){
                 showDialogAskingForCompletion()
             }else{
-                findNavController().navigate(R.id.action_activityFragment_to_behaviorOrSpiritualFragment)
+                findNavController().navigate(R.id.action_activityFragment_to_congratulationsFragment)
             }
         }
         binding.icPause.setOnClickListener {
@@ -95,7 +92,7 @@ class ActivityFragment  : BaseDailyProgramFragment<LayoutTaskBinding>(),  Sugges
             viewModel.status.activity = 1
             viewModel.updateCurrentTaskLocally()
         }
-        findNavController().navigate(R.id.action_activityFragment_to_behaviorOrSpiritualFragment)
+        findNavController().navigate(R.id.action_activityFragment_to_congratulationsFragment)
 
     }
 

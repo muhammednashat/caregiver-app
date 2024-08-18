@@ -276,7 +276,7 @@ object FirebaseService {
 
 
         if (userId != null) {
-            tasksUsersDatabase.child(userId!!).setValue(
+            tasksUsersDatabase.child(userId).setValue(
                 currentTask
             )
                 .addOnCompleteListener { task ->

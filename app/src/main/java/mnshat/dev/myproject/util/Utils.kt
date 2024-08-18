@@ -67,3 +67,12 @@ fun getListHands()= listOf(
     R.drawable.image_hand15,
     R.drawable.image_hand16,
 )
+fun getListSebha()= listOf(
+    R.drawable.image_sebha0,
+    R.drawable.image_sebha1,
+    R.drawable.image_sebha2,
+    R.drawable.image_sebha3,
+    R.drawable.image_sebha4,
+    R.drawable.image_sebha5,
+    R.drawable.image_sebha6,
+)

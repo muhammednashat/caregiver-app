@@ -82,10 +82,8 @@ class BreathViewModel(
 
         countdownTimer = object : CountDownTimer(durationInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-
                 _progressState.value = millisUntilFinished
                 calcRemainingTime(millisUntilFinished)
-
 
             }
 
@@ -93,7 +91,6 @@ class BreathViewModel(
                 resetProgress()
                 resetRemainingTime()
                 _progressState.value = 0
-
             }
         }.start()
 
@@ -117,7 +114,7 @@ class BreathViewModel(
         countdownTimer?.cancel()
     }
 
-    fun gitDurationAsPhases(): List<Int>{
+    fun gitDurationAsPhases(): List<Int> {
         val durationInSeconds= getSelectedDurationInMillis().div(1000).toInt()
         val phase = durationInSeconds.div(4)
         return listOf(
@@ -139,7 +136,6 @@ class BreathViewModel(
             Duration(6,"6.00 دقيقه / دقائق"),
             Duration(7,"7.00 دقيقه / دقائق"),
             Duration(8,"8.00 دقيقه / دقائق"),
-
             )
     }
 

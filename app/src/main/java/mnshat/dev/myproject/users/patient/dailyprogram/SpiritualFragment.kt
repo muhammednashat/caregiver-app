@@ -11,7 +11,7 @@ import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Task
 import mnshat.dev.myproject.util.RELIGION
 
-class BehaviorOrSpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
+class SpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
     override fun getLayout() = R.layout.layout_task
 
@@ -91,7 +91,7 @@ class BehaviorOrSpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>(
         viewModel.retrieveTaskDayFromDatabase(
             day!!, FirebaseService.userEmail!!, FirebaseService.userId!!, sharedPreferences
         ) {
-            findNavController().navigate(R.id.action_behaviorOrSpiritualFragment_to_congratulationsFragment)
+            findNavController().navigate(R.id.action_behaviorOrSpiritualFragment_to_activityFragment)
             dismissProgressDialog()
         }
     }

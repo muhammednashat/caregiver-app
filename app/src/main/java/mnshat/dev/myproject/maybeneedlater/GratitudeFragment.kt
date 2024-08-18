@@ -1,8 +1,9 @@
-package mnshat.dev.myproject.users.patient.dailyprogram
+package mnshat.dev.myproject.maybeneedlater
 
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentGratitudeBinding
 import mnshat.dev.myproject.model.Gratitude
+import mnshat.dev.myproject.users.patient.dailyprogram.BaseDailyProgramFragment
 
 class GratitudeFragment: BaseDailyProgramFragment<FragmentGratitudeBinding>() {
 
