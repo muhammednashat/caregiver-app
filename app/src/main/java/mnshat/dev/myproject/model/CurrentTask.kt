@@ -4,10 +4,6 @@ data class CurrentTask(
     var dayTask:DayTask? = null,
     var status:StatusDailyProgram? = null,
 ){
-//    companion object {
-//        fun getClass(): CurrentTask {
-//            return CurrentTask( )
-//        }
-//    }
+
 
 }

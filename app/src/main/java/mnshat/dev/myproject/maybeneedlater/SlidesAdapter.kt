@@ -17,7 +17,6 @@ class SlidesAdapter(fragmentActivity: FragmentActivity) :FragmentStateAdapter(fr
             1 -> return EducationalFragment()
             2 -> return SpiritualFragment()
             3 -> return SpiritualFragment()
-            4 -> return GratitudeFragment()
         }
         return BehaviouralActivationFragment()
     }

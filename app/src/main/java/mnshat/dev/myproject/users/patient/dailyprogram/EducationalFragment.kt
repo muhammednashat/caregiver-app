@@ -21,7 +21,7 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         binding.btnPrevious.visibility = View.GONE
 
         viewModel.currentTask.let {
-            viewModel.listOfTasks = it.dayTask?.contemplation as List<Task>
+            viewModel.listOfTasks = it.dayTask?.educational as List<Task>
             if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
             getTaskFromList(viewModel.status.currentIndexContemplation!!, 2)
             changeColorStatus()

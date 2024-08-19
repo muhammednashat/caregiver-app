@@ -8,6 +8,8 @@ import mnshat.dev.myproject.databinding.FragmentSupplicationsBinding
 import mnshat.dev.myproject.factories.SupplicationsViewModelFactory
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
+import mnshat.dev.myproject.util.getListHands
+import mnshat.dev.myproject.util.getListSebha
 
 
 class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>() {
@@ -50,6 +52,32 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
 
     override fun setupClickListener() {
         super.setupClickListener()
+
+        binding.imageViewHand.setOnClickListener{
+            changeFocusing(true)
+            viewModel.setListImage(getListHands())
+            viewModel.resetCounter()
+
+        }
+
+        binding.imageViewSebha.setOnClickListener{
+            changeFocusing(false)
+            viewModel.setListImage(getListSebha())
+            viewModel.resetCounter()
+
+        }
+
+    }
+
+    fun changeFocusing(isHand:Boolean){
+    if (isHand){
+        binding.imageViewHand.setBackgroundDrawable(resources.getDrawable(R.drawable.circle_blue_border_blue))
+        binding.imageViewSebha.setBackgroundDrawable(resources.getDrawable(R.drawable.circle_blue2))
+    }else{
+        binding.imageViewHand.setBackgroundDrawable(resources.getDrawable(R.drawable.circle_blue2))
+        binding.imageViewSebha.setBackgroundDrawable(resources.getDrawable(R.drawable.circle_blue_border_blue))
+
+    }
     }
 
 

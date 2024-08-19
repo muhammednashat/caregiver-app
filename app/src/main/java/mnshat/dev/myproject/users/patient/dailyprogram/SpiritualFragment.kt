@@ -20,7 +20,7 @@ class SpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
 
         viewModel.currentTask.let {
-            viewModel.listOfTasks =if (sharedPreferences.getBoolean(RELIGION)) it.dayTask?.spiritual as List<Task> else it.dayTask?.behavior as List<Task>
+            viewModel.listOfTasks = it.dayTask?.spiritual as List<Task>
             if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
             getTaskFromList(viewModel.status.currentIndexBehavior!!, 2)
             changeColorStatus()

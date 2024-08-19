@@ -30,7 +30,7 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
         viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
 
         viewModel.currentTask.let {
-            viewModel.listOfTasks = it.dayTask?.activity as List<Task>
+            viewModel.listOfTasks = it.dayTask?.behaviorActivation as List<Task>
 
         }
     }

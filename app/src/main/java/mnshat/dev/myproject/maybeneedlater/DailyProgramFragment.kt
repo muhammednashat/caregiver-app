@@ -31,7 +31,6 @@ class DailyProgramFragment : BasePatientFragment<FragmentDailyProgramBinding>() 
             val task2 = Task()
             val task3 = Task()
             val task4 = Task()
-            val task5 = Task()
 
             task1.type = 1
             task1.arTitle = "تحدى اليوم"
@@ -90,29 +89,19 @@ class DailyProgramFragment : BasePatientFragment<FragmentDailyProgramBinding>() 
             task4.ageGroup = 1
             task4.religion = true
 
-            task5.type = 4
-            task5.arText = "من هو الشخص الذى اذا يستمع إليك حقا عندما تتحدث وكيف يؤثر عليك ذلك ؟"
-            task5.enText = "Who is the person who really listens to you when they call and how does this affect you?"
-            task5.gender = 1
-            task5.ageGroup = 1
-            task5.religion = true
 
 
-            dayTask.contemplation = listOf(task1, task2, task3, task4)
-            dayTask.activity = listOf(task1, task1, task1, task1,task1)
+            dayTask.educational = listOf(task1, task2, task3, task4)
+            dayTask.behaviorActivation = listOf(task1, task1, task1, task1,task1)
             dayTask.spiritual = listOf(task1, task2, task3, task4)
-            dayTask.behavior = listOf(task1, task2, task3, task4)
-            dayTask.Gratitude = listOf(task5, task5, task5, task5)
 
 
             for (x in 1..30) {
-                db.collection("tasks").document("" + x).set(dayTask)
+                db.collection("daily_programs").document("" + x).set(dayTask)
             }
 
-            db.document("tasks/1").get().addOnSuccessListener { it ->
-
-            }
         }
+
 //    private fun updateStatusDailyProgram(key: String) {
 //       val data = StatusDailyProgram(1 , 1,0,0,0,0)
 //        showProgressDialog()

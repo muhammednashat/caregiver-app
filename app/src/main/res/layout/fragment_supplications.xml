@@ -27,23 +27,23 @@
             app:srcCompat="@drawable/ic_more_horiz" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/circle_blue"
+            android:id="@+id/imageViewSebha"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/circle_blue2"
             android:padding="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_sss" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView6"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/imageViewHand"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="@dimen/margin_medium"
-            android:background="@drawable/circle_blue"
+            android:background="@drawable/circle_blue_border_blue"
             android:padding="10dp"
-            app:layout_constraintStart_toEndOf="@+id/appCompatImageView5"
+            app:layout_constraintStart_toEndOf="@+id/imageViewSebha"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_hand3" />
 
@@ -57,7 +57,7 @@
             android:background="@drawable/corner_border_yelow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView6">
+            app:layout_constraintTop_toBottomOf="@+id/imageViewHand">
 
             <TextView
                 android:id="@+id/textNameSupplication"

@@ -24,9 +24,8 @@ object FirebaseService {
 
     private val firebaseDatabase = FirebaseDatabase.getInstance()
 
-    val usersDatabase = firebaseDatabase.getReference("users")
-    val tasksUsersDatabase = firebaseDatabase.getReference("tasks_users")
-    val supplicationsUsersDatabase = firebaseDatabase.getReference("supplications_users")
+    val usersDatabase = firebaseDatabase.getReference("profiles_users")
+    val tasksUsersDatabase = firebaseDatabase.getReference("daily_program_states")
 
     private val fireAuth = FirebaseAuth.getInstance()
     private val currentUser = fireAuth.currentUser

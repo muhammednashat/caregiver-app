@@ -10,8 +10,8 @@ import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.model.SupplicationsUser
 import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.getListHands
 import mnshat.dev.myproject.util.getListSebha
-import mnshat.dev.myproject.util.log
 
 
 //ToDo Clear Data after onStop called
@@ -23,9 +23,7 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
     private val firestore = Firebase.firestore
     private var currentIndexListImages = 0
 
-    // private val listHandImages = getListHands()
-
-    private val listHandImages = getListSebha()
+    private var mListImages = getListHands()
 
     //TODo chane the way of getting email
     private var supplicationsUsersDoc =
@@ -55,10 +53,12 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
 
 
     init {
-        log("resetCounter")
         resetCounter()
     }
 
+    fun setListImage(listImages: List<Int>) {
+        mListImages = listImages
+    }
     fun onAddSupplicationClick(instanceSupplication: Supplication) {
         supplicationsUsersDoc.get()
             .addOnSuccessListener { documentSnapshot ->
@@ -143,7 +143,6 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
     }
 
     fun onHandClick() {
-
         if (supplication.value?.number == 0) {
             getImage()
         }
@@ -159,14 +158,12 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
     }
 
     private fun getImage() {
-          //  15  == 15
-        if (currentIndexListImages == listHandImages.size - 1) {
+        if (currentIndexListImages == mListImages.size - 1) {
             currentIndexListImages = 0
         }
 
-        currentIndexListImages++  // 1
-        _newImageSupplication.value = listHandImages[currentIndexListImages]
-
+        currentIndexListImages++
+        _newImageSupplication.value = mListImages[currentIndexListImages]
         _numberRemaining.value = _numberRemaining.value?.plus(1)
 
     }
@@ -174,9 +171,12 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
     fun resetCounter(){
         _numberRemaining.value = 0
         currentIndexListImages = 0
-        _newImageSupplication.value = listHandImages[currentIndexListImages]
+        getFirstImage()
     }
 
+    private fun getFirstImage() {
+        _newImageSupplication.value = mListImages[currentIndexListImages]
+    }
 
 
 }
