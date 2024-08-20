@@ -1,9 +1,15 @@
 package mnshat.dev.myproject.users.patient.main.tools.supplications
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.ViewGroup
+import android.view.Window
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.databinding.DialogFullTextSupplicationBinding
 import mnshat.dev.myproject.databinding.FragmentSupplicationsBinding
 import mnshat.dev.myproject.factories.SupplicationsViewModelFactory
 import mnshat.dev.myproject.model.Supplication
@@ -15,7 +21,8 @@ import mnshat.dev.myproject.util.getListSebha
 class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>() {
 
     private lateinit var viewModel: SupplicationsViewModel
-
+    private lateinit var fullTextSupplicationDialog: Dialog
+     private lateinit var supplicationText: String
 
     override fun initializeViews() {
 
@@ -37,6 +44,7 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
     private fun observeViewModel() {
         viewModel.supplication.observe(viewLifecycleOwner) {
             setUiData(it)
+            supplicationText = it.name!!
         }
 
         viewModel.newImageSupplication.observe(viewLifecycleOwner) {
@@ -59,6 +67,9 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
             viewModel.resetCounter()
 
         }
+        binding.icShowFullSupplication.setOnClickListener {
+            showFullTextSupplicationDialog(supplicationText)
+        }
 
         binding.imageViewSebha.setOnClickListener{
             changeFocusing(false)
@@ -80,6 +91,26 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
     }
     }
 
+    private fun showFullTextSupplicationDialog(supplicationText:String) {
+//        if (fullTextSupplicationDialog.ownerActivity == null){
+//            fullTextSupplicationDialog = Dialog(requireContext())
+//        }
+        fullTextSupplicationDialog = Dialog(requireContext())
+        fullTextSupplicationDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+
+        val binding = DialogFullTextSupplicationBinding.inflate(layoutInflater)
+        fullTextSupplicationDialog.setContentView(binding.root)
+        fullTextSupplicationDialog.setCanceledOnTouchOutside(true)
+        val window = fullTextSupplicationDialog.window
+        window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        fullTextSupplicationDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        binding.supplicationText.text = supplicationText
+        binding.iconClose.setOnClickListener {
+            fullTextSupplicationDialog.dismiss()
+        }
+        fullTextSupplicationDialog.show()
+    }
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -97,8 +128,6 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
         binding.lifecycleOwner = this
     }
 
-    fun showFulltext(){
 
-    }
 
 }

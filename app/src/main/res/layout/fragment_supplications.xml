@@ -80,7 +80,6 @@
                 android:id="@+id/icShowFullSupplication"
                 android:layout_width="18dp"
                 android:layout_marginEnd="@dimen/margin_small"
-
                 android:layout_height="18dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

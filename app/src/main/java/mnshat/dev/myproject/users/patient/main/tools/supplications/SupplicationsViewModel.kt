@@ -32,16 +32,22 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
     private val _isDismissProgressDialog = MutableLiveData<Boolean>()
     val isDismissProgressDialog: LiveData<Boolean> get() = _isDismissProgressDialog
 
+
     private val _suggestedSupplication = MutableLiveData<List<Supplication>>()
     val suggestedSupplication: LiveData<List<Supplication>>
         get() = _suggestedSupplication
 
+
     private val _supplication = MutableLiveData<Supplication>()
     val supplication: LiveData<Supplication>
         get() = _supplication
+
+
     private val _numberRemaining = MutableLiveData<Int>()
     val numberRemaining: LiveData<Int>
         get() = _numberRemaining
+
+
     private val _newImageSupplication = MutableLiveData<Int>()
     val newImageSupplication: LiveData<Int>
         get() = _newImageSupplication
@@ -56,9 +62,12 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
         resetCounter()
     }
 
+
     fun setListImage(listImages: List<Int>) {
         mListImages = listImages
     }
+
+
     fun onAddSupplicationClick(instanceSupplication: Supplication) {
         supplicationsUsersDoc.get()
             .addOnSuccessListener { documentSnapshot ->

@@ -284,5 +284,6 @@
     <string name="inhale">Inhale  for  %1$d seconds</string>
     <string name="take_rest">Rest for  %1$d seconds</string>
     <string name="hold_air">Hold the air  for  %1$d seconds</string>
+    <string name="supplication_text">Supplication text:</string>
 
 </resources>
