@@ -2,6 +2,7 @@ package mnshat.dev.myproject.users.patient.main.tools.breath
 
 import android.app.Application
 import android.os.CountDownTimer
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import mnshat.dev.myproject.base.BaseViewModel
@@ -14,6 +15,7 @@ class BreathViewModel(
 ) : BaseViewModel(sharedPreferences, application) {
 
     private var _selectedPosition:Int=0
+    private var counter :Int = 0
 
     fun getSelectedPosition() = _selectedPosition
 
@@ -61,6 +63,7 @@ class BreathViewModel(
 
 
     fun onStartButtonClicked() {
+       counter = 0
         if (_isTimerRunning.value == true) {
             _showDialog.value = true
         } else {
@@ -72,28 +75,30 @@ class BreathViewModel(
      fun getSelectedDurationInMillis(): Long {
         val duration = getListOfDurations()[_selectedPosition].duration
         println(duration)
-        return duration * 60 * 1000L
+        return 1 * 60 * 1000L
     }
 
 
-    private fun startCountdown(durationInMillis: Long) {
-        _progressState.value = durationInMillis
+    private fun startCountdown(selectedDurationInMillis: Long) {
+        counter++
+        _progressState.value =  selectedDurationInMillis
         countdownTimer?.cancel()
 
-        countdownTimer = object : CountDownTimer(durationInMillis, 1000) {
+        countdownTimer = object : CountDownTimer( selectedDurationInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 _progressState.value = millisUntilFinished
                 calcRemainingTime(millisUntilFinished)
-
             }
 
             override fun onFinish() {
                 resetProgress()
                 resetRemainingTime()
                 _progressState.value = 0
+                if (counter < getListOfDurations()[_selectedPosition].duration){
+                    startCountdown(getSelectedDurationInMillis())
+                }
             }
         }.start()
-
         _isTimerRunning.value = true
     }
 
