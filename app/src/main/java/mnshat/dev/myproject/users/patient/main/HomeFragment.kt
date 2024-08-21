@@ -14,30 +14,43 @@ import mnshat.dev.myproject.factories.PatientViewModelFactory
 import mnshat.dev.myproject.model.CurrentTask
 import mnshat.dev.myproject.users.patient.dailyprogram.DailyProgramActivity
 import mnshat.dev.myproject.util.USER_NAME
-import mnshat.dev.myproject.util.log
 
 class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
-private lateinit var viewModel:PatientViewModel
+
+    private lateinit var viewModel:PatientViewModel
+
     override fun getLayout() = R.layout.fragment_user_home
+
     override fun initializeViews() {
         binding.nameUser.text = sharedPreferences.getString(USER_NAME)
+        hideSpiritualIcon(binding.constraintTask2, binding.line1)
+
     }
+
     override fun onStart() {
         setStatusOfCurrentTask(getCurrentTask())
         super.onStart()
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
 
-        val factory = PatientViewModelFactory(sharedPreferences,activity?.application!!)
+        iitViewModel()
+        super.onActivityCreated(savedInstanceState)
+    }
+
+    private fun iitViewModel() {
+        val factory = PatientViewModelFactory(sharedPreferences, activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[PatientViewModel::class.java]
         binding.lifecycleOwner = this
         observeViewModel()
-        super.onActivityCreated(savedInstanceState)
     }
+
+
     private fun observeViewModel(){
         binding.viewModel = viewModel
 
         viewModel.toolsClick.observe(viewLifecycleOwner){
+
             if (it){
                 findNavController().navigate(R.id.action_patientHomeFragment_to_mainAzcarFragment)
                 viewModel.restToolsClick()
@@ -69,14 +82,14 @@ private lateinit var viewModel:PatientViewModel
 
             })
             binding.progress.text=  "$completionRate%"
-            if (status.contemplation == 0){
+            if (status.educational == 0){
                 binding.btnContinue.text= getString(R.string.start)
             }else{
                 binding.btnContinue.text= getString(R.string.continue1)
             }
 
-            changeColorOfTaskImage(status.contemplation,binding.constraintTask1, binding.imageTask1)
-             if (status.contemplation == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
+            changeColorOfTaskImage(status.educational,binding.constraintTask1, binding.imageTask1)
+             if (status.educational == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
             changeColorOfTaskImage(status.activity,binding.constraintTask2,binding.imageTask2)
             if (status.activity == 1) binding.line2.setBackgroundColor(Color.parseColor("#6db7d3"))
             changeColorOfTaskImage(status.behaviorOrSpiritual,binding.constraintTask3, binding.imageTask3)

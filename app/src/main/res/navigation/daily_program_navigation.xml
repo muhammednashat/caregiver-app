@@ -3,34 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dialy_program_navigation.xml"
-    app:startDestination="@id/contemplationFragment">
+    app:startDestination="@id/educationalFragment">
+
     <fragment
-        android:id="@+id/contemplationFragment"
+        android:id="@+id/educationalFragment"
         android:name="mnshat.dev.myproject.users.patient.dailyprogram.EducationalFragment"
-        android:label="ContemplationFragment" >
+        android:label="EducationalFragment">
         <action
-            android:id="@+id/action_contemplationFragment_to_behaviorOrSpiritualFragment"
-            app:destination="@id/behaviorOrSpiritualFragment" />
+            android:id="@+id/action_educationalFragment_to_spiritualFragment"
+            app:destination="@id/spiritualFragment" />
         <action
-            android:id="@+id/action_contemplationFragment_to_activityFragment"
-            app:destination="@id/activityFragment" />
+            android:id="@+id/action_educationFragment_to_behaviorActivationFragment"
+            app:destination="@id/behaviorActivationFragment" />
     </fragment>
     <fragment
-        android:id="@+id/activityFragment"
+        android:id="@+id/behaviorActivationFragment"
         android:name="mnshat.dev.myproject.users.patient.dailyprogram.BehaviouralActivationFragment"
         android:label="ActivityFragment" >
         <action
-            android:id="@+id/action_activityFragment_to_congratulationsFragment"
+            android:id="@+id/action_behaviorActivationFragment_to_congratulationsFragment"
             app:destination="@id/congratulationsFragment" />
     </fragment>
+
+
+
     <fragment
-        android:id="@+id/behaviorOrSpiritualFragment"
+        android:id="@+id/spiritualFragment"
         android:name="mnshat.dev.myproject.users.patient.dailyprogram.SpiritualFragment"
         android:label="BehaviorFragment" >
         <action
             android:id="@+id/action_behaviorOrSpiritualFragment_to_activityFragment"
-            app:destination="@id/activityFragment" />
+            app:destination="@id/behaviorActivationFragment" />
     </fragment>
+
+
+
     <fragment
         android:id="@+id/congratulationsFragment"
         android:name="mnshat.dev.myproject.users.patient.dailyprogram.CongratulationsFragment"

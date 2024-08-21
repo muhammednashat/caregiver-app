@@ -15,8 +15,7 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
     override fun getLayout() = R.layout.layout_task
 
     override fun initializeViews() {
-        val factory = DailyProgramViewModelFactory(sharedPreferences,activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
+        initViewModel()
 
         binding.btnPrevious.visibility = View.GONE
 
@@ -26,7 +25,15 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
             getTaskFromList(viewModel.status.currentIndexContemplation!!, 2)
             changeColorStatus()
         }
+        hideSpiritualIcon(binding.constraintTask2, binding.line1)
     }
+
+    private fun initViewModel() {
+        val factory = DailyProgramViewModelFactory(sharedPreferences, activity?.application!!)
+        viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
+    }
+
+
 
     override fun setupClickListener() {
         binding.btnNext.setOnClickListener {
@@ -46,9 +53,11 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         }
 
         binding.btnRecommend.setOnClickListener {
+
             val currentIndex = getNextTask(viewModel.status.currentIndexContemplation!!, 1)
             viewModel.status.currentIndexContemplation = currentIndex
             viewModel.updateCurrentTaskLocally()
+
         }
 
 
@@ -57,32 +66,49 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
     private fun changeColorStatus() {
 
-        if (viewModel.status.contemplation == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
+        if (viewModel.status.educational == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
+
         changeColorOfTaskImage(2, binding.constraintTask1, binding.imageTask1)
         changeColorOfTaskImage(viewModel.status.activity, binding.constraintTask2, binding.imageTask2)
-        changeColorOfTaskImage(
-            viewModel.status.behaviorOrSpiritual,
-            binding.constraintTask3,
-            binding.imageTask3
-        )
+        changeColorOfTaskImage(viewModel.status.behaviorOrSpiritual, binding.constraintTask3, binding.imageTask3)
 
     }
 
     private fun updateStatus() {
-        if (viewModel.status.contemplation != 1){
-            viewModel.status.remaining = viewModel.status.remaining?.minus(1)
-            viewModel.status.completionRate = viewModel.status.completionRate?.plus(30)
-            viewModel.status.contemplation = 1
-            showToast(getString(R.string.the_first_task_was_completed_successfully))
-            viewModel.updateCurrentTaskLocally()
-        }
-        if(sharedPreferences.getBoolean(RELIGION)){
-            findNavController().navigate(R.id.action_contemplationFragment_to_behaviorOrSpiritualFragment)
-        }else{
-            findNavController().navigate(R.id.action_contemplationFragment_to_activityFragment)
+        if (viewModel.status.educational != 1){
+            updateStatusData()
         }
 
+        navigateToNextTask()
+
     }
+
+    private fun updateStatusData() {
+
+        viewModel.status.remaining = viewModel.status.remaining?.minus(1)
+        updateCompletionRate()
+        viewModel.status.educational = 1
+        showToast(getString(R.string.the_first_task_was_completed_successfully))
+        viewModel.updateCurrentTaskLocally()
+
+   }
+
+    private fun updateCompletionRate() {
+        if (sharedPreferences.getBoolean(RELIGION)) {
+            viewModel.status.completionRate = viewModel.status.completionRate?.plus(30)
+        } else {
+            viewModel.status.completionRate = viewModel.status.completionRate?.plus(50)
+        }
+    }
+
+    private fun navigateToNextTask() {
+        if (sharedPreferences.getBoolean(RELIGION)) {
+            findNavController().navigate(R.id.action_educationalFragment_to_spiritualFragment)
+        } else {
+            findNavController().navigate(R.id.action_educationFragment_to_behaviorActivationFragment)
+        }
+    }
+
     override fun onStop() {
         super.onStop()
         player?.pause()

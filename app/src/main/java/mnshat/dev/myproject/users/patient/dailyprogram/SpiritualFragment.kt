@@ -9,7 +9,6 @@ import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Task
-import mnshat.dev.myproject.util.RELIGION
 
 class SpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
@@ -56,18 +55,18 @@ class SpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
 
     private fun changeColorStatus() {
-        if (viewModel.status.contemplation == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
+        if (viewModel.status.educational == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
         if (viewModel.status.activity == 1) binding.line2.setBackgroundColor(Color.parseColor("#6db7d3"))
 
-        changeColorOfTaskImage(2, binding.constraintTask3, binding.imageTask3)
+        changeColorOfTaskImage(2, binding.constraintTask2, binding.imageTask3)
         changeColorOfTaskImage(viewModel.status.activity, binding.constraintTask2, binding.imageTask2)
-        changeColorOfTaskImage(viewModel.status.contemplation, binding.constraintTask1, binding.imageTask1)
+        changeColorOfTaskImage(viewModel.status.educational, binding.constraintTask1, binding.imageTask1)
     }
 
 
 
     private fun validation(): Boolean {
-        if (viewModel.status.contemplation != 1 || viewModel.status.activity != 1) {
+        if (viewModel.status.educational != 1 || viewModel.status.activity != 1) {
             showToast(getString(R.string.you_must_complete_all_previous_tasks))
             return false
         }

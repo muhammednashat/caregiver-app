@@ -26,13 +26,18 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
 
     override fun initializeViews() {
 
-        val factory = DailyProgramViewModelFactory(sharedPreferences,activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
+        initViewModel()
 
         viewModel.currentTask.let {
             viewModel.listOfTasks = it.dayTask?.behaviorActivation as List<Task>
-
+            changeColorStatus()
         }
+        hideSpiritualIcon(binding.constraintTask2, binding.line2)
+    }
+
+    private fun initViewModel() {
+        val factory = DailyProgramViewModelFactory(sharedPreferences, activity?.application!!)
+        viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
     }
 
     override fun setupClickListener() {
@@ -40,7 +45,7 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
             if (viewModel.status.activity != 1){
                 showDialogAskingForCompletion()
             }else{
-                findNavController().navigate(R.id.action_activityFragment_to_congratulationsFragment)
+                findNavController().navigate(R.id.action_behaviorActivationFragment_to_congratulationsFragment)
             }
         }
         binding.icPause.setOnClickListener {
@@ -78,9 +83,9 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
     }
 
     private fun changeColorStatus() {
-        if (viewModel.status.contemplation == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
-        changeColorOfTaskImage(2,binding.constraintTask2,binding.imageTask2)
-        changeColorOfTaskImage(viewModel.status.contemplation,binding.constraintTask1, binding.imageTask1)
+        if (viewModel.status.educational == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
+        changeColorOfTaskImage(2,binding.constraintTask3,binding.imageTask2)
+        changeColorOfTaskImage(viewModel.status.educational,binding.constraintTask1, binding.imageTask1)
         changeColorOfTaskImage(viewModel.status.behaviorOrSpiritual,binding.constraintTask3, binding.imageTask3)
 
     }
@@ -92,7 +97,7 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
             viewModel.status.activity = 1
             viewModel.updateCurrentTaskLocally()
         }
-        findNavController().navigate(R.id.action_activityFragment_to_congratulationsFragment)
+        findNavController().navigate(R.id.action_behaviorActivationFragment_to_congratulationsFragment)
 
     }
 

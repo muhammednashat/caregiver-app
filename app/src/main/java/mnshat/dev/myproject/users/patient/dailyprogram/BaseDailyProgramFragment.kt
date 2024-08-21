@@ -3,6 +3,7 @@ package mnshat.dev.myproject.users.patient.dailyprogram
 import android.net.Uri
 import android.util.Log
 import android.view.View
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.ViewDataBinding
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -13,6 +14,7 @@ import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.model.Task
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.ENGLISH_KEY
+import mnshat.dev.myproject.util.RELIGION
 
 abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragment<T>() {
 

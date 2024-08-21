@@ -14,6 +14,7 @@ import mnshat.dev.myproject.model.StatusDailyProgram
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.CURRENT_TASK
 import mnshat.dev.myproject.util.GENDER
+import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.log
 
@@ -89,7 +90,7 @@ open class BaseViewModel(
         callBack: () -> Unit
     ) {
         val db = Firebase.firestore
-        db.collection("tasks").document(day).get()
+        db.collection("daily_programs").document(day).get()
             .addOnSuccessListener { document ->
                 if (document != null && document.exists()) {
                     val dayTask = document.toObject(DayTask::class.java)
@@ -121,27 +122,16 @@ open class BaseViewModel(
         sharedPreferences: SharedPreferencesManager,
         callBack: () -> Unit
     ) {
+       val statusDailyProgram =  StatusDailyProgram(day = day.toInt())
 
-//        val listActivity = dayTask.activity // current  4 ele
-//
-//        val isReligious = sharedPreferences.getBoolean(RELIGION) // false
-//
-//        val filteredListActivity =
-//
-//            if (isReligious) {
-//                listActivity?.filter {
-//                    it?.religion == true
-//                }
-//
-//            } else {
-//                listActivity?.filter {
-//                    it?.religion == false
-//                }
-//            }
-//
-//        dayTask.activity = filteredListActivity
+        val isReligious = sharedPreferences.getBoolean(RELIGION)
+        if (!isReligious) {
+            dayTask.spiritual = null
+            statusDailyProgram.remaining = 2
+        }
 
-        storeCurrentTaskRemotely(dayTask, userId, day, email, sharedPreferences) { // 4
+
+        storeCurrentTaskRemotely(dayTask, userId, email, sharedPreferences,statusDailyProgram) {
 
             callBack()  //5
         }
@@ -152,15 +142,15 @@ open class BaseViewModel(
     private fun storeCurrentTaskRemotely(
         dayTask: DayTask,
         userId: String,
-        day: String,
         email: String,
         sharedPreferences: SharedPreferencesManager,
+        statusDailyProgram:StatusDailyProgram,
         callBack: () -> Unit
 
     ) {
         FirebaseService.storeCurrentTaskRemotely(
             userId,
-            CurrentTask(email, dayTask, StatusDailyProgram(day = day.toInt()))
+            CurrentTask(email, dayTask,statusDailyProgram)
         ) {
             it?.let {
                 storeCurrentTaskLocally(it, sharedPreferences) { // 2
@@ -168,6 +158,7 @@ open class BaseViewModel(
                 }
             }
         }
+
     }
 
     fun storeCurrentTaskLocally(
