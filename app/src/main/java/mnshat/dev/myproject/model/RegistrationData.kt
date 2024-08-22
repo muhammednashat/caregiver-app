@@ -11,10 +11,12 @@ import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.INVITATION_CODE
 import mnshat.dev.myproject.util.IS_LOGGED
 import mnshat.dev.myproject.util.NUMBER_SUPPORTERS
+import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER
 import mnshat.dev.myproject.util.USER_NAME
+import mnshat.dev.myproject.util.log
 
 @Parcelize
 data class RegistrationData(

@@ -92,7 +92,7 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
              if (status.educational == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
             changeColorOfTaskImage(status.activity,binding.constraintTask2,binding.imageTask2)
             if (status.activity == 1) binding.line2.setBackgroundColor(Color.parseColor("#6db7d3"))
-            changeColorOfTaskImage(status.behaviorOrSpiritual,binding.constraintTask3, binding.imageTask3)
+            changeColorOfTaskImage(status.spiritual,binding.constraintTask3, binding.imageTask3)
     }
     }
 }

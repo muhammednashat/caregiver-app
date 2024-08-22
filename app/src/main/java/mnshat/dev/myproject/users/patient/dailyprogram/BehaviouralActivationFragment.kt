@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.RadioGroup
@@ -15,6 +16,7 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogDoCompleteTaskBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
+import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Task
 
 
@@ -30,8 +32,12 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
 
         viewModel.currentTask.let {
             viewModel.listOfTasks = it.dayTask?.behaviorActivation as List<Task>
+
+            if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
+            getTaskFromList(viewModel.status.currentIndexBehavioral!!, 2)
             changeColorStatus()
         }
+
         hideSpiritualIcon(binding.constraintTask2, binding.line2)
     }
 
@@ -73,7 +79,7 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
 
         val suggestedChallengesFragment = SuggestedChallengesFragment.newInstance(
             this,
-            viewModel.status.currentIndexActivity!!,
+            viewModel.status.currentIndexBehavioral!!,
             viewModel.listOfTasks
         )
         suggestedChallengesFragment.show(
@@ -84,21 +90,23 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
 
     private fun changeColorStatus() {
         if (viewModel.status.educational == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
-        changeColorOfTaskImage(2,binding.constraintTask3,binding.imageTask2)
+        changeColorOfTaskImage(2,binding.constraintTask3,binding.imageTask3)
         changeColorOfTaskImage(viewModel.status.educational,binding.constraintTask1, binding.imageTask1)
-        changeColorOfTaskImage(viewModel.status.behaviorOrSpiritual,binding.constraintTask3, binding.imageTask3)
+        changeColorOfTaskImage(viewModel.status.spiritual,binding.constraintTask2, binding.imageTask2)
 
     }
 
     private fun updateStatus(boolean: Boolean) {
         if (boolean) {
-            viewModel.status.remaining = viewModel.status.remaining?.minus(1)
-            viewModel.status.completionRate = viewModel.status.completionRate?.plus(40)
-            viewModel.status.activity = 1
-            viewModel.updateCurrentTaskLocally()
+            updateStatusData()
         }
-        findNavController().navigate(R.id.action_behaviorActivationFragment_to_congratulationsFragment)
+        retrieveNextDay(viewModel.status.day?.plus(1).toString())
 
+
+    }
+    private fun updateStatusData() {
+        viewModel.status.activity = 1
+        updateCompletionRate()
     }
 
     private fun showDialogAskingForCompletion(){
@@ -140,6 +148,7 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
         dialog.show()
     }
 
+
     private fun changeStateOfMassage(binding: DialogDoCompleteTaskBinding,status:Boolean) {
         currentStatus = status
         if (status){
@@ -157,8 +166,17 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
 
     override fun onTaskItemClicked(position: Int) {
         getTaskFromList(position, 2)
-        viewModel.status.currentIndexActivity = position
+        viewModel.status.currentIndexBehavioral = position
         viewModel.updateCurrentTaskLocally()
+    }
+    private fun retrieveNextDay(day: String?) {
+      showProgressDialog()
+        viewModel.retrieveTaskDayFromDatabase(
+            day!!, FirebaseService.userEmail!!, FirebaseService.userId!!, sharedPreferences
+        ) {
+            findNavController().navigate(R.id.action_behaviorActivationFragment_to_congratulationsFragment)
+            dismissProgressDialog()
+        }
     }
 
     override fun onStop() {

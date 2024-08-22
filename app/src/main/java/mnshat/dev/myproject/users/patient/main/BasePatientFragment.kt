@@ -14,6 +14,7 @@ import mnshat.dev.myproject.factories.PatientViewModelFactory
 import mnshat.dev.myproject.model.CurrentTask
 import mnshat.dev.myproject.util.CURRENT_TASK
 import mnshat.dev.myproject.util.RELIGION
+import mnshat.dev.myproject.util.log
 
 abstract class BasePatientFragment<T : ViewDataBinding> : BaseFragment<T>() {
 
@@ -41,7 +42,10 @@ abstract class BasePatientFragment<T : ViewDataBinding> : BaseFragment<T>() {
         }
     }
      fun hideSpiritualIcon(constraintTask: ConstraintLayout, line: View) {
+         log("hideSpiritualIcon "+sharedPreferences.getBoolean(RELIGION))
+
          if( !sharedPreferences.getBoolean(RELIGION)){
+             log("ggfgfdg")
              constraintTask.visibility = View.GONE
              line.visibility = View.GONE
          }

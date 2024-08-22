@@ -7,7 +7,6 @@ import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
-import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Task
 
 class SpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
@@ -28,9 +27,7 @@ class SpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
     override fun setupClickListener() {
         binding.btnNext.setOnClickListener {
-            if (validation()) {
                 updateStatus()
-            }
         }
         binding.btnPrevious.setOnClickListener {
             findNavController().popBackStack()
@@ -65,34 +62,23 @@ class SpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
 
 
-    private fun validation(): Boolean {
-        if (viewModel.status.educational != 1 || viewModel.status.activity != 1) {
-            showToast(getString(R.string.you_must_complete_all_previous_tasks))
-            return false
-        }
-        return true
-    }
+
 
 
     private fun updateStatus() {
-        showProgressDialog()
-        if (viewModel.status.behaviorOrSpiritual != 1) {
-            viewModel.status.remaining = viewModel.status.remaining?.minus(1)
-            viewModel.status.completionRate = viewModel.status.completionRate?.plus(30)
-            viewModel.status.behaviorOrSpiritual = 1
-            viewModel.updateCurrentTaskLocally()
+
+        if (viewModel.status.spiritual != 1) {
+            updateStatusData()
         }
-        retrieveNextDay(viewModel.status.day?.plus(1).toString())
+
+        findNavController().navigate(R.id.action_spiritualFragment_to_activityFragment)
+
     }
 
-
-    private fun retrieveNextDay(day: String?) {
-        viewModel.retrieveTaskDayFromDatabase(
-            day!!, FirebaseService.userEmail!!, FirebaseService.userId!!, sharedPreferences
-        ) {
-            findNavController().navigate(R.id.action_behaviorOrSpiritualFragment_to_activityFragment)
-            dismissProgressDialog()
-        }
+    private fun updateStatusData() {
+        viewModel.status.spiritual = 1
+        updateCompletionRate()
+        showToast(getString(R.string.the_second_task_was_completed_successfully))
     }
     override fun onStop() {
         super.onStop()

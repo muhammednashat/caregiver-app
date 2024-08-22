@@ -13,6 +13,7 @@ import mnshat.dev.myproject.util.DIALECT
 import mnshat.dev.myproject.util.GENDER
 import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.IS_LOGGED
+import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER_NAME
@@ -160,6 +161,7 @@ class AuthViewModel(
         sharedPreferences.storeInt(DIALECT, 1)
         sharedPreferences.storeBoolean(HAS_PARTNER, false)
         sharedPreferences.storeBoolean(IS_LOGGED, true)
+
     }
 
     fun getRegistrationDataForUser(): RegistrationData {

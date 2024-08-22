@@ -32,7 +32,7 @@
         android:name="mnshat.dev.myproject.users.patient.dailyprogram.SpiritualFragment"
         android:label="BehaviorFragment" >
         <action
-            android:id="@+id/action_behaviorOrSpiritualFragment_to_activityFragment"
+            android:id="@+id/action_spiritualFragment_to_activityFragment"
             app:destination="@id/behaviorActivationFragment" />
     </fragment>
 

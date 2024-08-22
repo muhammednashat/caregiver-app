@@ -22,7 +22,7 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         viewModel.currentTask.let {
             viewModel.listOfTasks = it.dayTask?.educational as List<Task>
             if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
-            getTaskFromList(viewModel.status.currentIndexContemplation!!, 2)
+            getTaskFromList(viewModel.status.currentIndexEducational!!, 2)
             changeColorStatus()
         }
         hideSpiritualIcon(binding.constraintTask2, binding.line1)
@@ -54,8 +54,8 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
         binding.btnRecommend.setOnClickListener {
 
-            val currentIndex = getNextTask(viewModel.status.currentIndexContemplation!!, 1)
-            viewModel.status.currentIndexContemplation = currentIndex
+            val currentIndex = getNextTask(viewModel.status.currentIndexEducational!!, 1)
+            viewModel.status.currentIndexEducational = currentIndex
             viewModel.updateCurrentTaskLocally()
 
         }
@@ -70,7 +70,7 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
         changeColorOfTaskImage(2, binding.constraintTask1, binding.imageTask1)
         changeColorOfTaskImage(viewModel.status.activity, binding.constraintTask2, binding.imageTask2)
-        changeColorOfTaskImage(viewModel.status.behaviorOrSpiritual, binding.constraintTask3, binding.imageTask3)
+        changeColorOfTaskImage(viewModel.status.spiritual, binding.constraintTask3, binding.imageTask3)
 
     }
 
@@ -78,28 +78,16 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         if (viewModel.status.educational != 1){
             updateStatusData()
         }
-
         navigateToNextTask()
-
     }
 
     private fun updateStatusData() {
-
-        viewModel.status.remaining = viewModel.status.remaining?.minus(1)
-        updateCompletionRate()
         viewModel.status.educational = 1
+        updateCompletionRate()
         showToast(getString(R.string.the_first_task_was_completed_successfully))
-        viewModel.updateCurrentTaskLocally()
-
    }
 
-    private fun updateCompletionRate() {
-        if (sharedPreferences.getBoolean(RELIGION)) {
-            viewModel.status.completionRate = viewModel.status.completionRate?.plus(30)
-        } else {
-            viewModel.status.completionRate = viewModel.status.completionRate?.plus(50)
-        }
-    }
+
 
     private fun navigateToNextTask() {
         if (sharedPreferences.getBoolean(RELIGION)) {

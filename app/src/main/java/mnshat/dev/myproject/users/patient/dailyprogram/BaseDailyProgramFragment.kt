@@ -57,7 +57,16 @@ abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragme
           currentTaskIndex
         }else 0
     }
+    fun updateCompletionRate() {
+        viewModel.status.remaining = viewModel.status.remaining?.minus(1)
+        if (sharedPreferences.getBoolean(RELIGION)) {
+            viewModel.status.completionRate = viewModel.status.completionRate?.plus(30)
+        } else {
+            viewModel.status.completionRate = viewModel.status.completionRate?.plus(50)
+        }
+        viewModel.updateCurrentTaskLocally()
 
+    }
     fun showCompletionTaskDialog(action: Int) {
         findNavController().navigate(action)
     }

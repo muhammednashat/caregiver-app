@@ -14,7 +14,6 @@ import mnshat.dev.myproject.model.StatusDailyProgram
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.CURRENT_TASK
 import mnshat.dev.myproject.util.GENDER
-import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.log
 
@@ -124,11 +123,11 @@ open class BaseViewModel(
     ) {
        val statusDailyProgram =  StatusDailyProgram(day = day.toInt())
 
-        val isReligious = sharedPreferences.getBoolean(RELIGION)
-        if (!isReligious) {
-            dayTask.spiritual = null
-            statusDailyProgram.remaining = 2
-        }
+//        val isReligious = sharedPreferences.getBoolean(RELIGION)
+//        if (!isReligious) {
+//            dayTask.spiritual = null
+//            statusDailyProgram.remaining = 2
+//        }
 
 
         storeCurrentTaskRemotely(dayTask, userId, email, sharedPreferences,statusDailyProgram) {

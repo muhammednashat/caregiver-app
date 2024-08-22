@@ -240,30 +240,18 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="activityFragment">
+                  <entry key="behaviorActivationFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-166" />
-                            <option name="y" value="-263" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="behaviorOrSpiritualFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-448" />
-                            <option name="y" value="-408" />
+                            <option name="x" value="500" />
+                            <option name="y" value="54" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_behaviorOrSpiritualFragment_to_activityFragment">
+                            <entry key="action_behaviorActivationFragment_to_congratulationsFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -285,23 +273,44 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="contemplationFragment">
+                  <entry key="educationalFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-774" />
-                            <option name="y" value="-247" />
+                            <option name="x" value="12" />
+                            <option name="y" value="54" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_contemplationFragment_to_activityFragment">
+                            <entry key="action_educationFragment_to_behaviorActivationFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_contemplationFragment_to_behaviorOrSpiritualFragment">
+                            <entry key="action_educationalFragment_to_spiritualFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="spiritualFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_behaviorOrSpiritualFragment_to_activityFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
