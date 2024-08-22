@@ -48,7 +48,7 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
 
     override fun setupClickListener() {
         binding.btnNext.setOnClickListener {
-            if (viewModel.status.activity != 1){
+            if (viewModel.status.behavioral != 1){
                 showDialogAskingForCompletion()
             }else{
                 findNavController().navigate(R.id.action_behaviorActivationFragment_to_congratulationsFragment)
@@ -90,6 +90,9 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
 
     private fun changeColorStatus() {
         if (viewModel.status.educational == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
+        if (viewModel.status.behavioral == 1) binding.line2.setBackgroundColor(Color.parseColor("#6db7d3"))
+
+
         changeColorOfTaskImage(2,binding.constraintTask3,binding.imageTask3)
         changeColorOfTaskImage(viewModel.status.educational,binding.constraintTask1, binding.imageTask1)
         changeColorOfTaskImage(viewModel.status.spiritual,binding.constraintTask2, binding.imageTask2)
@@ -105,12 +108,12 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
 
     }
     private fun updateStatusData() {
-        viewModel.status.activity = 1
+        viewModel.status.behavioral = 1
         updateCompletionRate()
     }
 
     private fun showDialogAskingForCompletion(){
-
+       currentStatus = true
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = DialogDoCompleteTaskBinding.inflate(layoutInflater)
@@ -119,17 +122,25 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
         val window = dialog.window
         window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
         dialogBinding.icClose.setOnClickListener{
             dialog.dismiss()
 
         }
         dialogBinding.btNext.setOnClickListener{
-            dialog.dismiss()
-            updateStatus(currentStatus)
+            if (currentStatus){
+                dialog.dismiss()
+                updateStatus(currentStatus)
+            }else{
+                showToast(getString(R.string.you_will_not_go_to_the_next_day))
+            }
+
+
         }
         dialogBinding.textBackToContinue.setOnClickListener{
             dialog.dismiss()
         }
+
         dialogBinding.radioGroup.setOnCheckedChangeListener( object: OnCheckedChangeListener,
             RadioGroup.OnCheckedChangeListener {
             override fun onCheckedChanged(button: MaterialButton?, isChecked: Boolean) {

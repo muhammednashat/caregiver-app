@@ -9,7 +9,7 @@ data class StatusDailyProgram(
     var currentIndexBehavioral: Int? = 0,
     var currentIndexBehavior: Int? = 0,
     var educational: Int? = 0,
-    var activity: Int? = 0,
+    var behavioral: Int? = 0,
     var spiritual: Int? = 0,
 //    var gratitude: Int? = 0,
 //    var currentIndexGratitude: Int? = 0,

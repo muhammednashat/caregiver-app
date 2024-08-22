@@ -53,10 +53,9 @@ class SpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
     private fun changeColorStatus() {
         if (viewModel.status.educational == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
-        if (viewModel.status.activity == 1) binding.line2.setBackgroundColor(Color.parseColor("#6db7d3"))
 
-        changeColorOfTaskImage(2, binding.constraintTask2, binding.imageTask3)
-        changeColorOfTaskImage(viewModel.status.activity, binding.constraintTask2, binding.imageTask2)
+        changeColorOfTaskImage(2, binding.constraintTask2, binding.imageTask2)
+        changeColorOfTaskImage(viewModel.status.behavioral, binding.constraintTask3, binding.imageTask3)
         changeColorOfTaskImage(viewModel.status.educational, binding.constraintTask1, binding.imageTask1)
     }
 

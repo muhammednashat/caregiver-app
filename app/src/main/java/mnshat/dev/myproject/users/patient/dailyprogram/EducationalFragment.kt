@@ -69,8 +69,8 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         if (viewModel.status.educational == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
 
         changeColorOfTaskImage(2, binding.constraintTask1, binding.imageTask1)
-        changeColorOfTaskImage(viewModel.status.activity, binding.constraintTask2, binding.imageTask2)
-        changeColorOfTaskImage(viewModel.status.spiritual, binding.constraintTask3, binding.imageTask3)
+        changeColorOfTaskImage(viewModel.status.spiritual, binding.constraintTask2, binding.imageTask2)
+        changeColorOfTaskImage(viewModel.status.behavioral, binding.constraintTask3, binding.imageTask3)
 
     }
 

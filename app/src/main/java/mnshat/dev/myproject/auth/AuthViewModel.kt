@@ -153,7 +153,7 @@ class AuthViewModel(
     }
 
 
-    fun storeDataLocally(sharedPreferences: SharedPreferencesManager) {
+    fun storeDataLocally() {
         sharedPreferences.storeString(TYPE_OF_USER, typeOfUser.value)
         sharedPreferences.storeString(USER_NAME, name.value)
         sharedPreferences.storeInt(AGE_GROUP, intAge.value)
@@ -161,6 +161,7 @@ class AuthViewModel(
         sharedPreferences.storeInt(DIALECT, 1)
         sharedPreferences.storeBoolean(HAS_PARTNER, false)
         sharedPreferences.storeBoolean(IS_LOGGED, true)
+        sharedPreferences.storeBoolean(RELIGION, true)
 
     }
 

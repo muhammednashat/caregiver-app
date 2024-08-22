@@ -96,7 +96,7 @@ open abstract class AuthBaseFragment<T : ViewDataBinding> : BaseFragment<T>() {
     private fun saveUserAdditionalInfo(registrationData: RegistrationData?) {
         FirebaseService.getToken { str ->
            _viewModel.token.value =   str
-            _viewModel.storeDataLocally(sharedPreferences)
+            _viewModel.storeDataLocally()
             sharedPreferences.storeBoolean(IS_SIGNING, true)
             navigateToActivity(  _viewModel.typeOfUser.value)
 
