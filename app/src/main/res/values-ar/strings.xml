@@ -248,6 +248,9 @@
     <string name="take_rest">راحة لمده %1$d ثوانى</string>
     <string name="hold_air">احبس الهواء لمده %1$d ثوانى</string>
     <string name="supplication_text">نص الذكر:</string>
+    <string name="change_question">تبديل السؤال</string>
+    <string name="suggested_questions">الأسئلة المقترحة</string>
+
 
 
 </resources>

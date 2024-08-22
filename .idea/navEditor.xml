@@ -772,6 +772,18 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="gratitudeFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-927" />
+                            <option name="y" value="-642" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="gratitudeListFragment">
                     <value>
                       <LayoutPositions>
@@ -795,12 +807,12 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_mainAzcarFragment_to_mainBreathFragment">
+                            <entry key="action_toolsFragment_to_mainBreathFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_mainAzcarFragment_to_mainSupplicationsFragment">
+                            <entry key="action_toolsFragment_to_mainSupplicationsFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

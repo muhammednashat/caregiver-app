@@ -10,7 +10,7 @@
         tools:layout="@layout/fragment_user_home" >
         <action
             android:id="@+id/action_patientHomeFragment_to_mainAzcarFragment"
-            app:destination="@id/mainAzcarFragment" />
+            app:destination="@id/toolsFragment" />
     </fragment>
 
     <fragment
@@ -37,16 +37,19 @@
         app:popUpTo="@id/profileFragment"
         app:popUpToInclusive="false" />
     <fragment
-        android:id="@+id/mainAzcarFragment"
+        android:id="@+id/toolsFragment"
         tools:layout="@layout/fragment_tools"
         android:name="mnshat.dev.myproject.users.patient.main.tools.ToolsFragment"
-        android:label="MainAzcarFragment" >
+        android:label="ToolsFragment">
         <action
-            android:id="@+id/action_mainAzcarFragment_to_mainSupplicationsFragment"
+            android:id="@+id/action_toolsFragment_to_mainSupplicationsFragment"
             app:destination="@id/mainSupplicationsFragment" />
         <action
-            android:id="@+id/action_mainAzcarFragment_to_mainBreathFragment"
+            android:id="@+id/action_toolsFragment_to_mainBreathFragment"
             app:destination="@id/mainBreathFragment" />
+        <action
+            android:id="@+id/action_toolsFragment_to_gratitudeFragment"
+            app:destination="@id/gratitudeFragment" />
     </fragment>
 
     <fragment
@@ -88,4 +91,9 @@
         android:name="mnshat.dev.myproject.users.patient.main.tools.breath.MainBreathFragment"
         android:label="fragment_main_breath"
         tools:layout="@layout/fragment_main_breath" />
+    <fragment
+        android:id="@+id/gratitudeFragment"
+        tools:layout="@layout/fragment_gratitude"
+        android:name="mnshat.dev.myproject.users.patient.main.tools.gratitude.GratitudeFragment"
+        android:label="GratitudeFragment" />
 </navigation>

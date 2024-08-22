@@ -7,6 +7,7 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentMainBreathBinding
 import mnshat.dev.myproject.factories.BreathViewModelFactory
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
+import mnshat.dev.myproject.util.ENGLISH_KEY
 
 
 class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
@@ -14,11 +15,18 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
     private lateinit var viewModel: BreathViewModel
     override fun initializeViews() {
         super.initializeViews()
+        intiBackgroundBasedOnLang()
         binding.remainingTimeFormat.text = getString(R.string.remaining_time_format,0,"ثواني متبقية")
     }
 
 
     override fun getLayout()= R.layout.fragment_main_breath
+    private fun intiBackgroundBasedOnLang() {
+        if (currentLang != ENGLISH_KEY) {
+            binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
+        }
+    }
+
 
 
     override fun setupClickListener() {
@@ -32,6 +40,9 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
                 ChooseDurationBreathFragment::class.java.name
             )
 
+        }
+        binding.icBack.setOnClickListener{
+            findNavController().popBackStack()
         }
 
         binding.finishExercise.setOnClickListener {

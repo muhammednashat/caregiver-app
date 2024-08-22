@@ -53,6 +53,11 @@ fun setLocale( lang:String? , context: Context){
     res?.updateConfiguration(conf, dm)
 }
 
+
+fun getGratitudeQuestionsList():List<String>{
+   return listOf("dfdffdfds" , "afdfdsf" , "fasfsdfsd")
+}
+
 fun getListHands()= listOf(
     R.drawable.image_hand1,
     R.drawable.image_hand2,
@@ -172,4 +177,7 @@ fun addDailyTasks(){
     for (x in 1..30) {
         db.collection("daily_programs").document("" + x).set(dayTask)
     }
+
+
+
 }

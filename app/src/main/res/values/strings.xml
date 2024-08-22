@@ -275,7 +275,7 @@
     <string name="finish_exercise">Finish exercise</string>
     <string name="starting_over">Starting over</string>
     <string name="duration_of_exercise">Duration of exercise</string>
-        <string name="remaining_time_format">%1$d \n%2$s</string>
+    <string name="remaining_time_format">%1$d \n%2$s</string>
     <string name="click_on_the_box_below_to_get_started">Click on the box below to get started</string>
     <string name="click_to_start">Click to start</string>
     <string name="would_you_like_to_repeat_the_exercise_again">Would you like to repeat the exercise again?</string>
@@ -285,5 +285,9 @@
     <string name="take_rest">Rest for  %1$d seconds</string>
     <string name="hold_air">Hold the air  for  %1$d seconds</string>
     <string name="supplication_text">Supplication text:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="change_question">Change Question</string>
+    <string name="suggested_questions">suggested Questions</string>
 
 </resources>

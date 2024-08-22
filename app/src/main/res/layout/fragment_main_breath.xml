@@ -18,16 +18,23 @@
         android:paddingBottom="@dimen/margin_large"
 
         >
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ic_back"
+            style="@style/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back_ios" />
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-           android:layout_margin="@dimen/margin_large"
+            android:layout_margin="@dimen/margin_large"
             android:background="@drawable/corner_four_dark_blue"
             android:backgroundTint="#c2dce6"
             android:padding="@dimen/margin_small"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
@@ -57,8 +64,8 @@
                 app:layout_constraintVertical_bias="0.509" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="22dp"
                 android:id="@+id/icon_chooseDuration"
+                android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_marginStart="@dimen/margin_large"
                 android:background="@drawable/circle_blue"

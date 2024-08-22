@@ -11,10 +11,14 @@ class ToolsFragment : BaseFragment<FragmentToolsBinding>() {
     override fun setupClickListener() {
 
         binding.imageSupplications.setOnClickListener{
-            findNavController().navigate(R.id.action_mainAzcarFragment_to_mainSupplicationsFragment)
+            findNavController().navigate(R.id.action_toolsFragment_to_mainSupplicationsFragment)
         }
         binding.imageBreath.setOnClickListener{
-            findNavController().navigate(R.id.action_mainAzcarFragment_to_mainBreathFragment)
+            findNavController().navigate(R.id.action_toolsFragment_to_mainBreathFragment)
+        }
+        binding.imageGratitude.setOnClickListener {
+            findNavController().navigate(R.id.action_toolsFragment_to_gratitudeFragment)
+
         }
 
     }
