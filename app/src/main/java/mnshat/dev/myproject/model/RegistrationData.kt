@@ -32,7 +32,7 @@ data class RegistrationData(
     var typeOfUser: String? = null,
     var codeUsed: Boolean? = null,
     var supports: List<String>? = null,
-    var gratitudeList: List<Gratitude>? = null,
+    var gratitudeList: MutableList<Gratitude>? = null,
     val permissions: Permissions? = null,
     var numberSupporters: Int? = null,
     var hasPartner: Boolean? = null,

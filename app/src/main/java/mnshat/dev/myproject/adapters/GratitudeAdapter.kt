@@ -8,7 +8,8 @@ import mnshat.dev.myproject.model.Gratitude
 
 
 class GratitudeAdapter(
-    private val gratitudeList: List<Gratitude>)
+    private val gratitudeList: List<Gratitude>, private val suggestedQuestion: List<String>
+)
     :
     RecyclerView.Adapter<GratitudeAdapter.GratitudeViewHolder>() {
 
@@ -28,7 +29,7 @@ class GratitudeAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(gratitude: Gratitude) {
-            binding.textViewQuestion.text = gratitude.question
+            binding.textViewQuestion.text = suggestedQuestion[gratitude.index]
             binding.textViewAnswer.text = gratitude.answer
         }
     }

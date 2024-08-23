@@ -12,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.R.string.have_you_had_the_opportunity_to_help_someone_new_how_do_you_feel_about_that
 import mnshat.dev.myproject.model.DayTask
 import mnshat.dev.myproject.model.Task
 
@@ -54,8 +55,13 @@ fun setLocale( lang:String? , context: Context){
 }
 
 
-fun getGratitudeQuestionsList():List<String>{
-   return listOf("dfdffdfds" , "afdfdsf" , "fasfsdfsd")
+fun getGratitudeQuestionsList(context: Context): List<String> {
+    return listOf(
+        context.getString(have_you_had_the_opportunity_to_help_someone_new_how_do_you_feel_about_that),
+        context.getString(R.string.what_is_the_good_thing_that_happened_to_you_this_week),
+        context.getString(R.string.what_is_the_nice_thing_someone_did_for_you_recently),
+        context.getString(R.string.who_is_the_person_who_is_always_with_you_and_how_do_you_feel_about_them),
+    )
 }
 
 fun getListHands()= listOf(

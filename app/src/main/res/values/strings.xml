@@ -285,9 +285,13 @@
     <string name="take_rest">Rest for  %1$d seconds</string>
     <string name="hold_air">Hold the air  for  %1$d seconds</string>
     <string name="supplication_text">Supplication text:</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="change_question">Change Question</string>
     <string name="suggested_questions">suggested Questions</string>
+    <string name="have_you_had_the_opportunity_to_help_someone_new_how_do_you_feel_about_that">Have you had the opportunity to help someone new? How do you feel about that?</string>
+    <string name="what_is_the_good_thing_that_happened_to_you_this_week">What is the good thing that happened to you this week?</string>
+    <string name="what_is_the_nice_thing_someone_did_for_you_recently">What is the nice thing someone did for you recently?</string>
+    <string name="who_is_the_person_who_is_always_with_you_and_how_do_you_feel_about_them">Who is the person who is always with you, and how do you feel about them?</string>
+    <string name="should_answer_question">Please answer the question</string>
+    <string name="your_answer_has_been_sent">Your answer has been sent</string>
 
 </resources>

@@ -15,7 +15,7 @@ import mnshat.dev.myproject.model.Duration
 class DurationAdapter(
     private val durations: List<Duration>,
     private var selectedPosition:Int,
-    private val onItemSelectedListener: OnItemSelectedListener) :
+   ) :
     RecyclerView.Adapter<DurationAdapter.ViewHolder>() {
 
 
@@ -51,7 +51,6 @@ class DurationAdapter(
             selectedPosition = holder.adapterPosition
             notifyItemChanged(selectedPosition)
 
-//            onItemSelectedListener.onItemSelected(selectedPosition)
 
         }
 

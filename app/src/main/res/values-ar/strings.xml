@@ -250,7 +250,12 @@
     <string name="supplication_text">نص الذكر:</string>
     <string name="change_question">تبديل السؤال</string>
     <string name="suggested_questions">الأسئلة المقترحة</string>
-
+    <string name="have_you_had_the_opportunity_to_help_someone_new_how_do_you_feel_about_that">هل أتاحت لك الفرصة لمساعدة شخص ما الجديد؟ وكيف تشعر تجاه ذلك؟</string>
+    <string name="what_is_the_good_thing_that_happened_to_you_this_week">ما هو الشيء الجيد الذي حدث لك هذا الأسبوع؟</string>
+    <string name="what_is_the_nice_thing_someone_did_for_you_recently">ما هو الشيء الجميل الذي فعله شخص ما من أجلك مؤخرًا؟</string>
+    <string name="who_is_the_person_who_is_always_with_you_and_how_do_you_feel_about_them">من هو الشخص المتواجد معك دائمًا، وما هو شعورك تجاهه؟</string>
+    <string name="should_answer_question">الرجاء إضافة رد على السؤال</string>
+    <string name="your_answer_has_been_sent">لقد تم إرسال إجابتك</string>
 
 
 </resources>

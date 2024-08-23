@@ -5,6 +5,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Gratitude(
-    val question: String = "",
+    val index: Int = 0,
     val answer: String = ""
 ) : Parcelable

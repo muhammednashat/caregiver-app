@@ -13,7 +13,7 @@ import mnshat.dev.myproject.util.ENGLISH_KEY
 
 
 class ChooseDurationBreathFragment :
-    BaseBottomSheetDialogFragment<FragmentChooseDurationBreathBinding>(),OnItemSelectedListener{
+    BaseBottomSheetDialogFragment<FragmentChooseDurationBreathBinding>(){
     private lateinit var viewModel: BreathViewModel
     private lateinit var adapter: DurationAdapter
 
@@ -53,7 +53,7 @@ class ChooseDurationBreathFragment :
     }
 
     private fun setUpRecyclerview(listOfDurations: List<Duration>, selectedPosition: Int) {
-         adapter = DurationAdapter(listOfDurations, selectedPosition, this)
+         adapter = DurationAdapter(listOfDurations, selectedPosition)
         binding.recyclerViewDurations.adapter= adapter
     }
 
@@ -63,9 +63,6 @@ class ChooseDurationBreathFragment :
         binding.lifecycleOwner = this
     }
 
-    override fun onItemSelected(index: Int) {
-//        viewModel.setSelectedPosition(index)
-    }
 
 
 

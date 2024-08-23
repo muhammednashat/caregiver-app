@@ -1,8 +1,0 @@
-package mnshat.dev.myproject.interfaces
-
-import mnshat.dev.myproject.model.Supplication
-
-interface ItemSuggestedGratitudeQuestionsClicked {
-
-    fun onItemClicked(text: String)
-}

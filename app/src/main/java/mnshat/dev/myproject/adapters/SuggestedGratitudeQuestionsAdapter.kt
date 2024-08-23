@@ -1,27 +1,23 @@
 package mnshat.dev.myproject.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.interfaces.ItemSuggestedGratitudeQuestionsClicked
-import mnshat.dev.myproject.interfaces.ItemSupplicationClicked
-import mnshat.dev.myproject.model.Supplication
 
 class SuggestedGratitudeQuestionsAdapter(
     private val items: List<String>,
-    private val itemSuggestedGratitudeQuestionsClicked: ItemSuggestedGratitudeQuestionsClicked
-
+    private var selectedPosition:Int,
 ) :
     RecyclerView.Adapter<SuggestedGratitudeQuestionsAdapter.ViewHolder>() {
 
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textName: TextView = itemView.findViewById(R.id.textName)
+        val textView: TextView = itemView.findViewById(R.id.textView)
 
     }
 
@@ -33,11 +29,25 @@ class SuggestedGratitudeQuestionsAdapter(
 
     }
 
+    fun getSelectedPosition()= selectedPosition
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
-        holder.textName.text = item
+
+        if (selectedPosition == position) {
+            holder.textView.setTextColor(Color.parseColor("#438fb3"))
+            holder.itemView.setBackgroundDrawable(holder.itemView.context.resources.getDrawable(R.drawable.corner_four_dark_blue))
+        } else {
+            holder.textView.setTextColor(Color.BLACK)
+            holder.itemView.setBackgroundDrawable(holder.itemView.context.resources.getDrawable(R.drawable.corner_four_gray))
+        }
+
+
+
+        holder.textView.text = item
         holder.itemView.setOnClickListener {
-            itemSuggestedGratitudeQuestionsClicked.onItemClicked(item)
+            notifyItemChanged(selectedPosition)
+            selectedPosition = holder.adapterPosition
+            notifyItemChanged(selectedPosition)
         }
     }
 
