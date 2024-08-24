@@ -102,7 +102,6 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
     private fun showPopupMenu(view: View) {
         val popupMenu = PopupMenu(requireActivity(), view)
         popupMenu.inflate(R.menu.settings_supplicaion_menu)
-
         popupMenu.setOnMenuItemClickListener { menuItem ->
             handleMenuItemClick(menuItem)
         }
@@ -115,17 +114,10 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
                 copyTextToClipboard(supplicationText)
                 true
             }
-            R.id.menu_modification -> {
-                true
-            }
-
-            R.id.menu_delete -> {
-                // Handle Delete action
-                true
-            }
             else -> false
     }
 }
+
     private fun showFullTextSupplicationDialog(supplicationText:String) {
         fullTextSupplicationDialog = Dialog(requireContext())
         fullTextSupplicationDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)

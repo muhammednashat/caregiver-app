@@ -79,8 +79,8 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/icShowFullSupplication"
                 android:layout_width="18dp"
-                android:layout_marginEnd="@dimen/margin_small"
                 android:layout_height="18dp"
+                android:layout_marginEnd="@dimen/margin_small"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -144,10 +144,10 @@
             android:id="@+id/handImageView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:scaleType="fitXY"
             android:onClick="@{ () -> viewModel.onHandClick()}"
+            android:scaleType="fitXY"
             android:src="@drawable/image_hand1"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout10"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -157,11 +157,12 @@
             android:id="@+id/constraintLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/corner_normal"
-            android:backgroundTint="#b9dae6"
-            android:padding="@dimen/padding_small"
+            android:background="@drawable/gradient_orange"
+
             android:onClick="@{() -> viewModel.resetCounter()}"
+            android:padding="@dimen/padding_small"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -172,7 +173,7 @@
                 android:layout_margin="@dimen/margin_medium"
                 android:gravity="center"
                 android:text="تصفير العداد"
-                android:textColor="#1f1f1f"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -185,6 +186,7 @@
                 android:layout_height="24dp"
                 android:layout_marginStart="@dimen/margin_medium"
                 android:src="@drawable/ic_refresh2"
+                android:tint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -197,6 +199,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/gradient_orange"
             android:padding="@dimen/padding_small"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 

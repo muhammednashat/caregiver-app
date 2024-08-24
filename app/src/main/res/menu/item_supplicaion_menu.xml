@@ -3,9 +3,15 @@
 
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item
+        android:id="@+id/menu_modification"
+        android:title="@string/modification" />
 
     <item
         android:id="@+id/menu_sharing"
         android:title="@string/sharing" />
 
+    <item
+        android:id="@+id/menu_delete"
+        android:title="@string/delete" />
 </menu>

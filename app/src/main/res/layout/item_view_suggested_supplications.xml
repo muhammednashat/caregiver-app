@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/margin_medium"
-    android:layout_marginBottom="@dimen/margin_large"
+    android:layout_marginBottom="@dimen/margin_medium"
     android:background="@drawable/corner_four_dark_blue"
     android:backgroundTint="#d8e9ef">
 

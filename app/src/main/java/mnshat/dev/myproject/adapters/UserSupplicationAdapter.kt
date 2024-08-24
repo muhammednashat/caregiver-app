@@ -34,7 +34,7 @@ class UserSupplicationAdapter(
         holder.textName.text = item.name
         holder.textNumber.text = item.number.toString()
         holder.icon.setOnClickListener {
-            itemSupplicationClicked.onItemClicked(item)
+            itemSupplicationClicked.onItemClicked(it,item)
         }
     }
 

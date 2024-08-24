@@ -122,7 +122,7 @@ class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsB
         }
     }
 
-    override fun onItemClicked(supplication: Supplication) {
+    override fun onItemClicked(view:View,supplication: Supplication) {
         val action = MainSupplicationsFragmentDirections
             .actionMainSupplicationsFragmentToSupplicationsFragment(supplication)
         findNavController().navigate(action)

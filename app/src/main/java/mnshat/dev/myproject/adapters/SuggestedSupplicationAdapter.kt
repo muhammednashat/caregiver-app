@@ -35,7 +35,7 @@ class SuggestedSupplicationAdapter(
         val item = items[position]
         holder.textName.text = item.name
         holder.icon.setOnClickListener {
-            itemSupplicationClicked.onItemClicked(item)
+            itemSupplicationClicked.onItemClicked(it,item)
         }
     }
 

@@ -1,6 +1,9 @@
 package mnshat.dev.myproject.users.patient.main.tools.supplications
 
 import android.os.Bundle
+import android.view.MenuItem
+import android.view.View
+import android.widget.PopupMenu
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -88,10 +91,32 @@ class UserSupplicationsFragment : BasePatientFragment<FragmentUserSupplicationsB
         retrieveSupplicationsData()
     }
 
-    override fun onItemClicked(supplication: Supplication) {
-//        val action = MainSupplicationsFragmentDirections
-//            .actionMainSupplicationsFragmentToSupplicationsFragment(supplication)
-//        findNavController().navigate(action)
+    override fun onItemClicked(view: View,supplication: Supplication) {
+        showPopupMenu(view,supplication)
+    }
+    private fun showPopupMenu(view: View,supplication:Supplication) {
+        val popupMenu = PopupMenu(requireActivity(), view)
+        popupMenu.inflate(R.menu.item_supplicaion_menu)
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            handleMenuItemClick(menuItem,supplication)
+        }
+        popupMenu.show()
     }
 
+    private fun handleMenuItemClick(menuItem: MenuItem ,supplication:Supplication ): Boolean {
+        return when (menuItem.itemId) {
+            R.id.menu_modification -> {
+                true
+            }
+            R.id.menu_sharing -> {
+                copyTextToClipboard(supplication.name!!)
+                true
+            }
+            R.id.menu_delete -> {
+                true
+            }
+            else -> false
+        }
+
+}
 }
