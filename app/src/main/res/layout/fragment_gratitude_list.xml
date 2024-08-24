@@ -45,13 +45,11 @@
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/supporters"
+            android:id="@+id/gratitudeList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/margin_medium"
-            android:visibility="gone"
-            android:layout_marginStart="@dimen/margin_super"
-            android:layout_marginEnd="@dimen/margin_super"
+            android:layout_margin="@dimen/margin_super"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -67,7 +65,7 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:listitem="@layout/item_view_supporter" />
+                tools:listitem="@layout/item_gratitude" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -82,7 +80,7 @@
             app:layout_constraintTop_toBottomOf="@+id/line">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_no_supports"
+                android:id="@+id/img_no_gratitude"
                 android:layout_width="338dp"
                 android:layout_height="227dp"
                 android:layout_marginTop="48dp"
@@ -99,37 +97,26 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_large"
                 android:gravity="center"
-                android:text="@string/no_supporters_text"
+                android:text="@string/no_gratitude_text"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_no_supports" />
-
-            <TextView
-                android:id="@+id/textViewe2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/add_supporter_instruction"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                app:layout_constraintTop_toBottomOf="@+id/img_no_gratitude" />
 
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_add_gratitude"
                 style="@style/button_large"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginTop="116dp"
                 android:backgroundTint="@color/shade_orange"
                 android:paddingStart="50dp"
                 android:paddingEnd="50dp"
-                android:text="@string/add_supporter"
-                android:id="@+id/bt_addSupporter"
+                android:text="@string/add_gratitude"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewe2" />
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,7 +35,11 @@
         android:name="mnshat.dev.myproject.users.patient.main.GratitudeListFragment"
         android:label="GratitudeListFragment"
         app:popUpTo="@id/profileFragment"
-        app:popUpToInclusive="false" />
+        app:popUpToInclusive="false" >
+        <action
+            android:id="@+id/action_gratitudeListFragment_to_gratitudeFragment"
+            app:destination="@id/gratitudeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/toolsFragment"
         tools:layout="@layout/fragment_tools"

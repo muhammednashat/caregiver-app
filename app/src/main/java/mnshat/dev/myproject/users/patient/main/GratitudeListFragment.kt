@@ -13,33 +13,40 @@ class GratitudeListFragment : BasePatientFragment<FragmentGratitudeListBinding>(
 
 
     override fun getLayout() = R.layout.fragment_gratitude_list
+
+
     override fun setupClickListener() {
+        binding.btnAddGratitude.setOnClickListener {
+         findNavController().navigate(R.id.action_gratitudeListFragment_to_gratitudeFragment)
+        }
         binding.icBack.setOnClickListener {
          findNavController().popBackStack()
         }
     }
 
     override fun initializeViews() {
-        showProgressDialog()
-        FirebaseService.retrieveUser(null, FirebaseService.userEmail!!) { user ->
-            user?.gratitudeList?.let {
-                val adapter = GratitudeAdapter(it, getGratitudeQuestionsList(requireActivity()))
-                binding.recyclerViewGratitude.adapter = adapter
-                dismissProgressDialog()
-            } ?: showView()
-
-            user?.let {
-
-            }
-        }
+        retrieveGratitudeList()
         if (currentLang != ENGLISH_KEY) {
             binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
         }
 
     }
 
-    private fun showView() {
-        dismissProgressDialog()
+    private fun retrieveGratitudeList(){
+        showProgressDialog()
+        FirebaseService.retrieveUser(null, FirebaseService.userEmail!!) { user ->
+            user?.gratitudeList?.let {
+                val adapter = GratitudeAdapter(it, getGratitudeQuestionsList(requireActivity()))
+                binding.recyclerViewGratitude.adapter = adapter
+            } ?: showNoItemsView()
+
+            dismissProgressDialog()
+
+        }
+    }
+
+    private fun showNoItemsView() {
+        binding.gratitudeList.visibility = View.GONE
         binding.noItems.visibility = View.VISIBLE
     }
 }

@@ -293,5 +293,11 @@
     <string name="who_is_the_person_who_is_always_with_you_and_how_do_you_feel_about_them">Who is the person who is always with you, and how do you feel about them?</string>
     <string name="should_answer_question">Please answer the question</string>
     <string name="your_answer_has_been_sent">Your answer has been sent</string>
+    <string name="no_gratitude_text">You have not added any gratitude yet</string>
+    <string name="add_gratitude">Add gratitude</string>
+    <string name="modification">Modification</string>
+    <string name="sharing">Sharing</string>
+    <string name="delete">Delete</string>
+    <string name="copied">copied</string>
 
 </resources>

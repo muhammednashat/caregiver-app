@@ -4,8 +4,11 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.ViewGroup
 import android.view.Window
+import android.view.View
+import android.widget.PopupMenu
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import mnshat.dev.myproject.R
@@ -61,6 +64,8 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
     override fun setupClickListener() {
         super.setupClickListener()
 
+
+
         binding.imageViewHand.setOnClickListener{
             changeFocusing(true)
             viewModel.setListImage(getListHands())
@@ -69,6 +74,9 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
         }
         binding.icShowFullSupplication.setOnClickListener {
             showFullTextSupplicationDialog(supplicationText)
+        }
+        binding.icMore.setOnClickListener {
+            showPopupMenu(it)
         }
 
         binding.imageViewSebha.setOnClickListener{
@@ -80,7 +88,7 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
 
     }
 
-    fun changeFocusing(isHand:Boolean){
+    private fun changeFocusing(isHand:Boolean){
     if (isHand){
         binding.imageViewHand.setBackgroundDrawable(resources.getDrawable(R.drawable.circle_blue_border_blue))
         binding.imageViewSebha.setBackgroundDrawable(resources.getDrawable(R.drawable.circle_blue2))
@@ -91,10 +99,34 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
     }
     }
 
+    private fun showPopupMenu(view: View) {
+        val popupMenu = PopupMenu(requireActivity(), view)
+        popupMenu.inflate(R.menu.settings_supplicaion_menu)
+
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            handleMenuItemClick(menuItem)
+        }
+        popupMenu.show()
+    }
+
+    private fun handleMenuItemClick(menuItem: MenuItem): Boolean {
+        return when (menuItem.itemId) {
+            R.id.menu_sharing -> {
+                copyTextToClipboard(supplicationText)
+                true
+            }
+            R.id.menu_modification -> {
+                true
+            }
+
+            R.id.menu_delete -> {
+                // Handle Delete action
+                true
+            }
+            else -> false
+    }
+}
     private fun showFullTextSupplicationDialog(supplicationText:String) {
-//        if (fullTextSupplicationDialog.ownerActivity == null){
-//            fullTextSupplicationDialog = Dialog(requireContext())
-//        }
         fullTextSupplicationDialog = Dialog(requireContext())
         fullTextSupplicationDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
 

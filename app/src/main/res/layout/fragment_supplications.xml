@@ -17,7 +17,7 @@
 
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ic_close"
+            android:id="@+id/ic_more"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/circle_blue"

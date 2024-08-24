@@ -1,6 +1,8 @@
 package mnshat.dev.myproject.base
 
 import android.app.Dialog
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -60,7 +62,12 @@ open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
         progressDialog = Dialog(requireContext())
     }
 
-
+    fun copyTextToClipboard( text: String) {
+        val clipboard = context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText("Copied Text", text)
+        clipboard.setPrimaryClip(clip)
+        showToast(getString(R.string.copied))
+    }
     fun getTextAge( age: Int?):String? {
       return  when(age){
             1 ->  getString(R.string.young_adulthood)

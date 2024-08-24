@@ -256,6 +256,12 @@
     <string name="who_is_the_person_who_is_always_with_you_and_how_do_you_feel_about_them">من هو الشخص المتواجد معك دائمًا، وما هو شعورك تجاهه؟</string>
     <string name="should_answer_question">الرجاء إضافة رد على السؤال</string>
     <string name="your_answer_has_been_sent">لقد تم إرسال إجابتك</string>
+    <string name="no_gratitude_text">لم تقم بإضافة اى امنتان حتى الان</string>
+    <string name="add_gratitude">إضافة امتنان</string>
+    <string name="modification">تعديل</string>
+    <string name="sharing">مشاركة</string>
+    <string name="delete">حذف</string>
+    <string name="copied">تم النسخ</string>
 
 
 </resources>
