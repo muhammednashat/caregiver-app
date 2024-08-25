@@ -20,7 +20,7 @@ class SpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         viewModel.currentTask.let {
             viewModel.listOfTasks = it.dayTask?.spiritual as List<Task>
             if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
-            getTaskFromList(viewModel.status.currentIndexBehavior!!, 2)
+            getTaskFromList(viewModel.status.currentIndexSpiritual!!, 2)
             changeColorStatus()
         }
     }
@@ -44,8 +44,8 @@ class SpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
         }
         binding.btnRecommend.setOnClickListener {
-            val currentIndex = getNextTask(viewModel.status.currentIndexBehavior!!, 3)
-            viewModel.status.currentIndexBehavior = currentIndex
+            val currentIndex = getNextTask(viewModel.status.currentIndexSpiritual!!, 3)
+            viewModel.status.currentIndexSpiritual = currentIndex
             viewModel.updateCurrentTaskLocally()
         }
     }

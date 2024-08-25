@@ -80,7 +80,7 @@ class BreathViewModel(
 
 
     private fun startCountdown(selectedDurationInMillis: Long) {
-        counter++
+        counter++  // counter = counter + 1  counter=3
         _progressState.value =  selectedDurationInMillis
         countdownTimer?.cancel()
 

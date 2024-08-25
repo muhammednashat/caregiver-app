@@ -39,7 +39,7 @@ class SupportersFragment : BaseSupporterFragment<FragmentSupportersBinding>() {
                     FirebaseService.retrieveUsersByEmails(it.supports){
                         it?.let {
                             log("${it.toString()} ")
-                adapter.submitList(it)
+                 adapter.submitList(it)
                         }
 
                     }

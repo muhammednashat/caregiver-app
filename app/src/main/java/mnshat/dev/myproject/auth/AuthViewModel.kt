@@ -161,7 +161,7 @@ class AuthViewModel(
         sharedPreferences.storeInt(DIALECT, 1)
         sharedPreferences.storeBoolean(HAS_PARTNER, false)
         sharedPreferences.storeBoolean(IS_LOGGED, true)
-        sharedPreferences.storeBoolean(RELIGION, true)
+//        sharedPreferences.storeBoolean(RELIGION, true)
 
     }
 
