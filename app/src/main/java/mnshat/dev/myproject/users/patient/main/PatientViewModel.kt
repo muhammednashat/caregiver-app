@@ -21,6 +21,9 @@ open class PatientViewModel(
     private var _continueClick = MutableLiveData<Boolean>()
     val continueClick:LiveData<Boolean> get()= _continueClick
 
+    private var _educationalContentClicked = MutableLiveData<Boolean>()
+    val educationalContentClicked:LiveData<Boolean> get()= _educationalContentClicked
+
 
     fun onContinueClick() {
         _continueClick.value = true
@@ -29,10 +32,16 @@ open class PatientViewModel(
     fun onToolsClick() {
         _toolsClick.value = true
     }
+    fun onEducationalContentClicked() {
+        _educationalContentClicked.value = true
+    }
 
 
     fun restToolsClick() {
         _toolsClick.value = false
+    }
+    fun restEducationalContentClicked() {
+        _educationalContentClicked.value = false
     }
     fun restContinueClick() {
         _continueClick.value = false

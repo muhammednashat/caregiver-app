@@ -283,6 +283,8 @@
             android:background="@drawable/corner_large"
             android:backgroundTint="@color/white"
             android:padding="@dimen/margin_medium"
+            android:onClick="@{() -> viewModel.onEducationalContentClicked()}"
+
             app:layout_constraintBottom_toTopOf="@+id/root_tools"
             app:layout_constraintEnd_toStartOf="@+id/root_track_mood_status"
             app:layout_constraintHorizontal_bias="0.5"

@@ -64,6 +64,13 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
             }
         }
 
+        viewModel.educationalContentClicked.observe(viewLifecycleOwner){
+            if (it){
+                findNavController().navigate(R.id.action_patientHomeFragment_to_educationalContentFragment)
+                viewModel.restEducationalContentClicked()
+            }
+        }
+
     }
 
 
