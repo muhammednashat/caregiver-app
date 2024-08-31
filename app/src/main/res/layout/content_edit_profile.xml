@@ -162,39 +162,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/preferred_dialect"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_large"
-            android:background="@drawable/corner_four_light_blue"
-            android:backgroundTint="@color/light_gray"
-            android:orientation="horizontal"
-            android:padding="@dimen/padding_medium"
-            >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="@string/dialect"
-                />
-
-            <TextView
-                android:id="@+id/text_dialect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_medium"
-                android:layout_marginEnd="@dimen/margin_medium"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_medium" />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_forward_ios"
-                app:tint="@color/medium_gray" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

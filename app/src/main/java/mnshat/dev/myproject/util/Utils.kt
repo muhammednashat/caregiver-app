@@ -13,6 +13,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.R.string.have_you_had_the_opportunity_to_help_someone_new_how_do_you_feel_about_that
+import mnshat.dev.myproject.model.Content
 import mnshat.dev.myproject.model.DayTask
 import mnshat.dev.myproject.model.Task
 
@@ -107,7 +108,7 @@ fun getListSebha()= listOf(
     R.drawable.image_sebha22,
 )
 
-fun addDailyTasks(){
+fun addFaceDailyTasks(){
     val db = Firebase.firestore
     val dayTask = DayTask()
 
@@ -186,4 +187,26 @@ fun addDailyTasks(){
 
 
 
+}
+
+
+
+
+fun getFakeContent(): Content {
+
+      return  Content(
+            id = 1,
+            date = "2024-08-30",
+            category = "anxiety",
+            arText = " نص  عن القلق ",
+            enText = "text about anxiety.",
+            arTitle = "القلق",
+            enTitle = "Anxiety",
+            type = "article",
+            rate = 3,
+            viewCount = 120,
+            imageURL ="https://firebasestorage.googleapis.com/v0/b/myproject-18932.appspot.com/o/images%2F71GNZ%2Bf6zyL._AC_SL1500_.jpg?alt=media&token=bfeb8c1b-0e47-420a-8cb7-3161aab2c1d6",
+            videoURL = "https://firebasestorage.googleapis.com/v0/b/myproject-18932.appspot.com/o/videos%2F3%20_Binary%20Search%20-%20Recursive%20implementation(720P_HD).mp4?alt=media&token=78e30d71-1b51-4ff6-9d0b-de3f6365aff1",
+            audioURL = "https://firebasestorage.googleapis.com/v0/b/myproject-18932.appspot.com/o/audios%2F%D8%B9%D9%84%D9%89%20%D9%82%D8%AF%D8%B1%20%D8%A7%D9%87%D9%84%20%D8%A7%D9%84%D8%B9%D8%B2%D9%85.mp3?alt=media&token=bf6e8bbc-a897-4f04-ae55-5b4922aaa1c2"
+      )
 }

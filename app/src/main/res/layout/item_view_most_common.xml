@@ -34,7 +34,7 @@
                 android:layout_height="24dp"
                 android:layout_marginBottom="@dimen/margin_small"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_video"
+                android:src="@drawable/ic_video2"
                 app:layout_constraintBottom_toTopOf="@+id/textView38"
                 app:layout_constraintStart_toStartOf="@+id/textView38" />
 

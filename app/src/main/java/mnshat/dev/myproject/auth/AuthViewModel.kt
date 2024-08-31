@@ -173,7 +173,6 @@ class AuthViewModel(
             gender = intGender.value,
             ageGroup = intAge.value,
             token = token.value,
-            dialect = 1,
             invitationCode = invitationCode.value,
             baseCode = invitationCode.value,
             typeOfUser = typeOfUser.value ?: "",

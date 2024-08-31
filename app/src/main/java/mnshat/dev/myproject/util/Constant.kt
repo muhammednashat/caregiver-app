@@ -40,3 +40,7 @@ const val STATUS = "status"
 const val CURRENT_TASK = "CurrentTask"
 const val DAY_TASK = "dayTask"
 const val GRATITUDE_LIST = "gratitudeList"
+
+const val ARTICLE = "article"
+const val VIDEO = "video"
+const val AUDIO = "audio"

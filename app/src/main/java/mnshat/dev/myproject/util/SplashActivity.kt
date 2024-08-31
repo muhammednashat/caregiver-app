@@ -12,7 +12,6 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.auth.AuthActivity
 import mnshat.dev.myproject.base.BaseActivity
 import mnshat.dev.myproject.databinding.ActivitySplashBinding
-import mnshat.dev.myproject.users.admin.AdminScreenActivity
 import mnshat.dev.myproject.users.caregiver.CaregiverScreenActivity
 import mnshat.dev.myproject.users.patient.main.UserScreensActivity
 import java.util.Locale
@@ -52,9 +51,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
               CAREGIVER -> {
                   startActivity(Intent(this, CaregiverScreenActivity::class.java))
               }
-              else -> {
-                  startActivity(Intent(this, AdminScreenActivity::class.java))
-              }
+
           }
             finish()
     }

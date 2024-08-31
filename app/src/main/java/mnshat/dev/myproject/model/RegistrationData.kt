@@ -26,7 +26,6 @@ data class RegistrationData(
     var password: String? = null,
     var gender: Int? = null,
     var ageGroup: Int? = null,
-    var dialect: Int? = null,
     var token: String? = null,
     var invitationCode: String? = null,
     var typeOfUser: String? = null,
@@ -49,7 +48,6 @@ data class RegistrationData(
         sharedPreferences.storeBoolean(HAS_PARTNER, hasPartner)
         sharedPreferences.storeInt(GENDER, gender)
         sharedPreferences.storeInt(AGE_GROUP, ageGroup)
-        sharedPreferences.storeInt(DIALECT, dialect)
         sharedPreferences.storeBoolean(IS_LOGGED, true)
 
         if (permissions != null) {

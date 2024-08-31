@@ -25,7 +25,6 @@ class EditProfileFragment : BaseEditProfileFragment<FragmentEditProfileBinding>(
         binding.metadata.textName.text = sharedPreferences.getString(USER_NAME)
         binding.metadata.textAge.text = getTextAge(sharedPreferences.getInt(AGE_GROUP))
         binding.metadata.textGender.text = getTextGender(sharedPreferences.getInt(GENDER))
-        binding.metadata.textDialect.text = getTextDialect(sharedPreferences.getInt(DIALECT))
     }
 
     override fun getLayout() = R.layout.fragment_edit_profile
@@ -60,9 +59,6 @@ class EditProfileFragment : BaseEditProfileFragment<FragmentEditProfileBinding>(
         binding.metadata.gender.setOnClickListener {
             findNavController().navigate(R.id.action_editProfileFragment_to_editGenderFragment)
 
-        }
-        binding.metadata.preferredDialect.setOnClickListener {
-            findNavController().navigate(R.id.action_editProfileFragment_to_editDialectFragment)
         }
 
     }
