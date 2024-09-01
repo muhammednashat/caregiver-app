@@ -11,8 +11,6 @@ data class Task(
     var link: String? = null,
     var arTitle: String? = null,
     var enTitle: String? = null,
-
-
     var arDescription: String? = null,
     var enDescription: String? = null,
     var gender: Int? = null,

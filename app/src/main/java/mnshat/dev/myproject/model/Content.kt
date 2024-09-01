@@ -18,5 +18,6 @@ data class Content(
     val imageURL: String? = null,
     val videoURL: String? = null,
     val audioURL: String? = null,
+    var religion: Boolean? = null,
     ) : Parcelable {
 }
