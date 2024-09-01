@@ -8,14 +8,11 @@ import android.net.NetworkCapabilities
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.R.string.have_you_had_the_opportunity_to_help_someone_new_how_do_you_feel_about_that
-import mnshat.dev.myproject.model.Content
-import mnshat.dev.myproject.model.DayTask
-import mnshat.dev.myproject.model.Task
 
 fun isInternetAvailable(context: Context): Boolean {
     val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -55,7 +52,9 @@ fun setLocale( lang:String? , context: Context){
     res?.updateConfiguration(conf, dm)
 }
 
-
+fun loadImage(context:Context,imageURL: String?,imageView: ImageView) {
+    Glide.with(context).load(imageURL).into(imageView)
+}
 fun getGratitudeQuestionsList(context: Context): List<String> {
     return listOf(
         context.getString(have_you_had_the_opportunity_to_help_someone_new_how_do_you_feel_about_that),

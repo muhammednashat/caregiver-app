@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Content(
+data class LibraryContent(
     val id: Int? = null,
     val date: String? = null,
     val category: String? = null,

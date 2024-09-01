@@ -3,12 +3,13 @@ package mnshat.dev.myproject.util
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import mnshat.dev.myproject.model.Content
+import mnshat.dev.myproject.firebase.FirebaseService.libraryContents
+import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.model.DayTask
 import mnshat.dev.myproject.model.Task
 
-fun getFakeContent(id:Int): Content {
-    return  Content(
+fun getFakeContent(id:Int): LibraryContent {
+    return  LibraryContent(
         id = id,
         date = "2024-08-30",
         category = "anxiety",
@@ -26,8 +27,7 @@ fun getFakeContent(id:Int): Content {
 }
 
 fun createContentFake(){
-    val database = FirebaseDatabase.getInstance()
-    val myRef = database.getReference(EDUCATIONAL_CONTENTS)
+
 
     val contentList = listOf(
         getFakeContent(0),
@@ -56,7 +56,7 @@ fun createContentFake(){
         getFakeContent(23)
     )
 
-    myRef.setValue(contentList)
+    libraryContents.setValue(contentList)
         .addOnSuccessListener {
         }
         .addOnFailureListener {

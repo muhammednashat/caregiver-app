@@ -9,23 +9,26 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessaging
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.model.CurrentTask
+import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.model.RegistrationData
-import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.util.CAREGIVER
+import mnshat.dev.myproject.util.DAILY_PROGRAM_STATES
 import mnshat.dev.myproject.util.EMAIL
 import mnshat.dev.myproject.util.INVITATION_CODE
+import mnshat.dev.myproject.util.LIBRARY_CONTENTS
+import mnshat.dev.myproject.util.USER_PROFILES
 
 object FirebaseService {
 
     private val firebaseDatabase = FirebaseDatabase.getInstance()
 
-    val usersDatabase = firebaseDatabase.getReference("profiles_users")
-    val tasksUsersDatabase = firebaseDatabase.getReference("daily_program_states")
+    val userProfiles = firebaseDatabase.getReference(USER_PROFILES)
+    val dailyProgramStates = firebaseDatabase.getReference(DAILY_PROGRAM_STATES)
+     val libraryContents = firebaseDatabase.getReference(LIBRARY_CONTENTS)
+
 
     private val fireAuth = FirebaseAuth.getInstance()
     private val currentUser = fireAuth.currentUser
@@ -72,9 +75,9 @@ object FirebaseService {
 
     fun retrieveUser(typeOfUser: String?, string: String?, callback: (RegistrationData?) -> Unit) {
         val query = if (typeOfUser == CAREGIVER)
-            usersDatabase.orderByChild(INVITATION_CODE).equalTo(string)
+            userProfiles.orderByChild(INVITATION_CODE).equalTo(string)
         else
-            usersDatabase.orderByChild(EMAIL).equalTo(string)
+            userProfiles.orderByChild(EMAIL).equalTo(string)
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -97,7 +100,7 @@ object FirebaseService {
 
     fun retrieveUsersByEmails(emails: List<String>?, callback: (List<RegistrationData>?) -> Unit) {
         emails?.let {
-            val query = usersDatabase.orderByChild(EMAIL).apply {
+            val query = userProfiles.orderByChild(EMAIL).apply {
                 emails?.forEach { email ->
                     equalTo(email)
                 }
@@ -163,7 +166,7 @@ object FirebaseService {
     }
 
     fun saveUserAdditionalInfo(registrationData: RegistrationData) {
-        usersDatabase.child(registrationData.id!!).setValue(registrationData)
+        userProfiles.child(registrationData.id!!).setValue(registrationData)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                 } else {
@@ -178,12 +181,12 @@ object FirebaseService {
         callBack: (Boolean) -> Unit
     ) {
         if (userId != null) {
-            usersDatabase.child(userId).addListenerForSingleValueEvent(object :
+            userProfiles.child(userId).addListenerForSingleValueEvent(object :
                 ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
 
-                        usersDatabase.child(userId).updateChildren(map)
+                        userProfiles.child(userId).updateChildren(map)
                             .addOnCompleteListener { task ->
                                 callBack(task.isSuccessful)
                             }
@@ -198,11 +201,11 @@ object FirebaseService {
 
     fun updateTasksUser(userId: String?, map: Map<String, Any?>, callBack: (Boolean) -> Unit) {
         if (userId != null) {
-            tasksUsersDatabase.child(userId).addListenerForSingleValueEvent(object :
+            dailyProgramStates.child(userId).addListenerForSingleValueEvent(object :
                 ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
-                        tasksUsersDatabase.child(userId).updateChildren(map)
+                        dailyProgramStates.child(userId).updateChildren(map)
                             .addOnCompleteListener { task ->
                                 callBack(task.isSuccessful)
                             }
@@ -234,13 +237,13 @@ object FirebaseService {
             }
         }
 
-        usersDatabase.child(userId!!).addValueEventListener(userListener)
+        userProfiles.child(userId!!).addValueEventListener(userListener)
 
     }
 
     fun retrieveCurrentTasksForUser(userEmail: String, callBack: (CurrentTask?) -> Unit) {
 
-        val query = tasksUsersDatabase.orderByChild(EMAIL).equalTo(userEmail)
+        val query = dailyProgramStates.orderByChild(EMAIL).equalTo(userEmail)
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -275,7 +278,7 @@ object FirebaseService {
 
 
         if (userId != null) {
-            tasksUsersDatabase.child(userId).setValue(
+            dailyProgramStates.child(userId).setValue(
                 currentTask
             )
                 .addOnCompleteListener { task ->
@@ -288,6 +291,27 @@ object FirebaseService {
         } else {
         }
 
+    }
+
+    fun getLibraryContent(onDataFetched: (List<LibraryContent>?) -> Unit) {
+
+        libraryContents.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val libraryContentList = mutableListOf<LibraryContent>()
+                for (contentSnapshot in snapshot.children) {
+                    val libraryContent = contentSnapshot.getValue(LibraryContent::class.java)
+                    libraryContent?.let {
+                        libraryContentList.add(it)
+                    }
+                }
+                onDataFetched(libraryContentList)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                onDataFetched(null)
+                println("Failed to retrieve data: ${error.message}")
+            }
+        })
     }
 
 }

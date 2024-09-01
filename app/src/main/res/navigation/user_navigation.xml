@@ -105,7 +105,7 @@
         android:label="GratitudeFragment" />
     <fragment
         android:id="@+id/educationalContentFragment"
-        android:name="mnshat.dev.myproject.users.patient.educationalcontent.EducationalContentFragment"
+        android:name="mnshat.dev.myproject.users.patient.libraraycontent.LibraryContentFragment"
         android:label="fragment_educational_content"
         tools:layout="@layout/fragment_educational_content" />
 </navigation>

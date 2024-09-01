@@ -3,8 +3,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="200dp"
+    android:layout_marginEnd="@dimen/margin_large"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="44dp"
     android:layout_height="200dp">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/appCompatImageView5"
+                android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
@@ -29,24 +29,16 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginBottom="@dimen/margin_small"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_video2"
-                app:layout_constraintBottom_toTopOf="@+id/textView38"
-                app:layout_constraintStart_toStartOf="@+id/textView38" />
 
             <TextView
-                android:id="@+id/textView38"
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_large"
               android:textColor="@color/white"
                 android:text="كل ما تحتاج معرفته حول الاكتئاب"
                 android:textSize="@dimen/text_size_medium"
-                app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView5"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent" />

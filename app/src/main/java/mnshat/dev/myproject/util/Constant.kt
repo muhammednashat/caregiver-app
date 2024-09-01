@@ -45,4 +45,6 @@ const val ARTICLE = "article"
 const val VIDEO = "video"
 const val AUDIO = "audio"
 
-const val EDUCATIONAL_CONTENTS = "educational_contents"
+const val LIBRARY_CONTENTS = "library_contents"
+const val USER_PROFILES = "user_profiles"
+const val DAILY_PROGRAM_STATES = "daily_program_states"

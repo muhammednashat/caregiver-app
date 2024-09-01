@@ -86,7 +86,7 @@ class AddSupporterFragment : BaseSupporterFragment<FragmentAddSupporterBinding>(
 
     private fun updateCode(userId: String?, code: String) {
         if (userId != null) {
-            FirebaseService.usersDatabase.child(userId).addListenerForSingleValueEvent(object :
+            FirebaseService.userProfiles.child(userId).addListenerForSingleValueEvent(object :
                 ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
@@ -95,7 +95,7 @@ class AddSupporterFragment : BaseSupporterFragment<FragmentAddSupporterBinding>(
                             BASE_CODE to code,
                             CODE_USED to false,
                         )
-                        FirebaseService.usersDatabase.child(userId).updateChildren(updateData)
+                        FirebaseService.userProfiles.child(userId).updateChildren(updateData)
                             .addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
                                     showToast(getString(R.string.new_code_created_successfully))

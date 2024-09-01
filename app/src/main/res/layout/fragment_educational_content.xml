@@ -64,6 +64,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/show_all"
                 android:textColor="#f4855e"
+                android:textStyle="bold"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,6 +74,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
                 android:text="@string/most_common"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -79,7 +83,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerMostCommon"
                 android:layout_width="match_parent"
-                android:layout_height="133dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="@dimen/margin_medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -90,6 +95,8 @@
                 android:id="@+id/textView40"
                 android:layout_width="wrap_content"
               android:layout_marginTop="@dimen/margin_large"
+                android:textColor="@color/black"
+                android:textStyle="bold"
                 android:layout_height="wrap_content"
                 android:text="@string/customized_for_you"
                 app:layout_constraintStart_toStartOf="parent"
@@ -101,14 +108,17 @@
                 android:layout_height="wrap_content"
                 android:text="@string/show_all"
                 android:textColor="#f4855e"
+                android:textStyle="bold"
+
                 app:layout_constraintBottom_toBottomOf="@+id/textView40"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView40" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerMostCustomized"
+                android:id="@+id/recyclerCustomized"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginTop="@dimen/margin_medium"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
