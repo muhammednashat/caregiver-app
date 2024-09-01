@@ -196,9 +196,6 @@ class AuthViewModel(
             emailPartner = emailPartner,
             permissions = Permissions(),
             status = 1
-
         )
     }
-
-
 }

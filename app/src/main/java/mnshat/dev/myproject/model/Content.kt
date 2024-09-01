@@ -4,20 +4,19 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Content (
-    val id:Int,
-    val date:String,
-    val category:String,
-    val arText:String,
-    val enText:String,
-    val arTitle:String,
-    val enTitle:String,
-    val type:String,
-    val rate:Int,
-    val viewCount:Int,
-    val imageURL:String,
-    val videoURL:String,
-    val audioURL:String,
-
-) : Parcelable {
+data class Content(
+    val id: Int? = null,
+    val date: String? = null,
+    val category: String? = null,
+    val arText: String? = null,
+    val enText: String? = null,
+    val arTitle: String? = null,
+    val enTitle: String? = null,
+    val type: String? = null,
+    val rate: Int? = null,
+    val viewCount: Int? = null,
+    val imageURL: String? = null,
+    val videoURL: String? = null,
+    val audioURL: String? = null,
+    ) : Parcelable {
 }

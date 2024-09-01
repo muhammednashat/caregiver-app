@@ -12,65 +12,110 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ic_back"
-            style="@style/ic_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_arrow_back_ios" />
-
-        <TextView
-            android:id="@+id/textView3"
-            style="@style/TextAppearance.AppCompat.Large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/educational_content"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/ic_back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/ic_back"
-            />
-        <View
-            android:id="@+id/line"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout14"
             android:layout_width="match_parent"
-            android:layout_height="12dp"
-            android:layout_marginTop="@dimen/margin_large"
-            android:background="@drawable/line"
-            android:backgroundTint="@color/light_gray"
+            android:layout_height="110dp"
+            android:background="@drawable/gradient_blue2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:text="@string/educational_content"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ic_back"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:padding="@dimen/margin_large"
+                app:layout_constraintBottom_toBottomOf="@+id/textView3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView3"
+                app:srcCompat="@drawable/ic_arrow_back_ios"
+                app:tint="@color/white" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_margin="@dimen/margin_large"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/line">
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout14">
 
             <TextView
-                android:id="@+id/textView37"
+                android:id="@+id/showAllCommon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/show_all"
+                android:textColor="#f4855e"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/textView39"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:text="@string/most_common"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerMostCommon"
+                android:layout_width="match_parent"
+                android:layout_height="133dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView39"
+                tools:listitem="@layout/item_view_most_common" />
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="wrap_content"
+              android:layout_marginTop="@dimen/margin_large"
+                android:layout_height="wrap_content"
+                android:text="@string/customized_for_you"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerMostCommon" />
+
+            <TextView
+                android:id="@+id/showAllCustomized"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/show_all"
+                android:textColor="#f4855e"
+                app:layout_constraintBottom_toBottomOf="@+id/textView40"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView40" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerMostCustomized"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView40"
+                tools:listitem="@layout/item_view_most_common" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

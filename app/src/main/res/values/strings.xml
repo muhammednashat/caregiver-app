@@ -300,5 +300,6 @@
     <string name="delete">Delete</string>
     <string name="copied">copied</string>
     <string name="most_common">Most Common</string>
+    <string name="customized_for_you">Customized for you</string>
 
 </resources>

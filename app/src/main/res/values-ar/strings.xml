@@ -263,6 +263,7 @@
     <string name="delete">حذف</string>
     <string name="copied">تم النسخ</string>
     <string name="most_common">الاكثر انتشارا</string>
+    <string name="customized_for_you">المخصصة لك</string>
 
 
 </resources>
