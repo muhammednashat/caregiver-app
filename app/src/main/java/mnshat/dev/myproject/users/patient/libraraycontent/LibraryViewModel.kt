@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import mnshat.dev.myproject.base.BaseViewModel
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
 
 class LibraryViewModel(
@@ -38,6 +39,8 @@ class LibraryViewModel(
     }
 
     private fun getLibraryContentCustomized(libraryContents: List<LibraryContent>?) {
-//        _libraryContentCustomized.value = libraryContents!!
+        val isReligion = sharedPreferences.getBoolean(RELIGION)
+        val  mLibraryContents = if (isReligion) libraryContents else libraryContents?.filter{it.religion == false}
+        _libraryContentCustomized.value = mLibraryContents!!
     }
 }

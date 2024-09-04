@@ -83,13 +83,13 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerMostCommon"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="160dp"
                 android:layout_marginTop="@dimen/margin_medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView39"
-                tools:listitem="@layout/item_view_most_common" />
+                tools:listitem="@layout/item_view_most_common_content" />
 
             <TextView
                 android:id="@+id/textView40"
@@ -121,10 +121,11 @@
                 android:layout_marginTop="@dimen/margin_medium"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView40"
-                tools:listitem="@layout/item_view_most_common" />
+                tools:listitem="@layout/item_view_customized_content" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

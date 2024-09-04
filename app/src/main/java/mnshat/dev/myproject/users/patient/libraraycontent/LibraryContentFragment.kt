@@ -3,7 +3,8 @@ package mnshat.dev.myproject.users.patient.libraraycontent
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.adapters.LibraryContentAdapter
+import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
+import mnshat.dev.myproject.adapters.CustomizedContentLibraryAdapter
 import mnshat.dev.myproject.databinding.FragmentEducationalContentBinding
 import mnshat.dev.myproject.factories.LibraryViewModelFactory
 import mnshat.dev.myproject.model.LibraryContent
@@ -51,14 +52,14 @@ class LibraryContentFragment : BasePatientFragment<FragmentEducationalContentBin
 
         binding.recyclerMostCommon.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = LibraryContentAdapter(libraryContent,requireActivity(),sharedPreferences)
+            adapter = CommonContentLibraryAdapter(libraryContent,requireActivity(),sharedPreferences)
     }
     }
 
     private fun setRecyclerCustomized(libraryContent: List<LibraryContent>?) {
 
         binding.recyclerCustomized.apply {
-//            adapter = LibraryContentAdapter(libraryContent)
+            adapter = CustomizedContentLibraryAdapter(libraryContent,requireActivity(),sharedPreferences)
     }
 
 

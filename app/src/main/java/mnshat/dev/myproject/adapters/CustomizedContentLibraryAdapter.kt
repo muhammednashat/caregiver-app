@@ -1,14 +1,12 @@
 package mnshat.dev.myproject.adapters
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.util.LANGUAGE
@@ -16,18 +14,17 @@ import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.loadImage
 
 
-class LibraryContentAdapter(
-    private val libraryContents: List<LibraryContent>?,
-    private val context: Context,
-    private val sharedPreferences: SharedPreferencesManager
+class CustomizedContentLibraryAdapter(
+private val libraryContents: List<LibraryContent>?,
+private val context: Context,
+private val sharedPreferences: SharedPreferencesManager
 ) :
-    RecyclerView.Adapter<LibraryContentAdapter.ViewHolder>() {
-
+    RecyclerView.Adapter<CustomizedContentLibraryAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View =
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_view_most_common, parent, false)
+                .inflate(R.layout.item_view_customized_content, parent, false)
         return ViewHolder(view)
     }
 
@@ -35,15 +32,21 @@ class LibraryContentAdapter(
         val libraryContent = libraryContents?.get(position)
 
         loadImage(context,libraryContent?.imageURL,holder.imageView)
-        setText(libraryContent,holder.title)
+        holder.date.text = libraryContent?.date
+
+        setTextTitle(libraryContent,holder.title)
+        setTextType(libraryContent?.type,holder.type)
 
     }
+    private fun setTextType(libraryContent: String?,typeView: TextView){
+        if ()
+    }
 
-    private fun setText(libraryContent: LibraryContent?, title: TextView) {
+    private fun setTextTitle(libraryContent: LibraryContent?, titleView: TextView) {
        if (sharedPreferences.getString(LANGUAGE) == "ar"){
-           title.text = libraryContent?.arTitle
+           titleView.text = libraryContent?.arTitle
        }else{
-           title.text = libraryContent?.enTitle
+           titleView.text = libraryContent?.enTitle
        }
     }
 
@@ -55,6 +58,8 @@ class LibraryContentAdapter(
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var title: TextView = itemView.findViewById<TextView>(R.id.title)
+        var date: TextView = itemView.findViewById<TextView>(R.id.date)
+        var type: TextView = itemView.findViewById<TextView>(R.id.type)
         var imageView: ImageView = itemView.findViewById<ImageView>(R.id.imageView)
     }
 }

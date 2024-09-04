@@ -1,0 +1,58 @@
+package mnshat.dev.myproject.adapters
+
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import mnshat.dev.myproject.R
+import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.util.LANGUAGE
+import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.loadImage
+
+
+class CommonContentLibraryAdapter(
+    private val libraryContents: List<LibraryContent>?,
+    private val context: Context,
+    private val sharedPreferences: SharedPreferencesManager
+) :
+    RecyclerView.Adapter<CommonContentLibraryAdapter.ViewHolder>() {
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view: View =
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_view_most_common_content, parent, false)
+        return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val libraryContent = libraryContents?.get(position)
+
+        loadImage(context,libraryContent?.imageURL,holder.imageView)
+        setText(libraryContent,holder.title)
+
+    }
+
+    private fun setText(libraryContent: LibraryContent?, title: TextView) {
+       if (sharedPreferences.getString(LANGUAGE) == "ar"){
+           title.text = libraryContent?.arTitle
+       }else{
+           title.text = libraryContent?.enTitle
+       }
+    }
+
+    override fun getItemCount(): Int {
+        return libraryContents?.size!!
+    }
+
+
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var title: TextView = itemView.findViewById<TextView>(R.id.title)
+        var imageView: ImageView = itemView.findViewById<ImageView>(R.id.imageView)
+    }
+}
