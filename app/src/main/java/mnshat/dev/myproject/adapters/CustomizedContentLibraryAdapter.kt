@@ -9,15 +9,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.util.ARTICLE
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.VIDEO
 import mnshat.dev.myproject.util.loadImage
+import mnshat.dev.myproject.util.log
 
 
 class CustomizedContentLibraryAdapter(
-private val libraryContents: List<LibraryContent>?,
-private val context: Context,
-private val sharedPreferences: SharedPreferencesManager
+    private val libraryContents: List<LibraryContent>?,
+    private val context: Context,
+    private val sharedPreferences: SharedPreferencesManager
 ) :
     RecyclerView.Adapter<CustomizedContentLibraryAdapter.ViewHolder>() {
 
@@ -31,29 +34,31 @@ private val sharedPreferences: SharedPreferencesManager
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val libraryContent = libraryContents?.get(position)
 
-        loadImage(context,libraryContent?.imageURL,holder.imageView)
+        loadImage(context, libraryContent?.imageURL, holder.imageView)
         holder.date.text = libraryContent?.date
-
-        setTextTitle(libraryContent,holder.title)
-        setTextType(libraryContent?.type,holder.type)
-
-    }
-    private fun setTextType(libraryContent: String?,typeView: TextView){
-        if ()
+        holder.type.text = getTextType(libraryContent?.type)
+        holder.title.text = getTextTitle(libraryContent)
     }
 
-    private fun setTextTitle(libraryContent: LibraryContent?, titleView: TextView) {
-       if (sharedPreferences.getString(LANGUAGE) == "ar"){
-           titleView.text = libraryContent?.arTitle
-       }else{
-           titleView.text = libraryContent?.enTitle
-       }
+    private fun getTextType(contentType: String?): String {
+        return when (contentType) {
+            ARTICLE -> context.getString(R.string.article)
+            VIDEO -> context.getString(R.string.video)
+            else -> context.getString(R.string.audio)
+        }
+    }
+
+    private fun getTextTitle(libraryContent: LibraryContent?): String {
+        return if (sharedPreferences.getString(LANGUAGE) == "en") {
+            libraryContent?.enTitle!!
+        } else {
+            libraryContent?.arTitle!!
+        }
     }
 
     override fun getItemCount(): Int {
         return libraryContents?.size!!
     }
-
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

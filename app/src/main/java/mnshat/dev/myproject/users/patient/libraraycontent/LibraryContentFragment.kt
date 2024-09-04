@@ -1,21 +1,23 @@
 package mnshat.dev.myproject.users.patient.libraraycontent
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
 import mnshat.dev.myproject.adapters.CustomizedContentLibraryAdapter
-import mnshat.dev.myproject.databinding.FragmentEducationalContentBinding
+import mnshat.dev.myproject.databinding.FragmentLibraryContentBinding
 import mnshat.dev.myproject.factories.LibraryViewModelFactory
 import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
+import mnshat.dev.myproject.users.patient.main.tools.supplications.MainSupplicationsFragmentDirections
 
 
-class LibraryContentFragment : BasePatientFragment<FragmentEducationalContentBinding>() {
+class LibraryContentFragment : BasePatientFragment<FragmentLibraryContentBinding>() {
 
     private lateinit var viewModel:LibraryViewModel
 
-    override fun getLayout() = R.layout.fragment_educational_content
+    override fun getLayout() = R.layout.fragment_library_content
 
     override fun initializeViews() {
         super.initializeViews()
@@ -25,6 +27,17 @@ class LibraryContentFragment : BasePatientFragment<FragmentEducationalContentBin
         viewModel.retrieveLibraryContent()
     }
 
+    override fun setupClickListener() {
+        super.setupClickListener()
+       binding.showAllCustomized.setOnClickListener {
+           navigateToCustomizedContent()
+       }
+    }
+    private fun navigateToCustomizedContent() {
+        val action = LibraryContentFragmentDirections
+            .actionLibraryContentFragmentToCustomizedContentFragment(viewModel.mLibraryContentCustomized.toTypedArray())
+        findNavController().navigate(action)
+    }
 
 
 
@@ -34,14 +47,14 @@ class LibraryContentFragment : BasePatientFragment<FragmentEducationalContentBin
     }
     private fun observeViewModel() {
 
-        viewModel.libraryContentMostCommon.observe(viewLifecycleOwner) { libraryContent ->
-            setRecyclerMostCommon(libraryContent)
-            dismissProgressDialog()
-        }
+        viewModel.isReadyDisplay.observe(viewLifecycleOwner) {
+            if (it){
+                setRecyclerCustomized(viewModel.mLibraryContentCustomized)
+                setRecyclerMostCommon(viewModel.mLibraryContentMostCommon)
+                dismissProgressDialog()
+                viewModel.resetIsReadyDisplay()
+            }
 
-        viewModel.libraryContentCustomized.observe(viewLifecycleOwner) { libraryContent ->
-            setRecyclerCustomized(libraryContent)
-            dismissProgressDialog()
         }
 
 

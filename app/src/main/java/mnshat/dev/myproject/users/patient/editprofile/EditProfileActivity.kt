@@ -9,8 +9,7 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>(){
 
     }
 
-    override fun initializeViews() {
-    }
+
 
 
 }

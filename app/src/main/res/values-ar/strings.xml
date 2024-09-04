@@ -264,6 +264,9 @@
     <string name="copied">تم النسخ</string>
     <string name="most_common">الاكثر انتشارا</string>
     <string name="customized_for_you">المخصصة لك</string>
+    <string name="audio">صوت</string>
+    <string name="video">فديو</string>
+    <string name="article">موضوع</string>
 
 
 </resources>

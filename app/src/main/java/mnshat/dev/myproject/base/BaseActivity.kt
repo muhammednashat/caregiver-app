@@ -15,7 +15,7 @@ import mnshat.dev.myproject.util.SharedPreferencesManager
 
      lateinit var binding: T
      abstract fun getLayout(): T
-     abstract fun initializeViews()
+     open fun initializeViews(){}
 
      override fun onStart() {
          super.onStart()

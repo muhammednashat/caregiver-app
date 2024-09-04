@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/library_navigation.xml"
+    app:startDestination="@id/libraryContentFragment">
+
+    <fragment
+        android:id="@+id/libraryContentFragment"
+        tools:layout="@layout/fragment_library_content"
+        android:name="mnshat.dev.myproject.users.patient.libraraycontent.LibraryContentFragment"
+        android:label="LibraryContentFragment" >
+        <action
+            android:id="@+id/action_libraryContentFragment_to_customizedContentFragment"
+            app:destination="@id/customizedContentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customizedContentFragment"
+        tools:layout="@layout/fragment_customized_content"
+        android:name="mnshat.dev.myproject.users.patient.libraraycontent.CustomizedContentFragment"
+        android:label="CustomizedContentFragment" >
+        <argument
+            android:name="libraryContentList"
+            app:argType="mnshat.dev.myproject.model.LibraryContent[]" />
+    </fragment>
+</navigation>

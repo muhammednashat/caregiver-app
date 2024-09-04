@@ -8,6 +8,7 @@ import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.log
 
 class LibraryViewModel(
     private val sharedPreferences: SharedPreferencesManager,
@@ -18,29 +19,44 @@ class LibraryViewModel(
     application
 ) {
 
-    private val _libraryContentCustomized = MutableLiveData<List<LibraryContent>>()
-    val libraryContentCustomized: LiveData<List<LibraryContent>> = _libraryContentCustomized
+    private val _isReadyDisplay = MutableLiveData<Boolean>()
+    val isReadyDisplay: LiveData<Boolean> = _isReadyDisplay
 
-    private val _libraryContentMostCommon = MutableLiveData<List<LibraryContent>>()
-    val libraryContentMostCommon: LiveData<List<LibraryContent>> = _libraryContentMostCommon
+
+     lateinit var mLibraryContentCustomized: List<LibraryContent>
+     lateinit var mLibraryContentMostCommon: List<LibraryContent>
 
     fun retrieveLibraryContent() {
 
         FirebaseService.getLibraryContent {
-            getLibraryContentCustomized(it)
-            getLibraryContentMostCommon(it)
+            val libraryContents = libraryContentsBasedReligion(it)
+            setLibraryContentMostCommon(libraryContents)
+            setLibraryContentCustomized(libraryContents)
+            _isReadyDisplay.value = true
         }
 
 
     }
 
-    private fun getLibraryContentMostCommon(libraryContents: List<LibraryContent>?) {
-     _libraryContentMostCommon.value = libraryContents!!
+    private fun libraryContentsBasedReligion(libraryContents: List<LibraryContent>?): List<LibraryContent> {
+        val isReligion = sharedPreferences.getBoolean(RELIGION)
+        val mLibraryContents =
+            if (isReligion) libraryContents else libraryContents?.filter { it.religion == false }
+        return mLibraryContents!!
     }
 
-    private fun getLibraryContentCustomized(libraryContents: List<LibraryContent>?) {
-        val isReligion = sharedPreferences.getBoolean(RELIGION)
-        val  mLibraryContents = if (isReligion) libraryContents else libraryContents?.filter{it.religion == false}
-        _libraryContentCustomized.value = mLibraryContents!!
+    private fun setLibraryContentMostCommon(libraryContents: List<LibraryContent>?) {
+        val commonLibraryContents = libraryContents?.sortedByDescending { it.viewCount }?.take(4)
+        mLibraryContentMostCommon = commonLibraryContents!!
     }
+
+    private fun setLibraryContentCustomized(libraryContents: List<LibraryContent>?) {
+        mLibraryContentCustomized = libraryContentsBasedReligion(libraryContents)
+    }
+
+    fun resetIsReadyDisplay() {
+        _isReadyDisplay.value = false
+    }
+
+
 }

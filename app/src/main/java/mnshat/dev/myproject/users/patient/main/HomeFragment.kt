@@ -13,6 +13,7 @@ import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
 import mnshat.dev.myproject.factories.PatientViewModelFactory
 import mnshat.dev.myproject.model.CurrentTask
 import mnshat.dev.myproject.users.patient.dailyprogram.DailyProgramActivity
+import mnshat.dev.myproject.users.patient.libraraycontent.LibraryActivity
 import mnshat.dev.myproject.util.USER_NAME
 import mnshat.dev.myproject.util.createContentFake
 
@@ -67,8 +68,9 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
 
         viewModel.educationalContentClicked.observe(viewLifecycleOwner){
 //            createContentFake()
+
             if (it){
-                findNavController().navigate(R.id.action_patientHomeFragment_to_educationalContentFragment)
+                startActivity(Intent(requireActivity(), LibraryActivity::class.java))
                 viewModel.restEducationalContentClicked()
             }
 
