@@ -267,6 +267,8 @@
     <string name="audio">صوت</string>
     <string name="video">فديو</string>
     <string name="article">موضوع</string>
+    <string name="most_common_content">المحتوى الاكثر انتشارا</string>
+    <string name="a_list_of_the_most_popular_content_over_the_past_period_will_appear_here">ستظهر هنا قائمة لك لأفضل محتوى انتشاراً خلال الفترة الماضية</string>
 
 
 </resources>

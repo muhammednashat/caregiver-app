@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
 import mnshat.dev.myproject.adapters.CustomizedContentLibraryAdapter
+import mnshat.dev.myproject.auth.AgeFragment
 import mnshat.dev.myproject.databinding.FragmentLibraryContentBinding
 import mnshat.dev.myproject.factories.LibraryViewModelFactory
 import mnshat.dev.myproject.model.LibraryContent
@@ -29,9 +30,15 @@ class LibraryContentFragment : BasePatientFragment<FragmentLibraryContentBinding
 
     override fun setupClickListener() {
         super.setupClickListener()
-       binding.showAllCustomized.setOnClickListener {
+       binding.icBack.setOnClickListener {
+           activity?.finish()
+       }
+        binding.showAllCustomized.setOnClickListener {
            navigateToCustomizedContent()
        }
+        binding.showAllCommon.setOnClickListener {
+            CommonContentFragment().show(childFragmentManager, CommonContentFragment::class.java.name)
+        }
     }
     private fun navigateToCustomizedContent() {
         val action = LibraryContentFragmentDirections
@@ -67,6 +74,8 @@ class LibraryContentFragment : BasePatientFragment<FragmentLibraryContentBinding
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = CommonContentLibraryAdapter(libraryContent,requireActivity(),sharedPreferences)
     }
+
+
     }
 
     private fun setRecyclerCustomized(libraryContent: List<LibraryContent>?) {
