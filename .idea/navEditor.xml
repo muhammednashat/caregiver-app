@@ -559,14 +559,35 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="articleFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-120" />
+                            <option name="y" value="-309" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="customizedContentFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="36" />
-                            <option name="y" value="-41" />
+                            <option name="x" value="98" />
+                            <option name="y" value="223" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_customizedContentFragment_to_articleFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -576,12 +597,17 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-249" />
-                            <option name="y" value="-33" />
+                            <option name="x" value="-405" />
+                            <option name="y" value="208" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_libraryContentFragment_to_articleFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_libraryContentFragment_to_customizedContentFragment">
                               <value>
                                 <LayoutPositions />

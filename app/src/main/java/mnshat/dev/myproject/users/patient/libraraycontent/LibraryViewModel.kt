@@ -22,9 +22,10 @@ class LibraryViewModel(
     private val _isReadyDisplay = MutableLiveData<Boolean>()
     val isReadyDisplay: LiveData<Boolean> = _isReadyDisplay
 
+    private var currentContentIndex = 0
 
-     lateinit var mLibraryContentCustomized: List<LibraryContent>
-     lateinit var mLibraryContentMostCommon: List<LibraryContent>
+    lateinit var mLibraryContentCustomized: List<LibraryContent>
+    lateinit var mLibraryContentMostCommon: List<LibraryContent>
 
     fun retrieveLibraryContent() {
 
@@ -58,5 +59,10 @@ class LibraryViewModel(
         _isReadyDisplay.value = false
     }
 
+    fun setCurrentContentIndex(index: Int) {
+        currentContentIndex = index
+    }
+
+    fun getCurrentContentIndex() = currentContentIndex
 
 }

@@ -39,7 +39,7 @@ class CustomizedContentFragment  : BasePatientFragment<FragmentCustomizedContent
 
     private fun setupUserRecyclerView(libraryContent: List<LibraryContent>) {
      binding.recyclerCustomized.apply {
-         adapter = CustomizedContentLibraryAdapter(libraryContent,requireActivity(),sharedPreferences)
+//         adapter = CustomizedContentLibraryAdapter(libraryContent,requireActivity(),sharedPreferences)
      }
     }
     override fun setupClickListener() {

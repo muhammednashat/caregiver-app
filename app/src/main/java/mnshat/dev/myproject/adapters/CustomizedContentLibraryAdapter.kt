@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.util.ARTICLE
 import mnshat.dev.myproject.util.LANGUAGE
@@ -20,7 +21,8 @@ import mnshat.dev.myproject.util.log
 class CustomizedContentLibraryAdapter(
     private val libraryContents: List<LibraryContent>?,
     private val context: Context,
-    private val sharedPreferences: SharedPreferencesManager
+    private val sharedPreferences: SharedPreferencesManager,
+    private val onItemLibraryContentClicked: OnItemLibraryContentClicked
 ) :
     RecyclerView.Adapter<CustomizedContentLibraryAdapter.ViewHolder>() {
 
@@ -32,12 +34,16 @@ class CustomizedContentLibraryAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         val libraryContent = libraryContents?.get(position)
 
         loadImage(context, libraryContent?.imageURL, holder.imageView)
         holder.date.text = libraryContent?.date
         holder.type.text = getTextType(libraryContent?.type)
         holder.title.text = getTextTitle(libraryContent)
+        holder.itemView.setOnClickListener {
+            onItemLibraryContentClicked.onItemClicked(libraryContent?.type!!,position)
+        }
     }
 
     private fun getTextType(contentType: String?): String {

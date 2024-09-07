@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.SharedPreferencesManager
@@ -17,7 +18,8 @@ import mnshat.dev.myproject.util.loadImage
 class CommonContentLibraryAdapter(
     private val libraryContents: List<LibraryContent>?,
     private val context: Context,
-    private val sharedPreferences: SharedPreferencesManager
+    private val sharedPreferences: SharedPreferencesManager,
+    private val onItemLibraryContentClicked: OnItemLibraryContentClicked
 ) :
     RecyclerView.Adapter<CommonContentLibraryAdapter.ViewHolder>() {
 
@@ -35,6 +37,9 @@ class CommonContentLibraryAdapter(
         loadImage(context,libraryContent?.imageURL,holder.imageView)
         setText(libraryContent,holder.title)
 
+        holder.itemView.setOnClickListener {
+            onItemLibraryContentClicked.onItemClicked(libraryContent?.type!!,position)
+        }
     }
 
     private fun setText(libraryContent: LibraryContent?, title: TextView) {

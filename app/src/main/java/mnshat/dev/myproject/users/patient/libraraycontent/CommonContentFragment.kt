@@ -51,7 +51,7 @@ class CommonContentFragment : BaseBottomSheetDialogFragment<FragmentCommonConten
 
         binding.recyclerMostCommon.apply {
             layoutManager = GridLayoutManager(context, 2)
-            adapter = CommonContentLibraryAdapter(libraryContent,requireActivity(),sharedPreferences)
+//            adapter = CommonContentLibraryAdapter(libraryContent,requireActivity(),sharedPreferences)
         }
 }
 }

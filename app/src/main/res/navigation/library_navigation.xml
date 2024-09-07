@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_libraryContentFragment_to_customizedContentFragment"
             app:destination="@id/customizedContentFragment" />
+        <action
+            android:id="@+id/action_libraryContentFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
     </fragment>
     <fragment
         android:id="@+id/customizedContentFragment"
@@ -22,5 +25,13 @@
         <argument
             android:name="libraryContentList"
             app:argType="mnshat.dev.myproject.model.LibraryContent[]" />
+        <action
+            android:id="@+id/action_customizedContentFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/articleFragment"
+        tools:layout="@layout/fragment_article"
+        android:name="mnshat.dev.myproject.users.patient.libraraycontent.ArticleFragment"
+        android:label="ArticleFragment" />
 </navigation>
