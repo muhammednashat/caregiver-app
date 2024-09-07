@@ -46,6 +46,8 @@ const val VIDEO = "video"
 const val AUDIO = "audio"
 const val COMMON_CONTENT = "commonContent"
 const val Customized_CONTENT = "customizedContent"
+const val MENTAL_HEALTH = "mentalHealth"
+const val HEALTHY_LIVING = "Healthy living"
 
 const val LIBRARY_CONTENTS = "library_contents"
 const val USER_PROFILES = "user_profiles"

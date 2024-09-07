@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_libraryContentFragment_to_articleFragment"
             app:destination="@id/articleFragment" />
+        <action
+            android:id="@+id/action_libraryContentFragment_to_audioFragment"
+            app:destination="@id/audioFragment" />
+        <action
+            android:id="@+id/action_libraryContentFragment_to_videoFragment"
+            app:destination="@id/videoFragment" />
     </fragment>
     <fragment
         android:id="@+id/customizedContentFragment"
@@ -28,10 +34,26 @@
         <action
             android:id="@+id/action_customizedContentFragment_to_articleFragment"
             app:destination="@id/articleFragment" />
+        <action
+            android:id="@+id/action_customizedContentFragment_to_audioFragment"
+            app:destination="@id/audioFragment" />
+        <action
+            android:id="@+id/action_customizedContentFragment_to_videoFragment"
+            app:destination="@id/videoFragment" />
     </fragment>
     <fragment
         android:id="@+id/articleFragment"
         tools:layout="@layout/fragment_article"
         android:name="mnshat.dev.myproject.users.patient.libraraycontent.ArticleFragment"
         android:label="ArticleFragment" />
+    <fragment
+        android:id="@+id/audioFragment"
+        android:name="mnshat.dev.myproject.users.patient.libraraycontent.AudioFragment"
+        android:label="fragment_audio"
+        tools:layout="@layout/fragment_audio" />
+    <fragment
+        android:id="@+id/videoFragment"
+        tools:layout="@layout/fragment_video"
+        android:name="mnshat.dev.myproject.users.patient.libraraycontent.VideoFragment"
+        android:label="VideoFragment" />
 </navigation>

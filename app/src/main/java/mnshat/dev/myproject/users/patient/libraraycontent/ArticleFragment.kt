@@ -16,6 +16,7 @@ import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.COMMON_CONTENT
 import mnshat.dev.myproject.util.Customized_CONTENT
 import mnshat.dev.myproject.util.LANGUAGE
+import mnshat.dev.myproject.util.MENTAL_HEALTH
 
 
 class ArticleFragment : BasePatientFragment<FragmentArticleBinding>() {
@@ -34,7 +35,7 @@ class ArticleFragment : BasePatientFragment<FragmentArticleBinding>() {
     override fun setupClickListener() {
         super.setupClickListener()
         binding.icBack.setOnClickListener {
-           findNavController().popBackStack()
+            findNavController().popBackStack()
         }
     }
 
@@ -54,24 +55,31 @@ class ArticleFragment : BasePatientFragment<FragmentArticleBinding>() {
         val content = libraryContentList[index]
         setArticle(content)
         setTitles(content)
+        setSubCategory(content.subCategory!!)
         binding.date.text = content.date
 
     }
 
     private fun setTitles(content: LibraryContent) {
-     if (sharedPreferences.getString(LANGUAGE) ==  "en"){
-         binding.title.text = content.enTitle
-     }else{
-         binding.title.text = content.arTitle
-     }
+        if (sharedPreferences.getString(LANGUAGE) == "en") {
+            binding.title.text = content.enTitle
+        } else {
+            binding.title.text = content.arTitle
+        }
     }
 
     private fun setArticle(content: LibraryContent) {
-        if (sharedPreferences.getString(LANGUAGE) ==  "en"){
+        if (sharedPreferences.getString(LANGUAGE) == "en") {
             binding.article.text = content.enText?.repeat(100)
-        }else{
+        } else {
             binding.article.text = content.arText?.repeat(100)
         }
+    }
+
+    private fun setSubCategory(subCategory: String):String {
+      return  when (subCategory) {
+          else -> {"unKnown"}
+      }
     }
 
 }

@@ -12,13 +12,15 @@ fun getFakeContent(
     id: Int,
     type: String = "article",
     viewCount: Int = 12,
-    religion: Boolean = true
+    religion: Boolean = true,
+    subCategory: String = MENTAL_HEALTH
 ): LibraryContent {
     return LibraryContent(
         id = id,
         type = type,
         viewCount = viewCount,
         religion = religion,
+        subCategory = subCategory,
         date = "2024-08-30",
         category = "anxiety",
         arText = " نص  عن القلق  نص  عن القلق",
@@ -40,7 +42,7 @@ fun createContentFake() {
         getFakeContent(1, type = ARTICLE , religion = true, viewCount = 12),
         getFakeContent(2, type = VIDEO , religion = false, viewCount = 13),
         getFakeContent(3, type = VIDEO , religion = true, viewCount = 133),
-        getFakeContent(4, type = ARTICLE , religion = true, viewCount = 1213),
+        getFakeContent(4, type = ARTICLE , religion = true, viewCount = 1213, subCategory = HEALTHY_LIVING),
         getFakeContent(5, type = AUDIO , religion = false, viewCount = 1),
         getFakeContent(6, type = ARTICLE , religion = true, viewCount = 143),
         getFakeContent(7, type = VIDEO , religion = false, viewCount = 134),

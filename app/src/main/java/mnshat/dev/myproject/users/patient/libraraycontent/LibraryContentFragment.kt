@@ -14,6 +14,8 @@ import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.users.patient.main.tools.supplications.MainSupplicationsFragmentDirections
 import mnshat.dev.myproject.util.ARTICLE
+import mnshat.dev.myproject.util.AUDIO
+import mnshat.dev.myproject.util.VIDEO
 import mnshat.dev.myproject.util.log
 
 
@@ -111,6 +113,8 @@ class LibraryContentFragment : BasePatientFragment<FragmentLibraryContentBinding
         log("$type    $index")
         when (type) {
             ARTICLE -> findNavController().navigate(R.id.action_libraryContentFragment_to_articleFragment)
+            VIDEO -> findNavController().navigate(R.id.action_libraryContentFragment_to_videoFragment)
+            AUDIO -> findNavController().navigate(R.id.action_libraryContentFragment_to_audioFragment)
         }
     }
 

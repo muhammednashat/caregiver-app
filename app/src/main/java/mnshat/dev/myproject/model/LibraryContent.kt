@@ -12,6 +12,7 @@ data class LibraryContent(
     val enText: String? = null,
     val arTitle: String? = null,
     val enTitle: String? = null,
+    val subCategory: String? = null,
     val type: String? = null,
     val rate: Int? = null,
     val viewCount: Int? = null,

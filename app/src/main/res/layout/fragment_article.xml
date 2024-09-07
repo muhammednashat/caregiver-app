@@ -23,7 +23,7 @@
                 android:layout_height="250dp"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/image_test6" />
@@ -42,21 +42,37 @@
                 app:tint="@color/black" />
 
             <TextView
+                android:id="@+id/subCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/corner_large"
+                android:backgroundTint="#2fffc1"
+                android:paddingStart="@dimen/margin_large"
+                android:paddingTop="@dimen/margin_small"
+                android:paddingEnd="@dimen/margin_large"
+                android:paddingBottom="@dimen/margin_small"
+                android:text="الصحة النفسية"
+                android:textSize="@dimen/text_size_large"
+
+                app:layout_constraintStart_toStartOf="@+id/ic_back"
+                app:layout_constraintTop_toBottomOf="@+id/ic_back" />
+
+            <TextView
                 android:id="@+id/title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_medium"
                 android:layout_margin="@dimen/margin_large"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:text="TextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfw"
+                android:text="Tedfasdfsdafdfsdafsdfsdfw"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_large"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ic_back"
+                app:layout_constraintStart_toStartOf="@+id/subCategory"
+                app:layout_constraintTop_toBottomOf="@+id/subCategory"
                 app:layout_constraintVertical_bias="0.368" />
 
 

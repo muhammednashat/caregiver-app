@@ -571,6 +571,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="audioFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-355" />
+                            <option name="y" value="-261" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="customizedContentFragment">
                     <value>
                       <LayoutPositions>
@@ -583,6 +595,16 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_customizedContentFragment_to_articleFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_customizedContentFragment_to_audioFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_customizedContentFragment_to_videoFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -608,12 +630,34 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_libraryContentFragment_to_audioFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_libraryContentFragment_to_customizedContentFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_libraryContentFragment_to_videoFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="videoFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="138" />
+                            <option name="y" value="-289" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>
