@@ -69,7 +69,7 @@ class CommonContentFragment : BaseBottomSheetDialogFragment<FragmentCommonConten
         when (type) {
             ARTICLE -> findNavController().navigate(R.id.action_libraryContentFragment_to_articleFragment)
             VIDEO -> findNavController().navigate(R.id.action_libraryContentFragment_to_videoFragment)
-            AUDIO -> findNavController().navigate(R.id.action_libraryContentFragment_to_audioFragment)
+//            AUDIO -> findNavController().navigate(R.id.action_libraryContentFragment_to_audioFragment)
         }
         dismiss()
     }

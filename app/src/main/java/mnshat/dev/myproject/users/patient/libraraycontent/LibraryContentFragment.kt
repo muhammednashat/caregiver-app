@@ -19,16 +19,13 @@ import mnshat.dev.myproject.util.VIDEO
 import mnshat.dev.myproject.util.log
 
 
-class LibraryContentFragment : BasePatientFragment<FragmentLibraryContentBinding>(),
-    OnItemLibraryContentClicked {
+class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding>() {
 
-    private lateinit var viewModel: LibraryViewModel
 
     override fun getLayout() = R.layout.fragment_library_content
 
     override fun initializeViews() {
         super.initializeViews()
-        initViewModel()
         observeViewModel()
         showProgressDialog()
         viewModel.retrieveLibraryContent()
@@ -50,17 +47,6 @@ class LibraryContentFragment : BasePatientFragment<FragmentLibraryContentBinding
         }
     }
 
-    private fun navigateToCustomizedContent() {
-        val action = LibraryContentFragmentDirections
-            .actionLibraryContentFragmentToCustomizedContentFragment(viewModel.mLibraryContentCustomized.toTypedArray())
-        findNavController().navigate(action)
-    }
-
-
-    private fun initViewModel() {
-        val factory = LibraryViewModelFactory(sharedPreferences, activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[LibraryViewModel::class.java]
-    }
 
     private fun observeViewModel() {
 
@@ -78,7 +64,6 @@ class LibraryContentFragment : BasePatientFragment<FragmentLibraryContentBinding
     }
 
     private fun setRecyclerMostCommon(libraryContent: List<LibraryContent>?) {
-
         binding.recyclerMostCommon.apply {
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -105,24 +90,6 @@ class LibraryContentFragment : BasePatientFragment<FragmentLibraryContentBinding
         }
 
 
-    }
-
-    override fun onItemClicked(type: String, index: Int,content:String) {
-        updateCurrentIndex(index)
-        updateCurrentContent(content)
-        log("$type    $index")
-        when (type) {
-            ARTICLE -> findNavController().navigate(R.id.action_libraryContentFragment_to_articleFragment)
-            VIDEO -> findNavController().navigate(R.id.action_libraryContentFragment_to_videoFragment)
-            AUDIO -> findNavController().navigate(R.id.action_libraryContentFragment_to_audioFragment)
-        }
-    }
-
-    private fun updateCurrentIndex(index: Int) {
-        viewModel.setCurrentContentIndex(index)
-    }
-    private fun updateCurrentContent(content: String) {
-        viewModel.setCurrentContentContent(content)
     }
 
 

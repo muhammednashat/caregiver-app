@@ -23,9 +23,7 @@ import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.VIDEO
 
 
-class CustomizedContentFragment  : BasePatientFragment<FragmentCustomizedContentBinding>(),
-    OnItemLibraryContentClicked {
-    private lateinit var viewModel:LibraryViewModel
+class CustomizedContentFragment  : BaseLibraryFragment<FragmentCustomizedContentBinding>(){
 
 
     override fun getLayout()  = R.layout.fragment_customized_content
@@ -34,13 +32,8 @@ class CustomizedContentFragment  : BasePatientFragment<FragmentCustomizedContent
         super.initializeViews()
         intiBackgroundBasedOnLang()
         retrieveDataFromArguments()
-        initViewModel()
+    }
 
-    }
-    private fun initViewModel() {
-        val factory = LibraryViewModelFactory(sharedPreferences, activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[LibraryViewModel::class.java]
-    }
 
     private fun intiBackgroundBasedOnLang() {
         if (currentLang != ENGLISH_KEY) {
@@ -66,23 +59,6 @@ class CustomizedContentFragment  : BasePatientFragment<FragmentCustomizedContent
             findNavController().popBackStack()
         }
 
-    }
-
-    override fun onItemClicked(type: String, index: Int,content:String) {
-        updateCurrentIndex(index)
-        updateCurrentContent(content)
-        when (type) {
-            ARTICLE -> findNavController().navigate(R.id.action_customizedContentFragment_to_articleFragment)
-            VIDEO -> findNavController().navigate(R.id.action_customizedContentFragment_to_videoFragment)
-            AUDIO -> findNavController().navigate(R.id.action_customizedContentFragment_to_audioFragment)
-        }
-    }
-
-    private fun updateCurrentIndex(index: Int) {
-        viewModel.setCurrentContentIndex(index)
-    }
-    private fun updateCurrentContent(content: String) {
-        viewModel.setCurrentContentContent(content)
     }
 
 }

@@ -19,16 +19,15 @@ import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.MENTAL_HEALTH
 
 
-class ArticleFragment : BasePatientFragment<FragmentArticleBinding>() {
+class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() {
 
-    private lateinit var viewModel: LibraryViewModel
+
 
     override fun getLayout() = R.layout.fragment_article
 
 
     override fun initializeViews() {
         super.initializeViews()
-        initViewModel()
         initializeView()
     }
 
@@ -39,10 +38,7 @@ class ArticleFragment : BasePatientFragment<FragmentArticleBinding>() {
         }
     }
 
-    private fun initViewModel() {
-        val factory = LibraryViewModelFactory(sharedPreferences, activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[LibraryViewModel::class.java]
-    }
+
 
     private fun initializeView() {
 
@@ -55,7 +51,6 @@ class ArticleFragment : BasePatientFragment<FragmentArticleBinding>() {
         val content = libraryContentList[index]
         setArticle(content)
         setTitles(content)
-        setSubCategory(content.subCategory!!)
         binding.date.text = content.date
 
     }
@@ -76,10 +71,6 @@ class ArticleFragment : BasePatientFragment<FragmentArticleBinding>() {
         }
     }
 
-    private fun setSubCategory(subCategory: String):String {
-      return  when (subCategory) {
-          else -> {"unKnown"}
-      }
-    }
+
 
 }
