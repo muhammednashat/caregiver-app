@@ -11,6 +11,7 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.util.ARTICLE
+import mnshat.dev.myproject.util.COMMON_CONTENT
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.VIDEO
@@ -42,7 +43,7 @@ class CustomizedContentLibraryAdapter(
         holder.type.text = getTextType(libraryContent?.type)
         holder.title.text = getTextTitle(libraryContent)
         holder.itemView.setOnClickListener {
-            onItemLibraryContentClicked.onItemClicked(libraryContent?.type!!,position)
+            onItemLibraryContentClicked.onItemClicked(libraryContent?.type!!,position,COMMON_CONTENT)
         }
     }
 

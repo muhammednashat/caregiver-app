@@ -21,7 +21,7 @@ fun getFakeContent(
         religion = religion,
         date = "2024-08-30",
         category = "anxiety",
-        arText = " نص  عن القلق ",
+        arText = " نص  عن القلق  نص  عن القلق",
         enText = "text about anxiety.",
         arTitle = "القلق",
         enTitle = "Anxiety",

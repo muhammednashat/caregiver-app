@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.util.COMMON_CONTENT
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.loadImage
@@ -38,16 +39,18 @@ class CommonContentLibraryAdapter(
         setText(libraryContent,holder.title)
 
         holder.itemView.setOnClickListener {
-            onItemLibraryContentClicked.onItemClicked(libraryContent?.type!!,position)
+            onItemLibraryContentClicked.onItemClicked(libraryContent?.type!!,position,COMMON_CONTENT)
         }
     }
 
     private fun setText(libraryContent: LibraryContent?, title: TextView) {
-       if (sharedPreferences.getString(LANGUAGE) == "ar"){
-           title.text = libraryContent?.arTitle
-       }else{
+       if (sharedPreferences.getString(LANGUAGE) ==  "en"){
            title.text = libraryContent?.enTitle
+       }else{
+           title.text = libraryContent?.arTitle
        }
+
+
     }
 
     override fun getItemCount(): Int {

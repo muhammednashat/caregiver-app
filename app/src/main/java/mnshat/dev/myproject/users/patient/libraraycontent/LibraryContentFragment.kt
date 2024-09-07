@@ -105,8 +105,9 @@ class LibraryContentFragment : BasePatientFragment<FragmentLibraryContentBinding
 
     }
 
-    override fun onItemClicked(type: String, index: Int) {
+    override fun onItemClicked(type: String, index: Int,content:String) {
         updateCurrentIndex(index)
+        updateCurrentContent(content)
         log("$type    $index")
         when (type) {
             ARTICLE -> findNavController().navigate(R.id.action_libraryContentFragment_to_articleFragment)
@@ -115,6 +116,9 @@ class LibraryContentFragment : BasePatientFragment<FragmentLibraryContentBinding
 
     private fun updateCurrentIndex(index: Int) {
         viewModel.setCurrentContentIndex(index)
+    }
+    private fun updateCurrentContent(content: String) {
+        viewModel.setCurrentContentContent(content)
     }
 
 

@@ -44,6 +44,8 @@ const val GRATITUDE_LIST = "gratitudeList"
 const val ARTICLE = "article"
 const val VIDEO = "video"
 const val AUDIO = "audio"
+const val COMMON_CONTENT = "commonContent"
+const val Customized_CONTENT = "customizedContent"
 
 const val LIBRARY_CONTENTS = "library_contents"
 const val USER_PROFILES = "user_profiles"

@@ -23,6 +23,7 @@ class LibraryViewModel(
     val isReadyDisplay: LiveData<Boolean> = _isReadyDisplay
 
     private var currentContentIndex = 0
+    private var currentContent = ""
 
     lateinit var mLibraryContentCustomized: List<LibraryContent>
     lateinit var mLibraryContentMostCommon: List<LibraryContent>
@@ -64,5 +65,11 @@ class LibraryViewModel(
     }
 
     fun getCurrentContentIndex() = currentContentIndex
+
+    fun setCurrentContentContent(content: String) {
+        currentContent = content
+    }
+
+    fun getCurrentContent() = currentContent
 
 }
