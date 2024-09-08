@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.interfaces.OnItemSelectedListener
 import mnshat.dev.myproject.model.Duration
 
 

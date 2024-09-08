@@ -43,12 +43,16 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() {
     private fun initializeView() {
 
         val index = viewModel.getCurrentContentIndex()
+
         val libraryContentList =
             when (viewModel.getCurrentContent()) {
                 COMMON_CONTENT -> viewModel.mLibraryContentMostCommon
                 else -> viewModel.mLibraryContentCustomized
             }
+
+
         val content = libraryContentList[index]
+
         setArticle(content)
         setTitles(content)
         binding.date.text = content.date
@@ -65,9 +69,10 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() {
 
     private fun setArticle(content: LibraryContent) {
         if (sharedPreferences.getString(LANGUAGE) == "en") {
-            binding.article.text = content.enText?.repeat(100)
+
+            binding.article.text = content.enText?.repeat(100) // repeat the text 100 times
         } else {
-            binding.article.text = content.arText?.repeat(100)
+            binding.article.text = content.arText?.repeat(100) // repeat the text 100 times
         }
     }
 

@@ -32,11 +32,11 @@ abstract class BaseLibraryFragment<T: ViewDataBinding> : BasePatientFragment<T>(
             .actionLibraryContentFragmentToCustomizedContentFragment(viewModel.mLibraryContentCustomized.toTypedArray())
         findNavController().navigate(action)
     }
-
     override fun onItemClicked(type: String, index: Int, content: String) {
-        updateCurrentIndex(index)
         updateCurrentContent(content)
-        log("$type    $index")
+        updateCurrentIndex(index)
+
+
         when (type) {
             ARTICLE -> findNavController().navigate(R.id.action_libraryContentFragment_to_articleFragment)
             VIDEO -> findNavController().navigate(R.id.action_libraryContentFragment_to_videoFragment)

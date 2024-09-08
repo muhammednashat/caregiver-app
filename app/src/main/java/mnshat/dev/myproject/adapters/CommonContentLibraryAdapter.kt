@@ -33,16 +33,25 @@ class CommonContentLibraryAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+        // card
         val libraryContent = libraryContents?.get(position)
 
         loadImage(context,libraryContent?.imageURL,holder.imageView)
         setText(libraryContent,holder.title)
 
         holder.itemView.setOnClickListener {
+
             onItemLibraryContentClicked.onItemClicked(libraryContent?.type!!,position,COMMON_CONTENT)
+
+
         }
     }
 
+    fun prin(){
+        println("")
+
+    }
     private fun setText(libraryContent: LibraryContent?, title: TextView) {
        if (sharedPreferences.getString(LANGUAGE) ==  "en"){
            title.text = libraryContent?.enTitle

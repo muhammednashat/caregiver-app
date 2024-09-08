@@ -49,7 +49,6 @@ class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding
 
 
     private fun observeViewModel() {
-
         viewModel.isReadyDisplay.observe(viewLifecycleOwner) {
             if (it) {
                 setRecyclerCustomized(viewModel.mLibraryContentCustomized)
@@ -57,10 +56,7 @@ class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding
                 dismissProgressDialog()
                 viewModel.resetIsReadyDisplay()
             }
-
         }
-
-
     }
 
     private fun setRecyclerMostCommon(libraryContent: List<LibraryContent>?) {
@@ -74,8 +70,6 @@ class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding
                 this@LibraryContentFragment
             )
         }
-
-
     }
 
     private fun setRecyclerCustomized(libraryContent: List<LibraryContent>?) {
@@ -88,9 +82,6 @@ class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding
                 this@LibraryContentFragment
             )
         }
-
-
     }
-
 
 }

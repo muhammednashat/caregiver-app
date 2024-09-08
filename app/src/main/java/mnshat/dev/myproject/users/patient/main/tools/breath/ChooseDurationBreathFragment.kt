@@ -7,7 +7,6 @@ import mnshat.dev.myproject.adapters.DurationAdapter
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentChooseDurationBreathBinding
 import mnshat.dev.myproject.factories.BreathViewModelFactory
-import mnshat.dev.myproject.interfaces.OnItemSelectedListener
 import mnshat.dev.myproject.model.Duration
 import mnshat.dev.myproject.util.ENGLISH_KEY
 

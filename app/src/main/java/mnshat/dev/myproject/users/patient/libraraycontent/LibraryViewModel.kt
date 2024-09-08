@@ -26,12 +26,15 @@ class LibraryViewModel(
     private var currentContent = ""
 
     lateinit var mLibraryContentCustomized: List<LibraryContent>
+
     lateinit var mLibraryContentMostCommon: List<LibraryContent>
 
     fun retrieveLibraryContent() {
 
         FirebaseService.getLibraryContent {
+
             val libraryContents = libraryContentsBasedReligion(it)
+
             setLibraryContentMostCommon(libraryContents)
             setLibraryContentCustomized(libraryContents)
             _isReadyDisplay.value = true
@@ -41,11 +44,14 @@ class LibraryViewModel(
     }
 
     private fun libraryContentsBasedReligion(libraryContents: List<LibraryContent>?): List<LibraryContent> {
+
         val isReligion = sharedPreferences.getBoolean(RELIGION)
         val mLibraryContents =
             if (isReligion) libraryContents else libraryContents?.filter { it.religion == false }
         return mLibraryContents!!
+
     }
+
 
     private fun setLibraryContentMostCommon(libraryContents: List<LibraryContent>?) {
         val commonLibraryContents = libraryContents?.sortedByDescending { it.viewCount }?.take(4)
