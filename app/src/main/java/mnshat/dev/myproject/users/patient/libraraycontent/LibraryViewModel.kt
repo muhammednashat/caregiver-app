@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import mnshat.dev.myproject.base.BaseViewModel
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.util.COMMON_CONTENT
 import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.log
@@ -43,19 +44,33 @@ class LibraryViewModel(
 
     }
 
+    fun getContent()=
+         getCurrentContents()[currentContentIndex]
+
+    private fun getCurrentContents(): List<LibraryContent> {
+        return when (currentContent) {
+            COMMON_CONTENT -> mLibraryContentMostCommon
+            else -> mLibraryContentCustomized
+        }
+    }
+
+     fun getContentsBasedType(type: String) =
+         getCurrentContents().filter { it.type == type }
+
+
+
+
     private fun libraryContentsBasedReligion(libraryContents: List<LibraryContent>?): List<LibraryContent> {
-
         val isReligion = sharedPreferences.getBoolean(RELIGION)
-        val mLibraryContents =
-            if (isReligion) libraryContents else libraryContents?.filter { it.religion == false }
-        return mLibraryContents!!
-
+        return if (isReligion) libraryContents!!
+             else libraryContents!!.filter { it.religion == false }
     }
 
 
+
+
     private fun setLibraryContentMostCommon(libraryContents: List<LibraryContent>?) {
-        val commonLibraryContents = libraryContents?.sortedByDescending { it.viewCount }?.take(4)
-        mLibraryContentMostCommon = commonLibraryContents!!
+        mLibraryContentMostCommon = libraryContents?.sortedByDescending { it.viewCount }?.take(4)!!
     }
 
     private fun setLibraryContentCustomized(libraryContents: List<LibraryContent>?) {
@@ -70,12 +85,10 @@ class LibraryViewModel(
         currentContentIndex = index
     }
 
-    fun getCurrentContentIndex() = currentContentIndex
 
     fun setCurrentContentContent(content: String) {
         currentContent = content
     }
 
-    fun getCurrentContent() = currentContent
 
 }

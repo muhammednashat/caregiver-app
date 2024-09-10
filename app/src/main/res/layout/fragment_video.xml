@@ -179,7 +179,6 @@
                             android:text="@string/show_all"
                             android:textColor="@color/burnt_orange"
                             android:textSize="@dimen/text_size_large"
-
                             app:layout_constraintBottom_toTopOf="@+id/recycler"
                             app:layout_constraintEnd_toEndOf="parent" />
 

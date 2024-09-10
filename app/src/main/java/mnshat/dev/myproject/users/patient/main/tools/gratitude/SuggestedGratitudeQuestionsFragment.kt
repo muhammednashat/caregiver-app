@@ -22,7 +22,6 @@ class SuggestedGratitudeQuestionsFragment (private val onConfirmButtonClicked: O
     override fun setupClickListener() {
         binding.close.setOnClickListener {
             dismiss()
-
         }
         binding.buttonConfirm.setOnClickListener {
            updateSelectedPosition()
@@ -36,12 +35,12 @@ class SuggestedGratitudeQuestionsFragment (private val onConfirmButtonClicked: O
         onConfirmButtonClicked.onConfirmClicked(getGratitudeQuestionsList(requireActivity())[selectedPosition])
     }
 
+    
     override fun initializeViews() {
         if (currentLang != ENGLISH_KEY) {
             binding.close.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
             binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
         }
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -3,7 +3,6 @@ package mnshat.dev.myproject.users.patient.dailyprogram
 import android.net.Uri
 import android.util.Log
 import android.view.View
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.ViewDataBinding
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -79,12 +78,12 @@ abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragme
 
             2 -> {
                 hideViews(type)
-                playVideoAudio()
+                playVideoAudio(Uri.parse(task.link))
             }
 
             3 -> {
                 hideViews(type)
-                playVideoAudio()
+                playVideoAudio(Uri.parse(task.link))
             }
 
             4 -> {
@@ -93,11 +92,11 @@ abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragme
             }
         }
     }
-    private fun playVideoAudio() {
+    private fun playVideoAudio(uri: Uri) {
         val binding = binding as LayoutTaskBinding
         player = ExoPlayer.Builder(requireContext()).build().also { exoPlayer ->
             binding.exoPlayer.player = exoPlayer
-            val mediaItem = MediaItem.fromUri(Uri.parse(task.link))
+            val mediaItem = MediaItem.fromUri(uri)
             exoPlayer.setMediaItem(mediaItem)
             exoPlayer.prepare()
             dismissProgressDialog()

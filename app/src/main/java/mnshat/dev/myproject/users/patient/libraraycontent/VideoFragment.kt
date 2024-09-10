@@ -1,23 +1,33 @@
 package mnshat.dev.myproject.users.patient.libraraycontent
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
 import mnshat.dev.myproject.databinding.FragmentArticleBinding
 import mnshat.dev.myproject.databinding.FragmentVideoBinding
+import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.COMMON_CONTENT
 import mnshat.dev.myproject.util.LANGUAGE
+import mnshat.dev.myproject.util.VIDEO
 
 class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>() {
 
     override fun getLayout() = R.layout.fragment_video
+  private lateinit var player:ExoPlayer
     private var description: String = ""
+
+
     override fun initializeViews() {
         super.initializeViews()
         initializeView()
@@ -25,14 +35,22 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>() {
 
     override fun setupClickListener() {
         super.setupClickListener()
+
         binding.icBack.setOnClickListener {
             findNavController().popBackStack()
         }
+
+        binding.showAll.setOnClickListener {
+            navigateToCustomizedContent(viewModel.getContentsBasedType(VIDEO).toTypedArray(),getString(R.string.more_similar_videos))
+
+        }
+
         binding.iconShowDescription.setOnClickListener {
             hideLabelDescription(true)
             hideIconCloseDescription(false)
             hideTextDescription(false)
         }
+
         binding.iconHideDescription.setOnClickListener {
             hideLabelDescription(false)
             hideIconCloseDescription(true)
@@ -41,17 +59,36 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>() {
     }
 
     private fun initializeView() {
+        displayContent(viewModel.getContent())
+        initRecyclerView(viewModel.getContentsBasedType(VIDEO))
 
-        val index = viewModel.getCurrentContentIndex()
-        val libraryContentList =
-            when (viewModel.getCurrentContent()) {
-                COMMON_CONTENT -> viewModel.mLibraryContentMostCommon
-                else -> viewModel.mLibraryContentCustomized
-            }
-        val content = libraryContentList[index]
+    }
+    private fun displayContent(content: LibraryContent) {
+        playVideoAudio(Uri.parse(content.videoURL))
         setTitle(content)
         setDescription(content)
         binding.date.text = content.date
+    }
+
+    private fun initRecyclerView(libraryContents: List<LibraryContent>) {
+    binding.recycler.apply {
+        layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        adapter = CommonContentLibraryAdapter(libraryContents,requireContext(),sharedPreferences,this@VideoFragment)
+    }
+
+    }
+
+
+    private fun playVideoAudio(uri: Uri) {
+        player = ExoPlayer.Builder(requireContext()).build().also { exoPlayer ->
+            binding.exoPlayer.player = exoPlayer
+            val mediaItem = MediaItem.fromUri(uri)
+            exoPlayer.setMediaItem(mediaItem)
+            exoPlayer.prepare()
+            dismissProgressDialog()
+//            exoPlayer.playWhenReady = true
+        }
 
     }
 
@@ -97,5 +134,12 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>() {
             description = content.arTitle?.repeat(200)!!
 
         }
+    }
+
+    override fun onItemClicked(type: String, index: Int, content: String) {
+        updateCurrentContent(content)
+        updateCurrentIndex(index)
+        displayContent(viewModel.getContent())
+
     }
 }

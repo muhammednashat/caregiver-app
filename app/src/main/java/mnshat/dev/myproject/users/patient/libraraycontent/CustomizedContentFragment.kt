@@ -44,6 +44,7 @@ class CustomizedContentFragment  : BaseLibraryFragment<FragmentCustomizedContent
     private fun retrieveDataFromArguments() {
 
         val args: CustomizedContentFragmentArgs by navArgs()
+        binding.textTitle.text= args.textTitle
         setupUserRecyclerView(args.libraryContentList.toList())
     }
 

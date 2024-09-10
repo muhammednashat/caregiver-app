@@ -28,9 +28,14 @@
         tools:layout="@layout/fragment_customized_content"
         android:name="mnshat.dev.myproject.users.patient.libraraycontent.CustomizedContentFragment"
         android:label="CustomizedContentFragment" >
+
         <argument
             android:name="libraryContentList"
             app:argType="mnshat.dev.myproject.model.LibraryContent[]" />
+
+        <argument
+            android:name="textTitle"
+            app:argType="string" />
         <action
             android:id="@+id/action_customizedContentFragment_to_articleFragment"
             app:destination="@id/articleFragment" />
@@ -40,6 +45,7 @@
         <action
             android:id="@+id/action_customizedContentFragment_to_videoFragment"
             app:destination="@id/videoFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/articleFragment"

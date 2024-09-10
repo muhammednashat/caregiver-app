@@ -1,22 +1,11 @@
 package mnshat.dev.myproject.users.patient.libraraycontent
 
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
 import mnshat.dev.myproject.adapters.CustomizedContentLibraryAdapter
-import mnshat.dev.myproject.auth.AgeFragment
 import mnshat.dev.myproject.databinding.FragmentLibraryContentBinding
-import mnshat.dev.myproject.factories.LibraryViewModelFactory
-import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 import mnshat.dev.myproject.model.LibraryContent
-import mnshat.dev.myproject.users.patient.main.BasePatientFragment
-import mnshat.dev.myproject.users.patient.main.tools.supplications.MainSupplicationsFragmentDirections
-import mnshat.dev.myproject.util.ARTICLE
-import mnshat.dev.myproject.util.AUDIO
-import mnshat.dev.myproject.util.VIDEO
-import mnshat.dev.myproject.util.log
 
 
 class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding>() {
@@ -37,7 +26,7 @@ class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding
             activity?.finish()
         }
         binding.showAllCustomized.setOnClickListener {
-            navigateToCustomizedContent()
+            navigateToCustomizedContent(viewModel.mLibraryContentCustomized.toTypedArray(),getString(R.string.customized_for_you))
         }
         binding.showAllCommon.setOnClickListener {
             CommonContentFragment().show(

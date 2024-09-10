@@ -3,15 +3,13 @@ package mnshat.dev.myproject.users.patient.libraraycontent
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.viewbinding.ViewBinding
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.factories.LibraryViewModelFactory
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
+import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.ARTICLE
-import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.VIDEO
-import mnshat.dev.myproject.util.log
 
 abstract class BaseLibraryFragment<T: ViewDataBinding> : BasePatientFragment<T>() ,
     OnItemLibraryContentClicked {
@@ -23,19 +21,21 @@ abstract class BaseLibraryFragment<T: ViewDataBinding> : BasePatientFragment<T>(
         initViewModel()
     }
 
+
+
     private fun initViewModel() {
         val factory = LibraryViewModelFactory(sharedPreferences, activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[LibraryViewModel::class.java]
     }
-    fun navigateToCustomizedContent() {
+
+    fun navigateToCustomizedContent(contents: Array<LibraryContent>, textTitle: String) {
         val action = LibraryContentFragmentDirections
-            .actionLibraryContentFragmentToCustomizedContentFragment(viewModel.mLibraryContentCustomized.toTypedArray())
+            .actionLibraryContentFragmentToCustomizedContentFragment(contents,textTitle)
         findNavController().navigate(action)
     }
     override fun onItemClicked(type: String, index: Int, content: String) {
         updateCurrentContent(content)
         updateCurrentIndex(index)
-
 
         when (type) {
             ARTICLE -> findNavController().navigate(R.id.action_libraryContentFragment_to_articleFragment)
@@ -47,11 +47,11 @@ abstract class BaseLibraryFragment<T: ViewDataBinding> : BasePatientFragment<T>(
         }
     }
 
-    private fun updateCurrentIndex(index: Int) {
+    fun updateCurrentIndex(index: Int) {
         viewModel.setCurrentContentIndex(index)
     }
 
-    private fun updateCurrentContent(content: String) {
+    fun updateCurrentContent(content: String) {
         viewModel.setCurrentContentContent(content)
     }
 }

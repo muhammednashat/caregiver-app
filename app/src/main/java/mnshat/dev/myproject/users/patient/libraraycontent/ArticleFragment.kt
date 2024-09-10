@@ -41,18 +41,7 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() {
 
 
     private fun initializeView() {
-
-        val index = viewModel.getCurrentContentIndex()
-
-        val libraryContentList =
-            when (viewModel.getCurrentContent()) {
-                COMMON_CONTENT -> viewModel.mLibraryContentMostCommon
-                else -> viewModel.mLibraryContentCustomized
-            }
-
-
-        val content = libraryContentList[index]
-
+        val content = viewModel.getContent()
         setArticle(content)
         setTitles(content)
         binding.date.text = content.date
