@@ -61,5 +61,9 @@
         android:id="@+id/videoFragment"
         tools:layout="@layout/fragment_video"
         android:name="mnshat.dev.myproject.users.patient.libraraycontent.VideoFragment"
-        android:label="VideoFragment" />
+        android:label="VideoFragment" >
+        <action
+            android:id="@+id/action_videoFragment_to_customizedContentFragment"
+            app:destination="@id/customizedContentFragment" />
+    </fragment>
 </navigation>

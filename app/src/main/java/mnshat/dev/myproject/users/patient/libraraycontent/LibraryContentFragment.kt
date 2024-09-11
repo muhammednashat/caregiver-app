@@ -1,11 +1,14 @@
 package mnshat.dev.myproject.users.patient.libraraycontent
 
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
 import mnshat.dev.myproject.adapters.CustomizedContentLibraryAdapter
 import mnshat.dev.myproject.databinding.FragmentLibraryContentBinding
 import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.util.ARTICLE
+import mnshat.dev.myproject.util.VIDEO
 
 
 class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding>() {
@@ -26,7 +29,10 @@ class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding
             activity?.finish()
         }
         binding.showAllCustomized.setOnClickListener {
-            navigateToCustomizedContent(viewModel.mLibraryContentCustomized.toTypedArray(),getString(R.string.customized_for_you))
+            navigateToCustomizedContent(
+                viewModel.mLibraryContentCustomized.toTypedArray(),
+                getString(R.string.customized_for_you)
+            )
         }
         binding.showAllCommon.setOnClickListener {
             CommonContentFragment().show(
@@ -36,6 +42,11 @@ class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding
         }
     }
 
+    private fun navigateToCustomizedContent(contents: Array<LibraryContent>, textTitle: String) {
+        val action = LibraryContentFragmentDirections
+            .actionLibraryContentFragmentToCustomizedContentFragment(contents, textTitle)
+        findNavController().navigate(action)
+    }
 
     private fun observeViewModel() {
         viewModel.isReadyDisplay.observe(viewLifecycleOwner) {
@@ -70,6 +81,21 @@ class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding
                 sharedPreferences,
                 this@LibraryContentFragment
             )
+        }
+    }
+
+    override fun onItemClicked(type: String, index: Int, content: String) {
+
+        super.onItemClicked(type, index, content)
+        when (type) {
+            ARTICLE -> findNavController().navigate(R.id.action_libraryContentFragment_to_articleFragment)
+            VIDEO -> findNavController().navigate(R.id.action_libraryContentFragment_to_videoFragment)
+            else -> {
+                ""
+            }
+//            AUDIO -> AudioBottomSheetFragment().show( childFragmentManager, AudioBottomSheetFragment::class.java.name
+//            )
+
         }
     }
 

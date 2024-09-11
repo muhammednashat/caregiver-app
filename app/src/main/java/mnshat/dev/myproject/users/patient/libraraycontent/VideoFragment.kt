@@ -20,6 +20,7 @@ import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.COMMON_CONTENT
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.VIDEO
+import mnshat.dev.myproject.util.log
 
 class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>() {
 
@@ -79,7 +80,11 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>() {
 
     }
 
-
+    private fun navigateToCustomizedContent(contents: Array<LibraryContent>, textTitle: String) {
+        val action = VideoFragmentDirections
+            .actionVideoFragmentToCustomizedContentFragment(contents,textTitle)
+        findNavController().navigate(action)
+    }
     private fun playVideoAudio(uri: Uri) {
         player = ExoPlayer.Builder(requireContext()).build().also { exoPlayer ->
             binding.exoPlayer.player = exoPlayer
@@ -137,9 +142,22 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>() {
     }
 
     override fun onItemClicked(type: String, index: Int, content: String) {
+
+        log("video")
         updateCurrentContent(content)
         updateCurrentIndex(index)
         displayContent(viewModel.getContent())
 
     }
+
+    override fun onStop() {
+        super.onStop()
+        player.stop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        player.release()
+    }
+
 }

@@ -21,6 +21,7 @@ import mnshat.dev.myproject.util.ARTICLE
 import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.VIDEO
+import mnshat.dev.myproject.util.log
 
 
 class CustomizedContentFragment  : BaseLibraryFragment<FragmentCustomizedContentBinding>(){
@@ -60,6 +61,19 @@ class CustomizedContentFragment  : BaseLibraryFragment<FragmentCustomizedContent
             findNavController().popBackStack()
         }
 
+    }
+
+    override fun onItemClicked(type: String, index: Int, content: String) {
+     super.onItemClicked(type, index, content)
+
+        when (type) {
+            ARTICLE -> findNavController().navigate(R.id.action_customizedContentFragment_to_articleFragment)
+            VIDEO -> findNavController().navigate(R.id.action_customizedContentFragment_to_videoFragment)
+            else -> {""}
+//            AUDIO -> AudioBottomSheetFragment().show( childFragmentManager, AudioBottomSheetFragment::class.java.name
+//            )
+
+        }
     }
 
 }

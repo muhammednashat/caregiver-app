@@ -10,6 +10,7 @@ import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.ARTICLE
 import mnshat.dev.myproject.util.VIDEO
+import mnshat.dev.myproject.util.log
 
 abstract class BaseLibraryFragment<T: ViewDataBinding> : BasePatientFragment<T>() ,
     OnItemLibraryContentClicked {
@@ -28,23 +29,10 @@ abstract class BaseLibraryFragment<T: ViewDataBinding> : BasePatientFragment<T>(
         viewModel = ViewModelProvider(requireActivity(), factory)[LibraryViewModel::class.java]
     }
 
-    fun navigateToCustomizedContent(contents: Array<LibraryContent>, textTitle: String) {
-        val action = LibraryContentFragmentDirections
-            .actionLibraryContentFragmentToCustomizedContentFragment(contents,textTitle)
-        findNavController().navigate(action)
-    }
     override fun onItemClicked(type: String, index: Int, content: String) {
         updateCurrentContent(content)
         updateCurrentIndex(index)
 
-        when (type) {
-            ARTICLE -> findNavController().navigate(R.id.action_libraryContentFragment_to_articleFragment)
-            VIDEO -> findNavController().navigate(R.id.action_libraryContentFragment_to_videoFragment)
-            else -> {""}
-//            AUDIO -> AudioBottomSheetFragment().show( childFragmentManager, AudioBottomSheetFragment::class.java.name
-//            )
-
-        }
     }
 
     fun updateCurrentIndex(index: Int) {

@@ -16,6 +16,7 @@ import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.VIDEO
 import mnshat.dev.myproject.util.loadImage
+import mnshat.dev.myproject.util.log
 
 
 class CustomizedContentLibraryAdapter(
@@ -42,7 +43,10 @@ class CustomizedContentLibraryAdapter(
         holder.type.text = getTextType(libraryContent?.type)
         holder.title.text = getTextTitle(libraryContent)
         setTextDuration(libraryContent, holder.duration)
+
         holder.itemView.setOnClickListener {
+            log("adapter clicked")
+
             onItemLibraryContentClicked.onItemClicked(
                 libraryContent?.type!!,
                 position,
