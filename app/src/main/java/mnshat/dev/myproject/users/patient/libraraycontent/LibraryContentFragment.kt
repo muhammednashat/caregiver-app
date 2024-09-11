@@ -8,6 +8,7 @@ import mnshat.dev.myproject.adapters.CustomizedContentLibraryAdapter
 import mnshat.dev.myproject.databinding.FragmentLibraryContentBinding
 import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.util.ARTICLE
+import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.VIDEO
 
 
@@ -90,12 +91,7 @@ class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding
         when (type) {
             ARTICLE -> findNavController().navigate(R.id.action_libraryContentFragment_to_articleFragment)
             VIDEO -> findNavController().navigate(R.id.action_libraryContentFragment_to_videoFragment)
-            else -> {
-                ""
-            }
-//            AUDIO -> AudioBottomSheetFragment().show( childFragmentManager, AudioBottomSheetFragment::class.java.name
-//            )
-
+            AUDIO -> findNavController().navigate(R.id.action_libraryContentFragment_to_audioFragment)
         }
     }
 

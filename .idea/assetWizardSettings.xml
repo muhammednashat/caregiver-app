@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialicons/pause_circle/baseline_pause_circle_24.xml" />
+                                      <entry key="url" value="file:/C:/Users/Windows%2010/AppData/Local/Android/Sdk/icons/material/materialicons/volume_off/baseline_volume_off_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -29,7 +29,8 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="0a0a0a" />
-                            <entry key="outputName" value="ic_pause_circle" />
+                            <entry key="outputName" value="ic_volume_off_24" />
+                            <entry key="sourceFile" value="F:\projects\patient_caregiver" />
                           </map>
                         </option>
                       </PersistentState>

@@ -69,9 +69,7 @@ class CustomizedContentFragment  : BaseLibraryFragment<FragmentCustomizedContent
         when (type) {
             ARTICLE -> findNavController().navigate(R.id.action_customizedContentFragment_to_articleFragment)
             VIDEO -> findNavController().navigate(R.id.action_customizedContentFragment_to_videoFragment)
-            else -> {""}
-//            AUDIO -> AudioBottomSheetFragment().show( childFragmentManager, AudioBottomSheetFragment::class.java.name
-//            )
+           AUDIO -> findNavController().navigate(R.id.action_customizedContentFragment_to_audioFragment)
 
         }
     }
