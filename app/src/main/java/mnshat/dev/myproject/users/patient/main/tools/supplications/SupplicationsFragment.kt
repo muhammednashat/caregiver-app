@@ -111,7 +111,7 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
     private fun handleMenuItemClick(menuItem: MenuItem): Boolean {
         return when (menuItem.itemId) {
             R.id.menu_sharing -> {
-                copyTextToClipboard(supplicationText)
+                copyTextToClipboard( supplicationText)
                 true
             }
             else -> false

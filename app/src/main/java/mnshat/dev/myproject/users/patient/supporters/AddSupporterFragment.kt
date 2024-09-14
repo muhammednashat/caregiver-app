@@ -18,7 +18,7 @@ import mnshat.dev.myproject.util.BASE_CODE
 import mnshat.dev.myproject.util.CODE_USED
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.INVITATION_CODE
-import mnshat.dev.myproject.util.copyToClipboard
+
 
 
 class AddSupporterFragment : BaseSupporterFragment<FragmentAddSupporterBinding>() {
@@ -63,7 +63,7 @@ class AddSupporterFragment : BaseSupporterFragment<FragmentAddSupporterBinding>(
             dialogEditCode()
         }
         binding.btnCopy.setOnClickListener {
-            copyToClipboard(requireContext(), sharedPreferences.getString(INVITATION_CODE))
+            copyTextToClipboard( sharedPreferences.getString(INVITATION_CODE))
             showToast(getString(R.string.code_copied))
             findNavController().popBackStack()
         }

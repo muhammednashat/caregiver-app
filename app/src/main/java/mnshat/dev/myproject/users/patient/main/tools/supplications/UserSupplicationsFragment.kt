@@ -109,7 +109,7 @@ class UserSupplicationsFragment : BasePatientFragment<FragmentUserSupplicationsB
                 true
             }
             R.id.menu_sharing -> {
-                copyTextToClipboard(supplication.name!!)
+                copyTextToClipboard( supplication.name!!)
                 true
             }
             R.id.menu_delete -> {

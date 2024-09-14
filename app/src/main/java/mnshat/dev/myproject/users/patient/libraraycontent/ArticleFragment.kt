@@ -1,22 +1,11 @@
 package mnshat.dev.myproject.users.patient.libraraycontent
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentArticleBinding
-import mnshat.dev.myproject.databinding.FragmentLibraryContentBinding
-import mnshat.dev.myproject.factories.LibraryViewModelFactory
 import mnshat.dev.myproject.model.LibraryContent
-import mnshat.dev.myproject.users.patient.main.BasePatientFragment
-import mnshat.dev.myproject.util.COMMON_CONTENT
-import mnshat.dev.myproject.util.Customized_CONTENT
+import mnshat.dev.myproject.util.ARTICLE
 import mnshat.dev.myproject.util.LANGUAGE
-import mnshat.dev.myproject.util.MENTAL_HEALTH
 
 
 class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() {
@@ -30,15 +19,6 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() {
         super.initializeViews()
         initializeView()
     }
-
-    override fun setupClickListener() {
-        super.setupClickListener()
-        binding.icBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
-    }
-
-
 
     private fun initializeView() {
         val content = viewModel.getContent()
@@ -66,5 +46,25 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() {
     }
 
 
+    override fun setupClickListener() {
+        super.setupClickListener()
 
+        binding.icBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        binding.share.setOnClickListener {
+            copyTextToClipboard( binding.article.text.toString())
+        }
+
+        binding.suggest.setOnClickListener {
+            displaySuggestedContent(this, getString(R.string.suggest_other_articles),ARTICLE)
+        }
+
+    }
+
+    override fun onItemClicked(type: String, index: Int, content: String) {
+        super.onItemClicked(type, index, content)
+        initializeView()
+    }
 }

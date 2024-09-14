@@ -18,6 +18,7 @@ import mnshat.dev.myproject.databinding.FragmentAudioBinding
 import mnshat.dev.myproject.databinding.FragmentVideoBinding
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.VIDEO
 import mnshat.dev.myproject.util.loadImage
@@ -54,7 +55,7 @@ class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>() {
         }
         binding.suggest.setOnClickListener {
 
-            displaySuggestedContent()
+            displaySuggestedContent(this,getString(R.string.suggest_other_audios), AUDIO)
         }
         binding.volumeOff.setOnClickListener {
             player.volume = if (player.volume == 0f) {
@@ -81,17 +82,7 @@ class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>() {
         }
     }
 
-    private fun displaySuggestedContent() {
 
-      val suggestedContentFragment =  SuggestedContentFragment()
-
-        suggestedContentFragment.setOnItemLibraryContent(this)
-
-        suggestedContentFragment.show(
-            childFragmentManager,
-            suggestedContentFragment::class.java.name
-        )
-    }
 
     private fun onPlayClicked() {
         if (player.isPlaying) {
@@ -121,7 +112,7 @@ class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>() {
     }
 
 
-    private fun  setSeekBar(){
+    private fun setSeekBar() {
 
         handler = Handler(Looper.getMainLooper())
 
@@ -221,9 +212,8 @@ class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>() {
         player.release()
         displayContent(viewModel.getContent())
         onPlayClicked()
-
-
     }
+
     override fun onStop() {
         super.onStop()
         player.stop()

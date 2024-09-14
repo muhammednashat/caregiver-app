@@ -311,5 +311,6 @@
     <string name="more_similar_videos">More similar videos</string>
     <string name="show_description">Show description</string>
     <string name="suggest_other_audios">Suggest other audios</string>
+    <string name="suggest_other_articles">Suggest other articles</string>
 
 </resources>

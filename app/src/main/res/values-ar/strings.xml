@@ -272,6 +272,7 @@
     <string name="more_similar_videos">المزيد من الفديوهات المشابهة</string>
     <string name="show_description">عرض الوصف</string>
     <string name="suggest_other_audios">اقتراح صوتيات اخرى</string>
+    <string name="suggest_other_articles">اقتراح موضوعات اخرى</string>
 
 
 </resources>

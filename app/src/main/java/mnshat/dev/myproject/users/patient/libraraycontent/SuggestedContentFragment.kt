@@ -15,7 +15,8 @@ import mnshat.dev.myproject.util.ENGLISH_KEY
 class SuggestedContentFragment : BaseBottomSheetDialogFragment<FragmentSuggestedContentBinding>(),
 
     OnItemLibraryContentClicked {
-
+    private lateinit var title: String
+    private lateinit var type: String
     private lateinit var viewModel: LibraryViewModel
     private lateinit var mOnItemLibraryContentClicked: OnItemLibraryContentClicked
 
@@ -26,20 +27,28 @@ class SuggestedContentFragment : BaseBottomSheetDialogFragment<FragmentSuggested
             binding.close.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
             binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
         }
+        binding.title.text = title
         initViewModel()
-
-        setRecyclerMostCommon(viewModel.getContentsBasedType(AUDIO))
+        setRecyclerMostCommon(viewModel.getContentsBasedType(type))
     }
 
     override fun setupClickListener() {
         super.setupClickListener()
-
         binding.close.setOnClickListener {
             dismiss()
         }
+    }
+
+    fun setTitle(title: String) : SuggestedContentFragment{
+        this.title = title
+        return this
 
     }
 
+    fun setType(type: String) : SuggestedContentFragment{
+        this.type = type
+        return this
+    }
 
     private fun initViewModel() {
         val factory = LibraryViewModelFactory(sharedPreferences, activity?.application!!)
@@ -64,8 +73,10 @@ class SuggestedContentFragment : BaseBottomSheetDialogFragment<FragmentSuggested
         mOnItemLibraryContentClicked.onItemClicked(type, index, content)
     }
 
-    fun setOnItemLibraryContent(onItemLibraryContentClicked: OnItemLibraryContentClicked) {
+    fun setOnItemLibraryContent(onItemLibraryContentClicked: OnItemLibraryContentClicked):SuggestedContentFragment {
         mOnItemLibraryContentClicked = onItemLibraryContentClicked
+        return this
+
     }
 
 }

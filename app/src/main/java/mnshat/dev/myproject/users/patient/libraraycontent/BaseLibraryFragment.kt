@@ -22,7 +22,18 @@ abstract class BaseLibraryFragment<T: ViewDataBinding> : BasePatientFragment<T>(
         initViewModel()
     }
 
+    fun displaySuggestedContent(onItemLibraryContentClicked: OnItemLibraryContentClicked,title: String, type: String) {
 
+        val suggestedContentFragment =
+            SuggestedContentFragment()
+                .setType(type)
+                .setOnItemLibraryContent(onItemLibraryContentClicked)
+                .setTitle(title)
+        suggestedContentFragment.show(
+            childFragmentManager,
+            suggestedContentFragment::class.java.name
+        )
+    }
 
     private fun initViewModel() {
         val factory = LibraryViewModelFactory(sharedPreferences, activity?.application!!)

@@ -26,12 +26,7 @@ fun showSnackbarForInternetStatus(context: Context, view: View) {
     view?.let { Snackbar.make(it, "No internet connection", Snackbar.LENGTH_LONG).show() }
 }
 
-fun copyToClipboard(context: Context,textToCopy: String?) {
-    val clipboardManager =
-        context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-    val clipData = ClipData.newPlainText("text", textToCopy)
-    clipboardManager.setPrimaryClip(clipData)
-}
+
 
 fun log(text:String,tag:String = "TAG" ) = Log.e(tag , text)
 
