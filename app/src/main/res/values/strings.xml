@@ -312,5 +312,8 @@
     <string name="show_description">Show description</string>
     <string name="suggest_other_audios">Suggest other audios</string>
     <string name="suggest_other_articles">Suggest other articles</string>
+    <string name="how_are_you_today">How are you today?</string>
+    <string name="enter">Enter</string>
+    <string name="auxiliary_tools">Auxiliary tools</string>
 
 </resources>

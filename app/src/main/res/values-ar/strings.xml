@@ -273,6 +273,10 @@
     <string name="show_description">عرض الوصف</string>
     <string name="suggest_other_audios">اقتراح صوتيات اخرى</string>
     <string name="suggest_other_articles">اقتراح موضوعات اخرى</string>
+    <string name="how_are_you_today">كيف حالك اليوم؟</string>
+    <string name="enter">دخول</string>
+    <string name="auxiliary_tools">الأدوات المساعدة
+</string>
 
 
 </resources>
