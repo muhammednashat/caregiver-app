@@ -42,6 +42,7 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>() {
         }
 
         binding.showAll.setOnClickListener {
+
             navigateToCustomizedContent(viewModel.getContentsBasedType(VIDEO).toTypedArray(),getString(R.string.more_similar_videos))
 
         }
@@ -60,11 +61,14 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>() {
     }
 
     private fun initializeView() {
+
         displayContent(viewModel.getContent())
+
         initRecyclerView(viewModel.getContentsBasedType(VIDEO))
 
     }
     private fun displayContent(content: LibraryContent) {
+
         playVideoAudio(Uri.parse(content.videoURL))
         setTitle(content)
         setDescription(content)
@@ -72,6 +76,7 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>() {
     }
 
     private fun initRecyclerView(libraryContents: List<LibraryContent>) {
+
     binding.recycler.apply {
         layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -81,9 +86,12 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>() {
     }
 
     private fun navigateToCustomizedContent(contents: Array<LibraryContent>, textTitle: String) {
+
         val action = VideoFragmentDirections
             .actionVideoFragmentToCustomizedContentFragment(contents,textTitle)
         findNavController().navigate(action)
+
+
     }
     private fun playVideoAudio(uri: Uri) {
         player = ExoPlayer.Builder(requireContext()).build().also { exoPlayer ->
@@ -91,6 +99,7 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>() {
             val mediaItem = MediaItem.fromUri(uri)
             exoPlayer.setMediaItem(mediaItem)
             exoPlayer.prepare()
+
             dismissProgressDialog()
 //            exoPlayer.playWhenReady = true
         }
@@ -132,9 +141,9 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>() {
     }
 
     private fun setDescription(content: LibraryContent) {
+
         if (sharedPreferences.getString(LANGUAGE) == "en") {
             description = content.enDescription?.repeat(200)!!
-
         } else {
             description = content.arTitle?.repeat(200)!!
 

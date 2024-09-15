@@ -47,12 +47,15 @@ class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>() {
         binding.playButton.setOnClickListener {
             onPlayClicked()
         }
+
         binding.replay.setOnClickListener {
             player.seekTo(player.currentPosition - 10000)
         }
+
         binding.forward.setOnClickListener {
             player.seekTo(player.currentPosition + 10000)
         }
+
         binding.suggest.setOnClickListener {
 
             displaySuggestedContent(this,getString(R.string.suggest_other_audios), AUDIO)
@@ -113,9 +116,7 @@ class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>() {
 
 
     private fun setSeekBar() {
-
         handler = Handler(Looper.getMainLooper())
-
         binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (fromUser) {

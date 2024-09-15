@@ -35,7 +35,6 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-
         iitViewModel()
         super.onActivityCreated(savedInstanceState)
     }

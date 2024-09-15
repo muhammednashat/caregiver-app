@@ -44,8 +44,12 @@ class LibraryViewModel(
 
     }
 
-    fun getContent()=
-         getCurrentContents()[currentContentIndex]
+    fun getContent() :LibraryContent{
+        val list =    getCurrentContents()
+        val content = list.get(currentContentIndex)
+        return content
+    }
+
 
     private fun getCurrentContents(): List<LibraryContent> {
         return when (currentContent) {
