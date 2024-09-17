@@ -315,5 +315,9 @@
     <string name="how_are_you_today">How are you today?</string>
     <string name="enter">Enter</string>
     <string name="auxiliary_tools">Auxiliary tools</string>
+    <string name="emergency_help">Emergency help</string>
+    <string name="don_t_hesitate_ask_for_help_now">Don\'t hesitate, ask for help now</string>
+    <string name="help_numbers">Help numbers</string>
+    <string name="easy_access_to_the_relevant_authorities">Easy access relevant authorities</string>
 
 </resources>

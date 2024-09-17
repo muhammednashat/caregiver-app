@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/C:/Users/Windows%2010/AppData/Local/Android/Sdk/icons/material/materialicons/volume_off/baseline_volume_off_24.xml" />
+                                      <entry key="url" value="file:/C:/Users/Windows%2010/AppData/Local/Android/Sdk/icons/material/materialicons/keyboard_backspace/baseline_keyboard_backspace_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,8 +28,9 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="autoMirrored" value="true" />
                             <entry key="color" value="0a0a0a" />
-                            <entry key="outputName" value="ic_volume_off_24" />
+                            <entry key="outputName" value="ic_keyboard_backspace" />
                             <entry key="sourceFile" value="F:\projects\patient_caregiver" />
                           </map>
                         </option>

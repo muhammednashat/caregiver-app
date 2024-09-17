@@ -277,6 +277,10 @@
     <string name="enter">دخول</string>
     <string name="auxiliary_tools">الأدوات المساعدة
 </string>
+    <string name="emergency_help">مساعدة طارئة</string>
+    <string name="don_t_hesitate_ask_for_help_now">لا تتردد, اطلب المساعدة الان</string>
+    <string name="help_numbers">ارقام مساعدة</string>
+    <string name="easy_access_to_the_relevant_authorities">الوصول للجهات المختصة بسهوله</string>
 
 
 </resources>
