@@ -25,8 +25,6 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
 
     override fun initializeViews() {
         binding.nameUser.text = sharedPreferences.getString(USER_NAME)
-        hideSpiritualIcon(binding.constraintTask2, binding.line1)
-
     }
 
     override fun onStart() {
@@ -78,32 +76,15 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
     }
 
 
-    fun setStatusOfCurrentTask(currentTask: CurrentTask?){
+    private fun setStatusOfCurrentTask(currentTask: CurrentTask?){
         currentTask?.let {
             val status= it.status
-            binding.currentDay.text= getString(R.string.day,status?.day)
-            binding.currentLevel.text= getString(R.string.current_level,status?.currentLevel)
-            binding.tasksRemaining.text= getString(R.string.tasks_remaining,status?.remaining)
-           val completionRate = status?.completionRate!!
-            binding.seekBar.progress = completionRate
-            binding.seekBar.setOnTouchListener(object: OnTouchListener{
-                override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-                   return true
-                }
-
-            })
-            binding.progress.text=  "$completionRate%"
-            if (status.educational == 0){
-                binding.btnContinue.text= getString(R.string.start)
-            }else{
-                binding.btnContinue.text= getString(R.string.continue1)
+            binding.currentDayLevel.text= buildString {
+                append(getString(R.string.day, status?.day))
+                append(" ")
+                append(getString(R.string.current_level, status?.currentLevel))
             }
 
-            changeColorOfTaskImage(status.educational,binding.constraintTask1, binding.imageTask1)
-             if (status.educational == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
-            changeColorOfTaskImage(status.spiritual,binding.constraintTask2,binding.imageTask2)
-            if (status.behavioral == 1) binding.line2.setBackgroundColor(Color.parseColor("#6db7d3"))
-            changeColorOfTaskImage(status.behavioral,binding.constraintTask3, binding.imageTask3)
     }
     }
 }

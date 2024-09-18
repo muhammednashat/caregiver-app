@@ -281,6 +281,9 @@
     <string name="don_t_hesitate_ask_for_help_now">لا تتردد, اطلب المساعدة الان</string>
     <string name="help_numbers">ارقام مساعدة</string>
     <string name="easy_access_to_the_relevant_authorities">الوصول للجهات المختصة بسهوله</string>
+    <string name="you_can_view_users_information">يمكنك الاطلاع على معلومات المستخدمين</string>
+    <string name="users">المستخدمين</string>
+    <string name="posts">المشاركات</string>
 
 
 </resources>

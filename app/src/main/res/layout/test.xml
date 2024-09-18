@@ -32,18 +32,21 @@
                 android:id="@+id/image_user2"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_margin="@dimen/margin_medium"
+
+                android:layout_marginTop="@dimen/margin_2_super"
+                android:layout_marginEnd="@dimen/margin_large"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/circularImageViewShape"
                 app:srcCompat="@drawable/image_user12" />
+
             <TextView
                 android:id="@+id/textView5"
                 style="@style/TextAppearance.AppCompat.Body1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_large"
-                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_2_super"
                 android:text="@string/welcome_message"
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +130,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small"
-                    android:text="اليوم ال 7 المستوى الاول"
+                    android:text="اليوم  1المستوى الاول"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
