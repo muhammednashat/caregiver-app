@@ -284,6 +284,8 @@
     <string name="you_can_view_users_information">يمكنك الاطلاع على معلومات المستخدمين</string>
     <string name="users">المستخدمين</string>
     <string name="posts">المشاركات</string>
+    <string name="you_can_see">يمكنك الاطلاع على:</string>
+    <string name="you_can_view_the_results_of_the_user_s_daily_program">يمكنك الاطلاع على نتائج البرنامج اليومى للمستخدم</string>
 
 
 </resources>

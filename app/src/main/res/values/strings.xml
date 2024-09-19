@@ -321,5 +321,7 @@
     <string name="you_can_view_users_information">You can view users\' information</string>
     <string name="users">Users</string>
     <string name="posts">Posts</string>
+    <string name="you_can_see">You can see:</string>
+    <string name="you_can_view_the_results_of_the_user_s_daily_program">You can view the results of the user\'s daily program</string>
 
 </resources>

@@ -32,9 +32,8 @@
                 android:id="@+id/image_user2"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-
                 android:layout_marginTop="@dimen/margin_2_super"
-                android:layout_marginEnd="@dimen/margin_large"
+                android:layout_marginEnd="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/circularImageViewShape"
