@@ -95,7 +95,6 @@
                     android:src="@drawable/ic_forward_ios"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStat_toEndOf="@+id/textView37"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.529"
                     app:tint="@color/white" />

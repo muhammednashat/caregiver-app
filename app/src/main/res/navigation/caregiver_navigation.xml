@@ -7,7 +7,11 @@
         android:id="@+id/caregiverHomeFragment"
         android:name="mnshat.dev.myproject.users.caregiver.CaregiverHomeFragment"
         android:label="fragment_caregiver_home"
-        tools:layout="@layout/fragment_caregiver_home" />
+        tools:layout="@layout/fragment_caregiver_home" >
+        <action
+            android:id="@+id/action_caregiverHomeFragment_to_usersFragment"
+            app:destination="@id/usersFragment" />
+    </fragment>
     <fragment
         android:id="@+id/messagesFragment"
         android:name="mnshat.dev.myproject.users.patient.main.MessagesFragment"
@@ -18,4 +22,8 @@
         android:name="mnshat.dev.myproject.users.caregiver.CaregiverProfileFragment"
         android:label="fragment_caregiver_profile"
         tools:layout="@layout/fragment_caregiver_profile" />
+    <fragment
+        android:id="@+id/usersFragment"
+        android:name="mnshat.dev.myproject.users.caregiver.UsersFragment"
+        android:label="UsersFragment" />
 </navigation>
