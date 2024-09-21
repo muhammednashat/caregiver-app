@@ -22,6 +22,7 @@ class CaregiverHomeFragment : BaseCaregiverFragment<FragmentCaregiverHomeBinding
         binding.btnContinue.setOnClickListener {
             findNavController().navigate(R.id.action_caregiverHomeFragment_to_usersFragment)
         }
+        //
         binding.rootEducationalContent.setOnClickListener {
             startActivity(Intent(requireActivity(), LibraryActivity::class.java))
         }
