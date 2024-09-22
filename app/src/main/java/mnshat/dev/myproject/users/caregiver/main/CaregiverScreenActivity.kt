@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.caregiver
+package mnshat.dev.myproject.users.caregiver.main
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView

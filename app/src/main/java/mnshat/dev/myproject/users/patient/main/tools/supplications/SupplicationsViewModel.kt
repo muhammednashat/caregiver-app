@@ -10,8 +10,7 @@ import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.model.SupplicationsUser
 import mnshat.dev.myproject.util.SharedPreferencesManager
-import mnshat.dev.myproject.util.getListHands
-import mnshat.dev.myproject.util.getListSebha
+import mnshat.dev.myproject.util.data.getListHands
 
 
 //ToDo Clear Data after onStop called

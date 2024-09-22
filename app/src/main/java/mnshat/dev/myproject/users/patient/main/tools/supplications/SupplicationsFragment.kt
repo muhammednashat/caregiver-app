@@ -17,8 +17,8 @@ import mnshat.dev.myproject.databinding.FragmentSupplicationsBinding
 import mnshat.dev.myproject.factories.SupplicationsViewModelFactory
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
-import mnshat.dev.myproject.util.getListHands
-import mnshat.dev.myproject.util.getListSebha
+import mnshat.dev.myproject.util.data.getListHands
+import mnshat.dev.myproject.util.data.getListSebha
 
 
 class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>() {

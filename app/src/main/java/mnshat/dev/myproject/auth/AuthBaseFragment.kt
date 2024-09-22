@@ -4,15 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
-import com.google.firebase.inappmessaging.dagger.Provides
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.factories.AuthViewModelFactory
-import mnshat.dev.myproject.factories.PatientViewModelFactory
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.RegistrationData
-import mnshat.dev.myproject.users.caregiver.CaregiverScreenActivity
+import mnshat.dev.myproject.users.caregiver.main.CaregiverScreenActivity
 import mnshat.dev.myproject.users.patient.intro.IntroActivity
-import mnshat.dev.myproject.users.patient.main.PatientViewModel
 import mnshat.dev.myproject.users.patient.main.UserScreensActivity
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.CODE_USED
@@ -23,7 +20,6 @@ import mnshat.dev.myproject.util.IS_SIGNING
 import mnshat.dev.myproject.util.NUMBER_SUPPORTERS
 import mnshat.dev.myproject.util.SUPPORTERS
 import mnshat.dev.myproject.util.USER
-import javax.inject.Inject
 
 open abstract class AuthBaseFragment<T : ViewDataBinding> : BaseFragment<T>() {
 

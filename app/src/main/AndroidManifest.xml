@@ -37,7 +37,7 @@
             android:name=".users.patient.main.UserScreensActivity"
             android:exported="false" />
         <activity
-            android:name=".users.caregiver.CaregiverScreenActivity"
+            android:name=".users.caregiver.main.CaregiverScreenActivity"
             android:exported="false" />
         <activity
             android:name=".auth.AuthActivity"

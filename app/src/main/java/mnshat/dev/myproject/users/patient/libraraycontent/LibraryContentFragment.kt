@@ -64,6 +64,7 @@ class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding
         binding.recyclerMostCommon.apply {
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
             adapter = CommonContentLibraryAdapter(
                 libraryContent,
                 requireActivity(),

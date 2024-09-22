@@ -59,48 +59,6 @@ fun getGratitudeQuestionsList(context: Context): List<String> {
     )
 }
 
-fun getListHands()= listOf(
-    R.drawable.image_hand1,
-    R.drawable.image_hand2,
-    R.drawable.image_hand3,
-    R.drawable.image_hand4,
-    R.drawable.image_hand5,
-    R.drawable.image_hand6,
-    R.drawable.image_hand7,
-    R.drawable.image_hand8,
-    R.drawable.image_hand9,
-    R.drawable.image_hand10,
-    R.drawable.image_hand11,
-    R.drawable.image_hand12,
-    R.drawable.image_hand13,
-    R.drawable.image_hand14,
-    R.drawable.image_hand15,
-    R.drawable.image_hand16,
-)
-fun getListSebha()= listOf(
-    R.drawable.image_sebha0,
-    R.drawable.image_sebha1,
-    R.drawable.image_sebha2,
-    R.drawable.image_sebha3,
-    R.drawable.image_sebha4,
-    R.drawable.image_sebha5,
-    R.drawable.image_sebha6,
-    R.drawable.image_sebha7,
-    R.drawable.image_sebha8,
-    R.drawable.image_sebha9,
-    R.drawable.image_sebha10,
-    R.drawable.image_sebha11,
-    R.drawable.image_sebha12,
-    R.drawable.image_sebha13,
-    R.drawable.image_sebha14,
-    R.drawable.image_sebha16,
-    R.drawable.image_sebha17,
-    R.drawable.image_sebha18,
-    R.drawable.image_sebha19,
-    R.drawable.image_sebha20,
-    R.drawable.image_sebha21,
-    R.drawable.image_sebha22,
-)
 
 
 
