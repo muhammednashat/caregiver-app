@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.libraraycontent
+package mnshat.dev.myproject.users.libraraycontent
 
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R

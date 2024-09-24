@@ -16,7 +16,7 @@
         android:theme="@style/Theme.MyProject"
         tools:targetApi="31">
         <activity
-            android:name=".users.patient.libraraycontent.LibraryActivity"
+            android:name=".users.libraraycontent.LibraryActivity"
             android:exported="false" />
         <activity
             android:name=".maybeneedlater.TasksActivity"

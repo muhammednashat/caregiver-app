@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.libraraycontent
+package mnshat.dev.myproject.users.libraraycontent
 
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider

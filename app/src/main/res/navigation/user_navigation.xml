@@ -11,9 +11,6 @@
         <action
             android:id="@+id/action_patientHomeFragment_to_mainAzcarFragment"
             app:destination="@id/toolsFragment" />
-        <action
-            android:id="@+id/action_patientHomeFragment_to_educationalContentFragment"
-            app:destination="@id/educationalContentFragment" />
     </fragment>
 
     <fragment
@@ -103,9 +100,4 @@
         tools:layout="@layout/fragment_gratitude"
         android:name="mnshat.dev.myproject.users.patient.main.tools.gratitude.GratitudeFragment"
         android:label="GratitudeFragment" />
-    <fragment
-        android:id="@+id/educationalContentFragment"
-        android:name="mnshat.dev.myproject.users.patient.libraraycontent.LibraryContentFragment"
-        android:label="fragment_educational_content"
-        tools:layout="@layout/fragment_library_content" />
 </navigation>

@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.libraraycontent
+package mnshat.dev.myproject.users.libraraycontent
 
 
 import androidx.lifecycle.ViewModelProvider
@@ -39,13 +39,13 @@ class SuggestedContentFragment : BaseBottomSheetDialogFragment<FragmentSuggested
         }
     }
 
-    fun setTitle(title: String) : SuggestedContentFragment{
+    fun setTitle(title: String) : SuggestedContentFragment {
         this.title = title
         return this
 
     }
 
-    fun setType(type: String) : SuggestedContentFragment{
+    fun setType(type: String) : SuggestedContentFragment {
         this.type = type
         return this
     }
@@ -73,7 +73,7 @@ class SuggestedContentFragment : BaseBottomSheetDialogFragment<FragmentSuggested
         mOnItemLibraryContentClicked.onItemClicked(type, index, content)
     }
 
-    fun setOnItemLibraryContent(onItemLibraryContentClicked: OnItemLibraryContentClicked):SuggestedContentFragment {
+    fun setOnItemLibraryContent(onItemLibraryContentClicked: OnItemLibraryContentClicked): SuggestedContentFragment {
         mOnItemLibraryContentClicked = onItemLibraryContentClicked
         return this
 

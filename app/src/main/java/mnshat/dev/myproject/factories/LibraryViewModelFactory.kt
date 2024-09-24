@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import mnshat.dev.myproject.auth.AuthViewModel
 import mnshat.dev.myproject.base.BaseViewModel
-import mnshat.dev.myproject.users.patient.libraraycontent.LibraryViewModel
+import mnshat.dev.myproject.users.libraraycontent.LibraryViewModel
 import mnshat.dev.myproject.util.SharedPreferencesManager
 
 

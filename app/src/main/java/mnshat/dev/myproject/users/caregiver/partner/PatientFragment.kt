@@ -12,8 +12,6 @@ import mnshat.dev.myproject.util.data.itemList
 
 class PatientFragment : BaseCaregiverFragment<FragmentPatientBinding>() {
 
-
-
     override fun getLayout()= R.layout.fragment_patient
 
     override fun setupClickListener() {

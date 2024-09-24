@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.libraraycontent
+package mnshat.dev.myproject.users.libraraycontent
 
 import android.app.Application
 import androidx.lifecycle.LiveData

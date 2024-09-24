@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.libraraycontent
+package mnshat.dev.myproject.users.libraraycontent
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -28,7 +28,7 @@ import mnshat.dev.myproject.util.log
 class CommonContentFragment : BaseBottomSheetDialogFragment<FragmentCommonContentBinding>(),
     OnItemLibraryContentClicked {
 
-    private lateinit var viewModel:LibraryViewModel
+    private lateinit var viewModel: LibraryViewModel
 
 
     override fun getLayout() = R.layout.fragment_common_content
