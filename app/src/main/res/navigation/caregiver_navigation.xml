@@ -24,6 +24,6 @@
         tools:layout="@layout/fragment_caregiver_profile" />
     <fragment
         android:id="@+id/usersFragment"
-        android:name="mnshat.dev.myproject.users.caregiver.PatientFragment"
+        android:name="mnshat.dev.myproject.users.caregiver.partner.PatientFragment"
         android:label="UsersFragment" />
 </navigation>

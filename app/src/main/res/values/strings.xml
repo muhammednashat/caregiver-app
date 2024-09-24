@@ -326,6 +326,8 @@
     <string name="mood">Mood</string>
     <string name="you_can_track_the_user_s_mood">You can track the user\'s mood</string>
     <string name="see_what_has_been_shared_with_you">See what has been shared with you</string>
+    <string name="messaging">Messaging</string>
+    <string name="account">Account</string>
 
 
 </resources>

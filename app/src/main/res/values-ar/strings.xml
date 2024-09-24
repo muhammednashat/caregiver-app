@@ -289,6 +289,8 @@
     <string name="mood">الحالة المزاجية</string>
     <string name="you_can_track_the_user_s_mood">يمكنك  الحالة المزاجية الخاصة بالمستخدم</string>
     <string name="see_what_has_been_shared_with_you">رؤية ما تم مشاركته معك </string>
+    <string name="messaging">مراسلة</string>
+    <string name="account">الحساب</string>
 
 
 </resources>

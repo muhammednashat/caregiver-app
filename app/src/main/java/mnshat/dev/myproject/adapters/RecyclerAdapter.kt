@@ -32,7 +32,7 @@ private val language:String
         val item = itemList[position]
         holder.imageView.setImageResource(item.image)
         holder.title.text =  if (language == "en") item.enTitle else item.arTitle
-        holder.description.text = if (language == "en") item.enDescription else item.enDescription
+        holder.description.text = if (language == "en") item.enDescription else item.arDescription
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
