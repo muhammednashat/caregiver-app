@@ -16,6 +16,7 @@ class CaregiverHomeFragment : BaseCaregiverFragment<FragmentCaregiverHomeBinding
     override fun setupClickListener() {
 
         super.setupClickListener()
+        //
         binding.enter.setOnClickListener {
             findNavController().navigate(R.id.action_caregiverHomeFragment_to_usersFragment)
         }
