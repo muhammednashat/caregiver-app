@@ -43,7 +43,7 @@
     <fragment
         android:id="@+id/toolsFragment"
         tools:layout="@layout/fragment_tools"
-        android:name="mnshat.dev.myproject.users.patient.main.tools.ToolsFragment"
+        android:name="mnshat.dev.myproject.users.patient.tools.ToolsFragment"
         android:label="ToolsFragment">
         <action
             android:id="@+id/action_toolsFragment_to_mainSupplicationsFragment"
@@ -59,7 +59,7 @@
     <fragment
         android:id="@+id/mainSupplicationsFragment"
         tools:layout="@layout/fragment_main_supplications"
-        android:name="mnshat.dev.myproject.users.patient.main.tools.supplications.MainSupplicationsFragment"
+        android:name="mnshat.dev.myproject.users.patient.tools.supplications.MainSupplicationsFragment"
         android:label="MainSupplicationsFragment" >
         <action
             android:id="@+id/action_mainSupplicationsFragment_to_supplicationsFragment"
@@ -73,7 +73,7 @@
     <fragment
         android:id="@+id/supplicationsFragment"
         tools:layout="@layout/fragment_supplications"
-        android:name="mnshat.dev.myproject.users.patient.main.tools.supplications.SupplicationsFragment"
+        android:name="mnshat.dev.myproject.users.patient.tools.supplications.SupplicationsFragment"
         android:label="SupplicationsFragment" >
         <argument
             android:name="supplication"
@@ -83,7 +83,7 @@
     <fragment
         android:id="@+id/userSupplicationsFragment"
          tools:layout="@layout/fragment_user_supplications"
-        android:name="mnshat.dev.myproject.users.patient.main.tools.supplications.UserSupplicationsFragment"
+        android:name="mnshat.dev.myproject.users.patient.tools.supplications.UserSupplicationsFragment"
         android:label="UserSupplicationsFragment" >
 
         <argument
@@ -92,12 +92,12 @@
     </fragment>
     <fragment
         android:id="@+id/mainBreathFragment"
-        android:name="mnshat.dev.myproject.users.patient.main.tools.breath.MainBreathFragment"
+        android:name="mnshat.dev.myproject.users.patient.tools.breath.MainBreathFragment"
         android:label="fragment_main_breath"
         tools:layout="@layout/fragment_main_breath" />
     <fragment
         android:id="@+id/gratitudeFragment"
         tools:layout="@layout/fragment_gratitude"
-        android:name="mnshat.dev.myproject.users.patient.main.tools.gratitude.GratitudeFragment"
+        android:name="mnshat.dev.myproject.users.patient.tools.gratitude.GratitudeFragment"
         android:label="GratitudeFragment" />
 </navigation>

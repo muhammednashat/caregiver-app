@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/image_background_tools"
-        tools:context=".users.patient.main.tools.ToolsFragment">
+        tools:context=".users.patient.tools.ToolsFragment">
 
 
         <TextView

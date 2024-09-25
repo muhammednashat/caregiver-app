@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="mnshat.dev.myproject.users.patient.main.tools.supplications.SupplicationsViewModel" />
+            type="mnshat.dev.myproject.users.patient.tools.supplications.SupplicationsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

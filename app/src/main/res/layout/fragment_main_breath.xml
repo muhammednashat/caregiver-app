@@ -7,7 +7,7 @@
     <data>
    <variable
        name="viewModel"
-       type="mnshat.dev.myproject.users.patient.main.tools.breath.BreathViewModel" />
+       type="mnshat.dev.myproject.users.patient.tools.breath.BreathViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

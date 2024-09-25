@@ -14,7 +14,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".users.libraraycontent.VideoFragment">
+            tools:context=".features.libraraycontent.VideoFragment">
 
 
             <com.google.android.exoplayer2.ui.PlayerView

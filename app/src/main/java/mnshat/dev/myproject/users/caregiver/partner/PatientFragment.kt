@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.RecyclerAdapter
 import mnshat.dev.myproject.databinding.FragmentPatientBinding
-import mnshat.dev.myproject.users.caregiver.BaseCaregiverFragment
+import mnshat.dev.myproject.users.caregiver.main.BaseCaregiverFragment
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.data.itemList
 

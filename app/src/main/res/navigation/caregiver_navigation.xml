@@ -5,7 +5,7 @@
     app:startDestination="@id/caregiverHomeFragment">
     <fragment
         android:id="@+id/caregiverHomeFragment"
-        android:name="mnshat.dev.myproject.users.caregiver.CaregiverHomeFragment"
+        android:name="mnshat.dev.myproject.users.caregiver.main.CaregiverHomeFragment"
         android:label="fragment_caregiver_home"
         tools:layout="@layout/fragment_caregiver_home" >
         <action
@@ -19,7 +19,7 @@
         tools:layout="@layout/fragment_messages" />
     <fragment
         android:id="@+id/caregiverProfileFragment"
-        android:name="mnshat.dev.myproject.users.caregiver.CaregiverProfileFragment"
+        android:name="mnshat.dev.myproject.users.caregiver.main.CaregiverProfileFragment"
         android:label="fragment_caregiver_profile"
         tools:layout="@layout/fragment_caregiver_profile" />
     <fragment

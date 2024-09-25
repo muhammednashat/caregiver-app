@@ -16,7 +16,10 @@
         android:theme="@style/Theme.MyProject"
         tools:targetApi="31">
         <activity
-            android:name=".users.libraraycontent.LibraryActivity"
+            android:name=".features.chatting.ChatingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".features.libraraycontent.LibraryActivity"
             android:exported="false" />
         <activity
             android:name=".maybeneedlater.TasksActivity"

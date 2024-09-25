@@ -3,7 +3,7 @@ package mnshat.dev.myproject.factories
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import mnshat.dev.myproject.users.patient.main.tools.supplications.SupplicationsViewModel
+import mnshat.dev.myproject.users.patient.tools.supplications.SupplicationsViewModel
 import mnshat.dev.myproject.util.SharedPreferencesManager
 
 
