@@ -1,25 +1,20 @@
 package mnshat.dev.myproject.features.chatting
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.adapters.FriendlyMessageAdapter
-import mnshat.dev.myproject.databinding.FragmentChattingBinding
+import mnshat.dev.myproject.adapters.MessageAdapter
+import mnshat.dev.myproject.databinding.FragmentChatBinding
 import mnshat.dev.myproject.model.Message
 import mnshat.dev.myproject.util.USER_NAME
 
-class ChattingFragment : BaseChattingFragment<FragmentChattingBinding>() {
+class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
 
-    override fun getLayout() = R.layout.fragment_chatting
-    private lateinit var adapter: FriendlyMessageAdapter
+    override fun getLayout() = R.layout.fragment_chat
+    private lateinit var adapter: MessageAdapter
     private lateinit var db: FirebaseDatabase
 
 
@@ -30,7 +25,7 @@ class ChattingFragment : BaseChattingFragment<FragmentChattingBinding>() {
         val options = FirebaseRecyclerOptions.Builder<Message>()
             .setQuery(messagesRef, Message::class.java)
             .build()
-        adapter = FriendlyMessageAdapter(options, sharedPreferences.getString(USER_NAME))
+        adapter = MessageAdapter(options, sharedPreferences.getString(USER_NAME))
         binding.messageRecyclerView.layoutManager = LinearLayoutManager(context)
         binding.messageRecyclerView.adapter = adapter
     }

@@ -58,7 +58,7 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-android:2.8.3")
-    implementation("com.google.firebase:firebase-storage-ktx:21.0.0")
+
 
     //Test
     testImplementation("junit:junit:4.13.2")
@@ -72,7 +72,9 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-auth-ktx:22.1.2")
     implementation("com.google.firebase:firebase-database-ktx:20.2.2")
+
     implementation("com.google.firebase:firebase-firestore-ktx:24.8.1")
+
     implementation("com.google.firebase:firebase-messaging:23.4.1")
     implementation("com.google.firebase:firebase-inappmessaging-display:20.4.1")
     // Firebase UI Library

@@ -3,11 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/chatting_navigation.xml"
-    app:startDestination="@id/chattingFragment">
-
+    app:startDestination="@id/messagesListFragment">
     <fragment
-        android:id="@+id/chattingFragment"
-        android:name="mnshat.dev.myproject.features.chatting.ChattingFragment"
-        android:label="fragment_chatting"
-        tools:layout="@layout/fragment_chatting" />
+        android:id="@+id/messagesListFragment"
+        tools:layout="@layout/fragment_messages_list"
+        android:name="mnshat.dev.myproject.features.chatting.MessagesListFragment"
+        android:label="MessagesListFragment" >
+        <action
+            android:id="@+id/action_messagesListFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        tools:layout="@layout/fragment_chat"
+        android:name="mnshat.dev.myproject.features.chatting.ChatFragment"
+        android:label="ChatFragment" />
 </navigation>

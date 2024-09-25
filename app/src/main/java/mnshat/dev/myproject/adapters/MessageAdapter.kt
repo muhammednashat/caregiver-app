@@ -11,13 +11,12 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.ImageMessageBinding
 import mnshat.dev.myproject.databinding.ItemViewMessageBinding
 import mnshat.dev.myproject.model.Message
 
-class FriendlyMessageAdapter(
+class MessageAdapter(
     private val options: FirebaseRecyclerOptions<Message>,
     private val currentUserName: String?
 ) : FirebaseRecyclerAdapter<Message, ViewHolder>(options) {
@@ -73,25 +72,25 @@ class FriendlyMessageAdapter(
         }
     }
 
-    private fun loadImageIntoView(view: ImageView, url: String, isCircular: Boolean = true) {
-        if (url.startsWith("gs://")) {
-            val storageReference = Firebase.storage.getReferenceFromUrl(url)
-            storageReference.downloadUrl
-                .addOnSuccessListener { uri ->
-                    val downloadUrl = uri.toString()
-                    loadWithGlide(view, downloadUrl, isCircular)
-                }
-                .addOnFailureListener { e ->
-                    Log.w(
-                        TAG,
-                        "Getting download url was not successful.",
-                        e
-                    )
-                }
-        } else {
-            loadWithGlide(view, url, isCircular)
-        }
-    }
+//    private fun loadImageIntoView(view: ImageView, url: String, isCircular: Boolean = true) {
+//        if (url.startsWith("gs://")) {
+//            val storageReference = Firebase.storage.getReferenceFromUrl(url)
+//            storageReference.downloadUrl
+//                .addOnSuccessListener { uri ->
+//                    val downloadUrl = uri.toString()
+//                    loadWithGlide(view, downloadUrl, isCircular)
+//                }
+//                .addOnFailureListener { e ->
+//                    Log.w(
+//                        TAG,
+//                        "Getting download url was not successful.",
+//                        e
+//                    )
+//                }
+//        } else {
+//            loadWithGlide(view, url, isCircular)
+//        }
+//    }
 
     private fun loadWithGlide(view: ImageView, url: String, isCircular: Boolean = true) {
         Glide.with(view.context).load(url).into(view)

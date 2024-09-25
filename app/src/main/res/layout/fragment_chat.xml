@@ -24,7 +24,8 @@
                 android:layout_width="24dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                ads:srcCompat="@drawable/ic_add" />
+                ads:srcCompat="@drawable/ic_image"
+                ads:tint="#25a6b0" />
 
             <EditText
                 android:id="@+id/messageEditText"
