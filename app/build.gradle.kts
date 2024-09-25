@@ -58,6 +58,7 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-android:2.8.3")
+    implementation("com.google.firebase:firebase-storage-ktx:21.0.0")
 
     //Test
     testImplementation("junit:junit:4.13.2")
