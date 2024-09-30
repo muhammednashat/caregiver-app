@@ -1,6 +1,5 @@
 package mnshat.dev.myproject.adapters
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -10,7 +9,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.firebase.ktx.Firebase
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.ImageMessageBinding
 import mnshat.dev.myproject.databinding.ItemViewMessageBinding
@@ -24,7 +22,7 @@ class MessageAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return if (viewType == VIEW_TYPE_TEXT) {
-            val view = inflater.inflate(R.layout.item_view_message, parent, false)
+            val view = inflater.inflate(R.layout.item_view_message_sender, parent, false)
             val binding = ItemViewMessageBinding.bind(view)
             MessageViewHolder(binding)
         } else {

@@ -20,27 +20,13 @@ class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
 
     override fun initializeViews() {
         super.initializeViews()
-        db = Firebase.database
-        val messagesRef = db.reference.child("MESSAGES")
-        val options = FirebaseRecyclerOptions.Builder<Message>()
-            .setQuery(messagesRef, Message::class.java)
-            .build()
-        adapter = MessageAdapter(options, sharedPreferences.getString(USER_NAME))
-        binding.messageRecyclerView.layoutManager = LinearLayoutManager(context)
-        binding.messageRecyclerView.adapter = adapter
+
     }
 
 
     override fun setupClickListener() {
         super.setupClickListener()
-        binding.sendButton.setOnClickListener {
-            val message = Message(
-                binding.messageEditText.text.toString(),
-                "getUserName()",
-            )
-            db.reference.child("MESSAGES").push().setValue(message)
-            binding.messageEditText.setText("")
-        }
+
 
     }
 }

@@ -1,3 +1,4 @@
+
 package mnshat.dev.myproject.model
 
 import android.os.Parcelable
@@ -20,28 +21,34 @@ import mnshat.dev.myproject.util.log
 
 @Parcelize
 data class RegistrationData(
+
     var id: String? = null,
     var name: String? = null,
     var email: String? = null,
     var password: String? = null,
     var gender: Int? = null,
     var ageGroup: Int? = null,
+
     var token: String? = null,
     var invitationCode: String? = null,
     var typeOfUser: String? = null,
     var codeUsed: Boolean? = null,
+
     var supports: List<String>? = null,
     var gratitudeList: MutableList<Gratitude>? = null,
     val permissions: Permissions? = null,
     var numberSupporters: Int? = null,
     var hasPartner: Boolean? = null,
     var baseCode: String? = null,
+
     var status: Int? = null,
     var idPartner: String? = null,
     var emailPartner: String? = null,
     var namePartner: String? = null,
     var currentTaskDay: Int? = null
+
 ): Parcelable {
+
     fun storeDataLocally(sharedPreferences: SharedPreferencesManager) {
         sharedPreferences.storeString(TYPE_OF_USER, typeOfUser)
         sharedPreferences.storeString(USER_NAME, name)
