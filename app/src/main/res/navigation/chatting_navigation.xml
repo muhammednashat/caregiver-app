@@ -17,5 +17,9 @@
         android:id="@+id/chatFragment"
         tools:layout="@layout/fragment_chat"
         android:name="mnshat.dev.myproject.features.chatting.ChatFragment"
-        android:label="ChatFragment" />
+        android:label="ChatFragment" >
+        <argument
+            android:name="recievedId"
+            app:argType="string" />
+    </fragment>
 </navigation>

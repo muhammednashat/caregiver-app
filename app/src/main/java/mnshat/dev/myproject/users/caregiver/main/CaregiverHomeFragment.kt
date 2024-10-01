@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentCaregiverHomeBinding
+import mnshat.dev.myproject.features.chatting.ChatActivity
 import mnshat.dev.myproject.features.libraraycontent.LibraryActivity
 
 class CaregiverHomeFragment : BaseCaregiverFragment<FragmentCaregiverHomeBinding>() {
@@ -18,6 +19,9 @@ class CaregiverHomeFragment : BaseCaregiverFragment<FragmentCaregiverHomeBinding
         //
         binding.enter.setOnClickListener {
             findNavController().navigate(R.id.action_caregiverHomeFragment_to_usersFragment)
+        }
+        binding.constraintLayout15.setOnClickListener {
+            startActivity(Intent(requireActivity(), ChatActivity::class.java))
         }
 
         binding.rootEducationalContent.setOnClickListener {

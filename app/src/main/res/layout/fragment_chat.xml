@@ -92,7 +92,7 @@
                 android:background="@drawable/corner_normal"
                 android:backgroundTint="@color/light_gray"
                 android:hint="Say something..."
-                android:padding="10dp"
+                android:padding="15dp"
 
                 />
 
@@ -101,7 +101,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:enabled="false"
                 android:src="@drawable/outline_send_gray_24"
                 app:tint="#f16744" />
 

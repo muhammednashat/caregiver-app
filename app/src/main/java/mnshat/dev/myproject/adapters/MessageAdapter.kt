@@ -11,7 +11,8 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.ImageMessageBinding
-import mnshat.dev.myproject.databinding.ItemViewMessageBinding
+
+import mnshat.dev.myproject.databinding.ItemViewMessageSenderBinding
 import mnshat.dev.myproject.model.Message
 
 class MessageAdapter(
@@ -23,7 +24,7 @@ class MessageAdapter(
         val inflater = LayoutInflater.from(parent.context)
         return if (viewType == VIEW_TYPE_TEXT) {
             val view = inflater.inflate(R.layout.item_view_message_sender, parent, false)
-            val binding = ItemViewMessageBinding.bind(view)
+            val binding = ItemViewMessageSenderBinding.bind(view)
             MessageViewHolder(binding)
         } else {
             val view = inflater.inflate(R.layout.image_message, parent, false)
@@ -44,7 +45,7 @@ class MessageAdapter(
         return if (options.snapshots[position].text != null) VIEW_TYPE_TEXT else VIEW_TYPE_IMAGE
     }
 
-    inner class MessageViewHolder(private val binding: ItemViewMessageBinding) : ViewHolder(binding.root) {
+    inner class MessageViewHolder(private val binding: ItemViewMessageSenderBinding) : ViewHolder(binding.root) {
         fun bind(item: Message) {
 
 

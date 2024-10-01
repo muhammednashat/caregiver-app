@@ -1,5 +1,6 @@
 package mnshat.dev.myproject.features.chatting
 
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.FirebaseDatabase
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.MessageAdapter
@@ -24,6 +25,14 @@ class MessagesListFragment : BaseChattingFragment<FragmentMessagesListBinding>()
         if (currentLang != ENGLISH_KEY) {
             binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
         }
+    }
+
+    override fun setupClickListener() {
+        super.setupClickListener()
+      binding.go.setOnClickListener {
+          val action = MessagesListFragmentDirections.actionMessagesListFragmentToChatFragment("12")
+          findNavController().navigate(action)
+      }
     }
 
 
