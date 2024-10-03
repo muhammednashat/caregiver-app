@@ -19,7 +19,7 @@
         android:name="mnshat.dev.myproject.features.chatting.ChatFragment"
         android:label="ChatFragment" >
         <argument
-            android:name="recievedId"
+            android:name="partnerId"
             app:argType="string" />
     </fragment>
 </navigation>

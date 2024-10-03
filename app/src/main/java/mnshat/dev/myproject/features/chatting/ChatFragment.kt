@@ -1,6 +1,7 @@
 package mnshat.dev.myproject.features.chatting
 
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import kotlinx.coroutines.launch
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.MessagesAdapter
@@ -10,17 +11,23 @@ import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER_ID
+import mnshat.dev.myproject.util.log
 
 class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
 
     override fun getLayout() = R.layout.fragment_chat
-
+    private var partnerId: String = ""
     override fun initializeViews() {
         super.initializeViews()
+        retrieveDataFromArguments()
         changeBackgroundIconBasedLang()
         getMessages(getChatId())
     }
 
+    private fun retrieveDataFromArguments() {
+        val args: ChatFragmentArgs by navArgs()
+        partnerId = args.partnerId
+    }
 
 
     private fun changeBackgroundIconBasedLang() {
@@ -43,7 +50,10 @@ class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
 
     private fun observeGettingMessages() {
         viewLifecycleOwner.lifecycleScope.launch {
+            log("observeGettingMessages")
+
             viewModel.messagesFlow.collect { messages ->
+                log("observeGettingMessages")
                 updateUIWithMessages(messages)
             }
         }
@@ -64,16 +74,27 @@ class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
     }
 
     private fun updateUIWithMessages(messages: MutableList<Message>) {
+        log("updateUIWithMessages")
 
         binding.messageRecyclerView.apply {
+            scrollToPosition((messages.size).minus(1))
             adapter = MessagesAdapter(messages,sharedPreferences.getString(USER_ID))
+
         }
 
     }
 
     private fun getChatId(): String {
+        val userId = sharedPreferences.getString(USER_ID).take(4)
+        val partnerId = partnerId.take(4)
+
         return if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER){
-            sharedPreferences.getString(USER_ID) + "12"
-        }else sharedPreferences.getString(USER_ID) + "12"
+
+            log(partnerId + userId)
+            partnerId + userId
+        } else {
+            log(userId + partnerId)
+            userId + partnerId
+        }
     }
 }

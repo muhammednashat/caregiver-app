@@ -43,8 +43,6 @@ class ChatViewModel(
         }
     }
 
-
-    @SuppressLint("SuspiciousIndentation")
     private fun retrieveMessagesFlow(chatId: String): Flow<MutableList<Message>> = callbackFlow {
 
         val listenerRegistration: ListenerRegistration = db.collection(CHATS).document(chatId)
@@ -53,16 +51,16 @@ class ChatViewModel(
                     close(error)
                     return@addSnapshotListener
                 }
-
                 if (documentSnapshot != null && documentSnapshot.exists()) {
+                   log("11111111111112")
                     val messages = documentSnapshot.toObject(Messages::class.java)?.messages
                         ?: mutableListOf()
                         trySend(messages)
                 } else {
+
                     trySend(mutableListOf())
                 }
             }
-
         awaitClose { listenerRegistration.remove() }
     }
 
@@ -73,6 +71,7 @@ class ChatViewModel(
 
             db.collection(CHATS).document(chatId).set(Messages(currentMessages))
                 .addOnSuccessListener {
+
                     log("Message sent successfully")
                 }
                 .addOnFailureListener {

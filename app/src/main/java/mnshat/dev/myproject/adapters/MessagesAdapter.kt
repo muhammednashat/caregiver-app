@@ -1,13 +1,16 @@
 package mnshat.dev.myproject.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.model.Message
+import mnshat.dev.myproject.util.getDateAsString
 
 
 class MessagesAdapter(private val messages: MutableList<Message>,private val userId: String) :
@@ -21,8 +24,30 @@ class MessagesAdapter(private val messages: MutableList<Message>,private val use
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+     val message = messages[position]
+
+         if (message.senderId == userId){
+            setUpSenderMessage(holder,message)
+         }else{
+            setUpPartnerMessage(holder,message)
+        }
+    }
+
+    private fun setUpPartnerMessage(holder: ViewHolder, message: Message) {
+        holder.sender.visibility = View.GONE
+        holder.partner.visibility = View.VISIBLE
+        holder.messagePartner.text = message.text
+        holder.datePartner.text = getDateAsString(message.timeStamp ?: 0L)
+
+    }
+
+    private fun setUpSenderMessage(holder: ViewHolder, message: Message) {
+        holder.sender.visibility = View.VISIBLE
+        holder.partner.visibility = View.GONE
+        holder.messageSender.text = message.text
+        holder.dateSender.text = getDateAsString(message.timeStamp ?: 0L)
     }
 
 
@@ -33,7 +58,14 @@ class MessagesAdapter(private val messages: MutableList<Message>,private val use
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var messageTextView: TextView = itemView.findViewById<TextView>(R.id.messageTextView)
-        var date: TextView = itemView.findViewById<TextView>(R.id.date)
+
+        val partner:ConstraintLayout = itemView.findViewById(R.id.partner)
+        val sender:ConstraintLayout = itemView.findViewById(R.id.sender)
+
+        var messageSender: TextView = itemView.findViewById<TextView>(R.id.messageSender)
+        var messagePartner: TextView = itemView.findViewById<TextView>(R.id.messagePartner)
+
+        var dateSender: TextView = itemView.findViewById<TextView>(R.id.dateSender)
+        var datePartner: TextView = itemView.findViewById<TextView>(R.id.datePartner)
     }
 }
