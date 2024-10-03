@@ -3,7 +3,7 @@ package mnshat.dev.myproject.features.chatting
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.FirebaseDatabase
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.adapters.MessageAdapter
+import mnshat.dev.myproject.adapters.MessageAdapter12
 import mnshat.dev.myproject.databinding.FragmentMessagesListBinding
 import mnshat.dev.myproject.util.ENGLISH_KEY
 
@@ -12,7 +12,7 @@ class MessagesListFragment : BaseChattingFragment<FragmentMessagesListBinding>()
 
     override fun getLayout() = R.layout.fragment_messages_list
 
-    private lateinit var adapter: MessageAdapter
+    private lateinit var adapter: MessageAdapter12
     private lateinit var db: FirebaseDatabase
 
 

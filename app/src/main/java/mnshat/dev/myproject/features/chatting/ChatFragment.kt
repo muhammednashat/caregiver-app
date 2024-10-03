@@ -3,19 +3,15 @@ package mnshat.dev.myproject.features.chatting
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.adapters.MessageAdapter
+import mnshat.dev.myproject.adapters.MessagesAdapter
 import mnshat.dev.myproject.databinding.FragmentChatBinding
 import mnshat.dev.myproject.model.Message
 import mnshat.dev.myproject.util.ENGLISH_KEY
-import mnshat.dev.myproject.util.log
+import mnshat.dev.myproject.util.USER_ID
 
 class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
 
     override fun getLayout() = R.layout.fragment_chat
-
-    private lateinit var adapter: MessageAdapter
-
-
 
     override fun initializeViews() {
         super.initializeViews()
@@ -54,23 +50,26 @@ class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
 
     private fun getNewMessage() = Message(
         text = "binding.messageEditText.text.toString()",
-        senderId = "123"
+        senderId = sharedPreferences.getString(USER_ID)
     )
 
     override fun setupClickListener() {
         super.setupClickListener()
         binding.sendButton.setOnClickListener {
-            log("sendButton ")
             viewModel.sendMessage( getNewMessage(),getChatId())
         }
 
     }
 
     private fun updateUIWithMessages(messages: MutableList<Message>) {
-    log(messages.size.toString() + " q23234" )
+
+        binding.messageRecyclerView.apply {
+            adapter = MessagesAdapter(messages,sharedPreferences.getString(USER_ID))
+        }
+
     }
 
     private fun getChatId(): String {
-        return "1df2" + "12"
+        return sharedPreferences.getString(USER_ID) + "12"
     }
 }

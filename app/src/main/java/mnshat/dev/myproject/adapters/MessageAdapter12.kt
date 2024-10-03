@@ -15,7 +15,7 @@ import mnshat.dev.myproject.databinding.ImageMessageBinding
 import mnshat.dev.myproject.databinding.ItemViewMessageSenderBinding
 import mnshat.dev.myproject.model.Message
 
-class MessageAdapter(
+class MessageAdapter12(
     private val options: FirebaseRecyclerOptions<Message>,
     private val currentUserName: String?
 ) : FirebaseRecyclerAdapter<Message, ViewHolder>(options) {

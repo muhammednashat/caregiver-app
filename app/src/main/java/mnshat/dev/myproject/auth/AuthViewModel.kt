@@ -16,6 +16,7 @@ import mnshat.dev.myproject.util.IS_LOGGED
 import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.TYPE_OF_USER
+import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.USER_NAME
 
 class AuthViewModel(
@@ -154,6 +155,7 @@ class AuthViewModel(
 
 
     fun storeDataLocally() {
+        sharedPreferences.storeString(USER_ID, id)
         sharedPreferences.storeString(TYPE_OF_USER, typeOfUser.value)
         sharedPreferences.storeString(USER_NAME, name.value)
         sharedPreferences.storeInt(AGE_GROUP, intAge.value)
