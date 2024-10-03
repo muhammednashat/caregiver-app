@@ -17,10 +17,15 @@ abstract class BaseChattingFragment<T: ViewDataBinding> : BaseFragment<T>()
     }
 
 
-
-    private fun initViewModel() {
+         private fun initViewModel() {
         val factory = ChatViewModelFactory(sharedPreferences, activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[ChatViewModel::class.java]
+             observeViewModel()
+         }
 
-    }
+         open fun observeViewModel() {
+
+         }
+
+
 }

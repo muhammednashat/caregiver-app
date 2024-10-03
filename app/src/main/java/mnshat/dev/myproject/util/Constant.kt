@@ -51,3 +51,6 @@ const val HEALTHY_LIVING = "Healthy living"
 const val LIBRARY_CONTENTS = "library_contents"
 const val USER_PROFILES = "user_profiles"
 const val DAILY_PROGRAM_STATES = "daily_program_states"
+
+
+const val CHATS = "chats"

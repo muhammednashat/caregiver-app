@@ -1,27 +1,29 @@
 package mnshat.dev.myproject.features.chatting
 
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.MessageAdapter
 import mnshat.dev.myproject.databinding.FragmentChatBinding
 import mnshat.dev.myproject.model.Message
-import mnshat.dev.myproject.model.Messages
 import mnshat.dev.myproject.util.ENGLISH_KEY
+import mnshat.dev.myproject.util.log
 
 class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
 
     override fun getLayout() = R.layout.fragment_chat
 
     private lateinit var adapter: MessageAdapter
-    private var db = Firebase.firestore
+
 
 
     override fun initializeViews() {
         super.initializeViews()
         changeBackgroundIconBasedLang()
-
+        getMessages(getChatId())
     }
+
+
 
     private fun changeBackgroundIconBasedLang() {
         if (currentLang != ENGLISH_KEY) {
@@ -29,41 +31,46 @@ class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
         }
     }
 
-    fun sendMessage(message: Message, chatId: String) {
-        db.collection("chats").document(chatId).get()
-            .addOnSuccessListener { documentSnapshot ->
-                val messages:MutableList<Message> = if (documentSnapshot.exists()) {
-                    documentSnapshot.toObject(Messages::class.java)?.messages ?: mutableListOf()
-                }else emptyList<Message>().toMutableList()
+    private fun getMessages(chatId: String) {
 
-                messages.add(message)
+        viewModel.getMessages(chatId)
 
-                db.collection("chats").document(chatId).set(Messages(messages)).addOnSuccessListener {  }.addOnFailureListener{}
+    }
 
-            }.addOnFailureListener {
-                println("documentSnapshot not found")
+    override fun observeViewModel() {
+        super.observeViewModel()
+       observeGettingMessages()
 
+    }
+
+    private fun observeGettingMessages() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.messagesFlow.collect { messages ->
+                updateUIWithMessages(messages)
             }
+        }
     }
 
 
-    fun getNewMessage() = Message(
+    private fun getNewMessage() = Message(
         text = "binding.messageEditText.text.toString()",
-        senderId = "12"
+        senderId = "123"
     )
 
     override fun setupClickListener() {
         super.setupClickListener()
         binding.sendButton.setOnClickListener {
-            val message = getNewMessage()
-            val chatId = getChatId(message.senderId)
-            sendMessage(message, chatId)
-
+            log("sendButton ")
+            viewModel.sendMessage( getNewMessage(),getChatId())
         }
 
     }
 
-    private fun getChatId(senderId: String?): String {
-        return senderId + "12"
+    private fun updateUIWithMessages(messages: MutableList<Message>) {
+    log(messages.size.toString() + " q23234" )
+    }
+
+    private fun getChatId(): String {
+        return "1df2" + "12"
     }
 }
