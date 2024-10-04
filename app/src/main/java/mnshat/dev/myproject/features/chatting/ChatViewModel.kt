@@ -1,6 +1,5 @@
 package mnshat.dev.myproject.features.chatting
 
-import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.ListenerRegistration
@@ -18,8 +17,6 @@ import mnshat.dev.myproject.model.Messages
 import mnshat.dev.myproject.util.CHATS
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.log
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 class ChatViewModel(
     private val sharedPreferences: SharedPreferencesManager,
@@ -34,6 +31,9 @@ class ChatViewModel(
     private val _messagesFlow = MutableStateFlow<MutableList<Message>>(mutableListOf())
     val messagesFlow = _messagesFlow.asStateFlow()
 
+    private val _messagesListFlow = MutableStateFlow<MutableList<Messages>>(mutableListOf())
+    val messagesListFlow = _messagesListFlow.asStateFlow()
+
 
     fun getMessages(chatId: String) {
         viewModelScope.launch {
@@ -42,6 +42,47 @@ class ChatViewModel(
             }
         }
     }
+
+    fun getMessagesList(chatId: String) {
+        viewModelScope.launch {
+            retrieveMessagesListFlow(chatId).collect { messagesList ->
+                _messagesListFlow.value = messagesList
+            }
+        }
+    }
+
+    private fun retrieveMessagesListFlow(chatIdPrefix: String): Flow<MutableList<Messages>> = callbackFlow {
+        log("if retrieveMessagesListFlow ")
+        val listenerRegistration: ListenerRegistration = db.collection(CHATS)
+            .orderBy("__name__")
+            .startAt(chatIdPrefix)
+            .endAt(chatIdPrefix + '\uf8ff')
+            .addSnapshotListener { querySnapshot, error ->
+                if (error != null) {
+                    close(error)
+                    return@addSnapshotListener
+                }
+                if (querySnapshot != null && !querySnapshot.isEmpty) {
+                    val messagesList = mutableListOf<Messages>()
+                    log("if 1232 ")
+
+                    for (document in querySnapshot.documents) {
+                        log("for 1232 ")
+
+                        val messages = document.toObject(Messages::class.java)
+                        messagesList.add(messages!!)
+                    }
+                    log("trySend 1232 ")
+
+                    trySend(messagesList)
+                } else {
+                    trySend(mutableListOf())
+                }
+            }
+
+        awaitClose { listenerRegistration.remove() }
+    }
+
 
     private fun retrieveMessagesFlow(chatId: String): Flow<MutableList<Message>> = callbackFlow {
 
@@ -52,9 +93,8 @@ class ChatViewModel(
                     return@addSnapshotListener
                 }
                 if (documentSnapshot != null && documentSnapshot.exists()) {
-                   log("11111111111112")
-                    val messages = documentSnapshot.toObject(Messages::class.java)?.messages
-                        ?: mutableListOf()
+                    val messages =
+                        documentSnapshot.toObject(Messages::class.java)?.messages ?: mutableListOf()
                         trySend(messages)
                 } else {
 
@@ -64,12 +104,12 @@ class ChatViewModel(
         awaitClose { listenerRegistration.remove() }
     }
 
-    fun sendMessage(newMessage:Message, chatId: String) {
+    fun sendMessage(newMessage:Message,namePartner:String,urlImage:String ,idPartner:String,chatId: String) {
         viewModelScope.launch {
             val currentMessages = _messagesFlow.value
             currentMessages.add(newMessage)
 
-            db.collection(CHATS).document(chatId).set(Messages(currentMessages))
+            db.collection(CHATS).document(chatId).set(Messages(namePartner,idPartner,urlImage,currentMessages))
                 .addOnSuccessListener {
 
                     log("Message sent successfully")

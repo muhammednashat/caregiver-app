@@ -21,5 +21,11 @@
         <argument
             android:name="partnerId"
             app:argType="string" />
+        <argument
+            android:name="urlImagePartner"
+            app:argType="string" />
+        <argument
+            android:name="namePartner"
+            app:argType="string" />
     </fragment>
 </navigation>

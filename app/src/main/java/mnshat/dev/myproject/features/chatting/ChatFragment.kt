@@ -17,16 +17,25 @@ class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
 
     override fun getLayout() = R.layout.fragment_chat
     private var partnerId: String = ""
+    private var urlImagePartner: String = ""
+    private var namePartner: String = ""
     override fun initializeViews() {
         super.initializeViews()
         retrieveDataFromArguments()
+        setUpUi()
         changeBackgroundIconBasedLang()
         getMessages(getChatId())
+    }
+
+    private fun setUpUi() {
+        binding.name.text = namePartner
     }
 
     private fun retrieveDataFromArguments() {
         val args: ChatFragmentArgs by navArgs()
         partnerId = args.partnerId
+        urlImagePartner = args.urlImagePartner
+        namePartner = args.namePartner
     }
 
 
@@ -67,8 +76,9 @@ class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
 
     override fun setupClickListener() {
         super.setupClickListener()
+
         binding.sendButton.setOnClickListener {
-            viewModel.sendMessage( getNewMessage(),getChatId())
+            viewModel.sendMessage(getNewMessage(),namePartner,urlImagePartner,partnerId,getChatId())
         }
 
     }
