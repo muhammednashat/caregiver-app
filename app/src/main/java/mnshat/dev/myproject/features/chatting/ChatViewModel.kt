@@ -62,7 +62,7 @@ class ChatViewModel(
             retrieveMessagesList(chatId)
             }
         }
-
+//ToDo check    .startAt(chatIdPrefix)
     private fun retrieveMessagesList(chatIdPrefix: String){
          db.collection(CHATS)
             .orderBy("__name__")
