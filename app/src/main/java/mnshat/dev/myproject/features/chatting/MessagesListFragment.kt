@@ -11,8 +11,12 @@ import mnshat.dev.myproject.auth.AgeFragment
 import mnshat.dev.myproject.databinding.FragmentMessagesListBinding
 import mnshat.dev.myproject.interfaces.ItemMessagesListClicked
 import mnshat.dev.myproject.model.Messages
+import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.HAS_PARTNER
+import mnshat.dev.myproject.util.ID_PARTNER
+import mnshat.dev.myproject.util.TYPE_OF_USER
+import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.log
 
 
@@ -23,7 +27,7 @@ class MessagesListFragment : BaseChattingFragment<FragmentMessagesListBinding>()
     override fun initializeViews() {
         super.initializeViews()
         changeBackgroundIconBasedLang()
-        viewModel.getMessagesList("123m")
+        viewModel.getMessagesList(getChatId())
     }
 
     private fun changeBackgroundIconBasedLang() {
@@ -36,6 +40,7 @@ class MessagesListFragment : BaseChattingFragment<FragmentMessagesListBinding>()
         super.setupClickListener()
 
         binding.icBack.setOnClickListener{
+
           }
         binding.btStartMessaging.setOnClickListener {
             ChooseUserToChatFragment().show(childFragmentManager, ChooseUserToChatFragment::class.java.name)
@@ -45,46 +50,45 @@ class MessagesListFragment : BaseChattingFragment<FragmentMessagesListBinding>()
         }
 
     }
-    private fun isHasSupporter() {
-        if (sharedPreferences.getBoolean(HAS_PARTNER)) {
-            binding.messages.visibility = View.GONE
-            binding.noMessage.visibility = View.VISIBLE
-        } else {
-            binding.messages.visibility = View.GONE
-            binding.noMessage.visibility = View.VISIBLE
-        }
-    }
-
-
     override fun observeViewModel() {
         super.observeViewModel()
         observeGettingMessagesList()
-
     }
 
     private fun observeGettingMessagesList() {
-
         viewModel.messagesList.observe(viewLifecycleOwner) {
-
-            updateUIWithMessagesList(it)
-
-        }
-        viewModel.messages.observe(viewLifecycleOwner) {
-
+             if (it.isEmpty()) {
+                 binding.messages.visibility = View.GONE
+                 binding.noMessage.visibility = View.VISIBLE
+             }else{
+                 updateUIWithMessagesList(it)
+                 binding.noMessage.visibility = View.GONE
+                 binding.messages.visibility = View.VISIBLE
+             }
         }
 
     }
 
     private fun updateUIWithMessagesList(messagesList: List<Messages>) {
         binding.messagesRecyclerView.apply {
-            log("updateUIWithMessagesList")
-            adapter = MessagesListAdapter(messagesList,this@MessagesListFragment)
+            adapter = MessagesListAdapter(messagesList,requireActivity(),sharedPreferences,this@MessagesListFragment)
         }
     }
 
     override fun onItemClicked(name: String, idPartner: String, urlImage: String) {
         val action = MessagesListFragmentDirections.actionMessagesListFragmentToChatFragment(idPartner,urlImage,name)
         findNavController().navigate(action)
+    }
+
+    private fun getChatId(): String {
+        val userId = sharedPreferences.getString(USER_ID).take(4)
+        var partnerId = ""
+        return if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER){
+            partnerId = sharedPreferences.getString(ID_PARTNER).take(4)
+            partnerId + userId
+        } else {
+            userId + partnerId
+        }
     }
 
 

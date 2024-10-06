@@ -3,19 +3,20 @@ package mnshat.dev.myproject.features.chatting
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import kotlinx.coroutines.launch
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.MessagesAdapter
 import mnshat.dev.myproject.databinding.FragmentChatBinding
+import mnshat.dev.myproject.databinding.ImageMessageBinding
 import mnshat.dev.myproject.model.Message
+import mnshat.dev.myproject.model.MetaDataMessages
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.ENGLISH_KEY
-import mnshat.dev.myproject.util.IMAGE_PARTNER
-import mnshat.dev.myproject.util.NAME_PARTNER
 import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER_ID
+import mnshat.dev.myproject.util.USER_IMAGE
+import mnshat.dev.myproject.util.USER_NAME
 import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
@@ -91,6 +92,13 @@ class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
         viewModel.messages.observe(viewLifecycleOwner){
            it?.let {   updateUIWithMessages(it)}
         }
+
+        viewModel.clearEditText.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.messageEditText.text.clear()
+                viewModel.resetClearEditText()
+            }
+        }
     }
 
     private fun initUserData() {
@@ -107,16 +115,43 @@ class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
     override fun setupClickListener() {
         super.setupClickListener()
 
-        binding.sendButton.setOnClickListener {
-            log("${binding.messageEditText.text.toString()}   ${sharedPreferences.getString(USER_ID)} ")
 
-            viewModel.sendMessage(getNewMessage(),namePartner,urlImagePartner,partnerId,getChatId())
+        binding.icBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        binding.sendButton.setOnClickListener {
+            viewModel.sendMessage(getNewMessage(),getMetaDataMessages(),getChatId())
+        }
+
+    }
+
+    private fun getMetaDataMessages(): MetaDataMessages {
+        return if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER) {
+            MetaDataMessages(
+                nameCaregiver =sharedPreferences.getString(USER_NAME),
+                idCaregiver = sharedPreferences.getString(USER_ID),
+                imageCaregiver = sharedPreferences.getString(USER_IMAGE),
+
+                namePatient = namePartner,
+                idPatient =partnerId,
+                imagePatient =urlImagePartner,
+
+                )
+        } else {
+            MetaDataMessages(
+                nameCaregiver =namePartner,
+                idCaregiver =partnerId,
+                imageCaregiver = urlImagePartner,
+
+                namePatient =sharedPreferences.getString(USER_NAME),
+                idPatient = sharedPreferences.getString(USER_ID),
+                imagePatient =sharedPreferences.getString(USER_IMAGE),
+            )
         }
 
     }
 
     private fun updateUIWithMessages(messages: List<Message>) {
-        log("updateUIWithMessages")
 
         binding.messageRecyclerView.apply {
             scrollToPosition((messages.size).minus(1))

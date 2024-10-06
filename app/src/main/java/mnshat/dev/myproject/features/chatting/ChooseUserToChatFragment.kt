@@ -30,6 +30,7 @@ class ChooseUserToChatFragment : BaseBottomSheetDialogFragment<FragmentChooseUse
         }
         binding.itemUser.setOnClickListener {
             navigateToChatFragment()
+            dismiss()
         }
     }
 

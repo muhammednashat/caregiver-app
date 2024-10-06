@@ -16,8 +16,12 @@ import kotlinx.coroutines.launch
 import mnshat.dev.myproject.base.BaseViewModel
 import mnshat.dev.myproject.model.Message
 import mnshat.dev.myproject.model.Messages
+import mnshat.dev.myproject.model.MetaDataMessages
+import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.CHATS
 import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.TYPE_OF_USER
+import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.log
 
 class ChatViewModel(
@@ -35,6 +39,9 @@ class ChatViewModel(
     private val _messagesList = MutableLiveData<List<Messages>>()
     val messagesList:LiveData<List<Messages>> = _messagesList
 
+    private val _clearEditText = MutableLiveData<Boolean>()
+    val clearEditText:LiveData<Boolean> = _clearEditText
+
     private val _messages = MutableLiveData<List<Message>>()
     val messages:LiveData<List<Message>> = _messages
 
@@ -49,6 +56,8 @@ class ChatViewModel(
     }
 
     fun getMessagesList(chatId: String) {
+        log(" chatId  = $chatId")
+
         viewModelScope.launch {
             retrieveMessagesList(chatId)
             }
@@ -67,20 +76,17 @@ class ChatViewModel(
                     val messagesList = mutableListOf<Messages>()
 
                     for (document in querySnapshot.documents) {
-                        log("for 1232 ")
-
                         val messages = document.toObject(Messages::class.java)
                         messagesList.add(messages!!)
                     }
-                    log("trySend 1232 ")
-
-//                    trySend(messagesList)
+                    _messagesList.value = messagesList
                 } else {
-//                    trySend(mutableListOf())
+                    _messagesList.value = mutableListOf()
                 }
             }
 
     }
+
 
 
     private fun retrieveMessages(chatId: String){
@@ -94,29 +100,34 @@ class ChatViewModel(
                     val messages =
                         documentSnapshot.toObject(Messages::class.java)?.messages ?: mutableListOf()
                     _messages.value = messages
+                    _clearEditText.value = true
                 } else {
-                    _messages.value = mutableListOf()
+
                 }
             }
     }
 
-    fun sendMessage(newMessage:Message,namePartner:String,urlImage:String ,idPartner:String,chatId: String) {
+    fun sendMessage(newMessage:Message,metaDataMessages: MetaDataMessages,chatId: String) {
 
-//
-//            val currentMessages = _messagesList.value
-//
-//            currentMessages.add(newMessage)
-//
-//            db.collection(CHATS).document(chatId).set(Messages(namePartner,idPartner,urlImage,currentMessages))
-//                .addOnSuccessListener {
-//
-//                    log("Message sent successfully")
-//                }
-//                .addOnFailureListener {
-//                    log("Failed to send message: ${it.message}")
-//                }
+            val currentMessages = _messages.value?.toMutableList()
+
+            currentMessages?.add(newMessage)
+
+            db.collection(CHATS).document(chatId).set(Messages(
+                metaDataMessages,
+                currentMessages
+            ))
+                .addOnSuccessListener {
+                    log("Message sent successfully")
+                }
+                .addOnFailureListener {
+                    log("Failed to send message: ${it.message}")
+                }
 
     }
 
-}
+    fun resetClearEditText(){
+        _clearEditText.value = false
+    }
+
 }

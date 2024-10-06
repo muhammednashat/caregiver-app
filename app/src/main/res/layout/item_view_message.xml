@@ -17,7 +17,8 @@
             android:layout_marginStart="@dimen/margin_large"
             android:layout_marginEnd="100dp"
             android:layout_marginTop="@dimen/margin_large"
-            android:background="@drawable/background_message_blue"
+            android:backgroundTint="#c1e5e7"
+            android:background="@drawable/corner_normal"
             android:padding="@dimen/margin_large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +26,7 @@
 
             <TextView
                 android:id="@+id/messageSender"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +47,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_message_gray"
+            android:backgroundTint="#ececec"
+            android:background="@drawable/corner_normal"
             android:padding="@dimen/margin_large"
             android:id="@+id/partner"
             android:layout_marginTop="@dimen/margin_large"
@@ -59,13 +61,13 @@
 
             <TextView
                 android:id="@+id/messagePartner"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="مرحبا بكم فى مرحبا بكم فى مرحبا بكم فى مرحبا بكم فى مرحبا بكم فى مرحبا بكم فى مرحبا بكم فىمرحبا بكم فى مرحبا بكم فى" />
+                tools:text="مرحبا بكم فى مرحبا بكم فى" />
 
             <TextView
                 android:id="@+id/datePartner"

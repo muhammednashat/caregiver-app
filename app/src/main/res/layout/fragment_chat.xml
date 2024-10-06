@@ -84,15 +84,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
 
-            <ImageView
-                android:id="@+id/sendButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/margin_large"
-                android:layout_gravity="center"
-                android:visibility="gone"
-                android:src="@drawable/outline_send_gray_24"
-                app:tint="#f16744" />
+
             <EditText
                 android:id="@+id/messageEditText"
                 android:layout_width="0dp"
@@ -106,6 +98,15 @@
                 android:padding="15dp"
                 />
 
+            <ImageView
+                android:id="@+id/sendButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_large"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:src="@drawable/baseline_send_24"
+                app:tint="#f16744" />
 
         </LinearLayout>
 

@@ -1,23 +1,28 @@
 package mnshat.dev.myproject.adapters
 
-import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.interfaces.ItemMessagesListClicked
-import mnshat.dev.myproject.model.Message
 import mnshat.dev.myproject.model.Messages
-import mnshat.dev.myproject.util.getDateAsString
+import mnshat.dev.myproject.util.CAREGIVER
+import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.TYPE_OF_USER
+import mnshat.dev.myproject.util.loadImage
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 class MessagesListAdapter(
     private val messages: List<Messages>,
+    private val context: Context,
+    private val sharedPreferencesManager: SharedPreferencesManager,
     private val itemMessagesListClicked: ItemMessagesListClicked
 ) :
     RecyclerView.Adapter<MessagesListAdapter.ViewHolder>() {
@@ -33,18 +38,46 @@ class MessagesListAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
      val messagesSender = messages[position]
-        val lastMessage = messagesSender.messages.last()
-       holder.name.text = messagesSender.namePartner
-       holder.date.text = lastMessage.timeStamp.toString()
-       holder.message.text = lastMessage.text
+        val lastMessage = messagesSender.messages?.last()
+        val metaData = messagesSender.meta!!
+        var idPartner =""
+        var imagePartner =""
+        var namePartner =""
+        if (sharedPreferencesManager.getString(TYPE_OF_USER) == CAREGIVER ){
+             idPartner = metaData.idPatient!!
+             imagePartner = metaData.imagePatient
+             namePartner = metaData.namePatient!!
+        }else{
+            idPartner = metaData.idCaregiver!!
+            imagePartner = metaData.imageCaregiver
+            namePartner = metaData.nameCaregiver!!
+        }
 
-     holder.itemView.setOnClickListener {
-         itemMessagesListClicked.onItemClicked(messagesSender.namePartner!!,messagesSender.idPartner!!,messagesSender.urlImagePartner)
+        holder.name.text = namePartner
+        holder.date.text = formatTimestamp(lastMessage?.timeStamp)
+        holder.message.text = lastMessage?.text
+        loadImage(context,imagePartner,holder.imageUser)
+
+        holder.itemView.setOnClickListener {
+         itemMessagesListClicked.onItemClicked(namePartner,idPartner,imagePartner)
      }
     }
 
 
+    private fun formatTimestamp(timeStamp: Long?): String {
+        if (timeStamp == null) return "Invalid time"
 
+        val currentTime = System.currentTimeMillis()
+        val oneDayInMillis = 24 * 60 * 60 * 1000
+        val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.getDefault())
+
+        return when {
+            currentTime - timeStamp == System.currentTimeMillis() -> "الان"
+            currentTime - timeStamp < System.currentTimeMillis() -> "اليوم"
+            currentTime - timeStamp < 2 * oneDayInMillis -> "الامس"
+            else -> dateFormat.format(Date(timeStamp))
+        }
+    }
 
     override fun getItemCount(): Int {
         return messages.size

@@ -40,8 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:gravity="center"
-            android:layout_marginTop="4dp"
-
+android:layout_marginTop="4dp"
             android:text="سارة احمد "
             android:textColor="#3f484f"
             android:textStyle="bold"
@@ -69,7 +68,6 @@
             android:maxLines="2"
             android:paddingTop="4dp"
             android:text="2/21/1993 "
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
