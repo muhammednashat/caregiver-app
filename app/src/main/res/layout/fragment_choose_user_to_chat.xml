@@ -5,18 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <data>
-        <variable
-            name="viewModel"
-            type="mnshat.dev.myproject.auth.AuthViewModel" />
-    </data>
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/corner_top_right"
-        android:paddingBottom="60dp">
+        android:paddingBottom="60dp"
+        >
 
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -51,36 +45,71 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
-        <RadioGroup
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/itemUser"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_large"
-            android:id="@+id/group_root"
+            android:layout_marginTop="@dimen/margin_2_super"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_large"
+            android:background="@drawable/corner_four_gray"
+            android:paddingStart="@dimen/padding_medium"
+            android:paddingTop="@dimen/padding_large"
+            android:paddingEnd="@dimen/padding_medium"
+            android:paddingBottom="@dimen/padding_large"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view2">
 
-            <RadioButton
-                android:id="@+id/rb_young"
-                android:onClick="@{() -> viewModel.setAge(1)}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/young_adulthood" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image_user"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#ebebe3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5"
+                app:shapeAppearanceOverlay="@style/circularImageViewShape"
+                app:srcCompat="@drawable/ic_user_profile" />
 
-            <RadioButton
-                android:id="@+id/rb_middle_age"
-                android:onClick="@{() -> viewModel.setAge(2)}"
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/TextAppearance.AppCompat.Large"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/middle_age" />
+                android:layout_marginStart="16dp"
+                android:gravity="center"
+                android:text="سارة احمد "
+                android:textColor="#3f484f"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/image_user"
+                app:layout_constraintStart_toEndOf="@+id/image_user"
+                app:layout_constraintTop_toTopOf="@+id/image_user" />
 
-            <RadioButton
-                android:id="@+id/rb_older"
-                android:onClick="@{() -> viewModel.setAge(3)}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/older" />
-        </RadioGroup>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:id="@+id/recyclerView"
+            android:padding="@dimen/margin_large"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/item_view_supporter"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>

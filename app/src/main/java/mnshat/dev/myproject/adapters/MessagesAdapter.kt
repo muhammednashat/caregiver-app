@@ -13,7 +13,7 @@ import mnshat.dev.myproject.model.Message
 import mnshat.dev.myproject.util.getDateAsString
 
 
-class MessagesAdapter(private val messages: MutableList<Message>,private val userId: String) :
+class MessagesAdapter(private val messages: List<Message>,private val userId: String) :
     RecyclerView.Adapter<MessagesAdapter.ViewHolder>() {
 
 

@@ -34,16 +34,20 @@ class SupportersFragment : BaseSupporterFragment<FragmentSupportersBinding>() {
         FirebaseService.listenForUserDataChanges {
             it?.let {
                 it.storeDataLocally(sharedPreferences)
+
                 if (sharedPreferences.getBoolean(HAS_PARTNER)){
 
                     FirebaseService.retrieveUsersByEmails(it.supports){
                         it?.let {
                             log("${it.toString()} ")
                  adapter.submitList(it)
+
                         }
 
                     }
-                }else{
+                }
+
+                else{
                     log("No Supporter ")
                 }
 

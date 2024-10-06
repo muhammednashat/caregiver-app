@@ -1,6 +1,8 @@
 package mnshat.dev.myproject.features.chatting
 
 import android.app.Application
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.ktx.firestore
@@ -27,44 +29,42 @@ class ChatViewModel(
     application
 ) {
 
-    private var db = Firebase.firestore
-    private val _messagesFlow = MutableStateFlow<MutableList<Message>>(mutableListOf())
-    val messagesFlow = _messagesFlow.asStateFlow()
 
-    private val _messagesListFlow = MutableStateFlow<MutableList<Messages>>(mutableListOf())
-    val messagesListFlow = _messagesListFlow.asStateFlow()
+    private var db = Firebase.firestore
+
+    private val _messagesList = MutableLiveData<List<Messages>>()
+    val messagesList:LiveData<List<Messages>> = _messagesList
+
+    private val _messages = MutableLiveData<List<Message>>()
+    val messages:LiveData<List<Message>> = _messages
+
+
 
 
     fun getMessages(chatId: String) {
+        log("getMessages")
         viewModelScope.launch {
-            retrieveMessagesFlow(chatId).collect { messages ->
-                _messagesFlow.value = messages
-            }
+            retrieveMessages(chatId)
         }
     }
 
     fun getMessagesList(chatId: String) {
         viewModelScope.launch {
-            retrieveMessagesListFlow(chatId).collect { messagesList ->
-                _messagesListFlow.value = messagesList
+            retrieveMessagesList(chatId)
             }
         }
-    }
 
-    private fun retrieveMessagesListFlow(chatIdPrefix: String): Flow<MutableList<Messages>> = callbackFlow {
-        log("if retrieveMessagesListFlow ")
-        val listenerRegistration: ListenerRegistration = db.collection(CHATS)
+    private fun retrieveMessagesList(chatIdPrefix: String){
+         db.collection(CHATS)
             .orderBy("__name__")
             .startAt(chatIdPrefix)
             .endAt(chatIdPrefix + '\uf8ff')
             .addSnapshotListener { querySnapshot, error ->
                 if (error != null) {
-                    close(error)
                     return@addSnapshotListener
                 }
                 if (querySnapshot != null && !querySnapshot.isEmpty) {
                     val messagesList = mutableListOf<Messages>()
-                    log("if 1232 ")
 
                     for (document in querySnapshot.documents) {
                         log("for 1232 ")
@@ -74,50 +74,49 @@ class ChatViewModel(
                     }
                     log("trySend 1232 ")
 
-                    trySend(messagesList)
+//                    trySend(messagesList)
                 } else {
-                    trySend(mutableListOf())
+//                    trySend(mutableListOf())
                 }
             }
 
-        awaitClose { listenerRegistration.remove() }
     }
 
 
-    private fun retrieveMessagesFlow(chatId: String): Flow<MutableList<Message>> = callbackFlow {
+    private fun retrieveMessages(chatId: String){
 
-        val listenerRegistration: ListenerRegistration = db.collection(CHATS).document(chatId)
+           db.collection(CHATS).document(chatId)
             .addSnapshotListener { documentSnapshot, error ->
                 if (error != null) {
-                    close(error)
                     return@addSnapshotListener
                 }
                 if (documentSnapshot != null && documentSnapshot.exists()) {
                     val messages =
                         documentSnapshot.toObject(Messages::class.java)?.messages ?: mutableListOf()
-                        trySend(messages)
+                    _messages.value = messages
                 } else {
-
-                    trySend(mutableListOf())
+                    _messages.value = mutableListOf()
                 }
             }
-        awaitClose { listenerRegistration.remove() }
     }
 
     fun sendMessage(newMessage:Message,namePartner:String,urlImage:String ,idPartner:String,chatId: String) {
-        viewModelScope.launch {
-            val currentMessages = _messagesFlow.value
-            currentMessages.add(newMessage)
 
-            db.collection(CHATS).document(chatId).set(Messages(namePartner,idPartner,urlImage,currentMessages))
-                .addOnSuccessListener {
+//
+//            val currentMessages = _messagesList.value
+//
+//            currentMessages.add(newMessage)
+//
+//            db.collection(CHATS).document(chatId).set(Messages(namePartner,idPartner,urlImage,currentMessages))
+//                .addOnSuccessListener {
+//
+//                    log("Message sent successfully")
+//                }
+//                .addOnFailureListener {
+//                    log("Failed to send message: ${it.message}")
+//                }
 
-                    log("Message sent successfully")
-                }
-                .addOnFailureListener {
-                    log("Failed to send message: ${it.message}")
-                }
-        }
     }
 
+}
 }

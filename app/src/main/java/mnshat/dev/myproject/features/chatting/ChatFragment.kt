@@ -1,5 +1,8 @@
 package mnshat.dev.myproject.features.chatting
 
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import kotlinx.coroutines.launch
@@ -9,8 +12,11 @@ import mnshat.dev.myproject.databinding.FragmentChatBinding
 import mnshat.dev.myproject.model.Message
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.ENGLISH_KEY
+import mnshat.dev.myproject.util.IMAGE_PARTNER
+import mnshat.dev.myproject.util.NAME_PARTNER
 import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER_ID
+import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
 class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
@@ -22,9 +28,32 @@ class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
     override fun initializeViews() {
         super.initializeViews()
         retrieveDataFromArguments()
-        setUpUi()
+        initUserData()
         changeBackgroundIconBasedLang()
         getMessages(getChatId())
+        addTextChangedListener ()
+    }
+
+    private fun addTextChangedListener (){
+        binding.messageEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val inputText = s.toString()
+                if (inputText.isNotEmpty()){
+                    binding.sendButton.visibility = View.VISIBLE
+                }else{
+                    binding.sendButton.visibility = View.GONE
+                }
+
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+        })
     }
 
     private fun setUpUi() {
@@ -58,19 +87,20 @@ class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
     }
 
     private fun observeGettingMessages() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            log("observeGettingMessages")
 
-            viewModel.messagesFlow.collect { messages ->
-                log("observeGettingMessages")
-                updateUIWithMessages(messages)
-            }
+        viewModel.messages.observe(viewLifecycleOwner){
+           it?.let {   updateUIWithMessages(it)}
         }
+    }
+
+    private fun initUserData() {
+        binding.name.text = namePartner
+        loadImage(requireActivity(),urlImagePartner,binding.imageUser)
     }
 
 
     private fun getNewMessage() = Message(
-        text = "binding.messageEditText.text.toString()",
+        text = binding.messageEditText.text.toString(),
         senderId = sharedPreferences.getString(USER_ID)
     )
 
@@ -78,12 +108,14 @@ class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
         super.setupClickListener()
 
         binding.sendButton.setOnClickListener {
+            log("${binding.messageEditText.text.toString()}   ${sharedPreferences.getString(USER_ID)} ")
+
             viewModel.sendMessage(getNewMessage(),namePartner,urlImagePartner,partnerId,getChatId())
         }
 
     }
 
-    private fun updateUIWithMessages(messages: MutableList<Message>) {
+    private fun updateUIWithMessages(messages: List<Message>) {
         log("updateUIWithMessages")
 
         binding.messageRecyclerView.apply {

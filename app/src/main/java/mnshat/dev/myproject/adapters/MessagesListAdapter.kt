@@ -17,7 +17,7 @@ import mnshat.dev.myproject.util.getDateAsString
 
 
 class MessagesListAdapter(
-    private val messages: MutableList<Messages>,
+    private val messages: List<Messages>,
     private val itemMessagesListClicked: ItemMessagesListClicked
 ) :
     RecyclerView.Adapter<MessagesListAdapter.ViewHolder>() {

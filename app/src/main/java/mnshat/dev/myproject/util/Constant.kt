@@ -3,6 +3,7 @@ package mnshat.dev.myproject.util
 const val USER = "user"
 const val CAREGIVER = "caregiver"
 const val USER_NAME = "userName"
+const val USER_IMAGE = "userImage"
 const val PASSWORD = "password"
 const val AGE_GROUP = "ageGroup"
 const val GENDER = "gender"

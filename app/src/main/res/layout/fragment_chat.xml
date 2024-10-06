@@ -33,10 +33,10 @@
             app:srcCompat="@drawable/ic_more_horiz" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/image_user2"
+            android:id="@+id/image_user"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginStart="80dp"
+            android:layout_marginStart="60dp"
             android:layout_marginTop="4dp"
             app:layout_constraintStart_toEndOf="@+id/ic_back"
             app:layout_constraintTop_toTopOf="parent"
@@ -46,15 +46,17 @@
         <TextView
             android:id="@+id/name"
             style="@style/TextAppearance.AppCompat.Large"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_small"
             android:gravity="center"
             android:text="سلمى صالح"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/image_user2"
-            app:layout_constraintStart_toEndOf="@+id/image_user2"
-            app:layout_constraintTop_toTopOf="@+id/image_user2" />
+            app:layout_constraintBottom_toBottomOf="@+id/image_user"
+            app:layout_constraintStart_toEndOf="@+id/image_user"
+            app:layout_constraintTop_toTopOf="@+id/image_user" />
 
         <View
             android:id="@+id/line"
@@ -65,7 +67,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_user2" />
+            app:layout_constraintTop_toBottomOf="@+id/image_user" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -82,6 +84,15 @@
             app:layout_constraintStart_toStartOf="parent">
 
 
+            <ImageView
+                android:id="@+id/sendButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_large"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:src="@drawable/outline_send_gray_24"
+                app:tint="#f16744" />
             <EditText
                 android:id="@+id/messageEditText"
                 android:layout_width="0dp"
@@ -91,18 +102,10 @@
                 android:layout_weight="1"
                 android:background="@drawable/corner_normal"
                 android:backgroundTint="@color/light_gray"
-                android:hint="Say something..."
+                android:hint="@string/say_something"
                 android:padding="15dp"
-
                 />
 
-            <ImageView
-                android:id="@+id/sendButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/outline_send_gray_24"
-                app:tint="#f16744" />
 
         </LinearLayout>
 
@@ -126,15 +129,16 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_above="@+id/linearLayout"
-            android:background="@android:color/white"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_marginBottom="@dimen/margin_small"
+            android:background="@android:color/white"
             android:paddingHorizontal="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line"
+            app:layout_constraintVertical_bias="1.0"
             tools:listitem="@layout/item_view_message" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

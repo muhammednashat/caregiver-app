@@ -2,7 +2,6 @@ package mnshat.dev.myproject.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.ViewDataBinding
 import androidx.viewbinding.ViewBinding
 import com.google.firebase.auth.FirebaseAuth
 import mnshat.dev.myproject.databinding.ActivityUserScreensBinding

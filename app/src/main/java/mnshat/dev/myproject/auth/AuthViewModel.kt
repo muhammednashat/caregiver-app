@@ -5,18 +5,22 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseViewModel
+import mnshat.dev.myproject.model.Partner
 import mnshat.dev.myproject.model.Permissions
 import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.CAREGIVER
-import mnshat.dev.myproject.util.DIALECT
+import mnshat.dev.myproject.util.EMAIL_PARTNER
 import mnshat.dev.myproject.util.GENDER
 import mnshat.dev.myproject.util.HAS_PARTNER
+import mnshat.dev.myproject.util.ID_PARTNER
+import mnshat.dev.myproject.util.IMAGE_PARTNER
 import mnshat.dev.myproject.util.IS_LOGGED
-import mnshat.dev.myproject.util.RELIGION
+import mnshat.dev.myproject.util.NAME_PARTNER
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER_ID
+import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
 
 class AuthViewModel(
@@ -28,9 +32,8 @@ class AuthViewModel(
     application
 ) {
 
-    var idPartner: String? = null
-    var emailPartner: String? = null
-    var namePartner: String? = null
+    var partner: Partner? = null
+
     var name = MutableLiveData<String?>()
     var token = MutableLiveData<String>()
     var invitationCode = MutableLiveData<String>()
@@ -41,6 +44,7 @@ class AuthViewModel(
     val typeOfUser = MutableLiveData<String?>()
     var errorMessage: String? = ""
     var id: String? = null
+    var imageUser: String? = "123"
 
     fun clearData() {
         name.value = null
@@ -158,11 +162,16 @@ class AuthViewModel(
         sharedPreferences.storeString(USER_ID, id)
         sharedPreferences.storeString(TYPE_OF_USER, typeOfUser.value)
         sharedPreferences.storeString(USER_NAME, name.value)
+        sharedPreferences.storeString(USER_IMAGE, imageUser)
         sharedPreferences.storeInt(AGE_GROUP, intAge.value)
         sharedPreferences.storeInt(GENDER, intGender.value)
-        sharedPreferences.storeInt(DIALECT, 1)
         sharedPreferences.storeBoolean(HAS_PARTNER, false)
         sharedPreferences.storeBoolean(IS_LOGGED, true)
+        sharedPreferences.storeString(NAME_PARTNER, partner?.namePartner)
+        sharedPreferences.storeString(ID_PARTNER, partner?.idPartner)
+        sharedPreferences.storeString(EMAIL_PARTNER, partner?.emailPartner)
+        sharedPreferences.storeString(IMAGE_PARTNER, partner?.imagePartner)
+
 //        sharedPreferences.storeBoolean(RELIGION, true)
 
     }
@@ -172,6 +181,7 @@ class AuthViewModel(
             id = id,
             name = name.value,
             email = email.value,
+            imageUser = imageUser,
             gender = intGender.value,
             ageGroup = intAge.value,
             token = token.value,
@@ -190,12 +200,11 @@ class AuthViewModel(
             id = id,
             name = name.value,
             email = email.value,
+            imageUser = imageUser,
             token = token.value,
             typeOfUser = typeOfUser.value ?: "",
             hasPartner = true,
-            namePartner = namePartner,
-            idPartner = idPartner,
-            emailPartner = emailPartner,
+            partner = partner,
             permissions = Permissions(),
             status = 1
         )

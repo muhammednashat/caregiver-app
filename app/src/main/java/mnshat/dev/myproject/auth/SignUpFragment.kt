@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentSignUpBinding
 import mnshat.dev.myproject.firebase.FirebaseService
+import mnshat.dev.myproject.model.Partner
 import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.USER
@@ -84,9 +85,12 @@ private fun retrieveUser(){
 }
 
     private fun setPartner(it: RegistrationData) {
-        _viewModel.namePartner = it.name
-        _viewModel.idPartner = it.id
-        _viewModel.emailPartner = it.email
+        _viewModel.partner = Partner(
+            it.id,
+            it.email,
+            it.name,
+            it.imageUser
+        )
         signUp(it)
     }
 

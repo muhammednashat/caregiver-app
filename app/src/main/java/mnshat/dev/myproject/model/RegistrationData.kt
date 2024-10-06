@@ -6,18 +6,15 @@ import kotlinx.parcelize.Parcelize
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.BASE_CODE
 import mnshat.dev.myproject.util.CODE_USED
-import mnshat.dev.myproject.util.DIALECT
 import mnshat.dev.myproject.util.GENDER
 import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.INVITATION_CODE
 import mnshat.dev.myproject.util.IS_LOGGED
 import mnshat.dev.myproject.util.NUMBER_SUPPORTERS
-import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER
 import mnshat.dev.myproject.util.USER_NAME
-import mnshat.dev.myproject.util.log
 
 @Parcelize
 data class RegistrationData(
@@ -26,6 +23,8 @@ data class RegistrationData(
     var name: String? = null,
     var email: String? = null,
     var password: String? = null,
+    var imageUser: String? = null,
+    var partner: Partner? = null,
     var gender: Int? = null,
     var ageGroup: Int? = null,
 
@@ -42,9 +41,9 @@ data class RegistrationData(
     var baseCode: String? = null,
 
     var status: Int? = null,
-    var idPartner: String? = null,
-    var emailPartner: String? = null,
-    var namePartner: String? = null,
+
+
+
     var currentTaskDay: Int? = null
 
 ): Parcelable {
