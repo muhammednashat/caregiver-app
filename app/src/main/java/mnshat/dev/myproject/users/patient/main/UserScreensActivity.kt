@@ -7,6 +7,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseActivity
 import mnshat.dev.myproject.databinding.ActivityUserScreensBinding
+import mnshat.dev.myproject.util.log
 
 class UserScreensActivity : BaseActivity<ActivityUserScreensBinding>() {
 
@@ -23,7 +24,10 @@ class UserScreensActivity : BaseActivity<ActivityUserScreensBinding>() {
         navView.setupWithNavController(navController)
 
         navView.setOnItemSelectedListener { item ->
+            log(item.itemId!!.toString())
+
             when (item.itemId) {
+
                 R.id.patientHomeFragment -> {
                     navController.popBackStack(R.id.patientHomeFragment, false)
                     navController.navigate(R.id.patientHomeFragment)
@@ -34,9 +38,10 @@ class UserScreensActivity : BaseActivity<ActivityUserScreensBinding>() {
                     navController.navigate(R.id.profileFragment)
                     true
                 }
-                R.id.messagesFragment -> {
-                    navController.popBackStack(R.id.messagesFragment, false)
-                    navController.navigate(R.id.messagesFragment)
+                R.id.chatting_navigation -> {
+                    log("chatting_navigation")
+                    navController.popBackStack(R.id.chatting_navigation, false)
+                    navController.navigate(R.id.chatting_navigation)
                     true
                 }
                 else -> false

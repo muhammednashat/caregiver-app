@@ -12,7 +12,7 @@
         android:title="@string/home_title" />
 
     <item
-        android:id="@+id/messagesFragment"
+        android:id="@+id/chatting_navigation"
         android:icon="@drawable/ic_mail"
         android:title="@string/messages_title" />
 

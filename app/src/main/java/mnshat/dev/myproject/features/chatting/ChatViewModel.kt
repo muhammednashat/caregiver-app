@@ -56,9 +56,10 @@ class ChatViewModel(
     }
 
     fun getMessagesList(chatId: String) {
-        log(" chatId  = $chatId")
+        log(" H7PcrfQx  = $chatId")
 
         viewModelScope.launch {
+
             retrieveMessagesList(chatId)
             }
         }

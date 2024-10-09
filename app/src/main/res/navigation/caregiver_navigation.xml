@@ -13,11 +13,6 @@
             app:destination="@id/usersFragment" />
     </fragment>
     <fragment
-        android:id="@+id/messagesFragment"
-        android:name="mnshat.dev.myproject.users.patient.main.MessagesFragment"
-        android:label="fragment_messages"
-        tools:layout="@layout/fragment_messages" />
-    <fragment
         android:id="@+id/caregiverProfileFragment"
         android:name="mnshat.dev.myproject.users.caregiver.main.CaregiverProfileFragment"
         android:label="fragment_caregiver_profile"
@@ -26,4 +21,13 @@
         android:id="@+id/usersFragment"
         android:name="mnshat.dev.myproject.users.caregiver.partner.PatientFragment"
         android:label="UsersFragment" />
+
+    <navigation
+        android:id="@+id/chatting_navigation"
+        app:startDestination="@id/chatting_navigation.xml">
+        <include
+            app:graph="@navigation/chatting_navigation" />
+    </navigation>
+
+
 </navigation>

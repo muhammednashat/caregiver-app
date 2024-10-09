@@ -100,4 +100,12 @@
         tools:layout="@layout/fragment_gratitude"
         android:name="mnshat.dev.myproject.users.patient.tools.gratitude.GratitudeFragment"
         android:label="GratitudeFragment" />
+
+    <navigation
+        android:id="@+id/chatting_navigation"
+        app:startDestination="@id/chatting_navigation.xml">
+        <include
+            app:graph="@navigation/chatting_navigation" />
+    </navigation>
+
 </navigation>

@@ -22,6 +22,7 @@ import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
+import mnshat.dev.myproject.util.log
 
 class AuthViewModel(
     private val sharedPreferences: SharedPreferencesManager,
@@ -159,6 +160,7 @@ class AuthViewModel(
 
 
     fun storeDataLocally() {
+        log("shareprefrences $id")
         sharedPreferences.storeString(USER_ID, id)
         sharedPreferences.storeString(TYPE_OF_USER, typeOfUser.value)
         sharedPreferences.storeString(USER_NAME, name.value)

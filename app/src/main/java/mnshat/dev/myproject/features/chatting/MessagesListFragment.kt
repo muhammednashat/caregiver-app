@@ -81,8 +81,12 @@ class MessagesListFragment : BaseChattingFragment<FragmentMessagesListBinding>()
     }
 
     private fun getChatId(): String {
+
         val userId = sharedPreferences.getString(USER_ID).take(4)
+        log(userId + "12343543543523")
+
         var partnerId = ""
+
         return if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER){
             partnerId = sharedPreferences.getString(ID_PARTNER).take(4)
             partnerId + userId
