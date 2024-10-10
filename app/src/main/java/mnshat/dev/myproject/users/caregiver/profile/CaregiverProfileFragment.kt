@@ -16,7 +16,9 @@ class CaregiverProfileFragment : BaseCaregiverFragment<FragmentCaregiverProfileB
         super.setupClickListener()
 
 
-    binding.signout.setOnClick()
+    binding.signOut.setOnClickListener{
+        logOut()
+    }
 // complete sign out then//
         // navigate to user and retrive all supports to start message them
 
