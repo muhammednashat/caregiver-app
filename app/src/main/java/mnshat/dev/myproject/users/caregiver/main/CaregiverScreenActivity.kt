@@ -18,16 +18,6 @@ class CaregiverScreenActivity : BaseActivity<ActivityCaregiverScreenBinding>() {
         return ActivityCaregiverScreenBinding.inflate(layoutInflater)
 
     }
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        binding = ActivityCaregiverScreenBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-    }
-
     override fun initializeViews() {
 
         val navView: BottomNavigationView = binding.navView

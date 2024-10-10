@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/caregiverHomeFragment">
+
     <fragment
         android:id="@+id/caregiverHomeFragment"
         android:name="mnshat.dev.myproject.users.caregiver.main.CaregiverHomeFragment"
@@ -14,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/caregiverProfileFragment"
-        android:name="mnshat.dev.myproject.users.caregiver.main.CaregiverProfileFragment"
+        android:name="mnshat.dev.myproject.users.caregiver.profile.CaregiverProfileFragment"
         android:label="fragment_caregiver_profile"
         tools:layout="@layout/fragment_caregiver_profile" />
     <fragment
@@ -22,7 +23,7 @@
         android:name="mnshat.dev.myproject.users.caregiver.partner.PatientFragment"
         android:label="UsersFragment" />
 
-    <navigation
+        <navigation
         android:id="@+id/chatting_navigation"
         app:startDestination="@id/chatting_navigation.xml">
         <include

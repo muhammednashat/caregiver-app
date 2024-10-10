@@ -21,7 +21,7 @@ class CaregiverHomeFragment : BaseCaregiverFragment<FragmentCaregiverHomeBinding
             findNavController().navigate(R.id.action_caregiverHomeFragment_to_usersFragment)
         }
         binding.constraintLayout15.setOnClickListener {
-            startActivity(Intent(requireActivity(), ChatActivity::class.java))
+
         }
 
         binding.rootEducationalContent.setOnClickListener {
