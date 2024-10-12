@@ -60,7 +60,7 @@ class MessagesListAdapter(
 
         holder.itemView.setOnClickListener {
          itemMessagesListClicked.onItemClicked(namePartner,idPartner,imagePartner)
-     }
+         }
     }
 
 

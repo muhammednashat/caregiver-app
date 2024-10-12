@@ -160,6 +160,7 @@ open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
         val currentLang = sharedPreferences.getString(LANGUAGE)
 
         sharedPreferences.clearData()
+
         sharedPreferences.storeBoolean(IS_SECOND_TIME, true)
         sharedPreferences.storeString(
             PASSWORD,password

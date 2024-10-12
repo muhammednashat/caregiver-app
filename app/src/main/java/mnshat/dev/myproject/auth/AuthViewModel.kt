@@ -160,7 +160,6 @@ class AuthViewModel(
 
 
     fun storeDataLocally() {
-        log("shareprefrences $id")
         sharedPreferences.storeString(USER_ID, id)
         sharedPreferences.storeString(TYPE_OF_USER, typeOfUser.value)
         sharedPreferences.storeString(USER_NAME, name.value)

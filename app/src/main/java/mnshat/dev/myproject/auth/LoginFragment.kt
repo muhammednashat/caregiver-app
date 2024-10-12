@@ -30,16 +30,23 @@ class LoginFragment : AuthBaseFragment<FragmentLoginBinding>() {
             findNavController().navigate(R.id.action_loginFragment_to_contactUsFragment)
         }
         binding.logIn.setOnClickListener {
+
             if (_viewModel.validToLogin(requireContext())){
+
                 showProgressDialog()
+
                 login{
                     if (it){
                         updateRegistrationInfoLocally()
                     }
                 }
-            }else{
+            }
+
+
+            else{
                 showToast(_viewModel.errorMessage!!)
             }
+
         }
 
     }

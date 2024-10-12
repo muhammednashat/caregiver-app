@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.adapters.SupporterListener
+import mnshat.dev.myproject.adapters.SupportersAdapter
 import mnshat.dev.myproject.databinding.DialogAddSupporterBinding
 import mnshat.dev.myproject.databinding.DialogCannotAddSupporterBinding
 import mnshat.dev.myproject.databinding.FragmentSupportersBinding
@@ -24,7 +26,7 @@ class SupportersFragment : BaseSupporterFragment<FragmentSupportersBinding>() {
     override fun initializeViews() {
         showProgressDialog()
 
-        adapter = SupportersAdapter(requireActivity(),SupporterListener {
+        adapter = SupportersAdapter(requireActivity(), SupporterListener {
 
             val action = SupportersFragmentDirections.actionSupportesFragmentToSupporterDetailsFragment(it)
             findNavController().navigate(action)
@@ -41,7 +43,6 @@ class SupportersFragment : BaseSupporterFragment<FragmentSupportersBinding>() {
                         it?.let {
                             log("${it.toString()} ")
                  adapter.submitList(it)
-
                         }
 
                     }

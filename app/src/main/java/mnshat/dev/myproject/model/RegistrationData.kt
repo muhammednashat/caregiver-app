@@ -6,14 +6,20 @@ import kotlinx.parcelize.Parcelize
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.BASE_CODE
 import mnshat.dev.myproject.util.CODE_USED
+import mnshat.dev.myproject.util.EMAIL_PARTNER
 import mnshat.dev.myproject.util.GENDER
 import mnshat.dev.myproject.util.HAS_PARTNER
+import mnshat.dev.myproject.util.ID_PARTNER
+import mnshat.dev.myproject.util.IMAGE_PARTNER
 import mnshat.dev.myproject.util.INVITATION_CODE
 import mnshat.dev.myproject.util.IS_LOGGED
+import mnshat.dev.myproject.util.NAME_PARTNER
 import mnshat.dev.myproject.util.NUMBER_SUPPORTERS
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER
+import mnshat.dev.myproject.util.USER_ID
+import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
 
 @Parcelize
@@ -49,20 +55,24 @@ data class RegistrationData(
 ): Parcelable {
 
     fun storeDataLocally(sharedPreferences: SharedPreferencesManager) {
+
         sharedPreferences.storeString(TYPE_OF_USER, typeOfUser)
         sharedPreferences.storeString(USER_NAME, name)
         sharedPreferences.storeBoolean(HAS_PARTNER, hasPartner)
         sharedPreferences.storeInt(GENDER, gender)
         sharedPreferences.storeInt(AGE_GROUP, ageGroup)
         sharedPreferences.storeBoolean(IS_LOGGED, true)
+        sharedPreferences.storeString(USER_ID, id)
+        sharedPreferences.storeString(USER_IMAGE, imageUser)
+        sharedPreferences.storeString(NAME_PARTNER, partner?.namePartner)
+        sharedPreferences.storeString(ID_PARTNER, partner?.idPartner)
+        sharedPreferences.storeString(EMAIL_PARTNER, partner?.emailPartner)
+        sharedPreferences.storeString(IMAGE_PARTNER, partner?.imagePartner)
+        sharedPreferences.storeString(INVITATION_CODE, invitationCode)
+        sharedPreferences.storeBoolean(CODE_USED, codeUsed)
+        sharedPreferences.storeString(BASE_CODE, baseCode)
+        sharedPreferences.storeInt(NUMBER_SUPPORTERS, numberSupporters)
 
-        if (permissions != null) {
-        } else {
-            sharedPreferences.storeString(INVITATION_CODE, invitationCode)
-            sharedPreferences.storeBoolean(CODE_USED, codeUsed)
-            sharedPreferences.storeString(BASE_CODE, baseCode)
-            sharedPreferences.storeInt(NUMBER_SUPPORTERS, numberSupporters)
-        }
     }
 
     override fun toString(): String {

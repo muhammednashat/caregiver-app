@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.supporters
+package mnshat.dev.myproject.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
