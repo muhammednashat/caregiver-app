@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.features.libraraycontent
+package mnshat.dev.myproject.commonFeatures.libraraycontent
 
 
 import androidx.lifecycle.ViewModelProvider
@@ -9,7 +9,6 @@ import mnshat.dev.myproject.databinding.FragmentSuggestedContentBinding
 import mnshat.dev.myproject.factories.LibraryViewModelFactory
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 import mnshat.dev.myproject.model.LibraryContent
-import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.ENGLISH_KEY
 
 class SuggestedContentFragment : BaseBottomSheetDialogFragment<FragmentSuggestedContentBinding>(),

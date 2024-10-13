@@ -1,19 +1,14 @@
-package mnshat.dev.myproject.features.chatting
+package mnshat.dev.myproject.commonFeatures.chatting
 
 import android.view.View
-import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import kotlinx.coroutines.launch
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.MessagesListAdapter
-import mnshat.dev.myproject.auth.AgeFragment
 import mnshat.dev.myproject.databinding.FragmentMessagesListBinding
 import mnshat.dev.myproject.interfaces.ItemMessagesListClicked
 import mnshat.dev.myproject.model.Messages
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.ENGLISH_KEY
-import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.ID_PARTNER
 import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER_ID

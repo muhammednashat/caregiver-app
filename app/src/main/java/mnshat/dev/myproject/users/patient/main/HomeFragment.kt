@@ -7,12 +7,13 @@ import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
 import mnshat.dev.myproject.factories.PatientViewModelFactory
-import mnshat.dev.myproject.features.chatting.ChatActivity
-import mnshat.dev.myproject.features.libraraycontent.LibraryActivity
+import mnshat.dev.myproject.commonFeatures.libraraycontent.LibraryActivity
 import mnshat.dev.myproject.model.CurrentTask
 import mnshat.dev.myproject.users.patient.dailyprogram.DailyProgramActivity
 import mnshat.dev.myproject.util.USER_ID
+import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
+import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
 class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
@@ -22,6 +23,8 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
     override fun getLayout() = R.layout.fragment_user_home
 
     override fun initializeViews() {
+        loadImage(requireActivity(),sharedPreferences.getString(USER_IMAGE),binding.imageUser)
+
         binding.nameUser.text = sharedPreferences.getString(USER_NAME)
         log(sharedPreferences.getString(USER_ID) + "12344444444444444444444")
     }
@@ -78,7 +81,7 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
         super.setupClickListener()
 
         binding.constraintLayout15.setOnClickListener {
-            startActivity(Intent(requireActivity(), ChatActivity::class.java))
+
         }
 
     }

@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.features.chatting
+package mnshat.dev.myproject.commonFeatures.chatting
 
 import mnshat.dev.myproject.base.BaseActivity
 import mnshat.dev.myproject.databinding.ActivityChatingBinding

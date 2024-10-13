@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.features.chatting
+package mnshat.dev.myproject.commonFeatures.chatting
 
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,7 +8,6 @@ import androidx.navigation.fragment.navArgs
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.MessagesAdapter
 import mnshat.dev.myproject.databinding.FragmentChatBinding
-import mnshat.dev.myproject.databinding.ImageMessageBinding
 import mnshat.dev.myproject.model.Message
 import mnshat.dev.myproject.model.MetaDataMessages
 import mnshat.dev.myproject.util.CAREGIVER

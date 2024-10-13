@@ -1,13 +1,9 @@
-package mnshat.dev.myproject.features.libraraycontent
+package mnshat.dev.myproject.commonFeatures.libraraycontent
 
 import android.net.Uri
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.navigation.fragment.findNavController
 import com.google.android.exoplayer2.ExoPlayer
@@ -15,14 +11,10 @@ import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentAudioBinding
-import mnshat.dev.myproject.databinding.FragmentVideoBinding
-import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.LANGUAGE
-import mnshat.dev.myproject.util.VIDEO
 import mnshat.dev.myproject.util.loadImage
-import mnshat.dev.myproject.util.log
 
 class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>() {
 

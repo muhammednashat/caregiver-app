@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.features.chatting
+package mnshat.dev.myproject.commonFeatures.chatting
 
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
@@ -95,9 +95,7 @@ class ChooseUserToChatFragment : BaseBottomSheetDialogFragment<FragmentChooseUse
         FirebaseService.listenForUserDataChanges {
             it?.let {
                 it.storeDataLocally(sharedPreferences)
-
                 if (sharedPreferences.getBoolean(HAS_PARTNER)){
-
                     FirebaseService.retrieveUsersByEmails(it.supports){
                         it?.let {
                             adapter = SupportersChattingAdapter(it,requireActivity(),this)

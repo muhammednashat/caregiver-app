@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.features.libraraycontent
+package mnshat.dev.myproject.commonFeatures.libraraycontent
 
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs

@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.features.libraraycontent
+package mnshat.dev.myproject.commonFeatures.libraraycontent
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -9,7 +9,6 @@ import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.util.COMMON_CONTENT
 import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
-import mnshat.dev.myproject.util.log
 
 class LibraryViewModel(
     private val sharedPreferences: SharedPreferencesManager,

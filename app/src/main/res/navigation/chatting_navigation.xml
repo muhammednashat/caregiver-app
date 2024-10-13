@@ -10,7 +10,7 @@
     <fragment
         android:id="@+id/messagesListFragment"
         tools:layout="@layout/fragment_messages_list"
-        android:name="mnshat.dev.myproject.features.chatting.MessagesListFragment"
+        android:name="mnshat.dev.myproject.commonFeatures.chatting.MessagesListFragment"
         android:label="MessagesListFragment" >
         <action
             android:id="@+id/action_messagesListFragment_to_chatFragment"
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/chatFragment"
         tools:layout="@layout/fragment_chat"
-        android:name="mnshat.dev.myproject.features.chatting.ChatFragment"
+        android:name="mnshat.dev.myproject.commonFeatures.chatting.ChatFragment"
         android:label="ChatFragment" >
         <argument
             android:name="partnerId"

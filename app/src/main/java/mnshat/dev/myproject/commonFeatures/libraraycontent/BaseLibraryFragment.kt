@@ -1,17 +1,10 @@
-package mnshat.dev.myproject.features.libraraycontent
+package mnshat.dev.myproject.commonFeatures.libraraycontent
 
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.factories.LibraryViewModelFactory
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
-import mnshat.dev.myproject.model.LibraryContent
-import mnshat.dev.myproject.users.patient.main.BasePatientFragment
-import mnshat.dev.myproject.util.ARTICLE
-import mnshat.dev.myproject.util.VIDEO
-import mnshat.dev.myproject.util.log
 
 abstract class BaseLibraryFragment<T: ViewDataBinding> : BaseFragment<T>() ,
     OnItemLibraryContentClicked {

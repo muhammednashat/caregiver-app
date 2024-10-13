@@ -1,27 +1,18 @@
-package mnshat.dev.myproject.features.chatting
+package mnshat.dev.myproject.commonFeatures.chatting
 
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.launch
 import mnshat.dev.myproject.base.BaseViewModel
 import mnshat.dev.myproject.model.Message
 import mnshat.dev.myproject.model.Messages
 import mnshat.dev.myproject.model.MetaDataMessages
-import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.CHATS
 import mnshat.dev.myproject.util.SharedPreferencesManager
-import mnshat.dev.myproject.util.TYPE_OF_USER
-import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.log
 
 class ChatViewModel(
@@ -110,9 +101,9 @@ class ChatViewModel(
 
     fun sendMessage(newMessage:Message,metaDataMessages: MetaDataMessages,chatId: String) {
 
-            val currentMessages = _messages.value?.toMutableList()
+            val currentMessages = _messages.value?.toMutableList() ?: mutableListOf()
 
-            currentMessages?.add(newMessage)
+            currentMessages.add(newMessage)
 
             db.collection(CHATS).document(chatId).set(Messages(
                 metaDataMessages,

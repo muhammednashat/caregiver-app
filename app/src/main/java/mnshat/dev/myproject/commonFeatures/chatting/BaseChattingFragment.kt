@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.features.chatting
+package mnshat.dev.myproject.commonFeatures.chatting
 
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider

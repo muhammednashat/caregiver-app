@@ -56,6 +56,7 @@ fun setLocale( lang:String? , context: Context){
 }
 
 fun loadImage(context:Context,imageURL: String?,imageView: ImageView) {
+
     Glide.with(context).load(imageURL).into(imageView)
 }
 fun getGratitudeQuestionsList(context: Context): List<String> {

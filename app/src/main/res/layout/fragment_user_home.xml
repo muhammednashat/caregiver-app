@@ -29,7 +29,7 @@
                 app:srcCompat="@drawable/hi" />
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/image_user2"
+                android:id="@+id/image_user"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
 

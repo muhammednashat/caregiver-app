@@ -1,28 +1,18 @@
-package mnshat.dev.myproject.features.libraraycontent
+package mnshat.dev.myproject.commonFeatures.libraraycontent
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
-import mnshat.dev.myproject.databinding.FragmentAgeBinding
 import mnshat.dev.myproject.databinding.FragmentCommonContentBinding
 import mnshat.dev.myproject.factories.LibraryViewModelFactory
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 import mnshat.dev.myproject.model.LibraryContent
-import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.ARTICLE
-import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.VIDEO
-import mnshat.dev.myproject.util.log
 
 
 class CommonContentFragment : BaseBottomSheetDialogFragment<FragmentCommonContentBinding>(),
