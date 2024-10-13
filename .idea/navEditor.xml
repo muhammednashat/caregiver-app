@@ -227,6 +227,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="chatFragment2">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-822" />
+                            <option name="y" value="-640" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="chatting_navigation">
                     <value>
                       <LayoutPositions>
@@ -974,6 +986,27 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="chatting_navigation">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="chatting_navigation">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="gratitudeFragment">
                     <value>
                       <LayoutPositions>
@@ -1053,34 +1086,6 @@
                             <option name="x" value="-326" />
                             <option name="y" value="-56" />
                           </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="navigation">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="chatting_navigation">
-                              <value>
-                                <LayoutPositions>
-                                  <option name="myPosition">
-                                    <Point>
-                                      <option name="x" value="12" />
-                                      <option name="y" value="12" />
-                                    </Point>
-                                  </option>
-                                </LayoutPositions>
-                              </value>
-                            </entry>
-                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

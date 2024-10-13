@@ -7,7 +7,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="500dp"
         android:background="@drawable/corner_top_right"
         android:paddingBottom="60dp"
         >
@@ -97,7 +97,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="500dp"
             android:id="@+id/recyclerView"
             android:padding="@dimen/margin_large"
             android:visibility="gone"

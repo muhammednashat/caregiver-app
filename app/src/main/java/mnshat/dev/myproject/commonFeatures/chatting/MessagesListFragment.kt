@@ -71,21 +71,27 @@ class MessagesListFragment : BaseChattingFragment<FragmentMessagesListBinding>()
     }
 
     override fun onItemClicked(name: String, idPartner: String, urlImage: String) {
+
         val action = MessagesListFragmentDirections.actionMessagesListFragmentToChatFragment(idPartner,urlImage,name)
         findNavController().navigate(action)
+
     }
+
 
     private fun getChatId(): String {
 
-        val userId = sharedPreferences.getString(USER_ID).take(4)
-        log(userId + "12343543543523")
+        // pat -> aEoc    care -> IrSR
+        val userId = sharedPreferences.getString(USER_ID).take(4)  //  cur aEoc
 
         var partnerId = ""
 
         return if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER){
-            partnerId = sharedPreferences.getString(ID_PARTNER).take(4)
+
+            partnerId = sharedPreferences.getString(ID_PARTNER).take(4) //  aEoc
+            // aEocIrSR
             partnerId + userId
         } else {
+            //aEoc
             userId + partnerId
         }
     }

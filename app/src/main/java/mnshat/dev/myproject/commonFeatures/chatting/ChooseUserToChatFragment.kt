@@ -80,6 +80,7 @@ class ChooseUserToChatFragment : BaseBottomSheetDialogFragment<FragmentChooseUse
     }
 
     private fun initUserData() {
+
         binding.name.text = sharedPreferences.getString(NAME_PARTNER)
         loadImage(requireActivity(),sharedPreferences.getString(IMAGE_PARTNER),binding.imageUser)
 
@@ -92,6 +93,7 @@ class ChooseUserToChatFragment : BaseBottomSheetDialogFragment<FragmentChooseUse
     }
 
     private fun getSupporters(){
+
         FirebaseService.listenForUserDataChanges {
             it?.let {
                 it.storeDataLocally(sharedPreferences)
@@ -107,7 +109,6 @@ class ChooseUserToChatFragment : BaseBottomSheetDialogFragment<FragmentChooseUse
                 else{
                     log("No Supporter ")
                 }
-//                isHasSupporter()
                 dismissProgressDialog()
             }
         }

@@ -43,6 +43,7 @@ class MessagesListAdapter(
         var idPartner =""
         var imagePartner =""
         var namePartner =""
+
         if (sharedPreferencesManager.getString(TYPE_OF_USER) == CAREGIVER ){
              idPartner = metaData.idPatient!!
              imagePartner = metaData.imagePatient

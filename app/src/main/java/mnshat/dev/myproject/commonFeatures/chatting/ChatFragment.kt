@@ -12,6 +12,7 @@ import mnshat.dev.myproject.model.Message
 import mnshat.dev.myproject.model.MetaDataMessages
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.ENGLISH_KEY
+import mnshat.dev.myproject.util.ID_PARTNER
 import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.USER_IMAGE
@@ -22,9 +23,11 @@ import mnshat.dev.myproject.util.log
 class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
 
     override fun getLayout() = R.layout.fragment_chat
+
     private var partnerId: String = ""
     private var urlImagePartner: String = ""
     private var namePartner: String = ""
+
     override fun initializeViews() {
         super.initializeViews()
         retrieveDataFromArguments()
@@ -160,16 +163,22 @@ class ChatFragment : BaseChattingFragment<FragmentChatBinding>() {
 
     }
 
+
+
     private fun getChatId(): String {
-        val userId = sharedPreferences.getString(USER_ID).take(4)
-        val partnerId = partnerId.take(4)
+
+        // pa -> aEoc  car-> IrSR
+
+        val userId = sharedPreferences.getString(USER_ID).take(4)  //  IrSR
+        val partnerId = partnerId.take(4) // aEoc
+     //  partnerId+userId    aEocIrSR
 
         return if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER){
 
-            log(partnerId + userId)
             partnerId + userId
+
         } else {
-            log(userId + partnerId)
+
             userId + partnerId
         }
     }
