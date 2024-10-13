@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.editprofile
+package mnshat.dev.myproject.users.patient.profile.editprofile
 
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding

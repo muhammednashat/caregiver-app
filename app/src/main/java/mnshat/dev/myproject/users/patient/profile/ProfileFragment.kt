@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.main
+package mnshat.dev.myproject.users.patient.profile
 
 import android.app.Dialog
 import android.content.Intent
@@ -10,9 +10,12 @@ import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
 import mnshat.dev.myproject.databinding.FragmentProfileBinding
-import mnshat.dev.myproject.users.patient.editprofile.EditProfileActivity
+import mnshat.dev.myproject.users.patient.profile.editprofile.EditProfileActivity
+import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.users.patient.supporters.SupportersActivity
+import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
+import mnshat.dev.myproject.util.loadImage
 
 class ProfileFragment : BasePatientFragment<FragmentProfileBinding>() {
 
@@ -38,6 +41,9 @@ class ProfileFragment : BasePatientFragment<FragmentProfileBinding>() {
     }
 
     override fun initializeViews() {
+        super.initializeViews()
+        binding.nameUser.text = sharedPreferences.getString(USER_NAME)
+        loadImage(requireActivity(),sharedPreferences.getString(USER_IMAGE),binding.imageUser)
     }
     override fun onStart() {
         super.onStart()

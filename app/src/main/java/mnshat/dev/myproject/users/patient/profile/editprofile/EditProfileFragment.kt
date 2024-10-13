@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.editprofile
+package mnshat.dev.myproject.users.patient.profile.editprofile
 
 import android.os.Bundle
 import androidx.navigation.fragment.findNavController
@@ -10,18 +10,26 @@ import mnshat.dev.myproject.util.DIALECT
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.GENDER
 import mnshat.dev.myproject.util.RELIGION
+import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
+import mnshat.dev.myproject.util.loadImage
 
 class EditProfileFragment : BaseEditProfileFragment<FragmentEditProfileBinding>() {
     override fun initializeViews() {
+
         if (currentLang != ENGLISH_KEY) {
             binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
         }
+
         if (sharedPreferences.getBoolean(RELIGION)) {
             binding.metadata.yes.isChecked = true
-        } else {
+        }
+
+        else {
             binding.metadata.no.isChecked = true
         }
+
+        loadImage(requireActivity(),sharedPreferences.getString(USER_IMAGE),binding.imageUser)
         binding.metadata.textName.text = sharedPreferences.getString(USER_NAME)
         binding.metadata.textAge.text = getTextAge(sharedPreferences.getInt(AGE_GROUP))
         binding.metadata.textGender.text = getTextGender(sharedPreferences.getInt(GENDER))

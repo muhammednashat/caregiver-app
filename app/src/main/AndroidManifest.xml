@@ -31,7 +31,7 @@
             android:name=".users.patient.supporters.SupportersActivity"
             android:exported="false" />
         <activity
-            android:name=".users.patient.editprofile.EditProfileActivity"
+            android:name=".users.patient.profile.editprofile.EditProfileActivity"
             android:exported="false" />
         <activity
             android:name=".util.TermsPrivacyActivity"

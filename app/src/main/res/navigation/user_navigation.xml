@@ -15,7 +15,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="mnshat.dev.myproject.users.patient.main.ProfileFragment"
+        android:name="mnshat.dev.myproject.users.patient.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -24,11 +24,6 @@
     </fragment>
 
 
-    <fragment
-        android:id="@+id/messagesFragment"
-        android:name="mnshat.dev.myproject.users.patient.main.MessagesFragment"
-        android:label="fragment_messages"
-        tools:layout="@layout/fragment_messages" />
     <fragment
         android:id="@+id/gratitudeListFragment"
        tools:layout="@layout/fragment_gratitude_list"

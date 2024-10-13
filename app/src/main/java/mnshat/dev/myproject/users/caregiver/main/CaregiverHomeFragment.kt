@@ -6,6 +6,7 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentCaregiverHomeBinding
 import mnshat.dev.myproject.commonFeatures.libraraycontent.LibraryActivity
 import mnshat.dev.myproject.util.USER_IMAGE
+import mnshat.dev.myproject.util.USER_NAME
 import mnshat.dev.myproject.util.loadImage
 
 class CaregiverHomeFragment : BaseCaregiverFragment<FragmentCaregiverHomeBinding>() {
@@ -17,6 +18,7 @@ class CaregiverHomeFragment : BaseCaregiverFragment<FragmentCaregiverHomeBinding
 
     override fun initializeViews() {
         super.initializeViews()
+        binding.nameUser.text = sharedPreferences.getString(USER_NAME)
         loadImage(requireActivity(),sharedPreferences.getString(USER_IMAGE),binding.imageUser)
 
     }
