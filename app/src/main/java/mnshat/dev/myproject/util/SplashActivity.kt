@@ -31,9 +31,11 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
         window.setBackgroundDrawable(background)
         Handler().postDelayed({
             isLogged()
+            //
             setLocale(if (sharedPreferences.getString(LANGUAGE) == "en") "en" else "ar")
         }, 2000)
     }
+
 
     private fun isLogged() {
         if (sharedPreferences.getBoolean(IS_LOGGED)) {
@@ -51,7 +53,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
               CAREGIVER -> {
                   startActivity(Intent(this, CaregiverScreenActivity::class.java))
               }
-
           }
             finish()
     }
