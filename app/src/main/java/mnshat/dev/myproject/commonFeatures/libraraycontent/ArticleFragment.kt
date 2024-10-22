@@ -56,17 +56,7 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() {
         }
 
         binding.share.setOnClickListener {
-
-
-
-
             ChooseSupporterFragment().show(childFragmentManager, ChooseSupporterFragment::class.java.name)
-
-
-
-
-
-
         }
 
         binding.suggest.setOnClickListener {

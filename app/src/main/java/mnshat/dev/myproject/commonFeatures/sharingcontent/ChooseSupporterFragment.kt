@@ -59,8 +59,11 @@ class ChooseSupporterFragment : BaseBottomSheetDialogFragment<FragmentChooseSupp
         binding.supportersRecyclerView.apply {
             adapter = ChooseSupporterAdapter(requireContext(), it)
             setHasFixedSize(true)
-            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(requireContext())
-          binding.loaderProgress.visibility = View.GONE
+            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+                requireContext(),
+                androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL,
+                false)
+            binding.loaderProgress.visibility = View.GONE
             alpha = 1.0f
         }
 

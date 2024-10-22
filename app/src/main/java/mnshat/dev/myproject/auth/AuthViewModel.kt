@@ -45,7 +45,7 @@ class AuthViewModel(
     val typeOfUser = MutableLiveData<String?>()
     var errorMessage: String? = ""
     var id: String? = null
-    var imageUser: String? = "123"
+    var imageUser: String? = "https://firebasestorage.googleapis.com/v0/b/myproject-18932.appspot.com/o/images%2Fimg1.jpg?alt=media&token=d0823e7a-416f-4798-ac0a-ee91976c8082"
 
     fun clearData() {
         name.value = null
