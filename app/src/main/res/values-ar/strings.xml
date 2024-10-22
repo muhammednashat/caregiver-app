@@ -293,6 +293,7 @@
     <string name="account">الحساب</string>
     <string name="start_new_conversation">بدء محادثة جديده</string>
     <string name="say_something">بدء محادثه...</string>
+    <string name="share_with">Share with .....</string>
 
 
 </resources>

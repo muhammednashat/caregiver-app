@@ -2,6 +2,8 @@ package mnshat.dev.myproject.commonFeatures.libraraycontent
 
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.auth.AgeFragment
+import mnshat.dev.myproject.commonFeatures.sharingcontent.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.FragmentArticleBinding
 import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.util.ARTICLE
@@ -54,7 +56,17 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() {
         }
 
         binding.share.setOnClickListener {
-            copyTextToClipboard( binding.article.text.toString())
+
+
+
+
+            ChooseSupporterFragment().show(childFragmentManager, ChooseSupporterFragment::class.java.name)
+
+
+
+
+
+
         }
 
         binding.suggest.setOnClickListener {
