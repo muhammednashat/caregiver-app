@@ -333,6 +333,7 @@
     <string name="start_new_conversation">Start new conversation</string>
     <string name="say_something">Say something...</string>
     <string name="share_with">Share with .....</string>
+    <string name="share">Share</string>
 
 
 </resources>

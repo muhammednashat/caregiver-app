@@ -1,9 +1,17 @@
 package mnshat.dev.myproject.users.patient.tools.gratitude
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.ViewGroup
+import android.view.Window
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.commonFeatures.sharingcontent.ChooseSupporterFragment
+import mnshat.dev.myproject.databinding.DialogCannotAddSupporterBinding
+import mnshat.dev.myproject.databinding.DialogShareContentBinding
 import mnshat.dev.myproject.databinding.FragmentGratitudeBinding
 import mnshat.dev.myproject.factories.GratitudeViewModelFactory
 import mnshat.dev.myproject.interfaces.OnConfirmButtonClicked
@@ -76,7 +84,9 @@ private fun addGratitude(gratitude: Gratitude) {
         if (it){
             clearText()
             showToast(getString(R.string.your_answer_has_been_sent))
+            showSharingDialog()
         }else{
+
         }
         dismissProgressDialog()
     }
@@ -113,4 +123,31 @@ private fun addGratitude(gratitude: Gratitude) {
         setText(text)
 
     }
+
+    private fun showSharingDialog() {
+
+        sharedUserDialog = Dialog(requireContext())
+        sharedUserDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = DialogShareContentBinding.inflate(layoutInflater)
+        sharedUserDialog.setContentView(dialogBinding.root)
+        sharedUserDialog.setCanceledOnTouchOutside(true)
+        val window = sharedUserDialog.window
+        window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        sharedUserDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        dialogBinding.btOk.setOnClickListener {
+            sharedUserDialog.dismiss()
+
+            ChooseSupporterFragment().show(childFragmentManager, ChooseSupporterFragment::class.java.name)
+
+//            viewModel.shareGratituse()
+        }
+
+        dialogBinding.icClose.setOnClickListener {
+            sharedUserDialog.dismiss()
+        }
+        sharedUserDialog.show()
+    }
+
+
 }

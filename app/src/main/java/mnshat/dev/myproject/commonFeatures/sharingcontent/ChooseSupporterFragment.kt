@@ -36,9 +36,7 @@ class ChooseSupporterFragment : BaseBottomSheetDialogFragment<FragmentChooseSupp
         FirebaseService.listenForUserDataChanges {
             it?.let {
                 it.storeDataLocally(sharedPreferences)
-
                 if (sharedPreferences.getBoolean(HAS_PARTNER)){
-
                     FirebaseService.retrieveUsersByEmails(it.supports){
                         it?.let {
                             log("${it.toString()} ")

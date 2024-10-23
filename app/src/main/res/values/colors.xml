@@ -4,7 +4,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background_screen">#f7f7f7</color>
-
+    <color name="green">#59df9c</color>
     <color name="shade_orange">#f3845e</color>
     <color name="burnt_orange">#C75726</color>
 
