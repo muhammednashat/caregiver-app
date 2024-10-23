@@ -60,17 +60,7 @@ class ChooseSupporterAdapter(
         }
     }
 
-    fun getSelectedSupporters(): MutableList<String> {
-
-
-
-        return supportersList
-
-
-
-
-
-    }
+    fun getSelectedSupporters()= supportersList
 
     override fun getItemCount() = supporters.size
 }

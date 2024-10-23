@@ -1,18 +1,12 @@
 package mnshat.dev.myproject.commonFeatures.sharingcontent
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.ChooseSupporterAdapter
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentChooseSupporterBinding
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.RegistrationData
-import mnshat.dev.myproject.users.patient.main.BasePatientFragment
-import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.log
@@ -23,7 +17,7 @@ class ChooseSupporterFragment : BaseBottomSheetDialogFragment<FragmentChooseSupp
 
 
     override fun getLayout() = R.layout.fragment_choose_supporter
-
+private lateinit var adapter: ChooseSupporterAdapter
     override fun initializeViews() {
         if (currentLang != ENGLISH_KEY) {
             binding.close.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
@@ -32,6 +26,18 @@ class ChooseSupporterFragment : BaseBottomSheetDialogFragment<FragmentChooseSupp
        retrieveSupporters()
     }
 
+    override fun setupClickListener() {
+        super.setupClickListener()
+        binding.send.setOnClickListener {
+            adapter?.let {
+                log(it.getSelectedSupporters().size.toString())
+                it.getSelectedSupporters().forEach {
+                    log(it)
+                }
+            }
+        }
+
+    }
     private fun retrieveSupporters() {
         FirebaseService.listenForUserDataChanges {
             it?.let {
