@@ -6,15 +6,21 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
+import com.google.firebase.firestore.FirebaseFirestore
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
+import mnshat.dev.myproject.commonFeatures.sharingcontent.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.FragmentVideoBinding
+import mnshat.dev.myproject.firebase.FirebaseService
+import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.model.SharingContent
 import mnshat.dev.myproject.util.LANGUAGE
+import mnshat.dev.myproject.util.LIBRARY
 import mnshat.dev.myproject.util.VIDEO
 import mnshat.dev.myproject.util.log
 
-class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>() {
+class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>(), OnSendButtonClicked {
 
     override fun getLayout() = R.layout.fragment_video
   private lateinit var player:ExoPlayer
@@ -31,6 +37,11 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>() {
 
         binding.icBack.setOnClickListener {
             findNavController().popBackStack()
+        }
+        binding.share.setOnClickListener {
+            val fragment = ChooseSupporterFragment()
+            fragment.initOnConfirmButtonClicked(this)
+            fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
         }
 
         binding.showAll.setOnClickListener {
@@ -159,6 +170,28 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>() {
     override fun onDestroy() {
         super.onDestroy()
         player.release()
+    }
+
+
+    fun getSharingContent(list: MutableList<String>) =
+        SharingContent(
+            type =  LIBRARY,
+            libraryContent = viewModel.getContent(),
+            supporters = list
+        )
+
+
+    override fun onSendClicked(list: MutableList<String>) {
+        showProgressDialog()
+        viewModel.shareContent(getSharingContent(list)){
+            if (it == null){
+                showToast("done")
+            }else{
+                showToast(it)
+            }
+            dismissProgressDialog()
+        }
+
     }
 
 }

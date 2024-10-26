@@ -6,6 +6,8 @@ import mnshat.dev.myproject.adapters.ChooseSupporterAdapter
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentChooseSupporterBinding
 import mnshat.dev.myproject.firebase.FirebaseService
+import mnshat.dev.myproject.interfaces.OnConfirmButtonClicked
+import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.HAS_PARTNER
@@ -14,9 +16,9 @@ import mnshat.dev.myproject.util.log
 
 class ChooseSupporterFragment : BaseBottomSheetDialogFragment<FragmentChooseSupporterBinding>() {
 
+    private lateinit var onSendButtonClicked: OnSendButtonClicked
 
-
-    override fun getLayout() = R.layout.fragment_choose_supporter
+override fun getLayout() = R.layout.fragment_choose_supporter
 private lateinit var adapter: ChooseSupporterAdapter
     override fun initializeViews() {
         if (currentLang != ENGLISH_KEY) {
@@ -29,15 +31,19 @@ private lateinit var adapter: ChooseSupporterAdapter
     override fun setupClickListener() {
         super.setupClickListener()
         binding.send.setOnClickListener {
-            adapter?.let {
-                log(it.getSelectedSupporters().size.toString())
-                it.getSelectedSupporters().forEach {
-                    log(it)
-                }
+
+            if (adapter.getSelectedSupporters().size == 0){
+                showToast("Please Select Supporter")
+            }else{
+                onSendButtonClicked.onSendClicked(adapter.getSelectedSupporters())
+                dismiss()
             }
         }
-
     }
+      fun initOnConfirmButtonClicked(onSendButtonClicked: OnSendButtonClicked){
+        this.onSendButtonClicked = onSendButtonClicked
+    }
+
     private fun retrieveSupporters() {
         FirebaseService.listenForUserDataChanges {
             it?.let {
@@ -56,12 +62,13 @@ private lateinit var adapter: ChooseSupporterAdapter
                 dismissProgressDialog()
             }
         }
-
     }
 
     private fun updateUi(it: List<RegistrationData>) {
+        adapter = ChooseSupporterAdapter(requireContext(), it)
         binding.supportersRecyclerView.apply {
-            adapter = ChooseSupporterAdapter(requireContext(), it)
+
+            adapter = this@ChooseSupporterFragment.adapter
             setHasFixedSize(true)
             layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
                 requireContext(),

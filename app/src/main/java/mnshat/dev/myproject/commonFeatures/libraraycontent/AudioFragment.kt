@@ -9,14 +9,22 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.commonFeatures.sharingcontent.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.FragmentAudioBinding
+import mnshat.dev.myproject.firebase.FirebaseService
+import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.model.SharingContent
 import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.LANGUAGE
+import mnshat.dev.myproject.util.LIBRARY
 import mnshat.dev.myproject.util.loadImage
+import mnshat.dev.myproject.util.log
 
-class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>() {
+class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>() , OnSendButtonClicked {
 
     override fun getLayout() = R.layout.fragment_audio
     private lateinit var player: ExoPlayer
@@ -34,6 +42,11 @@ class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>() {
 
         binding.icBack.setOnClickListener {
             findNavController().popBackStack()
+        }
+        binding.share.setOnClickListener {
+            val fragment = ChooseSupporterFragment()
+            fragment.initOnConfirmButtonClicked(this)
+            fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
         }
 
         binding.playButton.setOnClickListener {
@@ -217,5 +230,26 @@ class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>() {
         player.release()
         stopUpdatingSeekBar()
     }
+
+    override fun onSendClicked(list: MutableList<String>) {
+        showProgressDialog()
+        viewModel.shareContent(getSharingContent(list)){
+            if (it == null){
+                showToast("done")
+            }else{
+                showToast(it)
+            }
+            dismissProgressDialog()
+        }
+
+    }
+
+    fun getSharingContent(list: MutableList<String>) =
+        SharingContent(
+            type =  LIBRARY,
+            libraryContent = viewModel.getContent(),
+            supporters = list
+        )
+
 
 }

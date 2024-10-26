@@ -56,3 +56,6 @@ const val DAILY_PROGRAM_STATES = "daily_program_states"
 
 
 const val CHATS = "chats"
+const val LIBRARY = "library"
+const val SUPPLICATIONS = "supplications"
+const val GRATITUDE = "gratitude"

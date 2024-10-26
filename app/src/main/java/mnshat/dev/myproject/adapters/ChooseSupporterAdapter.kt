@@ -8,9 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.interfaces.ItemSupplicationClicked
 import mnshat.dev.myproject.model.RegistrationData
-import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
@@ -40,21 +38,21 @@ class ChooseSupporterAdapter(
         loadImage(context, supporter.imageUser, holder.imageView)
 
         val selectedBackground = context.getColor(R.color.green)
-        val defaultBackground = context.getColor(R.color.white)
+        val defaultBackground = context.getColor(R.color.black)
 
         var isSelected = false
         holder.itemView.setOnClickListener {
             isSelected = !isSelected
-
+//ToDo fix , case when adding at index 1 before index 0
             if (isSelected) {
-                log("selected")
+                log("selected $position")
                 supportersList.add(position,supporter.email!!)
-                holder.iconCheck.visibility = View.VISIBLE
+//                holder.iconCheck.visibility = View.VISIBLE
                 holder.name.setTextColor(selectedBackground)
             } else {
-                log("no selected")
+                log("no selected $position")
                 supportersList.removeAt(position)
-                holder.iconCheck.visibility = View.GONE
+//                holder.iconCheck.visibility = View.GONE
                 holder.name.setTextColor(defaultBackground)
             }
         }
@@ -62,5 +60,8 @@ class ChooseSupporterAdapter(
 
     fun getSelectedSupporters()= supportersList
 
-    override fun getItemCount() = supporters.size
+    override fun getItemCount(): Int {
+        log("getItemCount ${supporters.size}")
+        return supporters.size
+    }
 }
