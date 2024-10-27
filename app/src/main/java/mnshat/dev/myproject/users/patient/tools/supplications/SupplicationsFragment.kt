@@ -12,26 +12,30 @@ import android.widget.PopupMenu
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.commonFeatures.sharingcontent.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.DialogFullTextSupplicationBinding
 import mnshat.dev.myproject.databinding.FragmentSupplicationsBinding
 import mnshat.dev.myproject.factories.SupplicationsViewModelFactory
+import mnshat.dev.myproject.interfaces.OnSendButtonClicked
+import mnshat.dev.myproject.model.SharingContent
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
+import mnshat.dev.myproject.util.LIBRARY
+import mnshat.dev.myproject.util.SUPPLICATIONS
 import mnshat.dev.myproject.util.data.getListHands
 import mnshat.dev.myproject.util.data.getListSebha
 
 
-class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>() {
+class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>() ,
+    OnSendButtonClicked {
 
     private lateinit var viewModel: SupplicationsViewModel
     private lateinit var fullTextSupplicationDialog: Dialog
      private lateinit var supplicationText: String
 
-    override fun initializeViews() {
 
-    }
 
-    fun setUiData(supplication: Supplication) {
+    private fun setUiData(supplication: Supplication) {
         binding.textNameSupplication.text = supplication.name
         binding.textBaseNumber.text = supplication.number.toString()
     }
@@ -111,12 +115,21 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
     private fun handleMenuItemClick(menuItem: MenuItem): Boolean {
         return when (menuItem.itemId) {
             R.id.menu_sharing -> {
-                copyTextToClipboard( supplicationText)
+                navigateToChooseSupporter()
+
+
+
                 true
             }
             else -> false
     }
 }
+
+    private fun navigateToChooseSupporter() {
+        val fragment = ChooseSupporterFragment()
+        fragment.initOnConfirmButtonClicked(this)
+        fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
+    }
 
     private fun showFullTextSupplicationDialog(supplicationText:String) {
         fullTextSupplicationDialog = Dialog(requireContext())
@@ -153,5 +166,25 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
     }
 
 
+    private fun getSharingContent(list: MutableList<String>) =
+        SharingContent(
+            type =  SUPPLICATIONS,
+            supplication = viewModel.supplication.value!!,
+            supporters = list
+        )
+
+
+    override fun onSendClicked(list: MutableList<String>) {
+        showProgressDialog()
+        viewModel.shareContent(getSharingContent(list)){
+            if (it == null){
+                showToast("done")
+            }else{
+                showToast(it)
+            }
+            dismissProgressDialog()
+        }
+
+    }
 
 }

@@ -3,14 +3,18 @@ package mnshat.dev.myproject.users.patient.tools.supplications
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import mnshat.dev.myproject.base.BaseViewModel
 import mnshat.dev.myproject.firebase.FirebaseService
+import mnshat.dev.myproject.model.SharingContent
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.model.SupplicationsUser
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.data.getListHands
+import mnshat.dev.myproject.util.log
 
 
 //ToDo Clear Data after onStop called
@@ -142,8 +146,6 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
             _userSupplications.value = items
             onResult(items)
         }
-
-
     }
 
     fun resetIsDismissProgressDialog() {
@@ -184,6 +186,34 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
 
     private fun getFirstImage() {
         _newImageSupplication.value = mListImages[currentIndexListImages]
+    }
+    fun shareContent(sharing: SharingContent, callback:(String?)->Unit) {
+        FirebaseFirestore.getInstance()
+            .collection("sharing")
+            .document(FirebaseService.userEmail!!)
+            .update("contentList", FieldValue.arrayUnion(sharing))
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    callback(null)
+                    log("Content added successfully")
+                } else {
+                    FirebaseFirestore.getInstance()
+                        .collection("sharing")
+                        .document(FirebaseService.userEmail!!)
+                        .set(mapOf("contentList" to listOf(sharing)))
+                        .addOnCompleteListener { creationTask ->
+                            if (creationTask.isSuccessful) {
+                                callback(null)
+
+                                log("Document created and content added")
+                            } else {
+                                callback(creationTask.exception.toString())
+
+                                log("Error: ${creationTask.exception}")
+                            }
+                        }
+                }
+            }
     }
 
 

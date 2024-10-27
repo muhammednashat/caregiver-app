@@ -15,16 +15,21 @@ import mnshat.dev.myproject.databinding.DialogShareContentBinding
 import mnshat.dev.myproject.databinding.FragmentGratitudeBinding
 import mnshat.dev.myproject.factories.GratitudeViewModelFactory
 import mnshat.dev.myproject.interfaces.OnConfirmButtonClicked
+import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.model.Gratitude
+import mnshat.dev.myproject.model.SharingContent
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.ENGLISH_KEY
+import mnshat.dev.myproject.util.GRATITUDE
+import mnshat.dev.myproject.util.LIBRARY
 import mnshat.dev.myproject.util.getGratitudeQuestionsList
 import mnshat.dev.myproject.util.isValidInput
 import mnshat.dev.myproject.util.log
 import kotlin.random.Random
 
 
-class GratitudeFragment : BasePatientFragment<FragmentGratitudeBinding>(), OnConfirmButtonClicked {
+class GratitudeFragment : BasePatientFragment<FragmentGratitudeBinding>(), OnConfirmButtonClicked,
+    OnSendButtonClicked {
     private lateinit var viewModel: GratitudeViewModel
 
     override fun getLayout() = R.layout.fragment_gratitude
@@ -82,7 +87,6 @@ class GratitudeFragment : BasePatientFragment<FragmentGratitudeBinding>(), OnCon
 private fun addGratitude(gratitude: Gratitude) {
     viewModel.sendGratitude(gratitude){
         if (it){
-            clearText()
             showToast(getString(R.string.your_answer_has_been_sent))
             showSharingDialog()
         }else{
@@ -136,17 +140,43 @@ private fun addGratitude(gratitude: Gratitude) {
         sharedUserDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         dialogBinding.btOk.setOnClickListener {
-            sharedUserDialog.dismiss()
-
-            ChooseSupporterFragment().show(childFragmentManager, ChooseSupporterFragment::class.java.name)
-
-//            viewModel.shareGratituse()
+            navigateToChooseSupporter()
         }
 
         dialogBinding.icClose.setOnClickListener {
             sharedUserDialog.dismiss()
         }
         sharedUserDialog.show()
+    }
+
+    private fun navigateToChooseSupporter() {
+        sharedUserDialog.dismiss()
+
+        val fragment = ChooseSupporterFragment()
+        fragment.initOnConfirmButtonClicked(this)
+        fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
+    }
+
+    private fun getSharingContent(list: MutableList<String>) =
+        SharingContent(
+            type =  GRATITUDE,
+            gratitude = Gratitude(index = viewModel.getSelectedPosition(), answer = binding.edtAnswer.text.toString()),
+            supporters = list
+        )
+
+
+    override fun onSendClicked(list: MutableList<String>) {
+        showProgressDialog()
+        viewModel.shareContent(getSharingContent(list)){
+            if (it == null){
+                showToast("done")
+                clearText()
+            }else{
+                showToast(it)
+            }
+            dismissProgressDialog()
+        }
+
     }
 
 

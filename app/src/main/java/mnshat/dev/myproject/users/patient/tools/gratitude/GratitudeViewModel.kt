@@ -5,14 +5,18 @@ import android.os.CountDownTimer
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.GratitudeAdapter
 import mnshat.dev.myproject.base.BaseViewModel
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Duration
 import mnshat.dev.myproject.model.Gratitude
+import mnshat.dev.myproject.model.SharingContent
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.getGratitudeQuestionsList
+import mnshat.dev.myproject.util.log
 
 class GratitudeViewModel(
     private val sharedPreferences: SharedPreferencesManager,
@@ -48,5 +52,35 @@ class GratitudeViewModel(
 
         }
     }
+
+    fun shareContent(sharing: SharingContent, callback:(String?)->Unit) {
+        FirebaseFirestore.getInstance()
+            .collection("sharing")
+            .document(FirebaseService.userEmail!!)
+            .update("contentList", FieldValue.arrayUnion(sharing))
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    callback(null)
+                    log("Content added successfully")
+                } else {
+                    FirebaseFirestore.getInstance()
+                        .collection("sharing")
+                        .document(FirebaseService.userEmail!!)
+                        .set(mapOf("contentList" to listOf(sharing)))
+                        .addOnCompleteListener { creationTask ->
+                            if (creationTask.isSuccessful) {
+                                callback(null)
+
+                                log("Document created and content added")
+                            } else {
+                                callback(creationTask.exception.toString())
+
+                                log("Error: ${creationTask.exception}")
+                            }
+                        }
+                }
+            }
+    }
+
 
 }
