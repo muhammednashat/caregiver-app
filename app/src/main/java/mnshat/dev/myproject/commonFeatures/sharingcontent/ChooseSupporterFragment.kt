@@ -64,10 +64,13 @@ private lateinit var adapter: ChooseSupporterAdapter
         }
     }
 
+
+    //ToDo (205673de-74d2-4caa-bdea-bd2340dc73fe) not attached to a context.
+
     private fun updateUi(it: List<RegistrationData>) {
+
         adapter = ChooseSupporterAdapter(requireContext(), it)
         binding.supportersRecyclerView.apply {
-
             adapter = this@ChooseSupporterFragment.adapter
             setHasFixedSize(true)
             layoutManager = androidx.recyclerview.widget.LinearLayoutManager(

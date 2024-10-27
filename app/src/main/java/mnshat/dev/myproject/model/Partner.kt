@@ -7,7 +7,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 
 data class Partner(
-
     var idPartner: String? = null,
     var emailPartner: String? = null,
     var namePartner: String? = null,

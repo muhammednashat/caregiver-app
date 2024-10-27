@@ -43,7 +43,9 @@ class ChooseSupporterAdapter(
         var isSelected = false
         holder.itemView.setOnClickListener {
             isSelected = !isSelected
-//ToDo fix , case when adding at index 1 before index 0
+
+         //ToDo fix , case when adding at index 1 before index 0
+
             if (isSelected) {
                 log("selected $position")
                 supportersList.add(position,supporter.email!!)

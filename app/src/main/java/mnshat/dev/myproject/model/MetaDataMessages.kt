@@ -6,6 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 
 data class MetaDataMessages(
+
     val nameCaregiver:String? = null,
     val idCaregiver:String? = null,
     val imageCaregiver:String = "",

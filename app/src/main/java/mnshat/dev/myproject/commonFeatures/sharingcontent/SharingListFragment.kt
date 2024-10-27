@@ -15,5 +15,4 @@ class SharingListFragment : BasePatientFragment<FragmentSharingListBinding>() {
     override fun getLayout() = R.layout.fragment_sharing_list
 
 
-
 }
