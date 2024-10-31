@@ -5,7 +5,7 @@ import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentLoginBinding
 import mnshat.dev.myproject.util.AGE_GROUP
-import mnshat.dev.myproject.util.EMAIL
+import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.GENDER
 import mnshat.dev.myproject.util.PASSWORD
 
@@ -53,15 +53,15 @@ class LoginFragment : AuthBaseFragment<FragmentLoginBinding>() {
 
     private fun updateRegistrationInfoLocally(){
         if(isRememberMe){
-                sharedPreferences.storeString(EMAIL ,_viewModel.email.value)
+                sharedPreferences.storeString(USER_EMAIL ,_viewModel.email.value)
                 sharedPreferences.storeString(PASSWORD , _viewModel.password.value)
         }else{
-            sharedPreferences.storeString(EMAIL ,   "")
+            sharedPreferences.storeString(USER_EMAIL ,   "")
             sharedPreferences.storeString(PASSWORD ,   "")
         }
     }
     private fun setUpSwitch() {
-        val email = sharedPreferences.getString(EMAIL)
+        val email = sharedPreferences.getString(USER_EMAIL)
         val pass = sharedPreferences.getString(PASSWORD)
         if (email != ""){
             isRememberMe = true

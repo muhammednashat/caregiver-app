@@ -16,7 +16,7 @@ import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.DAILY_PROGRAM_STATES
-import mnshat.dev.myproject.util.EMAIL
+import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.INVITATION_CODE
 import mnshat.dev.myproject.util.LIBRARY_CONTENTS
 import mnshat.dev.myproject.util.USER_PROFILES
@@ -77,7 +77,7 @@ object FirebaseService {
         val query = if (typeOfUser == CAREGIVER)
             userProfiles.orderByChild(INVITATION_CODE).equalTo(string)
         else
-            userProfiles.orderByChild(EMAIL).equalTo(string)
+            userProfiles.orderByChild(USER_EMAIL).equalTo(string)
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -100,7 +100,7 @@ object FirebaseService {
 
     fun retrieveUsersByEmails(emails: List<String>?, callback: (List<RegistrationData>?) -> Unit) {
         emails?.let {
-            val query = userProfiles.orderByChild(EMAIL).apply {
+            val query = userProfiles.orderByChild(USER_EMAIL).apply {
                 emails?.forEach { email ->
                     equalTo(email)
                 }
@@ -243,7 +243,7 @@ object FirebaseService {
 
     fun retrieveCurrentTasksForUser(userEmail: String, callBack: (CurrentTask?) -> Unit) {
 
-        val query = dailyProgramStates.orderByChild(EMAIL).equalTo(userEmail)
+        val query = dailyProgramStates.orderByChild(USER_EMAIL).equalTo(userEmail)
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {

@@ -24,6 +24,10 @@ class ProfileFragment : BasePatientFragment<FragmentProfileBinding>() {
         binding.editProfile.setOnClickListener {
             startActivity(Intent(requireActivity(), EditProfileActivity::class.java))
         }
+
+        binding.sharedContent.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_sharingListFragment)
+        }
         binding.services.supporter.setOnClickListener {
             startActivity(Intent(requireActivity(), SupportersActivity::class.java))
         }

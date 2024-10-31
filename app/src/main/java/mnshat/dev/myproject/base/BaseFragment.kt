@@ -22,7 +22,7 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.auth.AuthActivity
 import mnshat.dev.myproject.databinding.DialogBinding
 import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.util.EMAIL
+import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.IS_SECOND_TIME
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.MyApplication
@@ -155,7 +155,7 @@ open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
     }
     fun logOut(){
        FirebaseService.logOut()
-        val email = sharedPreferences.getString(EMAIL)
+        val email = sharedPreferences.getString(USER_EMAIL)
         val password = sharedPreferences.getString(PASSWORD)
         val currentLang = sharedPreferences.getString(LANGUAGE)
 
@@ -169,7 +169,7 @@ open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
             LANGUAGE,currentLang
         )
         sharedPreferences.storeString(
-            EMAIL,email
+            USER_EMAIL,email
         )
         val intent = Intent(requireActivity(), AuthActivity::class.java)
         startActivity(intent)

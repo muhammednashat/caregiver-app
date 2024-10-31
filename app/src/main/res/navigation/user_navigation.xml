@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_profileFragment_to_gratitudeListFragment"
             app:destination="@id/gratitudeListFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_sharingListFragment"
+            app:destination="@id/sharingListFragment" />
     </fragment>
 
 
@@ -102,5 +105,10 @@
         <include
             app:graph="@navigation/chatting_navigation" />
     </navigation>
+    <fragment
+        android:id="@+id/sharingListFragment"
+        tools:layout="@layout/fragment_sharing_list"
+        android:name="mnshat.dev.myproject.commonFeatures.sharingcontent.SharingListFragment"
+        android:label="SharingListFragment" />
 
 </navigation>
