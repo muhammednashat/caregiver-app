@@ -1,20 +1,15 @@
 package mnshat.dev.myproject.commonFeatures.libraraycontent
 
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.firestore.FirebaseFirestore
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.auth.AgeFragment
 import mnshat.dev.myproject.commonFeatures.sharingcontent.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.FragmentArticleBinding
-import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.interfaces.OnConfirmButtonClicked
 import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.model.LibraryContent
-import mnshat.dev.myproject.model.SharingContent
+import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.util.ARTICLE
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.LIBRARY
-import mnshat.dev.myproject.util.log
 
 
 class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() , OnSendButtonClicked {
@@ -94,7 +89,7 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() , OnSendBu
     }
 
     fun getSharingContent(list: MutableList<String>) =
-        SharingContent(
+        Post(
          type =  LIBRARY,
          libraryContent = viewModel.getContent(),
             supporters = list

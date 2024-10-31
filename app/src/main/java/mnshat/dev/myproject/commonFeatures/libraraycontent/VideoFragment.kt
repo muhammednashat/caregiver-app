@@ -6,15 +6,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
-import com.google.firebase.firestore.FirebaseFirestore
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
 import mnshat.dev.myproject.commonFeatures.sharingcontent.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.FragmentVideoBinding
-import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.model.LibraryContent
-import mnshat.dev.myproject.model.SharingContent
+import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.LIBRARY
 import mnshat.dev.myproject.util.VIDEO
@@ -174,7 +172,7 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>(), OnSendButtonC
 
 
     fun getSharingContent(list: MutableList<String>) =
-        SharingContent(
+        Post(
             type =  LIBRARY,
             libraryContent = viewModel.getContent(),
             supporters = list

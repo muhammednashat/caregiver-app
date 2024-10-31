@@ -8,7 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import mnshat.dev.myproject.base.BaseViewModel
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.LibraryContent
-import mnshat.dev.myproject.model.SharingContent
+import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.util.COMMON_CONTENT
 import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
@@ -97,7 +97,7 @@ class LibraryViewModel(
         currentContent = content
     }
 
-    fun shareContent(sharing: SharingContent,callback:(String?)->Unit) {
+    fun shareContent(sharing: Post, callback:(String?)->Unit) {
         FirebaseFirestore.getInstance()
             .collection("sharing")
             .document(FirebaseService.userEmail!!)

@@ -9,20 +9,16 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.commonFeatures.sharingcontent.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.FragmentAudioBinding
-import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.model.LibraryContent
-import mnshat.dev.myproject.model.SharingContent
+import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.LIBRARY
 import mnshat.dev.myproject.util.loadImage
-import mnshat.dev.myproject.util.log
 
 class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>() , OnSendButtonClicked {
 
@@ -245,7 +241,7 @@ class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>() , OnSendButton
     }
 
     fun getSharingContent(list: MutableList<String>) =
-        SharingContent(
+        Post(
             type =  LIBRARY,
             libraryContent = viewModel.getContent(),
             supporters = list

@@ -45,11 +45,11 @@
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/gratitudeList"
+            android:id="@+id/contentList"
             android:background="#eff5f9"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-
+android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

@@ -10,18 +10,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.commonFeatures.sharingcontent.ChooseSupporterFragment
-import mnshat.dev.myproject.databinding.DialogCannotAddSupporterBinding
 import mnshat.dev.myproject.databinding.DialogShareContentBinding
 import mnshat.dev.myproject.databinding.FragmentGratitudeBinding
 import mnshat.dev.myproject.factories.GratitudeViewModelFactory
 import mnshat.dev.myproject.interfaces.OnConfirmButtonClicked
 import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.model.Gratitude
-import mnshat.dev.myproject.model.SharingContent
+import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.GRATITUDE
-import mnshat.dev.myproject.util.LIBRARY
 import mnshat.dev.myproject.util.getGratitudeQuestionsList
 import mnshat.dev.myproject.util.isValidInput
 import mnshat.dev.myproject.util.log
@@ -158,7 +156,7 @@ private fun addGratitude(gratitude: Gratitude) {
     }
 
     private fun getSharingContent(list: MutableList<String>) =
-        SharingContent(
+        Post(
             type =  GRATITUDE,
             gratitude = Gratitude(index = viewModel.getSelectedPosition(), answer = binding.edtAnswer.text.toString()),
             supporters = list

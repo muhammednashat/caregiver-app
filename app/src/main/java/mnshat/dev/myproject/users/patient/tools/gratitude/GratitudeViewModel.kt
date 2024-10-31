@@ -2,14 +2,15 @@ package mnshat.dev.myproject.users.patient.tools.gratitude
 
 import android.app.Application
 import android.util.Log
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import mnshat.dev.myproject.base.BaseViewModel
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Gratitude
-import mnshat.dev.myproject.model.SharingContent
-import mnshat.dev.myproject.util.USER_EMAIL
+import mnshat.dev.myproject.model.Post
+import mnshat.dev.myproject.model.Posts
+import mnshat.dev.myproject.util.POSTS
 import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.log
 
 class GratitudeViewModel(
@@ -47,31 +48,57 @@ class GratitudeViewModel(
         }
     }
 
-    fun shareContent(sharing: SharingContent, callback:(String?)->Unit) {
+    fun shareContent(post: Post, callback:(String?)->Unit) {
+        log("shareContent")
         FirebaseFirestore.getInstance()
-            .collection("sharing")
-            .document(sharedPreferences.getString(USER_EMAIL))
-            .update("contentList", FieldValue.arrayUnion(sharing))
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    callback(null)
-                    log("Content added successfully")
-                } else {
-                    FirebaseFirestore.getInstance()
-                        .collection("sharing")
-                        .document(FirebaseService.userEmail!!)
-                        .set(mapOf("contentList" to listOf(sharing)))
-                        .addOnCompleteListener { creationTask ->
-                            if (creationTask.isSuccessful) {
-                                callback(null)
-                                log("Document created and content added")
-                            } else {
-                                callback(creationTask.exception.toString())
-                                log("Error: ${creationTask.exception}")
-                            }
-                        }
-                }
+            .collection(POSTS)
+            .document(sharedPreferences.getString(USER_EMAIL)).get().addOnSuccessListener {
+            val posts:MutableList<Post> =
+                if (it.exists()) {
+                    log("exists")
+                    it.toObject(Posts::class.java)?.posts ?: mutableListOf()
+                } else{
+                    log("else")
+                  mutableListOf()
+                 }
+                posts.add(post)
+                FirebaseFirestore.getInstance()
+                    .collection(POSTS)
+                    .document(sharedPreferences.getString(USER_EMAIL))
+                    .set(Posts(posts)).addOnCompleteListener {
+                        callback(null)
+                    } .addOnFailureListener{
+                        callback(it.message)
+                    }
+
+            }.addOnFailureListener {
+                callback(it.message)
+                log("addOnFailureListener")
             }
+
+
+
+//            .update("contentList", FieldValue.arrayUnion(sharing))
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful) {
+//                    callback(null)
+//                    log("Content added successfully")
+//                } else {
+//                    FirebaseFirestore.getInstance()
+//                        .collection("sharing")
+//                        .document(FirebaseService.userEmail!!)
+//                        .set(mapOf("contentList" to listOf(sharing)))
+//                        .addOnCompleteListener { creationTask ->
+//                            if (creationTask.isSuccessful) {
+//                                callback(null)
+//                                log("Document created and content added")
+//                            } else {
+//                                callback(creationTask.exception.toString())
+//                                log("Error: ${creationTask.exception}")
+//                            }
+//                        }
+//                }
+//            }
     }
 
 

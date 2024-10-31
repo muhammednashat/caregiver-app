@@ -1,11 +1,13 @@
 package mnshat.dev.myproject.commonFeatures.sharingcontent
 
 import android.app.Application
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import mnshat.dev.myproject.base.BaseViewModel
-import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.model.SharingContent
+import mnshat.dev.myproject.model.Post
+import mnshat.dev.myproject.model.Posts
+import mnshat.dev.myproject.util.POSTS
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.log
@@ -19,32 +21,27 @@ class SharingViewModel
     sharedPreferences,
     application
 ) {
+  private val _posts = MutableLiveData<List<Post>?>()
+  val posts : LiveData<List<Post>?>
+      get() = _posts
 
-    fun retrieveSharedList(callback: (List<SharingContent>?, String?) -> Unit) {
+    fun retrieveSharedList() {
         FirebaseFirestore.getInstance()
-            .collection("sharing")
-            .document(sharedPreferences.getString(USER_EMAIL))
-            .get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    val contentList = document.get("contentList") as? List<SharingContent>
-                    if (contentList != null) {
-                        callback(contentList, null) // Success: Return the list
-                        log("Content list retrieved successfully ${contentList.size}")
-                    } else {
-                        callback(emptyList(), "Content list is empty") // Handle case where contentList is empty
-                        log("Content list is empty")
+            .collection(POSTS)
+            .document(sharedPreferences.getString(USER_EMAIL)).get().addOnSuccessListener {
+                val posts:MutableList<Post> =
+                    if (it.exists()) {
+                        log("exists")
+                        it.toObject(Posts::class.java)?.posts ?: mutableListOf()
+                    } else{
+                        log("else")
+                        mutableListOf()
                     }
-                } else {
-                    callback(null, "No document found") // Handle case where the document doesn't exist
-                    log("No document found")
-                }
+                _posts.value = posts
+            }.addOnFailureListener {
+                _posts.value = emptyList()
+                log("addOnFailureListener")
             }
-            .addOnFailureListener { exception ->
-                callback(null, exception.toString()) // Handle error
-                log("Error retrieving content list: ${exception.message}")
-            }
-    }
 
-
+}
 }

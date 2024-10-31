@@ -9,7 +9,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import mnshat.dev.myproject.base.BaseViewModel
 import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.model.SharingContent
+import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.model.SupplicationsUser
 import mnshat.dev.myproject.util.SharedPreferencesManager
@@ -187,7 +187,7 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
     private fun getFirstImage() {
         _newImageSupplication.value = mListImages[currentIndexListImages]
     }
-    fun shareContent(sharing: SharingContent, callback:(String?)->Unit) {
+    fun shareContent(sharing: Post, callback:(String?)->Unit) {
         FirebaseFirestore.getInstance()
             .collection("sharing")
             .document(FirebaseService.userEmail!!)
