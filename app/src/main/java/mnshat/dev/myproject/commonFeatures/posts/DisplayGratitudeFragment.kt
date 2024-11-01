@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.commonFeatures.sharingcontent
+package mnshat.dev.myproject.commonFeatures.posts
 
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentDisplayGratitudeBinding

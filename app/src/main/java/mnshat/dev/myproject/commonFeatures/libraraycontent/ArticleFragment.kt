@@ -2,7 +2,7 @@ package mnshat.dev.myproject.commonFeatures.libraraycontent
 
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.commonFeatures.sharingcontent.ChooseSupporterFragment
+import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.FragmentArticleBinding
 import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.model.LibraryContent
@@ -77,7 +77,7 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() , OnSendBu
 
     override fun onSendClicked(list: MutableList<String>) {
         showProgressDialog()
-        viewModel.shareContent(getSharingContent(list)){
+        viewModel.shareContent(post(list)){
             if (it == null){
                 showToast("done")
             }else{
@@ -88,7 +88,7 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() , OnSendBu
 
     }
 
-    fun getSharingContent(list: MutableList<String>) =
+    fun post(list: MutableList<String>) =
         Post(
          type =  LIBRARY,
          libraryContent = viewModel.getContent(),

@@ -12,7 +12,7 @@ import android.widget.PopupMenu
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.commonFeatures.sharingcontent.ChooseSupporterFragment
+import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.DialogFullTextSupplicationBinding
 import mnshat.dev.myproject.databinding.FragmentSupplicationsBinding
 import mnshat.dev.myproject.factories.SupplicationsViewModelFactory
@@ -165,7 +165,7 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
     }
 
 
-    private fun getSharingContent(list: MutableList<String>) =
+    private fun post(list: MutableList<String>) =
         Post(
             type =  SUPPLICATIONS,
             supplication = viewModel.supplication.value!!,
@@ -175,7 +175,7 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
 
     override fun onSendClicked(list: MutableList<String>) {
         showProgressDialog()
-        viewModel.shareContent(getSharingContent(list)){
+        viewModel.shareContent(post(list)){
             if (it == null){
                 showToast("done")
             }else{

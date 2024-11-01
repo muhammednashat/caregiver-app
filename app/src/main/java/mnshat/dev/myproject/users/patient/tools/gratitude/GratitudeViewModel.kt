@@ -49,16 +49,13 @@ class GratitudeViewModel(
     }
 
     fun shareContent(post: Post, callback:(String?)->Unit) {
-        log("shareContent")
         FirebaseFirestore.getInstance()
             .collection(POSTS)
             .document(sharedPreferences.getString(USER_EMAIL)).get().addOnSuccessListener {
             val posts:MutableList<Post> =
                 if (it.exists()) {
-                    log("exists")
                     it.toObject(Posts::class.java)?.posts ?: mutableListOf()
                 } else{
-                    log("else")
                   mutableListOf()
                  }
                 posts.add(post)
@@ -73,33 +70,7 @@ class GratitudeViewModel(
 
             }.addOnFailureListener {
                 callback(it.message)
-                log("addOnFailureListener")
             }
-
-
-
-//            .update("contentList", FieldValue.arrayUnion(sharing))
-//            .addOnCompleteListener { task ->
-//                if (task.isSuccessful) {
-//                    callback(null)
-//                    log("Content added successfully")
-//                } else {
-//                    FirebaseFirestore.getInstance()
-//                        .collection("sharing")
-//                        .document(FirebaseService.userEmail!!)
-//                        .set(mapOf("contentList" to listOf(sharing)))
-//                        .addOnCompleteListener { creationTask ->
-//                            if (creationTask.isSuccessful) {
-//                                callback(null)
-//                                log("Document created and content added")
-//                            } else {
-//                                callback(creationTask.exception.toString())
-//                                log("Error: ${creationTask.exception}")
-//                            }
-//                        }
-//                }
-//            }
     }
-
 
 }

@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.commonFeatures.sharingcontent
+package mnshat.dev.myproject.commonFeatures.posts
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -12,7 +12,7 @@ import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.log
 
-class SharingViewModel
+class PostsViewModel
     (
     private val sharedPreferences: SharedPreferencesManager,
     application: Application

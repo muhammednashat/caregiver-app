@@ -9,7 +9,7 @@ import android.view.Window
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.commonFeatures.sharingcontent.ChooseSupporterFragment
+import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.DialogShareContentBinding
 import mnshat.dev.myproject.databinding.FragmentGratitudeBinding
 import mnshat.dev.myproject.factories.GratitudeViewModelFactory

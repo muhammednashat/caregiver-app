@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/posts_navigation"
+    app:startDestination="@id/postsFragment">
+
+    <fragment
+        android:id="@+id/postsFragment"
+        tools:layout="@layout/fragment_posts"
+        android:name="mnshat.dev.myproject.commonFeatures.posts.PostsFragment"
+        android:label="PostsFragment" >
+        <action
+            android:id="@+id/action_postsFragment_to_displayGratitudeFragment"
+            app:destination="@id/displayGratitudeFragment" />
+        <action
+            android:id="@+id/action_postsFragment_to_displaySupplicationFragment"
+            app:destination="@id/displaySupplicationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/displayGratitudeFragment"
+        tools:layout="@layout/fragment_display_gratitude"
+        android:name="mnshat.dev.myproject.commonFeatures.posts.DisplayGratitudeFragment"
+        android:label="DisplayGratitudeFragment" />
+    <fragment
+        android:id="@+id/displaySupplicationFragment"
+        tools:layout="@layout/fragment_display_supplication"
+        android:name="mnshat.dev.myproject.commonFeatures.posts.DisplaySupplicationFragment"
+        android:label="DisplaySupplicationFragment" />
+</navigation>

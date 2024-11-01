@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.commonFeatures.sharingcontent
+package mnshat.dev.myproject.commonFeatures.posts
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

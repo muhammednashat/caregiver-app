@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.commonFeatures.sharingcontent
+package mnshat.dev.myproject.commonFeatures.posts
 
 import android.view.View
 import mnshat.dev.myproject.R
@@ -6,7 +6,6 @@ import mnshat.dev.myproject.adapters.ChooseSupporterAdapter
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentChooseSupporterBinding
 import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.interfaces.OnConfirmButtonClicked
 import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.util.ENGLISH_KEY

@@ -10,7 +10,7 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.commonFeatures.sharingcontent.ChooseSupporterFragment
+import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.FragmentAudioBinding
 import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.model.LibraryContent
@@ -229,7 +229,7 @@ class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>() , OnSendButton
 
     override fun onSendClicked(list: MutableList<String>) {
         showProgressDialog()
-        viewModel.shareContent(getSharingContent(list)){
+        viewModel.shareContent(post(list)){
             if (it == null){
                 showToast("done")
             }else{
@@ -240,7 +240,7 @@ class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>() , OnSendButton
 
     }
 
-    fun getSharingContent(list: MutableList<String>) =
+    fun post(list: MutableList<String>) =
         Post(
             type =  LIBRARY,
             libraryContent = viewModel.getContent(),

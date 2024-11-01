@@ -295,7 +295,11 @@
     <string name="say_something">بدء محادثه...</string>
     <string name="share_with">مشاركة مع....</string>
     <string name="share">مشاركة</string>
-    <string name="display_content">Display content</string>
+    <string name="display_content">عرض المحتوى</string>
+    <string name="message_of_gratitude">رسالة امتنان</string>
+    <string name="educational_content2">محتوى تثقيفى</string>
+    <string name="supplication_card">بطاقة تسبيح</string>
+    <string name="display">عرض</string>
 
 
 </resources>
