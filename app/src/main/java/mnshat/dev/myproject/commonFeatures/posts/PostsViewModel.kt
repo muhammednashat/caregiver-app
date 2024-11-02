@@ -25,7 +25,7 @@ class PostsViewModel
   val posts : LiveData<List<Post>?>
       get() = _posts
 
-    fun retrieveSharedList() {
+    fun retrieveSharedList(email:String) {
         FirebaseFirestore.getInstance()
             .collection(POSTS)
             .document(sharedPreferences.getString(USER_EMAIL)).get().addOnSuccessListener {

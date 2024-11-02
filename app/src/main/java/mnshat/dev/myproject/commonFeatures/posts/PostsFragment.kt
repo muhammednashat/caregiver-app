@@ -1,5 +1,6 @@
 package mnshat.dev.myproject.commonFeatures.posts
 
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -15,10 +16,14 @@ import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.ARTICLE
 import mnshat.dev.myproject.util.AUDIO
+import mnshat.dev.myproject.util.CAREGIVER
+import mnshat.dev.myproject.util.EMAIL_PARTNER
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.GRATITUDE
 import mnshat.dev.myproject.util.LIBRARY
 import mnshat.dev.myproject.util.SUPPLICATIONS
+import mnshat.dev.myproject.util.TYPE_OF_USER
+import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.VIDEO
 import mnshat.dev.myproject.util.log
 
@@ -40,8 +45,15 @@ class PostsFragment : BasePatientFragment<FragmentPostsBinding>(), ItemPostsClic
 
     override fun initializeViews() {
         initViewModel()
+        if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER){
+            log("caregiver ${sharedPreferences.getString(EMAIL_PARTNER)}")
+            retrieveSharedList(sharedPreferences.getString(EMAIL_PARTNER))
+        }else{
+            log("Patient ${sharedPreferences.getString(USER_EMAIL)}")
 
-        retrieveSharedList()
+            retrieveSharedList(sharedPreferences.getString(USER_EMAIL))
+
+        }
 
         if (currentLang != ENGLISH_KEY) {
             binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
@@ -49,10 +61,10 @@ class PostsFragment : BasePatientFragment<FragmentPostsBinding>(), ItemPostsClic
 
     }
 
-    private fun retrieveSharedList() {
+    private fun retrieveSharedList(email:String ) {
         binding.noItems.visibility = android.view.View.GONE
         showProgressDialog()
-        viewModel.retrieveSharedList()
+        viewModel.retrieveSharedList(email)
     }
 
     private fun initViewModel() {
@@ -65,11 +77,9 @@ class PostsFragment : BasePatientFragment<FragmentPostsBinding>(), ItemPostsClic
         viewModel.posts.observe(viewLifecycleOwner) { list ->
          if (list?.size!! > 0){
              log("list size ${list.size}")
-             binding.recyclerView.adapter = PostsAdapter(list,requireActivity(),sharedPreferences,this)
-             binding.noItems.visibility = android.view.View.GONE
-             binding.contentList.visibility = android.view.View.VISIBLE
+             updateUi(list)
          }else{
-             binding.noItems.visibility = android.view.View.VISIBLE
+             binding.noItems.visibility = View.VISIBLE
              binding.contentList.visibility = android.view.View.GONE
              log("list size 0")
          }
@@ -77,6 +87,22 @@ class PostsFragment : BasePatientFragment<FragmentPostsBinding>(), ItemPostsClic
         }
 
     }
+
+    private fun updateUi(data: List<Post>) {
+        var list = data
+        if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER){
+        list = list.filter {isContainUser(it.supporters!!,sharedPreferences.getString(USER_EMAIL))}
+        log("caregiver")
+        }
+
+        binding.recyclerView.adapter =
+            PostsAdapter(list, requireActivity(), sharedPreferences, this)
+        binding.noItems.visibility = View.GONE
+        binding.contentList.visibility = View.VISIBLE
+    }
+
+private fun isContainUser(list: List<String> , email:String) =  list.contains(email)
+
 
     override fun onItemClicked(post: Post) {
         when(post.type){

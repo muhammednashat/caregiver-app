@@ -29,8 +29,8 @@ class CaregiverHomeFragment : BaseCaregiverFragment<FragmentCaregiverHomeBinding
         binding.enter.setOnClickListener {
             findNavController().navigate(R.id.action_caregiverHomeFragment_to_usersFragment)
         }
-        binding.constraintLayout15.setOnClickListener {
-
+        binding.posts.setOnClickListener {
+         findNavController().navigate(R.id.action_caregiverHomeFragment_to_postsFragment2)
         }
 
         binding.rootEducationalContent.setOnClickListener {
