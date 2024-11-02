@@ -6,9 +6,9 @@ import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.factories.LibraryViewModelFactory
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 
-abstract class BaseLibraryFragment<T: ViewDataBinding> : BaseFragment<T>() ,
+abstract class BaseLibraryFragment<T : ViewDataBinding> : BaseFragment<T>(),
     OnItemLibraryContentClicked {
-     lateinit var viewModel: LibraryViewModel
+    lateinit var viewModel: LibraryViewModel
 
 
     override fun initializeViews() {
@@ -16,7 +16,11 @@ abstract class BaseLibraryFragment<T: ViewDataBinding> : BaseFragment<T>() ,
         initViewModel()
     }
 
-    fun displaySuggestedContent(onItemLibraryContentClicked: OnItemLibraryContentClicked,title: String, type: String) {
+    fun displaySuggestedContent(
+        onItemLibraryContentClicked: OnItemLibraryContentClicked,
+        title: String,
+        type: String
+    ) {
 
         val suggestedContentFragment =
             SuggestedContentFragment()

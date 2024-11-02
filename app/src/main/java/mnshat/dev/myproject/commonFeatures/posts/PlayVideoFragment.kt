@@ -1,55 +1,47 @@
-package mnshat.dev.myproject.commonFeatures.libraraycontent
+package mnshat.dev.myproject.commonFeatures.posts
 
 import android.net.Uri
 import android.view.View
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
-import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
+import mnshat.dev.myproject.commonFeatures.libraraycontent.BaseLibraryFragment
 import mnshat.dev.myproject.databinding.FragmentVideoBinding
 import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.model.LibraryContent
-import mnshat.dev.myproject.model.Post
+import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.LANGUAGE
-import mnshat.dev.myproject.util.LIBRARY
 import mnshat.dev.myproject.util.VIDEO
-import mnshat.dev.myproject.util.log
 
-class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>(), OnSendButtonClicked {
+
+class PlayVideoFragment  : BasePatientFragment<FragmentVideoBinding>() {
 
     override fun getLayout() = R.layout.fragment_video
     private lateinit var player: ExoPlayer
     private var description: String = ""
 
-
     override fun initializeViews() {
         super.initializeViews()
-        initializeView()
+        binding.constraintLayout.visibility = View.GONE
+        binding.share.visibility = View.GONE
+        val libraryContent = PlayVideoFragmentArgs.fromBundle(requireArguments()).libraryContent
+        displayContent(libraryContent)
     }
+    private fun displayContent(content: LibraryContent) {
 
+        playVideoAudio(Uri.parse(content.videoURL))
+        setTitle(content)
+        setDescription(content)
+        binding.date.text = content.date
+    }
     override fun setupClickListener() {
         super.setupClickListener()
 
         binding.icBack.setOnClickListener {
             findNavController().popBackStack()
         }
-        binding.share.setOnClickListener {
-            val fragment = ChooseSupporterFragment()
-            fragment.initOnConfirmButtonClicked(this)
-            fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
-        }
 
-        binding.showAll.setOnClickListener {
-
-            navigateToCustomizedContent(
-                viewModel.getContentsBasedType(VIDEO).toTypedArray(),
-                getString(R.string.more_similar_videos)
-            )
-
-        }
 
         binding.iconShowDescription.setOnClickListener {
             hideLabelDescription(true)
@@ -62,46 +54,6 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>(), OnSendButtonC
             hideIconCloseDescription(true)
             hideTextDescription(true)
         }
-    }
-
-    private fun initializeView() {
-
-        displayContent(viewModel.getContent())
-
-        initRecyclerView(viewModel.getContentsBasedType(VIDEO))
-
-    }
-
-    private fun displayContent(content: LibraryContent) {
-
-        playVideoAudio(Uri.parse(content.videoURL))
-        setTitle(content)
-        setDescription(content)
-        binding.date.text = content.date
-    }
-
-    private fun initRecyclerView(libraryContents: List<LibraryContent>) {
-
-        binding.recycler.apply {
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = CommonContentLibraryAdapter(
-                libraryContents,
-                requireContext(),
-                sharedPreferences,
-                this@VideoFragment
-            )
-        }
-
-    }
-
-    private fun navigateToCustomizedContent(contents: Array<LibraryContent>, textTitle: String) {
-
-        val action = VideoFragmentDirections
-            .actionVideoFragmentToCustomizedContentFragment(contents, textTitle)
-        findNavController().navigate(action)
-
-
     }
 
     private fun playVideoAudio(uri: Uri) {
@@ -160,16 +112,6 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>(), OnSendButtonC
 
         }
     }
-
-    override fun onItemClicked(type: String, index: Int, content: String) {
-
-        log("video")
-        updateCurrentContent(content)
-        updateCurrentIndex(index)
-        displayContent(viewModel.getContent())
-
-    }
-
     override fun onStop() {
         super.onStop()
         player.stop()
@@ -178,28 +120,6 @@ class VideoFragment : BaseLibraryFragment<FragmentVideoBinding>(), OnSendButtonC
     override fun onDestroy() {
         super.onDestroy()
         player.release()
-    }
-
-
-    fun post(list: MutableList<String>) =
-        Post(
-            type = LIBRARY,
-            libraryContent = viewModel.getContent(),
-            supporters = list
-        )
-
-
-    override fun onSendClicked(list: MutableList<String>) {
-        showProgressDialog()
-        viewModel.shareContent(post(list)) {
-            if (it == null) {
-                showToast("done")
-            } else {
-                showToast(it)
-            }
-            dismissProgressDialog()
-        }
-
     }
 
 }

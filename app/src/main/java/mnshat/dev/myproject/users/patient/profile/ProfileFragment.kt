@@ -26,7 +26,7 @@ class ProfileFragment : BasePatientFragment<FragmentProfileBinding>() {
         }
 
         binding.sharedContent.setOnClickListener {
-            findNavController().navigate(R.id.action_profileFragment_to_posts_navigation)
+            findNavController().navigate(R.id.action_profileFragment_to_postsFragment2)
         }
         binding.services.supporter.setOnClickListener {
             startActivity(Intent(requireActivity(), SupportersActivity::class.java))

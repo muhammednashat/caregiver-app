@@ -38,13 +38,13 @@ class SuggestedContentFragment : BaseBottomSheetDialogFragment<FragmentSuggested
         }
     }
 
-    fun setTitle(title: String) : SuggestedContentFragment {
+    fun setTitle(title: String): SuggestedContentFragment {
         this.title = title
         return this
 
     }
 
-    fun setType(type: String) : SuggestedContentFragment {
+    fun setType(type: String): SuggestedContentFragment {
         this.type = type
         return this
     }

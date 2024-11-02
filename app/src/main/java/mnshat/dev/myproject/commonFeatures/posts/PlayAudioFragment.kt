@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.commonFeatures.libraraycontent
+package mnshat.dev.myproject.commonFeatures.posts
 
 import android.net.Uri
 import android.os.Handler
@@ -10,17 +10,14 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.FragmentAudioBinding
-import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.model.LibraryContent
-import mnshat.dev.myproject.model.Post
+import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.LANGUAGE
-import mnshat.dev.myproject.util.LIBRARY
 import mnshat.dev.myproject.util.loadImage
 
-class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>(), OnSendButtonClicked {
+class PlayAudioFragment : BasePatientFragment<FragmentAudioBinding>() {
 
     override fun getLayout() = R.layout.fragment_audio
     private lateinit var player: ExoPlayer
@@ -30,19 +27,19 @@ class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>(), OnSendButtonC
 
     override fun initializeViews() {
         super.initializeViews()
-        displayContent(viewModel.getContent())
+        binding.share.visibility = View.GONE
+        binding.suggest.visibility = View.GONE
+        val libraryContent = PlayAudioFragmentArgs.fromBundle(requireArguments()).libraryContent
+        displayContent(libraryContent)
+
     }
+
 
     override fun setupClickListener() {
         super.setupClickListener()
 
         binding.icBack.setOnClickListener {
             findNavController().popBackStack()
-        }
-        binding.share.setOnClickListener {
-            val fragment = ChooseSupporterFragment()
-            fragment.initOnConfirmButtonClicked(this)
-            fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
         }
 
         binding.playButton.setOnClickListener {
@@ -57,10 +54,7 @@ class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>(), OnSendButtonC
             player.seekTo(player.currentPosition + 10000)
         }
 
-        binding.suggest.setOnClickListener {
 
-            displaySuggestedContent(this, getString(R.string.suggest_other_audios), AUDIO)
-        }
         binding.volumeOff.setOnClickListener {
             player.volume = if (player.volume == 0f) {
                 binding.volumeOff.setImageResource(R.drawable.ic_volume_up)
@@ -207,14 +201,6 @@ class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>(), OnSendButtonC
 //        handler.removeCallbacks(runnable!!)
     }
 
-
-    override fun onItemClicked(type: String, index: Int, content: String) {
-        super.onItemClicked(type, index, content)
-        player.release()
-        displayContent(viewModel.getContent())
-        onPlayClicked()
-    }
-
     override fun onStop() {
         super.onStop()
         player.stop()
@@ -225,26 +211,5 @@ class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>(), OnSendButtonC
         player.release()
         stopUpdatingSeekBar()
     }
-
-    override fun onSendClicked(list: MutableList<String>) {
-        showProgressDialog()
-        viewModel.shareContent(post(list)) {
-            if (it == null) {
-                showToast("done")
-            } else {
-                showToast(it)
-            }
-            dismissProgressDialog()
-        }
-
-    }
-
-    fun post(list: MutableList<String>) =
-        Post(
-            type = LIBRARY,
-            libraryContent = viewModel.getContent(),
-            supporters = list
-        )
-
 
 }

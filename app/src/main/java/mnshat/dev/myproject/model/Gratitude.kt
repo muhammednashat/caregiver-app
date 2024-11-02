@@ -7,5 +7,5 @@ import kotlinx.parcelize.Parcelize
 data class Gratitude(
     val index: Int = 0,
     val answer: String = "",
-    val timeStamp: String = System.currentTimeMillis().toString(),
+    val timeStamp: Long = System.currentTimeMillis(),
 ) : Parcelable

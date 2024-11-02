@@ -48,12 +48,17 @@ class CommonContentFragment : BaseBottomSheetDialogFragment<FragmentCommonConten
 
         binding.recyclerMostCommon.apply {
             layoutManager = GridLayoutManager(context, 2)
-            adapter = CommonContentLibraryAdapter(libraryContent,requireActivity(),sharedPreferences,this@CommonContentFragment)
+            adapter = CommonContentLibraryAdapter(
+                libraryContent,
+                requireActivity(),
+                sharedPreferences,
+                this@CommonContentFragment
+            )
         }
-}
+    }
 
 
-    override fun onItemClicked(type: String, index: Int,content:String) {
+    override fun onItemClicked(type: String, index: Int, content: String) {
         updateCurrentIndex(index)
         updateCurrentContent(content)
         when (type) {
@@ -67,10 +72,10 @@ class CommonContentFragment : BaseBottomSheetDialogFragment<FragmentCommonConten
     private fun updateCurrentIndex(index: Int) {
         viewModel.setCurrentContentIndex(index)
     }
+
     private fun updateCurrentContent(content: String) {
         viewModel.setCurrentContentContent(content)
     }
-
 
 
 }

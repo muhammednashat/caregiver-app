@@ -9,5 +9,10 @@ class DisplaySupplicationFragment : BasePatientFragment<FragmentDisplaySupplicat
 
     override fun getLayout() = R.layout.fragment_display_supplication
 
+    override fun initializeViews() {
+        super.initializeViews()
 
+    val supplication = DisplaySupplicationFragmentArgs.fromBundle(requireArguments()).supplication
+        binding.textView.text = supplication.name
+    }
 }

@@ -32,10 +32,10 @@
                     android:id="@+id/imageView12"
                     android:layout_width="114dp"
                     android:layout_height="114dp"
-                    android:layout_marginTop="76dp"
-                    android:src="@drawable/ic_warning"
+                    android:layout_marginTop="60dp"
+                    android:src="@drawable/ic_gratitude12"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.464"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,16 +49,30 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="رسالة امتنان"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView12"
+                    app:layout_constraintVertical_bias="0.284" />
+
+                <TextView
+                    android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="12/5/1993"
-                    android:id="@+id/date"
+                    android:layout_marginTop="@dimen/margin_medium"
                     android:textColor="#65829e"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -67,12 +81,12 @@
                 android:id="@+id/question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_marginTop="26dp"
                 android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
                 android:padding="@dimen/margin_large"
                 android:text="بيل ليبلبي بيلي بيلس يبلبي بلسيبل بلسيبل بلبي بيلسلبي بيلسي بيسب بشسبيي بيشب بيبشي بيشب يبش بشيسب بشسيب "
-                android:textColor="#395778"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -93,8 +107,7 @@
                     android:id="@+id/text"
                     android:gravity="center"
                     android:padding="@dimen/margin_large"
-                    android:text="بيل ليبلبي بيلي بيلس يبلبي بلسيبل بلسيبل بلبي بيلسلبي بيلسي بيسب بشسبيي بيشب بsdafdfsdfsddsadfsdafdsfsdafdfsafdsafdsfadsfsdfasdfdfsdafdsfsdaffasdfsdfsdfsdfيبشي بيشب يبش بشيسب بشسيب "
-                    android:textColor="#395778"
+                    android:text=" بيل ليبلبي بيلي بيلس يبلبي بلسيبل بلسيبل بلبي بيلسلبي بيلسي بيسب بشسبيي بيشب بsdafdfsdfsddsadfsdafdsfsdafdfsafdsafdsfadsfsdfasdfdfsdafdsfsdaffasdfsdfsdfsdfيبشي بيشب يبش بشdfasdfasdfsdfdsfl;kjdfasdfj;dsklfajsdfjsdfj;kasjdfksjd;fsjdaf;kdjf;lkasdjfl;kdfjasdjfd;sklfjsdalkfjldsfjsd;fjsdafkdsafk;dsfjlsdakfjds;ffsdafdfsdafdsfsdيسب بشسيب بيل ليبلبي بيلي بيلس يبلبي بلسيبل بلسيبل بلبي بيلسلبي بيلسي بيسب بشسبيي بيشب بsdafdfsdfsddsadfsdafdsfsdafdfsafdsafdsfadsfsdfasdfdfsdafdsfsdaffasdfsdfsdfsdfيبشي بييبلبي بيلي بيلس يبلبي بلسيبل بلسيبل بلبي بيلسلبي بيلسي بيسب بشسبيي بيشب بsdafdfsdfsddsadfsdafdsfsdafdfsafdsafdsfadsfsdfasdfdfsdafdsfsdaffasdfsdfsdfsdfيبشي بيشيبلبي بيلي بيلس يبلبي بلسيبل بلسيبل بلبي بيلسلبي بيلسي بيسب بشسبيي بيشب بsdafdfsdfsddsadfsdafdsfsdafdfsafdsafdsfadsfsdfasdfdfsdafdsfsdaffasdfsdfsdfsdfيبشي بيششب يبش بشdfasdfasdfsdfdsfl;kjdfasdfj;dsklfajsdfjsdfj;kasjdfksjd;fsjdaf;kdjf;lkasdjfl;kdfjasdjfd;sklfjsdalkfjldsfjsd;fjsdafkdsafk;dsfjlsdakfjds;ffsdafdfsdafdsfsdيسب بشسيب "
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -106,8 +119,8 @@
                 android:id="@+id/imageView13"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:layout_marginBottom="@dimen/margin_super"
-                android:src="@drawable/ic_warning"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:src="@drawable/icone_hart"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.552"

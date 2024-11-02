@@ -1,6 +1,7 @@
 package mnshat.dev.myproject.commonFeatures.posts
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.PostsAdapter
@@ -12,10 +13,13 @@ import mnshat.dev.myproject.model.LibraryContent
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
+import mnshat.dev.myproject.util.ARTICLE
+import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.GRATITUDE
 import mnshat.dev.myproject.util.LIBRARY
 import mnshat.dev.myproject.util.SUPPLICATIONS
+import mnshat.dev.myproject.util.VIDEO
 import mnshat.dev.myproject.util.log
 
 
@@ -76,22 +80,31 @@ class PostsFragment : BasePatientFragment<FragmentPostsBinding>(), ItemPostsClic
 
     override fun onItemClicked(post: Post) {
         when(post.type){
-            GRATITUDE ->  navigateToGratitude(post.gratitude)
+            GRATITUDE ->  navigateToGratitude(post.gratitude!!)
             SUPPLICATIONS -> navigateToSupplication(post.supplication)
             LIBRARY -> navigateToLibrary(post.libraryContent)
         }
     }
 
     private fun navigateToSupplication(supplication: Supplication?) {
-
+        val action = PostsFragmentDirections.actionPostsFragment2ToDisplaySupplicationFragment(supplication!!)
+        findNavController().navigate(action)
     }
 
     private fun navigateToLibrary(libraryContent: LibraryContent?) {
+       lateinit var action:NavDirections
+        when(libraryContent!!.type){
+            ARTICLE ->  action = PostsFragmentDirections.actionPostsFragment2ToDisplayArticleFragment(libraryContent)
+            VIDEO -> action = PostsFragmentDirections.actionPostsFragment2ToPlayVideoFragment(libraryContent)
+            AUDIO -> action = PostsFragmentDirections.actionPostsFragment2ToPlayAudioFragment(libraryContent)
+        }
+        findNavController().navigate(action)
 
     }
 
-    private fun navigateToGratitude(gratitude: Gratitude?) {
-
+    private fun navigateToGratitude(gratitude: Gratitude) {
+     val action = PostsFragmentDirections.actionPostsFragment2ToDisplayGratitudeFragment(gratitude)
+    findNavController().navigate(action)
     }
 
 }

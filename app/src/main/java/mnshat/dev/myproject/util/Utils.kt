@@ -39,6 +39,12 @@ fun getDateAsString(currentTimeMillis:Long):String{
     return sdf.format(Date(currentTimeMillis))
 }
 
+fun dateTime(currentTimeMillis:Long):String{
+    val sdf = SimpleDateFormat("dd/MM/yyyy  hh:mm a", Locale.getDefault())
+    return sdf.format(Date(currentTimeMillis))
+}
+
+
 fun isUser(preferences: SharedPreferencesManager)=preferences.getString(TYPE_OF_USER)== USER
 
 fun isValidInput(input:String) = input.isNotBlank()

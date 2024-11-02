@@ -12,10 +12,10 @@ import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.VIDEO
 
 
-class CustomizedContentFragment  : BaseLibraryFragment<FragmentCustomizedContentBinding>(){
+class CustomizedContentFragment : BaseLibraryFragment<FragmentCustomizedContentBinding>() {
 
 
-    override fun getLayout()  = R.layout.fragment_customized_content
+    override fun getLayout() = R.layout.fragment_customized_content
 
     override fun initializeViews() {
         super.initializeViews()
@@ -33,31 +33,37 @@ class CustomizedContentFragment  : BaseLibraryFragment<FragmentCustomizedContent
     private fun retrieveDataFromArguments() {
 
         val args: CustomizedContentFragmentArgs by navArgs()
-        binding.textTitle.text= args.textTitle
+        binding.textTitle.text = args.textTitle
         setupUserRecyclerView(args.libraryContentList.toList())
     }
 
     private fun setupUserRecyclerView(libraryContent: List<LibraryContent>) {
-     binding.recyclerCustomized.apply {
-         adapter = CustomizedContentLibraryAdapter(libraryContent,requireActivity(),sharedPreferences,this@CustomizedContentFragment)
-     }
+        binding.recyclerCustomized.apply {
+            adapter = CustomizedContentLibraryAdapter(
+                libraryContent,
+                requireActivity(),
+                sharedPreferences,
+                this@CustomizedContentFragment
+            )
+        }
     }
+
     override fun setupClickListener() {
         super.setupClickListener()
 
-        binding.icBack.setOnClickListener{
+        binding.icBack.setOnClickListener {
             findNavController().popBackStack()
         }
 
     }
 
     override fun onItemClicked(type: String, index: Int, content: String) {
-     super.onItemClicked(type, index, content)
+        super.onItemClicked(type, index, content)
 
         when (type) {
             ARTICLE -> findNavController().navigate(R.id.action_customizedContentFragment_to_articleFragment)
             VIDEO -> findNavController().navigate(R.id.action_customizedContentFragment_to_videoFragment)
-           AUDIO -> findNavController().navigate(R.id.action_customizedContentFragment_to_audioFragment)
+            AUDIO -> findNavController().navigate(R.id.action_customizedContentFragment_to_audioFragment)
 
         }
     }

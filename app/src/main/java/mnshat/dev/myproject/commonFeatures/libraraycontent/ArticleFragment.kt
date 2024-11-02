@@ -12,8 +12,7 @@ import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.LIBRARY
 
 
-class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() , OnSendButtonClicked {
-
+class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendButtonClicked {
 
 
     override fun getLayout() = R.layout.fragment_article
@@ -64,7 +63,7 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() , OnSendBu
         }
 
         binding.suggest.setOnClickListener {
-            displaySuggestedContent(this, getString(R.string.suggest_other_articles),ARTICLE)
+            displaySuggestedContent(this, getString(R.string.suggest_other_articles), ARTICLE)
         }
 
     }
@@ -77,10 +76,10 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() , OnSendBu
 
     override fun onSendClicked(list: MutableList<String>) {
         showProgressDialog()
-        viewModel.shareContent(post(list)){
-            if (it == null){
+        viewModel.shareContent(post(list)) {
+            if (it == null) {
                 showToast("done")
-            }else{
+            } else {
                 showToast(it)
             }
             dismissProgressDialog()
@@ -90,11 +89,10 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>() , OnSendBu
 
     fun post(list: MutableList<String>) =
         Post(
-         type =  LIBRARY,
-         libraryContent = viewModel.getContent(),
+            type = LIBRARY,
+            libraryContent = viewModel.getContent(),
             supporters = list
-         )
-
+        )
 
 
 }

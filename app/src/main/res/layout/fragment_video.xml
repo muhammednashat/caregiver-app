@@ -165,6 +165,7 @@
                         android:layout_marginTop="@dimen/margin_2_super"
                         android:background="@drawable/corner_top_lift"
                         android:backgroundTint="@color/light_gray"
+                        android:id="@+id/constraintLayout"
                         android:padding="@dimen/margin_large"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

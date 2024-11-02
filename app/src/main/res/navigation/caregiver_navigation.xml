@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_caregiverHomeFragment_to_usersFragment"
             app:destination="@id/usersFragment" />
+        <action
+            android:id="@+id/action_caregiverHomeFragment_to_postsFragment2"
+            app:destination="@id/postsFragment2" />
     </fragment>
     <fragment
         android:id="@+id/caregiverProfileFragment"
@@ -49,6 +52,69 @@
 
 
     </fragment>
-
+    <fragment
+        android:id="@+id/postsFragment2"
+        layout="@layout/fragment_posts"
+        android:name="mnshat.dev.myproject.commonFeatures.posts.PostsFragment"
+        android:label="PostsFragment" >
+        <action
+            android:id="@+id/action_postsFragment2_to_displayGratitudeFragment"
+            app:destination="@id/displayGratitudeFragment" />
+        <action
+            android:id="@+id/action_postsFragment2_to_displaySupplicationFragment"
+            app:destination="@id/displaySupplicationFragment" />
+        <action
+            android:id="@+id/action_postsFragment2_to_playVideoFragment"
+            app:destination="@id/playVideoFragment" />
+        <action
+            android:id="@+id/action_postsFragment2_to_displayArticleFragment"
+            app:destination="@id/displayArticleFragment" />
+        <action
+            android:id="@+id/action_postsFragment2_to_playAudioFragment"
+            app:destination="@id/playAudioFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/displayGratitudeFragment"
+        layout="@layout/fragment_display_gratitude"
+        android:name="mnshat.dev.myproject.commonFeatures.posts.DisplayGratitudeFragment"
+        android:label="DisplayGratitudeFragment" >
+        <argument
+            android:name="gratitude"
+            app:argType="mnshat.dev.myproject.model.Gratitude" />
+    </fragment>
+    <fragment
+        android:id="@+id/displaySupplicationFragment"
+        android:name="mnshat.dev.myproject.commonFeatures.posts.DisplaySupplicationFragment"
+        android:label="DisplaySupplicationFragment" >
+        <argument
+            android:name="supplication"
+            app:argType="mnshat.dev.myproject.model.Supplication" />
+    </fragment>
+    <fragment
+        android:id="@+id/displayArticleFragment"
+        android:name="mnshat.dev.myproject.commonFeatures.posts.DisplayArticleFragment"
+        android:label="DisplayArticleFragment" >
+        <argument
+            android:name="libraryContent"
+            app:argType="mnshat.dev.myproject.model.LibraryContent" />
+    </fragment>
+    <fragment
+        android:id="@+id/playAudioFragment"
+        android:name="mnshat.dev.myproject.commonFeatures.posts.PlayAudioFragment"
+        android:label="fragment_play_audio"
+        tools:layout="@layout/fragment_play_audio" >
+        <argument
+            android:name="libraryContent"
+            app:argType="mnshat.dev.myproject.model.LibraryContent" />
+    </fragment>
+    <fragment
+        android:id="@+id/playVideoFragment"
+        android:name="mnshat.dev.myproject.commonFeatures.posts.PlayVideoFragment"
+        android:label="fragment_play_video"
+        tools:layout="@layout/fragment_play_video" >
+        <argument
+            android:name="libraryContent"
+            app:argType="mnshat.dev.myproject.model.LibraryContent" />
+    </fragment>
 
 </navigation>
