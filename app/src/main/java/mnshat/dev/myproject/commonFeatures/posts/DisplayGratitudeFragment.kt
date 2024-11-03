@@ -17,7 +17,7 @@ class DisplayGratitudeFragment  : BasePatientFragment<FragmentDisplayGratitudeBi
         val gratitude = DisplayGratitudeFragmentArgs.fromBundle(requireArguments()).gratitude
         val questions = getGratitudeQuestionsList(requireActivity())
 
-        binding.question.text = questions[gratitude.index]
+        binding.question.text = ""
         binding.text.text = gratitude.answer
         binding.date.text = dateTime(gratitude.timeStamp)
 

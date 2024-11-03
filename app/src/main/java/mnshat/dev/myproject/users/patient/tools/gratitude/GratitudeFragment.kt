@@ -127,6 +127,8 @@ private fun addGratitude(gratitude: Gratitude) {
 
     }
 
+
+
     private fun showSharingDialog() {
 
         sharedDialog = Dialog(requireContext())
@@ -148,6 +150,10 @@ private fun addGratitude(gratitude: Gratitude) {
         sharedDialog.show()
     }
 
+
+
+
+
     private fun navigateToChooseSupporter() {
         sharedDialog.dismiss()
 
@@ -162,7 +168,6 @@ private fun addGratitude(gratitude: Gratitude) {
             gratitude = Gratitude(index = viewModel.getSelectedPosition(), answer = answer),
             supporters = list
         )
-
 
     override fun onSendClicked(list: MutableList<String>) {
         showProgressDialog()

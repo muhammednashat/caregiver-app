@@ -51,7 +51,9 @@ class GratitudeViewModel(
     fun shareContent(post: Post, callback:(String?)->Unit) {
         FirebaseFirestore.getInstance()
             .collection(POSTS)
-            .document(sharedPreferences.getString(USER_EMAIL)).get().addOnSuccessListener {
+            .document(sharedPreferences.getString(USER_EMAIL))
+            .get()
+            .addOnSuccessListener {
             val posts:MutableList<Post> =
                 if (it.exists()) {
                     it.toObject(Posts::class.java)?.posts ?: mutableListOf()

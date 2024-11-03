@@ -12,7 +12,7 @@ import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.log
 
-
+// ToDo check it  , Fragment ChooseSupporterFragment{ea89e49} (8b694ba6-c9a2-43aa-85ca-30a6d9987f3f) not attached to an activity.
 class ChooseSupporterFragment : BaseBottomSheetDialogFragment<FragmentChooseSupporterBinding>() {
 
     private lateinit var onSendButtonClicked: OnSendButtonClicked
