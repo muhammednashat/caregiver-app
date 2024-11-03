@@ -19,6 +19,7 @@ import mnshat.dev.myproject.util.IS_LOGGED
 import mnshat.dev.myproject.util.NAME_PARTNER
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.TYPE_OF_USER
+import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
@@ -34,7 +35,6 @@ class AuthViewModel(
 ) {
 
     var partner: Partner? = null
-
     var name = MutableLiveData<String?>()
     var token = MutableLiveData<String>()
     var invitationCode = MutableLiveData<String>()
@@ -160,21 +160,22 @@ class AuthViewModel(
 
 
     fun storeDataLocally() {
+        log(" storeDataLocally 1234 ")
         sharedPreferences.storeString(USER_ID, id)
+        sharedPreferences.storeString(USER_EMAIL, email.value)
+        sharedPreferences.storeString(USER_IMAGE, imageUser)
+        sharedPreferences.storeInt(GENDER, intGender.value)
+        sharedPreferences.storeInt(AGE_GROUP, intAge.value)
         sharedPreferences.storeString(TYPE_OF_USER, typeOfUser.value)
         sharedPreferences.storeString(USER_NAME, name.value)
-        sharedPreferences.storeString(USER_IMAGE, imageUser)
-        sharedPreferences.storeInt(AGE_GROUP, intAge.value)
-        sharedPreferences.storeInt(GENDER, intGender.value)
         sharedPreferences.storeBoolean(HAS_PARTNER, false)
         sharedPreferences.storeBoolean(IS_LOGGED, true)
-        sharedPreferences.storeString(NAME_PARTNER, partner?.namePartner)
-        sharedPreferences.storeString(ID_PARTNER, partner?.idPartner)
-        sharedPreferences.storeString(EMAIL_PARTNER, partner?.emailPartner)
-        sharedPreferences.storeString(IMAGE_PARTNER, partner?.imagePartner)
-
-//        sharedPreferences.storeBoolean(RELIGION, true)
-
+        if ( typeOfUser.value == CAREGIVER){
+            sharedPreferences.storeString(NAME_PARTNER, partner?.namePartner)
+            sharedPreferences.storeString(ID_PARTNER, partner?.idPartner)
+            sharedPreferences.storeString(EMAIL_PARTNER, partner?.emailPartner)
+            sharedPreferences.storeString(IMAGE_PARTNER, partner?.imagePartner)
+        }
     }
 
     fun getRegistrationDataForUser(): RegistrationData {

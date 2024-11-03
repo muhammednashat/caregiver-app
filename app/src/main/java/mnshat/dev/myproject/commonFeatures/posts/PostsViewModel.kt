@@ -28,19 +28,18 @@ class PostsViewModel
     fun retrieveSharedList(email:String) {
         FirebaseFirestore.getInstance()
             .collection(POSTS)
-            .document(sharedPreferences.getString(USER_EMAIL)).get().addOnSuccessListener {
+            .document(email)
+            .get()
+            .addOnSuccessListener {
                 val posts:MutableList<Post> =
                     if (it.exists()) {
-                        log("exists")
                         it.toObject(Posts::class.java)?.posts ?: mutableListOf()
                     } else{
-                        log("else")
                         mutableListOf()
                     }
                 _posts.value = posts
             }.addOnFailureListener {
                 _posts.value = emptyList()
-                log("addOnFailureListener")
             }
 
 }

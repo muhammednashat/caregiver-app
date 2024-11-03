@@ -29,7 +29,7 @@ import kotlin.random.Random
 class GratitudeFragment : BasePatientFragment<FragmentGratitudeBinding>(), OnConfirmButtonClicked,
     OnSendButtonClicked {
     private lateinit var viewModel: GratitudeViewModel
-
+private lateinit var answer:String
     override fun getLayout() = R.layout.fragment_gratitude
 
     private lateinit var currentQuestion: String
@@ -86,9 +86,10 @@ private fun addGratitude(gratitude: Gratitude) {
     viewModel.sendGratitude(gratitude){
         if (it){
             showToast(getString(R.string.your_answer_has_been_sent))
+            answer = binding.edtAnswer.text.toString()
+            clearText()
             showSharingDialog()
         }else{
-
         }
         dismissProgressDialog()
     }
@@ -128,27 +129,27 @@ private fun addGratitude(gratitude: Gratitude) {
 
     private fun showSharingDialog() {
 
-        sharedUserDialog = Dialog(requireContext())
-        sharedUserDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        sharedDialog = Dialog(requireContext())
+        sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = DialogShareContentBinding.inflate(layoutInflater)
-        sharedUserDialog.setContentView(dialogBinding.root)
-        sharedUserDialog.setCanceledOnTouchOutside(true)
-        val window = sharedUserDialog.window
+        sharedDialog.setContentView(dialogBinding.root)
+        sharedDialog.setCanceledOnTouchOutside(true)
+        val window = sharedDialog.window
         window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        sharedUserDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        sharedDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         dialogBinding.btOk.setOnClickListener {
             navigateToChooseSupporter()
         }
 
         dialogBinding.icClose.setOnClickListener {
-            sharedUserDialog.dismiss()
+            sharedDialog.dismiss()
         }
-        sharedUserDialog.show()
+        sharedDialog.show()
     }
 
     private fun navigateToChooseSupporter() {
-        sharedUserDialog.dismiss()
+        sharedDialog.dismiss()
 
         val fragment = ChooseSupporterFragment()
         fragment.initOnConfirmButtonClicked(this)
@@ -158,7 +159,7 @@ private fun addGratitude(gratitude: Gratitude) {
     private fun getSharingContent(list: MutableList<String>) =
         Post(
             type =  GRATITUDE,
-            gratitude = Gratitude(index = viewModel.getSelectedPosition(), answer = binding.edtAnswer.text.toString()),
+            gratitude = Gratitude(index = viewModel.getSelectedPosition(), answer = answer),
             supporters = list
         )
 
@@ -168,7 +169,6 @@ private fun addGratitude(gratitude: Gratitude) {
         viewModel.shareContent(getSharingContent(list)){
             if (it == null){
                 showToast("done")
-                clearText()
             }else{
                 showToast(it)
             }

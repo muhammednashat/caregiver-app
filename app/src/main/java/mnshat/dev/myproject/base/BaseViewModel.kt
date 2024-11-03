@@ -101,15 +101,21 @@ open class BaseViewModel(
                         email,
                         sharedPreferences
                     ) { // 6
-                        log("retrieveTaskDayFromDatabase ")
+                        log("retrieveTaskDayFromDatabase  1")
 
                         callBack() // 7
                     }
+                    log("retrieveTaskDayFromDatabase 2")
+
                 } else {
                     callBack()
                 }
+                log("retrieveTaskDayFromDatabase 4")
+
             }
             .addOnFailureListener { exception ->
+                log("retrieveTaskDayFromDatabase 5")
+
                 callBack()
             }
     }

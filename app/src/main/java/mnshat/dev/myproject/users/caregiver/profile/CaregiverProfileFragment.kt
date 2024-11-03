@@ -22,7 +22,7 @@ class CaregiverProfileFragment : BaseCaregiverFragment<FragmentCaregiverProfileB
     override fun setupClickListener() {
         super.setupClickListener()
     binding.signOut.setOnClickListener{
-        logOut()
+        showDialogConfirmLogout()
     }
 
     }

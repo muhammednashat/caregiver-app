@@ -46,7 +46,7 @@ class PostsFragment : BasePatientFragment<FragmentPostsBinding>(), ItemPostsClic
     override fun initializeViews() {
         initViewModel()
         if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER){
-            log("caregiver ${sharedPreferences.getString(EMAIL_PARTNER)}")
+            log("caregiver${sharedPreferences.getString(EMAIL_PARTNER)}1")
             retrieveSharedList(sharedPreferences.getString(EMAIL_PARTNER))
         }else{
             log("Patient ${sharedPreferences.getString(USER_EMAIL)}")
@@ -94,14 +94,32 @@ class PostsFragment : BasePatientFragment<FragmentPostsBinding>(), ItemPostsClic
         list = list.filter {isContainUser(it.supporters!!,sharedPreferences.getString(USER_EMAIL))}
         log("caregiver")
         }
+        log("new list size ${list.size}")
+        if (list.isEmpty()){
+            binding.noItems.visibility = View.VISIBLE
+            binding.contentList.visibility = android.view.View.GONE
+        }else{
+            binding.recyclerView.adapter =
+                PostsAdapter(list, requireActivity(), sharedPreferences, this)
+            binding.noItems.visibility = View.GONE
+            binding.contentList.visibility = View.VISIBLE
+        }
 
-        binding.recyclerView.adapter =
-            PostsAdapter(list, requireActivity(), sharedPreferences, this)
-        binding.noItems.visibility = View.GONE
-        binding.contentList.visibility = View.VISIBLE
     }
 
-private fun isContainUser(list: List<String> , email:String) =  list.contains(email)
+    private fun isContainUser(list: List<String>, email: String): Boolean {
+log("isContainUser $email")
+        list.forEach {
+            if (it == email) {
+                log("isContainUser $it $email")
+
+                return true
+            }
+        }
+        log("isContainUser false")
+
+        return false
+    }
 
 
     override fun onItemClicked(post: Post) {

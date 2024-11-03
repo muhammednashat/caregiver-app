@@ -1,16 +1,13 @@
 package mnshat.dev.myproject.users.patient.main
 
 import android.app.Dialog
-import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.ViewModelProvider
 import com.google.gson.Gson
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
-import mnshat.dev.myproject.factories.PatientViewModelFactory
 import mnshat.dev.myproject.model.CurrentTask
 import mnshat.dev.myproject.util.CURRENT_TASK
 import mnshat.dev.myproject.util.RELIGION
@@ -18,7 +15,6 @@ import mnshat.dev.myproject.util.log
 
 abstract class BasePatientFragment<T : ViewDataBinding> : BaseFragment<T>() {
 
-    lateinit var sharedUserDialog: Dialog
 
     fun getCurrentTask(): CurrentTask? {
         val string = sharedPreferences.getString(CURRENT_TASK, null.toString())

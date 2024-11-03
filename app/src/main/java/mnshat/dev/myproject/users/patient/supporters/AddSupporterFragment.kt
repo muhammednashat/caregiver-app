@@ -99,7 +99,7 @@ class AddSupporterFragment : BaseSupporterFragment<FragmentAddSupporterBinding>(
                             .addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
                                     showToast(getString(R.string.new_code_created_successfully))
-                                    sharedUserDialog.dismiss()
+                                    sharedDialog.dismiss()
                                     sharedPreferences.storeString(INVITATION_CODE, code!!)
                                     sharedPreferences.storeString(BASE_CODE, code!!)
                                     sharedPreferences.storeBoolean(CODE_USED, false)
@@ -122,14 +122,14 @@ class AddSupporterFragment : BaseSupporterFragment<FragmentAddSupporterBinding>(
     }
 
     private fun dialogEditCode() {
-        sharedUserDialog = Dialog(requireContext())
-        sharedUserDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        sharedDialog = Dialog(requireContext())
+        sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val binding = DialogEditCodeBinding.inflate(layoutInflater)
-        sharedUserDialog.setContentView(binding.root)
-        sharedUserDialog.setCanceledOnTouchOutside(true)
-        val window = sharedUserDialog.window
+        sharedDialog.setContentView(binding.root)
+        sharedDialog.setCanceledOnTouchOutside(true)
+        val window = sharedDialog.window
         window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        sharedUserDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        sharedDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val currentCode = sharedPreferences.getString(BASE_CODE).take(4)
         binding.edCurrentCode.setText(currentCode)
         binding.confirmation.setOnClickListener {
@@ -142,12 +142,12 @@ class AddSupporterFragment : BaseSupporterFragment<FragmentAddSupporterBinding>(
             }
         }
         binding.cancel.setOnClickListener {
-            sharedUserDialog.dismiss()
+            sharedDialog.dismiss()
         }
         binding.icClose.setOnClickListener {
-            sharedUserDialog.dismiss()
+            sharedDialog.dismiss()
         }
-        sharedUserDialog.show()
+        sharedDialog.show()
     }
 
 }

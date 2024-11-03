@@ -94,47 +94,47 @@ class SupportersFragment : BaseSupporterFragment<FragmentSupportersBinding>() {
     }
 
     private fun showDialogAdding() {
-        sharedUserDialog = Dialog(requireContext())
-        sharedUserDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        sharedDialog = Dialog(requireContext())
+        sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = DialogAddSupporterBinding.inflate(layoutInflater)
-        sharedUserDialog.setContentView(dialogBinding.root)
-        sharedUserDialog.setCanceledOnTouchOutside(true)
+        sharedDialog.setContentView(dialogBinding.root)
+        sharedDialog.setCanceledOnTouchOutside(true)
         if (sharedPreferences.getInt(NUMBER_SUPPORTERS) >= 3) {
             dialogBinding.icClose.visibility = View.GONE
         }
-        val window = sharedUserDialog.window
+        val window = sharedDialog.window
         window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        sharedUserDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        sharedDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialogBinding.btAddNew.setOnClickListener {
-            sharedUserDialog.dismiss()
+            sharedDialog.dismiss()
             findNavController().navigate(R.id.action_supportesFragment_to_addSupporterFragment)
         }
         dialogBinding.icClose.setOnClickListener {
-            sharedUserDialog.dismiss()
+            sharedDialog.dismiss()
         }
         dialogBinding.btRecovery.setOnClickListener {
-            sharedUserDialog.dismiss()
+            sharedDialog.dismiss()
             findNavController().navigate(R.id.action_supportesFragment_to_suppporterRecoveryFragment)
         }
-        sharedUserDialog.show()
+        sharedDialog.show()
     }
 
     private fun showDialogCannotAdding() {
-        sharedUserDialog = Dialog(requireContext())
-        sharedUserDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        sharedDialog = Dialog(requireContext())
+        sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = DialogCannotAddSupporterBinding.inflate(layoutInflater)
-        sharedUserDialog.setContentView(dialogBinding.root)
-        sharedUserDialog.setCanceledOnTouchOutside(true)
-        val window = sharedUserDialog.window
+        sharedDialog.setContentView(dialogBinding.root)
+        sharedDialog.setCanceledOnTouchOutside(true)
+        val window = sharedDialog.window
         window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        sharedUserDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        sharedDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialogBinding.btOk.setOnClickListener {
-            sharedUserDialog.dismiss()
+            sharedDialog.dismiss()
         }
         dialogBinding.icClose.setOnClickListener {
-            sharedUserDialog.dismiss()
+            sharedDialog.dismiss()
         }
-        sharedUserDialog.show()
+        sharedDialog.show()
     }
 
 

@@ -18,7 +18,7 @@ class ChooseSupporterFragment : BaseBottomSheetDialogFragment<FragmentChooseSupp
     private lateinit var onSendButtonClicked: OnSendButtonClicked
 
 override fun getLayout() = R.layout.fragment_choose_supporter
-private lateinit var adapter: ChooseSupporterAdapter
+private lateinit var chooseAdapter: ChooseSupporterAdapter
     override fun initializeViews() {
         if (currentLang != ENGLISH_KEY) {
             binding.close.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
@@ -31,10 +31,10 @@ private lateinit var adapter: ChooseSupporterAdapter
         super.setupClickListener()
         binding.send.setOnClickListener {
 
-            if (adapter.getSelectedSupporters().size == 0){
+            if (chooseAdapter.getSelectedSupporters().size == 0){
                 showToast("Please Select Supporter")
             }else{
-                onSendButtonClicked.onSendClicked(adapter.getSelectedSupporters())
+                onSendButtonClicked.onSendClicked(chooseAdapter.getSelectedSupporters())
                 dismiss()
             }
         }
@@ -63,17 +63,17 @@ private lateinit var adapter: ChooseSupporterAdapter
         }
     }
 
-    //ToDo (205673de-74d2-4caa-bdea-bd2340dc73fe) not attached to a context.
     private fun updateUi(it: List<RegistrationData>) {
-        adapter = ChooseSupporterAdapter(requireContext(), it)
+        chooseAdapter = ChooseSupporterAdapter(requireActivity(), it)
         binding.supportersRecyclerView.apply {
-            adapter = this@ChooseSupporterFragment.adapter
+            adapter = chooseAdapter
             setHasFixedSize(true)
             layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
                 requireContext(),
                 androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL,
                 false)
             binding.loaderProgress.visibility = View.GONE
+            binding.send.visibility = View.VISIBLE
             alpha = 1.0f
         }
 

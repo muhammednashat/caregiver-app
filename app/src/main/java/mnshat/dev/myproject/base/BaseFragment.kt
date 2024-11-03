@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.auth.AuthActivity
 import mnshat.dev.myproject.databinding.DialogBinding
+import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.IS_SECOND_TIME
@@ -31,6 +32,7 @@ import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.log
 
 open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
+    lateinit var sharedDialog: Dialog
 
     private lateinit var progressDialog: Dialog
     private lateinit var temporallyDialog: Dialog
@@ -60,6 +62,29 @@ open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
         sharedPreferences = (requireActivity().application as MyApplication).sharedPreferences
         currentLang = sharedPreferences.getString(LANGUAGE)
         progressDialog = Dialog(requireContext())
+    }
+     fun showDialogConfirmLogout() {
+        sharedDialog = Dialog(requireContext())
+        sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = DialogConfirmLogoutBinding.inflate(layoutInflater)
+        sharedDialog.setContentView(dialogBinding.root)
+        sharedDialog.setCanceledOnTouchOutside(true)
+
+        val window = sharedDialog.window
+        window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        sharedDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        dialogBinding.icClose.setOnClickListener {
+            sharedDialog.dismiss()
+        }
+        dialogBinding.btnLogout.setOnClickListener {
+            logOut()
+            sharedDialog.dismiss()
+        }
+        dialogBinding.btnCancel.setOnClickListener {
+            sharedDialog.dismiss()
+        }
+        sharedDialog.show()
     }
 
     fun copyTextToClipboard( text: String) {

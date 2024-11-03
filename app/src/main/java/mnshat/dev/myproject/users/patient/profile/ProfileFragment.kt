@@ -54,29 +54,6 @@ class ProfileFragment : BasePatientFragment<FragmentProfileBinding>() {
         binding.nameUser.text = sharedPreferences.getString(USER_NAME)
     }
 
-    private fun showDialogConfirmLogout() {
-        sharedUserDialog = Dialog(requireContext())
-        sharedUserDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        val dialogBinding = DialogConfirmLogoutBinding.inflate(layoutInflater)
-        sharedUserDialog.setContentView(dialogBinding.root)
-        sharedUserDialog.setCanceledOnTouchOutside(true)
-
-        val window = sharedUserDialog.window
-        window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        sharedUserDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        dialogBinding.icClose.setOnClickListener {
-            sharedUserDialog.dismiss()
-        }
-        dialogBinding.btnLogout.setOnClickListener {
-            logOut()
-            sharedUserDialog.dismiss()
-        }
-        dialogBinding.btnCancel.setOnClickListener {
-            sharedUserDialog.dismiss()
-        }
-        sharedUserDialog.show()
-    }
 
 
 }
