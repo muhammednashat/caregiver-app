@@ -275,7 +275,7 @@
     <string name="suggest_other_articles">اقتراح موضوعات اخرى</string>
     <string name="how_are_you_today">كيف حالك اليوم؟</string>
     <string name="enter">دخول</string>
-    <string name="auxiliary_tools">الأدوات المساعدة
+    <string name="auxiliary_tools">أدوات المساعدة
 </string>
     <string name="emergency_help">مساعدة طارئة</string>
     <string name="don_t_hesitate_ask_for_help_now">لا تتردد, اطلب المساعدة الان</string>
@@ -300,6 +300,9 @@
     <string name="educational_content2">محتوى تثقيفى</string>
     <string name="supplication_card">بطاقة تسبيح</string>
     <string name="display">عرض</string>
+    <string name="learn_how_to_help_someone">تعرف على كيفية مساعدة شخص ما</string>
+    <string name="supporter_compass">بوصلة الداعم</string>
+    <string name="strength_build_plan">خطة بناء القوة</string>
 
 
 </resources>

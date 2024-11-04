@@ -338,6 +338,9 @@
     <string name="educational_content2">Educational content</string>
     <string name="supplication_card">Supplication card</string>
     <string name="display">Display</string>
+    <string name="learn_how_to_help_someone">Learn how to help someone</string>
+    <string name="supporter_compass">Supporter compass</string>
+    <string name="strength_build_plan">Strength build plan</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

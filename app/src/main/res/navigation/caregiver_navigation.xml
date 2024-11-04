@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_caregiverHomeFragment_to_postsFragment2"
             app:destination="@id/postsFragment2" />
+        <action
+            android:id="@+id/action_caregiverHomeFragment_to_caregiverToolsFragment"
+            app:destination="@id/caregiverToolsFragment" />
     </fragment>
     <fragment
         android:id="@+id/caregiverProfileFragment"
@@ -116,5 +119,25 @@
             android:name="libraryContent"
             app:argType="mnshat.dev.myproject.model.LibraryContent" />
     </fragment>
+    <fragment
+        android:id="@+id/caregiverToolsFragment"
+        android:name="mnshat.dev.myproject.users.caregiver.tools.CaregiverToolsFragment"
+        android:label="fragment_caregiver_tools"
+        tools:layout="@layout/fragment_caregiver_tools" >
+        <action
+            android:id="@+id/action_caregiverToolsFragment_to_strengthBuildingPlanFragment"
+            app:destination="@id/strengthBuildingPlanFragment" />
+        <action
+            android:id="@+id/action_caregiverToolsFragment_to_supporterCompassFragment"
+            app:destination="@id/supporterCompassFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/strengthBuildingPlanFragment"
+        android:name="mnshat.dev.myproject.users.caregiver.tools.strengthBuildingPlan.StrengthBuildingPlanFragment"
+        android:label="StrengthBuildingPlanFragment" />
+    <fragment
+        android:id="@+id/supporterCompassFragment"
+        android:name="mnshat.dev.myproject.users.caregiver.tools.supporterCompass.SupporterCompassFragment"
+        android:label="SupporterCompassFragment" />
 
 </navigation>
