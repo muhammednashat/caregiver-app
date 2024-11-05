@@ -404,6 +404,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="stepsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-2096" />
+                            <option name="y" value="74" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="strengthBuildingPlanFragment">
                     <value>
                       <LayoutPositions>
@@ -424,6 +436,15 @@
                             <option name="x" value="-1861" />
                             <option name="y" value="96" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_supporterCompassFragment_to_stepsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

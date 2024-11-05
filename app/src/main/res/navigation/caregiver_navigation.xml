@@ -138,6 +138,14 @@
     <fragment
         android:id="@+id/supporterCompassFragment"
         android:name="mnshat.dev.myproject.users.caregiver.tools.supporterCompass.SupporterCompassFragment"
-        android:label="SupporterCompassFragment" />
+        android:label="SupporterCompassFragment" >
+        <action
+            android:id="@+id/action_supporterCompassFragment_to_stepsFragment"
+            app:destination="@id/stepsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stepsFragment"
+        android:name="mnshat.dev.myproject.users.caregiver.tools.StepsFragment"
+        android:label="StepsFragment" />
 
 </navigation>

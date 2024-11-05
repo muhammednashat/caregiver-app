@@ -12,8 +12,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView4"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_margin="@dimen/margin_large"
             app:cardCornerRadius="14dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -38,8 +38,9 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginEnd="@dimen/margin_super"
+            android:layout_marginEnd="@dimen/margin_large"
             android:tint="#5a94d5"
+            android:id="@+id/arrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -47,7 +48,7 @@
             app:srcCompat="@drawable/ic_keyboard_backspace" />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/step"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
@@ -64,20 +65,23 @@
             app:layout_constraintTop_toTopOf="@+id/cardView4" />
 
         <TextView
-            android:id="@+id/type"
-            android:layout_width="wrap_content"
+            android:id="@+id/title"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
             android:text="dsafsdfsdfds"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_marginEnd="@dimen/margin_small"
             android:textColor="#193453"
             android:textSize="16dp"
-            android:textStyle="bold"
 
-            android:layout_marginTop="@dimen/margin_medium"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/arrow"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/cardView4"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+            app:layout_constraintTop_toBottomOf="@+id/step" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
