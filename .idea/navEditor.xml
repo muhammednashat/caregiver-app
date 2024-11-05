@@ -205,6 +205,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_caregiverHomeFragment_to_caregiverToolsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_caregiverHomeFragment_to_postsFragment2">
                               <value>
                                 <LayoutPositions />
@@ -228,6 +233,32 @@
                             <option name="x" value="-507" />
                             <option name="y" value="-461" />
                           </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="caregiverToolsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-1628" />
+                            <option name="y" value="35" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_caregiverToolsFragment_to_strengthBuildingPlanFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_caregiverToolsFragment_to_supporterCompassFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -369,6 +400,30 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="strengthBuildingPlanFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-1880" />
+                            <option name="y" value="-249" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="supporterCompassFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-1861" />
+                            <option name="y" value="96" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>
