@@ -9,8 +9,6 @@ import mnshat.dev.myproject.databinding.FragmentStepsBinding
 import mnshat.dev.myproject.factories.CaregiverToolsViewModelFactory
 import mnshat.dev.myproject.model.Step
 import mnshat.dev.myproject.users.caregiver.main.BaseCaregiverFragment
-import mnshat.dev.myproject.util.data.stepsList
-import mnshat.dev.myproject.util.log
 
 
 class StepsFragment : BaseCaregiverFragment<FragmentStepsBinding>() {
@@ -24,7 +22,7 @@ class StepsFragment : BaseCaregiverFragment<FragmentStepsBinding>() {
         super.setupClickListener()
 
         binding.constraintNext.setOnClickListener {
-            if (viewModel.getCurrentIndex() < 5) {
+            if (viewModel.getCurrentIndex() < viewModel.getCurrentList().size) {
                 viewModel.setCurrentIndex(viewModel.getCurrentIndex() + 1)
                 updateUi(viewModel.getCurrentIndex(), viewModel.getCurrentList().size)
                 updateUiData(viewModel.getCurrentIndex(), viewModel.getCurrentList())

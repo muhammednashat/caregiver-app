@@ -4,7 +4,6 @@ import android.app.Application
 import mnshat.dev.myproject.base.BaseViewModel
 import mnshat.dev.myproject.model.Step
 import mnshat.dev.myproject.util.SharedPreferencesManager
-import mnshat.dev.myproject.util.data.stepsList
 
 class CaregiverToolsViewModel(
     private val sharedPreferences: SharedPreferencesManager,

@@ -6,17 +6,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.StepsAdapter
-import mnshat.dev.myproject.auth.AuthViewModel
 import mnshat.dev.myproject.databinding.FragmentSupporterCompassBinding
-import mnshat.dev.myproject.factories.AuthViewModelFactory
 import mnshat.dev.myproject.factories.CaregiverToolsViewModelFactory
 import mnshat.dev.myproject.interfaces.ItemStepsClicked
 import mnshat.dev.myproject.model.Step
 import mnshat.dev.myproject.users.caregiver.main.BaseCaregiverFragment
 import mnshat.dev.myproject.users.caregiver.tools.CaregiverToolsViewModel
-import mnshat.dev.myproject.users.caregiver.tools.StepsFragment
-import mnshat.dev.myproject.util.data.stepsList
-import mnshat.dev.myproject.util.log
+import mnshat.dev.myproject.util.data.stepsBuildStrengthList
+import mnshat.dev.myproject.util.data.stepsCompassList
 
 class SupporterCompassFragment : BaseCaregiverFragment<FragmentSupporterCompassBinding>(),ItemStepsClicked {
 
@@ -42,7 +39,7 @@ class SupporterCompassFragment : BaseCaregiverFragment<FragmentSupporterCompassB
         val factory =
             CaregiverToolsViewModelFactory(sharedPreferences, activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[CaregiverToolsViewModel::class.java]
-        updateUI(stepsList(requireActivity()))
+        updateUI(stepsCompassList(requireActivity()))
 
     }
 
@@ -53,8 +50,8 @@ class SupporterCompassFragment : BaseCaregiverFragment<FragmentSupporterCompassB
 
     override fun onItemClicked(index: Int) {
         viewModel.setCurrentIndex(index)
-        viewModel.setCurrentList(stepsList(requireActivity()))
-      findNavController().navigate(R.id.action_supporterCompassFragment_to_stepsFragment)
-    }
+        viewModel.setCurrentList(stepsCompassList(requireActivity()))
+       findNavController().navigate(R.id.action_supporterCompassFragment_to_stepsFragment)
+     }
 
 }

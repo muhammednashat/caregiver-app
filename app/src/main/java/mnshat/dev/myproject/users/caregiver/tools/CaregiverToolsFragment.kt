@@ -18,7 +18,8 @@ class CaregiverToolsFragment : BaseCaregiverFragment<FragmentCaregiverToolsBindi
 
     override fun setupClickListener() {
         super.setupClickListener()
-     binding.strengthBuildingPlan.setOnClickListener {
+
+      binding.strengthBuildingPlan.setOnClickListener {
        findNavController().navigate(R.id.action_caregiverToolsFragment_to_strengthBuildingPlanFragment)
      }
         binding.supporterCompass.setOnClickListener {
