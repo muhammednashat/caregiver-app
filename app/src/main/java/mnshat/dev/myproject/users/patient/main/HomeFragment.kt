@@ -80,8 +80,9 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
     override fun setupClickListener() {
         super.setupClickListener()
 
-        binding.constraintLayout15.setOnClickListener {
 
+        binding.helpNumbers.setOnClickListener {
+            findNavController().navigate(R.id.action_patientHomeFragment_to_numberHelpingFragment2)
         }
 
     }

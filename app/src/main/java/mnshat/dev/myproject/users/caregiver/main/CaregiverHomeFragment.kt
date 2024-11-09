@@ -3,8 +3,8 @@ package mnshat.dev.myproject.users.caregiver.main
 import android.content.Intent
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.databinding.FragmentCaregiverHomeBinding
 import mnshat.dev.myproject.commonFeatures.libraraycontent.LibraryActivity
+import mnshat.dev.myproject.databinding.FragmentCaregiverHomeBinding
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
 import mnshat.dev.myproject.util.loadImage
@@ -34,6 +34,9 @@ class CaregiverHomeFragment : BaseCaregiverFragment<FragmentCaregiverHomeBinding
         }
         binding.rootTools.setOnClickListener {
          findNavController().navigate(R.id.action_caregiverHomeFragment_to_caregiverToolsFragment)
+        }
+        binding.helpNumbers.setOnClickListener {
+            findNavController().navigate(R.id.action_caregiverHomeFragment_to_numberHelpingFragment)
         }
 
         binding.rootEducationalContent.setOnClickListener {

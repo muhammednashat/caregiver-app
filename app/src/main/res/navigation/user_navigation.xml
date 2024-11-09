@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_patientHomeFragment_to_mainAzcarFragment"
             app:destination="@id/toolsFragment" />
+        <action
+            android:id="@+id/action_patientHomeFragment_to_numberHelpingFragment2"
+            app:destination="@id/numberHelpingFragment2" />
     </fragment>
 
     <fragment
@@ -171,6 +174,10 @@
             android:name="libraryContent"
             app:argType="mnshat.dev.myproject.model.LibraryContent" />
     </fragment>
+    <fragment
+        android:id="@+id/numberHelpingFragment2"
+        android:name="mnshat.dev.myproject.commonFeatures.numbersHelping.NumberHelpingFragment"
+        android:label="NumberHelpingFragment" />
 
 
 </navigation>

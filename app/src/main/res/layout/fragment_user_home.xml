@@ -140,7 +140,7 @@
                 <ImageView
                     android:id="@+id/imageView8"
                     android:layout_width="200dp"
-                    android:layout_height="150dp"
+                    android:layout_height="180dp"
                     android:layout_marginStart="36dp"
                     android:layout_marginTop="16dp"
                     android:scaleType="centerCrop"
@@ -159,18 +159,18 @@
                     app:layout_constraintVertical_bias="0.64" />
 
                 <View
-                    android:background="@drawable/corner_normal"
-                    android:backgroundTint="#f5a37b"
+                    android:id="@+id/view4"
                     android:layout_width="90dp"
                     android:layout_height="35dp"
-                    android:layout_marginEnd="36dp"
                     android:layout_marginTop="6dp"
+                    android:layout_marginEnd="36dp"
+                    android:background="@drawable/corner_normal"
+                    android:backgroundTint="#f5a37b"
                     android:padding="@dimen/margin_medium"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView8"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/imageView8"
-                    app:layout_constraintVertical_bias="0.67"
-                    />
+                    app:layout_constraintVertical_bias="0.67" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout18"
@@ -218,13 +218,14 @@
                     android:id="@+id/constraintLayout17"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+android:layout_marginTop="@dimen/margin_large"
                     android:background="@drawable/corner_top_lift_right"
                     android:padding="@dimen/margin_large"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView8"
+                    app:layout_constraintTop_toBottomOf="@+id/view4"
                     app:layout_constraintVertical_bias="0.0">
 
                     <View
@@ -247,7 +248,7 @@
                         android:backgroundTint="#e2eff7"
                         android:onClick="@{() -> viewModel.onEducationalContentClicked()}"
                         android:padding="@dimen/padding_medium"
-                        app:layout_constraintBottom_toTopOf="@+id/constraintLayout16"
+                        app:layout_constraintBottom_toTopOf="@+id/helpNumbers"
                         app:layout_constraintEnd_toStartOf="@+id/root_tools"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
@@ -322,10 +323,10 @@
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/constraintLayout16"
+                        android:id="@+id/helpNumbers"
                         android:layout_width="match_parent"
                         android:layout_height="85dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="@dimen/margin_medium"
                         android:background="@drawable/corner_normal"
                         android:backgroundTint="#ffebd0"
 

@@ -25,7 +25,6 @@ class SupporterCompassFragment : BaseCaregiverFragment<FragmentSupporterCompassB
 
     override fun setupClickListener() {
         super.setupClickListener()
-
         binding.iconBack.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -34,8 +33,8 @@ class SupporterCompassFragment : BaseCaregiverFragment<FragmentSupporterCompassB
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
+        super.onViewCreated(view, savedInstanceState)
         val factory =
             CaregiverToolsViewModelFactory(sharedPreferences, activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[CaregiverToolsViewModel::class.java]

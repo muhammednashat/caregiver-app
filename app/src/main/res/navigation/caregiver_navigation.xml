@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_caregiverHomeFragment_to_caregiverToolsFragment"
             app:destination="@id/caregiverToolsFragment" />
+        <action
+            android:id="@+id/action_caregiverHomeFragment_to_numberHelpingFragment"
+            app:destination="@id/numberHelpingFragment" />
     </fragment>
     <fragment
         android:id="@+id/caregiverProfileFragment"
@@ -147,5 +150,9 @@
         android:id="@+id/stepsFragment"
         android:name="mnshat.dev.myproject.users.caregiver.tools.StepsFragment"
         android:label="StepsFragment" />
+    <fragment
+        android:id="@+id/numberHelpingFragment"
+        android:name="mnshat.dev.myproject.commonFeatures.numbersHelping.NumberHelpingFragment"
+        android:label="NumberHelpingFragment" />
 
 </navigation>
