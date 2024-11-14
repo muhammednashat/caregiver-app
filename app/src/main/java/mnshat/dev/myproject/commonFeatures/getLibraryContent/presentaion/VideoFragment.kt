@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.commonFeatures.libraraycontent
+package mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion
 
 import android.net.Uri
 import android.view.View
@@ -11,7 +11,7 @@ import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
 import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.FragmentVideoBinding
 import mnshat.dev.myproject.interfaces.OnSendButtonClicked
-import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.LIBRARY

@@ -1,15 +1,18 @@
-package mnshat.dev.myproject.commonFeatures.libraraycontent
+package mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion
 
+import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
 import mnshat.dev.myproject.adapters.CustomizedContentLibraryAdapter
 import mnshat.dev.myproject.databinding.FragmentLibraryContentBinding
-import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.util.ARTICLE
 import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.VIDEO
+import mnshat.dev.myproject.util.errorSnackBar
+import mnshat.dev.myproject.util.isInternetAvailable
 
 
 class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding>() {
@@ -20,9 +23,21 @@ class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding
     override fun initializeViews() {
         super.initializeViews()
         observeViewModel()
-        showProgressDialog()
-        viewModel.retrieveLibraryContent()
+       if (!isInternetAvailable(requireActivity())){
+           binding.noInternet.visibility = View.VISIBLE
+           binding.constraintLayout14.visibility = View.GONE
+           errorSnackBar(requireView(),getString(R.string.no_internet))
+       }else{
+           showProgressDialog()
+//           viewModel.retrieveLibraryContent()
+
+       }
     }
+
+    private fun  getLibraryContent(){
+
+    }
+
 
     override fun setupClickListener() {
         super.setupClickListener()

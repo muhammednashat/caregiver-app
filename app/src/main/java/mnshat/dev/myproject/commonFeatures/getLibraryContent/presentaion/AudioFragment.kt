@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.commonFeatures.libraraycontent
+package mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion
 
 import android.net.Uri
 import android.os.Handler
@@ -13,7 +13,7 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.FragmentAudioBinding
 import mnshat.dev.myproject.interfaces.OnSendButtonClicked
-import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.LANGUAGE

@@ -74,6 +74,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView17"
-            tools:listitem="@layout/item_view_caregiver_tools_steps" />
+            tools:listitem="@layout/item_view_caregiver_tools_steps"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

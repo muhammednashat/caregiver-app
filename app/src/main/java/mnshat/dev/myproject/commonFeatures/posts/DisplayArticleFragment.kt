@@ -1,13 +1,8 @@
 package mnshat.dev.myproject.commonFeatures.posts
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentDisplayArticleBinding
-import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.LANGUAGE
 

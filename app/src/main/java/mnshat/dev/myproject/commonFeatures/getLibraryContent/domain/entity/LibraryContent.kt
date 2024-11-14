@@ -1,10 +1,15 @@
-package mnshat.dev.myproject.model
+package mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
+
+@Entity(tableName = "library_content")
 
 @Parcelize
 data class LibraryContent(
+    @PrimaryKey val uid: Int,
     val id: Int? = null,
     val date: String? = null,
     val category: String? = null,

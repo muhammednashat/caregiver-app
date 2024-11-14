@@ -18,8 +18,6 @@ fun   stepsBuildStrengthList(context: Context) = listOf(
         step = context.getString(R.string.introduction),
         title = context.getString(R.string.you_are_not_alone_on_this_journey),
         description = context.getString(R.string.mental_health_support_text),
-
-
         image = R.drawable.img_not_alone
     ), Step(
         step = context.getString(R.string.step_1),
@@ -57,7 +55,6 @@ fun   stepsBuildStrengthList(context: Context) = listOf(
         image = R.drawable.step5
     )
 )
-
 
 fun stepsCompassList(context: Context) = listOf(
     Step(
@@ -124,10 +121,6 @@ fun stepsCompassList(context: Context) = listOf(
         image = R.drawable.step5
     )
 )
-
-
-
-
 
 fun getListHands()= listOf(
     R.drawable.image_hand1,

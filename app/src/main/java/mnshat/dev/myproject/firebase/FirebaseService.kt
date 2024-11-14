@@ -12,7 +12,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.messaging.FirebaseMessaging
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.model.CurrentTask
-import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.DAILY_PROGRAM_STATES

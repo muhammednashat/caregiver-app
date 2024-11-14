@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.commonFeatures.libraraycontent
+package mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion
 
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -6,10 +6,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.data.LibraryContentRepo
 import mnshat.dev.myproject.databinding.FragmentCommonContentBinding
 import mnshat.dev.myproject.factories.LibraryViewModelFactory
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
-import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.useCase.GetLibraryContentUseCase
+import mnshat.dev.myproject.dataSource.room.AppDatabase
 import mnshat.dev.myproject.util.ARTICLE
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.VIDEO
@@ -40,7 +43,10 @@ class CommonContentFragment : BaseBottomSheetDialogFragment<FragmentCommonConten
     }
 
     private fun initViewModel() {
-        val factory = LibraryViewModelFactory(sharedPreferences, activity?.application!!)
+        val libraryDao = AppDatabase.getDatabase(requireContext()).libraryDao()
+        val libraryContentRepo = LibraryContentRepo(libraryDao)
+        val getLibraryContentUseCase = GetLibraryContentUseCase(libraryContentRepo)
+        val factory = LibraryViewModelFactory(sharedPreferences, getLibraryContentUseCase,activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[LibraryViewModel::class.java]
     }
 

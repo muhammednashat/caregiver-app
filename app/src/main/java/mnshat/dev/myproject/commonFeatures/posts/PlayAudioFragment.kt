@@ -11,9 +11,8 @@ import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentAudioBinding
-import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
-import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.loadImage
 

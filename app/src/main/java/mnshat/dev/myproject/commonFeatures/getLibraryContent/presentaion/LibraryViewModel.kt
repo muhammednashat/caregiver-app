@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.commonFeatures.libraraycontent
+package mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -6,7 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import mnshat.dev.myproject.base.BaseViewModel
 import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.useCase.GetLibraryContentUseCase
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.model.Posts
 import mnshat.dev.myproject.util.COMMON_CONTENT
@@ -17,6 +18,7 @@ import mnshat.dev.myproject.util.USER_EMAIL
 
 class LibraryViewModel(
     private val sharedPreferences: SharedPreferencesManager,
+    private val getLibraryContentUseCase: GetLibraryContentUseCase,
     application: Application
 
 ) : BaseViewModel(
@@ -34,16 +36,25 @@ class LibraryViewModel(
 
     lateinit var mLibraryContentMostCommon: List<LibraryContent>
 
-    fun retrieveLibraryContent() {
+    suspend fun retrieveLibraryContent() {
 
-        FirebaseService.getLibraryContent {
-
-            val libraryContents = libraryContentsBasedReligion(it)
-
+        val libraryContents = getLibraryContentUseCase.invoke()
+        if (libraryContents.isNotEmpty()) {
             setLibraryContentMostCommon(libraryContents)
             setLibraryContentCustomized(libraryContents)
             _isReadyDisplay.value = true
+        }else{
+
         }
+
+//        FirebaseService.getLibraryContent {
+//
+//            val libraryContents = libraryContentsBasedReligion(it)
+//
+//            setLibraryContentMostCommon(libraryContents)
+//            setLibraryContentCustomized(libraryContents)
+//            _isReadyDisplay.value = true
+//        }
 
 
     }

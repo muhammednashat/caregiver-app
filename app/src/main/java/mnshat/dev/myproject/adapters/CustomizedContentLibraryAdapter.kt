@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
-import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.util.ARTICLE
 import mnshat.dev.myproject.util.Customized_CONTENT
 import mnshat.dev.myproject.util.LANGUAGE

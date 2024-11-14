@@ -1,8 +1,11 @@
-package mnshat.dev.myproject.commonFeatures.libraraycontent
+package mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion
 
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.data.LibraryContentRepo
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.useCase.GetLibraryContentUseCase
+import mnshat.dev.myproject.dataSource.room.AppDatabase
 import mnshat.dev.myproject.factories.LibraryViewModelFactory
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 
@@ -34,7 +37,10 @@ abstract class BaseLibraryFragment<T : ViewDataBinding> : BaseFragment<T>(),
     }
 
     private fun initViewModel() {
-        val factory = LibraryViewModelFactory(sharedPreferences, activity?.application!!)
+        val libraryDao = AppDatabase.getDatabase(requireContext()).libraryDao()
+        val libraryContentRepo = LibraryContentRepo(libraryDao)
+        val getLibraryContentUseCase = GetLibraryContentUseCase(libraryContentRepo)
+        val factory = LibraryViewModelFactory(sharedPreferences, getLibraryContentUseCase,activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[LibraryViewModel::class.java]
     }
 

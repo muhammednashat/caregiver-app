@@ -7,7 +7,7 @@ import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
 import mnshat.dev.myproject.factories.PatientViewModelFactory
-import mnshat.dev.myproject.commonFeatures.libraraycontent.LibraryActivity
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.LibraryActivity
 import mnshat.dev.myproject.model.CurrentTask
 import mnshat.dev.myproject.users.patient.dailyprogram.DailyProgramActivity
 import mnshat.dev.myproject.util.USER_ID

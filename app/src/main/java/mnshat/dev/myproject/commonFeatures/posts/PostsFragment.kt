@@ -10,7 +10,7 @@ import mnshat.dev.myproject.databinding.FragmentPostsBinding
 import mnshat.dev.myproject.factories.SharingViewModelFactory
 import mnshat.dev.myproject.interfaces.ItemPostsClicked
 import mnshat.dev.myproject.model.Gratitude
-import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment

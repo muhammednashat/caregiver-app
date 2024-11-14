@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.commonFeatures.libraraycontent
+package mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion
 
 import mnshat.dev.myproject.base.BaseActivity
 import mnshat.dev.myproject.databinding.ActivityLibraryBinding

@@ -62,6 +62,7 @@ open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
         sharedPreferences = (requireActivity().application as MyApplication).sharedPreferences
         currentLang = sharedPreferences.getString(LANGUAGE)
         progressDialog = Dialog(requireContext())
+
     }
      fun showDialogConfirmLogout() {
         sharedDialog = Dialog(requireContext())

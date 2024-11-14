@@ -25,8 +25,8 @@ fun isInternetAvailable(context: Context): Boolean {
 }
 
 
-fun showSnackbarForInternetStatus(context: Context, view: View) {
-    view?.let { Snackbar.make(it, "No internet connection", Snackbar.LENGTH_LONG).show() }
+fun errorSnackBar( view: View,text: String) {
+    view?.let { Snackbar.make(it, text, Snackbar.LENGTH_LONG).show() }
 }
 
 

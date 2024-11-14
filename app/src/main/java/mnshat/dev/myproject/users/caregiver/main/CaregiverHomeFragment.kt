@@ -3,7 +3,7 @@ package mnshat.dev.myproject.users.caregiver.main
 import android.content.Intent
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.commonFeatures.libraraycontent.LibraryActivity
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.LibraryActivity
 import mnshat.dev.myproject.databinding.FragmentCaregiverHomeBinding
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME

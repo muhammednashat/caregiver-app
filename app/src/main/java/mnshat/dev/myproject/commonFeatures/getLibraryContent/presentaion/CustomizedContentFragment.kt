@@ -1,11 +1,11 @@
-package mnshat.dev.myproject.commonFeatures.libraraycontent
+package mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion
 
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.CustomizedContentLibraryAdapter
 import mnshat.dev.myproject.databinding.FragmentCustomizedContentBinding
-import mnshat.dev.myproject.model.LibraryContent
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.util.ARTICLE
 import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.ENGLISH_KEY

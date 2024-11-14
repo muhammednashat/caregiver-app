@@ -77,8 +77,9 @@ class StepsFragment : BaseCaregiverFragment<FragmentStepsBinding>() {
         }
     }
 
-    private fun updateUiData(index: Int, steps: List<Step>) {
 
+//TODO length=10; index=10
+    private fun updateUiData(index: Int, steps: List<Step>) {
         val step = steps[index]
         binding.stepNumber.text = step.step
         binding.title.text = step.title

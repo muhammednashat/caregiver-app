@@ -19,7 +19,7 @@
             android:name=".commonFeatures.chatting.ChatActivity"
             android:exported="false" />
         <activity
-            android:name=".commonFeatures.libraraycontent.LibraryActivity"
+            android:name=".commonFeatures.getLibraryContent.presentaion.LibraryActivity"
             android:exported="false" />
         <activity
             android:name=".maybeneedlater.TasksActivity"

@@ -102,7 +102,7 @@
         android:label="DisplayArticleFragment" >
         <argument
             android:name="libraryContent"
-            app:argType="mnshat.dev.myproject.model.LibraryContent" />
+            app:argType="mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent" />
     </fragment>
     <fragment
         android:id="@+id/playAudioFragment"
@@ -111,7 +111,7 @@
         tools:layout="@layout/fragment_play_audio" >
         <argument
             android:name="libraryContent"
-            app:argType="mnshat.dev.myproject.model.LibraryContent" />
+            app:argType="mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent" />
     </fragment>
     <fragment
         android:id="@+id/playVideoFragment"
@@ -120,7 +120,7 @@
         tools:layout="@layout/fragment_play_video" >
         <argument
             android:name="libraryContent"
-            app:argType="mnshat.dev.myproject.model.LibraryContent" />
+            app:argType="mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent" />
     </fragment>
     <fragment
         android:id="@+id/caregiverToolsFragment"
