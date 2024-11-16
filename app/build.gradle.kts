@@ -5,6 +5,7 @@ plugins {
     id("com.google.gms.google-services")
     id("androidx.navigation.safeargs.kotlin")
     id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 
 }
 android {
@@ -94,6 +95,10 @@ dependencies {
     ksp("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
 
+
+    //hilt
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    ksp("com.google.dagger:hilt-compiler:2.51.1")
 }
 
 

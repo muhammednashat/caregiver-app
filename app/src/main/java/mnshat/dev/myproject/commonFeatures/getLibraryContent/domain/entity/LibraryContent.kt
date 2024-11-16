@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class LibraryContent(
-    @PrimaryKey val uid: Int,
+    @PrimaryKey val uid: Int? = null,
     val id: Int? = null,
     val date: String? = null,
     val category: String? = null,

@@ -1,8 +1,11 @@
 package mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion
 
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
 import mnshat.dev.myproject.adapters.CustomizedContentLibraryAdapter
@@ -14,7 +17,7 @@ import mnshat.dev.myproject.util.VIDEO
 import mnshat.dev.myproject.util.errorSnackBar
 import mnshat.dev.myproject.util.isInternetAvailable
 
-
+@AndroidEntryPoint
 class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding>() {
 
 
@@ -22,19 +25,26 @@ class LibraryContentFragment : BaseLibraryFragment<FragmentLibraryContentBinding
 
     override fun initializeViews() {
         super.initializeViews()
+        showProgressDialog()
+        getLibraryContent()
         observeViewModel()
-       if (!isInternetAvailable(requireActivity())){
-           binding.noInternet.visibility = View.VISIBLE
-           binding.constraintLayout14.visibility = View.GONE
-           errorSnackBar(requireView(),getString(R.string.no_internet))
-       }else{
-           showProgressDialog()
-//           viewModel.retrieveLibraryContent()
 
-       }
+//       if (!isInternetAvailable(requireActivity())){
+//           binding.noInternet.visibility = View.VISIBLE
+//           binding.constraintLayout14.visibility = View.GONE
+//           showToast(getString(R.string.no_internet))
+//
+//       }else{
+//           showProgressDialog()
+//           getLibraryContent()
+//
+//       }
     }
 
-    private fun  getLibraryContent(){
+    private  fun  getLibraryContent(){
+        lifecycleScope.launch {
+            viewModel.retrieveLibraryContent()
+        }
 
     }
 

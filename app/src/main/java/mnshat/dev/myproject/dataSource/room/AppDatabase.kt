@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.data.LibraryDao
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 
-@Database(entities = [LibraryContent::class], version = 1, exportSchema = false)
+@Database(entities = [LibraryContent::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun libraryDao(): LibraryDao
@@ -23,7 +23,8 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "database-name"
-                ).build()
+                ).fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 instance
             }
