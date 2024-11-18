@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
-import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.base.BaseFragment2
 import mnshat.dev.myproject.factories.AuthViewModelFactory
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.RegistrationData
@@ -21,7 +21,7 @@ import mnshat.dev.myproject.util.NUMBER_SUPPORTERS
 import mnshat.dev.myproject.util.SUPPORTERS
 import mnshat.dev.myproject.util.USER
 
-open abstract class AuthBaseFragment<T : ViewDataBinding> : BaseFragment<T>() {
+open abstract class AuthBaseFragment<T : ViewDataBinding> : BaseFragment2<T>() {
 
     lateinit var _viewModel: AuthViewModel
 

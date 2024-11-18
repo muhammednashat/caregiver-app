@@ -49,26 +49,6 @@ class LibraryContentRepo(
         })
     }
 
-//    private suspend fun retrieveLibraryContent(onDataFetched: (List<LibraryContent>?) -> Unit) {
-//
-//        libraryContents.addListenerForSingleValueEvent(object : ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                val libraryContentList = mutableListOf<LibraryContent>()
-//                for (contentSnapshot in snapshot.children) {
-//                    val libraryContent = contentSnapshot.getValue(LibraryContent::class.java)
-//                    libraryContent?.let {
-//                        libraryContentList.add(it)
-//                    }
-//                }
-//                onDataFetched(libraryContentList)
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                onDataFetched(null)
-//                println("Failed to retrieve data: ${error.message}")
-//            }
-//        })
-//    }
 
 
 }

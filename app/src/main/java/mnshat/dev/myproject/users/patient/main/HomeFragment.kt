@@ -9,6 +9,7 @@ import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
 import mnshat.dev.myproject.factories.PatientViewModelFactory
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.LibraryActivity
 import mnshat.dev.myproject.model.CurrentTask
+import mnshat.dev.myproject.users.patient.calender.CalenderActivity
 import mnshat.dev.myproject.users.patient.dailyprogram.DailyProgramActivity
 import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.USER_IMAGE
@@ -84,6 +85,9 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
         binding.helpNumbers.setOnClickListener {
             findNavController().navigate(R.id.action_patientHomeFragment_to_numberHelpingFragment2)
         }
+        binding.containerDailyPlanner.setOnClickListener {
+            startActivity(Intent(requireActivity(), CalenderActivity::class.java))
+        }
 
     }
 
@@ -97,6 +101,6 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
                 append(getString(R.string.current_level, status?.currentLevel))
             }
 
-    }
+        }
     }
 }

@@ -2,11 +2,11 @@ package mnshat.dev.myproject.users.patient.tools
 
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.base.BaseFragment2
 import mnshat.dev.myproject.databinding.FragmentToolsBinding
 
 
-class ToolsFragment : BaseFragment<FragmentToolsBinding>() {
+class ToolsFragment : BaseFragment2<FragmentToolsBinding>() {
 
     override fun setupClickListener() {
 

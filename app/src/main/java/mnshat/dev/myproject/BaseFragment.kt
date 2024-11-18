@@ -1,0 +1,75 @@
+package mnshat.dev.myproject
+
+import android.app.Dialog
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.Window
+import android.widget.TextView
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
+import dagger.hilt.android.AndroidEntryPoint
+import mnshat.dev.myproject.R
+import mnshat.dev.myproject.auth.AuthActivity
+import mnshat.dev.myproject.databinding.DialogBinding
+import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
+import mnshat.dev.myproject.firebase.FirebaseService
+import mnshat.dev.myproject.util.USER_EMAIL
+import mnshat.dev.myproject.util.IS_SECOND_TIME
+import mnshat.dev.myproject.util.LANGUAGE
+import mnshat.dev.myproject.util.MyApplication
+import mnshat.dev.myproject.util.PASSWORD
+import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.log
+
+@AndroidEntryPoint
+open class BaseFragment: Fragment() {
+
+    private lateinit var progressDialog: Dialog
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        progressDialog = Dialog(requireContext())
+    }
+
+     fun showProgressDialog() {
+         if (progressDialog.ownerActivity == null){
+             progressDialog = Dialog(requireContext())
+         }
+        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        progressDialog.setContentView(R.layout.dialog_progress)
+        progressDialog.setCanceledOnTouchOutside(false)
+        val window = progressDialog.window
+        window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        progressDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        progressDialog.show()
+    }
+
+    fun dismissProgressDialog() {
+        progressDialog.dismiss()
+    }
+
+    fun showToast(message: String) {
+        val layoutInflater = layoutInflater
+        val layout = layoutInflater.inflate(R.layout.custom_toast_layout, null)
+        val textViewMessage = layout.findViewById<TextView>(R.id.text)
+        textViewMessage.text = message
+        with(Toast(context)) {
+            setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 0)
+            duration = Toast.LENGTH_SHORT
+            view = layout
+            show()
+        }
+    }
+
+}

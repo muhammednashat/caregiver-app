@@ -2,10 +2,10 @@ package mnshat.dev.myproject.commonFeatures.chatting
 
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
-import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.base.BaseFragment2
 import mnshat.dev.myproject.factories.ChatViewModelFactory
 
-abstract class BaseChattingFragment<T: ViewDataBinding> : BaseFragment<T>()
+abstract class BaseChattingFragment<T: ViewDataBinding> : BaseFragment2<T>()
      {
 
      lateinit var viewModel: ChatViewModel

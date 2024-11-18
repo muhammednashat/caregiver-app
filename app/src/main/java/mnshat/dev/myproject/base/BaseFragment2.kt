@@ -31,7 +31,7 @@ import mnshat.dev.myproject.util.PASSWORD
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.log
 
-open abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
+open abstract class BaseFragment2<T:ViewDataBinding>: Fragment() {
     lateinit var sharedDialog: Dialog
 
     private lateinit var progressDialog: Dialog

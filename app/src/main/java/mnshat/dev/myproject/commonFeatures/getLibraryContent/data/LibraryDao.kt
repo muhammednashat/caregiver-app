@@ -9,7 +9,7 @@ import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.Libra
 interface LibraryDao {
 
     @Insert
-    suspend   fun insertAll(data:List<LibraryContent>)
+    suspend  fun insertAll(data:List<LibraryContent>)
 
     @Query("SELECT * FROM library_content")
     suspend  fun getAll(): List<LibraryContent>

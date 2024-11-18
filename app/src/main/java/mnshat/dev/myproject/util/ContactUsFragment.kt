@@ -1,11 +1,11 @@
 package mnshat.dev.myproject.util
 
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.base.BaseFragment2
 import mnshat.dev.myproject.databinding.FragmentContactUsBinding
 
 
-class ContactUsFragment: BaseFragment<FragmentContactUsBinding>() {
+class ContactUsFragment: BaseFragment2<FragmentContactUsBinding>() {
 
     override fun initializeViews() {
 
