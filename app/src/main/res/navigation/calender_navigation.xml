@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/dailyPlannerFragment"
-        android:name="mnshat.dev.myproject.users.patient.calender.DailyPlannerFragment"
+        android:name="mnshat.dev.myproject.users.patient.calender.DailyPlanningFragment"
         android:label="DailyPlannerFragment" />
 </navigation>

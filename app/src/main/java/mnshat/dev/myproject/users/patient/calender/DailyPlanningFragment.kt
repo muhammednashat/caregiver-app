@@ -1,26 +1,24 @@
 package mnshat.dev.myproject.users.patient.calender
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
-import mnshat.dev.myproject.R
-import mnshat.dev.myproject.databinding.FragmentDailyPlannerBinding
+import mnshat.dev.myproject.databinding.FragmentDailyPlanningBinding
 
 @AndroidEntryPoint
-class DailyPlannerFragment : BaseFragment() {
+class DailyPlanningFragment : BaseFragment() {
 
-    private lateinit var  binding: FragmentDailyPlannerBinding
+    private lateinit var  binding: FragmentDailyPlanningBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View{
 
-        binding = FragmentDailyPlannerBinding.inflate(inflater, container, false)
+        binding = FragmentDailyPlanningBinding.inflate(inflater, container, false)
         return  binding.root
 
     }

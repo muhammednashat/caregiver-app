@@ -41,10 +41,15 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
     }
 
     private fun iitViewModel() {
+
         val factory = PatientViewModelFactory(sharedPreferences, activity?.application!!)
+
         viewModel = ViewModelProvider(requireActivity(), factory)[PatientViewModel::class.java]
+
         binding.lifecycleOwner = this
+
         observeViewModel()
+
     }
 
 
