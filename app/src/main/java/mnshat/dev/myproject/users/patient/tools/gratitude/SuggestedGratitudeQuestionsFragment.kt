@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.SuggestedGratitudeQuestionsAdapter
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.databinding.FragmentSuggestedGratitudeQuestionsBinding
 import mnshat.dev.myproject.factories.GratitudeViewModelFactory
 import mnshat.dev.myproject.interfaces.OnConfirmButtonClicked
@@ -12,7 +12,7 @@ import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.getGratitudeQuestionsList
 
 
-class SuggestedGratitudeQuestionsFragment (private val onConfirmButtonClicked: OnConfirmButtonClicked): BaseBottomSheetDialogFragment<FragmentSuggestedGratitudeQuestionsBinding>() {
+class SuggestedGratitudeQuestionsFragment (private val onConfirmButtonClicked: OnConfirmButtonClicked): BaseBottomSheetDialogFragment2<FragmentSuggestedGratitudeQuestionsBinding>() {
 
    private lateinit var adapter:SuggestedGratitudeQuestionsAdapter
    private lateinit var viewModel: GratitudeViewModel

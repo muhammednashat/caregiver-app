@@ -3,7 +3,7 @@ package mnshat.dev.myproject.commonFeatures.posts
 import android.view.View
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.ChooseSupporterAdapter
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.databinding.FragmentChooseSupporterBinding
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.interfaces.OnSendButtonClicked
@@ -13,7 +13,7 @@ import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.log
 
 // ToDo check it  , Fragment ChooseSupporterFragment{ea89e49} (8b694ba6-c9a2-43aa-85ca-30a6d9987f3f) not attached to an activity.
-class ChooseSupporterFragment : BaseBottomSheetDialogFragment<FragmentChooseSupporterBinding>() {
+class ChooseSupporterFragment : BaseBottomSheetDialogFragment2<FragmentChooseSupporterBinding>() {
 
     private lateinit var onSendButtonClicked: OnSendButtonClicked
 

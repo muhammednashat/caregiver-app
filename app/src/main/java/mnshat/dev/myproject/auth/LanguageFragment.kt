@@ -5,14 +5,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.databinding.FragmentLangauageBinding
 import mnshat.dev.myproject.factories.AuthViewModelFactory
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.SplashActivity
 
-class LanguageFragment : BaseBottomSheetDialogFragment<FragmentLangauageBinding>() {
+class LanguageFragment : BaseBottomSheetDialogFragment2<FragmentLangauageBinding>() {
     lateinit var viewModel: AuthViewModel
 
     override fun setupClickListener() {

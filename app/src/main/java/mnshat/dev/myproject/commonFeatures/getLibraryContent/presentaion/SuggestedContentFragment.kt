@@ -4,7 +4,7 @@ package mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion
 import androidx.lifecycle.ViewModelProvider
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.CustomizedContentLibraryAdapter
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.data.LibraryContentRepo
 import mnshat.dev.myproject.databinding.FragmentSuggestedContentBinding
 import mnshat.dev.myproject.factories.LibraryViewModelFactory
@@ -14,7 +14,7 @@ import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.useCase.GetL
 import mnshat.dev.myproject.dataSource.room.AppDatabase
 import mnshat.dev.myproject.util.ENGLISH_KEY
 
-class SuggestedContentFragment : BaseBottomSheetDialogFragment<FragmentSuggestedContentBinding>(),
+class SuggestedContentFragment : BaseBottomSheetDialogFragment2<FragmentSuggestedContentBinding>(),
 
     OnItemLibraryContentClicked {
     private lateinit var title: String

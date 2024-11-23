@@ -3,14 +3,14 @@ package mnshat.dev.myproject.auth
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.databinding.FragmentAgeBinding
 import mnshat.dev.myproject.factories.AuthViewModelFactory
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.ENGLISH_KEY
 
 
-class AgeFragment : BaseBottomSheetDialogFragment<FragmentAgeBinding>() {
+class AgeFragment : BaseBottomSheetDialogFragment2<FragmentAgeBinding>() {
 
    private lateinit var viewModel: AuthViewModel
 

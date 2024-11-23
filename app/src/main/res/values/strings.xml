@@ -515,6 +515,11 @@
     <string name="no_internet">No Internet\n</string>
     <string name="plan_your_day">Plan your day</string>
     <string name="daily_planner">Daily planning</string>
+    <string name="choose_day">Choose Day</string>
+    <string name="choose_the_day_you_would_like_to_plan">Choose the day you would like to plan</string>
+    <string name="let_s_get_started">Let\'s get started</string>
+    <string name="choose_activities">Choose activities</string>
+    <string name="choose_your_daily_activity_you_can_choose_more_than_one_activity">Choose your daily activity. You can choose more than one activity</string>
 
 
 </resources>

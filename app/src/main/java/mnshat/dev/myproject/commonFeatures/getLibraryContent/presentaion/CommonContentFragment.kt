@@ -5,7 +5,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.data.LibraryContentRepo
 import mnshat.dev.myproject.databinding.FragmentCommonContentBinding
 import mnshat.dev.myproject.factories.LibraryViewModelFactory
@@ -18,7 +18,7 @@ import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.VIDEO
 
 
-class CommonContentFragment : BaseBottomSheetDialogFragment<FragmentCommonContentBinding>(),
+class CommonContentFragment : BaseBottomSheetDialogFragment2<FragmentCommonContentBinding>(),
     OnItemLibraryContentClicked {
 
     private lateinit var viewModel: LibraryViewModel

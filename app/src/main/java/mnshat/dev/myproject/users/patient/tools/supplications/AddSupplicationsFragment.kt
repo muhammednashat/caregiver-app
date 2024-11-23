@@ -3,7 +3,7 @@ package mnshat.dev.myproject.users.patient.tools.supplications
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.databinding.FragmentAddAzcarBinding
 import mnshat.dev.myproject.factories.SupplicationsViewModelFactory
 import mnshat.dev.myproject.interfaces.DataReLoader
@@ -12,7 +12,7 @@ import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.isValidInput
 
 
-class AddSupplicationsFragment : BaseBottomSheetDialogFragment<FragmentAddAzcarBinding>() {
+class AddSupplicationsFragment : BaseBottomSheetDialogFragment2<FragmentAddAzcarBinding>() {
 
     private lateinit var viewModel: SupplicationsViewModel
     private lateinit var nameSupplication:String

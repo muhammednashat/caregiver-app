@@ -2,10 +2,10 @@ package mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion
 
 import android.media.MediaPlayer
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.databinding.FragmentAudioBinding
 
-class AudioBottomSheetFragment : BaseBottomSheetDialogFragment<FragmentAudioBinding>() {
+class AudioBottomSheetFragment : BaseBottomSheetDialogFragment2<FragmentAudioBinding>() {
 
     private lateinit var mediaPlayer: MediaPlayer
 

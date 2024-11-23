@@ -479,6 +479,11 @@
     <string name="no_internet">No Internet\n</string>
     <string name="plan_your_day">خطط يومك</string>
     <string name="daily_planner">المخطط اليومى</string>
+    <string name="choose_day">اختيار اليوم</string>
+    <string name="choose_the_day_you_would_like_to_plan">اختر اليوم الذي تود لنده التخطيط</string>
+    <string name="let_s_get_started">هيا بنا لنبدء</string>
+    <string name="choose_activities">اختيار الانشطة</string>
+    <string name="choose_your_daily_activity_you_can_choose_more_than_one_activity">اختر نشاطك اليومي, يمكنك اختيار اكثر من نشاط</string>
 
 
 </resources>

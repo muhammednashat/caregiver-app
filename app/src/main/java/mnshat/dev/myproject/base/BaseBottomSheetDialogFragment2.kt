@@ -15,20 +15,37 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.MyApplication
 import mnshat.dev.myproject.util.SharedPreferencesManager
 
-@AndroidEntryPoint
-open class BaseBottomSheetDialogFragment: BottomSheetDialogFragment() {
+abstract class BaseBottomSheetDialogFragment2<T : ViewDataBinding> : BottomSheetDialogFragment() {
 
-
+    lateinit var currentLang:String
+    lateinit var sharedPreferences: SharedPreferencesManager
+    lateinit var binding: T
     private lateinit var progressDialog: Dialog
 
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(inflater, getLayout(), container, false)
+        initializeViews()
+        setupClickListener()
+        return binding.root
+    }
+
+    open fun setupClickListener(){}
+    open fun initializeViews(){}
+    abstract fun getLayout(): Int
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        sharedPreferences = (requireActivity().application as MyApplication).sharedPreferences
+        currentLang = sharedPreferences.getString(LANGUAGE)
         progressDialog = Dialog(requireContext())
 
     }

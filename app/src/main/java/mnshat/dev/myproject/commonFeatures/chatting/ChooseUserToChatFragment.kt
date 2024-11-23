@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.SupportersChattingAdapter
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.databinding.FragmentChooseUserToChatBinding
 import mnshat.dev.myproject.factories.ChatViewModelFactory
 import mnshat.dev.myproject.firebase.FirebaseService
@@ -21,7 +21,7 @@ import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
 
-class ChooseUserToChatFragment : BaseBottomSheetDialogFragment<FragmentChooseUserToChatBinding>() ,
+class ChooseUserToChatFragment : BaseBottomSheetDialogFragment2<FragmentChooseUserToChatBinding>() ,
     ItemMessagesListClicked {
 
     lateinit var viewModel: ChatViewModel
