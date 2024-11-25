@@ -3,14 +3,14 @@ package mnshat.dev.myproject.users.patient.main
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import mnshat.dev.myproject.base.BaseViewModel
+import mnshat.dev.myproject.base.BaseViewModel2
 import mnshat.dev.myproject.util.SharedPreferencesManager
 
 open class PatientViewModel(
     private val sharedPreferences: SharedPreferencesManager,
     application: Application
 )
-    : BaseViewModel(
+    : BaseViewModel2(
     sharedPreferences,
     application
     ) {

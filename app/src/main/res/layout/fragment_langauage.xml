@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="mnshat.dev.myproject.base.BaseViewModel" />
+            type="mnshat.dev.myproject.base.BaseViewModel2" />
     </data>
 
 

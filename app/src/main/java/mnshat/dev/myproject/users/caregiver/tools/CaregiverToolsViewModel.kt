@@ -1,14 +1,14 @@
 package mnshat.dev.myproject.users.caregiver.tools
 
 import android.app.Application
-import mnshat.dev.myproject.base.BaseViewModel
+import mnshat.dev.myproject.base.BaseViewModel2
 import mnshat.dev.myproject.model.Step
 import mnshat.dev.myproject.util.SharedPreferencesManager
 
 class CaregiverToolsViewModel(
     private val sharedPreferences: SharedPreferencesManager,
     private val  application: Application
-) : BaseViewModel(
+) : BaseViewModel2(
     sharedPreferences,
     application
 ) {

@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseViewModel
+import mnshat.dev.myproject.base.BaseViewModel2
 import mnshat.dev.myproject.model.Partner
 import mnshat.dev.myproject.model.Permissions
 import mnshat.dev.myproject.model.RegistrationData
@@ -29,7 +29,7 @@ class AuthViewModel(
     private val sharedPreferences: SharedPreferencesManager,
     application: Application
 
-) : BaseViewModel(
+) : BaseViewModel2(
     sharedPreferences,
     application
 ) {

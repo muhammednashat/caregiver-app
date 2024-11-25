@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.calender
+package mnshat.dev.myproject.users.patient.calender.presentaion
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
-import mnshat.dev.myproject.auth.AgeFragment
 import mnshat.dev.myproject.databinding.FragmentDailyPlanningBinding
 
 @AndroidEntryPoint

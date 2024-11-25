@@ -18,7 +18,7 @@ import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.log
 
-open class BaseViewModel(
+open class BaseViewModel2(
     private val sharedPreferences: SharedPreferencesManager,
     application: Application
 ) : AndroidViewModel(application) {

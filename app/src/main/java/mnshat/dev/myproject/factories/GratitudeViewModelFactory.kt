@@ -3,9 +3,6 @@ package mnshat.dev.myproject.factories
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import mnshat.dev.myproject.auth.AuthViewModel
-import mnshat.dev.myproject.base.BaseViewModel
-import mnshat.dev.myproject.users.patient.tools.breath.BreathViewModel
 import mnshat.dev.myproject.users.patient.tools.gratitude.GratitudeViewModel
 import mnshat.dev.myproject.util.SharedPreferencesManager
 

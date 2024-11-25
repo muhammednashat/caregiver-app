@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/margin_small"
-        tools:context=".users.patient.calender.DailyPlanningFragment">
+        tools:context=".users.patient.calender.presentaion.DailyPlanningFragment">
 
         <TextView
             android:id="@+id/textView46"

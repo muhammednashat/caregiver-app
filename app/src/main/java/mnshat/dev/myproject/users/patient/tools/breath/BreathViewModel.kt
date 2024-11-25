@@ -2,17 +2,16 @@ package mnshat.dev.myproject.users.patient.tools.breath
 
 import android.app.Application
 import android.os.CountDownTimer
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import mnshat.dev.myproject.base.BaseViewModel
+import mnshat.dev.myproject.base.BaseViewModel2
 import mnshat.dev.myproject.model.Duration
 import mnshat.dev.myproject.util.SharedPreferencesManager
 
 class BreathViewModel(
     private val sharedPreferences: SharedPreferencesManager,
     application: Application
-) : BaseViewModel(sharedPreferences, application) {
+) : BaseViewModel2(sharedPreferences, application) {
 
     private var _selectedPosition:Int=0
     private var counter :Int = 0

@@ -4,8 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
-import mnshat.dev.myproject.base.BaseViewModel
-import mnshat.dev.myproject.firebase.FirebaseService
+import mnshat.dev.myproject.base.BaseViewModel2
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.useCase.GetLibraryContentUseCase
 import mnshat.dev.myproject.model.Post
@@ -21,7 +20,7 @@ class LibraryViewModel(
     private val getLibraryContentUseCase: GetLibraryContentUseCase,
     application: Application
 
-) : BaseViewModel(
+) : BaseViewModel2(
     sharedPreferences,
     application
 ) {

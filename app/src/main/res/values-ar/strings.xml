@@ -483,7 +483,13 @@
     <string name="choose_the_day_you_would_like_to_plan">اختر اليوم الذي تود لنده التخطيط</string>
     <string name="let_s_get_started">هيا بنا لنبدء</string>
     <string name="choose_activities">اختيار الانشطة</string>
-    <string name="choose_your_daily_activity_you_can_choose_more_than_one_activity">اختر نشاطك اليومي, يمكنك اختيار اكثر من نشاط</string>
+    <string name="choose_your_daily_activity_you_can_choose_more_than_one_activity">اختر نشاطك اليومي, يمكنك اختيار اكثر من نشاط </string>
+    <string name="writing_short_story">كتابة قصة قصيرة</string>
+    <string name="drink_a_cup_of_coffee_or_tea">شرب كوب من القهوة او الشاى</string>
+    <string name="exposure_to_sunlight">التعرض لاشعة الشمس</string>
+    <string name="spend_time_with_a_pet">قضاء وقت مع حيوان اليف</string>
+    <string name="plant_care">عناية بالنباتات</string>
+    <string name="reading_a_book">قراءة كتاب</string>
 
 
 </resources>

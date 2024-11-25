@@ -520,6 +520,12 @@
     <string name="let_s_get_started">Let\'s get started</string>
     <string name="choose_activities">Choose activities</string>
     <string name="choose_your_daily_activity_you_can_choose_more_than_one_activity">Choose your daily activity. You can choose more than one activity</string>
+    <string name="writing_short_story">Writing short story</string>
+    <string name="drink_a_cup_of_coffee_or_tea">Drink cup coffee, tea</string>
+    <string name="exposure_to_sunlight">Exposure to sunlight</string>
+    <string name="spend_time_with_a_pet">Spend time with a pet</string>
+    <string name="plant_care">Plant care</string>
+    <string name="reading_a_book">Reading a book</string>
 
 
 </resources>

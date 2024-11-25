@@ -1,11 +1,9 @@
 package mnshat.dev.myproject.users.patient.dailyprogram
 
 import android.app.Application
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
-import mnshat.dev.myproject.base.BaseViewModel
+import mnshat.dev.myproject.base.BaseViewModel2
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.CurrentTask
 import mnshat.dev.myproject.model.StatusDailyProgram
@@ -14,13 +12,12 @@ import mnshat.dev.myproject.util.CURRENT_TASK
 import mnshat.dev.myproject.util.DAY_TASK
 import mnshat.dev.myproject.util.STATUS
 import mnshat.dev.myproject.util.SharedPreferencesManager
-import mnshat.dev.myproject.util.log
 
 class DailyProgramViewModel(
     private val sharedPreferences: SharedPreferencesManager,
     application: Application
 
-) : BaseViewModel(
+) : BaseViewModel2(
     sharedPreferences,
     application
 ) {

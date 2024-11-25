@@ -3,11 +3,10 @@ package mnshat.dev.myproject.users.patient.tools.supplications
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import mnshat.dev.myproject.base.BaseViewModel
+import mnshat.dev.myproject.base.BaseViewModel2
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.model.Posts
@@ -17,14 +16,13 @@ import mnshat.dev.myproject.util.POSTS
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.data.getListHands
-import mnshat.dev.myproject.util.log
 
 
 //ToDo Clear Data after onStop called
 
 class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesManager,
                              application: Application
-):BaseViewModel(sharedPreferences,application) {
+):BaseViewModel2(sharedPreferences,application) {
 
     private val firestore = Firebase.firestore
     private var currentIndexListImages = 0

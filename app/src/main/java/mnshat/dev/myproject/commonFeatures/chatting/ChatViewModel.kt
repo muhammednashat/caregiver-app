@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
-import mnshat.dev.myproject.base.BaseViewModel
+import mnshat.dev.myproject.base.BaseViewModel2
 import mnshat.dev.myproject.model.Message
 import mnshat.dev.myproject.model.Messages
 import mnshat.dev.myproject.model.MetaDataMessages
@@ -19,7 +19,7 @@ class ChatViewModel(
     private val sharedPreferences: SharedPreferencesManager,
     application: Application
 
-) : BaseViewModel(
+) : BaseViewModel2(
     sharedPreferences,
     application
 ) {

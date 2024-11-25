@@ -3,7 +3,7 @@ package mnshat.dev.myproject.users.patient.tools.gratitude
 import android.app.Application
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
-import mnshat.dev.myproject.base.BaseViewModel
+import mnshat.dev.myproject.base.BaseViewModel2
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Gratitude
 import mnshat.dev.myproject.model.Post
@@ -16,7 +16,7 @@ import mnshat.dev.myproject.util.log
 class GratitudeViewModel(
     private val sharedPreferences: SharedPreferencesManager,
     application: Application
-) : BaseViewModel(sharedPreferences, application) {
+) : BaseViewModel2(sharedPreferences, application) {
 
     private var _selectedPosition:Int=0
     private var counter :Int = 0

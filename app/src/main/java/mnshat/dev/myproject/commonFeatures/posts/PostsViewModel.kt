@@ -4,20 +4,18 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
-import mnshat.dev.myproject.base.BaseViewModel
+import mnshat.dev.myproject.base.BaseViewModel2
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.model.Posts
 import mnshat.dev.myproject.util.POSTS
 import mnshat.dev.myproject.util.SharedPreferencesManager
-import mnshat.dev.myproject.util.USER_EMAIL
-import mnshat.dev.myproject.util.log
 
 class PostsViewModel
     (
     private val sharedPreferences: SharedPreferencesManager,
     application: Application
 
-) : BaseViewModel(
+) : BaseViewModel2(
     sharedPreferences,
     application
 ) {

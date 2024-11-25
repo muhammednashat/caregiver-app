@@ -16,7 +16,7 @@
         android:theme="@style/Theme.MyProject"
         tools:targetApi="31">
         <activity
-            android:name=".users.patient.calender.CalenderActivity"
+            android:name=".users.patient.calender.presentaion.CalenderActivity"
             android:exported="false" />
         <activity
             android:name=".commonFeatures.chatting.ChatActivity"
