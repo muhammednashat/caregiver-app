@@ -2,6 +2,7 @@ package mnshat.dev.myproject.users.patient.calender.presentaion
 
 import android.content.Context
 import android.graphics.Color
+import android.provider.CalendarContract.Colors
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,7 @@ class CalenderActivitiesAdapter(
         val container: ConstraintLayout = itemView.findViewById(R.id.container)
         val text: TextView = itemView.findViewById(R.id.text)
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
+        val icChecked: ImageView = itemView.findViewById(R.id.icChecked)
     }
 
 
@@ -33,9 +35,13 @@ class CalenderActivitiesAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
      val activity = activities[position]
-       holder.text.text = activity.text
-       holder.imageView.setImageResource(activity.image)
-//       holder.container.setBackgroundResource(Color.parseColor(activity.background))
+        holder.text.text = activity.text
+        holder.imageView.setImageResource(activity.image)
+        holder.container.setBackgroundColor(Color.parseColor(activity.background))
+
+        holder.container.setOnClickListener{
+            holder.icChecked.visibility = View.VISIBLE
+        }
 
     }
 

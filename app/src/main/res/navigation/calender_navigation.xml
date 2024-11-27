@@ -7,5 +7,21 @@
     <fragment
         android:id="@+id/dailyPlannerFragment"
         android:name="mnshat.dev.myproject.users.patient.calender.presentaion.DailyPlanningFragment"
-        android:label="DailyPlannerFragment" />
+        android:label="DailyPlannerFragment" >
+        <action
+            android:id="@+id/action_dailyPlannerFragment_to_chooseActivitiesFragment"
+            app:destination="@id/chooseActivitiesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseActivitiesFragment"
+        android:name="mnshat.dev.myproject.users.patient.calender.presentaion.ChooseActivitiesFragment"
+        android:label="ChooseActivitiesFragment" >
+        <action
+            android:id="@+id/action_chooseActivitiesFragment_to_createOwnActivityFragment"
+            app:destination="@id/createOwnActivityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createOwnActivityFragment"
+        android:name="mnshat.dev.myproject.users.patient.calender.presentaion.CreateOwnActivityFragment"
+        android:label="CreateOwnActivityFragment" />
 </navigation>

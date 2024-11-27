@@ -44,33 +44,35 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_large"
-            tools:listitem="@layout/item_view_activity_calender"
-            android:layout_marginBottom="@dimen/margin_large"
-            app:layout_constraintBottom_toTopOf="@+id/start_button"
+            app:layout_constraintBottom_toTopOf="@+id/addButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView469" />
+            app:layout_constraintTop_toBottomOf="@+id/textView469"
+            app:layout_constraintVertical_bias="0.0"
+            tools:listitem="@layout/item_view_activity_calender" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/start_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
+            android:layout_marginBottom="56dp"
             android:text="@string/next"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/addButton"
-            android:layout_marginBottom="50dp"
             android:layout_marginEnd="@dimen/margin_large"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/start_button"
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
