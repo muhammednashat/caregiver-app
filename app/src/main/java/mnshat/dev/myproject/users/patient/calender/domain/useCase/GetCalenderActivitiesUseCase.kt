@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.calender.domain
+package mnshat.dev.myproject.users.patient.calender.domain.useCase
 
 import android.content.Context
 import mnshat.dev.myproject.users.patient.calender.data.CalenderActivitiesRepo

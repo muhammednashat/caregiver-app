@@ -1,8 +1,6 @@
 package mnshat.dev.myproject.users.patient.calender.presentaion
 
-import android.content.Context
 import android.graphics.Color
-import android.provider.CalendarContract.Colors
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +9,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.model.Step
-import mnshat.dev.myproject.users.patient.calender.domain.CalenderActivity
+import mnshat.dev.myproject.users.patient.calender.domain.entity.CalenderActivity
 
 class CalenderActivitiesAdapter(
     private val activities: List<CalenderActivity>,

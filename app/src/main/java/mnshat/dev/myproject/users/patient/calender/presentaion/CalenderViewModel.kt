@@ -3,7 +3,7 @@ package mnshat.dev.myproject.users.patient.calender.presentaion
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import mnshat.dev.myproject.users.patient.calender.domain.GetCalenderActivitiesUseCase
+import mnshat.dev.myproject.users.patient.calender.domain.useCase.GetCalenderActivitiesUseCase
 import javax.inject.Inject
 
 @HiltViewModel

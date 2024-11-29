@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
+import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentDailyPlanningBinding
 
 @AndroidEntryPoint
@@ -19,6 +22,16 @@ class DailyPlanningFragment : BaseFragment() {
     ): View{
 
         binding = FragmentDailyPlanningBinding.inflate(inflater, container, false)
+
+        val hashSet = HashSet<CalendarDay>()
+        hashSet.add(CalendarDay.from(2024, 11, 29))
+        hashSet.add(CalendarDay.from(2024, 11, 22))
+        hashSet.add(CalendarDay.from(2024, 10, 13))
+        hashSet.add(CalendarDay.from(2024, 9, 29))
+        hashSet.add(CalendarDay.from(2024, 12, 18))
+        val tast = TaskDecorator(hashSet)
+        binding.calendarView.addDecorator(tast)
+
         setListeners()
         return  binding.root
 
@@ -28,6 +41,13 @@ class DailyPlanningFragment : BaseFragment() {
     binding.addButton.setOnClickListener{
         ChooseDayFragment().show(childFragmentManager, ChooseDayFragment::class.java.name)
     }
+        binding.tracking.setOnClickListener {
+            findNavController().navigate(R.id.action_dailyPlannerFragment_to_dayPlanFragment)
+    }
+        binding.back.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
     }
 
 

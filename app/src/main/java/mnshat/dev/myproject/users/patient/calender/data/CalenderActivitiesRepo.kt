@@ -2,7 +2,7 @@ package mnshat.dev.myproject.users.patient.calender.data
 
 import android.content.Context
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.users.patient.calender.domain.CalenderActivity
+import mnshat.dev.myproject.users.patient.calender.domain.entity.CalenderActivity
 
 class CalenderActivitiesRepo {
 
