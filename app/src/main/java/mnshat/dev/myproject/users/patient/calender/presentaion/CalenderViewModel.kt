@@ -17,6 +17,9 @@ class CalenderViewModel @Inject constructor(
     fun getCalenderActivities(context: Context) = getCalenderActivitiesUseCase(context)
 
     fun setPickedDate(date: CalendarDay) = run { pickedDate = date }
-    fun getPickedDate() = pickedDate
 
+    fun getPickedDate() = pickedDate
+    fun createDayPlan(){
+
+    }
 }

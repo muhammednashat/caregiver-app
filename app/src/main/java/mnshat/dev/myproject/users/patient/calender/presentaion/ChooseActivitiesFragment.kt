@@ -39,10 +39,12 @@ class ChooseActivitiesFragment : BaseFragment() {
 
     private fun setListener(){
         binding.addButton.setOnClickListener{
+
             findNavController().navigate(R.id.action_chooseActivitiesFragment_to_createOwnActivityFragment)
         }
         binding.button.setOnClickListener{
-            showDoneDialog()
+            Log.e("TAG",adapter.getChosenActivities().size.toString())
+            viewModel.createDayPlan()
         }
     }
 
@@ -50,13 +52,18 @@ class ChooseActivitiesFragment : BaseFragment() {
        adapter =CalenderActivitiesAdapter(
                viewModel.getCalenderActivities(requireActivity())
                ,ActivitiesListener {
-                  Log.e("TAG", "setUpRecyclerView: ${it.size}")
+                 if (it.isNotEmpty()){
+                     binding.button.alpha = 1.0f
+                 }else{
+                     binding.button.alpha = 0.0f
+                 }
               })
 
         val layoutManager = GridLayoutManager(requireActivity(), 2)
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = adapter
     }
+
 
     private fun showDoneDialog() {
         val dialog = Dialog(requireContext())

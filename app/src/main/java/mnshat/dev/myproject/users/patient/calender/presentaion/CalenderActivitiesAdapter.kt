@@ -16,7 +16,7 @@ class CalenderActivitiesAdapter(
     private val listener: ActivitiesListener,
 ) :
     RecyclerView.Adapter<CalenderActivitiesAdapter.ViewHolder>() {
-    private var choosenActivities = setOf<CalenderActivity>()
+    private var chosenActivities = setOf<CalenderActivity>()
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val container: ConstraintLayout = itemView.findViewById(R.id.container)
@@ -39,24 +39,28 @@ class CalenderActivitiesAdapter(
         holder.container.setBackgroundColor(Color.parseColor(activity.background))
 
         holder.container.setOnClickListener{
-            if (choosenActivities.contains(activity)){
-                choosenActivities = choosenActivities.minus(activity)
-                holder.icChecked.visibility = View.VISIBLE
+            if (chosenActivities.contains(activity)){
+                chosenActivities = chosenActivities.minus(activity)
+                holder.icChecked.visibility = View.GONE
             }else{
-                choosenActivities = choosenActivities.plus(activity)
+                chosenActivities = chosenActivities.plus(activity)
                 holder.icChecked.visibility = View.VISIBLE
+
             }
+            listener.onClick(chosenActivities)
         }
 
     }
-
-
     override fun getItemCount() = activities.size
 
+    fun getChosenActivities() =  chosenActivities
 
 }
 
-class ActivitiesListener(val clickListener: (choosenActivities: Set<CalenderActivity>) -> Unit) {
-//        fun onClick(activity: CalenderActivity) = clickListener(activity)
+
+
+
+class ActivitiesListener(val clickListener: (activities: Set<CalenderActivity>) -> Unit) {
+        fun onClick(activities: Set<CalenderActivity>) = clickListener(activities)
 }
 
