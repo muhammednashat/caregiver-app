@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogCalenderBinding
-import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
 import mnshat.dev.myproject.databinding.FragmentChooseActiviesBinding
 
 
@@ -47,7 +47,12 @@ class ChooseActivitiesFragment : BaseFragment() {
     }
 
     private fun setUpRecyclerView() {
-       adapter = CalenderActivitiesAdapter(viewModel.getCalenderActivities(requireActivity()))
+       adapter =CalenderActivitiesAdapter(
+               viewModel.getCalenderActivities(requireActivity())
+               ,ActivitiesListener {
+                  Log.e("TAG", "setUpRecyclerView: ${it.size}")
+              })
+
         val layoutManager = GridLayoutManager(requireActivity(), 2)
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = adapter

@@ -13,9 +13,11 @@ import mnshat.dev.myproject.users.patient.calender.domain.entity.CalenderActivit
 
 class CalenderActivitiesAdapter(
     private val activities: List<CalenderActivity>,
+    private val listener: ActivitiesListener,
 ) :
-
     RecyclerView.Adapter<CalenderActivitiesAdapter.ViewHolder>() {
+    private var choosenActivities = setOf<CalenderActivity>()
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val container: ConstraintLayout = itemView.findViewById(R.id.container)
         val text: TextView = itemView.findViewById(R.id.text)
@@ -37,13 +39,24 @@ class CalenderActivitiesAdapter(
         holder.container.setBackgroundColor(Color.parseColor(activity.background))
 
         holder.container.setOnClickListener{
-            holder.icChecked.visibility = View.VISIBLE
+            if (choosenActivities.contains(activity)){
+                choosenActivities = choosenActivities.minus(activity)
+                holder.icChecked.visibility = View.VISIBLE
+            }else{
+                choosenActivities = choosenActivities.plus(activity)
+                holder.icChecked.visibility = View.VISIBLE
+            }
         }
 
     }
 
 
     override fun getItemCount() = activities.size
+
+
 }
 
+class ActivitiesListener(val clickListener: (choosenActivities: Set<CalenderActivity>) -> Unit) {
+//        fun onClick(activity: CalenderActivity) = clickListener(activity)
+}
 
