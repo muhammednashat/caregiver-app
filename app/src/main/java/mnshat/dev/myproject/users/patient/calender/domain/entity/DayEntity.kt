@@ -6,22 +6,33 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.PrimaryKey
 import androidx.room.Query
+import com.prolificinteractive.materialcalendarview.CalendarDay
+
 
 @Entity(tableName = "days")
 data class DayEntity(
-    @PrimaryKey val date: String, // Use a unique string like "YYYY-MM-DD" for the date
-    val isCurrentDay: Boolean = false // Flag to check if it's today's plan
+    @PrimaryKey val day: String
 )
 
 
-@Dao
-interface DayDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertDay(day: DayEntity)
 
-    @Query("SELECT * FROM days")
-    suspend fun getAllDays(): List<DayEntity>
 
-    @Query("SELECT * FROM days WHERE date = :date")
-    suspend fun getDay(date: String): DayEntity?
-}
+
+
+
+
+
+
+
+
+//@Dao
+//interface DayDao {
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    suspend fun insertDay(day: DayEntity)
+//
+//    @Query("SELECT * FROM days")
+//    suspend fun getAllDays(): List<DayEntity>
+//
+//    @Query("SELECT * FROM days WHERE day = :date")
+//    suspend fun getDay(date: String): DayEntity?
+//}

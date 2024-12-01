@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import mnshat.dev.myproject.users.patient.calender.data.CalenderActivitiesRepo
+import mnshat.dev.myproject.users.patient.calender.data.repo.CalenderActivitiesRepo
 import mnshat.dev.myproject.users.patient.calender.domain.useCase.GetCalenderActivitiesUseCase
 import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderViewModel
 import javax.inject.Singleton

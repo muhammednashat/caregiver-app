@@ -34,7 +34,7 @@ class CalenderActivitiesAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
      val activity = activities[position]
-        holder.text.text = activity.text
+        holder.text.text = activity.nameTask
         holder.imageView.setImageResource(activity.image)
         holder.container.setBackgroundColor(Color.parseColor(activity.background))
 

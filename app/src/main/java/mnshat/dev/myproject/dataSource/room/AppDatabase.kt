@@ -7,11 +7,24 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.data.LibraryDao
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
+import mnshat.dev.myproject.users.patient.calender.data.daos.DayDao
+import mnshat.dev.myproject.users.patient.calender.data.daos.TaskDao
+import mnshat.dev.myproject.users.patient.calender.domain.entity.DayEntity
+import mnshat.dev.myproject.users.patient.calender.domain.entity.TaskEntity
 
-@Database(entities = [LibraryContent::class], version = 2, exportSchema = false)
+@Database(
+    entities = [LibraryContent::class , DayEntity::class,TaskEntity::class],
+    version = 4,
+    exportSchema = false
+)
 
 abstract class AppDatabase : RoomDatabase() {
+
     abstract fun libraryDao(): LibraryDao
+    abstract fun dayDao(): DayDao
+    abstract fun taskDao(): TaskDao
+
+
     companion object {
         @Volatile
         private var INSTANCE: AppDatabase? = null
