@@ -99,6 +99,7 @@ dependencies {
     //hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
     ksp("com.google.dagger:hilt-compiler:2.51.1")
+
     //calender
     implementation("com.prolificinteractive:material-calendarview:1.4.3")
 

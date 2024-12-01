@@ -17,11 +17,18 @@ import androidx.room.PrimaryKey
 )
 data class TaskEntity(
     @PrimaryKey(autoGenerate = true) val taskId: Int = 0,
-    val day: String,
-    val nameTask: String,
+    val day: String, // 11 / 11
+    val nameTask: String, // Read
     val description: String = "",
     val isCompleted: Boolean = false
 )
+//data class TaskEntity(
+//    @PrimaryKey(autoGenerate = true) val taskId: Int = 0,
+//    val day: String, 12 /11
+//    val nameTask: String, // Read hs
+//    val description: String = "",
+//    val isCompleted: Boolean = false
+//)
 
 
 //@Dao

@@ -10,4 +10,7 @@ interface TaskDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addTasks(tasks: List<TaskEntity>): List<Long>
+
+
+
 }

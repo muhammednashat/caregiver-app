@@ -23,19 +23,19 @@ class DailyPlanningFragment : BaseFragment() {
     ): View{
 
         binding = FragmentDailyPlanningBinding.inflate(inflater, container, false)
-
         val hashSet = HashSet<CalendarDay>()
         hashSet.add(CalendarDay.from(2024, 11, 22))
         hashSet.add(CalendarDay.from(2024, 10, 13))
         hashSet.add(CalendarDay.from(2024, 9, 29))
         hashSet.add(CalendarDay.from(2024, 12, 18))
+        val tast = TaskDecorator(hashSet)
+        binding.calendarView.addDecorator(tast)
 
-        binding.calendarView.setOnDateChangedListener { widget, date, selected ->
-        Log.e("TAG","" +date)
-            hashSet.add(date)
-            val tast = TaskDecorator(hashSet)
-            binding.calendarView.addDecorator(tast)
-        }
+//        binding.calendarView.setOnDateChangedListener { widget, date, selected ->
+//        Log.e("TAG","" +date)
+//            hashSet.add(date)
+//
+//        }
 
 
         setListeners()
