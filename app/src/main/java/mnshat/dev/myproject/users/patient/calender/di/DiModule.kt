@@ -10,7 +10,9 @@ import mnshat.dev.myproject.users.patient.calender.data.repo.CalenderActivitiesR
 import mnshat.dev.myproject.users.patient.calender.data.repo.DayRepository
 import mnshat.dev.myproject.users.patient.calender.domain.useCase.CalendarUseCaseManager
 import mnshat.dev.myproject.users.patient.calender.domain.useCase.CreateDayUseCase
+import mnshat.dev.myproject.users.patient.calender.domain.useCase.GetAllDaysUseCase
 import mnshat.dev.myproject.users.patient.calender.domain.useCase.GetCalenderActivitiesUseCase
+import mnshat.dev.myproject.users.patient.calender.domain.useCase.GetDayUseCase
 import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderViewModel
 import javax.inject.Singleton
 
@@ -38,7 +40,10 @@ object  DiModule {
     @Provides
     fun provideGetCalenderActivitiesUseCase(calenderActivitiesRepo: CalenderActivitiesRepo) =
         GetCalenderActivitiesUseCase(calenderActivitiesRepo)
-
+    @Provides
+    fun provideGetAllDaysUseCase(dayRepository: DayRepository) = GetAllDaysUseCase(dayRepository)
+    @Provides
+    fun provideGetDayUseCase(dayRepository: DayRepository) = GetDayUseCase(dayRepository)
     @Provides
     fun provideCreateDayUseCase(dayRepository: DayRepository) = CreateDayUseCase(dayRepository)
 
@@ -46,13 +51,10 @@ object  DiModule {
     @Provides
     fun provideCalendarUseCaseManager
                 (createDayUseCase: CreateDayUseCase,
-                 getCalenderActivitiesUseCase: GetCalenderActivitiesUseCase) =
-        CalendarUseCaseManager(createDayUseCase,getCalenderActivitiesUseCase)
-
-
-
-
-
+                 getCalenderActivitiesUseCase: GetCalenderActivitiesUseCase,
+                 getAllDaysUseCase: GetAllDaysUseCase,
+                 getDayUseCase: GetDayUseCase) =
+        CalendarUseCaseManager(createDayUseCase,getCalenderActivitiesUseCase,getAllDaysUseCase,getDayUseCase)
 
     //Dao
     @Provides

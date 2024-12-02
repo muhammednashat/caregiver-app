@@ -10,7 +10,10 @@ import mnshat.dev.myproject.users.patient.calender.domain.entity.DayEntity
 interface DayDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addDay(dayEntity: DayEntity):Long
+    suspend fun addDay(dayEntity: DayEntity): Long
+
+    @Query("SELECT * FROM days")
+    suspend fun getAllDays(): List<DayEntity>
 
     @Query("SELECT * FROM days WHERE day = :date")
     suspend fun getDay(date: String): DayEntity?

@@ -6,6 +6,12 @@ import javax.inject.Inject
 
 class DayRepository @Inject constructor (val dayDao: DayDao){
 
-     suspend fun addDay(dayEntity: DayEntity) =
-      dayDao.addDay(dayEntity)
+     suspend fun addDay(dayEntity: DayEntity) =  dayDao.addDay(dayEntity)
+
+    suspend fun getAllDays()= dayDao.getAllDays()
+
+    suspend fun getDay(date:String) = dayDao.getDay(date)
+
+
+
 }
