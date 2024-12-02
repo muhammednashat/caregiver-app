@@ -17,6 +17,8 @@ import mnshat.dev.myproject.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogCalenderBinding
 import mnshat.dev.myproject.databinding.FragmentChooseActiviesBinding
+import mnshat.dev.myproject.users.patient.calender.domain.entity.DayEntity
+import java.util.Date
 
 
 @AndroidEntryPoint
@@ -43,8 +45,9 @@ class ChooseActivitiesFragment : BaseFragment() {
             findNavController().navigate(R.id.action_chooseActivitiesFragment_to_createOwnActivityFragment)
         }
         binding.button.setOnClickListener{
-            Log.e("TAG",adapter.getChosenActivities().size.toString())
-            viewModel.createDayPlan()
+            val pickedDate = viewModel.getPickedDate()
+            val dayEntity = DayEntity(day = pickedDate.calendar.time.toString())
+            viewModel.createDayPlan(dayEntity)
         }
     }
 

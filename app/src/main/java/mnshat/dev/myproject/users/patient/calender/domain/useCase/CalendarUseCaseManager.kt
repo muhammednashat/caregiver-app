@@ -1,6 +1,9 @@
 package mnshat.dev.myproject.users.patient.calender.domain.useCase
 
-class CalendarUseCaseManager(
-    val addTasksUseCase: AddTasksUseCase,
+import javax.inject.Inject
+
+class CalendarUseCaseManager @Inject constructor(
     val createDayUseCase: CreateDayUseCase,
+    val getCalenderActivitiesUseCase: GetCalenderActivitiesUseCase,
+//    val addTasksUseCase: AddTasksUseCase,
 )

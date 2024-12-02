@@ -12,12 +12,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object LibraryDi {
-
-//    @Provides
-//    @Singleton
-//    fun proLibraViewModel(libraryDao: LibraryDao): LibraryViewModel {
-//        return LibraryViewModel(libraryDao)
-//    }
     @Provides
     @Singleton
     fun provideLibraryContentRepo(appDatabase: AppDatabase): LibraryDao {

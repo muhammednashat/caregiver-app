@@ -2,10 +2,10 @@ package mnshat.dev.myproject.users.patient.calender.data.repo
 
 import mnshat.dev.myproject.users.patient.calender.data.daos.DayDao
 import mnshat.dev.myproject.users.patient.calender.domain.entity.DayEntity
-import mnshat.dev.myproject.users.patient.calender.domain.repo.DayRepository
+import javax.inject.Inject
 
-class DayRepositoryImp (private val dayDao: DayDao): DayRepository {
+class DayRepository @Inject constructor (val dayDao: DayDao){
 
-    override suspend fun addDay(dayEntity: DayEntity) =
+     suspend fun addDay(dayEntity: DayEntity) =
       dayDao.addDay(dayEntity)
 }
