@@ -1,6 +1,8 @@
 package mnshat.dev.myproject.users.patient.calender.presentaion
 
 import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,6 +14,7 @@ import mnshat.dev.myproject.users.patient.calender.domain.entity.DayEntity
 import mnshat.dev.myproject.users.patient.calender.domain.entity.TaskEntity
 import mnshat.dev.myproject.users.patient.calender.domain.useCase.CalendarUseCaseManager
 import mnshat.dev.myproject.util.log
+import java.util.Date
 import javax.inject.Inject
 
 //TODO replace CoroutineScope by viewmodelScope OR Cancel The Jop
@@ -24,6 +27,15 @@ class CalenderViewModel @Inject constructor(
 
     private lateinit var pickedDate: CalendarDay
     private lateinit var customActivity: CalenderActivity
+
+    private val _daysList = MutableLiveData<HashSet<CalendarDay>>()
+    val daysList: LiveData<HashSet<CalendarDay>> get() = _daysList
+
+
+    private val _taskList = MutableLiveData<List<TaskEntity>>()
+    val taskList: LiveData<List<TaskEntity>> get() = _taskList
+
+
 
     fun getCalenderActivities(context: Context) =
         calendarUseCaseManager.getCalenderActivitiesUseCase(context)
@@ -51,15 +63,13 @@ class CalenderViewModel @Inject constructor(
         }
     }
 
-    fun logAllDays() {
+    fun getDays() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val result = calendarUseCaseManager.getAllDaysUseCase()
                 if (result.isSuccess) {
                     val days = result.getOrNull()
-                    days?.forEach { day ->
-                        log("Day: ${day.day},")
-                    }
+                    days?.let { postDays(days)}
                 } else {
                     log("Failed to fetch days: ${result.exceptionOrNull()?.message}")
                 }
@@ -67,6 +77,18 @@ class CalenderViewModel @Inject constructor(
                 log("Unexpected error: ${e.message}")
             }
         }
+    }
+
+    private fun postDays(
+        days: List<DayEntity>?,
+    ) {
+        val list = mutableSetOf<CalendarDay>()
+        days?.forEach { day ->
+            val date = Date(day.day)
+            val calendarDay = CalendarDay(date)
+            list.add(calendarDay)
+        }
+        _daysList.postValue(list.toHashSet())
     }
 
     fun getDay(date:String) {
@@ -87,8 +109,7 @@ class CalenderViewModel @Inject constructor(
         }
     }
 
-
-    fun List<CalenderActivity>.toTaskEntities(day: String) =
+    private fun List<CalenderActivity>.toTaskEntities(day: String) =
         this.map { activity ->
             TaskEntity(
                 day = day,
@@ -99,9 +120,7 @@ class CalenderViewModel @Inject constructor(
             )
         }
 
-
     private fun addTasks(tasks: List<TaskEntity>) {
-
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val result = calendarUseCaseManager.addTasksUseCase(tasks)
