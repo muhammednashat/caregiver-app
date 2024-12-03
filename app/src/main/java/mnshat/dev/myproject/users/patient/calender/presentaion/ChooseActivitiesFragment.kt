@@ -47,7 +47,8 @@ class ChooseActivitiesFragment : BaseFragment() {
         binding.button.setOnClickListener{
             val pickedDate = viewModel.getPickedDate()
             val dayEntity = DayEntity(day = pickedDate.calendar.time.toString())
-            viewModel.createDayPlan(dayEntity)
+            viewModel.createDayPlan(dayEntity,adapter.getChosenActivities().toList())
+
         }
     }
 

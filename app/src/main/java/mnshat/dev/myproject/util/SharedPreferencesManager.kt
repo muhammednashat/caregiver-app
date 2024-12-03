@@ -4,8 +4,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import mnshat.dev.myproject.model.CurrentTask
+import javax.inject.Inject
 
-class SharedPreferencesManager(context: Context) {
+class SharedPreferencesManager @Inject constructor(context: Context) {
 
     private val PREFS_NAME = "MyAppPrefs"
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)

@@ -6,14 +6,18 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import mnshat.dev.myproject.dataSource.room.AppDatabase
 import mnshat.dev.myproject.users.patient.calender.data.daos.DayDao
+import mnshat.dev.myproject.users.patient.calender.data.daos.TaskDao
 import mnshat.dev.myproject.users.patient.calender.data.repo.CalenderActivitiesRepo
 import mnshat.dev.myproject.users.patient.calender.data.repo.DayRepository
+import mnshat.dev.myproject.users.patient.calender.data.repo.TaskRepository
+import mnshat.dev.myproject.users.patient.calender.domain.useCase.AddTasksUseCase
 import mnshat.dev.myproject.users.patient.calender.domain.useCase.CalendarUseCaseManager
 import mnshat.dev.myproject.users.patient.calender.domain.useCase.CreateDayUseCase
 import mnshat.dev.myproject.users.patient.calender.domain.useCase.GetAllDaysUseCase
 import mnshat.dev.myproject.users.patient.calender.domain.useCase.GetCalenderActivitiesUseCase
 import mnshat.dev.myproject.users.patient.calender.domain.useCase.GetDayUseCase
 import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderViewModel
+import mnshat.dev.myproject.util.SharedPreferencesManager
 import javax.inject.Singleton
 
 @Module
@@ -23,11 +27,16 @@ object  DiModule {
     //Repos
     @Provides
     @Singleton
-    fun provideCalenderActivitiesRepository() = CalenderActivitiesRepo()
-
+    fun provideCalenderActivitiesRepository(sharedPreferences: SharedPreferencesManager) =
+        CalenderActivitiesRepo(sharedPreferences)
     @Provides
     @Singleton
     fun providesDayRepository(dayDao: DayDao) = DayRepository(dayDao)
+
+    @Provides
+    @Singleton
+    fun provideTaskRepository(taskDao: TaskDao) = TaskRepository(taskDao)
+
 
     //ViewModels
     @Provides
@@ -47,17 +56,35 @@ object  DiModule {
     @Provides
     fun provideCreateDayUseCase(dayRepository: DayRepository) = CreateDayUseCase(dayRepository)
 
+    @Provides
+    fun provideAddTasksUseCase(taskRepository: TaskRepository) = AddTasksUseCase(taskRepository)
+
 
     @Provides
     fun provideCalendarUseCaseManager
                 (createDayUseCase: CreateDayUseCase,
                  getCalenderActivitiesUseCase: GetCalenderActivitiesUseCase,
                  getAllDaysUseCase: GetAllDaysUseCase,
-                 getDayUseCase: GetDayUseCase) =
-        CalendarUseCaseManager(createDayUseCase,getCalenderActivitiesUseCase,getAllDaysUseCase,getDayUseCase)
+                 getDayUseCase: GetDayUseCase,
+                 addTasksUseCase: AddTasksUseCase,
+
+                  ) =
+        CalendarUseCaseManager(
+            createDayUseCase,
+            getCalenderActivitiesUseCase,
+            getAllDaysUseCase,
+            getDayUseCase,
+            addTasksUseCase
+        )
+
 
     //Dao
     @Provides
-   fun  provideDayDao(appDatabase: AppDatabase) = appDatabase.dayDao()
+    @Singleton
+    fun provideDayDao(appDatabase: AppDatabase) = appDatabase.dayDao()
+
+    @Provides
+    @Singleton
+    fun provideTaskDao(appDatabase: AppDatabase) = appDatabase.taskDao()
 
 }

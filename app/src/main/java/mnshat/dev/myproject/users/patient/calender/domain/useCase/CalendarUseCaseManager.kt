@@ -7,5 +7,5 @@ class CalendarUseCaseManager @Inject constructor(
     val getCalenderActivitiesUseCase: GetCalenderActivitiesUseCase,
     val getAllDaysUseCase: GetAllDaysUseCase,
     val getDayUseCase: GetDayUseCase,
-//    val addTasksUseCase: AddTasksUseCase,
+    val addTasksUseCase: AddTasksUseCase,
 )

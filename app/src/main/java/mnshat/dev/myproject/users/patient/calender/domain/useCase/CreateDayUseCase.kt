@@ -10,7 +10,6 @@ class CreateDayUseCase @Inject constructor ( val dayRepository: DayRepository) {
     suspend operator fun invoke(dayEntity: DayEntity): Result<Long> {
         return try {
            val id =  dayRepository.addDay(dayEntity)
-            log("id -> id")
             Result.success(id)
         } catch (e: Exception) {
             log("Failed to add day: ${dayEntity.day}")

@@ -18,31 +18,10 @@ import androidx.room.PrimaryKey
 data class TaskEntity(
     @PrimaryKey(autoGenerate = true) val taskId: Int = 0,
     val day: String, // 11 / 11
+    val image:Int,
     val nameTask: String, // Read
+    val isCompleted: Boolean = false,
     val description: String = "",
-    val isCompleted: Boolean = false
+
 )
-//data class TaskEntity(
-//    @PrimaryKey(autoGenerate = true) val taskId: Int = 0,
-//    val day: String, 12 /11
-//    val nameTask: String, // Read hs
-//    val description: String = "",
-//    val isCompleted: Boolean = false
-//)
-
-
-//@Dao
-//interface TaskDao {
-//    @Insert(onConflict = OnConflictStrategy.REPLACE)
-//    suspend fun insertTask(task: TaskEntity)
-//
-//    @Query("SELECT * FROM tasks WHERE dayDate = :dayDate")
-//    suspend fun getTasksForDay(dayDate: String): List<TaskEntity>
-//
-//    @Update
-//    suspend fun updateTask(task: TaskEntity)
-//
-//    @Delete
-//    suspend fun deleteTask(task: TaskEntity)
-//}
 
