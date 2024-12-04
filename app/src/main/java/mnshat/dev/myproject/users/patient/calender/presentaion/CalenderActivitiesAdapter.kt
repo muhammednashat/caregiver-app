@@ -14,8 +14,8 @@ import mnshat.dev.myproject.users.patient.calender.domain.entity.CalenderActivit
 class CalenderActivitiesAdapter(
     private val activities: List<CalenderActivity>,
     private val listener: ActivitiesListener,
-) :
-    RecyclerView.Adapter<CalenderActivitiesAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<CalenderActivitiesAdapter.ViewHolder>() {
+
     private var chosenActivities = setOf<CalenderActivity>()
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

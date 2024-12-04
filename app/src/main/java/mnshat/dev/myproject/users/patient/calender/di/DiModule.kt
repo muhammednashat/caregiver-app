@@ -16,6 +16,7 @@ import mnshat.dev.myproject.users.patient.calender.domain.useCase.CreateDayUseCa
 import mnshat.dev.myproject.users.patient.calender.domain.useCase.GetAllDaysUseCase
 import mnshat.dev.myproject.users.patient.calender.domain.useCase.GetCalenderActivitiesUseCase
 import mnshat.dev.myproject.users.patient.calender.domain.useCase.GetDayUseCase
+import mnshat.dev.myproject.users.patient.calender.domain.useCase.GetTasksUseCase
 import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderViewModel
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import javax.inject.Singleton
@@ -36,7 +37,6 @@ object  DiModule {
     @Provides
     @Singleton
     fun provideTaskRepository(taskDao: TaskDao) = TaskRepository(taskDao)
-
 
     //ViewModels
     @Provides
@@ -59,6 +59,8 @@ object  DiModule {
     @Provides
     fun provideAddTasksUseCase(taskRepository: TaskRepository) = AddTasksUseCase(taskRepository)
 
+    @Provides
+    fun provideGetTasksUseCase(taskRepository: TaskRepository) = GetTasksUseCase(taskRepository)
 
     @Provides
     fun provideCalendarUseCaseManager
@@ -67,14 +69,15 @@ object  DiModule {
                  getAllDaysUseCase: GetAllDaysUseCase,
                  getDayUseCase: GetDayUseCase,
                  addTasksUseCase: AddTasksUseCase,
-
+                 getTasksUseCase: GetTasksUseCase,
                   ) =
         CalendarUseCaseManager(
             createDayUseCase,
             getCalenderActivitiesUseCase,
             getAllDaysUseCase,
             getDayUseCase,
-            addTasksUseCase
+            addTasksUseCase,
+            getTasksUseCase,
         )
 
 

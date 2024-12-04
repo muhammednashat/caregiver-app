@@ -83,7 +83,7 @@
             android:background="@drawable/corner_normal"
             android:backgroundTint="#d8e8f5"
             android:padding="@dimen/margin_medium"
-            android:visibility="gone"
+            android:alpha="0.0"
             android:layout_marginTop="@dimen/margin_large"
 
             app:layout_constraintEnd_toEndOf="@+id/calendarView"

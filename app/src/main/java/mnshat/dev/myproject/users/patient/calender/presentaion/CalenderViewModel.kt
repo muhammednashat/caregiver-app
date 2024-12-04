@@ -27,14 +27,12 @@ class CalenderViewModel @Inject constructor(
 
     private lateinit var pickedDate: CalendarDay
     private lateinit var customActivity: CalenderActivity
+    val today = CalendarDay.today()
 
     private val _daysList = MutableLiveData<HashSet<CalendarDay>>()
     val daysList: LiveData<HashSet<CalendarDay>> get() = _daysList
-
-
     private val _taskList = MutableLiveData<List<TaskEntity>>()
     val taskList: LiveData<List<TaskEntity>> get() = _taskList
-
 
 
     fun getCalenderActivities(context: Context) =
@@ -79,15 +77,16 @@ class CalenderViewModel @Inject constructor(
         }
     }
 
-    private fun postDays(
-        days: List<DayEntity>?,
-    ) {
+    private fun postDays(days: List<DayEntity>?) {
         val list = mutableSetOf<CalendarDay>()
+        days?.get(0)?.day?.let { getTasks(it) }
+
         days?.forEach { day ->
             val date = Date(day.day)
             val calendarDay = CalendarDay(date)
             list.add(calendarDay)
         }
+
         _daysList.postValue(list.toHashSet())
     }
 
@@ -101,7 +100,7 @@ class CalenderViewModel @Inject constructor(
                         log("Day is  ->: ${day.day},")
                     }
                 } else {
-                    log("Failed to fetch days: ${result.exceptionOrNull()?.message}")
+                    log("Failed to fetch day: ${result.exceptionOrNull()?.message}")
                 }
             } catch (e: Exception) {
                 log("Unexpected error: ${e.message}")
@@ -136,8 +135,20 @@ class CalenderViewModel @Inject constructor(
         }
     }
 
-    fun getTasks() {
-
+    fun getTasks(day:String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val result = calendarUseCaseManager.getTasksUseCase(day)
+                if (result.isSuccess){
+                    val tasks = result.getOrNull()
+                    log("tasks are $tasks")
+                } else {
+                    log("Failed to fetch tasks: ${result.exceptionOrNull()?.message}")
+                }
+            } catch (e: Exception) {
+                log("Unexpected error: ${e.message}")
+            }
+        }
     }
 
     fun updateTask() {

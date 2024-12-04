@@ -12,6 +12,8 @@ import mnshat.dev.myproject.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentDailyPlanningBinding
 import mnshat.dev.myproject.util.log
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 @AndroidEntryPoint
 class DailyPlanningFragment : BaseFragment() {
@@ -25,16 +27,8 @@ class DailyPlanningFragment : BaseFragment() {
     ): View{
 
         binding = FragmentDailyPlanningBinding.inflate(inflater, container, false)
+        binding.calendarView.selectedDate = viewModel.today
         viewModel.getDays()
-
-        val hashSet = HashSet<CalendarDay>()
-        hashSet.add(CalendarDay.from(2024, 11, 22))
-        hashSet.add(CalendarDay.from(2024, 10, 13))
-        hashSet.add(CalendarDay.from(2024, 9, 29))
-        hashSet.add(CalendarDay.from(2024, 12, 18))
-        val tast = TaskDecorator(hashSet)
-
-        binding.calendarView.addDecorator(tast)
         setListeners()
         observing()
         return  binding.root
@@ -42,26 +36,58 @@ class DailyPlanningFragment : BaseFragment() {
     }
 
     private fun setListeners() {
-    binding.addButton.setOnClickListener{
-        ChooseDayFragment().show(childFragmentManager, ChooseDayFragment::class.java.name)
-    }
-        binding.tracking.setOnClickListener {
-            findNavController().navigate(R.id.action_dailyPlannerFragment_to_dayPlanFragment)
-    }
+        binding.addButton.setOnClickListener{
+            ChooseDayFragment().show(childFragmentManager, ChooseDayFragment::class.java.name)
+        }
+            binding.tracking.setOnClickListener {
+                findNavController().navigate(R.id.action_dailyPlannerFragment_to_dayPlanFragment)
+        }
         binding.back.setOnClickListener {
             findNavController().popBackStack()
         }
+        binding.calendarView.setOnDateChangedListener { widget, date, selected ->
+            viewModel.daysList?.value?.let {
+                if (it.contains(date)) {
+                    binding.trackingContainer.alpha = 1.0f
+
+                } else {
+                    binding.trackingContainer.alpha = 0.0f
+                }
+            }
+        }
+
 
     }
 
     private fun observing() {
         viewModel.daysList.observe(viewLifecycleOwner) { days ->
-            log("Observed days: $days")
+            days?.let {
+                decorateViews(days)
+                checkTasksForToday(days)
+            }
         }
 
         viewModel.taskList.observe(viewLifecycleOwner) { tasks ->
             log("Observed tasks: $tasks")
         }
+    }
+
+    private fun checkTasksForToday(days: java.util.HashSet<CalendarDay>) {
+        if (days.contains(viewModel.today))
+            binding.trackingContainer.alpha = 1.0f
+    }
+
+    private fun decorateViews(days: HashSet<CalendarDay>) {
+
+//        val hashSet = HashSet<CalendarDay>()
+//        hashSet.add(CalendarDay.from(2024, 11, 22))
+//        hashSet.add(CalendarDay.from(2024, 10, 13))
+//        hashSet.add(CalendarDay.from(2024, 9, 29))
+//        hashSet.add(CalendarDay.from(2024, 12, 18))
+//        val task = TaskDecorator(days)
+
+        binding.calendarView.addDecorator(TaskDecorator(days))
+
     }
 
 

@@ -9,13 +9,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentDayPlanBinding
-import mnshat.dev.myproject.users.patient.calender.domain.entity.CalenderDayTask
 
 @AndroidEntryPoint
 class DayPlanFragment : BaseFragment() {
 
     private lateinit var binding: FragmentDayPlanBinding
-    private lateinit var adapter: DayPlanAdapter
+    private lateinit var adapter: TasksAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,19 +27,8 @@ class DayPlanFragment : BaseFragment() {
     }
 
     private fun setUpRecyclerView() {
-        val list = listOf(CalenderDayTask(1, "title", true,"")
-            ,CalenderDayTask(1, "title", true,"")
-            ,CalenderDayTask(1, "title", true,"")
-            ,CalenderDayTask(1, "title", true,"")
-            ,CalenderDayTask(1, "title", true,"")
-            ,CalenderDayTask(1, "title", true,"")
-            ,CalenderDayTask(1, "title", true,"")
-            ,CalenderDayTask(1, "title", true,"")
-            ,CalenderDayTask(1, "title", true,"")
-            ,)
-        adapter = DayPlanAdapter(list)
+        adapter = TasksAdapter(list)
         binding.recyclerView.adapter = adapter
-
     }
 
 }
