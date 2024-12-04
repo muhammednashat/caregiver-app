@@ -79,6 +79,7 @@ class CalenderViewModel @Inject constructor(
 
     private fun postDays(days: List<DayEntity>?) {
         val list = mutableSetOf<CalendarDay>()
+        log("Days are${days?.get(0)?.day}")
         days?.get(0)?.day?.let { getTasks(it) }
 
         days?.forEach { day ->
@@ -142,6 +143,7 @@ class CalenderViewModel @Inject constructor(
                 if (result.isSuccess){
                     val tasks = result.getOrNull()
                     log("tasks are $tasks")
+                    tasks?.let { postTasks(it) }
                 } else {
                     log("Failed to fetch tasks: ${result.exceptionOrNull()?.message}")
                 }
@@ -149,6 +151,10 @@ class CalenderViewModel @Inject constructor(
                 log("Unexpected error: ${e.message}")
             }
         }
+    }
+
+    private fun postTasks(tasks: List<TaskEntity>) {
+        _taskList.postValue(tasks)
     }
 
     fun updateTask() {
