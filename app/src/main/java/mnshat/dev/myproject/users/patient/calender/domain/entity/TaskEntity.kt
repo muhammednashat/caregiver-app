@@ -1,8 +1,10 @@
 package mnshat.dev.myproject.users.patient.calender.domain.entity
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
 @Entity(
     tableName = "tasks",
@@ -15,6 +17,7 @@ import androidx.room.PrimaryKey
         ),
     ]
 )
+@Parcelize
 data class TaskEntity(
     @PrimaryKey(autoGenerate = true) val taskId: Int = 0,
     val day: String, // 11 / 11
@@ -22,6 +25,6 @@ data class TaskEntity(
     val nameTask: String, // Read
     var isCompleted: Boolean = false,
     val description: String = "",
+    ) : Parcelable
 
-    )
 

@@ -60,6 +60,8 @@ class CalenderViewModel @Inject constructor(
         }
     }
 
+    fun getDayEntity(dayCalendarDay: CalendarDay) = DayEntity(day = dayCalendarDay.calendar.time.toString())
+
     fun getDays() {
         CoroutineScope(Dispatchers.IO).launch {
             try {

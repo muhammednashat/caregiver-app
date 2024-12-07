@@ -54,6 +54,8 @@ class TasksAdapter (
         tasks.removeAt(position)
         notifyItemRemoved(position)
     }
+
+  fun getTasks () = tasks
 }
 
 

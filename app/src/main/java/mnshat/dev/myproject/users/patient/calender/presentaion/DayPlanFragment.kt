@@ -7,13 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentDayPlanBinding
 import mnshat.dev.myproject.users.patient.calender.domain.entity.TaskEntity
+import mnshat.dev.myproject.util.log
+import java.util.Date
 
 @AndroidEntryPoint
 class DayPlanFragment : BaseFragment(), OnItemClickListener {
@@ -23,6 +27,7 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
     private val viewModel: CalenderViewModel by viewModels()
     private var done = 0
     private var taskSize = 0
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +43,12 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
 
     private fun setUpListeners() {
       binding.addButton.setOnClickListener {
-
+//          val date = Date("Thu Dec 19 00:00:00 GMT+02:00 2024")
+//          val calendarDay = CalendarDay(date)
+//
+//          viewModel.setPickedDate(calendarDay)
+          val action = DayPlanFragmentDirections.actionDayPlanFragmentToCreateOwnActivityFragment("updating")
+         findNavController().navigate(action)
       }
     }
 

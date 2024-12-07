@@ -39,11 +39,15 @@ class ChooseActivitiesFragment : BaseFragment() {
 
     }
 
+
+    // stor tasks in view modle  . add picked date before navigate from plan day to use it when creat task
     private fun setListener(){
         binding.addButton.setOnClickListener{
-
-            findNavController().navigate(R.id.action_chooseActivitiesFragment_to_createOwnActivityFragment)
+            val action = ChooseActivitiesFragmentDirections
+                .actionChooseActivitiesFragmentToCreateOwnActivityFragment("creating")
+            findNavController().navigate(action)
         }
+
         binding.button.setOnClickListener{
             val pickedDate = viewModel.getPickedDate()
             val dayEntity = DayEntity(day = pickedDate.calendar.time.toString())

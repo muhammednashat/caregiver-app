@@ -526,8 +526,6 @@
     <string name="spend_time_with_a_pet">Spend time with a pet</string>
     <string name="plant_care">Plant care</string>
     <string name="reading_a_book">Reading a book</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create_your_own_activity">Create your own activity</string>
     <string name="fill_out_the_required_fields_to_create_your_activity">Fill out the required fields to create your activity</string>
     <string name="add_a_sticker_or_symbol_for_your_own_activity">Add a sticker or symbol for your own activity</string>
@@ -540,6 +538,7 @@
     <string name="today_s_plan_is_complete">Today\'s plan is complete</string>
     <string name="day_plan">Day Plan</string>
     <string name="tracking">tracking</string>
+    <string name="activity_name_is_required">Activity name is required</string>
 
 
 </resources>

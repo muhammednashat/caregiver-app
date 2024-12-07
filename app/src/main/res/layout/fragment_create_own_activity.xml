@@ -73,7 +73,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView469" />
 
             <EditText
-                android:id="@+id/editTextText"
+                android:id="@+id/activityNameField"
                 android:layout_width="0dp"
                 android:backgroundTint="#ffffff"
                 android:background="@drawable/corner_normal"
@@ -93,10 +93,10 @@
                 android:layout_marginTop="4dp"
                 android:text="@string/describe_your_activity_in_a_simple_way_optional"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+                app:layout_constraintTop_toBottomOf="@+id/activityNameField" />
 
             <EditText
-                android:id="@+id/editTextText2"
+                android:id="@+id/activityDescriptionField"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="12dp"
@@ -114,17 +114,16 @@
                 android:id="@+id/createButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_large"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/corner_normal"
                 android:backgroundTint="#204167"
                 android:padding="@dimen/margin_large"
-                android:layout_marginTop="@dimen/margin_large"
                 android:text="@string/create_activity"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+                app:layout_constraintTop_toBottomOf="@+id/activityDescriptionField" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
