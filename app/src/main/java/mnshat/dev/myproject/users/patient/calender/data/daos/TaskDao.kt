@@ -12,9 +12,13 @@ interface TaskDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addTasks(tasks: List<TaskEntity>): List<Long>
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addTask(task: TaskEntity): Long
+
     @Query("SELECT * FROM  tasks WHERE  day = :day")
     suspend fun getTasks(day:String):List<TaskEntity>
 
-
+    @Query("DELETE FROM tasks WHERE taskId = :taskId")
+    suspend fun deleteTask(taskId: Int)
 
 }

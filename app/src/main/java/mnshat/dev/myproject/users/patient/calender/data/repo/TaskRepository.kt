@@ -6,20 +6,10 @@ import javax.inject.Inject
 
 class TaskRepository @Inject constructor(private val taskDao: TaskDao)  {
 
-    suspend fun addTasks(tasks: List<TaskEntity>)=
-         taskDao.addTasks(tasks)
-
-    suspend fun addTask(task: TaskEntity): Long {
-        return  0L
-    }
-
+    suspend fun addTasks(tasks: List<TaskEntity>)= taskDao.addTasks(tasks)
     suspend fun  getTasks(day:String) = taskDao.getTasks(day)
-
-    suspend fun updateTask(task: TaskEntity) {
-    }
-
-    suspend fun deleteTask(taskId: Int) {
-    }
+    suspend fun updateTask(task: TaskEntity) =  taskDao.addTask(task)
+    suspend fun deleteTask(taskId: Int)  = taskDao.deleteTask(taskId)
 
 
 }

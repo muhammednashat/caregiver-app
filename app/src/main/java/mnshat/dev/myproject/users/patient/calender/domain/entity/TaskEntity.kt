@@ -20,8 +20,8 @@ data class TaskEntity(
     val day: String, // 11 / 11
     val image:Int,
     val nameTask: String, // Read
-    val isCompleted: Boolean = false,
+    var isCompleted: Boolean = false,
     val description: String = "",
 
-)
+    )
 

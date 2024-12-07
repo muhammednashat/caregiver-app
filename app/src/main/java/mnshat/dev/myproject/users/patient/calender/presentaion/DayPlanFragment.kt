@@ -1,17 +1,22 @@
 package mnshat.dev.myproject.users.patient.calender.presentaion
 
+import android.graphics.Canvas
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
+import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentDayPlanBinding
 import mnshat.dev.myproject.users.patient.calender.domain.entity.TaskEntity
 
 @AndroidEntryPoint
-class DayPlanFragment : BaseFragment() {
+class DayPlanFragment : BaseFragment(), OnItemClickListener {
 
     private lateinit var binding: FragmentDayPlanBinding
     private lateinit var adapter: TasksAdapter
@@ -27,7 +32,14 @@ class DayPlanFragment : BaseFragment() {
         binding = FragmentDayPlanBinding.inflate(inflater, container, false)
         getTasks("Thu Dec 19 00:00:00 GMT+02:00 2024")
         observing()
+        setUpListeners()
         return  binding.root
+    }
+
+    private fun setUpListeners() {
+      binding.addButton.setOnClickListener {
+
+      }
     }
 
     private fun getTasks(day: String) {
@@ -62,10 +74,68 @@ class DayPlanFragment : BaseFragment() {
 
 
     private fun setUpRecyclerView(tasks: List<TaskEntity>) {
-        adapter = TasksAdapter(tasks)
+        adapter = TasksAdapter(tasks.toMutableList(),this)
         binding.recyclerView.adapter = adapter
+
+
+        val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
+        itemTouchHelper.attachToRecyclerView(binding.recyclerView)
     }
 
+    override fun updateTaskStatus(task: TaskEntity) {
+        viewModel.updateTask(task)
+    }
+
+    override fun deleteTask(taskId: Int) {
+        viewModel.deleteTask(taskId)
+    }
+
+
+    // ToDO Chat GPT
+    private val swipeToDeleteCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return false
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            val position = viewHolder.adapterPosition
+            adapter.removeItem(position)
+        }
+
+        override fun onChildDraw(
+            c: Canvas,
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            dX: Float,
+            dY: Float,
+            actionState: Int,
+            isCurrentlyActive: Boolean
+        ) {
+            val itemView = viewHolder.itemView
+            if (dX < 0) { // Swiping left
+                // Load delete icon drawable
+                val deleteIcon = ContextCompat.getDrawable(recyclerView.context, R.drawable.baseline_delete_24)!!
+                val intrinsicWidth = deleteIcon.intrinsicWidth
+                val intrinsicHeight = deleteIcon.intrinsicHeight
+                val iconMargin = (itemView.height - intrinsicHeight) / 2
+
+                // Calculate icon position
+                val iconLeft = itemView.right - iconMargin - intrinsicWidth
+                val iconRight = itemView.right - iconMargin
+                val iconTop = itemView.top + iconMargin
+                val iconBottom = iconTop + intrinsicHeight
+
+                // Set bounds and draw the icon
+                deleteIcon.setBounds(iconLeft, iconTop, iconRight, iconBottom)
+                deleteIcon.draw(c)
+            }
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+        }
+    }
 
 
 }

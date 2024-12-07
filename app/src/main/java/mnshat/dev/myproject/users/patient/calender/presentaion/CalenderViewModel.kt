@@ -42,7 +42,6 @@ class CalenderViewModel @Inject constructor(
     fun setCustomActivity(activity: CalenderActivity) = run { customActivity = activity }
     fun getPickedDate() = pickedDate
 
-
     fun createDayPlan(day: DayEntity,activities:List<CalenderActivity>) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -157,11 +156,36 @@ class CalenderViewModel @Inject constructor(
         _taskList.postValue(tasks)
     }
 
-    fun updateTask() {
+    fun updateTask(task: TaskEntity) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val result = calendarUseCaseManager.updateTaskUseCase(task)
+                if (result.isSuccess) {
+                    log("done: ${result.exceptionOrNull()?.message}")
+                } else {
+                    log("Failed to update task: ${result.exceptionOrNull()?.message}")
+                }
+            } catch (e: Exception) {
+                log("Unexpected error: ${e.message}")
+            }
+        }
 
     }
 
-    fun deleteTask() {
+
+    fun deleteTask(taskId: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val result = calendarUseCaseManager.deleteTaskUseCase(taskId)
+                if (result.isSuccess) {
+                    log("done: ${result.exceptionOrNull()?.message}")
+                } else {
+                    log("Failed to delete task: ${result.exceptionOrNull()?.message}")
+                }
+            } catch (e: Exception) {
+                log("Unexpected error: ${e.message}")
+            }
+        }
 
     }
 

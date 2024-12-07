@@ -11,13 +11,14 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.users.patient.calender.domain.entity.TaskEntity
 
 class TasksAdapter (
-    private val tasks:List<TaskEntity>
+    private val tasks:MutableList<TaskEntity>,
+    private val onItemClickListener: OnItemClickListener
 ):RecyclerView.Adapter<TasksAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.title)
         val image: ImageView = itemView.findViewById(R.id.image)
-        val radioButton: RadioButton = itemView.findViewById(R.id.radioButton)
+        val imageChecked: ImageView = itemView.findViewById(R.id.image_checked)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,17 +33,32 @@ class TasksAdapter (
     val task = tasks[position]
         holder.title.text = task.nameTask
         holder.image.setImageResource(task.image)
-        holder.radioButton.isChecked = task.isCompleted
 
-     setUpRadioButton(holder,holder.radioButton,task)
+        if (task.isCompleted) {
+            holder.imageChecked.setImageResource(R.drawable.icon_checked22)
+        } else {
+            holder.imageChecked.setImageResource(R.drawable.circle_white_border_blue)
+        }
+        holder.itemView.setOnClickListener {
+            task.isCompleted = !task.isCompleted
+            onItemClickListener.updateTaskStatus(task)
+            notifyItemChanged(position)
+        }
+
 
     }
-
-
     override fun getItemCount() = tasks.size
 
-    private fun setUpRadioButton(holder: ViewHolder, radioButton: RadioButton, task: TaskEntity) {
-
+    fun removeItem(position: Int,) {
+        onItemClickListener.deleteTask(tasks[position].taskId)
+        tasks.removeAt(position)
+        notifyItemRemoved(position)
     }
+}
+
+
+interface OnItemClickListener {
+    fun updateTaskStatus(task: TaskEntity)
+    fun deleteTask(taskId: Int)
 
 }
