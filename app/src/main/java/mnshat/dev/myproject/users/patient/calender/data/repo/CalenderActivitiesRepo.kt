@@ -20,9 +20,9 @@ class CalenderActivitiesRepo @Inject constructor(private val sharedPreferences: 
             CalenderActivity(R.drawable.ic_cat, context.getString(R.string.spend_time_with_a_pet) ,"#659bdf",true),
             CalenderActivity(R.drawable.ic_plant, context.getString(R.string.plant_care) ,"#87cefb"),
             CalenderActivity(R.drawable.ic_book1, context.getString(R.string.reading_a_book) ,"#4467c4"),
-
             CalenderActivity(R.drawable.ic_plan_day, context.getString(R.string.special_activity) ,"#4467c4"),
         )
+
       return   filterBasedProfile(activities)
     }
 

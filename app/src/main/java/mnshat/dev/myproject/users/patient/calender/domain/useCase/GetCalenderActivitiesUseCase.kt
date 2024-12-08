@@ -7,7 +7,6 @@ import javax.inject.Inject
 class GetCalenderActivitiesUseCase @Inject constructor(val  calenderActivitiesRepository: CalenderActivitiesRepo){
 
     operator fun invoke(context: Context) =
-
         calenderActivitiesRepository.getCalenderActivities(context)
 
 }

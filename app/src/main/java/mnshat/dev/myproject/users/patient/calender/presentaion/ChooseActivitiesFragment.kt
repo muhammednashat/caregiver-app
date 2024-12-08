@@ -41,19 +41,21 @@ class ChooseActivitiesFragment : BaseFragment() , OnActivityClickListener{
         binding.back.setOnClickListener{
             findNavController().popBackStack()
         }
+
+
         binding.button.setOnClickListener{
             val dayEntity = viewModel.getDayEntity()
             val activities = adapter.getChosenActivities().toList()
             val tasks = viewModel.toTaskEntities(activities,dayEntity.day)
             viewModel.createDayPlan(dayEntity,tasks)
-
+            showDoneDialog()
         }
+
     }
 
     private fun setUpRecyclerView() {
-       adapter =CalenderActivitiesAdapter(
-               viewModel.getCalenderActivities(requireActivity()),this )
-
+        adapter =CalenderActivitiesAdapter(
+        viewModel.getCalenderActivities(requireActivity()),this )
         val layoutManager = GridLayoutManager(requireActivity(), 2)
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = adapter

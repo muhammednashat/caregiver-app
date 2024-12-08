@@ -22,9 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CalenderViewModel @Inject constructor(
     private val calendarUseCaseManager: CalendarUseCaseManager,
-
 ) : ViewModel() {
-
     private lateinit var pickedDate: CalendarDay
     private lateinit var customActivity: CalenderActivity
     val today = CalendarDay.today()
@@ -65,6 +63,7 @@ class CalenderViewModel @Inject constructor(
     }
 
     fun getDays() {
+
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val result = calendarUseCaseManager.getAllDaysUseCase()
@@ -78,6 +77,7 @@ class CalenderViewModel @Inject constructor(
                 log("Unexpected error: ${e.message}")
             }
         }
+
     }
 
     private fun postDays(days: List<DayEntity>?) {

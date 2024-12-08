@@ -13,33 +13,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        android:background="@drawable/image_done2">
+        >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout23"
+
+        <ImageView
+            android:id="@+id/imageView23"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/image_done2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5">
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/textView48"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/great_job"
-            android:layout_marginBottom="@dimen/margin_large"
-            app:layout_constraintBottom_toTopOf="@+id/message"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView23" />
 
         <TextView
             android:id="@+id/message"
@@ -48,23 +47,25 @@
             android:layout_marginBottom="44dp"
             android:gravity="center"
             android:text="@string/everything_is_ready_now_you_can_start_now"
-            app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView48" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button"
+            android:paddingStart="@dimen/margin_large"
+            android:paddingEnd="@dimen/margin_large"
             style="@style/button_large"
             android:layout_width="wrap_content"
-            android:layout_marginTop="44dp"
             android:layout_marginBottom="@dimen/margin_large"
             android:backgroundTint="@color/shade_orange"
             android:text="@string/okay"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.562"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

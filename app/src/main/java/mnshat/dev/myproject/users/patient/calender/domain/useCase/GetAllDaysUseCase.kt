@@ -7,11 +7,13 @@ import javax.inject.Inject
 class GetAllDaysUseCase @Inject constructor(private val dayRepository: DayRepository) {
 
     suspend operator fun invoke(): Result<List<DayEntity>> {
+
         return try {
             val days = dayRepository.getAllDays()
             Result.success(days)
         } catch (e: Exception) {
             Result.failure(e)
         }
+
     }
 }

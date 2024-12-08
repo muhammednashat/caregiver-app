@@ -63,9 +63,12 @@ class DailyPlanningFragment : BaseFragment() {
 
     private fun observing() {
         viewModel.daysList.observe(viewLifecycleOwner) { days ->
+
             days?.let {
+
                 decorateViews(days)
                 checkTasksForToday(days)
+
             }
         }
 
@@ -80,16 +83,7 @@ class DailyPlanningFragment : BaseFragment() {
     }
 
     private fun decorateViews(days: HashSet<CalendarDay>) {
-
-//        val hashSet = HashSet<CalendarDay>()
-//        hashSet.add(CalendarDay.from(2024, 11, 22))
-//        hashSet.add(CalendarDay.from(2024, 10, 13))
-//        hashSet.add(CalendarDay.from(2024, 9, 29))
-//        hashSet.add(CalendarDay.from(2024, 12, 18))
-//        val task = TaskDecorator(days)
-
         binding.calendarView.addDecorator(TaskDecorator(days))
-
     }
 
 
