@@ -503,6 +503,7 @@
     <string name="day_plan">خطة اليوم</string>
     <string name="tracking">تتبع</string>
     <string name="activity_name_is_required">قم بإدخال اسم النشاط</string>
+    <string name="special_activity">نشاط خاص</string>
 
 
 </resources>

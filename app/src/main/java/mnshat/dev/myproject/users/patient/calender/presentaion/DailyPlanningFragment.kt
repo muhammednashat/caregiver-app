@@ -40,6 +40,8 @@ class DailyPlanningFragment : BaseFragment() {
             ChooseDayFragment().show(childFragmentManager, ChooseDayFragment::class.java.name)
         }
             binding.tracking.setOnClickListener {
+                val day = binding.calendarView.selectedDate
+                viewModel.setPickedDate(day)
                 findNavController().navigate(R.id.action_dailyPlannerFragment_to_dayPlanFragment)
         }
         binding.back.setOnClickListener {

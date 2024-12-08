@@ -28,6 +28,7 @@ class CalenderViewModel @Inject constructor(
     private lateinit var pickedDate: CalendarDay
     private lateinit var customActivity: CalenderActivity
     val today = CalendarDay.today()
+    private lateinit var chosenActivities: List<CalenderActivity>
 
     private val _daysList = MutableLiveData<HashSet<CalendarDay>>()
     val daysList: LiveData<HashSet<CalendarDay>> get() = _daysList
@@ -37,19 +38,22 @@ class CalenderViewModel @Inject constructor(
 
     fun getCalenderActivities(context: Context) =
         calendarUseCaseManager.getCalenderActivitiesUseCase(context)
+    fun setCustomActivity(activity: CalenderActivity) = run { customActivity = activity }
+
+    fun setChosenActivities(activities: List<CalenderActivity>) = run {  chosenActivities = activities}
+    fun  getChosenActivities() = chosenActivities
 
     fun setPickedDate(date: CalendarDay) = run { pickedDate = date }
-    fun setCustomActivity(activity: CalenderActivity) = run { customActivity = activity }
-    fun getPickedDate() = pickedDate
+    fun getDayEntity() = DayEntity(day = pickedDate.calendar.time.toString())
 
-    fun createDayPlan(day: DayEntity,activities:List<CalenderActivity>) {
+    fun createDayPlan(day: DayEntity, tasks: List<TaskEntity>) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val result = calendarUseCaseManager.createDayUseCase(day)
                 if (result.isSuccess) {
                     val id = result.getOrNull()
                     log("Successfully created day with ID: $id")
-                    addTasks(activities.toTaskEntities(day.day))
+                    addTasks(tasks)
                 } else {
                     val exception = result.exceptionOrNull()
                     log("Failed to create day: ${exception?.message}")
@@ -59,8 +63,6 @@ class CalenderViewModel @Inject constructor(
             }
         }
     }
-
-    fun getDayEntity(dayCalendarDay: CalendarDay) = DayEntity(day = dayCalendarDay.calendar.time.toString())
 
     fun getDays() {
         CoroutineScope(Dispatchers.IO).launch {
@@ -110,8 +112,8 @@ class CalenderViewModel @Inject constructor(
         }
     }
 
-    private fun List<CalenderActivity>.toTaskEntities(day: String) =
-        this.map { activity ->
+    fun toTaskEntities(activities: List<CalenderActivity>, day: String): List<TaskEntity> =
+        activities.map { activity ->
             TaskEntity(
                 day = day,
                 image = activity.image,
@@ -120,6 +122,7 @@ class CalenderViewModel @Inject constructor(
                 description = activity.description
             )
         }
+
 
     private fun addTasks(tasks: List<TaskEntity>) {
         CoroutineScope(Dispatchers.IO).launch {
@@ -190,5 +193,7 @@ class CalenderViewModel @Inject constructor(
         }
 
     }
+
+
 
 }

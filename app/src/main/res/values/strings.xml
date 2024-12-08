@@ -539,6 +539,7 @@
     <string name="day_plan">Day Plan</string>
     <string name="tracking">tracking</string>
     <string name="activity_name_is_required">Activity name is required</string>
+    <string name="special_activity">Special activity</string>
 
 
 </resources>

@@ -107,6 +107,7 @@
                 android:background="@drawable/corner_normal"
                 android:backgroundTint="#b6cbdd"
                 android:padding="@dimen/margin_large"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

@@ -4,7 +4,6 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,15 +13,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
-import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogCalenderBinding
 import mnshat.dev.myproject.databinding.FragmentChooseActiviesBinding
-import mnshat.dev.myproject.users.patient.calender.domain.entity.DayEntity
-import java.util.Date
+import mnshat.dev.myproject.users.patient.calender.domain.entity.CalenderActivity
 
 
 @AndroidEntryPoint
-class ChooseActivitiesFragment : BaseFragment() {
+class ChooseActivitiesFragment : BaseFragment() , OnActivityClickListener{
 
     private val viewModel: CalenderViewModel by viewModels()
     private  lateinit var adapter: CalenderActivitiesAdapter
@@ -36,36 +33,29 @@ class ChooseActivitiesFragment : BaseFragment() {
         setUpRecyclerView()
         setListener()
         return binding.root
-
     }
 
-
-    // stor tasks in view modle  . add picked date before navigate from plan day to use it when creat task
     private fun setListener(){
         binding.addButton.setOnClickListener{
+            val activities = adapter.getChosenActivities().toList() ?: emptyList()
+            viewModel.setChosenActivities(activities)
             val action = ChooseActivitiesFragmentDirections
                 .actionChooseActivitiesFragmentToCreateOwnActivityFragment("creating")
             findNavController().navigate(action)
         }
 
         binding.button.setOnClickListener{
-            val pickedDate = viewModel.getPickedDate()
-            val dayEntity = DayEntity(day = pickedDate.calendar.time.toString())
-            viewModel.createDayPlan(dayEntity,adapter.getChosenActivities().toList())
+            val dayEntity = viewModel.getDayEntity()
+            val activities = adapter.getChosenActivities().toList()
+            val tasks = viewModel.toTaskEntities(activities,dayEntity.day)
+            viewModel.createDayPlan(dayEntity,tasks)
 
         }
     }
 
     private fun setUpRecyclerView() {
        adapter =CalenderActivitiesAdapter(
-               viewModel.getCalenderActivities(requireActivity())
-               ,ActivitiesListener {
-                 if (it.isNotEmpty()){
-                     binding.button.alpha = 1.0f
-                 }else{
-                     binding.button.alpha = 0.0f
-                 }
-              })
+               viewModel.getCalenderActivities(requireActivity()),this )
 
         val layoutManager = GridLayoutManager(requireActivity(), 2)
         binding.recyclerView.layoutManager = layoutManager
@@ -90,6 +80,17 @@ class ChooseActivitiesFragment : BaseFragment() {
         }
 
         dialog.show()
+    }
+
+    override fun onAddActivity(activities: Set<CalenderActivity>) {
+            if (activities.isNotEmpty()){
+                binding.button.alpha = 1.0f
+            }else{
+                binding.button.alpha = 0.0f
+            }
+    }
+
+    override fun createCustomActivity() {
     }
 
 }

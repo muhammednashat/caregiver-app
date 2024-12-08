@@ -10,10 +10,11 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.users.patient.calender.domain.entity.CalenderActivity
+import mnshat.dev.myproject.util.log
 
 class CalenderActivitiesAdapter(
     private val activities: List<CalenderActivity>,
-    private val listener: ActivitiesListener,
+    private val onActivityClickListener: OnActivityClickListener,
 ) : RecyclerView.Adapter<CalenderActivitiesAdapter.ViewHolder>() {
 
     private var chosenActivities = setOf<CalenderActivity>()
@@ -47,7 +48,14 @@ class CalenderActivitiesAdapter(
                 holder.icChecked.visibility = View.VISIBLE
 
             }
-            listener.onClick(chosenActivities)
+            if (position == activities.size - 1){
+                log("$chosenActivities")
+                onActivityClickListener.createCustomActivity()
+            }else{
+                log("ties")
+
+                onActivityClickListener.onAddActivity(chosenActivities)
+            }
         }
 
     }
@@ -57,10 +65,9 @@ class CalenderActivitiesAdapter(
 
 }
 
-
-
-
-class ActivitiesListener(val clickListener: (activities: Set<CalenderActivity>) -> Unit) {
-        fun onClick(activities: Set<CalenderActivity>) = clickListener(activities)
+interface  OnActivityClickListener{
+    fun onAddActivity(activities: Set<CalenderActivity>)
+    fun createCustomActivity()
 }
+
 

@@ -35,18 +35,21 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
     ): View? {
 
         binding = FragmentDayPlanBinding.inflate(inflater, container, false)
-        getTasks("Thu Dec 19 00:00:00 GMT+02:00 2024")
+        getTasks(viewModel.getDayEntity().day)
         observing()
         setUpListeners()
+        log("onCreateView")
         return  binding.root
     }
 
+    override fun onStart() {
+        super.onStart()
+        log("onStart")
+    }
+
+
     private fun setUpListeners() {
       binding.addButton.setOnClickListener {
-//          val date = Date("Thu Dec 19 00:00:00 GMT+02:00 2024")
-//          val calendarDay = CalendarDay(date)
-//
-//          viewModel.setPickedDate(calendarDay)
           val action = DayPlanFragmentDirections.actionDayPlanFragmentToCreateOwnActivityFragment("updating")
          findNavController().navigate(action)
       }

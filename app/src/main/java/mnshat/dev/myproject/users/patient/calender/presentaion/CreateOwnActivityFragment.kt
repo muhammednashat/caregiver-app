@@ -10,7 +10,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentCreateOwnActivityBinding
-import mnshat.dev.myproject.users.patient.calender.domain.entity.DayEntity
 import mnshat.dev.myproject.users.patient.calender.domain.entity.TaskEntity
 
 
@@ -54,10 +53,10 @@ class CreateOwnActivityFragment : BaseFragment() {
 
         binding.createButton.setOnClickListener {
             if (validateInputFields()) {
-                if (flag == "uptading"){
-//                    viewModel.updateTask()
+                if (flag == "updating") {
+                    addNewTask()
                 }else{
-//                    viewModel.createDayPlan()
+                    createDayPlay()
                 }
 
             }
@@ -68,6 +67,29 @@ class CreateOwnActivityFragment : BaseFragment() {
             findNavController().popBackStack()
         }
     }
+
+    private fun createDayPlay() {
+        val dayEntity = viewModel.getDayEntity()
+        val activities = viewModel.getChosenActivities()
+        val tasks = viewModel.toTaskEntities(activities, dayEntity.day).toMutableList()
+        tasks.add(task())
+        viewModel.createDayPlan(dayEntity, tasks)
+    }
+
+    private fun addNewTask() {
+        viewModel.updateTask(task())
+        findNavController().popBackStack()
+    }
+
+    private fun task() = TaskEntity(
+        day = viewModel.getDayEntity().day,
+        nameTask = activityName,
+        description = activityDescription,
+        image = R.drawable.ic_plan_day,
+        isCompleted = false,
+    )
+
+
 
 
 }
