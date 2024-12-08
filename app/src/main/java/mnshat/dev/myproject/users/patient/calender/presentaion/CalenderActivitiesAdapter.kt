@@ -38,29 +38,23 @@ class CalenderActivitiesAdapter(
         holder.text.text = activity.nameTask
         holder.imageView.setImageResource(activity.image)
         holder.container.setBackgroundColor(Color.parseColor(activity.background))
-
         holder.container.setOnClickListener{
-            if (chosenActivities.contains(activity)){
-                chosenActivities = chosenActivities.minus(activity)
-                holder.icChecked.visibility = View.GONE
-            }else{
-                chosenActivities = chosenActivities.plus(activity)
-                holder.icChecked.visibility = View.VISIBLE
-
-            }
             if (position == activities.size - 1){
-                log("$chosenActivities")
                 onActivityClickListener.createCustomActivity()
             }else{
-                log("ties")
-
+                if (chosenActivities.contains(activity)){
+                    chosenActivities = chosenActivities.minus(activity)
+                    holder.icChecked.visibility = View.GONE
+                }else{
+                    chosenActivities = chosenActivities.plus(activity)
+                    holder.icChecked.visibility = View.VISIBLE
+                }
                 onActivityClickListener.onAddActivity(chosenActivities)
             }
         }
 
     }
     override fun getItemCount() = activities.size
-
     fun getChosenActivities() =  chosenActivities
 
 }

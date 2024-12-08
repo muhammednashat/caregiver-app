@@ -109,21 +109,52 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView50" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/createButton"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
                 android:background="@drawable/corner_normal"
                 android:backgroundTint="#204167"
                 android:padding="@dimen/margin_large"
-                android:text="@string/create_activity"
-                android:textColor="@color/white"
+                android:id="@+id/createButton"
+                android:layout_marginTop="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activityDescriptionField" />
+                app:layout_constraintTop_toBottomOf="@+id/activityDescriptionField"
+
+
+                >
+
+                <ImageView
+                    android:id="@+id/imageView22"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_start12"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/appCompatButton2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <TextView
+                    android:id="@+id/appCompatButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corner_normal"
+                    android:textStyle="bold"
+                    android:text="@string/create_activity2"
+                    android:textColor="@color/white"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView22"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.5" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,14 +36,11 @@ class ChooseActivitiesFragment : BaseFragment() , OnActivityClickListener{
     }
 
     private fun setListener(){
-        binding.addButton.setOnClickListener{
-            val activities = adapter.getChosenActivities().toList() ?: emptyList()
-            viewModel.setChosenActivities(activities)
-            val action = ChooseActivitiesFragmentDirections
-                .actionChooseActivitiesFragmentToCreateOwnActivityFragment("creating")
-            findNavController().navigate(action)
-        }
+  
 
+        binding.back.setOnClickListener{
+            findNavController().popBackStack()
+        }
         binding.button.setOnClickListener{
             val dayEntity = viewModel.getDayEntity()
             val activities = adapter.getChosenActivities().toList()
@@ -82,15 +79,46 @@ class ChooseActivitiesFragment : BaseFragment() , OnActivityClickListener{
         dialog.show()
     }
 
+
+
+
+
+
+
+
+
+
+
     override fun onAddActivity(activities: Set<CalenderActivity>) {
+
+
+
+
+
+
             if (activities.isNotEmpty()){
                 binding.button.alpha = 1.0f
             }else{
                 binding.button.alpha = 0.0f
             }
+
+
+
+
     }
 
     override fun createCustomActivity() {
+
+        val activities = adapter.getChosenActivities().toList() ?: emptyList()
+        viewModel.setChosenActivities(activities)
+        val action = ChooseActivitiesFragmentDirections
+            .actionChooseActivitiesFragmentToCreateOwnActivityFragment("creating")
+        findNavController().navigate(action)
+
+
+
+
+
     }
 
 }
