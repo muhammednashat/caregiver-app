@@ -51,7 +51,8 @@ class StrengthBuildingPlanFragment : BaseCaregiverFragment<FragmentStrengthBuild
     override fun onItemClicked(index: Int) {
         viewModel.setCurrentIndex(index)
         viewModel.setCurrentList(stepsBuildStrengthList(requireActivity()))
-        findNavController().navigate(R.id.action_supporterCompassFragment_to_stepsFragment)
+
+        findNavController().navigate(R.id.action_strengthBuildingPlanFragment_to_stepsFragment)
     }
 
 }

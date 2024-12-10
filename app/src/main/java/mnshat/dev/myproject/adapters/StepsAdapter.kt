@@ -35,7 +35,6 @@ class StepsAdapter(
         holder.step.text = step.step
         holder.title.text = step.title
         holder.imageView.setImageResource(step.image)
-
         holder.arrow.setOnClickListener {
             itemStepsClicked.onItemClicked(position)
         }

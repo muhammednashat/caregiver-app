@@ -22,9 +22,11 @@ class CaregiverToolsFragment : BaseCaregiverFragment<FragmentCaregiverToolsBindi
       binding.strengthBuildingPlan.setOnClickListener {
        findNavController().navigate(R.id.action_caregiverToolsFragment_to_strengthBuildingPlanFragment)
      }
+
         binding.supporterCompass.setOnClickListener {
        findNavController().navigate(R.id.action_caregiverToolsFragment_to_supporterCompassFragment)
      }
+
      binding.imageView16.setOnClickListener {
          findNavController().popBackStack()
      }

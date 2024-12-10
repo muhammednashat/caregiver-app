@@ -9,12 +9,12 @@ import mnshat.dev.myproject.databinding.FragmentStepsBinding
 import mnshat.dev.myproject.factories.CaregiverToolsViewModelFactory
 import mnshat.dev.myproject.model.Step
 import mnshat.dev.myproject.users.caregiver.main.BaseCaregiverFragment
+import mnshat.dev.myproject.util.log
 
 
 class StepsFragment : BaseCaregiverFragment<FragmentStepsBinding>() {
 
     override fun getLayout() = R.layout.fragment_steps
-
     private lateinit var viewModel: CaregiverToolsViewModel
 
 
@@ -22,7 +22,8 @@ class StepsFragment : BaseCaregiverFragment<FragmentStepsBinding>() {
         super.setupClickListener()
 
         binding.constraintNext.setOnClickListener {
-            if (viewModel.getCurrentIndex() < viewModel.getCurrentList().size) {
+            log("${viewModel.getCurrentIndex()} ...  ${viewModel.getCurrentList().size}")
+            if (viewModel.getCurrentIndex() < viewModel.getCurrentList().size-1) {
                 viewModel.setCurrentIndex(viewModel.getCurrentIndex() + 1)
                 updateUi(viewModel.getCurrentIndex(), viewModel.getCurrentList().size)
                 updateUiData(viewModel.getCurrentIndex(), viewModel.getCurrentList())
@@ -77,8 +78,6 @@ class StepsFragment : BaseCaregiverFragment<FragmentStepsBinding>() {
         }
     }
 
-
-//TODO length=10; index=10
     private fun updateUiData(index: Int, steps: List<Step>) {
         val step = steps[index]
         binding.stepNumber.text = step.step
@@ -88,7 +87,7 @@ class StepsFragment : BaseCaregiverFragment<FragmentStepsBinding>() {
 
         if (step.toDo.isNotEmpty()) {
             binding.toDo.text = step.toDo
-            if(1 ==1){
+            if(step.flag==1){
                 binding.labelToDo.text = getString(R.string.to_do)
             }else{
                 binding.labelToDo.text = getString(R.string.advice)

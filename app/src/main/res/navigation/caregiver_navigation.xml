@@ -137,7 +137,11 @@
     <fragment
         android:id="@+id/strengthBuildingPlanFragment"
         android:name="mnshat.dev.myproject.users.caregiver.tools.strengthBuildingPlan.StrengthBuildingPlanFragment"
-        android:label="StrengthBuildingPlanFragment" />
+        android:label="StrengthBuildingPlanFragment" >
+        <action
+            android:id="@+id/action_strengthBuildingPlanFragment_to_stepsFragment"
+            app:destination="@id/stepsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/supporterCompassFragment"
         android:name="mnshat.dev.myproject.users.caregiver.tools.supporterCompass.SupporterCompassFragment"

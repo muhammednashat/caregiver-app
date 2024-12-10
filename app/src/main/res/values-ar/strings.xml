@@ -305,8 +305,8 @@
     <string name="strength_build_plan">خريطة بناء القوة</string>
     <string name="you_are_not_alone_on_this_journey">لست وحدك فى هذه الرحلة</string>
     <string name="facing_stigma_and_shame_with_confidence">Facing Stigma and Shame with Confidence</string>
-    <string name="to_do"> دعوة للعمل:</string>
-    <string name="advice"> نصيحة:</string>
+    <string name="to_do">دعوة للعمل:</string>
+    <string name="advice">نصيحة:</string>
 
 
     <!-- Step numbers -->
@@ -505,6 +505,7 @@
     <string name="activity_name_is_required">قم بإدخال اسم النشاط</string>
     <string name="special_activity">نشاط خاص</string>
     <string name="create_activity2">إنشاء النشاط</string>
+    <string name="helping_someone_suffering_from_depression">مساعدة شخص يعانى من الاكتئاب</string>
 
 
 </resources>

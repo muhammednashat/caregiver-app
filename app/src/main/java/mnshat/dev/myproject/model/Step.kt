@@ -9,6 +9,7 @@ data class Step (
     val title: String,
     val description: String,
     val toDo: String = "",
-    val image: Int
+    val image: Int,
+    val flag: Int = 1
 ) : Parcelable {
 }
