@@ -10,7 +10,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="@dimen/margin_2_super"
         android:background="@drawable/corner_normal"
         android:backgroundTint="#cae1f1"
         tools:context=".users.patient.calender.presentaion.DayPlanFragment">
@@ -18,9 +17,12 @@
 
         <ImageView
             android:id="@+id/imageView20"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:src="@drawable/image_tracking"
+            android:layout_width="match_parent"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="100dp"
+            android:layout_height="120dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/image123"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
