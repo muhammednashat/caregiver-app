@@ -80,10 +80,13 @@ class CalenderViewModel @Inject constructor(
 
     }
 
+    fun clearData(){
+        _taskList.postValue(mutableListOf())
+    }
     private fun postDays(days: List<DayEntity>?) {
         val list = mutableSetOf<CalendarDay>()
         log("Days are${days?.get(0)?.day}")
-        days?.get(0)?.day?.let { getTasks(it) }
+//        days?.get(0)?.day?.let { getTasks(it) }
 
         days?.forEach { day ->
             val date = Date(day.day)

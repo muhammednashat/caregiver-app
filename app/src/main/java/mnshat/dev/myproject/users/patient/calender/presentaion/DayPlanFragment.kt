@@ -36,23 +36,20 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
 
         binding = FragmentDayPlanBinding.inflate(inflater, container, false)
         getTasks(viewModel.getDayEntity().day)
+        done = 0
         observing()
         setUpListeners()
-        log("onCreateView")
         return  binding.root
     }
-
-    override fun onStart() {
-        super.onStart()
-        log("onStart")
-    }
-
 
     private fun setUpListeners() {
       binding.addButton.setOnClickListener {
           val action = DayPlanFragmentDirections.actionDayPlanFragmentToCreateOwnActivityFragment("updating")
          findNavController().navigate(action)
       }
+        binding.back.setOnClickListener{
+            findNavController().popBackStack()
+        }
     }
 
     private fun getTasks(day: String) {
@@ -61,9 +58,12 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
 
     private fun observing() {
         viewModel.taskList.observe(viewLifecycleOwner) { tasks ->
+            if (tasks.isNotEmpty()){
+                initViews(tasks)
+                setUpRecyclerView(tasks)
+            }
             tasks?.let {
-                initViews(it)
-                setUpRecyclerView(it)
+
             }
         }
     }
@@ -80,8 +80,9 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
     }
 
     private fun updateUi(done: Int) {
+        log(done.toString() + " updateUi")
         binding.numDone.text = done.toString()
-        val progress = (3.toFloat() / taskSize.toFloat()) * 100
+        val progress = (done.toFloat() / taskSize.toFloat()) * 100
         binding.circularProgress.progress = progress.toInt()
     }
 
@@ -89,22 +90,26 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
     private fun setUpRecyclerView(tasks: List<TaskEntity>) {
         adapter = TasksAdapter(tasks.toMutableList(),this)
         binding.recyclerView.adapter = adapter
-
-
         val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
         itemTouchHelper.attachToRecyclerView(binding.recyclerView)
     }
 
     override fun updateTaskStatus(task: TaskEntity) {
+        if (task.isCompleted) { done++}else{ done--}
+        updateUi(done)
         viewModel.updateTask(task)
     }
 
     override fun deleteTask(taskId: Int) {
         viewModel.deleteTask(taskId)
+        done = 0
+        taskSize = 0
+        getTasks(viewModel.getDayEntity().day)
+
     }
 
 
-    // ToDO Chat GPT
+    // ToDO  From Chat GPT
     private val swipeToDeleteCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
         override fun onMove(
             recyclerView: RecyclerView,
@@ -150,5 +155,9 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
         }
     }
 
+    override fun onStop() {
+        super.onStop()
+            viewModel.clearData()
+    }
 
 }
