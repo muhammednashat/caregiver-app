@@ -19,23 +19,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
-import mnshat.dev.myproject.R
-import mnshat.dev.myproject.auth.AuthActivity
 import mnshat.dev.myproject.databinding.DialogBinding
-import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
-import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.util.USER_EMAIL
-import mnshat.dev.myproject.util.IS_SECOND_TIME
-import mnshat.dev.myproject.util.LANGUAGE
-import mnshat.dev.myproject.util.MyApplication
-import mnshat.dev.myproject.util.PASSWORD
-import mnshat.dev.myproject.util.SharedPreferencesManager
-import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 open class BaseFragment: Fragment() {
 
     private lateinit var progressDialog: Dialog
+    private lateinit var temporallyDialog: Dialog
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -70,6 +60,30 @@ open class BaseFragment: Fragment() {
             view = layout
             show()
         }
+    }
+    fun showTemporallyDialog(title: String, message: String,imageResource:Int?=null ,textButton: String,callBack:() -> Unit) {
+        temporallyDialog = Dialog(requireContext())
+        temporallyDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = DialogBinding.inflate(layoutInflater)
+        dialogBinding.title.text = title
+        dialogBinding.title.text = title
+        imageResource?.let {dialogBinding.image.setImageResource(it) }
+        dialogBinding.message.text = message
+        dialogBinding.button.text = textButton
+        temporallyDialog.setContentView(dialogBinding.root)
+        temporallyDialog.setCanceledOnTouchOutside(true)
+        val window = temporallyDialog.window
+        window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        temporallyDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialogBinding.button.setOnClickListener {
+            temporallyDialog.dismiss()
+//                showProgressDialog()
+            callBack()
+        }
+        dialogBinding.icClose.setOnClickListener {
+            temporallyDialog.dismiss()
+        }
+        temporallyDialog.show()
     }
 
 }

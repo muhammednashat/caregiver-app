@@ -12,8 +12,57 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="@drawable/corner_large"
+            android:backgroundTint="@color/white"
+            android:padding="@dimen/margin_large"
+            app:layout_constraintEnd_toEndOf="@+id/imageView23"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/imageView23"
+            app:layout_constraintTop_toBottomOf="@+id/imageView23">
+
+            <TextView
+                android:id="@+id/textView48"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="@string/great_job"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@color/white"
+                android:text="@string/everything_is_ready_now_you_can_start_now"
+                app:layout_constraintEnd_toEndOf="@+id/textView48"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/textView48"
+                app:layout_constraintTop_toBottomOf="@+id/textView48" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button"
+                android:paddingStart="@dimen/margin_large"
+                android:paddingEnd="@dimen/margin_large"
+                style="@style/button_large"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:backgroundTint="@color/shade_orange"
+                android:text="@string/okay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.562"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/message" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <ImageView
@@ -29,43 +78,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView48"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/great_job"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView23" />
 
-        <TextView
-            android:id="@+id/message"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="44dp"
-            android:gravity="center"
-            android:text="@string/everything_is_ready_now_you_can_start_now"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView48" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button"
-            android:paddingStart="@dimen/margin_large"
-            android:paddingEnd="@dimen/margin_large"
-            style="@style/button_large"
-            android:layout_width="wrap_content"
-            android:layout_marginBottom="@dimen/margin_large"
-            android:backgroundTint="@color/shade_orange"
-            android:text="@string/okay"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.562"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/message" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
