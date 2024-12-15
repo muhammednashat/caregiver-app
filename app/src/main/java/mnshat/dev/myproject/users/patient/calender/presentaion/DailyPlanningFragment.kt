@@ -47,10 +47,8 @@ class DailyPlanningFragment : BaseFragment(),OnDayClickListener {
         binding.calendarView.setOnDateChangedListener { widget, date, selected ->
             viewModel.daysList?.value?.let {
                 if (it.contains(date)) {
-                    binding.trackingContainer.alpha = 1.0f
-
-                } else {
-                    binding.trackingContainer.alpha = 0.0f
+                    viewModel.setPickedDate(date)
+                    findNavController().navigate(R.id.action_dailyPlannerFragment_to_dayPlanFragment)
                 }
             }
         }
@@ -59,12 +57,9 @@ class DailyPlanningFragment : BaseFragment(),OnDayClickListener {
     private fun observing() {
         viewModel.daysList.observe(viewLifecycleOwner) { days ->
             days?.let {
-
                 decorateViews(days)
-
                 checkTasksForToday(days)
-             seuUpRecyclerView(days)
-
+                 seuUpRecyclerView(days)
             }
         }
         viewModel.taskList.observe(viewLifecycleOwner) { tasks ->
@@ -73,12 +68,13 @@ class DailyPlanningFragment : BaseFragment(),OnDayClickListener {
     }
 
     private fun seuUpRecyclerView(days: java.util.HashSet<CalendarDay>) {
-    daysAdapter = DaysAdapter(days,this)
+        daysAdapter = DaysAdapter(days, this)
+        binding.recyclerView.adapter = daysAdapter
     }
 
     private fun checkTasksForToday(days: java.util.HashSet<CalendarDay>) {
-        if (days.contains(viewModel.today))
-            binding.trackingContainer.alpha = 1.0f
+//        if (days.contains(viewModel.today))
+//            binding.trackingContainer.alpha = 1.0f
     }
 
     private fun decorateViews(days: HashSet<CalendarDay>) {

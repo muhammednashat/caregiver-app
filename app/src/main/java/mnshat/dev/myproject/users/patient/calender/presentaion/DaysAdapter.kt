@@ -17,10 +17,9 @@ class DaysAdapter(
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val container: ConstraintLayout = itemView.findViewById(R.id.container)
         val text: TextView = itemView.findViewById(R.id.text)
         val tracking: TextView = itemView.findViewById(R.id.tracking)
-        val image: ImageView = itemView.findViewById(R.id.imageView)
+        val image: ImageView = itemView.findViewById(R.id.image)
     }
 
 
@@ -34,7 +33,7 @@ class DaysAdapter(
         val day = days.elementAt(position)
 
 //        holder.text.text = day.date.dayOfMonth.toString()
-        holder.container.setOnClickListener {
+        holder.tracking.setOnClickListener {
             onDayClickListener.onDayClick(day)
         }
     }
