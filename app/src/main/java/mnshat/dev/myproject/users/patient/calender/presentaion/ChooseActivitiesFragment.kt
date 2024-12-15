@@ -64,16 +64,6 @@ class ChooseActivitiesFragment : BaseFragment() , OnActivityClickListener{
 
 
     private fun showDoneDialog() {
-//        showTemporallyDialog(
-//            getString(R.string.do_you_want_to_pause_this_task_temporarily),
-//            getString(R.string.you_can_exit_this_task_and_come_back_again_whatever_you_want),
-//            R.drawable.ic_timer,
-//            getString(R.string.pause_task_temporarily)
-//        ) {
-////            requireActivity().finish()
-//        }
-
-
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = DialogCalenderBinding.inflate(layoutInflater)
@@ -85,8 +75,8 @@ class ChooseActivitiesFragment : BaseFragment() , OnActivityClickListener{
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         dialogBinding.button.setOnClickListener {
-            dialog.dismiss()
             findNavController().popBackStack()
+            dialog.dismiss()
         }
 
         dialog.show()
@@ -95,28 +85,13 @@ class ChooseActivitiesFragment : BaseFragment() , OnActivityClickListener{
 
 
 
-
-
-
-
-
-
-
     override fun onAddActivity(activities: Set<CalenderActivity>) {
-
-
-
-
-
 
             if (activities.isNotEmpty()){
                 binding.button.alpha = 1.0f
             }else{
                 binding.button.alpha = 0.0f
             }
-
-
-
 
     }
 

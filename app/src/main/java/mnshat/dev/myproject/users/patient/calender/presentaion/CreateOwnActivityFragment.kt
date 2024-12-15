@@ -1,14 +1,19 @@
 package mnshat.dev.myproject.users.patient.calender.presentaion
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.databinding.DialogCalenderBinding
 import mnshat.dev.myproject.databinding.FragmentCreateOwnActivityBinding
 import mnshat.dev.myproject.users.patient.calender.domain.entity.TaskEntity
 
@@ -74,6 +79,7 @@ class CreateOwnActivityFragment : BaseFragment() {
         val tasks = viewModel.toTaskEntities(activities, dayEntity.day).toMutableList()
         tasks.add(task())
         viewModel.createDayPlan(dayEntity, tasks)
+        showDoneDialog()
     }
 
     private fun addNewTask() {
@@ -89,7 +95,25 @@ class CreateOwnActivityFragment : BaseFragment() {
         isCompleted = false,
     )
 
+    private fun showDoneDialog() {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = DialogCalenderBinding.inflate(layoutInflater)
+        dialog.setContentView(dialogBinding.root)
+        dialog.setCanceledOnTouchOutside(false)
 
+        val window = dialog.window
+        window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        dialogBinding.button.setOnClickListener {
+            findNavController().popBackStack()
+            findNavController().popBackStack()
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
 
 
 }

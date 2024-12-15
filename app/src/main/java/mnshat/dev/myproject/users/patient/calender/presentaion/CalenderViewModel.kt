@@ -42,6 +42,7 @@ class CalenderViewModel @Inject constructor(
     fun  getChosenActivities() = chosenActivities
 
     fun setPickedDate(date: CalendarDay) = run { pickedDate = date }
+    fun getPickedDate() = pickedDate
     fun getDayEntity() = DayEntity(day = pickedDate.calendar.time.toString())
 
     fun createDayPlan(day: DayEntity, tasks: List<TaskEntity>) {

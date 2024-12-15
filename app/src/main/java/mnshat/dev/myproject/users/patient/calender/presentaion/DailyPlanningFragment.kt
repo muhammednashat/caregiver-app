@@ -12,27 +12,24 @@ import mnshat.dev.myproject.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentDailyPlanningBinding
 import mnshat.dev.myproject.util.log
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 @AndroidEntryPoint
-class DailyPlanningFragment : BaseFragment() {
+class DailyPlanningFragment : BaseFragment(),OnDayClickListener {
 
     private lateinit var  binding: FragmentDailyPlanningBinding
     private val viewModel: CalenderViewModel by viewModels()
+    private lateinit var daysAdapter: DaysAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View{
-
         binding = FragmentDailyPlanningBinding.inflate(inflater, container, false)
         binding.calendarView.selectedDate = viewModel.today
         viewModel.getDays()
         setListeners()
         observing()
         return  binding.root
-
     }
 
     private fun setListeners() {
@@ -57,24 +54,26 @@ class DailyPlanningFragment : BaseFragment() {
                 }
             }
         }
-
-
     }
 
     private fun observing() {
         viewModel.daysList.observe(viewLifecycleOwner) { days ->
-
             days?.let {
 
                 decorateViews(days)
+
                 checkTasksForToday(days)
+             seuUpRecyclerView(days)
 
             }
         }
-
         viewModel.taskList.observe(viewLifecycleOwner) { tasks ->
             log("Observed tasks: $tasks")
         }
+    }
+
+    private fun seuUpRecyclerView(days: java.util.HashSet<CalendarDay>) {
+    daysAdapter = DaysAdapter(days,this)
     }
 
     private fun checkTasksForToday(days: java.util.HashSet<CalendarDay>) {
@@ -84,6 +83,12 @@ class DailyPlanningFragment : BaseFragment() {
 
     private fun decorateViews(days: HashSet<CalendarDay>) {
         binding.calendarView.addDecorator(TaskDecorator(days))
+    }
+
+    override fun onDayClick(day: CalendarDay) {
+        viewModel.setPickedDate(day)
+        findNavController().navigate(R.id.action_dailyPlannerFragment_to_dayPlanFragment)
+
     }
 
 

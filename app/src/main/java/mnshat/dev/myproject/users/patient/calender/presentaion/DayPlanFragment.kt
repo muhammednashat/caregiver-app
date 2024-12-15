@@ -38,8 +38,21 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
         getTasks(viewModel.getDayEntity().day)
         done = 0
         observing()
+        isItToday()
         setUpListeners()
+
         return  binding.root
+    }
+
+    private fun isItToday() {
+        if (viewModel.getPickedDate().isBefore(viewModel.today)) {
+            binding.addButton.visibility = View.GONE
+            log("yesterday")
+        } else if (viewModel.getPickedDate().isAfter(viewModel.today)) {
+            log("tomorrow")
+        } else {
+            log("today")
+        }
     }
 
     private fun setUpListeners() {
