@@ -510,6 +510,14 @@ cannot fully express the anguish between my ribs\n</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tap_the_emoji_that_best_matches_your_mood_at_this_moment">Tap the emoji that best matches your mood at this moment</string>
+    <string name="happy">Happy</string>
+    <string name="calm_relaxed">Calm/Relaxed</string>
+    <string name="anxious_overwhelmed">Anxious/Overwhelmed</string>
+    <string name="sad_down">Sad/Down</string>
+    <string name="tired_fatigued">Tired/Fatigued</string>
+    <string name="angry_irritated">Angry/Irritated</string>
+    <string name="let_s_start_now">Let\'s start now</string>
+    <string name="hi_let_s_check_in_with_how_you_re_feeling_right_now_before_we_start">Hi! Let\'s check in with how you\'re feeling right now before we start</string>
 
 
 </resources>

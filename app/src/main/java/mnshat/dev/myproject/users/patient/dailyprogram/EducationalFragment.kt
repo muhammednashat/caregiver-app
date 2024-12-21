@@ -1,10 +1,16 @@
 package mnshat.dev.myproject.users.patient.dailyprogram
 
+import android.app.Dialog
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.View
+import android.view.ViewGroup
+import android.view.Window
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
+import mnshat.dev.myproject.databinding.DialogPreMoodSelectionBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
 import mnshat.dev.myproject.model.Task
@@ -15,6 +21,7 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
     override fun getLayout() = R.layout.layout_task
 
     override fun initializeViews() {
+        showDailyProgram()
         initViewModel()
 
         binding.btnPrevious.visibility = View.GONE
@@ -34,6 +41,27 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
     }
 
 
+    private fun showDailyProgram() {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = DialogPreMoodSelectionBinding.inflate(layoutInflater)
+        dialog.setContentView(dialogBinding.root)
+        dialog.setCanceledOnTouchOutside(true)
+
+        val window = dialog.window
+        window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        dialogBinding.icClose.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialogBinding.button.setOnClickListener {
+
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
 
     override fun setupClickListener() {
         binding.btnNext.setOnClickListener {
