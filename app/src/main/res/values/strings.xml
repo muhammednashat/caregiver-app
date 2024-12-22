@@ -525,6 +525,8 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="family">Family</string>
     <string name="money">Money</string>
     <string name="other_reasons_write_here_optional">Other reasons, write here… (optional)</string>
+    <string name="let_s_see_how_today_s_program_helps_you_feel_better">Let’s see how today’s program helps you feel better!</string>
+    <string name="start_today_program">Start today program</string>
 
 
 </resources>

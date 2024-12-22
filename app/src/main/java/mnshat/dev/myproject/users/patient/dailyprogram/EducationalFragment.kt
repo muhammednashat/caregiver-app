@@ -11,14 +11,17 @@ import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
 import mnshat.dev.myproject.databinding.DialogPreMoodSelectionBinding
+import mnshat.dev.myproject.databinding.DialogStartProgramBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
 import mnshat.dev.myproject.model.Task
 import mnshat.dev.myproject.users.patient.calender.presentaion.ChooseDayFragment
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.OnNextClickListener
 import mnshat.dev.myproject.users.patient.moodTracking.presentaion.PreMoodSelectionFragment
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.PreMoodSelectionFragment2
 import mnshat.dev.myproject.util.RELIGION
 
-class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
+class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>(), OnNextClickListener {
 
     override fun getLayout() = R.layout.layout_task
 
@@ -47,7 +50,7 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = DialogPreMoodSelectionBinding.inflate(layoutInflater)
         dialog.setContentView(dialogBinding.root)
-        dialog.setCanceledOnTouchOutside(true)
+        dialog.setCanceledOnTouchOutside(false)
 
         val window = dialog.window
         window?.apply {
@@ -62,8 +65,11 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
             dialog.dismiss()
         }
         dialogBinding.button.setOnClickListener {
-            PreMoodSelectionFragment().show(childFragmentManager, PreMoodSelectionFragment::class.java.name)
             dialog.dismiss()
+            findNavController().navigate(R.id.action_educationalFragment_to_preMoodSelectionFragment)
+//            val bottomFragment =  PreMoodSelectionFragment2()
+//            bottomFragment.setOnNextClickListener(this)
+//            bottomFragment.show(childFragmentManager, PreMoodSelectionFragment2::class.java.name)
         }
 
         dialog.show()
@@ -131,6 +137,31 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
             findNavController().navigate(R.id.action_educationFragment_to_behaviorActivationFragment)
         }
     }
+    private fun showStartDailyProgram() {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = DialogStartProgramBinding.inflate(layoutInflater)
+        dialog.setContentView(dialogBinding.root)
+        dialog.setCanceledOnTouchOutside(true)
+
+        val window = dialog.window
+        window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            val layoutParams = attributes
+            layoutParams.width = (resources.displayMetrics.widthPixels * 0.8).toInt()
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            attributes = layoutParams
+        }
+
+        dialogBinding.icClose.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialogBinding.button.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+
 
     override fun onStop() {
         super.onStop()
@@ -139,6 +170,10 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
             viewModel.updateCurrentTaskRemotely()
             viewModel._isSyncNeeded.value = false
         }
+    }
+
+    override fun onNextClicked() {
+        showStartDailyProgram()
     }
 
 }

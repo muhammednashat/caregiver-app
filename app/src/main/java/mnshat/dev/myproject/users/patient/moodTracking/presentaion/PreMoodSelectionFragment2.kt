@@ -10,10 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import mnshat.dev.myproject.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.DialogPreMoodSelectionBinding
@@ -23,13 +21,13 @@ import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EffectingMo
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
 
 @AndroidEntryPoint
-class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
+class PreMoodSelectionFragment2 : BaseBottomSheetDialogFragment() ,OnEmojiClickListener  {
 
     private val viewModel: MoodViewModel by viewModels()
     private  lateinit var adapter: EmojisAdapter
     private  lateinit var effectingAdapter: EffectingMoodAdapter
     private lateinit var binding: FragmentPreMoodSelectionBinding
-//    private lateinit var _onNextClickListener: OnNextClickListener
+    private lateinit var _onNextClickListener: OnNextClickListener
 
     private var counterClickingButton = 0
     private var canClickingButton = false
@@ -45,18 +43,20 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
     }
 
     private fun setUpListener() {
+        binding.backBtn.setOnClickListener {
+            dismiss()
+        }
 
       binding.btnNext.setOnClickListener {
           if (canClickingButton){
-              if (counterClickingButton == 0){
-                  counterClickingButton++
+              counterClickingButton++
+              if (counterClickingButton == 1){
                   binding.headerText.text =
                       getString(R.string.would_you_like_to_share_what_s_affecting_your_mood)
                       setUpRecyclerViewEffectingMood(viewModel.getEffectingMood(requireActivity()))
-              }else if (counterClickingButton == 1){
-                  showStartDailyProgram()
-//                  _onNextClickListener.onNextClicked()
-//                 dismiss()
+              }else if (counterClickingButton == 2){
+                  _onNextClickListener.onNextClicked()
+                 dismiss()
               }
           }
     }
@@ -92,32 +92,11 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
         binding.btnNext.backgroundTintList  = ColorStateList.valueOf(Color.parseColor(emoji.buttonColor))
     }
     fun setOnNextClickListener(onNextClickListener: OnNextClickListener){
+        _onNextClickListener = onNextClickListener
     }
-    private fun showStartDailyProgram() {
-        val dialog = Dialog(requireContext())
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        val dialogBinding = DialogStartProgramBinding.inflate(layoutInflater)
-        dialog.setContentView(dialogBinding.root)
-        dialog.setCanceledOnTouchOutside(false)
-
-        val window = dialog.window
-        window?.apply {
-            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            val layoutParams = attributes
-            layoutParams.width = (resources.displayMetrics.widthPixels * 0.8).toInt()
-            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
-            attributes = layoutParams
-        }
-
-        dialogBinding.icClose.setOnClickListener {
-        }
-        dialogBinding.button.setOnClickListener {
-            dialog.dismiss()
-            findNavController().navigate(R.id.action_preMoodSelectionFragment_to_educationalFragment)
-        }
-        dialog.show()
-    }
-
 }
 
 
+interface  OnNextClickListener{
+    fun onNextClicked()
+}

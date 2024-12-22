@@ -522,6 +522,9 @@
     <string name="family">العائلة</string>
     <string name="money">المال</string>
     <string name="other_reasons_write_here_optional">اسباب اخرى اكتب هنا…(إختياري)</string>
+    <string name="let_s_see_how_today_s_program_helps_you_feel_better">عمل رائع في برنامجك اليومي!
+دعنا نفحص حالتك المزاجية الآن</string>
+    <string name="start_today_program">ابدأ برنامج اليوم</string>
 
 
 </resources>
