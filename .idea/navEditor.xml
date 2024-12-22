@@ -698,6 +698,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="preMoodSelectionFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-324" />
+                            <option name="y" value="-162" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="spiritualFragment">
                     <value>
                       <LayoutPositions>
@@ -709,7 +721,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_behaviorOrSpiritualFragment_to_activityFragment">
+                            <entry key="action_spiritualFragment_to_activityFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

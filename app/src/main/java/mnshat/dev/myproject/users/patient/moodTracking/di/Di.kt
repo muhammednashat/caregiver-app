@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import mnshat.dev.myproject.users.patient.moodTracking.data.MoodRepository
+import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetEffectingMoodUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetEmojisStatusUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.presentaion.MoodViewModel
 import javax.inject.Singleton
@@ -24,7 +25,11 @@ object Di {
 
     @Provides
     @Singleton
-    fun  provideMoodViewModel(getEmojisStatusUseCase: GetEmojisStatusUseCase) = MoodViewModel(getEmojisStatusUseCase)
+    fun  provideGetEffectingMoodUseCase(moodRepository: MoodRepository) = GetEffectingMoodUseCase(moodRepository)
+
+    @Provides
+    @Singleton
+    fun  provideMoodViewModel(getEmojisStatusUseCase: GetEmojisStatusUseCase , getEffectingMoodUseCase: GetEffectingMoodUseCase) = MoodViewModel(getEmojisStatusUseCase,getEffectingMoodUseCase)
 
 
 

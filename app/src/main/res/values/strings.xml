@@ -518,6 +518,13 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="angry_irritated">Angry/Irritated</string>
     <string name="let_s_start_now">Let\'s start now</string>
     <string name="hi_let_s_check_in_with_how_you_re_feeling_right_now_before_we_start">Hi! Let\'s check in with how you\'re feeling right now before we start</string>
+    <string name="would_you_like_to_share_what_s_affecting_your_mood">Would you like to share what’s affecting your mood?</string>
+    <string name="work">Work</string>
+    <string name="friends">Friends</string>
+    <string name="health">"Health"</string>
+    <string name="family">Family</string>
+    <string name="money">Money</string>
+    <string name="other_reasons_write_here_optional">Other reasons, write here… (optional)</string>
 
 
 </resources>

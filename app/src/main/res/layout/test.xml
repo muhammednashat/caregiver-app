@@ -1,141 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <data>
-
-    </data>
-    <FrameLayout
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/margin_2_super"
+    android:layout_margin = "@dimen/margin_small"
+    android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/editText"
+        android:background="@drawable/corner_normal"
+        android:padding="@dimen/margin_super"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/image_bck"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/margin_large"
-            android:padding="@dimen/margin_large"
-            tools:context=".users.patient.calender.presentaion.DailyPlanningFragment">
-
-            <ImageView
-                android:id="@+id/back"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:padding="@dimen/margin_large"
-                android:src="@drawable/ic_arrow_back_ios"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="#204167"
-                />
-
-            <ImageView
-                android:id="@+id/more"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:padding="@dimen/margin_large"
-                android:src="@drawable/ic_more_horiz"
-                app:tint="#204167"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            <TextView
-                android:id="@+id/textView46"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:text="@string/create_your_own_activity"
-                android:textColor="#204167"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView469"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small"
-                android:gravity="center"
-                android:text="@string/fill_out_the_required_fields_to_create_your_activity"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView46" />
-
-            <TextView
-                android:id="@+id/textView49"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/what_is_the_name_of_your_activity"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView469" />
-
-            <EditText
-                android:id="@+id/editTextText"
-                android:layout_width="0dp"
-                android:backgroundTint="#ffffff"
-                android:background="@drawable/corner_normal"
-                android:layout_height="50dp"
-                android:padding="@dimen/margin_large"
-                android:layout_marginTop="8dp"
-                android:inputType="text"
-                android:hint="@string/write_here"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView49" />
-
-            <TextView
-                android:id="@+id/textView50"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/describe_your_activity_in_a_simple_way_optional"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText" />
-
-            <EditText
-                android:id="@+id/editTextText2"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/corner_four_dark_blue"
-                android:backgroundTint="#F5F5F5"
-                android:hint="@string/write_here"
-                android:inputType="text"
-                android:padding="@dimen/margin_large"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView50" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/creatButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_large"
-                android:background="@drawable/corner_normal"
-                android:backgroundTint="#204167"
-                android:padding="@dimen/margin_large"
-                android:text="@string/create_activity"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        android:layout_height="match_parent"
+        android:textColorHint="@color/black"
+        android:hint="@string/other_reasons_write_here_optional"/>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </FrameLayout>
-
-</layout>
+</androidx.cardview.widget.CardView>
