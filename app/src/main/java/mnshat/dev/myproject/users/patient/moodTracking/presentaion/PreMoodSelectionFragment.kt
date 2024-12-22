@@ -8,11 +8,12 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentPreMoodSelectionBinding
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
 
 @AndroidEntryPoint
-class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
+class PreMoodSelectionFragment : BaseBottomSheetDialogFragment() ,OnEmojiClickListener  {
 
     private val viewModel: MoodViewModel by viewModels()
     private  lateinit var adapter: EmojisAdapter

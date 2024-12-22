@@ -14,6 +14,8 @@ import mnshat.dev.myproject.databinding.DialogPreMoodSelectionBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
 import mnshat.dev.myproject.model.Task
+import mnshat.dev.myproject.users.patient.calender.presentaion.ChooseDayFragment
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.PreMoodSelectionFragment
 import mnshat.dev.myproject.util.RELIGION
 
 class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
@@ -21,7 +23,7 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
     override fun getLayout() = R.layout.layout_task
 
     override fun initializeViews() {
-        showDailyProgram()
+        showDailyProgram2()
         initViewModel()
 
         binding.btnPrevious.visibility = View.GONE
@@ -40,8 +42,7 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
     }
 
-
-    private fun showDailyProgram() {
+    private fun showDailyProgram2() {
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = DialogPreMoodSelectionBinding.inflate(layoutInflater)
@@ -49,19 +50,25 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         dialog.setCanceledOnTouchOutside(true)
 
         val window = dialog.window
-        window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            val layoutParams = attributes
+            layoutParams.width = (resources.displayMetrics.widthPixels * 0.8).toInt()
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            attributes = layoutParams
+        }
 
         dialogBinding.icClose.setOnClickListener {
             dialog.dismiss()
         }
         dialogBinding.button.setOnClickListener {
-
+            PreMoodSelectionFragment().show(childFragmentManager, PreMoodSelectionFragment::class.java.name)
             dialog.dismiss()
         }
 
         dialog.show()
     }
+
 
     override fun setupClickListener() {
         binding.btnNext.setOnClickListener {

@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_educationFragment_to_behaviorActivationFragment"
             app:destination="@id/behaviorActivationFragment" />
+        <action
+            android:id="@+id/action_educationalFragment_to_preMoodSelectionFragment"
+            app:destination="@id/preMoodSelectionFragment" />
     </fragment>
     <fragment
         android:id="@+id/behaviorActivationFragment"
@@ -42,4 +45,8 @@
         android:id="@+id/congratulationsFragment"
         android:name="mnshat.dev.myproject.users.patient.dailyprogram.CongratulationsFragment"
         android:label="CongratulationsFragment" />
+    <fragment
+        android:id="@+id/preMoodSelectionFragment"
+        android:name="mnshat.dev.myproject.users.patient.moodTracking.presentaion.PreMoodSelectionFragment"
+        android:label="PreMoodSelectionFragment" />
 </navigation>
