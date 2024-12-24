@@ -40,7 +40,7 @@
                 android:background="@drawable/corner_larg_top_lift_right2"
                 android:backgroundTint="#6ea5da"
                 android:padding="@dimen/margin_large"
-                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteX="3dp"
                 tools:layout_editor_absoluteY="80dp">
                 <include
                     android:id="@+id/container2"
