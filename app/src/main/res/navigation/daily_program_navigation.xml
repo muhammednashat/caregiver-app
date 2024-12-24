@@ -20,6 +20,9 @@
             app:destination="@id/preMoodSelectionFragment"
             app:popUpTo="@id/educationalFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_educationalFragment_to_postDailyProgramFragment"
+            app:destination="@id/postDailyProgramFragment" />
     </fragment>
     <fragment
         android:id="@+id/behaviorActivationFragment"
@@ -57,4 +60,8 @@
             app:popUpTo="@id/preMoodSelectionFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/postDailyProgramFragment"
+        android:name="mnshat.dev.myproject.users.patient.moodTracking.presentaion.PostDailyProgramFragment"
+        android:label="PostDailyProgramFragment" />
 </navigation>

@@ -1,21 +1,16 @@
 package mnshat.dev.myproject.users.patient.moodTracking.presentaion
 
-import android.app.Dialog
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
-import mnshat.dev.myproject.databinding.DialogPreMoodSelectionBinding
-import mnshat.dev.myproject.databinding.DialogStartProgramBinding
 import mnshat.dev.myproject.databinding.FragmentPreMoodSelectionBinding
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EffectingMood
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
@@ -84,7 +79,7 @@ class PreMoodSelectionFragment2 : BaseBottomSheetDialogFragment() ,OnEmojiClickL
 
     private fun updateUiColor(emoji: EmojiMood) {
         canClickingButton = true
-        binding.moodText.text = emoji.title
+        binding.moodText.text = emoji.name
         binding.moodText.alpha = 1.0f
         binding.icon.setImageResource(emoji.emoji)
         binding.btnNext.setBackgroundResource(R.drawable.gradient_orange)

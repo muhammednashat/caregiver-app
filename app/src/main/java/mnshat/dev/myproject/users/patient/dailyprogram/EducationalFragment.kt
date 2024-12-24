@@ -66,7 +66,9 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>(), OnNex
         }
         dialogBinding.button.setOnClickListener {
             dialog.dismiss()
-            findNavController().navigate(R.id.action_educationalFragment_to_preMoodSelectionFragment)
+
+            findNavController().navigate(R.id.action_educationalFragment_to_postDailyProgramFragment)
+//            findNavController().navigate(R.id.action_educationalFragment_to_preMoodSelectionFragment)
 //            val bottomFragment =  PreMoodSelectionFragment2()
 //            bottomFragment.setOnNextClickListener(this)
 //            bottomFragment.show(childFragmentManager, PreMoodSelectionFragment2::class.java.name)

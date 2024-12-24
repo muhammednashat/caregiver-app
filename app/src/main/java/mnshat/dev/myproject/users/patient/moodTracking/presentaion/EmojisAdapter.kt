@@ -29,7 +29,7 @@ class EmojisAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
      val emoji = emojis[position]
-     holder.title.text = emoji.title
+     holder.title.text = emoji.name
      holder.emoji.setImageResource(emoji.emoji)
       holder.itemView.setOnClickListener{
           onEmojiClickListener.onEmojiClicked(emoji)

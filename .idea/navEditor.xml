@@ -644,8 +644,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="500" />
-                            <option name="y" value="54" />
+                            <option name="x" value="521" />
+                            <option name="y" value="-137" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -665,8 +665,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="114" />
-                            <option name="y" value="-355" />
+                            <option name="x" value="91" />
+                            <option name="y" value="-514" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -677,13 +677,23 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-30" />
-                            <option name="y" value="10" />
+                            <option name="x" value="27" />
+                            <option name="y" value="-140" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
                             <entry key="action_educationFragment_to_behaviorActivationFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_educationalFragment_to_postDailyProgramFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_educationalFragment_to_preMoodSelectionFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -698,14 +708,35 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="postDailyProgramFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-467" />
+                            <option name="y" value="-8" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="preMoodSelectionFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-234" />
-                            <option name="y" value="-184" />
+                            <option name="x" value="-253" />
+                            <option name="y" value="-209" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_preMoodSelectionFragment_to_educationalFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -715,8 +746,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="256" />
-                            <option name="y" value="12" />
+                            <option name="x" value="284" />
+                            <option name="y" value="126" />
                           </Point>
                         </option>
                         <option name="myPositions">
