@@ -14,6 +14,7 @@ class MoodRepository {
             context.getString(R.string.happy),
             context.getString(R.string.it_s_great_to_see_you_happy),
             context.getString(R.string.let_us_channel_that_positive_energy),
+            context.getString(R.string.here_are_some_suggestions_to_keep_your_mood_up),
             getSuggestionsForHappy(context),
             R.drawable.icon_mood, "#ffdb75","#f8ca4a"),
 
@@ -21,6 +22,8 @@ class MoodRepository {
             context.getString(R.string.calm_relaxed),
             context.getString(R.string.there_s_nothing_like_the_feeling_of_peace),
             context.getString(R.string.let_s_hold_onto_this_tranquility),
+            context.getString(R.string.here_are_some_suggestions_to_keep_your_mood_up),
+
             getSuggestionsForRelaxed(context),
             R.drawable.icon_mood3,
             "#ffb770","#ff9e3e"),
@@ -29,6 +32,8 @@ class MoodRepository {
             context.getString(R.string.tired_fatigued),
             context.getString(R.string.it_s_completely_okay),
             context.getString(R.string.let_s_take_small),
+            context.getString(R.string.here_are_some_suggestions_to_improve_your_mood),
+
             getSuggestionsForTired(context),
                     R.drawable.icon_mood6,
             "#61e5a3",
@@ -37,6 +42,8 @@ class MoodRepository {
              context.getString(R.string.sad_down),
              context.getString(R.string.it_s_tough_feeling_down),
              context.getString(R.string.but_remember_even),
+             context.getString(R.string.here_are_some_suggestions_to_improve_your_mood),
+
              getSuggestionsForSad(context),
              R.drawable.icon_mood1,
              "#d689d6",
@@ -46,6 +53,8 @@ class MoodRepository {
             context.getString(R.string.anxious_overwhelmed),
             context.getString(R.string.feeling_overwhelmed_is_hard),
             context.getString(R.string.but_you_re_stronger_than_you_think_let_s_focus_on_calming_your_mind),
+            context.getString(R.string.here_are_some_suggestions_to_improve_your_mood),
+
             getSuggestionsForOverwhelmed(context),
             R.drawable.icon_mood5,
             "#87c1e7",
@@ -55,6 +64,8 @@ class MoodRepository {
             context.getString(R.string.angry_irritated),
             context.getString(R.string.anger_is_a_natural_emotion),
             context.getString(R.string.let_s_redirect_it_in_a_positive_and_constructive_way_to_create_change_and_growth),
+            context.getString(R.string.here_are_some_suggestions_to_improve_your_mood),
+           
             getSuggestionsForIrritated(context),
             R.drawable.icon_mood4,
             "#c051c0",
