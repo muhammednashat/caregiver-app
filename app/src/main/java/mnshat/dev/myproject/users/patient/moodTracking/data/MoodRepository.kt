@@ -16,7 +16,7 @@ class MoodRepository {
             context.getString(R.string.let_us_channel_that_positive_energy),
             context.getString(R.string.here_are_some_suggestions_to_keep_your_mood_up),
             getSuggestionsForHappy(context),
-            R.drawable.icon_mood, "#ffdb75","#f8ca4a"),
+            R.drawable.icon_mood, "#ffdb75","#f8ca4a","#fcf2d6"),
 
         EmojiMood(
             context.getString(R.string.calm_relaxed),
@@ -26,7 +26,7 @@ class MoodRepository {
 
             getSuggestionsForRelaxed(context),
             R.drawable.icon_mood3,
-            "#ffb770","#ff9e3e"),
+            "#ffb770","#ff9e3e","#fce9d5"),
 
         EmojiMood(
             context.getString(R.string.tired_fatigued),
@@ -37,7 +37,7 @@ class MoodRepository {
             getSuggestionsForTired(context),
                     R.drawable.icon_mood6,
             "#61e5a3",
-            "#26d57d"),
+            "#26d57d",""),
          EmojiMood(
              context.getString(R.string.sad_down),
              context.getString(R.string.it_s_tough_feeling_down),
@@ -47,7 +47,7 @@ class MoodRepository {
              getSuggestionsForSad(context),
              R.drawable.icon_mood1,
              "#d689d6",
-             "#c051c0"),
+             "#c051c0","#f0d9f0"),
 
         EmojiMood(
             context.getString(R.string.anxious_overwhelmed),
@@ -58,7 +58,7 @@ class MoodRepository {
             getSuggestionsForOverwhelmed(context),
             R.drawable.icon_mood5,
             "#87c1e7",
-            "#5994d5"),
+            "#5994d5","#dbe7f4"),
 
         EmojiMood(
             context.getString(R.string.angry_irritated),
@@ -68,8 +68,8 @@ class MoodRepository {
            
             getSuggestionsForIrritated(context),
             R.drawable.icon_mood4,
-            "#c051c0",
-            "#c051c0"),
+            "#f59077",
+            "#f0522b","#fae2dc"),
     )
 
 

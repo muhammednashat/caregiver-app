@@ -566,6 +566,15 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="feeling_overwhelmed_is_hard">Feeling overwhelmed is hard,</string>
     <string name="here_are_some_suggestions_to_improve_your_mood">Here are some suggestions to improve your mood:</string>
     <string name="here_are_some_suggestions_to_keep_your_mood_up">Here are some suggestions to keep your mood up:</string>
+    <string name="compare_results">Compare results!</string>
+    <string name="now_compare_your_mood_results_for_the_day">Now compare your mood results for the day</string>
+    <string name="here_s_how_your_mood_has_changed">Here\'s how your mood has changed</string>
+    <string name="during_today_s_programme">During today\'s programme</string>
+    <string name="well_done1">Well done</string>
+    <string name="well_done11">Well done</string>
+    <string name="you_have_completed">You have completed your daily program and obtained a full mark. We hope that you will continue doing this every day</string>
+    <string name="great_job_on_your_daily_program">Great job on your daily program!</string>
+    <string name="let_s_check_your_mood_now">Let\'s check your mood now</string>
 
 
 </resources>

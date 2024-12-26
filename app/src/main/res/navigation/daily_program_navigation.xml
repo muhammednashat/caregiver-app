@@ -48,7 +48,7 @@
 
     <fragment
         android:id="@+id/congratulationsFragment"
-        android:name="mnshat.dev.myproject.users.patient.dailyprogram.CongratulationsFragment"
+        android:name="mnshat.dev.myproject.users.patient.dailyprogram.CongratulationsFragment2"
         android:label="CongratulationsFragment" />
     <fragment
         android:id="@+id/preMoodSelectionFragment"
@@ -63,5 +63,13 @@
     <fragment
         android:id="@+id/postDailyProgramFragment"
         android:name="mnshat.dev.myproject.users.patient.moodTracking.presentaion.PostDailyProgramFragment"
-        android:label="PostDailyProgramFragment" />
+        android:label="PostDailyProgramFragment" >
+        <action
+            android:id="@+id/action_postDailyProgramFragment_to_suggestionsFragment"
+            app:destination="@id/suggestionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/suggestionsFragment"
+        android:name="mnshat.dev.myproject.users.patient.moodTracking.presentaion.SuggestionsFragment"
+        android:label="SuggestionsFragment" />
 </navigation>

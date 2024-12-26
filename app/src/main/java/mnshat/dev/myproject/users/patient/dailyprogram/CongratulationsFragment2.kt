@@ -7,18 +7,17 @@ import android.view.ViewGroup
 import android.view.Window
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogeSurveyBinding
-import mnshat.dev.myproject.databinding.FragmentCongratulationsBinding
+import mnshat.dev.myproject.databinding.FragmentCongratulations2Binding
 import mnshat.dev.myproject.util.USER_NAME
 
 
-class CongratulationsFragment: BaseDailyProgramFragment<FragmentCongratulationsBinding>() {
+class CongratulationsFragment2: BaseDailyProgramFragment<FragmentCongratulations2Binding>() {
 
-    override fun getLayout() = R.layout.fragment_congratulations
+    override fun getLayout() = R.layout.fragment_congratulations2
 
     override fun initializeViews() {
        val nameUser= sharedPreferences.getString(USER_NAME)
         binding.textView.text= getString(R.string.completion_message,nameUser)
-
         binding.viewLevel.setOnClickListener {
         }
 

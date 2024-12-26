@@ -568,6 +568,15 @@
     <string name="feeling_overwhelmed_is_hard">الشعور بالقلق أمر صعب</string>
     <string name="here_are_some_suggestions_to_improve_your_mood">إليك بعض الإقتراحات لتحسين حالتك المزاجية:</string>
     <string name="here_are_some_suggestions_to_keep_your_mood_up">إليك بعض الإقتراحات للحفاظ على حالتك المزاجية:</string>
+    <string name="compare_results">مقارنة النتائج!</string>
+    <string name="now_compare_your_mood_results_for_the_day">الآن قارن نتائج حالتك المزاجية لهذا اليوم</string>
+    <string name="here_s_how_your_mood_has_changed">إليك كيف تغيرت حالتك المزاجية</string>
+    <string name="during_today_s_programme">أثناء برنامج اليوم</string>
+    <string name="well_done1">احسنت</string>
+    <string name="well_done11">احسنتي</string>
+    <string name="you_have_completed">لقد اتممت برنامجك اليومى وحصلت على العلامة الكاملة , نتمنى ان تستمر بفعل هذا كل يوم</string>
+    <string name="great_job_on_your_daily_program">عمل رائع فى برنامجك اليومى! </string>
+    <string name="let_s_check_your_mood_now">دعنا نفحص حالتك المزاجية الان</string>
 
 
 </resources>

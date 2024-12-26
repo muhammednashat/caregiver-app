@@ -37,6 +37,7 @@
         android:background="@drawable/corner_normal"
         android:backgroundTint="#fcf2d6"
         android:textColor="#f0a82b"
+        android:visibility="gone"
         android:padding="@dimen/margin_medium"
 android:layout_marginTop="@dimen/margin_small"
         android:text="TextVifdgfdg fgsfdgfd fgfdgf fgsfdgf fgfdgs gsfdg fgsfdg fgfdg fgfdg fggfdg fdg fgdgsfgdfg gsdf gfdg fgs sfgsfd gs sgfd ew"

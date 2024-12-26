@@ -10,5 +10,6 @@ class EmojiMood
     val emoji: Int,
     val backgroundColor: String,
     val buttonColor: String,
+    val tipBackgroundColor :String
 
 )
