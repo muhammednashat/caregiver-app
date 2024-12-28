@@ -14,6 +14,15 @@
         android:layout_height="match_parent"
         tools:context=".users.patient.moodTracking.presentaion.PostDailyProgramFragment">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/icon_moodf"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
@@ -38,6 +47,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="@dimen/margin_large"
                 android:text="@string/compare_results"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -66,7 +76,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:cardCornerRadius="@dimen/margin_large"
-                android:layout_margin="@dimen/margin_super"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_2_super"
+                android:layout_marginEnd="@dimen/margin_large"
+                android:layout_marginBottom="@dimen/margin_2_super"
                 app:layout_constraintBottom_toTopOf="@+id/btn_next"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -83,6 +96,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:layout_marginTop="@dimen/margin_super"
                         android:text="@string/here_s_how_your_mood_has_changed"
                         android:textColor="@color/black"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -104,22 +118,12 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView51" />
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView8"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="@dimen/margin_super"
-                        app:cardCornerRadius="@dimen/margin_large"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView57">
-
-                    </androidx.cardview.widget.CardView>
-
                     <ImageView
+                        android:id="@+id/imageView26"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:tint="@color/black"
                         android:src="@drawable/baseline_arrow_right_alt_24"
+                        android:tint="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/cardView8"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -127,12 +131,121 @@
                         app:layout_constraintTop_toTopOf="@+id/cardView8" />
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="@dimen/margin_super"
+                        android:id="@+id/cardView9"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="@dimen/margin_2_super"
+                        android:layout_marginBottom="@dimen/margin_2_super"
                         app:cardCornerRadius="@dimen/margin_large"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/cardView8"
                         app:layout_constraintTop_toBottomOf="@+id/textView57">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/containerAfter"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#6ea5da"
+
+                            android:padding="@dimen/margin_large">
+
+                            <ImageView
+                                android:id="@+id/imageAfter"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_marginTop="@dimen/margin_large"
+                                android:src="@drawable/image_mood123"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/titleAfter"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/after_today_s_programme"
+                                android:textColor="@color/white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/imageAfter" />
+
+                            <TextView
+                                android:id="@+id/moodAfter"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/compare_results"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/titleAfter" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardView8"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="20dp"
+                        app:cardCornerRadius="@dimen/margin_large"
+                        app:layout_constraintBottom_toBottomOf="@+id/cardView9"
+                        app:layout_constraintEnd_toStartOf="@+id/cardView9"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/cardView9">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/containerBefore"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#6ea5da"
+                            android:padding="@dimen/margin_large">
+
+                            <ImageView
+                                android:id="@+id/imageBefore"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_marginTop="@dimen/margin_large"
+                                android:src="@drawable/image_mood123"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/titleBefore"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/before_today_s_programme"
+                                android:textColor="@color/white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/imageBefore" />
+
+                            <TextView
+                                android:id="@+id/modeBefore"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/compare_results"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/titleBefore" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </androidx.cardview.widget.CardView>
 
@@ -145,7 +258,7 @@
                 android:id="@+id/btn_next"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_large"
+                android:layout_marginBottom="@dimen/margin_2_super"
                 android:background="@drawable/gradient_orange"
                 android:backgroundTint="#204167"
                 android:text="@string/okay"

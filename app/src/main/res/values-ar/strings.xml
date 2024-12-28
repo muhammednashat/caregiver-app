@@ -577,6 +577,11 @@
     <string name="you_have_completed">لقد اتممت برنامجك اليومى وحصلت على العلامة الكاملة , نتمنى ان تستمر بفعل هذا كل يوم</string>
     <string name="great_job_on_your_daily_program">عمل رائع فى برنامجك اليومى! </string>
     <string name="let_s_check_your_mood_now">دعنا نفحص حالتك المزاجية الان</string>
+    <string name="after_today_s_programme">بعد برنامج اليوم</string>
+    <string name="before_today_s_programme">قبل برنامج اليوم</string>
+    <string name="your_progress_has_been_saved">تم حفظ تقدمك!</string>
+    <string name="review_your_mood_over_time">راجع حالتك المزاجية بمرور الوقت....</string>
+    <string name="you_can_track_your_mood_by_clicking_on_the_emoji_at_the_top_of_your_daily_schedule_page">يمكنك تتبع الحالة المزاجية من خلال النقر على الإيموجى الموجود فى اعلى الصفحة الخاصة ببرنامجك اليومى</string>
 
 
 </resources>

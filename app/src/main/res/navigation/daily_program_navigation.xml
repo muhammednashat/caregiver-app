@@ -55,10 +55,8 @@
         android:name="mnshat.dev.myproject.users.patient.moodTracking.presentaion.PreMoodSelectionFragment"
         android:label="PreMoodSelectionFragment" >
         <action
-            android:id="@+id/action_preMoodSelectionFragment_to_educationalFragment"
-            app:destination="@id/educationalFragment"
-            app:popUpTo="@id/preMoodSelectionFragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_preMoodSelectionFragment_to_shareWhatEffectingMoodFragment"
+            app:destination="@id/shareWhatEffectingMoodFragment" />
     </fragment>
     <fragment
         android:id="@+id/postDailyProgramFragment"
@@ -72,4 +70,8 @@
         android:id="@+id/suggestionsFragment"
         android:name="mnshat.dev.myproject.users.patient.moodTracking.presentaion.SuggestionsFragment"
         android:label="SuggestionsFragment" />
+    <fragment
+        android:id="@+id/shareWhatEffectingMoodFragment"
+        android:name="mnshat.dev.myproject.users.patient.moodTracking.presentaion.ShareWhatEffectingMoodFragment"
+        android:label="ShareWhatEffectingMoodFragment" />
 </navigation>

@@ -2,6 +2,8 @@ package mnshat.dev.myproject.model
 
 data class StatusDailyProgram(
 
+    var preChecked: Boolean? = false,
+    var postChecked: Boolean? = false,
     var currentLevel: Int? = 1,
     var day: Int? = 1, // 1
     var remaining: Int? = 3, //4

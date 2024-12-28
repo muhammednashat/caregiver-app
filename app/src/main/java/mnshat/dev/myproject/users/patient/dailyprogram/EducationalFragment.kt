@@ -15,22 +15,17 @@ import mnshat.dev.myproject.databinding.DialogStartProgramBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
 import mnshat.dev.myproject.model.Task
-import mnshat.dev.myproject.users.patient.calender.presentaion.ChooseDayFragment
-import mnshat.dev.myproject.users.patient.moodTracking.presentaion.OnNextClickListener
-import mnshat.dev.myproject.users.patient.moodTracking.presentaion.PreMoodSelectionFragment
-import mnshat.dev.myproject.users.patient.moodTracking.presentaion.PreMoodSelectionFragment2
 import mnshat.dev.myproject.util.RELIGION
 
-class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>(), OnNextClickListener {
+class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
     override fun getLayout() = R.layout.layout_task
 
     override fun initializeViews() {
-        showDailyProgram2()
         initViewModel()
+        isPreChecked()
 
         binding.btnPrevious.visibility = View.GONE
-
         viewModel.currentTask.let {
             viewModel.listOfTasks = it.dayTask?.educational as List<Task>
             if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
@@ -40,12 +35,18 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>(), OnNex
         hideSpiritualIcon(binding.constraintTask2, binding.line1)
     }
 
+    private fun isPreChecked() {
+        if (viewModel.status.preChecked == false){
+            showDailyProgram()
+        }
+    }
+
     private fun initViewModel() {
         val factory = DailyProgramViewModelFactory(sharedPreferences, activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
     }
 
-    private fun showDailyProgram2() {
+    private fun showDailyProgram() {
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = DialogPreMoodSelectionBinding.inflate(layoutInflater)
@@ -66,12 +67,7 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>(), OnNex
         }
         dialogBinding.button.setOnClickListener {
             dialog.dismiss()
-
-            findNavController().navigate(R.id.action_educationalFragment_to_postDailyProgramFragment)
-//            findNavController().navigate(R.id.action_educationalFragment_to_preMoodSelectionFragment)
-//            val bottomFragment =  PreMoodSelectionFragment2()
-//            bottomFragment.setOnNextClickListener(this)
-//            bottomFragment.show(childFragmentManager, PreMoodSelectionFragment2::class.java.name)
+            findNavController().navigate(R.id.action_educationalFragment_to_preMoodSelectionFragment)
         }
 
         dialog.show()
@@ -96,7 +92,6 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>(), OnNex
         }
 
         binding.btnRecommend.setOnClickListener {
-
             val currentIndex = getNextTask(viewModel.status.currentIndexEducational!!, 1)
             viewModel.status.currentIndexEducational = currentIndex
             viewModel.updateCurrentTaskLocally()
@@ -174,9 +169,7 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>(), OnNex
         }
     }
 
-    override fun onNextClicked() {
-        showStartDailyProgram()
-    }
+
 
 }
 

@@ -27,9 +27,6 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
     private  lateinit var adapter: EmojisAdapter
     private  lateinit var effectingAdapter: EffectingMoodAdapter
     private lateinit var binding: FragmentPreMoodSelectionBinding
-//    private lateinit var _onNextClickListener: OnNextClickListener
-
-    private var counterClickingButton = 0
     private var canClickingButton = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +35,10 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
 
         binding = FragmentPreMoodSelectionBinding.inflate(inflater,container, false)
         setUpListener()
+        if (viewModel.getEmoji() != null){
+            canClickingButton = true
+            updateUiColor(viewModel.getEmoji()!!)
+        }
         setUprecyclerView(viewModel.getEmojisStatus(requireActivity()))
         return  binding.root
     }
@@ -46,16 +47,10 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
 
       binding.btnNext.setOnClickListener {
           if (canClickingButton){
-              if (counterClickingButton == 0){
-                  counterClickingButton++
-                  binding.headerText.text =
-                      getString(R.string.would_you_like_to_share_what_s_affecting_your_mood)
-                      setUpRecyclerViewEffectingMood(viewModel.getEffectingMood(requireActivity()))
-              }else if (counterClickingButton == 1){
-                  showStartDailyProgram()
-//                  _onNextClickListener.onNextClicked()
-//                 dismiss()
-              }
+                  findNavController().navigate(R.id.action_preMoodSelectionFragment_to_shareWhatEffectingMoodFragment)
+//
+//                  showStartDailyProgram()
+
           }
     }
     }
@@ -67,17 +62,10 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
     }
 
 
-    private fun setUpRecyclerViewEffectingMood(list:List<EffectingMood>) {
-        effectingAdapter = EffectingMoodAdapter(list)
-        val layoutManager = GridLayoutManager(requireActivity(), 3)
-        binding.recyclerViewEffectingMood.layoutManager = layoutManager
-        binding.recyclerViewEffectingMood.adapter = effectingAdapter
-        binding.container.visibility = View.VISIBLE
-        binding.recyclerView.alpha = 0.0f
-    }
 
 
     override fun onEmojiClicked(emoji: EmojiMood) {
+        viewModel.setEmoji(emoji)
         updateUiColor(emoji)
     }
 
@@ -90,8 +78,7 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
         binding.root.backgroundTintList  = ColorStateList.valueOf(Color.parseColor(emoji.backgroundColor))
         binding.btnNext.backgroundTintList  = ColorStateList.valueOf(Color.parseColor(emoji.buttonColor))
     }
-    fun setOnNextClickListener(onNextClickListener: OnNextClickListener){
-    }
+
     private fun showStartDailyProgram() {
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -112,7 +99,7 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
         }
         dialogBinding.button.setOnClickListener {
             dialog.dismiss()
-            findNavController().navigate(R.id.action_preMoodSelectionFragment_to_educationalFragment)
+//            findNavController().navigate(R.id.action_preMoodSelectionFragment_to_educationalFragment)
         }
         dialog.show()
     }

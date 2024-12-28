@@ -575,6 +575,11 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="you_have_completed">You have completed your daily program and obtained a full mark. We hope that you will continue doing this every day</string>
     <string name="great_job_on_your_daily_program">Great job on your daily program!</string>
     <string name="let_s_check_your_mood_now">Let\'s check your mood now</string>
+    <string name="after_today_s_programme">After today\'s programme</string>
+    <string name="before_today_s_programme">Before today\'s programme</string>
+    <string name="your_progress_has_been_saved">Your progress has been saved!</string>
+    <string name="review_your_mood_over_time">Review your mood over time....</string>
+    <string name="you_can_track_your_mood_by_clicking_on_the_emoji_at_the_top_of_your_daily_schedule_page">You can track your mood by clicking on the emoji at the top of your daily schedule page</string>
 
 
 </resources>
