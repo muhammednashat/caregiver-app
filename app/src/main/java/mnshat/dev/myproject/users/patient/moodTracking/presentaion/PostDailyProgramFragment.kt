@@ -39,6 +39,7 @@ private lateinit var binding:FragmentPostDailyProgramBinding
         binding.btnNext.setOnClickListener {
             if (canClickingButton){
                 findNavController().navigate(R.id.action_postDailyProgramFragment_to_suggestionsFragment)
+//                findNavController().navigate(R.id.action_postDailyProgramFragment_to_suggestionsFragment)
             }
         }
     }

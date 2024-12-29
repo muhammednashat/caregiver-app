@@ -25,7 +25,6 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
 
     private val viewModel: MoodViewModel by viewModels()
     private  lateinit var adapter: EmojisAdapter
-    private  lateinit var effectingAdapter: EffectingMoodAdapter
     private lateinit var binding: FragmentPreMoodSelectionBinding
     private var canClickingButton = false
     override fun onCreateView(
@@ -47,10 +46,7 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
 
       binding.btnNext.setOnClickListener {
           if (canClickingButton){
-                  findNavController().navigate(R.id.action_preMoodSelectionFragment_to_shareWhatEffectingMoodFragment)
-//
-//                  showStartDailyProgram()
-
+              findNavController().navigate(R.id.action_preMoodSelectionFragment2_to_shareWhatEffectingMoodFragment2)
           }
     }
     }
@@ -79,30 +75,6 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
         binding.btnNext.backgroundTintList  = ColorStateList.valueOf(Color.parseColor(emoji.buttonColor))
     }
 
-    private fun showStartDailyProgram() {
-        val dialog = Dialog(requireContext())
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        val dialogBinding = DialogStartProgramBinding.inflate(layoutInflater)
-        dialog.setContentView(dialogBinding.root)
-        dialog.setCanceledOnTouchOutside(false)
-
-        val window = dialog.window
-        window?.apply {
-            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            val layoutParams = attributes
-            layoutParams.width = (resources.displayMetrics.widthPixels * 0.8).toInt()
-            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
-            attributes = layoutParams
-        }
-
-        dialogBinding.icClose.setOnClickListener {
-        }
-        dialogBinding.button.setOnClickListener {
-            dialog.dismiss()
-//            findNavController().navigate(R.id.action_preMoodSelectionFragment_to_educationalFragment)
-        }
-        dialog.show()
-    }
 
 }
 

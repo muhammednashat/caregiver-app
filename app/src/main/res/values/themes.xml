@@ -9,10 +9,10 @@
           which is used to tint widgets -->
         <item name="colorAccent">@color/shade_orange</item>
         <!-- colorPrimary is used for the default action bar background -->
-<!--        <item name="colorPrimary">@color/my_awesome_color</item>-->
+        <!--        <item name="colorPrimary">@color/my_awesome_color</item>-->
 
         <!-- colorPrimaryDark is used for the status bar -->
-<!--        <item name="colorPrimaryDark">@color/my_awesome_darker_color</item>-->
+        <!--        <item name="colorPrimaryDark">@color/my_awesome_darker_color</item>-->
 
         <!-- You can also set colorControlNormal, colorControlActivated
        colorControlHighlight, and colorSwitchThumbNormal. -->

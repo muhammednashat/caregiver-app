@@ -8,6 +8,7 @@ import mnshat.dev.myproject.users.patient.moodTracking.data.MoodRepository
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetEffectingMoodUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetEmojisStatusUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.presentaion.MoodViewModel
+import mnshat.dev.myproject.util.SharedPreferencesManager
 import javax.inject.Singleton
 
 @Module
@@ -29,7 +30,8 @@ object Di {
 
     @Provides
     @Singleton
-    fun  provideMoodViewModel(getEmojisStatusUseCase: GetEmojisStatusUseCase , getEffectingMoodUseCase: GetEffectingMoodUseCase) = MoodViewModel(getEmojisStatusUseCase,getEffectingMoodUseCase)
+    fun  provideMoodViewModel(getEmojisStatusUseCase: GetEmojisStatusUseCase , getEffectingMoodUseCase: GetEffectingMoodUseCase,sharedPreferencesManager: SharedPreferencesManager)
+                     = MoodViewModel(getEmojisStatusUseCase,getEffectingMoodUseCase,sharedPreferencesManager)
 
 
 

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
 import mnshat.dev.myproject.R
@@ -29,12 +30,11 @@ class SuggestionsFragment : BaseFragment() {
         setUpUi(viewModel.getEmoji()!!)
         setUpListeners()
         return binding.root
-
     }
 
     private fun setUpListeners() {
         binding.btnNext.setOnClickListener {
-
+         findNavController().navigate(R.id.action_suggestionsFragment_to_compareResultsFragment)
         }
     }
 

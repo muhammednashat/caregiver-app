@@ -15,14 +15,6 @@
         <action
             android:id="@+id/action_educationFragment_to_behaviorActivationFragment"
             app:destination="@id/behaviorActivationFragment" />
-        <action
-            android:id="@+id/action_educationalFragment_to_preMoodSelectionFragment"
-            app:destination="@id/preMoodSelectionFragment"
-            app:popUpTo="@id/educationalFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_educationalFragment_to_postDailyProgramFragment"
-            app:destination="@id/postDailyProgramFragment" />
     </fragment>
     <fragment
         android:id="@+id/behaviorActivationFragment"
@@ -50,28 +42,4 @@
         android:id="@+id/congratulationsFragment"
         android:name="mnshat.dev.myproject.users.patient.dailyprogram.CongratulationsFragment2"
         android:label="CongratulationsFragment" />
-    <fragment
-        android:id="@+id/preMoodSelectionFragment"
-        android:name="mnshat.dev.myproject.users.patient.moodTracking.presentaion.PreMoodSelectionFragment"
-        android:label="PreMoodSelectionFragment" >
-        <action
-            android:id="@+id/action_preMoodSelectionFragment_to_shareWhatEffectingMoodFragment"
-            app:destination="@id/shareWhatEffectingMoodFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/postDailyProgramFragment"
-        android:name="mnshat.dev.myproject.users.patient.moodTracking.presentaion.PostDailyProgramFragment"
-        android:label="PostDailyProgramFragment" >
-        <action
-            android:id="@+id/action_postDailyProgramFragment_to_suggestionsFragment"
-            app:destination="@id/suggestionsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/suggestionsFragment"
-        android:name="mnshat.dev.myproject.users.patient.moodTracking.presentaion.SuggestionsFragment"
-        android:label="SuggestionsFragment" />
-    <fragment
-        android:id="@+id/shareWhatEffectingMoodFragment"
-        android:name="mnshat.dev.myproject.users.patient.moodTracking.presentaion.ShareWhatEffectingMoodFragment"
-        android:label="ShareWhatEffectingMoodFragment" />
 </navigation>

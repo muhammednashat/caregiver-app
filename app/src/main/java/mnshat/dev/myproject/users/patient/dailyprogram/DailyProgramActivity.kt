@@ -12,7 +12,6 @@ class DailyProgramActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily_program)
-
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_daily_program) as NavHostFragment
         navController = navHostFragment.navController
     }

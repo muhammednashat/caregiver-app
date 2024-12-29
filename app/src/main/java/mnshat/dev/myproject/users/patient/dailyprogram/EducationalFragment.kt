@@ -1,6 +1,7 @@
 package mnshat.dev.myproject.users.patient.dailyprogram
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.View
@@ -9,19 +10,20 @@ import android.view.Window
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
 import mnshat.dev.myproject.databinding.DialogPreMoodSelectionBinding
-import mnshat.dev.myproject.databinding.DialogStartProgramBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
 import mnshat.dev.myproject.model.Task
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.MoodTrackingActivity
 import mnshat.dev.myproject.util.RELIGION
+import mnshat.dev.myproject.util.log
 
 class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
     override fun getLayout() = R.layout.layout_task
 
     override fun initializeViews() {
+        log("EducationalFragment initializeViews")
         initViewModel()
         isPreChecked()
 
@@ -67,7 +69,8 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         }
         dialogBinding.button.setOnClickListener {
             dialog.dismiss()
-            findNavController().navigate(R.id.action_educationalFragment_to_preMoodSelectionFragment)
+            startActivity(Intent(requireContext(), MoodTrackingActivity::class.java))
+            activity?.finish()
         }
 
         dialog.show()
@@ -134,33 +137,9 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
             findNavController().navigate(R.id.action_educationFragment_to_behaviorActivationFragment)
         }
     }
-    private fun showStartDailyProgram() {
-        val dialog = Dialog(requireContext())
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        val dialogBinding = DialogStartProgramBinding.inflate(layoutInflater)
-        dialog.setContentView(dialogBinding.root)
-        dialog.setCanceledOnTouchOutside(true)
-
-        val window = dialog.window
-        window?.apply {
-            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            val layoutParams = attributes
-            layoutParams.width = (resources.displayMetrics.widthPixels * 0.8).toInt()
-            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
-            attributes = layoutParams
-        }
-
-        dialogBinding.icClose.setOnClickListener {
-            dialog.dismiss()
-        }
-        dialogBinding.button.setOnClickListener {
-            dialog.dismiss()
-        }
-        dialog.show()
-    }
-
 
     override fun onStop() {
+        log("EducationalFragment onStop")
         super.onStop()
         player?.pause()
         if (viewModel._isSyncNeeded.value == true){
