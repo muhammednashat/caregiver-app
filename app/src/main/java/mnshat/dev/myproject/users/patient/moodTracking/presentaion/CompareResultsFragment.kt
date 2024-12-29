@@ -14,6 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogPreMoodSelectionBinding
+import mnshat.dev.myproject.databinding.DialogProgressMoodBinding
 import mnshat.dev.myproject.databinding.FragmentCompareResultsBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.DailyProgramActivity
 
@@ -33,14 +34,17 @@ class CompareResultsFragment : BaseFragment() {
         }
         return  binding.root
     }
+
     private fun showDialog() {
+
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        val dialogBinding = DialogPreMoodSelectionBinding.inflate(layoutInflater)
+        val dialogBinding = DialogProgressMoodBinding.inflate(layoutInflater)
         dialog.setContentView(dialogBinding.root)
         dialog.setCanceledOnTouchOutside(false)
 
         val window = dialog.window
+
         window?.apply {
             setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             val layoutParams = attributes
@@ -48,11 +52,11 @@ class CompareResultsFragment : BaseFragment() {
             layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
             attributes = layoutParams
         }
+//        dialogBinding.icClose.setOnClickListener {
+//            dialog.dismiss()
+//        }
 
-        dialogBinding.icClose.setOnClickListener {
-            dialog.dismiss()
-        }
-        dialogBinding.button.setOnClickListener {
+        dialogBinding.btnNext.setOnClickListener {
             dialog.dismiss()
             startActivity(Intent(requireContext(), DailyProgramActivity::class.java))
             activity?.finish()
