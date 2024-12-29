@@ -136,7 +136,6 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
                 showToast(getString(R.string.you_will_not_go_to_the_next_day))
             }
 
-
         }
         dialogBinding.textBackToContinue.setOnClickListener{
             dialog.dismiss()
