@@ -186,7 +186,7 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
             day!!, FirebaseService.userEmail!!, FirebaseService.userId!!, sharedPreferences
         ) {
             log("retrieveNextDay", "success")
-            //
+            /////
             startActivity(Intent(requireContext(), PostMoodTrackingActivity::class.java))
             activity?.finish()
             dismissProgressDialog()
