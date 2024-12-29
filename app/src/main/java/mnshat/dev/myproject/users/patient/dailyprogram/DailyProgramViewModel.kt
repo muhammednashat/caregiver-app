@@ -12,6 +12,7 @@ import mnshat.dev.myproject.util.CURRENT_TASK
 import mnshat.dev.myproject.util.DAY_TASK
 import mnshat.dev.myproject.util.STATUS
 import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.log
 
 class DailyProgramViewModel(
     private val sharedPreferences: SharedPreferencesManager,
@@ -28,6 +29,8 @@ class DailyProgramViewModel(
 
     init {
         currentTask = getCurrntTask()
+//        currentTask.status?.preChecked = false
+//        log("DailyProgramViewModel init ${currentTask.status?.preChecked}")
         status= currentTask.status!!
     }
 
@@ -41,7 +44,6 @@ class DailyProgramViewModel(
     fun updateCurrentTaskLocally() {
         sharedPreferences.storeObject(CURRENT_TASK, currentTask)
         _isSyncNeeded.value = true
-
     }
 
     fun updateCurrentTaskRemotely() {
@@ -50,5 +52,10 @@ class DailyProgramViewModel(
         }
     }
 
+    override fun onCleared() {
+        log("DailyProgramViewModel onCleared")
+        super.onCleared()
+
+    }
 
 }

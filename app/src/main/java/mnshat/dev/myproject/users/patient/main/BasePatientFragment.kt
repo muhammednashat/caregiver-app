@@ -37,7 +37,6 @@ abstract class BasePatientFragment<T : ViewDataBinding> : BaseFragment2<T>() {
         }
     }
      fun hideSpiritualIcon(constraintTask: ConstraintLayout, line: View) {
-         log("hideSpiritualIcon "+sharedPreferences.getBoolean(RELIGION))
 
          if( !sharedPreferences.getBoolean(RELIGION)){
              log("ggfgfdg")

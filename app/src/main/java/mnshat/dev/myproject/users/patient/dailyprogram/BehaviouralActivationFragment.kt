@@ -1,6 +1,7 @@
 package mnshat.dev.myproject.users.patient.dailyprogram
 
 import android.app.Dialog
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -18,6 +19,8 @@ import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Task
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.PostMoodTrackingActivity
+import mnshat.dev.myproject.util.log
 
 
 class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBinding>(),  SuggestedChallengesFragment.OnTaskItemClickListener {
@@ -51,7 +54,7 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
             if (viewModel.status.behavioral != 1){
                 showDialogAskingForCompletion()
             }else{
-                findNavController().navigate(R.id.action_behaviorActivationFragment_to_congratulationsFragment)
+                retrieveNextDay(viewModel.status.day?.plus(1).toString())
             }
         }
         binding.icPause.setOnClickListener {
@@ -104,8 +107,6 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
             updateStatusData()
         }
         retrieveNextDay(viewModel.status.day?.plus(1).toString())
-
-
     }
     private fun updateStatusData() {
         viewModel.status.behavioral = 1
@@ -185,7 +186,9 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
         viewModel.retrieveTaskDayFromDatabase(
             day!!, FirebaseService.userEmail!!, FirebaseService.userId!!, sharedPreferences
         ) {
-            findNavController().navigate(R.id.action_behaviorActivationFragment_to_congratulationsFragment)
+            log("retrieveNextDay", "success")
+            startActivity(Intent(requireContext(), PostMoodTrackingActivity::class.java))
+            activity?.finish()
             dismissProgressDialog()
         }
     }

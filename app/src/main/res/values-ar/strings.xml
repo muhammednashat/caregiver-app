@@ -35,16 +35,16 @@
     <string name="need_assistance">بحاجة للمساعدة؟</string>
     <string name="user_not_found">لم يتم العثور على هذا المستخدم</string>
     <string name="enter_email">رجاءا إدخال البريد الإلكتروني</string>
-        <string name="enter_valid_invitation">رجاءا ادخل دعوة صحيح</string>
-        <string name="enter_password">رجاءا ادخل كلمة المرور</string>
-        <string name="select_age_group">رجاءا إختيار الفئة العمرية</string>
-        <string name="verify_email_password">رجاءا التحقق من البريد الإلكتروني وكلمة المرور</string>
-        <string name="password_reset_email_sent">تم إرسال البريد الإلكتروني لإعادة تعيين كلمة المرور بنجاح</string>
-        <string name="password_reset_email_failed">فشل إرسال البريد الإلكتروني لإعادة تعيين كلمة المرور</string>
+    <string name="enter_valid_invitation">رجاءا ادخل دعوة صحيح</string>
+    <string name="enter_password">رجاءا ادخل كلمة المرور</string>
+    <string name="select_age_group">رجاءا إختيار الفئة العمرية</string>
+    <string name="verify_email_password">رجاءا التحقق من البريد الإلكتروني وكلمة المرور</string>
+    <string name="password_reset_email_sent">تم إرسال البريد الإلكتروني لإعادة تعيين كلمة المرور بنجاح</string>
+    <string name="password_reset_email_failed">فشل إرسال البريد الإلكتروني لإعادة تعيين كلمة المرور</string>
     <string name="pass_error">رجاءا ادخل على الاقل 6 احرف او ارقام</string>
     <string name="email_error">رجاءا ادخل بريد الكترونى صحيح</string>
-        <string name="reset_password_success">تم إرسال البريد الإلكتروني لإعادة تعيين كلمة المرور بنجاح</string>
-        <string name="reset_password_failure">فشل إرسال البريد الإلكتروني لإعادة تعيين كلمة المرور</string>
+    <string name="reset_password_success">تم إرسال البريد الإلكتروني لإعادة تعيين كلمة المرور بنجاح</string>
+    <string name="reset_password_failure">فشل إرسال البريد الإلكتروني لإعادة تعيين كلمة المرور</string>
     <string name="gender_selection">تحديد الجنس</string>
     <string name="profile_title">ملفى</string>
     <string name="home_title">الرئيسية</string>
@@ -506,6 +506,82 @@
     <string name="special_activity">نشاط خاص</string>
     <string name="create_activity2">إنشاء النشاط</string>
     <string name="helping_someone_suffering_from_depression">مساعدة شخص يعانى من الاكتئاب</string>
+    <string name="tap_the_emoji_that_best_matches_your_mood_at_this_moment">اضغط على الإيموجي الذي يعبر عن حالتك المزاجية الآن</string>
+    <string name="happy">سعيد</string>
+    <string name="calm_relaxed">هادئ/مسترخ</string>
+    <string name="anxious_overwhelmed">قلق/مرتبك</string>
+    <string name="sad_down">حزين/ محبط</string>
+    <string name="tired_fatigued">متعب/مرهق</string>
+    <string name="angry_irritated">غاضب/منزعج</string>
+    <string name="let_s_start_now">لنبدأ الان</string>
+    <string name="hi_let_s_check_in_with_how_you_re_feeling_right_now_before_we_start">مرحبًا! لنبدأ بفحص حالتك المزاجية قبل أن نبدأ البرنامج</string>
+    <string name="would_you_like_to_share_what_s_affecting_your_mood">هل ترغب في مشاركة ما يؤثر على حالتك المزاجية؟</string>
+    <string name="work">العمل</string>
+    <string name="friends">الاصدقاء</string>
+    <string name="health">"الصحة"</string>
+    <string name="family">العائلة</string>
+    <string name="money">المال</string>
+    <string name="other_reasons_write_here_optional">اسباب اخرى اكتب هنا…(إختياري)</string>
+    <string name="let_s_see_how_today_s_program_helps_you_feel_better">عمل رائع في برنامجك اليومي!
+دعنا نفحص حالتك المزاجية الآن</string>
+    <string name="start_today_program">ابدأ برنامج اليوم</string>
+    <string name="it_s_great_to_see_you_happy">1.من الرائع أن تشعر بالسعادة!</string>
+    <string name="let_us_channel_that_positive_energy"> دعنا نستثمر طاقتك الإيجابية ونوجهها لأشياء تمنحك مزيدًا من الفرح</string>
+    <string name="share_your_happiness">
+        شارك سعادتك مع شخص تحبه من خلال مكالمة أو زيارة من أجل قضاء وقت ممتع. كما يمكنكما معًا التخطيط لنشاط مميز ، كتحضير وجبة تقليدية، أو التنزه في حديقة قريبة، أو مشاهدة فيلم مفضل لخلق ذكريات جميلة
+    </string>
+    <string name="tip_use_the_app_s_daily_planne">نصيحة: استخدم أداة التخطيط اليومي في التطبيق لتحديد أنشطة اجتماعية وعائلية أسبوعية لتعزيز الروابط وخلق ذكريات دائمة</string>
+    <string name="start_a_creative_project">
+        ابدأ مشروعًا كنت تؤجله، مثل إعادة ترتيب غرفة، أو تصميم هدايا يدوية، أو تعلم شكل جديد من الفنون. خصص وقتًا يوميًا حتى لو كان بسيطًا لتحقيق التقدم. استمتع بمشروعك واتخذه وسيلة للتعبير عن الذات واستمد منه الشعور بالإنجاز والإلهام
+    </string>
+    <string name="use_your_energy">استخدم طاقتك وسعادتك لنشر الإيجابية من خلال التطوع أو مساعدة من يحتاج إلى دعم. سواءً كان ذلك بمساعدة جار، أو التبرع بمواد للمحتاجين، فإن لطفك لن يضيء يوم شخص آخر فحسب، بل سيزيد أيضًا من شعورك بالرضا</string>
+    <string name="there_s_nothing_like_the_feeling_of_peace">لا شيء يضاهي الشعور بالسلام!</string>
+    <string name="let_s_hold_onto_this_tranquility">ولذا دعنا نحافظ على هذا الهدوء وندعم تدفق الطاقة الإيجابية</string>
+    <string name="enjoy_a_warm_cup">استمتع بفنجان دافئ من شاي الأعشاب مثل شاي البابونج أو شاي النعناع أثناء قراءة كتاب أو التدوين في مفكرتك. أو خصص وقتًا للتأمل والاتصال بأفكارك في بيئة هادئة ومريحة</string>
+    <string name="tip_make_use_of_the_app">نصيحة: استخدم أداة التدوين في التطبيق لمشاركة أفكارك مع داعميك</string>
+    <string name="treat_yourself_to_a_self">دلل نفسك بتجربة عناية ذاتية مثل وضع قناع للوجه، أو نقع القدمين، أو جلسة مانيكير/باديكير للحصول على مظهر متجدد ومريح</string>
+    <string name="tip_make_self_care_a_priority">نصيحة: اجعل العناية الذاتية أولوية عن طريق جدولة روتين استرخاء أسبوعي باستخدام أداة التخطيط اليومي في التطبيق لرعاية جسمك وعقلك</string>
+    <string name="have_peaceful_evening">اقضِ مساءً هادئًا مع عائلتك من خلال مشاهدة فيلم ممتع، أو لعب لعبة لوحية</string>
+    <string name="tip_make_it_a_weekly">نصيحة: اجعلها عادة أسبوعية بجدولة "وقت الاسترخاء العائلي" لتعزيز الروابط والاسترخاء</string>
+    <string name="it_s_completely_okay">لا بأس أن تشعر بالإرهاق أحيانًا</string>
+    <string name="let_s_take_small">لذا دعنا نتخذ خطوات بسيطة وفعالة لاستعادة نشاطك وحيويتك</string>
+    <string name="it_s_tough_feeling_down">الشعور بالحزن أمر صعب</string>
+    <string name="but_remember_even">ولكن حتى الخطوات الإيجابية الصغيرة يمكن أن تغير حالتك المزاجية وتعيد شحن طاقتك</string>
+    <string name="channel_your_anger_into">مارس نشاطا رياضيا مكثفا مثل تمارين الضغط أو القفز. يساعد هذا النشاط البدني في تحرير الإحباط المكبوت، وتقليل التوتر، وإعادة توازن مزاجك. إنها استراتيجية فعّالة لتحويل الطاقة إلى شيء إيجابي ومحفز!</string>
+    <string name="grab_a_pen">امسك قلمًا ودون مشاعرك على الورق، واكتب رسالة دون نية إرسالها. إنها تقنية علاجية لتفريغ التوتر والإحباط وتنقية أفكارك!</string>
+    <string name="step_outside_and_take_deep_breaths_to_reset">اخرج واستنشق الهواء العميق لتهدئة نفسك</string>
+    <string name="tip_use_the_breathi">نصيحة: استخدم أداة التنفس في التطبيق لتنظيم أنفاسك وتخفيف التوتر</string>
+    <string name="practice_deep">مارس تمارين التنفس العميق لتهدئة ضربات قلبك</string>
+    <string name="tip_use_the_breathing_tool">نصيحة: استخدم أداة التنفس في التطبيق لتحديد الوقت المطلوب واتبع التعليمات المقدمة لك لمساعدتك على تنظيم أنفاسك</string>
+    <string name="take_a_mindful_slo">اخرج للمشي ببطء، وتأمل محيطك، واستمتع بالأصوات والروائح والطبيعة.   يمكن للطبيعة ان تهدئ العقل وتعيد السلام الداخلي</string>
+    <string name="organise_your_workstation">نظم مكان عملك، أو غرفة نومك، أو مساحتك الشخصية لإنشاء بيئة مريحة. تنظيم الأغراض والتخلص من الفوضى يمكن أن يساعد في تقليل القلق، وتحسين التركيز، وخلق بيئة منعشة تدعم صحتك النفسية!</string>
+    <string name="write_down_three_things">اكتب ثلاثة أشياء تشعرك بالامتنان هذا اليوم، حتى لو كانت بسيطة. التركيز على الامتنان يمكن أن يساعد في تغيير حالتك الذهنية</string>
+    <string name="call_or_message_someone_you_trust">تواصل مع شخص تثق به من خلال مكالمة أو رسالة وشاركه مشاعرك. في بعض الأحيان، مجرد التحدث عما تمر به يمكن أن يخفف العبء ويوفر الدعم</string>
+    <string name="watch_a_funny_show_movie">شاهد برنامجًا مضحكًا، أو فيلمًا ساخرا، أو استمع إلى بودكاست فكاهي لزيادة البهجة والضحك في يومك. الضحك وسيلة قوية لتغيير مزاجك واستعادة طاقتك!</string>
+    <string name="tip_make_use_of_the">نصيحة: استخدم أداة التدوين في التطبيق لمشاركة امتنانك مع داعميك</string>
+    <string name="close_your_eyes_and_take">أغلق عينيك وخذ قيلولة قصيرة لمدة 15-20 دقيقة لاستعادة طاقتك. هذه القيلولة مثالية للاسترخاء وتحسين التركيز والإنتاجية وصفاء الذهن، خاصة بعد يوم مزدحم أو ساعات عمل طويلة</string>
+    <string name="take_the_time_to_prepare">خصص وقتًا لتحضير وجبة صحية بمكونات طازجة مثل الخضروات، والبروتينات الخفيفة، والحبوب الكاملة لدعم صحتك العامة. استمتع بتجربة الطهي كجزء من رعاية ذاتك، واستشعر السعادة في تناول وجبة صحية محضرة يدويًا</string>
+    <string name="take_a_few_minutes">خصص بضع دقائق لممارسة تمارين التمدد بلطف لتخفيف التوتر المتراكم في جسمك. ركز على مناطق الرقبة، والكتفين، وأسفل الظهر التي تميل إلى جمع الإجهاد. حركات بسيطة مثل تدوير الرقبة بلطف، ورفع الكتفين وخفضهما، والالتفاف أثناء الجلوس يمكن أن تساعد في تقليل التعب وتحسين المرونة</string>
+    <string name="anger_is_a_natural_emotion">الغضب شعور طبيعي</string>
+    <string name="let_s_redirect_it_in_a_positive_and_constructive_way_to_create_change_and_growth">لذا دعنا نوجهه بطريقة إيجابية لتحقيق التغيير والنمو</string>
+    <string name="but_you_re_stronger_than_you_think_let_s_focus_on_calming_your_mind">ولكنك أقوى مما تعتقد؛ لذا دعنا نركز على تهدئة ذهنك</string>
+    <string name="feeling_overwhelmed_is_hard">الشعور بالقلق أمر صعب</string>
+    <string name="here_are_some_suggestions_to_improve_your_mood">إليك بعض الإقتراحات لتحسين حالتك المزاجية:</string>
+    <string name="here_are_some_suggestions_to_keep_your_mood_up">إليك بعض الإقتراحات للحفاظ على حالتك المزاجية:</string>
+    <string name="compare_results">مقارنة النتائج!</string>
+    <string name="now_compare_your_mood_results_for_the_day">الآن قارن نتائج حالتك المزاجية لهذا اليوم</string>
+    <string name="here_s_how_your_mood_has_changed">إليك كيف تغيرت حالتك المزاجية</string>
+    <string name="during_today_s_programme">أثناء برنامج اليوم</string>
+    <string name="well_done1">احسنت</string>
+    <string name="well_done11">احسنتي</string>
+    <string name="you_have_completed">لقد اتممت برنامجك اليومى وحصلت على العلامة الكاملة , نتمنى ان تستمر بفعل هذا كل يوم</string>
+    <string name="great_job_on_your_daily_program">عمل رائع فى برنامجك اليومى! </string>
+    <string name="let_s_check_your_mood_now">دعنا نفحص حالتك المزاجية الان</string>
+    <string name="after_today_s_programme">بعد برنامج اليوم</string>
+    <string name="before_today_s_programme">قبل برنامج اليوم</string>
+    <string name="your_progress_has_been_saved">تم حفظ تقدمك!</string>
+    <string name="review_your_mood_over_time">راجع حالتك المزاجية بمرور الوقت....</string>
+    <string name="you_can_track_your_mood_by_clicking_on_the_emoji_at_the_top_of_your_daily_schedule_page">يمكنك تتبع الحالة المزاجية من خلال النقر على الإيموجى الموجود فى اعلى الصفحة الخاصة ببرنامجك اليومى</string>
 
 
 </resources>

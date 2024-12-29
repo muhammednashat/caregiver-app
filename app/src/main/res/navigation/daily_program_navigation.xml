@@ -40,6 +40,6 @@
 
     <fragment
         android:id="@+id/congratulationsFragment"
-        android:name="mnshat.dev.myproject.users.patient.dailyprogram.CongratulationsFragment"
+        android:name="mnshat.dev.myproject.users.patient.dailyprogram.CongratulationsFragment2"
         android:label="CongratulationsFragment" />
 </navigation>

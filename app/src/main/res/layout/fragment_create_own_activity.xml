@@ -145,7 +145,6 @@
                     android:textStyle="bold"
                     android:text="@string/create_activity2"
                     android:textColor="@color/white"
-
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/imageView22"
                     app:layout_constraintHorizontal_bias="0.5"

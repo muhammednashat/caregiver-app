@@ -14,6 +14,7 @@ import mnshat.dev.myproject.model.Task
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.RELIGION
+import mnshat.dev.myproject.util.log
 
 abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragment<T>() {
 
@@ -21,6 +22,8 @@ abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragme
     lateinit var task: Task
     var player: ExoPlayer? = null
     var isSyncNeeded = false
+
+
 
 
 
@@ -47,6 +50,8 @@ abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragme
         Log.e("TAG" , "312")
 
     }
+
+
 
     fun getNextTask(index: Int, numberTask: Int):Int {
          player?.pause()

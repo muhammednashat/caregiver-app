@@ -1,24 +1,33 @@
 package mnshat.dev.myproject.users.patient.dailyprogram
 
+import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.View
+import android.view.ViewGroup
+import android.view.Window
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.databinding.DialogPreMoodSelectionBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
 import mnshat.dev.myproject.model.Task
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.MoodTrackingActivity
 import mnshat.dev.myproject.util.RELIGION
+import mnshat.dev.myproject.util.log
 
 class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
     override fun getLayout() = R.layout.layout_task
 
     override fun initializeViews() {
+        log("EducationalFragment initializeViews")
         initViewModel()
+        isPreChecked()
 
         binding.btnPrevious.visibility = View.GONE
-
         viewModel.currentTask.let {
             viewModel.listOfTasks = it.dayTask?.educational as List<Task>
             if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
@@ -28,11 +37,44 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         hideSpiritualIcon(binding.constraintTask2, binding.line1)
     }
 
+    private fun isPreChecked() {
+        if (viewModel.status.preChecked == false){
+            showDailyProgram()
+        }
+    }
+
     private fun initViewModel() {
         val factory = DailyProgramViewModelFactory(sharedPreferences, activity?.application!!)
         viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
     }
 
+    private fun showDailyProgram() {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = DialogPreMoodSelectionBinding.inflate(layoutInflater)
+        dialog.setContentView(dialogBinding.root)
+        dialog.setCanceledOnTouchOutside(false)
+
+        val window = dialog.window
+        window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            val layoutParams = attributes
+            layoutParams.width = (resources.displayMetrics.widthPixels * 0.8).toInt()
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            attributes = layoutParams
+        }
+
+        dialogBinding.icClose.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialogBinding.button.setOnClickListener {
+            dialog.dismiss()
+            startActivity(Intent(requireContext(), MoodTrackingActivity::class.java))
+            activity?.finish()
+        }
+
+        dialog.show()
+    }
 
 
     override fun setupClickListener() {
@@ -53,7 +95,6 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         }
 
         binding.btnRecommend.setOnClickListener {
-
             val currentIndex = getNextTask(viewModel.status.currentIndexEducational!!, 1)
             viewModel.status.currentIndexEducational = currentIndex
             viewModel.updateCurrentTaskLocally()
@@ -98,6 +139,7 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
     }
 
     override fun onStop() {
+        log("EducationalFragment onStop")
         super.onStop()
         player?.pause()
         if (viewModel._isSyncNeeded.value == true){
@@ -105,6 +147,8 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
             viewModel._isSyncNeeded.value = false
         }
     }
+
+
 
 }
 

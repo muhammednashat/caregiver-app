@@ -341,10 +341,10 @@
     <string name="learn_how_to_help_someone">Learn how to help someone</string>
     <string name="supporter_compass">Supporter compass</string>
     <string name="strength_build_plan">Strength build map</string>
-    <string name="you_are_not_alone_on_this_journey">You are not alone on this journey</string>
+    <string name="you_are_not_alone_on_this_journey">You Are Not Alone in This Journey</string>
     <string name="facing_stigma_and_shame_with_confidence">Facing Stigma and Shame with Confidence</string>
-    <string name="to_do">To Do: </string>
-    <string name="advice">Advice: </string>
+    <string name="to_do">Call to Action: </string>
+    <string name="advice">Tip: </string>
 
     <!-- Step numbers -->
     <string name="step_1">Step 1:</string>
@@ -359,158 +359,123 @@
 
     <!-- Step titles -->
     <string name="title_step_1">Facing Stigma and Shame with Confidence</string>
-    <string name="title_step_2">Expand Your Knowledge and Awareness</string>
+    <string name="title_step_2">Expand Your Knowledge</string>
     <string name="title_step_3">Build Your Support Network</string>
     <string name="title_step_4">Finding Inner Peace</string>
     <string name="title_step_final">Reward Yourself</string>
+
     <string name="introduction">introduction</string>
     <string name="next_step">Next step</string>
     <string name="explore_more">Explore more</string>
 
-    <string name="mental_health_support_text">
-    عند رعايتك لشخص عزيز يعاني من تحديات في الصحة النفسية، تذكر أن الأمراض النفسية منتشرة والكثير مصاب بها،
-    والعديد من الأسر تسير معك في درب الرعاية وتواجه مثلك صعوبات هذا الأمر.\n\n
-    عندما ننظر إلى ثقافتنا العربية، نجد أن فيها ترابط المجتمع والدعم المتبادل، كما قال الشاعر:\n
-    يعرفك الإخوان كل بنفسه … وخير أخ ما عرفتك الشدائد\n\n
-    وقال آخر:\n
-    أعين أخي أو صاحبي في بلائه … أقوم إذا عض الزمان وأقعد\n
-    ومن يفرد الإخوان فيما ينوبهم … تنبه الليالي مرةً وهو مفرد\n\n
-    وقال آخر:\n
-    هموم رجال في أمور كثيرة … وهمي من الدنيا صديق مساعد\n
-    نكون كروح بين جسمين قسمت … فجسماهما جسمان والروح واحد\n\n
-    بالنظر إلى أن رعاية الآخرين مسؤولية عظيمة، عليك الاهتمام بنفسك كي لا تقع بالتكلف أو التململ وتذكر قول الشاعر:\n
-    إذا المرء لا يرعاك إلى تكلفا … فدعه ولا تكثر عليه التأسفا\n\n
-    فمن يحتاج الرعاية هو أكثر الناس احتياجا لك بكامل رفاهيتك النفسية لذا يجب أن تهتم بذاتك لتقدم الدعم بشكل أقوى وأكثر رحمة لمن تحب.\n\n
-    أثناء رحلتك، ستواجه تحديات نفسية وعاطفية. هذه الخطوات تقدم لك رسائل ونصائح رئيسية لدعمك وإرشادك، لمساعدتك على بناء القوة والمرونة.
+    <string name="mental_health_support_text">dasf
 </string>
 
     <string name="description_step_1">
-    يواجه غالبًا أفراد العائلة والأصدقاء الذين يقدمون الدعم للأشخاص المصابين بالمرض النفسي أحكامًا من المجتمع،\n
-    خاصة في الثقافات التي يُساء فيها فهم قضايا الصحة النفسية أو لا يتم مناقشتها بشكل مفتوح، مما يؤدي إلى مشاعر العار والوصمة.\n\n
-    يمكن أن تؤثر هذه الوصمة على مقدمي الرعاية بشكل كبير، مما يتسبب في لوم الذات ومشاعر النقص.\n
-    ويخشون أن يُلاموا على حالة أحبائهم أو يتم رفضهم اجتماعيًا، مما يزيد من العبء العاطفي ويساهم في العزلة.\n\n
-    بالإضافة إلى ذلك، قد تؤدي هذه الوصمة إلى ترددهم في السعي للحصول على الرعاية اللازمة لمن يواجهون تحديات الصحة النفسية.\n\n
-    تقول الحكمة (رب ملوم لاذنب له) كن لطيفًا مع نفسك - فالصراعات النفسية التي يواجهها أحباؤك خارجة عن سيطرتك وسيطرتهم، وأنت تفعل ما بوسعك لتقديم الدعم.\n
-    لذا حرر نفسك من الشعور بالذنب وقدم لنفسك الرحمة بقدر التي تقدمها للآخرين.\n\n
-    تذكر أن الأحكام المجتمعية والوصمة غالبًا ما تنبع من نقص المعرفة والفهم فيما يتعلق بالصحة النفسية.\n
-    وتذكر بأن كل فعل تقوم به لدعم أحبائك يعكس قوتك وتفانيك، بغض النظر عما إذا كان المجتمع يفهمه بالكامل أو يعطيه قدره.\n\n
-    افهم أهمية دورك كمقدم رعاية ولا تدع التصورات المجتمعية تقلل من عزيمتك.\n
-    فدعمك ضروري ويمكن أن يؤثر بشكل كبير على رفاهية أحبائك.
+        Family members and friends who provide support to individuals with mental illness often face societal judgments, especially in cultures where mental health issues are misunderstood or not openly discussed, leading to feelings of shame and stigma. This stigma can deeply affect caregivers, causing self-blame and feelings of inadequacy. They may fear being blamed for their loved one’s condition or being socially rejected, which adds to their emotional burden and contributes to isolation. Additionally, this stigma may cause hesitation in seeking the necessary care for those facing mental health challenges.
+/nAs the saying goes, “Many are blamed though they bear no fault”, Be kind to yourself, your loved one’s mental struggles are beyond both your control and theirs, and you are doing your best to provide support. Free yourself from guilt and show yourself the same compassion that you offer to others. Remember that societal judgements and stigma often stem from a lack of knowledge and understanding about mental health. Every action you take to support your loved ones reflects your strength and dedication, regardless of whether society fully understands or appreciates it. Understand the importance of your role as a caregiver, and do not let societal perceptions weaken your resolve. Your support is vital and can greatly impact the well-being of your loved ones
 </string>
 
     <string name="to_do_step_1">
-    فكر في كتابة أفكارك ومشاعرك في دفتر يوميات. يمكن أن تساعدك هذه الممارسة في معالجة العواطف، وإطلاق أعباء الشعور بالذنب.
-</string>
+Consider journaling your thoughts and feelings. This practice can help you process emotions and release the burden of guilt.</string>
 
     <string name="description_step_2">
-    التعرف على الصحة النفسية يفيدك أنت ومن تحب. فكلما زادت معرفتك، زادت قوتك وقدرتك على التحمل. استبدل اللوم بالتمكن عن طريق المعرفة.\n
-    قال الشاعر:\n
-    العِلم يجلو العَمَى عن قلبِ صاحبِه … كما يُجلِّي سوادَ الظُّلمةِ القمَرُ
+        Understanding mental health benefits both you and your loved ones. The more you know, the stronger and more resilient you become. Replace blame with empowerment through knowledge; as a poet said:
+/nKnowledge clears the blindness from the heart of its possessor,/n
+ just as the moon brightens the darkness.
 </string>
     <string name="to_do_step_2">
-    ابحث اليوم عن مقال أو فيديو أو مصدر حول الصحة النفسية. وتذكر بأن كل معلومة تضيف إلى قوتك.
-</string>
+Today, search for an article, video, or resource about mental health. Remember that every piece of information you add strengthens you.</string>
 
     <string name="description_step_3">
- لا يتعين عليك تحمل هذا العبء بمفردك. تواصل مع من يفهمون موقفك ويمكنهم تقديم الدعم، سواء من خلال مجموعة دعم أو صديق موثوق به.\n
-    قال الشاعر:\n
-    إذا العبء الثقيل توزعته .. رقاب القوم خف على الرقاب</string>
+        You don’t have to carry this burden alone. Reach out to those who understand your situation and can provide support, whether through a support group or a trusted friend. The poet expressed:
+/nWhen the heavy burden is shared,/n
+ it becomes lighter on the necks [shoulders] of the people.
+    </string>
 
     <string name="to_do_step_3">
-    تواصل اليوم وانضم إلى مجموعة دعم، أو تحدث إلى صديق تثق به، أو تواصل مع مجتمع عبر الإنترنت. لا يجب أن تواجه هذا بمفردك.
-</string>
+Reach out today and join a support group, talk to a friend you trust, or connect with an online community. You don’t have to face this alone.</string>
 
     <string name="description_step_4">
-    تواصل مع جانبك الروحي لتجد القوة والسلام. مارس أعمالا تجد فيها متنفسا نفسيا سواء كان ذلك من خلال الصلاة أو التأمل أو قضاء وقت هادئ، لتساعدك في تجديد طاقتك.\n
-    قال المتنبي:\n
-    وَاِرفُق بِنَفسِكَ إِنَّ خَلقَكَ ناقِصٌ
+Connect with your spiritual side to discover strength and tranquillity. Engage in activities that provide you with a psychological outlet, whether through prayer, meditation, or quiet time, to help renew your energy. The poet Al-Mutanabbi said:
+/nBe gentle with yourself, for your nature is imperfect.
 </string>
 
     <string name="to_do_step_4">
-    خذ لحظة اليوم لتشارك في الصلاة أو التأمل أو نشاط هادئ
-</string>
+Take a moment today to participate in prayer, meditation, or a calming activity.</string>
 
 
     <string name="description_step_5">
-    رعاية من تحب هي فعل من أفعال الحب، لكن لا تنسَ نفسك وضع خطة لتكافئها ولو بشيء وإن كان بسيطاً فكل لمسة تساعد في الوصول للعناية بالنفس فعليك أن تلتزم بها.
-</string>
+Caring for your loved ones is an act of love, but don’t forget about yourself. Make a plan to reward yourself, even with something simple, as every little gesture contributes to self-care. It’s important to commit to this.</string>
 
     <string name="to_do_step_5">
-    احتفل بشيء فعلته لنفسك اليوم، مهما كان بسيطًا.
-</string>
+Celebrate something you did for yourself today, no matter how small.</string>
 
     <string name="camposs_step_0">
-    مساعدة شخص يعاني من الاكتئاب ليست مجرد خطوة واحدة، بل هي سلسلة من الخطوات المدروسة. كل خطوة، حتى وإن كانت صغيرة، هي جزء من رحلة التعافي. تذكر أنك جزء من نظام الدعم الذي يمكن أن يساعد في إرشاد من تحب للخروج من ظلام الاكتئاب.\n
-
+Helping someone who is suffering from depression is not just a single step; it is a series of thoughtful actions. Every step, no matter how small, is part of the journey towards recovery. Remember, you are part of a support system that can help guide your loved one out of the darkness of depression.
 </string>
 
-    <string name="recognizing_signs">Recognizing signs</string>
+    <string name="recognizing_signs">Recognize the Signs</string>
 
 
-    <string name="description_camposs_step_1">
-    قال الشاعر: والهم يخترم الجسيم نحافة …. ويشيب ناصية الصبي ويهرم\n
-    قد يظهر الاكتئاب مثل السحب التي تسبق العاصفة. فربما لا تلاحظها في البداية، ولكن بمرور الوقت، تتكثف وتستقر، مما يصعب على من تحب رؤية الطريق للأمام. لا يمكنك إيقاف السحب، ولكن التعرف عليها مبكرًا يسمح لك بالاستعداد. ففهم الأعراض يساعد في التعامل مع أي حالة تواجهها.
+    <string name="description_camposs_step_1">The poet said:/n
+And sorrow takes a toll on the stout frame, /n/n
+while it greys the boy’s forelock and ages him./nDepression can appear like the clouds that precede a storm. You may not notice it at first, but over time, it intensifies and settles in, making it harder for your loved one to see the way forward. While you cannot stop the clouds, recognizing them early allows you to prepare. Understanding the symptoms helps in addressing any situation you face.
 </string>
 
-    <string name="step_2_title">الاقتراب بتعاطف</string>
+    <string name="step_2_title">Approach with Empathy</string>
     <string name="step_2_desc">
-    عند التفاعل مع شخص يعاني من الاكتئاب، تجنب أن تقول مثلا: "لم أنت حزين هكذا؟ يجب أن تفرح!" فهذه العبارات قد تعطي انطباعا لمن تخاطبه بأنك تحكم عليه ببساطة أن ما يواجهه أمر عادي بينما ذلك خارج عن سيطرته ولا يستطيع التحكم به، مما يجعلهم يشعرون بأسوأ أو ربما أقل رغبة في الانفتاح. بدلاً من تصنيف مشاعرهم، عبر عن ملاحظاتك بتعاطف، مثل قولك: "لقد لاحظت أنك تبدو مختلفًا قليلًا في الآونة الأخيرة"، وطمئنهم بقولك: "أنا هنا إذا أردت التحدث."
-عندما يقررون التحدث، مارس الاستماع النشط. وهذا يعني إعطاء كامل انتباهك لهم، والحفاظ على التواصل البصري، والرد بإيماءات تأكيدية أو إشارات لفظية قصيرة. تجنب مقاطعتهم أو تقديم حلول فورًا؛ أحيانًا هم فقط بحاجة إلى شخص يستمع لهم.
-قال الشاعرفي حزنه على أبنائه:
-قالَت أُمَيمَةُ ما لِجِسمِكَ شاحِباً .. مُنذُ اِبتَذَلتَ وَمِثلُ مالِكَ يَنفَعُ
-أَم ما لِجَنبِكَ لا يُلائِمُ مَضجَعاً .. إِلّا أَقَضَّ عَلَيكَ ذاكَ المَضجَعُ
-وقال آخر في الحزن على أخيه:
-تقول سليمى ما لجسمك شاحبا … كأنك يحميك الشراب طبيب
+    When interacting with someone suffering from depression, avoid saying things like "Why are you so sad? You should be happy!". Such statements can give the impression that you are judging them, suggesting that what they are experiencing is trivial, even though it is beyond their control. This can make them feel worse or less inclined to open up. Instead of labelling their feelings, express your observations with empathy, such as saying, "I've noticed you seem a bit different lately", and reassure them by saying, "I'm here if you want to talk."/n/n
+When they decide to speak, practise active listening. This means giving them your full attention, maintaining eye contact, and responding with affirming gestures or brief verbal cues. Avoid interrupting them or offering immediate solutions; sometimes, they just need someone to listen.
 </string>
     <string name="step_2_action">مارس الاستماع النشط وابتعد عن تقديم حلول فورية.</string>
     <string name="step_1_action">
-    افتح محادثات لطيفة حول كيف يشعرون. اسأل بلطف: "كيف تشعر اليوم؟ لا بأس إذا لم تكن الأمور على ما يرام. أنا هنا للاستماع."
-</string>
+Open gentle conversations about how they feel. Ask kindly: "How are you feeling today? It's okay if things aren't going well. I'm here to listen."</string>
 
-    <string name="step_3_title">تجنب الإيجابية السامة</string>
-    <string name="step_3_desc">في مساعيك لدعم شخص يعاني من الاكتئاب، من الضروري أن تدرك الفرق بين التشجيع الحقيقي والإيجابية السامة. بينما من المهم الحفاظ على نظرة إيجابية، من الضروري الابتعاد عن العبارات المبسطة للغاية التي قد تقلل بشكل غير مقصود من واقع صراع الشخص مع الاكتئاب. العبارات مثل "فقط كن سعيدًا!"، "لديك الكثير لتكون سعيدًا به!"، أو "ستكون بخير؛ فقط أعطها وقتًا" وتلك العبارات قد تبدو داعمة لكنها قد تظهر كأنها تتجاهل مشاعرهم.
-بدلاً من ذلك، اعترف بمشاعرهم وأكد لهم أن الشعور الحزن أو الإحباط أو أيّ من المشاعر السلبية أمر طبيعي في الأوقات الصعبة. يمكنك قول شيء مثل: "أعلم أن هذا صعب عليك، ومن الطبيعي أن تشعر هكذا." هذه الطريقة تعزز الاتصال الحقيقي، مما يتيح لهم التعبير عن مشاعرهم دون ضغط
-</string>
+    <string name="step_3_title">Avoid Toxic Positivity</string>
+    <string name="step_3_desc">In your efforts to support someone struggling with depression, it\'s essential to recognize the difference between genuine encouragement and toxic positivity. While maintaining a positive outlook is important, it’s crucial to avoid overly simplistic phrases that may inadvertently diminish the reality of the person\'s struggle with depression. Phrases like "Just be happy!" "You have so much to be happy about!" or "You'll be fine; just give it time" may seem supportive, but they can come across as dismissive of their feelings./nInstead, acknowledge their emotions and reassure them that feeling sadness, frustration, or any negative emotions is normal during difficult times. You might say something like, "I know this is hard for you, and it's okay to feel this way". This approach fosters genuine connection, allowing them to express their feelings without pressure.</string>
     <string name="step_3_action">اعترف بمشاعرهم وشجعهم على التعبير عن أنفسهم.</string>
-    <string name="step_4_title">كن ملاذه</string>
-    <string name="step_4_desc">
-   تخيل أن من تحب مثل شجرة في وسط عاصفة مليئة بالأفكار والمشاعر السلبية ولا يحتاج في تدخلك معه إلى عواصف أخرى تعصف به ولكن خصص معه وقتًا للرفقة الهادئة فلا داعي لتقديم الحلول ولكن فقط كن موجودًا.
-أَلا يا طَبيبَ النَفسِ أَنتَ طَبيبُها … فَرِفقاً بِنَفسٍ قَد جَفاها حَبيبُها
+    <string name="step_4_title">Be Their Sanctuary</string>
+    <string name="step_4_desc">Imagine your loved one as a tree in the midst of a storm filled with negative thoughts and emotions. They don’t need additional storms in your interaction with them; instead, dedicate time for calm companionship. There’s no need to offer solutions—just be present. As the poet said:/n/nO healer of the soul, you are its physician,/n/n
+ So be gentle with a soul that has been neglected by its beloved.
 </string>
     <string name="step_4_action">اقض وقتًا هادئًا معهم دون ضغط.</string>
-
-    <string name="step_5_title">شجعهم على طلب المساعدة المهنية</string>
-    <string name="step_5_desc">أحيانًا تكو  الأفكار والمشاعر السلبية التي يمر بها من تحب ثقيلة جدًا، وحتى وإن حاولت مواساته، ولكن لا يمكنك إرشاده بمفردك. هنا يحتاج إلى مساعدة مهنية. اقترح بلطف أن يتواصل مع طبيب أو مستشار للحصول على المساعدة، وبدون ضغط. فيمكنك أن تقول: "أعتقد أن التحدث إلى طبيب قد يساعدك في العثور على بعض السلام.
+    <string name="step_5_title">Encourage Them to Seek Professional Help</string>
+    <string name="step_5_desc">Sometimes, the negative thoughts and emotions your loved one is experiencing can feel overwhelmingly heavy. Even if you try to console them, you cannot guide them on your own. This is where they need professional help. Gently suggest that they reach out to a doctor or counsellor for assistance, without applying pressure. You might say, "I think talking to a doctor could help you find some peace."
 </string>
-    <string name="step_5_action">اعرض مساعدته في البحث عن أطباء أو مرافقتهم إلى أول موعد.</string>
+    <string name="step_5_action">Offer to assist them in searching for doctors or accompany them to their first appointment.</string>
 
-    <string name="step_6_title">كن صبورًا وموجودًا</string>
-    <string name="step_6_desc">
-التعافي من الاكتئاب هو عملية متراكمة، ومن المهم أن تكون صبورًا. سيكون هناك أيام جيدة وأيام سيئة. استمر في دعمه، حتى لو شعرت أن جهودك لا تؤتي ثمارها فورًا.
-فكر في الأمر مثل زراعة البذور. ففي البداية، لا يظهر النمو سريعا. ولكن مع العناية المستمرة، تتعمق الجذور وفي النهاية، تنمو الشجرة. </string>
+    <string name="step_6_title">Be Patient and Present</string>
+    <string name="step_6_desc">Recovering from depression is a gradual process, and it’s important to be patient. There will be good days and bad days. Continue to support them, even if you feel that your efforts are not yielding immediate results./n/n
+Think of it like planting seeds. At first, growth may not be visible. But with consistent care, the roots grow deeper, and eventually, the tree flourishes</string>
     <string name="step_6_action">استمر في دعمه حتى لو لم تظهر النتائج فورًا.</string>
 
-    <string name="step_7_title">تعرف على السحب الأكثر ظلمة</string>
-    <string name="step_7_desc">أحيانًا، يأخذ الطريق منعطفًا خطيرًا. فيمكن أن يؤدي الاكتئاب إلى التفكير في إيذاء النفس أو الانتحار، وهنا يكون اليقظة أكثر أهمية. تعرف على علامات التحذير، مثل الانسحاب من الآخرين أو الحديث عن الموت.
-لا تخف من أن تسأل: "هل تفكر في إيذاء نفسك؟" إنه سؤال صعب، ولكن قد ينقذ الحياة. إذا كانت الإجابة بنعم، اتخذ إجراءً على الفور واتصل بأخصائي أو خدمة الطوارئ. حبك واستجابتك السريعة يمكن أن يسحبهم من تلك اللحظة المظلمة.
-</string>
+    <string name="step_7_title">Recognize the Darkest Clouds</string>
+
+    <string name="step_7_desc">Sometimes, the journey takes a dangerous turn. Depression can lead to thoughts of self-harm or suicide, making vigilance even more crucial. Recognize the warning signs, such as withdrawal from others or talking about death\n\nDon’t be afraid to ask, "Are you thinking of harming yourself?". It’s a difficult question, but it could save a life. If the answer is yes, take immediate action by contacting a professional or emergency services. Your love and quick response can pull them out of that dark moment</string>
+
     <string name="step_7_action">ابحث عن علامات التحذير واتخذ إجراءات سريعة إذا لزم الأمر.</string>
 
-    <string name="step_8_title">قدم الدعم العملي</string>
-    <string name="step_8_desc">
-   قد يجعل الاكتئاب المهام البسيطة مرهقة. تدخل بهدوء لمساعدة من تحب في المهام الصغيرة. ربما تطهو وجبة أو تساعد في بعض الواجبات المنزلية والأعمال البسيطة يمكن أن تخفف من العبء عنه وتمنحه مساحة للتركيز على صحتهم النفسية.
-مَن ذا الطّبيبُ لأدْوائي وأوجاعي .. أو الرّفيق على همّي وأزماعي
-قد كنتُ جَلْداً ولكنْ رُبَّ أقضِيَةٍ .. خَلَطْن جَلْداً على البلوى بمُلتاعِ
-يا صاحبي يوم رام الدّهرُ منقصتِي .. وراع منّي جَناناً غيرَ مرتاعِ
-قم سلِّ قلبِيَ عمّا في بَلابِلِهِ .. ففيه ما شئتَ من سَقْمٍ وأوجاعِ
-ليس اللّسانُ وإن أوْفَتْ براعتُهُ .. مترجماً عن جوىً ما بين أضلاعي
-</string>
+    <string name="step_8_title">Offer Practical Support</string>
+    <string name="step_8_desc">Depression can make simple tasks feel overwhelming. Quietly step in to help your loved one with small tasks. Maybe cook a meal or assist with some household chores.
+        These small acts of help can lighten their load and give them space to focus on their mental health. As a poet said:\nWho is the healer for my ailments and pains,\n
+ or the companion to share my worries?\n
+I was once resilient, but certain trials,\n
+ have blended my strength with deep sorrow.\n
+Oh, my friend, when fate sought to diminish me,\n
+it found a heart still steadfast, unshaken by fear.\n
+Go ahead now and ask my heart about its turmoil,\n
+ for within it lies all manner of sickness and grief.\n
+Even the most eloquent tongue,\n
+cannot fully express the anguish between my ribs\n</string>
     <string name="step_8_action">قدم المساعدة في المهام البسيطة لتخفيف العبء عنهم.</string>
 
-    <string name="step_9_title">Provide light in small doses</string>
-    <string name="step_9_desc">الاكتئاب مثل أن تكون محاصرًا في غرفة مظلمة. لا يمكنك دفعهم إلى النور، ولكن يمكنك فتح نافذة وترك شعاع صغير من الضوء يمر من خلالها. شجعهم على اتخاذ خطوات صغيرة للمشاركة في الأنشطة أو القيام بشيء كانوا يستمتعون به، حتى لو لفترات قصيرة، مثل المشي أو مشاهدة فيلم مفضل.
+    <string name="step_9_title">Offer Light in Small Doses</string>
+    <string name="step_9_desc">Depression is like being trapped in a dark room. You can’t push them into the light, but you can open a window and let a small ray of light through. Encourage them to take small steps to engage in activities or do something they used to enjoy, even if only for short periods, like taking a walk or watching a favourite movie.
 </string>
-    <string name="step_9_action">ابدأ بأنشطة بسيطة وقابلة للتحقيق. تجنب إرهاقهم بالكثير دفعة واحدة، واحتفل بالإنجازات الصغيرة على طول الطريق.</string>
+    <string name="step_9_action">Start with simple, achievable activities. Avoid overwhelming them with too much at once, and do celebrate the small victories along the way</string>
+
+
     <string name="you_can_seek_help_and_psychological_support_n_from_the_relevant_authorities">You can seek help and psychological support \n from the relevant authorities</string>
     <string name="no_internet">No Internet\n</string>
     <string name="plan_your_day">Plan your day</string>
@@ -542,6 +507,119 @@
     <string name="special_activity">Special activity</string>
     <string name="create_activity2">Create activity</string>
     <string name="helping_someone_suffering_from_depression">Helping someone suffering from depression</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tap_the_emoji_that_best_matches_your_mood_at_this_moment">Tap the emoji that best matches your mood at this moment</string>
+    <string name="happy">Happy</string>
+    <string name="calm_relaxed">Calm/Relaxed</string>
+    <string name="anxious_overwhelmed">Anxious/Overwhelmed</string>
+    <string name="sad_down">Sad/Down</string>
+    <string name="tired_fatigued">Tired/Fatigued</string>
+    <string name="angry_irritated">Angry/Irritated</string>
+    <string name="let_s_start_now">Let\'s start now</string>
+    <string name="hi_let_s_check_in_with_how_you_re_feeling_right_now_before_we_start">Hi! Let\'s check in with how you\'re feeling right now before we start</string>
+    <string name="would_you_like_to_share_what_s_affecting_your_mood">Would you like to share what’s affecting your mood?</string>
+    <string name="work">Work</string>
+    <string name="friends">Friends</string>
+    <string name="health">"Health"</string>
+    <string name="family">Family</string>
+    <string name="money">Money</string>
+    <string name="other_reasons_write_here_optional">Other reasons, write here… (optional)</string>
+    <string name="let_s_see_how_today_s_program_helps_you_feel_better">Let’s see how today’s program helps you feel better!</string>
+    <string name="start_today_program">Start today program</string>
+    <string name="it_s_great_to_see_you_happy">It\'s great to see you happy!</string>
+    <string name="let_us_channel_that_positive_energy">Let us channel that positive energy and direct it towards things that provide even greater fulfilment and joy.</string>
+    <string name="share_your_happiness">Share your happiness with a loved one by calling or visiting them for a heartwarming catch-up. You can also plan a memorable activity together, like cooking a traditional meal, taking a walk in a nearby park, or watching a favourite movie to create lasting memories</string>
+    <string name="tip_use_the_app_s_daily_planne">Tip: Use the app\'s Daily Planner to plan a weekly social and family activities to make lasting memories and strengthen bonds</string>
+    <string name="start_a_creative_project">Start a creative project you\'ve been putting off, whether it\'s redecorating a room, designing handmade gifts, or learning a new art form. Dedicate time each day, even if it\'s just a small step, to make progress. Embrace the process and let it become an outlet for self-expression, bringing a sense of accomplishment and inspiration along the way</string>
+    <string name="use_your_energy">Use your energy and happiness to spread positivity by volunteering or helping someone in need. Whether it\'s lending a hand to a neighbor, or even donating goods to those less fortunate, your kindness will not only brighten someone else\'s day but will also increase your own sense of fulfillment</string>
+    <string name="there_s_nothing_like_the_feeling_of_peace">There’s nothing like the feeling of peace!</string>
+    <string name="let_s_hold_onto_this_tranquility">Let’s hold onto this tranquility and keep the calm vibes flowing</string>
+    <string name="enjoy_a_warm_cup">Enjoy a warm cup of herbal tea, such as شاي البابونج (chamomile) or شاي النعناع (mint tea), while reading a book or reflecting in your journal. Take a minute to relax and connect with your thoughts in a peaceful, calming environment</string>
+    <string name="tip_make_use_of_the_app">Tip: Make use of the app\'s Journaling Tool. You may share your thoughts to your supporter</string>
+    <string name="treat_yourself_to_a_self">Treat yourself to a self-care experience with a rejuvenating face mask, a soothing foot soak, or a manicure/pedicure for a polished, refreshed look</string>
+    <string name="tip_make_self_care_a_priority">Tip: Make self-care a priority by scheduling a weekly relaxation routine using Daily Planner tool available on the app to nurture your mind and body</string>
+    <string name="have_peaceful_evening">Have peaceful evening with your family by watching a cosy  movie night, engaging in a fun board game, or simply spending quiet time together</string>
+    <string name="tip_make_it_a_weekly">Tip: Make it a weekly ritual by scheduling \"family unwind time\" to strengthen bonds and relax.</string>
+    <string name="it_s_completely_okay">It’s completely okay to feel low on energy sometimes!</string>
+    <string name="let_s_take_small">Let’s take small, meaningful steps to recharge and rejuvenate.</string>
+    <string name="it_s_tough_feeling_down">It’s tough feeling down,</string>
+    <string name="but_remember_even">but remember, even the smallest positive steps can shift your mood and recharge your energy</string>
+    <string name="channel_your_anger_into">Channel your anger into a quick, intense workout like push-ups, jumping jacks, or high knees. This physical activity helps release pent-up frustration, reduce stress, and resets your mood. It’s an effective strategy to transform that angry energy into something positive and motivating!</string>
+    <string name="grab_a_pen">Grab a pen and let your wrath out on paper. Express yourself by scribbling an unsent letter. It\'s a therapeutic technique to release tension, frustration, and clear your thoughts!</string>
+    <string name="step_outside_and_take_deep_breaths_to_reset">Step outside and take deep breaths to reset</string>
+    <string name="tip_use_the_breathi">Tip: Use the Breathing Tool available on the app. Set the time you want (e.g., 5 min) and follow the breathing instructions provided to help you pace your breathing</string>
+    <string name="practice_deep">Practice deep breathing exercises to slow your heart rate</string>
+    <string name="tip_use_the_breathing_tool">Tip: Use the Breathing Tool available on the app. Set the time you want (e.g., 5 min) and follow the breathing instructions provided to help you pace your breathing</string>
+    <string name="take_a_mindful_slo">Take a mindful, slow walk outside and take in the sights, sounds, and smells of your surroundings. The nature soothes the anxious or overwhelmed mind and brings inner peace back!</string>
+    <string name="organise_your_workstation">Organise your workstation, bedroom, or living space to create a visually appealing and relaxing environment. Clearing clutter and organising belongings can help reduce anxiety, improve focus, and create a refreshing atmosphere that supports your well-being!</string>
+    <string name="write_down_three_things">Write down three things you’re grateful for today, even if they are small. Focusing on gratitude can help shift your mindset</string>
+    <string name="call_or_message_someone_you_trust">Call or message someone you trust to share your feelings. Sometimes, simply talking about what you\'re going through can lighten the emotional load and offer support</string>
+    <string name="watch_a_funny_show_movie">Watch a funny show, movie, or listen to a comedy podcast to bring some joy and laughter back into your day. Laughter is a powerful way to shift your mood and recharge your energy!</string>
+    <string name="tip_make_use_of_the">Tip: Make use of the app\'s Journaling Tool. You may share your gratitude to your supporter</string>
+    <string name="close_your_eyes_and_take">Close your eyes and take a 15-20-minute short nap to replenish your energy. This short nap is the ideal way to unwind, and improve your  focus, productivity, and mental clarity, especially after a busy day or long hours of work</string>
+    <string name="take_the_time_to_prepare"><![CDATA[Take the time to prepare a healthy meal with fresh ingredients such as vegetables, lean proteins, and whole grains to energise your body and support overall well-being. Enjoy the process of cooking as a sort of self-care, as well as the gratification of eating a nutritious, handmade meal]]></string>
+    <string name="take_a_few_minutes">Take a few minutes to gently stretch and relieve built-up tension in your body. Concentrate on areas of your neck, shoulders, and lower back that tend to accumulate stress. Simple movements like gentle neck rolls, shoulder shrugs, and seated twists can help reduce fatigue and improve flexibility</string>
+    <string name="anger_is_a_natural_emotion">Anger is a natural emotion</string>
+    <string name="let_s_redirect_it_in_a_positive_and_constructive_way_to_create_change_and_growth">Let’s redirect it in a positive and constructive way to create change and growth</string>
+    <string name="but_you_re_stronger_than_you_think_let_s_focus_on_calming_your_mind">but you’re stronger than you think. Let’s focus on calming your mind.</string>
+    <string name="feeling_overwhelmed_is_hard">Feeling overwhelmed is hard,</string>
+    <string name="here_are_some_suggestions_to_improve_your_mood">Here are some suggestions to improve your mood:</string>
+    <string name="here_are_some_suggestions_to_keep_your_mood_up">Here are some suggestions to keep your mood up:</string>
+    <string name="compare_results">Compare results!</string>
+    <string name="now_compare_your_mood_results_for_the_day">Now compare your mood results for the day</string>
+    <string name="here_s_how_your_mood_has_changed">Here\'s how your mood has changed</string>
+    <string name="during_today_s_programme">During today\'s programme</string>
+    <string name="well_done1">Well done</string>
+    <string name="well_done11">Well done</string>
+    <string name="you_have_completed">You have completed your daily program and obtained a full mark. We hope that you will continue doing this every day</string>
+    <string name="great_job_on_your_daily_program">Great job on your daily program!</string>
+    <string name="let_s_check_your_mood_now">Let\'s check your mood now</string>
+    <string name="after_today_s_programme">After today\'s programme</string>
+    <string name="before_today_s_programme">Before today\'s programme</string>
+    <string name="your_progress_has_been_saved">Your progress has been saved!</string>
+    <string name="review_your_mood_over_time">Review your mood over time....</string>
+    <string name="you_can_track_your_mood_by_clicking_on_the_emoji_at_the_top_of_your_daily_schedule_page">You can track your mood by clicking on the emoji at the top of your daily schedule page</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
 
 
 </resources>
