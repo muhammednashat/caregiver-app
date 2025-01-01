@@ -11,13 +11,13 @@ import mnshat.dev.myproject.users.patient.dailyprogram.data.daos.DayTaskDao
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.DailyProgramManagerUseCase
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.GetDailyProgramLocallyUseCase
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.GetDailyProgramRemotelyUseCase
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.GetDayTaskUseCase
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DayTaskViewModel
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object Di {
-
 
     @Provides
     @Singleton
@@ -28,10 +28,11 @@ object Di {
     @Singleton
     fun provideDailyProgramManagerUseCase(
         getDailyProgramRemotelyUseCase: GetDailyProgramRemotelyUseCase,
-        getDailyProgramLocallyUseCase: GetDailyProgramLocallyUseCase
+        getDailyProgramLocallyUseCase: GetDailyProgramLocallyUseCase,
+        getDayTaskUseCase: GetDayTaskUseCase
     ): DailyProgramManagerUseCase {
         return DailyProgramManagerUseCase(
-            getDailyProgramRemotelyUseCase, getDailyProgramLocallyUseCase
+            getDailyProgramRemotelyUseCase, getDailyProgramLocallyUseCase,getDayTaskUseCase
         )
     }
 
@@ -40,24 +41,16 @@ object Di {
 
     @Provides
     fun provideGetDailyProgramLocallyUseCase(repository: DayTaskRepository) = GetDailyProgramLocallyUseCase(repository)
-
-
-//    @Provides
-//    @Singleton
-//    fun provideDayTaskRepository(
-//        dao: DayTaskDao,
-//        firestore: FirebaseFirestore
-//    ) = DayTaskRepository(dao, firestore)
+   @Provides
+   fun provideGetDayTaskUseCase(repository: DayTaskRepository) = GetDayTaskUseCase(repository)
 
     @Provides
     @Singleton
-    fun provideDayTaskRepository(
-    ) = DayTaskRepository()
+    fun provideDayTaskRepository(dao: DayTaskDao)  = DayTaskRepository(dao)
 
-
-//    @Provides
-//    @Singleton
-//    fun provideDayTaskDao(db: AppDatabase) = db.dayTaskDao()
+    @Provides
+    @Singleton
+    fun provideDayTaskDao(db: AppDatabase) = db.dayTaskDao()
 
 
 }

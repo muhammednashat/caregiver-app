@@ -5,12 +5,12 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.LibraryActivity
 import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
 import mnshat.dev.myproject.factories.PatientViewModelFactory
-import mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.LibraryActivity
 import mnshat.dev.myproject.model.CurrentTask
 import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderActivity
-import mnshat.dev.myproject.users.patient.dailyprogram.DailyProgramActivity
+import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DayTaskActivity
 import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
@@ -57,7 +57,6 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
         binding.viewModel = viewModel
 
         viewModel.toolsClick.observe(viewLifecycleOwner){
-
             if (it){
                 findNavController().navigate(R.id.action_patientHomeFragment_to_mainAzcarFragment)
                 viewModel.restToolsClick()
@@ -66,26 +65,18 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
 
         viewModel.continueClick.observe(viewLifecycleOwner){
             if (it){
-                startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
+                startActivity(Intent(requireActivity(), DayTaskActivity::class.java))
                 viewModel.restContinueClick()
             }
         }
-
-        viewModel.educationalContentClicked.observe(viewLifecycleOwner){
-//            createContentFake()
-
-            if (it){
-                startActivity( Intent(requireActivity(), LibraryActivity::class.java))
-                viewModel.restEducationalContentClicked()
-            }
-
-        }
-
     }
 
     override fun setupClickListener() {
         super.setupClickListener()
 
+        binding.dailyProgram.setOnClickListener() {
+            startActivity(Intent(requireActivity(), LibraryActivity::class.java))
+        }
 
         binding.helpNumbers.setOnClickListener {
             findNavController().navigate(R.id.action_patientHomeFragment_to_numberHelpingFragment2)

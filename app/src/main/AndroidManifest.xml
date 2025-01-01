@@ -30,6 +30,8 @@
         <activity
             android:name=".commonFeatures.getLibraryContent.presentaion.LibraryActivity"
             android:exported="false" />
+        <activity android:name=".users.patient.dailyprogram.presentaion.DayTaskActivity"
+            android:exported="false" />
         <activity
             android:name=".maybeneedlater.TasksActivity"
             android:exported="false" />

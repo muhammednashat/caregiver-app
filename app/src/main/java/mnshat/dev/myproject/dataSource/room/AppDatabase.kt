@@ -5,24 +5,29 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.data.LibraryDao
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.users.patient.calender.data.daos.DayDao
 import mnshat.dev.myproject.users.patient.calender.data.daos.TaskDao
 import mnshat.dev.myproject.users.patient.calender.domain.entity.DayEntity
 import mnshat.dev.myproject.users.patient.calender.domain.entity.TaskEntity
+import mnshat.dev.myproject.users.patient.dailyprogram.data.daos.DayTaskDao
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.DayTaskEntity
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.TaskListConverter
 
 @Database(
-    entities = [LibraryContent::class , DayEntity::class,TaskEntity::class],
-    version = 5,
+    entities = [LibraryContent::class , DayEntity::class,TaskEntity::class, DayTaskEntity::class],
+    version = 6,
     exportSchema = false
 )
-
+@TypeConverters(TaskListConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun libraryDao(): LibraryDao
     abstract fun dayDao(): DayDao
     abstract fun taskDao(): TaskDao
+    abstract fun dayTaskDao(): DayTaskDao
 
 
     companion object {

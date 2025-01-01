@@ -30,7 +30,8 @@ class LibraryContentRepo(
 
     private suspend fun getContentFromRoom() = libraryDao.getAll()
 
-    private suspend fun retrieveLibraryContentFromFirebase(): List<LibraryContent> = suspendCoroutine { continuation ->
+    private suspend fun retrieveLibraryContentFromFirebase():
+            List<LibraryContent> = suspendCoroutine { continuation ->
         libraryContents.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val libraryContentList = mutableListOf<LibraryContent>()
