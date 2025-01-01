@@ -580,46 +580,39 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="your_progress_has_been_saved">Your progress has been saved!</string>
     <string name="review_your_mood_over_time">Review your mood over time....</string>
     <string name="you_can_track_your_mood_by_clicking_on_the_emoji_at_the_top_of_your_daily_schedule_page">You can track your mood by clicking on the emoji at the top of your daily schedule page</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+        <string name="activity_1">Go to women\'s fitness club or gym to stay motivated.</string>
+        <string name="activity_2">Attend a session of Dabke in a women\'s group for fun and fitness.</string>
+        <string name="activity_3">Gather your male friends for an exciting outdoor football game and enjoy friendly competition.</string>
+        <string name="activity_4">Do equipment-free at-home workouts such as push-ups, and bodyweight squats.</string>
+        <string name="activity_5">Enjoy a day of fishing at a lake or the sea.</string>
+        <string name="activity_6">Take a camping trip with your loved ones.</string>
+        <string name="activity_7">Go for a solo walk to relax and clear your mind.</string>
+        <string name="activity_8">Gather your loved ones for a picnic in the park, where you can enjoy homemade food and play games.</string>
+        <string name="activity_9">Go on an outdoor photography adventure to capture landscapes or cityscapes.</string>
+        <string name="activity_10">Visit a traditional market (souk), explore handmade goods, and interact with vendors.</string>
+        <string name="activity_11">Lounge on the beach, go swimming, or take a walk along the shore.</string>
+        <string name="activity_12">Play traditional Arab board games such as Backgammon or Carrom with your loved ones.</string>
+        <string name="activity_13">Read from an Arab author\'s novel and immerse yourself in their cultural insights and narratives.</string>
+        <string name="activity_14">Plant trees, flowers, or herbs in your garden.</string>
+        <string name="activity_15">Practise the art of Arabic calligraphy.</string>
+        <string name="activity_16">Play traditional instruments such as the oud or tabla and immerse yourself in local music.</string>
+        <string name="activity_17">Practise the art of Henna, creating stunning, intricate designs.</string>
+        <string name="activity_18">Create healthier versions of traditional dishes with fresh, low-calorie ingredients.</string>
+        <string name="activity_19">Try your hand at making traditional desserts such as baklava, kunafa, and qatayef.</string>
+        <string name="activity_20">Give your car a refreshing thorough clean, inside and out.</string>
+        <string name="activity_21">Burn oud or bakhoor to give your clothes and home a soothing, opulent scent.</string>
+        <string name="activity_22">Enjoy a relaxing time at a traditional women-only bath (hamam) or spa.</string>
+        <string name="activity_23">Use traditional hair oils, such as argan or black seed, to give your hair a healthy, shiny finish.</string>
+        <string name="activity_24">Make and apply revitalising face masks with honey, rose water, and turmeric.</string>
+        <string name="activity_25">Prepare and share traditional dishes with neighbours or friends.</string>
+        <string name="activity_26">Invite close female friends for a delightful tea or coffee gathering and enjoy quality time together.</string>
+        <string name="activity_27">Host a fun outdoor BBQ with family and friends.</string>
+        <string name="activity_28">Attend a gathering with family and friends to bond and create lasting memories.</string>
+        <string name="activity_29">Cook a meal together with your family, share recipes, and enjoy quality time in the kitchen.</string>
+        <string name="activity_30">Organise or participate in charitable activities such as food distribution or volunteer work.</string>
+        <string name="activity_31">Listen to the Quran recitations or calming Nasheeds (Islamic songs).</string>
+        <string name="activity_32">Attend Quran study circles or lectures at your local mosque or community centre.</string>
 
-    <string name="lorem_ipsum">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
-        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
-        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
-        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
-        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
-        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
-        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
-        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
-        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
-        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
-        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
-        bibendum, vel congue leo egestas.\n\n
-        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
-        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
-        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
-        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
-        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
-        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
-        est.\n\n
-        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
-        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
-        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
-        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
-        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
-        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
-        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
-        convallis.\n\n
-        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
-        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
-        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
-        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
-        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
-        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
-        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
-    </string>
 
 
 </resources>

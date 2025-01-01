@@ -57,8 +57,7 @@ class ChooseActivitiesFragment : BaseFragment() , OnActivityClickListener{
     private fun setUpRecyclerView() {
         adapter =CalenderActivitiesAdapter(
         viewModel.getCalenderActivities(requireActivity()),this )
-        val layoutManager = GridLayoutManager(requireActivity(), 2)
-        binding.recyclerView.layoutManager = layoutManager
+
         binding.recyclerView.adapter = adapter
     }
 
