@@ -8,7 +8,7 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.LibraryActivity
 import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
 import mnshat.dev.myproject.factories.PatientViewModelFactory
-import mnshat.dev.myproject.model.CurrentTask
+import mnshat.dev.myproject.model.CurrentTask2
 import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderActivity
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DayTaskActivity
 import mnshat.dev.myproject.util.USER_ID
@@ -88,7 +88,7 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
     }
 
 
-    private fun setStatusOfCurrentTask(currentTask: CurrentTask?){
+    private fun setStatusOfCurrentTask(currentTask: CurrentTask2?){
         currentTask?.let {
             val status= it.status
             binding.currentDayLevel.text= buildString {

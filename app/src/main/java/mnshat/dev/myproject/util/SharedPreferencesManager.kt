@@ -3,7 +3,6 @@ package mnshat.dev.myproject.util
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
-import mnshat.dev.myproject.model.CurrentTask
 import javax.inject.Inject
 
 class SharedPreferencesManager @Inject constructor(context: Context) {

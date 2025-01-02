@@ -98,17 +98,11 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
             val currentIndex = getNextTask(viewModel.status.currentIndexEducational!!, 1)
             viewModel.status.currentIndexEducational = currentIndex
             viewModel.updateCurrentTaskLocally()
-
         }
-
-
-
     }
 
     private fun changeColorStatus() {
-
         if (viewModel.status.educational == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))
-
         changeColorOfTaskImage(2, binding.constraintTask1, binding.imageTask1)
         changeColorOfTaskImage(viewModel.status.spiritual, binding.constraintTask2, binding.imageTask2)
         changeColorOfTaskImage(viewModel.status.behavioral, binding.constraintTask3, binding.imageTask3)

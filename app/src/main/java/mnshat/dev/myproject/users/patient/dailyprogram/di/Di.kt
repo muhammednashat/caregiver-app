@@ -1,6 +1,5 @@
 package mnshat.dev.myproject.users.patient.dailyprogram.di
 
-import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,10 +8,12 @@ import mnshat.dev.myproject.dataSource.room.AppDatabase
 import mnshat.dev.myproject.users.patient.dailyprogram.data.DayTaskRepository
 import mnshat.dev.myproject.users.patient.dailyprogram.data.daos.DayTaskDao
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.DailyProgramManagerUseCase
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.GetCurrentTaskLocallyUseCase
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.GetDailyProgramLocallyUseCase
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.GetDailyProgramRemotelyUseCase
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.GetDayTaskUseCase
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DayTaskViewModel
+import mnshat.dev.myproject.util.SharedPreferencesManager
 import javax.inject.Singleton
 
 @Module
@@ -21,18 +22,19 @@ object Di {
 
     @Provides
     @Singleton
-    fun provideDayTaskViewModel(dailyProgramManagerUseCase: DailyProgramManagerUseCase)
-    = DayTaskViewModel(dailyProgramManagerUseCase)
+    fun provideDayTaskViewModel(dailyProgramManagerUseCase: DailyProgramManagerUseCase,sharedPreferences: SharedPreferencesManager)
+    = DayTaskViewModel(dailyProgramManagerUseCase,sharedPreferences)
 
     @Provides
     @Singleton
     fun provideDailyProgramManagerUseCase(
         getDailyProgramRemotelyUseCase: GetDailyProgramRemotelyUseCase,
         getDailyProgramLocallyUseCase: GetDailyProgramLocallyUseCase,
-        getDayTaskUseCase: GetDayTaskUseCase
+        getDayTaskUseCase: GetDayTaskUseCase,
+        getCurrentTaskLocallyUseCase: GetCurrentTaskLocallyUseCase,
     ): DailyProgramManagerUseCase {
         return DailyProgramManagerUseCase(
-            getDailyProgramRemotelyUseCase, getDailyProgramLocallyUseCase,getDayTaskUseCase
+            getDailyProgramRemotelyUseCase, getDailyProgramLocallyUseCase,getDayTaskUseCase,getCurrentTaskLocallyUseCase
         )
     }
 
@@ -45,8 +47,11 @@ object Di {
    fun provideGetDayTaskUseCase(repository: DayTaskRepository) = GetDayTaskUseCase(repository)
 
     @Provides
+    fun  provideGetCurrentTaskLocallyUseCase(repository: DayTaskRepository) = GetCurrentTaskLocallyUseCase(repository)
+
+    @Provides
     @Singleton
-    fun provideDayTaskRepository(dao: DayTaskDao)  = DayTaskRepository(dao)
+    fun provideDayTaskRepository(dao: DayTaskDao,sharedPreferences: SharedPreferencesManager)  = DayTaskRepository(dao,sharedPreferences)
 
     @Provides
     @Singleton

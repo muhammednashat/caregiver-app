@@ -5,12 +5,11 @@ import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.model.CurrentTask
+import mnshat.dev.myproject.model.CurrentTask2
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetEffectingMoodUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetEmojisStatusUseCase
 import mnshat.dev.myproject.util.CURRENT_TASK
-import mnshat.dev.myproject.util.DAY_TASK
 import mnshat.dev.myproject.util.STATUS
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.log
@@ -32,10 +31,10 @@ class MoodViewModel @Inject constructor
     fun setEmoji(emoji: EmojiMood)  { _emoji = emoji }
     fun getEmoji() = _emoji
 
-     private fun getCurrentTask(): CurrentTask {
+     private fun getCurrentTask(): CurrentTask2 {
         val string = sharedPreferences.getString(CURRENT_TASK, null.toString())
         val gson = Gson()
-        return gson.fromJson(string, CurrentTask::class.java)
+        return gson.fromJson(string, CurrentTask2::class.java)
     }
 
     fun updateCurrentTaskLocally() {
@@ -45,7 +44,7 @@ class MoodViewModel @Inject constructor
         updateCurrentTaskRemotely(currentTask)
     }
 
-    private fun updateCurrentTaskRemotely(currentTask:CurrentTask) {
+    private fun updateCurrentTaskRemotely(currentTask:CurrentTask2) {
         log("updateCurrentTaskRemotely ${currentTask.status?.preChecked}")
         val map = mapOf(STATUS to currentTask.status!!)
         FirebaseService.updateTasksUser(FirebaseService.userId, map) {

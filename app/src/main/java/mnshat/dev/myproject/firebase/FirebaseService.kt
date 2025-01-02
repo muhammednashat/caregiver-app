@@ -11,7 +11,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.messaging.FirebaseMessaging
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.model.CurrentTask
+import mnshat.dev.myproject.model.CurrentTask2
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.util.CAREGIVER
@@ -241,14 +241,14 @@ object FirebaseService {
 
     }
 
-    fun retrieveCurrentTasksForUser(userEmail: String, callBack: (CurrentTask?) -> Unit) {
+    fun retrieveCurrentTasksForUser(userEmail: String, callBack: (CurrentTask2?) -> Unit) {
 
         val query = dailyProgramStates.orderByChild(USER_EMAIL).equalTo(userEmail)
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (snapshot in dataSnapshot.children) {
-                        val currentTask = snapshot.getValue(CurrentTask::class.java)
+                        val currentTask = snapshot.getValue(CurrentTask2::class.java)
                         if (currentTask != null) {
                             Log.e("TAG", "currentTask 1 ${currentTask.email}")
                             callBack(currentTask)
@@ -272,11 +272,9 @@ object FirebaseService {
 
     fun storeCurrentTaskRemotely(
         userId: String,
-        currentTask: CurrentTask,
-        callBack: (CurrentTask?) -> Unit
+        currentTask: CurrentTask2,
+        callBack: (CurrentTask2?) -> Unit
     ) {
-
-
         if (userId != null) {
             dailyProgramStates.child(userId).setValue(
                 currentTask
@@ -290,7 +288,6 @@ object FirebaseService {
                 }
         } else {
         }
-
     }
 
     fun getLibraryContent(onDataFetched: (List<LibraryContent>?) -> Unit) {

@@ -8,7 +8,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.model.CurrentTask
+import mnshat.dev.myproject.model.CurrentTask2
 import mnshat.dev.myproject.model.DayTask
 import mnshat.dev.myproject.model.StatusDailyProgram
 import mnshat.dev.myproject.util.AGE_GROUP
@@ -129,7 +129,6 @@ open class BaseViewModel2(
         callBack: () -> Unit
     ) {
        val statusDailyProgram =  StatusDailyProgram(day = day.toInt())
-
         val isReligious = sharedPreferences.getBoolean(RELIGION)
         if (!isReligious) {
             dayTask.spiritual = null
@@ -156,7 +155,7 @@ open class BaseViewModel2(
     ) {
         FirebaseService.storeCurrentTaskRemotely(
             userId,
-            CurrentTask(email, dayTask,statusDailyProgram)
+            CurrentTask2(email, dayTask,statusDailyProgram)
         ) {
             it?.let {
                 storeCurrentTaskLocally(it, sharedPreferences) { // 2
@@ -168,7 +167,7 @@ open class BaseViewModel2(
     }
 
     fun storeCurrentTaskLocally(
-        currentTask: CurrentTask,
+        currentTask: CurrentTask2,
         sharedPreferences: SharedPreferencesManager,
         callBack: () -> Unit
     ) {

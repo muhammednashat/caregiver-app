@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import mnshat.dev.myproject.base.BaseViewModel2
 import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.model.CurrentTask
+import mnshat.dev.myproject.model.CurrentTask2
 import mnshat.dev.myproject.model.StatusDailyProgram
 import mnshat.dev.myproject.model.Task
 import mnshat.dev.myproject.util.CURRENT_TASK
@@ -22,7 +22,7 @@ class DailyProgramViewModel(
     sharedPreferences,
     application
 ) {
-    var currentTask: CurrentTask
+    var currentTask: CurrentTask2
    lateinit var status: StatusDailyProgram
    lateinit var listOfTasks: List<Task>
     val _isSyncNeeded: MutableLiveData<Boolean> = MutableLiveData()
@@ -35,10 +35,10 @@ class DailyProgramViewModel(
     }
 
     //get Data // 1
-    private fun getCurrntTask(): CurrentTask {
+    private fun getCurrntTask(): CurrentTask2 {
         val string = sharedPreferences.getString(CURRENT_TASK, null.toString())
         val gson = Gson()
-        return gson.fromJson(string, CurrentTask::class.java)
+        return gson.fromJson(string, CurrentTask2::class.java)
     }
 
     fun updateCurrentTaskLocally() {
