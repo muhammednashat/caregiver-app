@@ -2,9 +2,9 @@ package mnshat.dev.myproject.maybeneedlater
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import mnshat.dev.myproject.users.patient.dailyprogram.BehaviouralActivationFragment
-import mnshat.dev.myproject.users.patient.dailyprogram.SpiritualFragment
-import mnshat.dev.myproject.users.patient.dailyprogram.EducationalFragment
+import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.BehaviouralActivationFragment
+import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.SpiritualFragment
+import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.EducationalFragment
 
 class SlidesAdapter(fragmentActivity: FragmentActivity) :FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int {

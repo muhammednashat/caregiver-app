@@ -1,14 +1,12 @@
-package mnshat.dev.myproject.users.patient.dailyprogram
+package mnshat.dev.myproject.users.patient.dailyprogram.presentaion
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.databinding.FragmentSuggestedChallengesBinding
-import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
-import mnshat.dev.myproject.model.Task
 import mnshat.dev.myproject.model.TestD
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import kotlin.properties.Delegates
 
@@ -20,7 +18,6 @@ class SuggestedChallengesFragment() :
     }
 
 
-    private lateinit var viewModel: DailyProgramViewModel
     private var tasks: List<Task> = emptyList()
     private var currentIndex by Delegates.notNull<Int>()
     private var _itemClickListener: OnTaskItemClickListener? = null
@@ -29,7 +26,6 @@ class SuggestedChallengesFragment() :
 
     override fun initializeViews() {
         loadTasksFromArguments()
-        initViewModel()
         changeButtonBackColorBasedLang()
     }
 
@@ -97,12 +93,6 @@ class SuggestedChallengesFragment() :
           dismiss()
       }
     }
-    private fun initViewModel() {
-        val factory = DailyProgramViewModelFactory(sharedPreferences, activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
-    }
-
-
 
     private fun onItemClick(position: Int) {
         _itemClickListener?.onTaskItemClicked(position)
@@ -120,7 +110,7 @@ class SuggestedChallengesFragment() :
     companion object {
         private const val ARG_TASKS = "tasks"
         private const val ARG_CURRENT_INDEX ="currentIndex"
-        fun newInstance(itemClickListener: OnTaskItemClickListener,currentIndex:Int,tasks: List<Task>) =
+        fun newInstance(itemClickListener: OnTaskItemClickListener, currentIndex:Int, tasks: List<Task>) =
             SuggestedChallengesFragment().apply {
                 _itemClickListener=itemClickListener
                 arguments = Bundle().apply {

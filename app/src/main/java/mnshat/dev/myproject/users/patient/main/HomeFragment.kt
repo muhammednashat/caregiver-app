@@ -10,7 +10,7 @@ import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
 import mnshat.dev.myproject.factories.PatientViewModelFactory
 import mnshat.dev.myproject.model.CurrentTask2
 import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderActivity
-import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DayTaskActivity
+import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
 import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
@@ -65,7 +65,8 @@ class HomeFragment : BasePatientFragment<FragmentUserHomeBinding>() {
 
         viewModel.continueClick.observe(viewLifecycleOwner){
             if (it){
-                startActivity(Intent(requireActivity(), DayTaskActivity::class.java))
+//                startActivity(Intent(requireActivity(), DayTaskActivity::class.java))
+                startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
                 viewModel.restContinueClick()
             }
         }

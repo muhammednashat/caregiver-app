@@ -12,11 +12,9 @@ import android.view.Window
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
-import mnshat.dev.myproject.R
-import mnshat.dev.myproject.databinding.DialogPreMoodSelectionBinding
 import mnshat.dev.myproject.databinding.DialogProgressMoodBinding
 import mnshat.dev.myproject.databinding.FragmentCompareResultsBinding
-import mnshat.dev.myproject.users.patient.dailyprogram.DailyProgramActivity
+import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
 
 @AndroidEntryPoint
 class CompareResultsFragment : BaseFragment() {

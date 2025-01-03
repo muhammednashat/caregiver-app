@@ -17,7 +17,7 @@ import mnshat.dev.myproject.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogStartProgramBinding
 import mnshat.dev.myproject.databinding.FragmentShareWhatEffectingMoodBinding
-import mnshat.dev.myproject.users.patient.dailyprogram.DailyProgramActivity
+import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EffectingMood
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
 

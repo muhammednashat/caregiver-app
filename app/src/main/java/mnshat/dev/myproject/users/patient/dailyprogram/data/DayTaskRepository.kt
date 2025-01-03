@@ -26,16 +26,23 @@ class DayTaskRepository @Inject constructor(
 
     suspend fun getCurrentTask(): CurrentTask {
         return if (dao.getAllDayTasks()?.size != 0) {
+                log("DayTaskRepository getCurrentTask 1")
                 getCurrentTaskLocally()
         } else {
+            log("DayTaskRepository getCurrentTask 2")
+
             fetchTasks().let {
+                log("DayTaskRepository getCurrentTask 3")
+
                 dao.insertAll(it)
-                currentTask(1)
+                updateCurrentTask(1)
             }
         }
     }
 
-    private suspend fun currentTask(day: Int): CurrentTask {
+     suspend fun updateCurrentTask(day: Int): CurrentTask {
+        log("DayTaskRepository getCurrentTask 4")
+
         val dayTask = getDayTaskFromRoom(day)
         val currentTask = filterBasedProfile(dayTask, day.toString())
         storeCurrentTaskLocally(currentTask)

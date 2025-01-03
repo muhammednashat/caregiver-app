@@ -1,31 +1,36 @@
-package mnshat.dev.myproject.users.patient.dailyprogram
+package mnshat.dev.myproject.users.patient.dailyprogram.presentaion
 
 import android.graphics.Color
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
-import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
-import mnshat.dev.myproject.model.Task
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
 
-class SpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
+class SpiritualFragment : BaseDailyProgramFragment() {
 
-    override fun getLayout() = R.layout.layout_task
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
+        binding = LayoutTaskBinding.inflate(inflater, container, false)
+        setupClickListener()
+        initializeViews()
+        return binding.root
+    }
 
-    override fun initializeViews() {
-        val factory = DailyProgramViewModelFactory(sharedPreferences,activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
-
+    fun initializeViews() {
         viewModel.currentTask.let {
-            viewModel.listOfTasks = it.dayTask?.spiritual as List<Task>
+            viewModel.listOfTasks = it?.dayTask?.spiritual as List<Task>
             if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
             getTaskFromList(viewModel.status.currentIndexSpiritual!!, 2)
             changeColorStatus()
         }
     }
 
-    override fun setupClickListener() {
+    fun setupClickListener() {
         binding.btnNext.setOnClickListener {
                 updateStatus()
         }
@@ -59,19 +64,11 @@ class SpiritualFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         changeColorOfTaskImage(viewModel.status.educational, binding.constraintTask1, binding.imageTask1)
     }
 
-
-
-
-
-
     private fun updateStatus() {
-
         if (viewModel.status.spiritual != 1) {
             updateStatusData()
         }
-
         findNavController().navigate(R.id.action_spiritualFragment_to_activityFragment)
-
     }
 
     private fun updateStatusData() {

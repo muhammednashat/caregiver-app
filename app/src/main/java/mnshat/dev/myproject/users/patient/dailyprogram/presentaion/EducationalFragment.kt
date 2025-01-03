@@ -1,39 +1,58 @@
-package mnshat.dev.myproject.users.patient.dailyprogram
+package mnshat.dev.myproject.users.patient.dailyprogram.presentaion
 
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogPreMoodSelectionBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
-import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
-import mnshat.dev.myproject.model.Task
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
 import mnshat.dev.myproject.users.patient.moodTracking.presentaion.MoodTrackingActivity
 import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.log
 
-class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
+class EducationalFragment : BaseDailyProgramFragment() {
 
-    override fun getLayout() = R.layout.layout_task
 
-    override fun initializeViews() {
-        log("EducationalFragment initializeViews")
-        initViewModel()
-        isPreChecked()
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = LayoutTaskBinding.inflate(inflater, container, false)
+        setupClickListener()
+        showProgressDialog()
+        viewModel.get()
+        observeViewModel()
+        return  binding.root
+    }
 
+    fun observeViewModel(){
+       viewModel.isLoaded.observe(viewLifecycleOwner){
+           if (it){
+               dismissProgressDialog()
+               isPreChecked()
+               initializeViews()
+               viewModel.resetIsLoaded()
+           }
+       }
+    }
+
+     fun initializeViews() {
         binding.btnPrevious.visibility = View.GONE
         viewModel.currentTask.let {
-            viewModel.listOfTasks = it.dayTask?.educational as List<Task>
+            viewModel.listOfTasks = it?.dayTask?.educational as List<Task>
             if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
             getTaskFromList(viewModel.status.currentIndexEducational!!, 2)
             changeColorStatus()
         }
+
         hideSpiritualIcon(binding.constraintTask2, binding.line1)
     }
 
@@ -43,10 +62,7 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
         }
     }
 
-    private fun initViewModel() {
-        val factory = DailyProgramViewModelFactory(sharedPreferences, activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
-    }
+
 
     private fun showDailyProgram() {
         val dialog = Dialog(requireContext())
@@ -77,7 +93,7 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
     }
 
 
-    override fun setupClickListener() {
+   private  fun setupClickListener() {
         binding.btnNext.setOnClickListener {
             updateStatus()
         }
@@ -125,7 +141,7 @@ class EducationalFragment : BaseDailyProgramFragment<LayoutTaskBinding>() {
 
 
     private fun navigateToNextTask() {
-        if (sharedPreferences.getBoolean(RELIGION)) {
+        if (viewModel.sharedPreferences.getBoolean(RELIGION)) {
             findNavController().navigate(R.id.action_educationalFragment_to_spiritualFragment)
         } else {
             findNavController().navigate(R.id.action_educationFragment_to_behaviorActivationFragment)

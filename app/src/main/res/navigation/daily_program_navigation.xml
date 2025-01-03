@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/educationalFragment"
-        android:name="mnshat.dev.myproject.users.patient.dailyprogram.EducationalFragment"
+        android:name="mnshat.dev.myproject.users.patient.dailyprogram.presentaion.EducationalFragment"
         android:label="EducationalFragment">
         <action
             android:id="@+id/action_educationalFragment_to_spiritualFragment"
@@ -18,18 +18,14 @@
     </fragment>
     <fragment
         android:id="@+id/behaviorActivationFragment"
-        android:name="mnshat.dev.myproject.users.patient.dailyprogram.BehaviouralActivationFragment"
-        android:label="ActivityFragment" >
-        <action
-            android:id="@+id/action_behaviorActivationFragment_to_congratulationsFragment"
-            app:destination="@id/congratulationsFragment" />
-    </fragment>
+        android:name="mnshat.dev.myproject.users.patient.dailyprogram.presentaion.BehaviouralActivationFragment"
+        android:label="ActivityFragment" />
 
 
 
     <fragment
         android:id="@+id/spiritualFragment"
-        android:name="mnshat.dev.myproject.users.patient.dailyprogram.SpiritualFragment"
+        android:name="mnshat.dev.myproject.users.patient.dailyprogram.presentaion.SpiritualFragment"
         android:label="BehaviorFragment" >
         <action
             android:id="@+id/action_spiritualFragment_to_activityFragment"
@@ -37,9 +33,4 @@
     </fragment>
 
 
-
-    <fragment
-        android:id="@+id/congratulationsFragment"
-        android:name="mnshat.dev.myproject.users.patient.dailyprogram.CongratulationsFragment2"
-        android:label="CongratulationsFragment" />
 </navigation>

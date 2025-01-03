@@ -1,39 +1,47 @@
-package mnshat.dev.myproject.users.patient.dailyprogram
+package mnshat.dev.myproject.users.patient.dailyprogram.presentaion
 
 import android.net.Uri
-import android.util.Log
 import android.view.View
-import androidx.databinding.ViewDataBinding
+import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
+import dagger.hilt.android.AndroidEntryPoint
+import mnshat.dev.myproject.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
-import mnshat.dev.myproject.model.Task
-import mnshat.dev.myproject.users.patient.main.BasePatientFragment
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
 import mnshat.dev.myproject.util.ENGLISH_KEY
+import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.RELIGION
-import mnshat.dev.myproject.util.log
 
-abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragment<T>() {
+@AndroidEntryPoint
+open class BaseDailyProgramFragment : BaseFragment() {
 
-    lateinit var viewModel: DailyProgramViewModel
+     val viewModel: DayTaskViewModel by viewModels()
+
+    lateinit var binding: LayoutTaskBinding
     lateinit var task: Task
     var player: ExoPlayer? = null
     var isSyncNeeded = false
 
 
 
+    fun initLayoutBinding(binding: LayoutTaskBinding){
+        this.binding = binding
+    }
 
 
     fun getTaskFromList(index: Int, numberTask: Int) {
-        Log.e("TAG" , "12")
-        val binding = binding as LayoutTaskBinding
+//        val binding = binding as LayoutTaskBinding
         showProgressDialog()
         viewModel.listOfTasks.let { listOfTasks ->
              task = listOfTasks[index]
             task.let {
+             val   currentLang = viewModel.sharedPreferences.getString(LANGUAGE)
                 if (currentLang != ENGLISH_KEY) {
                     binding.textTitle.text = getString(R.string.mission, numberTask, task.arTitle)
                     binding.textDescription.text = task.arDescription
@@ -41,17 +49,32 @@ abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragme
                     binding.textTitle.text = getString(R.string.mission, numberTask, task.enTitle)
                     binding.textDescription.text = task.enDescription
                 }
-                Log.e("TAG" , "12322")
                 checkType(task.type)
             }
-            Log.e("TAG" , "1232")
-
         }
-        Log.e("TAG" , "312")
-
+    }
+    fun changeColorOfTaskImage(status: Int?, root: ConstraintLayout, image: ImageView){
+        when(status){
+            1 -> {
+                image.setImageResource( R.drawable.ic_check_blue)
+                root.setBackgroundResource(R.drawable.circle_blue_dark)
+            }
+            2 -> {
+                val params = root.layoutParams
+                params.width = 70
+                params.height = 70
+                root.layoutParams = params
+                root.setBackgroundResource(R.drawable.circle_orange_with_border)
+            }
+        }
     }
 
-
+    fun hideSpiritualIcon(constraintTask: ConstraintLayout, line: View) {
+        if( !viewModel.sharedPreferences.getBoolean(RELIGION)){
+            constraintTask.visibility = View.GONE
+            line.visibility = View.GONE
+        }
+    }
 
     fun getNextTask(index: Int, numberTask: Int):Int {
          player?.pause()
@@ -63,7 +86,7 @@ abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragme
     }
     fun updateCompletionRate() {
         viewModel.status.remaining = viewModel.status.remaining?.minus(1)
-        if (sharedPreferences.getBoolean(RELIGION)) {
+        if (viewModel.sharedPreferences.getBoolean(RELIGION)) {
             viewModel.status.completionRate = viewModel.status.completionRate?.plus(30)
         } else {
             viewModel.status.completionRate = viewModel.status.completionRate?.plus(50)
@@ -98,7 +121,7 @@ abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragme
         }
     }
     private fun playVideoAudio(uri: Uri) {
-        val binding = binding as LayoutTaskBinding
+//        val binding = binding as LayoutTaskBinding
         player = ExoPlayer.Builder(requireContext()).build().also { exoPlayer ->
             binding.exoPlayer.player = exoPlayer
             val mediaItem = MediaItem.fromUri(uri)
@@ -115,14 +138,14 @@ abstract class BaseDailyProgramFragment<T : ViewDataBinding> : BasePatientFragme
     }
 
     private fun displayImage(int: Int) {
-        val binding = binding as LayoutTaskBinding
+//        val binding = binding as LayoutTaskBinding
         Glide.with(this).load(task.image).into(binding.imageView)
         hideViews(int)
         dismissProgressDialog()
     }
 
     private fun hideViews(int: Int) {
-        val binding = binding as LayoutTaskBinding
+//        val binding = binding as LayoutTaskBinding
 
         when (int) {
             //image

@@ -1,60 +1,59 @@
-package mnshat.dev.myproject.users.patient.dailyprogram
+package mnshat.dev.myproject.users.patient.dailyprogram.presentaion
 
 import android.app.Dialog
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.RadioGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButton.OnCheckedChangeListener
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogDoCompleteTaskBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
-import mnshat.dev.myproject.factories.DailyProgramViewModelFactory
-import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.model.Task
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
 import mnshat.dev.myproject.users.patient.moodTracking.presentaion.PostMoodTrackingActivity
 import mnshat.dev.myproject.util.log
 
 
-class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBinding>(),  SuggestedChallengesFragment.OnTaskItemClickListener {
+class BehaviouralActivationFragment : BaseDailyProgramFragment(),
+    SuggestedChallengesFragment.OnTaskItemClickListener {
 
     private var currentStatus: Boolean = true
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = LayoutTaskBinding.inflate(inflater, container, false)
+        setupClickListener()
+        initializeViews()
+        return binding.root
+    }
 
-    override fun getLayout() = R.layout.layout_task
 
-    override fun initializeViews() {
-
-        initViewModel()
-
+    fun initializeViews() {
         viewModel.currentTask.let {
-            viewModel.listOfTasks = it.dayTask?.behaviorActivation as List<Task>
-
+            viewModel.listOfTasks = it?.dayTask?.behaviorActivation as List<Task>
             if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
             getTaskFromList(viewModel.status.currentIndexBehavioral!!, 2)
             changeColorStatus()
         }
-
         hideSpiritualIcon(binding.constraintTask2, binding.line2)
     }
 
-    private fun initViewModel() {
-        val factory = DailyProgramViewModelFactory(sharedPreferences, activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[DailyProgramViewModel::class.java]
-    }
 
-    override fun setupClickListener() {
+    fun setupClickListener() {
         binding.btnNext.setOnClickListener {
             if (viewModel.status.behavioral != 1){
                 showDialogAskingForCompletion()
             }else{
-                retrieveNextDay(viewModel.status.day?.plus(1).toString())
+                retrieveNextDay(viewModel.status.day?.plus(1))
             }
         }
         binding.icPause.setOnClickListener {
@@ -106,7 +105,7 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
         if (boolean) {
             updateStatusData()
         }
-        retrieveNextDay(viewModel.status.day?.plus(1).toString())
+        retrieveNextDay(viewModel.status.day?.plus(1))
     }
     private fun updateStatusData() {
         viewModel.status.behavioral = 1
@@ -180,17 +179,14 @@ class BehaviouralActivationFragment  : BaseDailyProgramFragment<LayoutTaskBindin
         viewModel.status.currentIndexBehavioral = position
         viewModel.updateCurrentTaskLocally()
     }
-    private fun retrieveNextDay(day: String?) {
-      showProgressDialog()
-        viewModel.retrieveTaskDayFromDatabase(
-            day!!, FirebaseService.userEmail!!, FirebaseService.userId!!, sharedPreferences
-        ) {
-            log("retrieveNextDay", "success")
-            /////l
+    private fun retrieveNextDay(day: Int?) {
+        log("DayTaskFragment retrieveNextDay $day")
+        showProgressDialog()
+        viewModel.updateCurrentTask(day!!.toInt())
             startActivity(Intent(requireContext(), PostMoodTrackingActivity::class.java))
             activity?.finish()
             dismissProgressDialog()
-        }
+
     }
 
     override fun onStop() {

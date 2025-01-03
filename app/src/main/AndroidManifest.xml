@@ -30,13 +30,12 @@
         <activity
             android:name=".commonFeatures.getLibraryContent.presentaion.LibraryActivity"
             android:exported="false" />
-        <activity android:name=".users.patient.dailyprogram.presentaion.DayTaskActivity"
-            android:exported="false" />
+
         <activity
             android:name=".maybeneedlater.TasksActivity"
             android:exported="false" />
         <activity
-            android:name=".users.patient.dailyprogram.DailyProgramActivity"
+            android:name=".users.patient.dailyprogram.presentaion.DailyProgramActivity"
             android:exported="false" />
         <activity
             android:name=".users.patient.supporters.SupportersActivity"

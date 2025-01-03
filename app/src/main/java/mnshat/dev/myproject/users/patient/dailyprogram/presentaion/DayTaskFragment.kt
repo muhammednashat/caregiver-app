@@ -27,7 +27,6 @@ class DayTaskFragment : BaseFragment() {
 
       viewModel.get()
        return  binding.root
-
     }
 
 }
