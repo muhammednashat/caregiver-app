@@ -10,7 +10,7 @@ import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.users.caregiver.main.CaregiverScreenActivity
 import mnshat.dev.myproject.users.patient.intro.IntroActivity
-import mnshat.dev.myproject.users.patient.main.UserScreensActivity
+import mnshat.dev.myproject.users.patient.main.presentaion.UserScreensActivity
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.CODE_USED
 import mnshat.dev.myproject.util.HAS_PARTNER

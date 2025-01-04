@@ -47,7 +47,7 @@
             android:name=".util.TermsPrivacyActivity"
             android:exported="false" />
         <activity
-            android:name=".users.patient.main.UserScreensActivity"
+            android:name=".users.patient.main.presentaion.UserScreensActivity"
             android:exported="false" />
         <activity
             android:name=".users.caregiver.main.CaregiverScreenActivity"

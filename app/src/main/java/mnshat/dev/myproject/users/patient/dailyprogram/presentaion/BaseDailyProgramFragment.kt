@@ -41,7 +41,7 @@ open class BaseDailyProgramFragment : BaseFragment() {
         viewModel.listOfTasks.let { listOfTasks ->
              task = listOfTasks[index]
             task.let {
-             val   currentLang = viewModel.sharedPreferences.getString(LANGUAGE)
+                val currentLang = viewModel.sharedPreferences.getString(LANGUAGE)
                 if (currentLang != ENGLISH_KEY) {
                     binding.textTitle.text = getString(R.string.mission, numberTask, task.arTitle)
                     binding.textDescription.text = task.arDescription

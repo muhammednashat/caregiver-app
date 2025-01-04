@@ -5,7 +5,7 @@
     app:startDestination="@id/patientHomeFragment">
     <fragment
         android:id="@+id/patientHomeFragment"
-        android:name="mnshat.dev.myproject.users.patient.main.HomeFragment"
+        android:name="mnshat.dev.myproject.users.patient.main.presentaion.HomeFragment"
         android:label="fragment_patient_home"
         tools:layout="@layout/fragment_user_home" >
         <action

@@ -4,7 +4,7 @@ import android.content.Intent
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentIntro5Binding
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
-import mnshat.dev.myproject.users.patient.main.UserScreensActivity
+import mnshat.dev.myproject.users.patient.main.presentaion.UserScreensActivity
 import mnshat.dev.myproject.users.patient.profile.editprofile.EditProfileActivity
 
 

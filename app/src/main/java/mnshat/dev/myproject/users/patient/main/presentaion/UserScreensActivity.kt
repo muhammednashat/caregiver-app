@@ -1,14 +1,14 @@
-package mnshat.dev.myproject.users.patient.main
+package mnshat.dev.myproject.users.patient.main.presentaion
 
-import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseActivity
 import mnshat.dev.myproject.databinding.ActivityUserScreensBinding
 import mnshat.dev.myproject.util.log
-
+@AndroidEntryPoint
 class UserScreensActivity : BaseActivity<ActivityUserScreensBinding>() {
 
     override fun getLayout(): ActivityUserScreensBinding {

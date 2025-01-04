@@ -5,10 +5,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import mnshat.dev.myproject.model.StatusDailyProgram
 import mnshat.dev.myproject.users.patient.dailyprogram.data.daos.DayTaskDao
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentTask
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.DayTaskEntity
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.StatusDailyProgram
 import mnshat.dev.myproject.util.CURRENT_TASK
 import mnshat.dev.myproject.util.DAILY_PROGRAM_STATES
 import mnshat.dev.myproject.util.RELIGION
@@ -26,14 +26,9 @@ class DayTaskRepository @Inject constructor(
 
     suspend fun getCurrentTask(): CurrentTask {
         return if (dao.getAllDayTasks()?.size != 0) {
-                log("DayTaskRepository getCurrentTask 1")
                 getCurrentTaskLocally()
         } else {
-            log("DayTaskRepository getCurrentTask 2")
-
             fetchTasks().let {
-                log("DayTaskRepository getCurrentTask 3")
-
                 dao.insertAll(it)
                 updateCurrentTask(1)
             }
@@ -41,8 +36,6 @@ class DayTaskRepository @Inject constructor(
     }
 
      suspend fun updateCurrentTask(day: Int): CurrentTask {
-        log("DayTaskRepository getCurrentTask 4")
-
         val dayTask = getDayTaskFromRoom(day)
         val currentTask = filterBasedProfile(dayTask, day.toString())
         storeCurrentTaskLocally(currentTask)

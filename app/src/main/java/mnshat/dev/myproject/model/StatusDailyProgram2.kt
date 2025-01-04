@@ -1,6 +1,6 @@
 package mnshat.dev.myproject.model
 
-data class StatusDailyProgram(
+data class StatusDailyProgram2(
 
     var preChecked: Boolean? = false,
     var postChecked: Boolean? = false,

@@ -10,7 +10,7 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.CurrentTask2
 import mnshat.dev.myproject.model.DayTask
-import mnshat.dev.myproject.model.StatusDailyProgram
+import mnshat.dev.myproject.model.StatusDailyProgram2
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.CURRENT_TASK
 import mnshat.dev.myproject.util.GENDER
@@ -128,7 +128,7 @@ open class BaseViewModel2(
         sharedPreferences: SharedPreferencesManager,
         callBack: () -> Unit
     ) {
-       val statusDailyProgram =  StatusDailyProgram(day = day.toInt())
+       val statusDailyProgram =  StatusDailyProgram2(day = day.toInt())
         val isReligious = sharedPreferences.getBoolean(RELIGION)
         if (!isReligious) {
             dayTask.spiritual = null
@@ -149,7 +149,7 @@ open class BaseViewModel2(
         userId: String,
         email: String,
         sharedPreferences: SharedPreferencesManager,
-        statusDailyProgram:StatusDailyProgram,
+        statusDailyProgram:StatusDailyProgram2,
         callBack: () -> Unit
 
     ) {

@@ -13,7 +13,7 @@ import mnshat.dev.myproject.auth.AuthActivity
 import mnshat.dev.myproject.base.BaseActivity
 import mnshat.dev.myproject.databinding.ActivitySplashBinding
 import mnshat.dev.myproject.users.caregiver.main.CaregiverScreenActivity
-import mnshat.dev.myproject.users.patient.main.UserScreensActivity
+import mnshat.dev.myproject.users.patient.main.presentaion.UserScreensActivity
 import java.util.Locale
 
 
