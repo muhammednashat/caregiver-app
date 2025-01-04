@@ -14,6 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
 import mnshat.dev.myproject.databinding.DialogProgressMoodBinding
 import mnshat.dev.myproject.databinding.FragmentCompareResultsBinding
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
 
 @AndroidEntryPoint
@@ -30,7 +31,23 @@ class CompareResultsFragment : BaseFragment() {
         binding.btnNext.setOnClickListener {
             showDialog()
         }
+        showProgressDialog()
+       viewModel.getCurrentDay()
+        observeData()
         return  binding.root
+    }
+
+    private fun observeData() {
+        viewModel.currentDay.observe(viewLifecycleOwner){
+            it?.let {
+                setUpUi(it)
+                dismissProgressDialog()
+            }
+        }
+    }
+
+    private fun setUpUi(it: CurrentDay) {
+
     }
 
     private fun showDialog() {

@@ -8,8 +8,10 @@ import mnshat.dev.myproject.dataSource.room.AppDatabase
 import mnshat.dev.myproject.users.patient.dailyprogram.data.DayTaskRepository
 import mnshat.dev.myproject.users.patient.dailyprogram.data.daos.DayTaskDao
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.DailyProgramManagerUseCase
-import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.GetCurrentTaskLocallyUseCase
-import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.UpdateCurrentTaskUseCase
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.GetCurrentDayLocallyUseCase
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.GetNextDayUseCase
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.UpdateCurrentDayLocallyUseCase
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.UpdateCurrentDayRemotelyUseCase
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DayTaskViewModel
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import javax.inject.Singleton
@@ -18,24 +20,34 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object Di {
 
+
+    @Provides
+    @Singleton
+    fun provideDayTaskViewModel(  dailyProgramManagerUseCase: DailyProgramManagerUseCase,
+                                  sharedPreferences: SharedPreferencesManager)= DayTaskViewModel(dailyProgramManagerUseCase,sharedPreferences)
+
     @Provides
     @Singleton
     fun provideDailyProgramManagerUseCase(
-        getCurrentTaskLocallyUseCase: GetCurrentTaskLocallyUseCase,
-        updateCurrentTaskUseCase: UpdateCurrentTaskUseCase,
+        getCurrentTaskLocallyUseCase: GetCurrentDayLocallyUseCase,
+        updateCurrentTaskUseCase: GetNextDayUseCase,
+        updateCurrentTaskRemotelyUseCase: UpdateCurrentDayRemotelyUseCase,
+        updateCurrentTaskLocallyUseCase: UpdateCurrentDayLocallyUseCase
     ): DailyProgramManagerUseCase {
         return DailyProgramManagerUseCase(
             getCurrentTaskLocallyUseCase,
             updateCurrentTaskUseCase,
+            updateCurrentTaskRemotelyUseCase,
+            updateCurrentTaskLocallyUseCase
         )
     }
 
     @Provides
-    fun provideUpdateCurrentTaskUseCase(repository: DayTaskRepository) = UpdateCurrentTaskUseCase(repository)
+    fun provideUpdateCurrentTaskUseCase(repository: DayTaskRepository) = GetNextDayUseCase(repository)
 
 
     @Provides
-    fun  provideGetCurrentTaskLocallyUseCase(repository: DayTaskRepository) = GetCurrentTaskLocallyUseCase(repository)
+    fun  provideGetCurrentTaskLocallyUseCase(repository: DayTaskRepository) = GetCurrentDayLocallyUseCase(repository)
 
     @Provides
     @Singleton

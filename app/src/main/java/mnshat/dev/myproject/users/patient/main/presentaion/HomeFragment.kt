@@ -13,7 +13,7 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.LibraryActivity
 import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
 import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderActivity
-import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentTask
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
@@ -77,7 +77,7 @@ class HomeFragment : BaseFragment() {
     }
 
 
-    private fun setStatusOfCurrentTask(currentTask: CurrentTask?){
+    private fun setStatusOfCurrentTask(currentTask: CurrentDay?){
         currentTask?.let {
             val status= it.status
             binding.currentDayLevel.text= buildString {

@@ -3,7 +3,6 @@ package mnshat.dev.myproject.users.patient.moodTracking.presentaion
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +33,7 @@ class SuggestionsFragment : BaseFragment() {
 
     private fun setUpListeners() {
         binding.btnNext.setOnClickListener {
+            viewModel.updateCurrentDayPostMood()
          findNavController().navigate(R.id.action_suggestionsFragment_to_compareResultsFragment)
         }
     }

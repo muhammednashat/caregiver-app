@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentTask
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.StatusDailyProgram
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.DailyProgramManagerUseCase
-import mnshat.dev.myproject.util.CURRENT_TASK
+import mnshat.dev.myproject.util.CURRENT_DAY
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import javax.inject.Inject
 
@@ -20,24 +20,25 @@ class DayTaskViewModel @Inject constructor(
     val sharedPreferences: SharedPreferencesManager,
 ) : ViewModel() {
 
-    var currentTask: CurrentTask? = null
+    var currentTask: CurrentDay? = null
     lateinit var status: StatusDailyProgram
     lateinit var listOfTasks: List<Task>
     val _isSyncNeeded: MutableLiveData<Boolean> = MutableLiveData()
+
     private  val _isLoaded = MutableLiveData<Boolean>()
     val isLoaded: LiveData<Boolean> = _isLoaded
 
     fun get() {
         viewModelScope.launch {
-            currentTask = dailyProgramManagerUseCase.getCurrentTaskLocallyUseCase()
+            currentTask = dailyProgramManagerUseCase.getCurrentDayLocallyUseCase()
             status= currentTask?.status!!
             _isLoaded.value = true
         }
     }
 
-    fun updateCurrentTask(day: Int) {
+    fun getNextTask(day: Int) {
         viewModelScope.launch {
-            dailyProgramManagerUseCase.updateCurrentTaskUseCase(day)
+            dailyProgramManagerUseCase.getNextDayUseCase(day)
         }
     }
 
@@ -46,7 +47,7 @@ class DayTaskViewModel @Inject constructor(
     }
 
     fun updateCurrentTaskLocally() {
-        sharedPreferences.storeObject(CURRENT_TASK, currentTask)
+        sharedPreferences.storeObject(CURRENT_DAY, currentTask)
         _isSyncNeeded.value = true
     }
     fun updateCurrentTaskRemotely() {

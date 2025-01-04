@@ -12,7 +12,7 @@ import mnshat.dev.myproject.model.CurrentTask2
 import mnshat.dev.myproject.model.DayTask
 import mnshat.dev.myproject.model.StatusDailyProgram2
 import mnshat.dev.myproject.util.AGE_GROUP
-import mnshat.dev.myproject.util.CURRENT_TASK
+import mnshat.dev.myproject.util.CURRENT_DAY
 import mnshat.dev.myproject.util.GENDER
 import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
@@ -172,7 +172,7 @@ open class BaseViewModel2(
         callBack: () -> Unit
     ) {
         log("storeCurrentTaskLocally ")
-        sharedPreferences.storeObject(CURRENT_TASK, currentTask)
+        sharedPreferences.storeObject(CURRENT_DAY, currentTask)
         callBack()  // 1
     }
 

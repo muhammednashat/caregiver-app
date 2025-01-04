@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentTask
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.DailyProgramManagerUseCase
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.log
@@ -18,14 +18,14 @@ import javax.inject.Inject
     val sharedPreferences: SharedPreferencesManager,
 ) : ViewModel() {
 
-    private  val _currentTask = MutableLiveData<CurrentTask>()
-    val currentTask: LiveData<CurrentTask> = _currentTask
+    private  val _currentTask = MutableLiveData<CurrentDay>()
+    val currentTask: LiveData<CurrentDay> = _currentTask
 
     fun getCurrentTask() {
         log("DayTaskViewModel get")
         viewModelScope.launch {
             log("DayTaskViewModel viewModelScope")
-         _currentTask.value =   dailyProgramManagerUseCase.getCurrentTaskLocallyUseCase()
+         _currentTask.value =   dailyProgramManagerUseCase.getCurrentDayLocallyUseCase()
         }
     }
 

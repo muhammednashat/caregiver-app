@@ -13,6 +13,7 @@ import android.view.Window
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogStartProgramBinding
@@ -21,7 +22,7 @@ import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramA
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EffectingMood
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
 
-
+@AndroidEntryPoint
 class ShareWhatEffectingMoodFragment : BaseFragment() {
 
     private lateinit var binding: FragmentShareWhatEffectingMoodBinding
@@ -45,6 +46,7 @@ class ShareWhatEffectingMoodFragment : BaseFragment() {
         }
         binding.btnNext.setOnClickListener {
             showStartDailyProgram()
+            viewModel.updateCurrentTaskPreMood()
         }
     }
 
@@ -81,7 +83,6 @@ class ShareWhatEffectingMoodFragment : BaseFragment() {
 
         dialogBinding.button.setOnClickListener {
             dialog.dismiss()
-            viewModel.updateCurrentTaskLocally()
             startActivity(Intent(requireContext(), DailyProgramActivity::class.java))
             activity?.finish()
         }

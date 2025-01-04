@@ -51,8 +51,9 @@ private lateinit var binding:FragmentPostDailyProgramBinding
         binding.recyclerView.adapter = adapter
     }
 
-    override fun onEmojiClicked(emoji: EmojiMood) {
+    override fun onEmojiClicked(emoji: EmojiMood,index:Int) {
         viewModel.setEmoji(emoji)
+        viewModel.setPostMoodIndex(index)
         updateUiColor(viewModel.getEmoji()!!)
     }
 

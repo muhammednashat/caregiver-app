@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
+@AndroidEntryPoint
 
 class SpiritualFragment : BaseDailyProgramFragment() {
 

@@ -8,7 +8,7 @@ import com.google.gson.Gson
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment2
 import mnshat.dev.myproject.model.CurrentTask2
-import mnshat.dev.myproject.util.CURRENT_TASK
+import mnshat.dev.myproject.util.CURRENT_DAY
 import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.log
 
@@ -16,7 +16,7 @@ abstract class BasePatientFragment<T : ViewDataBinding> : BaseFragment2<T>() {
 
 
     fun getCurrentTask(): CurrentTask2? {
-        val string = sharedPreferences.getString(CURRENT_TASK, null.toString())
+        val string = sharedPreferences.getString(CURRENT_DAY, null.toString())
         val  gson = Gson()
         return gson.fromJson(string, CurrentTask2::class.java)
     }

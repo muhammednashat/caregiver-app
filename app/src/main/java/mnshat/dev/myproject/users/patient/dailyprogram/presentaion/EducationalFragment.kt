@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogPreMoodSelectionBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
@@ -18,6 +19,7 @@ import mnshat.dev.myproject.users.patient.moodTracking.presentaion.MoodTrackingA
 import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.log
 
+@AndroidEntryPoint
 class EducationalFragment : BaseDailyProgramFragment() {
 
 
@@ -32,6 +34,7 @@ class EducationalFragment : BaseDailyProgramFragment() {
         observeViewModel()
         return  binding.root
     }
+
 
     fun observeViewModel(){
        viewModel.isLoaded.observe(viewLifecycleOwner){

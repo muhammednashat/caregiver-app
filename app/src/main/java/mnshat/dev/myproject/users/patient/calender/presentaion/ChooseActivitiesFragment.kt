@@ -10,10 +10,8 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
-import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogCalenderBinding
 import mnshat.dev.myproject.databinding.FragmentChooseActiviesBinding
 import mnshat.dev.myproject.users.patient.calender.domain.entity.CalenderActivity

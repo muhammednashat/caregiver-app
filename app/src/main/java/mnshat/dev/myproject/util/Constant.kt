@@ -38,7 +38,7 @@ const val ARABIC_KEY = "ar"
 const val VALID = "valid"
 const val SUPPORTERS = "supports"
 const val STATUS = "status"
-const val CURRENT_TASK = "CurrentTask"
+const val CURRENT_DAY = "CurrentTask"
 const val DAY_TASK = "dayTask"
 const val GRATITUDE_LIST = "gratitudeList"
 

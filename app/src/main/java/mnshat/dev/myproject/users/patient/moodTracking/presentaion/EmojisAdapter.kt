@@ -32,7 +32,7 @@ class EmojisAdapter(
      holder.title.text = emoji.name
      holder.emoji.setImageResource(emoji.emoji)
       holder.itemView.setOnClickListener{
-          onEmojiClickListener.onEmojiClicked(emoji)
+          onEmojiClickListener.onEmojiClicked(emoji,position)
       }
 
     }
@@ -41,7 +41,7 @@ class EmojisAdapter(
 }
 
 interface  OnEmojiClickListener{
-    fun onEmojiClicked(emoji: EmojiMood)
+    fun onEmojiClicked(emoji: EmojiMood,index:Int)
 }
 
 

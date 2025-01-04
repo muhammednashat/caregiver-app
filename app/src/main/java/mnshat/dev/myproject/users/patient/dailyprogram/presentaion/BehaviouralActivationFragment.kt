@@ -14,6 +14,7 @@ import android.widget.RadioGroup
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButton.OnCheckedChangeListener
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogDoCompleteTaskBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
@@ -21,7 +22,7 @@ import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
 import mnshat.dev.myproject.users.patient.moodTracking.presentaion.PostMoodTrackingActivity
 import mnshat.dev.myproject.util.log
 
-
+@AndroidEntryPoint
 class BehaviouralActivationFragment : BaseDailyProgramFragment(),
     SuggestedChallengesFragment.OnTaskItemClickListener {
 
@@ -53,7 +54,8 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
             if (viewModel.status.behavioral != 1){
                 showDialogAskingForCompletion()
             }else{
-                retrieveNextDay(viewModel.status.day?.plus(1))
+                startActivity(Intent(requireContext(), PostMoodTrackingActivity::class.java))
+                activity?.finish()
             }
         }
         binding.icPause.setOnClickListener {
@@ -105,7 +107,8 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
         if (boolean) {
             updateStatusData()
         }
-        retrieveNextDay(viewModel.status.day?.plus(1))
+        startActivity(Intent(requireContext(), PostMoodTrackingActivity::class.java))
+        activity?.finish()
     }
     private fun updateStatusData() {
         viewModel.status.behavioral = 1
@@ -179,16 +182,6 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
         viewModel.status.currentIndexBehavioral = position
         viewModel.updateCurrentTaskLocally()
     }
-    private fun retrieveNextDay(day: Int?) {
-        log("DayTaskFragment retrieveNextDay $day")
-        showProgressDialog()
-        viewModel.updateCurrentTask(day!!.toInt())
-            startActivity(Intent(requireContext(), PostMoodTrackingActivity::class.java))
-            activity?.finish()
-            dismissProgressDialog()
-
-    }
-
     override fun onStop() {
         super.onStop()
         player?.pause()

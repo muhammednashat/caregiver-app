@@ -1,23 +1,18 @@
 package mnshat.dev.myproject.users.patient.moodTracking.presentaion
 
-import android.app.Dialog
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.BaseFragment
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.databinding.DialogStartProgramBinding
 import mnshat.dev.myproject.databinding.FragmentPreMoodSelectionBinding
-import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EffectingMood
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
 
 @AndroidEntryPoint
@@ -34,11 +29,11 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
 
         binding = FragmentPreMoodSelectionBinding.inflate(inflater,container, false)
         setUpListener()
-        if (viewModel.getEmoji() != null){
-            canClickingButton = true
-            updateUiColor(viewModel.getEmoji()!!)
-        }
-        setUprecyclerView(viewModel.getEmojisStatus(requireActivity()))
+//        if (viewModel.getEmoji() != null){
+//            canClickingButton = true
+//            updateUiColor(viewModel.getEmoji()!!)
+//        }
+        setUpRecyclerView(viewModel.getEmojisStatus(requireActivity()))
         return  binding.root
     }
 
@@ -50,7 +45,7 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
           }
     }
     }
-    private fun setUprecyclerView(emojisStatus: List<EmojiMood>) {
+    private fun setUpRecyclerView(emojisStatus: List<EmojiMood>) {
         adapter = EmojisAdapter(emojisStatus,this)
         val layoutManager = GridLayoutManager(requireActivity(), 3)
         binding.recyclerView.layoutManager = layoutManager
@@ -60,8 +55,9 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
 
 
 
-    override fun onEmojiClicked(emoji: EmojiMood) {
+    override fun onEmojiClicked(emoji: EmojiMood,index:Int) {
         viewModel.setEmoji(emoji)
+        viewModel.setPreMoodIndex(index)
         updateUiColor(emoji)
     }
 
