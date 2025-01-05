@@ -24,7 +24,7 @@ class SpiritualFragment : BaseDailyProgramFragment() {
     }
 
     fun initializeViews() {
-        viewModel.currentTask.let {
+        viewModel.currentDay.value.let {
             viewModel.listOfTasks = it?.dayTask?.spiritual as List<Task>
             if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
             getTaskFromList(viewModel.status.currentIndexSpiritual!!, 2)

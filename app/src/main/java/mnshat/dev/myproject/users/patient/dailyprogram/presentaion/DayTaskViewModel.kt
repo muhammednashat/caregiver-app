@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.StatusDailyProgram
@@ -12,6 +14,7 @@ import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.DailyProgramManagerUseCase
 import mnshat.dev.myproject.util.CURRENT_DAY
 import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.log
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,40 +23,37 @@ class DayTaskViewModel @Inject constructor(
     val sharedPreferences: SharedPreferencesManager,
 ) : ViewModel() {
 
-    var currentTask: CurrentDay? = null
     lateinit var status: StatusDailyProgram
     lateinit var listOfTasks: List<Task>
     val _isSyncNeeded: MutableLiveData<Boolean> = MutableLiveData()
 
-    private  val _isLoaded = MutableLiveData<Boolean>()
-    val isLoaded: LiveData<Boolean> = _isLoaded
+    private  val _currentDay = MutableLiveData<CurrentDay?>()
+    val currentDay: LiveData<CurrentDay?> = _currentDay
 
     fun get() {
-        viewModelScope.launch {
-            currentTask = dailyProgramManagerUseCase.getCurrentDayLocallyUseCase()
-            status= currentTask?.status!!
-            _isLoaded.value = true
+        CoroutineScope(Dispatchers.IO).launch {
+            _currentDay.postValue(dailyProgramManagerUseCase.getCurrentDayLocallyUseCase())
+//            status = _currentDay.value?.status!!
         }
     }
 
-    fun getNextTask(day: Int) {
-        viewModelScope.launch {
-            dailyProgramManagerUseCase.getNextDayUseCase(day)
-        }
-    }
 
-    fun resetIsLoaded(){
-        _isLoaded.value = false
-    }
 
     fun updateCurrentTaskLocally() {
-        sharedPreferences.storeObject(CURRENT_DAY, currentTask)
+        sharedPreferences.storeObject(CURRENT_DAY,  _currentDay.value)
         _isSyncNeeded.value = true
     }
     fun updateCurrentTaskRemotely() {
 //        val map = mapOf(DAY_TASK to currentTask.dayTask!!, STATUS to currentTask.status!!)
 //        FirebaseService.updateTasksUser(FirebaseService.userId, map) {
 //        }
+    }
+
+    override fun onCleared() {
+    log("DayTaskViewModel onCleared")
+        _currentDay.value = null
+        super.onCleared()
+
     }
 
 }

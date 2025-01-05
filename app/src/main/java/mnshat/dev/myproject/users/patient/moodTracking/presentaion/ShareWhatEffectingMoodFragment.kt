@@ -21,6 +21,7 @@ import mnshat.dev.myproject.databinding.FragmentShareWhatEffectingMoodBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EffectingMood
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
+import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 class ShareWhatEffectingMoodFragment : BaseFragment() {
@@ -45,8 +46,9 @@ class ShareWhatEffectingMoodFragment : BaseFragment() {
             findNavController().popBackStack()
         }
         binding.btnNext.setOnClickListener {
-            showStartDailyProgram()
             viewModel.updateCurrentTaskPreMood()
+            log("ShareWhatEffectingMoodFragment setUpListener")
+            showStartDailyProgram()
         }
     }
 

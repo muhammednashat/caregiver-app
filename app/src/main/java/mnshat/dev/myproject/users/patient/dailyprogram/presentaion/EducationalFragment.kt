@@ -32,24 +32,32 @@ class EducationalFragment : BaseDailyProgramFragment() {
         showProgressDialog()
         viewModel.get()
         observeViewModel()
+        log("EducationalFragment onCreateView")
         return  binding.root
     }
 
+    override fun onStart() {
+       log("EducationalFragment onStart")
+
+        super.onStart()
+
+    }
 
     fun observeViewModel(){
-       viewModel.isLoaded.observe(viewLifecycleOwner){
-           if (it){
+       viewModel.currentDay.observe(viewLifecycleOwner){
+          it?.let{
+              log("EducationalFragment observeViewModel ${it.status}")
                dismissProgressDialog()
+              viewModel.status = it.status!!
                isPreChecked()
                initializeViews()
-               viewModel.resetIsLoaded()
            }
        }
     }
 
      fun initializeViews() {
         binding.btnPrevious.visibility = View.GONE
-        viewModel.currentTask.let {
+        viewModel. currentDay.value.let {
             viewModel.listOfTasks = it?.dayTask?.educational as List<Task>
             if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
             getTaskFromList(viewModel.status.currentIndexEducational!!, 2)

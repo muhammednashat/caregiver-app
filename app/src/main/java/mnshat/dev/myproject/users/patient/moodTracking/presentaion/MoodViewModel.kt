@@ -1,12 +1,12 @@
 package mnshat.dev.myproject.users.patient.moodTracking.presentaion
 
 import android.content.Context
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.DailyProgramManagerUseCase
@@ -40,13 +40,14 @@ class MoodViewModel @Inject constructor
          fun getEmoji() = _emoji
 
     fun updateCurrentTaskPreMood() {
-        viewModelScope.launch {
-            val currentTask = dailyProgramManagerUseCase.getCurrentDayLocallyUseCase()
-            currentTask.status?.preChecked = true
-            currentTask.status?.preMoodIndex = preMoodIndex
-            currentTask.status?.reasons = listOf("qw","2ti3","jhh")
-            dailyProgramManagerUseCase.updateCurrentDayLocallyUseCase(currentTask)
-            dailyProgramManagerUseCase.updateCurrentDayRemotelyUseCase(currentTask)
+        CoroutineScope(Dispatchers.IO).launch {
+            log("viewModelScope.launch updateCurrentTaskPreMood")
+            val currentDay = dailyProgramManagerUseCase.getCurrentDayLocallyUseCase()
+            currentDay.status?.preChecked = true
+            currentDay.status?.preMoodIndex = preMoodIndex
+            currentDay.status?.reasons = listOf("qw","2ti3","jhh")
+            dailyProgramManagerUseCase.updateCurrentDayLocallyUseCase(currentDay)
+            dailyProgramManagerUseCase.updateCurrentDayRemotelyUseCase(currentDay)
         }
     }
 
@@ -57,7 +58,7 @@ class MoodViewModel @Inject constructor
     }
 
     fun updateCurrentDayPostMood() {
-        viewModelScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             val currentTask = dailyProgramManagerUseCase.getCurrentDayLocallyUseCase()
             currentTask.status?.postChecked = true
             currentTask.status?.postMoodIndex = postMoodIndex
@@ -71,6 +72,11 @@ class MoodViewModel @Inject constructor
     }
     fun setPostMoodIndex(index: Int) {
         postMoodIndex = index
+    }
+    fun getNextDay(day: Int) {
+        viewModelScope.launch {
+            dailyProgramManagerUseCase.getNextDayUseCase(day)
+        }
     }
 
     fun storeDayMoodTracking(currentDayLocally: CurrentDay) {

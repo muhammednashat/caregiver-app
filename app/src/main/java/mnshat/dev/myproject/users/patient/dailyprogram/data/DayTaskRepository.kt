@@ -13,6 +13,7 @@ import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.USER_ID
+import mnshat.dev.myproject.util.log
 import javax.inject.Inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
@@ -37,6 +38,7 @@ class DayTaskRepository @Inject constructor(
         val currentDay = filterBasedProfile(dayTask, day.toString())
          updateCurrentDayLocally(currentDay)
         updateCurrentDayRemotely(currentDay)
+         log("getNextDay ${currentDay.status?.day} ${currentDay.status?.preChecked}  ")
         return getCurrentDayLocally()
     }
 

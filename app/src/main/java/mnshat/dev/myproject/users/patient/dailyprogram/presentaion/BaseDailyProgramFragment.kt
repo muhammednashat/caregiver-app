@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
@@ -28,15 +27,7 @@ open class BaseDailyProgramFragment : BaseFragment() {
     var player: ExoPlayer? = null
     var isSyncNeeded = false
 
-
-
-    fun initLayoutBinding(binding: LayoutTaskBinding){
-        this.binding = binding
-    }
-
-
     fun getTaskFromList(index: Int, numberTask: Int) {
-//        val binding = binding as LayoutTaskBinding
         showProgressDialog()
         viewModel.listOfTasks.let { listOfTasks ->
              task = listOfTasks[index]
@@ -94,9 +85,6 @@ open class BaseDailyProgramFragment : BaseFragment() {
         viewModel.updateCurrentTaskLocally()
 
     }
-    fun showCompletionTaskDialog(action: Int) {
-        findNavController().navigate(action)
-    }
 
     private fun checkType(type: Int?) {
         when (type) {
@@ -121,7 +109,6 @@ open class BaseDailyProgramFragment : BaseFragment() {
         }
     }
     private fun playVideoAudio(uri: Uri) {
-//        val binding = binding as LayoutTaskBinding
         player = ExoPlayer.Builder(requireContext()).build().also { exoPlayer ->
             binding.exoPlayer.player = exoPlayer
             val mediaItem = MediaItem.fromUri(uri)
@@ -138,14 +125,12 @@ open class BaseDailyProgramFragment : BaseFragment() {
     }
 
     private fun displayImage(int: Int) {
-//        val binding = binding as LayoutTaskBinding
         Glide.with(this).load(task.image).into(binding.imageView)
         hideViews(int)
         dismissProgressDialog()
     }
 
     private fun hideViews(int: Int) {
-//        val binding = binding as LayoutTaskBinding
 
         when (int) {
             //image

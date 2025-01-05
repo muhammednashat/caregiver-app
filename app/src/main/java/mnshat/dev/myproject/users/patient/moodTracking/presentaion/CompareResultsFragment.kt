@@ -32,7 +32,12 @@ class CompareResultsFragment : BaseFragment() {
         binding.btnNext.setOnClickListener {
             showDialog()
         }
-        setUpUi(viewModel.getCurrentDayLocally())
+        val currentDay = viewModel.getCurrentDayLocally()
+        setUpUi(currentDay)
+        val day = currentDay.status?.day
+        viewModel.storeDayMoodTracking(currentDay)
+
+        viewModel.getNextDay(day!!+1)
         return  binding.root
     }
 
@@ -67,7 +72,6 @@ class CompareResultsFragment : BaseFragment() {
 
         dialogBinding.btnNext.setOnClickListener {
             dialog.dismiss()
-            viewModel.storeDayMoodTracking(viewModel.getCurrentDayLocally())
             startActivity(Intent(requireContext(), DailyProgramActivity::class.java))
             activity?.finish()
         }
