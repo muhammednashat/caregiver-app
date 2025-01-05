@@ -69,6 +69,7 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
         binding.btnNext.setBackgroundResource(R.drawable.gradient_orange)
         binding.root.backgroundTintList  = ColorStateList.valueOf(Color.parseColor(emoji.backgroundColor))
         binding.btnNext.backgroundTintList  = ColorStateList.valueOf(Color.parseColor(emoji.buttonColor))
+
     }
 
 

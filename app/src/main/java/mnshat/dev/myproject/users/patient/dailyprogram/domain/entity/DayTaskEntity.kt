@@ -7,6 +7,9 @@ import androidx.room.TypeConverter
 import com.google.common.reflect.TypeToken
 import com.google.gson.Gson
 import kotlinx.parcelize.Parcelize
+
+
+
 @Entity
 @Parcelize
 data class DayTaskEntity(

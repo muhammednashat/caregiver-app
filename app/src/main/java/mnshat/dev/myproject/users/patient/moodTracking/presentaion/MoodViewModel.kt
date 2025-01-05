@@ -81,6 +81,7 @@ class MoodViewModel @Inject constructor
 
     fun storeDayMoodTracking(currentDayLocally: CurrentDay) {
 
+
     }
 
 }

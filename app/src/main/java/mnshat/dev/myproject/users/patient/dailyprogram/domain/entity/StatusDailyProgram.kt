@@ -7,6 +7,9 @@ data class StatusDailyProgram(
     var preMoodIndex: Int? = 0,
     var postMoodIndex: Int? = 0,
     var reasons:List<String>? = null,
+
+
+
     var currentLevel: Int? = 1,
     var day: Int? = 1, // 1
     var remaining: Int? = 3, //4

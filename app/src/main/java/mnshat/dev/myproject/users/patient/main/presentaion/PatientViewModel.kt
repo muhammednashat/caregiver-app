@@ -22,9 +22,7 @@ import javax.inject.Inject
     val currentTask: LiveData<CurrentDay> = _currentTask
 
     fun getCurrentTask() {
-        log("DayTaskViewModel get")
         viewModelScope.launch {
-            log("DayTaskViewModel viewModelScope")
          _currentTask.value =   dailyProgramManagerUseCase.getCurrentDayLocallyUseCase()
         }
     }

@@ -42,14 +42,17 @@ class CompareResultsFragment : BaseFragment() {
     }
 
     private fun setUpUi(currentDay: CurrentDay) {
+
     val preMood = viewModel.getEmojisStatus(requireContext())[currentDay.status?.preMoodIndex!!]
     val postMood = viewModel.getEmojisStatus(requireContext())[currentDay.status?.postMoodIndex!!]
+
     binding.moodBefore.text = preMood.title
     binding.imageBefore.setImageResource(preMood.emoji)
     binding.containerBefore.setBackgroundColor(Color.parseColor(preMood.backgroundColor))
     binding.containerAfter.setBackgroundColor(Color.parseColor(postMood.backgroundColor))
     binding.moodAfter.text = postMood.title
     binding.imageAfter.setImageResource(postMood.emoji)
+
     }
 
     private fun showDialog() {

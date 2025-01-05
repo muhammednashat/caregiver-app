@@ -54,8 +54,10 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
             if (viewModel.status.behavioral != 1){
                 showDialogAskingForCompletion()
             }else{
+
                 startActivity(Intent(requireContext(), PostMoodTrackingActivity::class.java))
                 activity?.finish()
+
             }
         }
         binding.icPause.setOnClickListener {

@@ -37,6 +37,13 @@ class HomeFragment : BaseFragment() {
         return binding.root
     }
 
+    override fun onStart() {
+        showProgressDialog()
+        viewModel.getCurrentTask()
+        super.onStart()
+    }
+
+
     private fun observeViewModel() {
         viewModel.currentTask.observe(viewLifecycleOwner){
             it.let {
@@ -51,11 +58,7 @@ class HomeFragment : BaseFragment() {
         binding.nameUser.text = viewModel.sharedPreferences.getString(USER_NAME)
     }
 
-    override fun onStart() {
-        showProgressDialog()
-        viewModel.getCurrentTask()
-        super.onStart()
-    }
+
 
      fun setupClickListener() {
 
