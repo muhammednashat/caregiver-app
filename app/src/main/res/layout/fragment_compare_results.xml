@@ -233,7 +233,7 @@
                                 app:layout_constraintTop_toBottomOf="@+id/imageBefore" />
 
                             <TextView
-                                android:id="@+id/modeBefore"
+                                android:id="@+id/moodBefore"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"

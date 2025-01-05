@@ -16,6 +16,7 @@ import mnshat.dev.myproject.databinding.DialogProgressMoodBinding
 import mnshat.dev.myproject.databinding.FragmentCompareResultsBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
+import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 class CompareResultsFragment : BaseFragment() {
@@ -31,23 +32,19 @@ class CompareResultsFragment : BaseFragment() {
         binding.btnNext.setOnClickListener {
             showDialog()
         }
-        showProgressDialog()
-       viewModel.getCurrentDay()
-        observeData()
+        setUpUi(viewModel.getCurrentDayLocally())
         return  binding.root
     }
 
-    private fun observeData() {
-        viewModel.currentDay.observe(viewLifecycleOwner){
-            it?.let {
-                setUpUi(it)
-                dismissProgressDialog()
-            }
-        }
-    }
-
-    private fun setUpUi(it: CurrentDay) {
-
+    private fun setUpUi(currentDay: CurrentDay) {
+    val preMood = viewModel.getEmojisStatus(requireContext())[currentDay.status?.preMoodIndex!!]
+    val postMood = viewModel.getEmojisStatus(requireContext())[currentDay.status?.postMoodIndex!!]
+    binding.moodBefore.text = preMood.title
+    binding.imageBefore.setImageResource(preMood.emoji)
+    binding.containerBefore.setBackgroundColor(Color.parseColor(preMood.backgroundColor))
+    binding.containerAfter.setBackgroundColor(Color.parseColor(postMood.backgroundColor))
+    binding.moodAfter.text = postMood.title
+    binding.imageAfter.setImageResource(postMood.emoji)
     }
 
     private fun showDialog() {
@@ -67,12 +64,10 @@ class CompareResultsFragment : BaseFragment() {
             layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
             attributes = layoutParams
         }
-//        dialogBinding.icClose.setOnClickListener {
-//            dialog.dismiss()
-//        }
 
         dialogBinding.btnNext.setOnClickListener {
             dialog.dismiss()
+            viewModel.storeDayMoodTracking(viewModel.getCurrentDayLocally())
             startActivity(Intent(requireContext(), DailyProgramActivity::class.java))
             activity?.finish()
         }

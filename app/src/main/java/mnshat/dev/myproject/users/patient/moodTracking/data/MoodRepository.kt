@@ -2,11 +2,12 @@ package mnshat.dev.myproject.users.patient.moodTracking.data
 
 import android.content.Context
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EffectingMood
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.SuggestionToDo
 
-class MoodRepository {
+class MoodRepository{
 
 
     fun getEmojisStatus(context: Context) = listOf(
@@ -126,5 +127,13 @@ class MoodRepository {
         EffectingMood(context.getString(R.string.health), R.drawable.icon_healtht),
         EffectingMood(context.getString(R.string.money), R.drawable.icon_money),
     )
+
+    fun storeDayMoodTrackingLocally(currentDay: CurrentDay) {
+
+    }
+
+    fun storeDayMoodTrackingRemotely(currentDay: CurrentDay) {
+
+    }
 
 }
