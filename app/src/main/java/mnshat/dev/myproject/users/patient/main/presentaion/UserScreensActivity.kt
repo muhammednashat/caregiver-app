@@ -44,6 +44,12 @@ class UserScreensActivity : BaseActivity<ActivityUserScreensBinding>() {
                     navController.navigate(R.id.chatting_navigation)
                     true
                 }
+                R.id.calenderActivity -> {
+                    log("calenderActivity")
+                    navController.popBackStack(R.id.calenderActivity, false)
+                    navController.navigate(R.id.calenderActivity)
+                    true
+                }
                 else -> false
             }
         }

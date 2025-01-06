@@ -8,6 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.DailyProgramManagerUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
@@ -40,7 +41,7 @@ class MoodViewModel @Inject constructor
          fun getEmoji() = _emoji
 
     fun updateCurrentTaskPreMood() {
-        CoroutineScope(Dispatchers.IO).launch {
+         CoroutineScope(Dispatchers.IO).launch {
             log("viewModelScope.launch updateCurrentTaskPreMood")
             val currentDay = dailyProgramManagerUseCase.getCurrentDayLocallyUseCase()
             currentDay.status?.preChecked = true
@@ -60,6 +61,7 @@ class MoodViewModel @Inject constructor
     fun updateCurrentDayPostMood() {
         CoroutineScope(Dispatchers.IO).launch {
             val currentTask = dailyProgramManagerUseCase.getCurrentDayLocallyUseCase()
+
             currentTask.status?.postChecked = true
             currentTask.status?.postMoodIndex = postMoodIndex
             dailyProgramManagerUseCase.updateCurrentDayLocallyUseCase(currentTask)
@@ -74,7 +76,7 @@ class MoodViewModel @Inject constructor
         postMoodIndex = index
     }
     fun getNextDay(day: Int) {
-        viewModelScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             dailyProgramManagerUseCase.getNextDayUseCase(day)
         }
     }
@@ -83,5 +85,7 @@ class MoodViewModel @Inject constructor
 
 
     }
+
+    fun getPostMoodIndex(): Int  = postMoodIndex
 
 }

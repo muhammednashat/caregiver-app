@@ -8,11 +8,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.StatusDailyProgram
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.DailyProgramManagerUseCase
 import mnshat.dev.myproject.util.CURRENT_DAY
+import mnshat.dev.myproject.util.DAY_TASK
+import mnshat.dev.myproject.util.STATUS
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.log
 import javax.inject.Inject
@@ -37,16 +40,14 @@ class DayTaskViewModel @Inject constructor(
         }
     }
 
-
-
     fun updateCurrentTaskLocally() {
         sharedPreferences.storeObject(CURRENT_DAY,  _currentDay.value)
         _isSyncNeeded.value = true
     }
     fun updateCurrentTaskRemotely() {
-//        val map = mapOf(DAY_TASK to currentTask.dayTask!!, STATUS to currentTask.status!!)
-//        FirebaseService.updateTasksUser(FirebaseService.userId, map) {
-//        }
+        val map = mapOf(DAY_TASK to  _currentDay.value?.dayTask!!, STATUS to  _currentDay.value?.status!!)
+        FirebaseService.updateTasksUser(FirebaseService.userId, map) {
+        }
     }
 
     override fun onCleared() {

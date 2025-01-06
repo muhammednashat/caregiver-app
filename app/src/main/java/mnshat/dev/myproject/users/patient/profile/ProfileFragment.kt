@@ -32,6 +32,10 @@ class ProfileFragment : BasePatientFragment<FragmentProfileBinding>() {
             startActivity(Intent(requireActivity(), SupportersActivity::class.java))
         }
 
+        binding.services.emergencyHelp.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_numberHelpingFragment2)
+        }
+
         binding.settings.setOnClickListener {
 
         }

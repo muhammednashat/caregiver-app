@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_profileFragment_to_postsFragment2"
             app:destination="@id/postsFragment2" />
+        <action
+            android:id="@+id/action_profileFragment_to_numberHelpingFragment2"
+            app:destination="@id/numberHelpingFragment2" />
 
     </fragment>
 
@@ -178,6 +181,10 @@
         android:id="@+id/numberHelpingFragment2"
         android:name="mnshat.dev.myproject.commonFeatures.numbersHelping.NumberHelpingFragment"
         android:label="NumberHelpingFragment" />
+    <activity
+        android:id="@+id/calenderActivity"
+        android:name="mnshat.dev.myproject.users.patient.calender.presentaion.CalenderActivity"
+        android:label="CalenderActivity" />
 
 
 </navigation>

@@ -93,6 +93,7 @@
         android:layout_marginStart="@dimen/margin_medium"
         android:layout_weight="1"
         android:padding="@dimen/padding_medium"
+        android:id="@+id/emergency_help"
         android:layout_height="wrap_content"
         android:background="@drawable/corner_four_light_blue"
         android:backgroundTint="@color/light_shade_blue"

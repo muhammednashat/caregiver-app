@@ -36,6 +36,7 @@ class DayTaskRepository @Inject constructor(
      suspend fun getNextDay(day: Int): CurrentDay {
         val dayTask = getDayTaskFromRoom(day)
         val currentDay = filterBasedProfile(dayTask, day.toString())
+         log("currentDay: $currentDay")
          updateCurrentDayLocally(currentDay)
          updateCurrentDayRemotely(currentDay)
 
@@ -69,6 +70,7 @@ class DayTaskRepository @Inject constructor(
             statusDailyProgram.remaining = 2
         }
         val email = sharedPreferences.getString(USER_EMAIL, null.toString())
+        log("filterBasedProfile: ${statusDailyProgram.postChecked}")
         return CurrentDay(email, dayTask, statusDailyProgram)
     }
 
