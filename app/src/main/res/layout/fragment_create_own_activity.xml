@@ -68,47 +68,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:text="@string/what_is_the_name_of_your_activity"
+                android:text="@string/describe_your_activity_in_a_simple_way_optional"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView469" />
 
             <EditText
                 android:id="@+id/activityNameField"
                 android:layout_width="0dp"
-                android:backgroundTint="#ffffff"
-                android:background="@drawable/corner_normal"
-                android:layout_height="50dp"
-                android:padding="@dimen/margin_large"
-                android:layout_marginTop="8dp"
-                android:inputType="text"
-                android:hint="@string/write_here"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView49" />
-
-            <TextView
-                android:id="@+id/textView50"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/describe_your_activity_in_a_simple_way_optional"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activityNameField" />
-
-            <EditText
-                android:id="@+id/activityDescriptionField"
-                android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="12dp"
-                android:backgroundTint="#ffffff"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/corner_normal"
+                android:backgroundTint="#ffffff"
                 android:hint="@string/write_here"
                 android:inputType="text"
                 android:padding="@dimen/margin_large"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView50" />
+                app:layout_constraintTop_toBottomOf="@+id/textView49" />
+
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
@@ -120,7 +99,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activityDescriptionField"
+                app:layout_constraintTop_toBottomOf="@+id/activityNameField"
 
 
                 >

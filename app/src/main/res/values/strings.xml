@@ -496,7 +496,7 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="add_a_sticker_or_symbol_for_your_own_activity">Add a sticker or symbol for your own activity</string>
     <string name="the_day_you_have_pre_selected_for_the_activity">The day you have pre-selected for the activity</string>
     <string name="what_is_the_name_of_your_activity">What is the name of your activity</string>
-    <string name="describe_your_activity_in_a_simple_way_optional">Describe your activity in a simple way (optional)</string>
+    <string name="describe_your_activity_in_a_simple_way_optional">Describe your activity in a simple way</string>
     <string name="create_activity">Create activity</string>
     <string name="everything_is_ready_now_you_can_start_now">Everything is ready now, you can start now</string>
     <string name="great_job">Great job!</string>
@@ -507,8 +507,6 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="special_activity">Special activity</string>
     <string name="create_activity2">Create activity</string>
     <string name="helping_someone_suffering_from_depression">Helping someone suffering from depression</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tap_the_emoji_that_best_matches_your_mood_at_this_moment">Tap the emoji that best matches your mood at this moment</string>
     <string name="happy">Happy</string>
     <string name="calm_relaxed">Calm/Relaxed</string>
@@ -580,39 +578,41 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="your_progress_has_been_saved">Your progress has been saved!</string>
     <string name="review_your_mood_over_time">Review your mood over time....</string>
     <string name="you_can_track_your_mood_by_clicking_on_the_emoji_at_the_top_of_your_daily_schedule_page">You can track your mood by clicking on the emoji at the top of your daily schedule page</string>
-        <string name="activity_1">Go to women\'s fitness club or gym to stay motivated.</string>
-        <string name="activity_2">Attend a session of Dabke in a women\'s group for fun and fitness.</string>
-        <string name="activity_3">Gather your male friends for an exciting outdoor football game and enjoy friendly competition.</string>
-        <string name="activity_4">Do equipment-free at-home workouts such as push-ups, and bodyweight squats.</string>
-        <string name="activity_5">Enjoy a day of fishing at a lake or the sea.</string>
-        <string name="activity_6">Take a camping trip with your loved ones.</string>
-        <string name="activity_7">Go for a solo walk to relax and clear your mind.</string>
-        <string name="activity_8">Gather your loved ones for a picnic in the park, where you can enjoy homemade food and play games.</string>
-        <string name="activity_9">Go on an outdoor photography adventure to capture landscapes or cityscapes.</string>
-        <string name="activity_10">Visit a traditional market (souk), explore handmade goods, and interact with vendors.</string>
-        <string name="activity_11">Lounge on the beach, go swimming, or take a walk along the shore.</string>
-        <string name="activity_12">Play traditional Arab board games such as Backgammon or Carrom with your loved ones.</string>
-        <string name="activity_13">Read from an Arab author\'s novel and immerse yourself in their cultural insights and narratives.</string>
-        <string name="activity_14">Plant trees, flowers, or herbs in your garden.</string>
-        <string name="activity_15">Practise the art of Arabic calligraphy.</string>
-        <string name="activity_16">Play traditional instruments such as the oud or tabla and immerse yourself in local music.</string>
-        <string name="activity_17">Practise the art of Henna, creating stunning, intricate designs.</string>
-        <string name="activity_18">Create healthier versions of traditional dishes with fresh, low-calorie ingredients.</string>
-        <string name="activity_19">Try your hand at making traditional desserts such as baklava, kunafa, and qatayef.</string>
-        <string name="activity_20">Give your car a refreshing thorough clean, inside and out.</string>
-        <string name="activity_21">Burn oud or bakhoor to give your clothes and home a soothing, opulent scent.</string>
-        <string name="activity_22">Enjoy a relaxing time at a traditional women-only bath (hamam) or spa.</string>
-        <string name="activity_23">Use traditional hair oils, such as argan or black seed, to give your hair a healthy, shiny finish.</string>
-        <string name="activity_24">Make and apply revitalising face masks with honey, rose water, and turmeric.</string>
-        <string name="activity_25">Prepare and share traditional dishes with neighbours or friends.</string>
-        <string name="activity_26">Invite close female friends for a delightful tea or coffee gathering and enjoy quality time together.</string>
-        <string name="activity_27">Host a fun outdoor BBQ with family and friends.</string>
-        <string name="activity_28">Attend a gathering with family and friends to bond and create lasting memories.</string>
-        <string name="activity_29">Cook a meal together with your family, share recipes, and enjoy quality time in the kitchen.</string>
-        <string name="activity_30">Organise or participate in charitable activities such as food distribution or volunteer work.</string>
-        <string name="activity_31">Listen to the Quran recitations or calming Nasheeds (Islamic songs).</string>
-        <string name="activity_32">Attend Quran study circles or lectures at your local mosque or community centre.</string>
-
+    <string name="activity_1">Go to women\'s fitness club or gym to stay motivated.</string>
+    <string name="activity_2">Attend a session of Dabke in a women\'s group for fun and fitness.</string>
+    <string name="activity_3">Gather your male friends for an exciting outdoor football game and enjoy friendly competition.</string>
+    <string name="activity_4">Do equipment-free at-home workouts such as push-ups, and bodyweight squats.</string>
+    <string name="activity_5">Enjoy a day of fishing at a lake or the sea.</string>
+    <string name="activity_6">Take a camping trip with your loved ones.</string>
+    <string name="activity_7">Go for a solo walk to relax and clear your mind.</string>
+    <string name="activity_8">Gather your loved ones for a picnic in the park, where you can enjoy homemade food and play games.</string>
+    <string name="activity_9">Go on an outdoor photography adventure to capture landscapes or cityscapes.</string>
+    <string name="activity_10">Visit a traditional market (souk), explore handmade goods, and interact with vendors.</string>
+    <string name="activity_11">Lounge on the beach, go swimming, or take a walk along the shore.</string>
+    <string name="activity_12">Play traditional Arab board games such as Backgammon or Carrom with your loved ones.</string>
+    <string name="activity_13">Read from an Arab author\'s novel and immerse yourself in their cultural insights and narratives.</string>
+    <string name="activity_14">Plant trees, flowers, or herbs in your garden.</string>
+    <string name="activity_15">Practise the art of Arabic calligraphy.</string>
+    <string name="activity_16">Play traditional instruments such as the oud or tabla and immerse yourself in local music.</string>
+    <string name="activity_17">Practise the art of Henna, creating stunning, intricate designs.</string>
+    <string name="activity_18">Create healthier versions of traditional dishes with fresh, low-calorie ingredients.</string>
+    <string name="activity_19">Try your hand at making traditional desserts such as baklava, kunafa, and qatayef.</string>
+    <string name="activity_20">Give your car a refreshing thorough clean, inside and out.</string>
+    <string name="activity_21">Burn oud or bakhoor to give your clothes and home a soothing, opulent scent.</string>
+    <string name="activity_22">Enjoy a relaxing time at a traditional women-only bath (hamam) or spa.</string>
+    <string name="activity_23">Use traditional hair oils, such as argan or black seed, to give your hair a healthy, shiny finish.</string>
+    <string name="activity_24">Make and apply revitalising face masks with honey, rose water, and turmeric.</string>
+    <string name="activity_25">Prepare and share traditional dishes with neighbours or friends.</string>
+    <string name="activity_26">Invite close female friends for a delightful tea or coffee gathering and enjoy quality time together.</string>
+    <string name="activity_27">Host a fun outdoor BBQ with family and friends.</string>
+    <string name="activity_28">Attend a gathering with family and friends to bond and create lasting memories.</string>
+    <string name="activity_29">Cook a meal together with your family, share recipes, and enjoy quality time in the kitchen.</string>
+    <string name="activity_30">Organise or participate in charitable activities such as food distribution or volunteer work.</string>
+    <string name="activity_31">Listen to the Quran recitations or calming Nasheeds (Islamic songs).</string>
+    <string name="activity_32">Attend Quran study circles or lectures at your local mosque or community centre.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="change_language">Change Language</string>
 
 
 </resources>

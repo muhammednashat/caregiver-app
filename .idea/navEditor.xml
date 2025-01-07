@@ -1616,13 +1616,25 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="calenderActivity">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-334" />
+                            <option name="y" value="-786" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="chatting_navigation">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="-89" />
+                            <option name="x" value="-64" />
+                            <option name="y" value="-761" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -1779,6 +1791,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_patientHomeFragment_to_numberHelpingFragment2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -1865,12 +1882,29 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_profileFragment_to_numberHelpingFragment2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_profileFragment_to_postsFragment2">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="settingsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-136" />
+                            <option name="y" value="-248" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

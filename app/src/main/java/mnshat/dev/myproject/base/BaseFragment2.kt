@@ -71,10 +71,14 @@ open abstract class BaseFragment2<T:ViewDataBinding>: Fragment() {
         sharedDialog.setContentView(dialogBinding.root)
         sharedDialog.setCanceledOnTouchOutside(true)
 
-        val window = sharedDialog.window
-        window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        sharedDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
+         val window = sharedDialog.window
+         window?.apply {
+             setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+             val layoutParams = attributes
+             layoutParams.width = (resources.displayMetrics.widthPixels * 0.8).toInt()
+             layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+             attributes = layoutParams
+         }
         dialogBinding.icClose.setOnClickListener {
             sharedDialog.dismiss()
         }

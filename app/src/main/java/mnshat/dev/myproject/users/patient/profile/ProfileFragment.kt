@@ -37,7 +37,7 @@ class ProfileFragment : BasePatientFragment<FragmentProfileBinding>() {
         }
 
         binding.settings.setOnClickListener {
-
+         findNavController().navigate(R.id.action_profileFragment_to_settingsFragment)
         }
         binding.gratitude.setOnClickListener {
            findNavController().navigate(R.id.action_profileFragment_to_gratitudeListFragment)

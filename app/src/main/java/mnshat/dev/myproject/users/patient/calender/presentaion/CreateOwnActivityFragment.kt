@@ -24,7 +24,6 @@ class CreateOwnActivityFragment : BaseFragment() {
     private lateinit var binding: FragmentCreateOwnActivityBinding
     private val viewModel: CalenderViewModel by viewModels()
     private var activityName: String = ""
-    private var activityDescription: String = ""
     private var flag: String = ""
 
 
@@ -42,7 +41,6 @@ class CreateOwnActivityFragment : BaseFragment() {
 
     private fun validateInputFields(): Boolean {
         activityName = binding.activityNameField.text.toString().trim()
-        activityDescription = binding.activityDescriptionField.text.toString().trim()
 
         if (activityName.isEmpty()) {
             binding.activityNameField.error = getString(R.string.activity_name_is_required)
@@ -90,7 +88,7 @@ class CreateOwnActivityFragment : BaseFragment() {
     private fun task() = TaskEntity(
         day = viewModel.getDayEntity().day,
         nameTask = activityName,
-        description = activityDescription,
+        description = "",
         image = R.drawable.ic_plan_day,
         isCompleted = false,
     )
@@ -103,8 +101,14 @@ class CreateOwnActivityFragment : BaseFragment() {
         dialog.setCanceledOnTouchOutside(false)
 
         val window = dialog.window
-        window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            val layoutParams = attributes
+            layoutParams.width = (resources.displayMetrics.widthPixels * 0.8).toInt()
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            attributes = layoutParams
+        }
 
         dialogBinding.button.setOnClickListener {
             findNavController().popBackStack()

@@ -495,7 +495,7 @@
     <string name="add_a_sticker_or_symbol_for_your_own_activity">اضف ملصقا او رمزا لنشاطك الخاص</string>
     <string name="the_day_you_have_pre_selected_for_the_activity">اليوم الذى قمت مستبقا بإختياره للنشاط</string>
     <string name="what_is_the_name_of_your_activity">ما اسم نشاطك</string>
-    <string name="describe_your_activity_in_a_simple_way_optional">اوصف نشاطك بشكل بسيط( اختيارى)</string>
+    <string name="describe_your_activity_in_a_simple_way_optional">اوصف نشاطك بشكل بسيط</string>
     <string name="create_activity">إنشاء النشاط</string>
     <string name="everything_is_ready_now_you_can_start_now">اصبح كل شئ جاهز الان يمكن البدء الان</string>
     <string name="great_job">عمل رائع!</string>
@@ -614,5 +614,6 @@
     <string name="activity_30">نظم أو شارك في أنشطة خيرية كتوزيع الطعام أو العمل التطوعي.</string>
     <string name="activity_31">استمع إلى تلاوات من القرآن الكريم أو الأناشيد الإسلامية الهادئة.</string>
     <string name="activity_32">احضر حلقات تدارس القرآن الكريم أو محاضرات في المسجد المحلي أو مركز مجتمعي.</string>
+    <string name="change_language">تغير اللغة</string>
 
 </resources>

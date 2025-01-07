@@ -9,6 +9,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import mnshat.dev.myproject.R
+import java.util.Calendar
+import java.util.Locale
 
 class DaysAdapter(
     private val days: HashSet<CalendarDay>,
@@ -31,8 +33,21 @@ class DaysAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val day = days.elementAt(position)
+        val calendar = Calendar.getInstance()
+        // Get today's date
+        val today = CalendarDay.from(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH))
 
-//        holder.text.text = day.date.dayOfMonth.toString()
+        // Get tomorrow's date
+        calendar.add(Calendar.DAY_OF_MONTH, 1)
+        val tomorrow = CalendarDay.from(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH))
+
+        // Determine the display text
+        val displayText = when (day) {
+            today -> "Today"
+            tomorrow -> "Tomorrow"
+            else -> String.format(Locale.getDefault(), "%d/%d/%d", day.month, day.day, day.year)
+        }
+         holder.text.text = displayText
         holder.tracking.setOnClickListener {
             onDayClickListener.onDayClick(day)
         }

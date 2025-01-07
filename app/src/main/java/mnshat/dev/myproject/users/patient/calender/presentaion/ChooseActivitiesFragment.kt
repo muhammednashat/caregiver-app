@@ -68,8 +68,13 @@ class ChooseActivitiesFragment : BaseFragment() , OnActivityClickListener{
         dialog.setCanceledOnTouchOutside(false)
 
         val window = dialog.window
-        window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            val layoutParams = attributes
+            layoutParams.width = (resources.displayMetrics.widthPixels * 0.8).toInt()
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            attributes = layoutParams
+        }
 
         dialogBinding.button.setOnClickListener {
             findNavController().popBackStack()

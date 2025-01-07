@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_profileFragment_to_numberHelpingFragment2"
             app:destination="@id/numberHelpingFragment2" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
 
     </fragment>
 
@@ -185,6 +188,10 @@
         android:id="@+id/calenderActivity"
         android:name="mnshat.dev.myproject.users.patient.calender.presentaion.CalenderActivity"
         android:label="CalenderActivity" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="mnshat.dev.myproject.maybeneedlater.SettingsFragment"
+        android:label="SettingsFragment" />
 
 
 </navigation>
