@@ -9,11 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import mnshat.dev.myproject.BaseFragment
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentSuggestionsBinding
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood

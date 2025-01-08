@@ -1,26 +1,38 @@
-package mnshat.dev.myproject.users.patient.profile
+package mnshat.dev.myproject.users.patient.profile.presentation
 
-import android.app.Dialog
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.view.Window
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentProfileBinding
-import mnshat.dev.myproject.users.patient.profile.editprofile.EditProfileActivity
-import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.users.patient.supporters.SupportersActivity
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
 import mnshat.dev.myproject.util.loadImage
 
-class ProfileFragment : BasePatientFragment<FragmentProfileBinding>() {
+@AndroidEntryPoint
+class ProfileFragment : BaseFragment() {
 
-    override fun getLayout() = R.layout.fragment_profile
-    override fun setupClickListener() {
+    private  lateinit var binding: FragmentProfileBinding
+   private val viwModel:ProfileViewModel by viewModels()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentProfileBinding.inflate(inflater,container,false)
+        initializeViews()
+        setupClickListener()
+        return  binding.root
+    }
+
+     fun setupClickListener() {
         binding.editProfile.setOnClickListener {
             startActivity(Intent(requireActivity(), EditProfileActivity::class.java))
         }
@@ -43,19 +55,17 @@ class ProfileFragment : BasePatientFragment<FragmentProfileBinding>() {
            findNavController().navigate(R.id.action_profileFragment_to_gratitudeListFragment)
         }
         binding.logOut.setOnClickListener {
-
-            showDialogConfirmLogout()
+            showDialogConfirmLogout(viwModel.sharedPreferences)
         }
     }
 
-    override fun initializeViews() {
-        super.initializeViews()
-        binding.nameUser.text = sharedPreferences.getString(USER_NAME)
-        loadImage(requireActivity(),sharedPreferences.getString(USER_IMAGE),binding.imageUser)
+     fun initializeViews() {
+        binding.nameUser.text = viwModel.sharedPreferences.getString(USER_NAME)
+        loadImage(requireActivity(),viwModel.sharedPreferences.getString(USER_IMAGE),binding.imageUser)
     }
     override fun onStart() {
         super.onStart()
-        binding.nameUser.text = sharedPreferences.getString(USER_NAME)
+        binding.nameUser.text = viwModel.sharedPreferences.getString(USER_NAME)
     }
 
 

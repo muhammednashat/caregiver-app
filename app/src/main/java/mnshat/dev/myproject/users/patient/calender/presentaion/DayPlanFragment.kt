@@ -10,14 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import dagger.hilt.android.AndroidEntryPoint
-import mnshat.dev.myproject.BaseFragment
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentDayPlanBinding
 import mnshat.dev.myproject.users.patient.calender.domain.entity.TaskEntity
 import mnshat.dev.myproject.util.log
-import java.util.Date
 
 @AndroidEntryPoint
 class DayPlanFragment : BaseFragment(), OnItemClickListener {

@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.profile.editprofile
+package mnshat.dev.myproject.users.patient.profile.presentation
 
 import android.os.Bundle
 import androidx.navigation.fragment.findNavController
@@ -6,7 +6,6 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentEditProfileBinding
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.util.AGE_GROUP
-import mnshat.dev.myproject.util.DIALECT
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.GENDER
 import mnshat.dev.myproject.util.RELIGION

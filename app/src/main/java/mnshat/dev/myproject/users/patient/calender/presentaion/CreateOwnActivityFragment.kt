@@ -11,7 +11,7 @@ import android.view.Window
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import mnshat.dev.myproject.BaseFragment
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogCalenderBinding
 import mnshat.dev.myproject.databinding.FragmentCreateOwnActivityBinding

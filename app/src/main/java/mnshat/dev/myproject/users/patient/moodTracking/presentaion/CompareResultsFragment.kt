@@ -11,12 +11,11 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import mnshat.dev.myproject.BaseFragment
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.DialogProgressMoodBinding
 import mnshat.dev.myproject.databinding.FragmentCompareResultsBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
-import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 class CompareResultsFragment : BaseFragment() {

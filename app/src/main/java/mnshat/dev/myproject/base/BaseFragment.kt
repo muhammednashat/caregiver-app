@@ -1,31 +1,35 @@
-package mnshat.dev.myproject
+package mnshat.dev.myproject.base
 
 import android.app.Dialog
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Bundle
 import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.TextView
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
+import mnshat.dev.myproject.R
+import mnshat.dev.myproject.auth.AuthActivity
 import mnshat.dev.myproject.databinding.DialogBinding
+import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
+import mnshat.dev.myproject.firebase.FirebaseService
+import mnshat.dev.myproject.util.IS_SECOND_TIME
+import mnshat.dev.myproject.util.LANGUAGE
+import mnshat.dev.myproject.util.PASSWORD
+import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.USER_EMAIL
+import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 open class BaseFragment: Fragment() {
 
     private lateinit var progressDialog: Dialog
     private lateinit var temporallyDialog: Dialog
+    lateinit var sharedDialog: Dialog
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -85,5 +89,63 @@ open class BaseFragment: Fragment() {
         }
         temporallyDialog.show()
     }
+
+    fun showDialogConfirmLogout(sharedPreferences: SharedPreferencesManager) {
+        sharedDialog = Dialog(requireContext())
+        sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = DialogConfirmLogoutBinding.inflate(layoutInflater)
+        sharedDialog.setContentView(dialogBinding.root)
+        sharedDialog.setCanceledOnTouchOutside(true)
+
+        val window = sharedDialog.window
+        window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            val layoutParams = attributes
+            layoutParams.width = (resources.displayMetrics.widthPixels * 0.9).toInt()
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            attributes = layoutParams
+        }
+        dialogBinding.icClose.setOnClickListener {
+            sharedDialog.dismiss()
+        }
+        dialogBinding.btnLogout.setOnClickListener {
+            logOut(sharedPreferences)
+            sharedDialog.dismiss()
+        }
+        dialogBinding.btnCancel.setOnClickListener {
+            sharedDialog.dismiss()
+        }
+        sharedDialog.show()
+    }
+
+    private fun logOut(sharedPreferences: SharedPreferencesManager) {
+        val result = requireActivity().deleteDatabase("database-name")
+        if (result) {
+            log("database deleted")
+        } else {
+            log("database not deleted")
+        }
+        FirebaseService.logOut()
+        val email = sharedPreferences.getString(USER_EMAIL)
+        val password = sharedPreferences.getString(PASSWORD)
+        val currentLang = sharedPreferences.getString(LANGUAGE)
+
+        sharedPreferences.clearData()
+
+        sharedPreferences.storeBoolean(IS_SECOND_TIME, true)
+        sharedPreferences.storeString(
+            PASSWORD, password
+        )
+        sharedPreferences.storeString(
+            LANGUAGE, currentLang
+        )
+        sharedPreferences.storeString(
+            USER_EMAIL, email
+        )
+        val intent = Intent(requireActivity(), AuthActivity::class.java)
+        startActivity(intent)
+        requireActivity().finish()
+    }
+
 
 }

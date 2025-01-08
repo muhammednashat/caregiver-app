@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import dagger.hilt.android.AndroidEntryPoint
-import mnshat.dev.myproject.BaseFragment
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentDailyPlanningBinding
 import mnshat.dev.myproject.util.log
@@ -42,7 +42,7 @@ class DailyPlanningFragment : BaseFragment(),OnDayClickListener {
                 findNavController().navigate(R.id.action_dailyPlannerFragment_to_dayPlanFragment)
         }
         binding.back.setOnClickListener {
-            findNavController().popBackStack()
+           activity?.finish()
         }
         binding.calendarView.setOnDateChangedListener { widget, date, selected ->
             viewModel.daysList?.value?.let {

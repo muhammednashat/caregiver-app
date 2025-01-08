@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.profile.editprofile
+package mnshat.dev.myproject.users.patient.profile.presentation
 
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R

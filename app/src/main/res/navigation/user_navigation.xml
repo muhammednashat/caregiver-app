@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="mnshat.dev.myproject.users.patient.profile.ProfileFragment"
+        android:name="mnshat.dev.myproject.users.patient.profile.presentation.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -190,7 +190,7 @@
         android:label="CalenderActivity" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="mnshat.dev.myproject.maybeneedlater.SettingsFragment"
+        android:name="mnshat.dev.myproject.users.patient.profile.presentation.SettingsFragment"
         android:label="SettingsFragment" />
 
 

@@ -49,8 +49,6 @@ open abstract class BaseFragment2<T:ViewDataBinding>: Fragment() {
         binding = DataBindingUtil.inflate(inflater, getLayout(), container, false)
         initializeViews()
         setupClickListener()
-        log("onCreateView")
-
         return binding.root
     }
 
@@ -75,7 +73,7 @@ open abstract class BaseFragment2<T:ViewDataBinding>: Fragment() {
          window?.apply {
              setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
              val layoutParams = attributes
-             layoutParams.width = (resources.displayMetrics.widthPixels * 0.8).toInt()
+             layoutParams.width = (resources.displayMetrics.widthPixels * 0.9).toInt()
              layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
              attributes = layoutParams
          }

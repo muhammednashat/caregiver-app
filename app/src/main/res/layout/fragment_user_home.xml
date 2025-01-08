@@ -258,6 +258,8 @@ android:layout_marginTop="@dimen/margin_large"
                             android:layout_height="60dp"
                             android:layout_margin="@dimen/margin_medium"
                             android:scaleType="fitXY"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:srcCompat="@drawable/ic_book2" />
@@ -273,7 +275,9 @@ android:layout_marginTop="@dimen/margin_large"
                             android:textSize="@dimen/text_size_medium"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/image3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/image3" />
 
 
@@ -298,6 +302,8 @@ android:layout_marginTop="@dimen/margin_large"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
                             android:layout_margin="@dimen/margin_medium"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:srcCompat="@drawable/ic_puzzle2" />
@@ -312,7 +318,9 @@ android:layout_marginTop="@dimen/margin_large"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_medium"
                             android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="@+id/image"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/image" />
 
 

@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.profile.editprofile
+package mnshat.dev.myproject.users.patient.profile.presentation
 
 import mnshat.dev.myproject.base.BaseActivity
 import mnshat.dev.myproject.databinding.ActivityEditProfileBinding
