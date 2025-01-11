@@ -6,8 +6,8 @@ data class StatusDailyProgram(
     var postChecked: Boolean? = false,
     var preMoodIndex: Int? = 0,
     var postMoodIndex: Int? = 0,
-    var reasons:List<String>? = null,
-
+    var reasons:List<Int>? = null,
+    var extraReasons:String? = null,
 
 
     var currentLevel: Int? = 1,

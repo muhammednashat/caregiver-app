@@ -40,13 +40,14 @@ class MoodViewModel @Inject constructor
          fun setEmoji(emoji: EmojiMood)  { _emoji = emoji }
          fun getEmoji() = _emoji
 
-    fun updateCurrentTaskPreMood() {
+    fun updateCurrentTaskPreMood(list:List<Int>?,text:String?) {
          CoroutineScope(Dispatchers.IO).launch {
             log("viewModelScope.launch updateCurrentTaskPreMood")
             val currentDay = dailyProgramManagerUseCase.getCurrentDayLocallyUseCase()
             currentDay.status?.preChecked = true
             currentDay.status?.preMoodIndex = preMoodIndex
-            currentDay.status?.reasons = listOf("qw","2ti3","jhh")
+            currentDay.status?.reasons = list
+            currentDay.status?.extraReasons = text
             dailyProgramManagerUseCase.updateCurrentDayLocallyUseCase(currentDay)
             dailyProgramManagerUseCase.updateCurrentDayRemotelyUseCase(currentDay)
         }

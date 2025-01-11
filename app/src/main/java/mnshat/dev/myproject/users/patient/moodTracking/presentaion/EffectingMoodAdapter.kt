@@ -13,10 +13,12 @@ class EffectingMoodAdapter(
     private val list: List<EffectingMood>,
 ) : RecyclerView.Adapter<EffectingMoodAdapter.ViewHolder>() {
 
+    private var chosenReasons = setOf<Int>()
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.title)
         val icon: ImageView = itemView.findViewById(R.id.icon)
+        val icChecked: ImageView = itemView.findViewById(R.id.icChecked)
     }
 
 
@@ -30,15 +32,26 @@ class EffectingMoodAdapter(
         val data = list[position]
         holder.title.text = data.title
         holder.icon.setImageResource(data.icon)
-
         holder.itemView.setOnClickListener {
+            if (chosenReasons.contains(position)) {
+                holder.icChecked.visibility = View.GONE
+                chosenReasons = chosenReasons.minus(position)
+            } else {
+                holder.icChecked.visibility = View.VISIBLE
+                chosenReasons = chosenReasons.plus(position)
+            }
         }
 
     }
+
+    fun getChosenReasons() = chosenReasons
 
     override fun getItemCount() = list.size
 
 }
 
+interface OnItemListener {
+    fun onItemClicked(size: Int)
+}
 
 

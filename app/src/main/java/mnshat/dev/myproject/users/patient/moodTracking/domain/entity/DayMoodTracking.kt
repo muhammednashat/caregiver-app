@@ -6,6 +6,7 @@ import java.sql.Timestamp
 data class DayMoodTracking (
     val preMoodIndex: Int? = 0,
     val postMoodIndex: Int? =0,
-    val reasons: List<String>? = null,
+    val extraReasons: String? = null,
+    val reasons: List<Int>? = null,
     val date: Timestamp = Timestamp(System.currentTimeMillis()),
 )

@@ -14,8 +14,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.DialogStartProgramBinding
 import mnshat.dev.myproject.databinding.FragmentShareWhatEffectingMoodBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
@@ -24,7 +24,7 @@ import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
 import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
-class ShareWhatEffectingMoodFragment : BaseFragment() {
+class ShareWhatEffectingMoodFragment : BaseFragment(){
 
     private lateinit var binding: FragmentShareWhatEffectingMoodBinding
     private val viewModel: MoodViewModel by viewModels()
@@ -46,14 +46,21 @@ class ShareWhatEffectingMoodFragment : BaseFragment() {
             findNavController().popBackStack()
         }
         binding.btnNext.setOnClickListener {
-            viewModel.updateCurrentTaskPreMood()
-            log("ShareWhatEffectingMoodFragment setUpListener")
-            showStartDailyProgram()
+            val chosenReasons = effectingAdapter.getChosenReasons()
+            val extraReasons = binding.editText.text.toString()
+            if (isValidToStoreData()) {
+                viewModel.updateCurrentTaskPreMood(chosenReasons.toList() , extraReasons)
+                log("ShareWhatEffectingMoodFragment setUpListener")
+                showStartDailyProgram()
+            } else {
+                log("not valid")
+
+            }
         }
     }
 
     private fun setUpRecyclerViewEffectingMood(list: List<EffectingMood>) {
-        effectingAdapter = EffectingMoodAdapter(list)
+        effectingAdapter = EffectingMoodAdapter(list, )
         val layoutManager = GridLayoutManager(requireActivity(), 3)
         binding.recyclerViewEffectingMood.layoutManager = layoutManager
         binding.recyclerViewEffectingMood.adapter = effectingAdapter
@@ -91,6 +98,10 @@ class ShareWhatEffectingMoodFragment : BaseFragment() {
 
         dialog.show()
     }
+    private fun isValidToStoreData() =
+        effectingAdapter.getChosenReasons().isNotEmpty() || binding.editText.text.toString()
+            .isNotEmpty()
+
 
 
 }
