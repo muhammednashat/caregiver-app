@@ -116,26 +116,26 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout24"
+                android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/corner_normal"
-                android:backgroundTint="#b6cbdd"
-                android:padding="@dimen/margin_large"
-                android:visibility="gone"
+                android:backgroundTint="#5994d5"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
-                    android:id="@+id/textView54"
+                    android:id="@+id/textButton"
                     android:layout_width="wrap_content"
+                    android:padding="@dimen/margin_large"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/margin_super"
                     android:text="@string/today_s_plan_is_complete"
                     android:textColor="@color/white"
                     android:textSize="16sp"
+                    android:enabled="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -144,13 +144,14 @@
                     app:layout_constraintVertical_bias="0.5" />
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="@dimen/margin_medium"
+                    android:paddingEnd="@dimen/margin_large"
                     android:src="@drawable/ic_check_blue"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView54"
-                    app:layout_constraintStart_toEndOf="@+id/textView54"
-                    app:layout_constraintTop_toTopOf="@+id/textView54"
+                    app:layout_constraintBottom_toBottomOf="@+id/textButton"
+                    app:layout_constraintStart_toEndOf="@+id/textButton"
+                    app:layout_constraintTop_toTopOf="@+id/textButton"
                     app:tint="@color/white" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -182,7 +183,7 @@
                 android:layout_marginTop="@dimen/margin_medium"
                 android:layout_marginBottom="@dimen/margin_large"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayout24"
+                app:layout_constraintBottom_toTopOf="@+id/button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"

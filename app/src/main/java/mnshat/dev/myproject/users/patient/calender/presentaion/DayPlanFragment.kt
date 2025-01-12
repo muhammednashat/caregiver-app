@@ -1,10 +1,14 @@
 package mnshat.dev.myproject.users.patient.calender.presentaion
 
+import android.app.Dialog
 import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -13,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.databinding.DialogCalenderBinding
+import mnshat.dev.myproject.databinding.DialogCalenderDonBinding
 import mnshat.dev.myproject.databinding.FragmentDayPlanBinding
 import mnshat.dev.myproject.users.patient.calender.domain.entity.TaskEntity
 import mnshat.dev.myproject.util.log
@@ -54,6 +60,10 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
     }
 
     private fun setUpListeners() {
+        binding.textButton.setOnClickListener {
+            showDoneDialog()
+        }
+
       binding.addButton.setOnClickListener {
           val action = DayPlanFragmentDirections.actionDayPlanFragmentToCreateOwnActivityFragment("updating")
          findNavController().navigate(action)
@@ -95,6 +105,9 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
         binding.numDone.text = done.toString()
         val progress = (done.toFloat() / taskSize.toFloat()) * 100
         binding.circularProgress.progress = progress.toInt()
+        if (progress.toInt() == 100){
+          binding.textButton.isEnabled = true
+        }
     }
 
 
@@ -117,6 +130,30 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
         taskSize = 0
         getTasks(viewModel.getDayEntity().day)
 
+    }
+    private fun showDoneDialog() {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = DialogCalenderDonBinding.inflate(layoutInflater)
+        dialog.setContentView(dialogBinding.root)
+        dialog.setCanceledOnTouchOutside(false)
+
+        val window = dialog.window
+        window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            val layoutParams = attributes
+            layoutParams.width = (resources.displayMetrics.widthPixels * 0.8).toInt()
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            attributes = layoutParams
+        }
+        dialogBinding.title.text = getString(R.string.well_done1)
+        dialogBinding.text.text =
+            getString(R.string.you_have_completed_your_entire_plan_for_the_day_great_job)
+        dialogBinding.button.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
 

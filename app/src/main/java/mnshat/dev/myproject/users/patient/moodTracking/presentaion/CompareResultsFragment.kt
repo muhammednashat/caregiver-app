@@ -16,6 +16,7 @@ import mnshat.dev.myproject.databinding.DialogProgressMoodBinding
 import mnshat.dev.myproject.databinding.FragmentCompareResultsBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
+import mnshat.dev.myproject.util.USER_ID
 
 @AndroidEntryPoint
 class CompareResultsFragment : BaseFragment() {
@@ -35,8 +36,7 @@ class CompareResultsFragment : BaseFragment() {
         setUpUi(currentDay)
         val day = currentDay.status?.day
         viewModel.getNextDay(day!!+1)
-
-        viewModel.storeDayMoodTracking(currentDay)
+        viewModel.storeDayMoodTracking(currentDay.toDayMoodTracking(),viewModel.sharedPreferences.getString(USER_ID,null.toString()))
 
         return  binding.root
     }

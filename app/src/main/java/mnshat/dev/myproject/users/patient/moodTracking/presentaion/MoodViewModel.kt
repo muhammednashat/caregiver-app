@@ -2,15 +2,14 @@ package mnshat.dev.myproject.users.patient.moodTracking.presentaion
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.DailyProgramManagerUseCase
+import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.DayMoodTracking
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetEffectingMoodUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetEmojisStatusUseCase
@@ -28,7 +27,7 @@ class MoodViewModel @Inject constructor
     private val getEmojisStatusUseCase: GetEmojisStatusUseCase,
     private val getEffectingMoodUseCase: GetEffectingMoodUseCase,
     private val  dailyProgramManagerUseCase: DailyProgramManagerUseCase,
-    private val sharedPreferences: SharedPreferencesManager,
+    val sharedPreferences: SharedPreferencesManager,
     private val storeDayMoodTrackingLocallyUseCase: StoreDayMoodTrackingLocallyUseCase,
     private val  storeDayMoodTrackingRemotelyUseCase: StoreDayMoodTrackingRemotelyUseCase,
     ):ViewModel(){
@@ -82,9 +81,10 @@ class MoodViewModel @Inject constructor
         }
     }
 
-    fun storeDayMoodTracking(currentDayLocally: CurrentDay) {
-
-
+    fun storeDayMoodTracking(currentDayLocally: DayMoodTracking, userId: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            storeDayMoodTrackingLocallyUseCase(currentDayLocally, userId)
+    }
     }
 
     fun getPostMoodIndex(): Int  = postMoodIndex

@@ -615,5 +615,6 @@
     <string name="activity_31">استمع إلى تلاوات من القرآن الكريم أو الأناشيد الإسلامية الهادئة.</string>
     <string name="activity_32">احضر حلقات تدارس القرآن الكريم أو محاضرات في المسجد المحلي أو مركز مجتمعي.</string>
     <string name="change_language">تغير اللغة</string>
+    <string name="you_have_completed_your_entire_plan_for_the_day_great_job">لقد اتممت خطة اليوم بالكامل هذا عمل رائع</string>
 
 </resources>

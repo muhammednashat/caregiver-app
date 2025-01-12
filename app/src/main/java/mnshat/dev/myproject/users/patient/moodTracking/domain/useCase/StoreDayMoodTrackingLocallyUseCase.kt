@@ -1,11 +1,11 @@
 package mnshat.dev.myproject.users.patient.moodTracking.domain.useCase
 
-import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.moodTracking.data.MoodRepository
+import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.DayMoodTracking
 import javax.inject.Inject
 
 class StoreDayMoodTrackingLocallyUseCase @Inject constructor(private val repository: MoodRepository) {
-    suspend operator fun invoke(currentDay: CurrentDay)  =
-        repository.storeDayMoodTrackingLocally(currentDay)
+    suspend operator fun invoke(dayMoodTracking: DayMoodTracking, userId:String)  =
+        repository.storeDayMoodTrackingLocally(dayMoodTracking,userId)
 
 }
