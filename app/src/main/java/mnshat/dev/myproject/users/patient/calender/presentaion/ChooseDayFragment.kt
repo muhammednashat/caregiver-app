@@ -17,6 +17,7 @@ import mnshat.dev.myproject.databinding.FragmentChooseDayBinding
 class ChooseDayFragment : BaseBottomSheetDialogFragment() {
 
     private lateinit var  binding: FragmentChooseDayBinding
+
     private val viewModel: CalenderViewModel by viewModels()
 
         override fun onCreateView(

@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_breath"
+        android:background="#87c1e7"
         android:paddingTop="@dimen/margin_large"
         android:paddingBottom="@dimen/margin_large"
 
@@ -85,7 +85,6 @@
             android:layout_marginTop="@dimen/margin_2_super"
             app:layout_constraintBottom_toTopOf="@+id/textInstructions"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="#e0ecf2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout13">
@@ -113,7 +112,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="10dp"
-                    android:background="#e0ecf2"
+                    android:background="#87c1e7"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -124,8 +123,7 @@
                 <View
                     android:layout_width="10dp"
                     android:layout_height="match_parent"
-                    android:background="#ddeaf0"
-                    android:backgroundTint="#e0ecf2"
+                    android:background="#87c1e7"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -183,6 +181,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/gradient_orange"
             android:padding="4dp"
+            android:layout_marginStart="@dimen/margin_large"
             android:onClick="@{() -> viewModel.onStartButtonClicked()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -217,6 +216,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/finish_exercise"
             android:layout_width="wrap_content"
+            android:layout_marginEnd="@dimen/margin_large"
             android:layout_height="wrap_content"
             android:background="@drawable/gradient_orange"
             android:backgroundTint="#b9dae6"

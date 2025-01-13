@@ -79,30 +79,29 @@
                 app:layout_constraintVertical_bias="0.5"
                 app:mcv_showOtherDates="all" />
 
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginBottom="@dimen/margin_large"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <TextView
+                android:layout_width="0dp"
+                android:id="@+id/noTasks"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:text="@string/no_plans_for_today"                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/trackingContainer"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/calendarView"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="@+id/trackingContainer" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/trackingContainer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_super"
                 android:alpha="0.0"
                 android:background="@drawable/corner_normal"
                 android:backgroundTint="#d8e8f5"
                 android:padding="@dimen/margin_medium"
-
                 app:layout_constraintEnd_toEndOf="@+id/calendarView"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/calendarView"
@@ -124,10 +123,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="4dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
                     android:text="@string/day_plan"
-                    android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/tracking"

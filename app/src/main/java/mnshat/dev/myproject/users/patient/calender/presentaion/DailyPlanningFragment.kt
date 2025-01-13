@@ -44,13 +44,27 @@ class DailyPlanningFragment : BaseFragment(),OnDayClickListener {
         binding.back.setOnClickListener {
            activity?.finish()
         }
-        binding.calendarView.setOnDateChangedListener { widget, date, selected ->
-            viewModel.daysList?.value?.let {
-                if (it.contains(date)) {
-                    viewModel.setPickedDate(date)
-                    findNavController().navigate(R.id.action_dailyPlannerFragment_to_dayPlanFragment)
-                }
+        binding.calendarView.setOnDateChangedListener { _, date, _ ->
+            viewModel.daysList.value?.let {
+
+                isHideTrackingContainer(it,date)
+//                if (it.contains(date)) {
+//                    viewModel.setPickedDate(date)
+//                    binding.trackingContainer.alpha = 1.0f
+//                }else{
+//                    binding.trackingContainer.alpha = 0.0f
+//                }
             }
+        }
+    }
+    private fun  isHideTrackingContainer(days: java.util.HashSet<CalendarDay>, day: CalendarDay){
+        if (days.contains(day)) {
+            viewModel.setPickedDate(day)
+            binding.trackingContainer.alpha = 1.0f
+            binding.noTasks.visibility = View.GONE
+        }else{
+            binding.trackingContainer.alpha = 0.0f
+            binding.noTasks.visibility = View.VISIBLE
         }
     }
 
@@ -58,24 +72,13 @@ class DailyPlanningFragment : BaseFragment(),OnDayClickListener {
         viewModel.daysList.observe(viewLifecycleOwner) { days ->
             days?.let {
                 decorateViews(days)
-                checkTasksForToday(days)
-                 seuUpRecyclerView(days)
+                isHideTrackingContainer(days,viewModel.today)
             }
         }
         viewModel.taskList.observe(viewLifecycleOwner) { tasks ->
-            log("Observed tasks: $tasks")
         }
     }
 
-    private fun seuUpRecyclerView(days: java.util.HashSet<CalendarDay>) {
-        daysAdapter = DaysAdapter(days, this)
-        binding.recyclerView.adapter = daysAdapter
-    }
-
-    private fun checkTasksForToday(days: java.util.HashSet<CalendarDay>) {
-//        if (days.contains(viewModel.today))
-//            binding.trackingContainer.alpha = 1.0f
-    }
 
     private fun decorateViews(days: HashSet<CalendarDay>) {
         binding.calendarView.addDecorator(TaskDecorator(days))

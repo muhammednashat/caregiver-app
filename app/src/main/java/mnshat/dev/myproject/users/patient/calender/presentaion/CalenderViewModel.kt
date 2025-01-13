@@ -36,6 +36,9 @@ class CalenderViewModel @Inject constructor(
 
     fun getCalenderActivities(context: Context) =
         calendarUseCaseManager.getCalenderActivitiesUseCase(context)
+
+
+
     fun setCustomActivity(activity: CalenderActivity) = run { customActivity = activity }
 
     fun setChosenActivities(activities: List<CalenderActivity>) = run {  chosenActivities = activities}

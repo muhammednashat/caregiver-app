@@ -17,7 +17,7 @@ class CalenderActivitiesAdapter(
     private val onActivityClickListener: OnActivityClickListener,
 ) : RecyclerView.Adapter<CalenderActivitiesAdapter.ViewHolder>() {
 
-    private var chosenActivities = setOf<CalenderActivity>()
+    private var chosenActivities = setOf<CalenderActivity>()  // Set { 11, 25 , 654 }  add(11) List.c
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val container: ConstraintLayout = itemView.findViewById(R.id.container)
@@ -38,7 +38,10 @@ class CalenderActivitiesAdapter(
         holder.text.text = activity.nameTask
         holder.imageView.setImageResource(activity.image)
         holder.container.setBackgroundColor(Color.parseColor(activity.background))
+
         holder.container.setOnClickListener{
+             // size = 5 , position = 4  , 0 ,1,2,3,4
+            // if( 4 == 4)  5 - 1
             if (position == activities.size - 1){
                 onActivityClickListener.createCustomActivity()
             }else{

@@ -44,7 +44,6 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
         observing()
         isItToday()
         setUpListeners()
-
         return  binding.root
     }
 
@@ -101,15 +100,15 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
     }
 
     private fun updateUi(done: Int) {
-        log(done.toString() + " updateUi")
         binding.numDone.text = done.toString()
         val progress = (done.toFloat() / taskSize.toFloat()) * 100
         binding.circularProgress.progress = progress.toInt()
         if (progress.toInt() == 100){
           binding.textButton.isEnabled = true
+        }else{
+            binding.textButton.isEnabled = false
         }
     }
-
 
     private fun setUpRecyclerView(tasks: List<TaskEntity>) {
         adapter = TasksAdapter(tasks.toMutableList(),this)
@@ -129,8 +128,8 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
         done = 0
         taskSize = 0
         getTasks(viewModel.getDayEntity().day)
-
     }
+
     private fun showDoneDialog() {
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -146,6 +145,7 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
             layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
             attributes = layoutParams
         }
+
         dialogBinding.title.text = getString(R.string.well_done1)
         dialogBinding.text.text =
             getString(R.string.you_have_completed_your_entire_plan_for_the_day_great_job)

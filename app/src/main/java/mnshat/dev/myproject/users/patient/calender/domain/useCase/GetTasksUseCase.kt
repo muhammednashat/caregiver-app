@@ -8,7 +8,6 @@ class GetTasksUseCase @Inject constructor(private val taskRepository: TaskReposi
 
 
     suspend operator fun  invoke(day:String):Result<List<TaskEntity>>{
-
         return try {
             Result.success(taskRepository.getTasks(day))
         } catch (e: Exception) {
