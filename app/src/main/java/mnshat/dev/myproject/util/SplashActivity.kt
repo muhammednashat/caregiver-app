@@ -9,7 +9,7 @@ import android.os.Handler
 import android.util.DisplayMetrics
 import android.view.WindowManager
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.auth.AuthActivity
+import mnshat.dev.myproject.auth.presentation.AuthActivity
 import mnshat.dev.myproject.base.BaseActivity
 import mnshat.dev.myproject.databinding.ActivitySplashBinding
 import mnshat.dev.myproject.users.caregiver.main.CaregiverScreenActivity

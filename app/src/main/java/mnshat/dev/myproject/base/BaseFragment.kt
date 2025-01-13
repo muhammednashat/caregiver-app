@@ -6,14 +6,16 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Gravity
+import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.auth.AuthActivity
+import mnshat.dev.myproject.auth.presentation.AuthActivity
 import mnshat.dev.myproject.databinding.DialogBinding
 import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
 import mnshat.dev.myproject.firebase.FirebaseService
@@ -51,6 +53,11 @@ open class BaseFragment: Fragment() {
 
     fun dismissProgressDialog() {
         progressDialog.dismiss()
+    }
+
+    fun showNoInternetSnackBar(view: View) {
+        Snackbar.make(view, getString(R.string.no_internet_connection), Snackbar.LENGTH_LONG)
+            .show()
     }
 
     fun showToast(message: String) {

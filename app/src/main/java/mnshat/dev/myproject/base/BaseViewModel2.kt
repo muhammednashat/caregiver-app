@@ -1,9 +1,12 @@
 package mnshat.dev.myproject.base
 
 import android.app.Application
+import android.app.usage.NetworkStatsManager
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.liveData
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import mnshat.dev.myproject.R
@@ -14,13 +17,14 @@ import mnshat.dev.myproject.model.StatusDailyProgram2
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.CURRENT_DAY
 import mnshat.dev.myproject.util.GENDER
+import mnshat.dev.myproject.util.NetworkMonitor
 import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.log
 
 open class BaseViewModel2(
     private val sharedPreferences: SharedPreferencesManager,
-    application: Application
+   private val application: Application
 ) : AndroidViewModel(application) {
     var intGender = MutableLiveData<Int?>()
     var strGender = MutableLiveData<String?>()
@@ -57,7 +61,10 @@ open class BaseViewModel2(
             }
         }
     }
-
+fun isConnected():Boolean{
+    val networkMonitor = NetworkMonitor(application)
+    return  networkMonitor.isConnected()
+}
     fun setStrAge(context: Context, sharedPreferences: SharedPreferencesManager, age: Int?) {
         age?.let {
             sharedPreferences.storeInt(AGE_GROUP, age)

@@ -57,14 +57,18 @@ class SignUpFragment : AuthBaseFragment<FragmentSignUpBinding>(){
             GenderFragment().show(childFragmentManager, GenderFragment::class.java.name)
         }
 
-        binding.btnSign.setOnClickListener {
+        binding.btnSign.setOnClickListener {view ->
             if (_viewModel.validToRegisterUser(requireContext())) {
                 if (_viewModel.typeOfUser.value == CAREGIVER){
                     retrieveUser()
                 }
                 else{
-                    showProgressDialog()
-                    signUp(null)
+                    if(_viewModel.isConnected()){
+                        showProgressDialog()
+                        signUp(null)
+                    }else{
+                        showNoInternetSnackBar(view)
+                    }
 
                 }
             }else showToast(_viewModel.errorMessage!!)

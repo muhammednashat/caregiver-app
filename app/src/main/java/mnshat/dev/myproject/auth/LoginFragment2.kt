@@ -9,7 +9,7 @@ import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.GENDER
 import mnshat.dev.myproject.util.PASSWORD
 
-class LoginFragment : AuthBaseFragment<FragmentLoginBinding>() {
+class LoginFragment2 : AuthBaseFragment<FragmentLoginBinding>() {
 
     private var isRememberMe = false
 
@@ -29,17 +29,20 @@ class LoginFragment : AuthBaseFragment<FragmentLoginBinding>() {
         binding.contactUs.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_contactUsFragment)
         }
-        binding.logIn.setOnClickListener {
+        binding.logIn.setOnClickListener { view ->
 
             if (_viewModel.validToLogin(requireContext())){
+             if(_viewModel.isConnected()){
+                 showProgressDialog()
+                 login{
+                     if (it){
+                         updateRegistrationInfoLocally()
+                     }
+                 }
+             }else{
+                 showNoInternetSnackBar(view)
+             }
 
-                showProgressDialog()
-
-                login{
-                    if (it){
-                        updateRegistrationInfoLocally()
-                    }
-                }
             }
 
 

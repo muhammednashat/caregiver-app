@@ -18,8 +18,9 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.auth.AuthActivity
+import mnshat.dev.myproject.auth.presentation.AuthActivity
 import mnshat.dev.myproject.databinding.DialogBinding
 import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
 import mnshat.dev.myproject.firebase.FirebaseService
@@ -62,7 +63,15 @@ open abstract class BaseFragment2<T:ViewDataBinding>: Fragment() {
         progressDialog = Dialog(requireContext())
 
     }
-     fun showDialogConfirmLogout() {
+
+    fun showNoInternetSnackBar(view: View) {
+        log("Snackbar", )
+        Snackbar.make(view, getString(R.string.no_internet_connection), Snackbar.LENGTH_LONG)
+            .show()
+    }
+
+
+    fun showDialogConfirmLogout() {
         sharedDialog = Dialog(requireContext())
         sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = DialogConfirmLogoutBinding.inflate(layoutInflater)

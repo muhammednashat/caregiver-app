@@ -1,9 +1,9 @@
-package mnshat.dev.myproject.auth
+package mnshat.dev.myproject.maybeneedlater
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.auth.AuthBaseFragment
 import mnshat.dev.myproject.databinding.FragmentNewPasswordBinding
 
 class NewPasswordFragment  : AuthBaseFragment<FragmentNewPasswordBinding>() {

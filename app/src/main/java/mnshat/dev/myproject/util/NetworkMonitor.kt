@@ -1,8 +1,5 @@
 package mnshat.dev.myproject.util
 
-import android.bluetooth.BluetoothA2dp
-import android.bluetooth.BluetoothClass
-import android.bluetooth.BluetoothGattServer
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
@@ -16,14 +13,21 @@ class NetworkMonitor (context: Context) {
     private val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
+    fun isConnected() = connectivityManager.activeNetwork != null
 
     fun observeNetworkStatus(): Flow<Boolean> = callbackFlow {
+        log("observeNetworkStatus ")
+
+        log(connectivityManager.toString())
         val callback = object : ConnectivityManager.NetworkCallback() {
             override fun onAvailable(network: Network) {
+                log("                trySend(true)\n ")
                 trySend(true)
             }
 
             override fun onLost(network: Network) {
+                log("                trySend(false)\n ")
+
                 trySend(false)
             }
         }

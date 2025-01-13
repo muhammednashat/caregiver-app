@@ -1,13 +1,14 @@
-package mnshat.dev.myproject.auth
+package mnshat.dev.myproject.auth.presentation
 
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.util.log
 
+@AndroidEntryPoint
 class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

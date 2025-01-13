@@ -1,5 +1,6 @@
 package mnshat.dev.myproject.auth
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
@@ -53,6 +54,7 @@ open abstract class AuthBaseFragment<T : ViewDataBinding> : BaseFragment2<T>() {
         }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     fun signUp(registrationData: RegistrationData?) {
         FirebaseService.signUp(_viewModel.email.value!!.trim(), _viewModel.password.value!!.trim()) {
             isSigned , userId ->

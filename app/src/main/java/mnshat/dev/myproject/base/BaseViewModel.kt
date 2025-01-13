@@ -7,10 +7,13 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import mnshat.dev.myproject.util.NetworkMonitor
+import mnshat.dev.myproject.util.SharedPreferencesManager
 import javax.inject.Inject
 
 @HiltViewModel
-class BaseViewModel @Inject constructor(private val networkMonitor: NetworkMonitor):ViewModel() {
+class BaseViewModel @Inject constructor(
+    val sharedPreferencesManager: SharedPreferencesManager,
+    private val networkMonitor: NetworkMonitor):ViewModel() {
 
 
     val isNetworkAvailable: LiveData<Boolean> = liveData {
@@ -19,11 +22,4 @@ class BaseViewModel @Inject constructor(private val networkMonitor: NetworkMonit
         }
     }
 
-    fun id (){
-         viewModelScope.launch{
-             networkMonitor.observeNetworkStatus().collect { isAvailable ->
-
-             }
-         }
-    }
 }

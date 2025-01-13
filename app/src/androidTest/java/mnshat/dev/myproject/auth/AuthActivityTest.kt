@@ -8,10 +8,11 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.auth.presentation.AuthActivity
+
 class AuthActivityTest{
 
 
