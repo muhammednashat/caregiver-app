@@ -2,10 +2,10 @@ package mnshat.dev.myproject.users.patient.moodTracking.data
 
 import android.content.Context
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.DayMoodTracking
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EffectingMood
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
@@ -141,6 +141,26 @@ class MoodRepository @Inject constructor(private val firestore: FirebaseFirestor
 
     fun storeDayMoodTrackingRemotely(dayMoodTracking: DayMoodTracking) {
 
+    }
+    fun ffd() {
+
+    }
+
+    fun getDayTrackingMood(userId: String): Flow<List<DayMoodTracking>?> = callbackFlow {
+        val userRef = firestore.collection("Users").document(userId)
+        val moodTrackingRef = userRef.collection("MoodTracking")
+        moodTrackingRef.get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val list = task.result.documents.mapNotNull { document ->
+                    document.toObject(DayMoodTracking::class.java)
+                }
+                trySend(list)
+            } else {
+                trySend(null)
+            }
+        }
+        awaitClose {
+        }
     }
 
 }

@@ -7,6 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.DailyProgramManagerUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.data.MoodRepository
+import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetDayTrackingMoodUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetEffectingMoodUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetEmojisStatusUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.StoreDayMoodTrackingLocallyUseCase
@@ -38,6 +39,10 @@ object Di {
     @Provides
     fun  provideStoreDayMoodTrackingRemotelyUseCase(moodRepository: MoodRepository) = StoreDayMoodTrackingRemotelyUseCase(moodRepository)
 
+
+    @Provides
+    fun provideGetDayTrackingMoodUseCase (moodRepository: MoodRepository) = GetDayTrackingMoodUseCase(moodRepository)
+
     @Provides
     @Singleton
     fun provideMoodViewModel(
@@ -46,9 +51,18 @@ object Di {
         dailyProgramManagerUseCase: DailyProgramManagerUseCase,
         storeDayMoodTrackingLocallyUseCase: StoreDayMoodTrackingLocallyUseCase,
         storeDayMoodTrackingRemotelyUseCase: StoreDayMoodTrackingRemotelyUseCase,
-        sharedPreferences: SharedPreferencesManager
+        sharedPreferences: SharedPreferencesManager,
+        getDayTrackingMoodUseCase: GetDayTrackingMoodUseCase,
     )
-         = MoodViewModel(getEmojisStatusUseCase,getEffectingMoodUseCase,dailyProgramManagerUseCase,sharedPreferences,storeDayMoodTrackingLocallyUseCase,storeDayMoodTrackingRemotelyUseCase,)
+         = MoodViewModel(
+        getEmojisStatusUseCase,
+        getEffectingMoodUseCase,
+        dailyProgramManagerUseCase,
+        sharedPreferences,
+        storeDayMoodTrackingLocallyUseCase,
+        storeDayMoodTrackingRemotelyUseCase,
+        getDayTrackingMoodUseCase
+    )
 
 
 

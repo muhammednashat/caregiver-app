@@ -65,6 +65,9 @@ class HomeFragment : BaseFragment() {
         binding.dailyProgram.setOnClickListener() {
             startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
         }
+         binding.statistics.setOnClickListener() {
+             findNavController().navigate(R.id.action_patientHomeFragment_to_trackingMoodFragment)
+        }
         binding.rootTools.setOnClickListener{
             findNavController().navigate(R.id.action_patientHomeFragment_to_mainAzcarFragment)
         }

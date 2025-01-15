@@ -2,6 +2,7 @@ package mnshat.dev.myproject.users.patient.moodTracking.presentaion
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -11,12 +12,14 @@ import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.DailyProgramManagerUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.DayMoodTracking
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
+import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetDayTrackingMoodUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetEffectingMoodUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetEmojisStatusUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.StoreDayMoodTrackingLocallyUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.StoreDayMoodTrackingRemotelyUseCase
 import mnshat.dev.myproject.util.CURRENT_DAY
 import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.log
 import javax.inject.Inject
 
@@ -30,6 +33,7 @@ class MoodViewModel @Inject constructor
     val sharedPreferences: SharedPreferencesManager,
     private val storeDayMoodTrackingLocallyUseCase: StoreDayMoodTrackingLocallyUseCase,
     private val  storeDayMoodTrackingRemotelyUseCase: StoreDayMoodTrackingRemotelyUseCase,
+    private val getDayTrackingMoodUseCase: GetDayTrackingMoodUseCase,
     ):ViewModel(){
          private var preMoodIndex = -1
          private var postMoodIndex = -1
@@ -88,5 +92,11 @@ class MoodViewModel @Inject constructor
     }
 
     fun getPostMoodIndex(): Int  = postMoodIndex
+
+     fun getDayMoodTracking() = liveData<List<DayMoodTracking>?> {
+        getDayTrackingMoodUseCase(sharedPreferences.getString(USER_ID, "")).collect {
+                 emit(it)
+        }
+    }
 
 }
