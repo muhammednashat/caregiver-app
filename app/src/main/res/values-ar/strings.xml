@@ -619,6 +619,7 @@
     <string name="change_language">تغير اللغة</string>
     <string name="you_have_completed_your_entire_plan_for_the_day_great_job">لقد اتممت خطة اليوم بالكامل هذا عمل رائع</string>
     <string name="no_internet_connection">لا يوجد إتصال بالأنترنت</string>
-    <string name="mood_tracker">Mood tracker</string>
+    <string name="mood_tracker">متتبع الحالة المزاجية</string>
+    <string name="things_that_affected_your_mood">الأشياء التى اثرت على حالتك المزاجية</string>
 
 </resources>

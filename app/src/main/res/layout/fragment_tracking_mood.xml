@@ -17,6 +17,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:padding="20dp"
+            android:id="@+id/back"
             android:src="@drawable/ic_arrow_back_ios"
             app:layout_constraintBottom_toBottomOf="@+id/textView48"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="33dp"
             android:text="@string/mood_tracker"
+            android:textColor="@color/black"
             android:textSize="@dimen/text_size_large"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,11 +37,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/noTracking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:text="No Tracking"
+            android:visibility="gone"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

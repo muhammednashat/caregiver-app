@@ -33,11 +33,10 @@ class CompareResultsFragment : BaseFragment() {
             showDialog()
         }
         val currentDay = viewModel.getCurrentDayLocally()
+        viewModel.storeDayMoodTracking(currentDay.toDayMoodTracking(),viewModel.sharedPreferences.getString(USER_ID,null.toString()))
         setUpUi(currentDay)
         val day = currentDay.status?.day
         viewModel.getNextDay(day!!+1)
-        viewModel.storeDayMoodTracking(currentDay.toDayMoodTracking(),viewModel.sharedPreferences.getString(USER_ID,null.toString()))
-
         return  binding.root
     }
 
@@ -46,11 +45,11 @@ class CompareResultsFragment : BaseFragment() {
     val preMood = viewModel.getEmojisStatus(requireContext())[currentDay.status?.preMoodIndex!!]
     val postMood = viewModel.getEmojisStatus(requireContext())[viewModel.getPostMoodIndex()]
 
-    binding.moodBefore.text = preMood.title
+    binding.moodBefore.text = preMood.name
     binding.imageBefore.setImageResource(preMood.emoji)
     binding.containerBefore.setBackgroundColor(Color.parseColor(preMood.backgroundColor))
     binding.containerAfter.setBackgroundColor(Color.parseColor(postMood.backgroundColor))
-    binding.moodAfter.text = postMood.title
+    binding.moodAfter.text = postMood.name
     binding.imageAfter.setImageResource(postMood.emoji)
 
     }
