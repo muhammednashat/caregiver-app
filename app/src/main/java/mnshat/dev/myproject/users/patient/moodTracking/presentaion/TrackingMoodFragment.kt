@@ -48,7 +48,7 @@ class TrackingMoodFragment : BaseFragment() {
     }
 
     private fun setUpRecyclerView(dayMoodTrackingList: List<DayMoodTracking>?) {
-    adapter  = TrackingMoodAdapter(dayMoodTrackingList!!,viewModel.getEffectingMood(requireActivity()),viewModel.getEmojisStatus(requireContext()))
+     adapter  = TrackingMoodAdapter(dayMoodTrackingList!!,viewModel.getEffectingMood(requireActivity()),viewModel.getEmojisStatus(requireContext()))
 
         binding.recyclerView.adapter = adapter
     }

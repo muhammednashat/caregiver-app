@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EffectingMood
 
-class EffectingMoodAdapter(
+class EffectingMoodAdapter (
     private val list: List<EffectingMood>,
+    val isClickable: Boolean = true,
 ) : RecyclerView.Adapter<EffectingMoodAdapter.ViewHolder>() {
 
     private var chosenReasons = setOf<Int>()
@@ -32,6 +33,7 @@ class EffectingMoodAdapter(
         val data = list[position]
         holder.title.text = data.title
         holder.icon.setImageResource(data.icon)
+        if (isClickable){
         holder.itemView.setOnClickListener {
             if (chosenReasons.contains(position)) {
                 holder.icChecked.visibility = View.GONE
@@ -41,7 +43,7 @@ class EffectingMoodAdapter(
                 chosenReasons = chosenReasons.plus(position)
             }
         }
-
+        }
     }
 
     fun getChosenReasons() = chosenReasons

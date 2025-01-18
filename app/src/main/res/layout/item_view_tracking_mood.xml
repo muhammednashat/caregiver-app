@@ -20,11 +20,11 @@
 
 
         <ImageView
-            android:id="@+id/open"
-            android:layout_width="25dp"
-            android:visibility="gone"
-            android:layout_height="25dp"
-            android:src="@drawable/baseline_arrow_right_alt_24"
+            android:id="@+id/extend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tint="@color/white"
+            android:src="@drawable/baseline_keyboard_arrow_down_24"
             app:layout_constraintBottom_toTopOf="@+id/textView57"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -200,8 +200,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/container"
             android:layout_width="0dp"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_large"
-            android:layout_height="300dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView9">
@@ -230,15 +231,43 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerViewEffectingMood">
 
-                <EditText
-                    android:id="@+id/editText"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cardText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/margin_large"
-                    android:background="@drawable/corner_normal"
-                    android:hint="@string/other_reasons_write_here_optional"
                     android:padding="@dimen/margin_medium"
-                    android:textColorHint="@color/black" />
+                    android:visibility="gone"
+                    >
+
+                    <TextView
+                        android:id="@+id/text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_large"
+                        android:layout_marginEnd="@dimen/margin_large"
+                        android:gravity="center"
+                        android:text="hfdgsfdgfdgfdsgfdgdsfgdfgsdgfsdgdfgfgdffgfdsgfdgsfdgfgsdsfdgfgsdfgfdgsdfgfgappy"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/icon"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5" />
+
+                    <ImageView
+                        android:id="@+id/icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/icon_mood"
+                        android:visibility="invisible"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </androidx.cardview.widget.CardView>
@@ -247,10 +276,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewEffectingMood"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_medium"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView50"
                 tools:listitem="@layout/item_view_effecting_mood" />

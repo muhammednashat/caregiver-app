@@ -40,6 +40,12 @@ class ProfileFragment : BaseFragment() {
         binding.sharedContent.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_postsFragment2)
         }
+         binding.reports.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_trackingMoodFragment)
+        }
+         binding.services.myPoints.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_myPointsFragment)
+        }
         binding.services.supporter.setOnClickListener {
             startActivity(Intent(requireActivity(), SupportersActivity::class.java))
         }

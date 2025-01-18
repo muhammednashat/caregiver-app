@@ -17,6 +17,7 @@
         android:layout_width="0dp"
         android:layout_weight="1"
        android:padding="@dimen/padding_medium"
+        android:id="@+id/myPoints"
         android:layout_height="wrap_content"
         android:background="@drawable/corner_four_light_blue"
         android:backgroundTint="@color/light_shade_blue"

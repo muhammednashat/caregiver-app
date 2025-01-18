@@ -36,6 +36,12 @@
         <action
             android:id="@+id/action_profileFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_myPointsFragment"
+            app:destination="@id/myPointsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_trackingMoodFragment"
+            app:destination="@id/trackingMoodFragment" />
 
     </fragment>
 
@@ -199,6 +205,10 @@
         android:id="@+id/trackingMoodFragment"
         android:name="mnshat.dev.myproject.users.patient.moodTracking.presentaion.TrackingMoodFragment"
         android:label="TrackingMoodFragment" />
+    <fragment
+        android:id="@+id/myPointsFragment"
+        android:name="mnshat.dev.myproject.users.patient.points.presentation.MyPointsFragment"
+        android:label="MyPointsFragment" />
 
 
 </navigation>
