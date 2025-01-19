@@ -1652,8 +1652,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1228" />
-                            <option name="y" value="1436" />
+                            <option name="x" value="1343" />
+                            <option name="y" value="1009" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -1676,8 +1676,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1228" />
-                            <option name="y" value="724" />
+                            <option name="x" value="1246" />
+                            <option name="y" value="651" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -1754,13 +1754,25 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="myPointsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="845" />
+                            <option name="y" value="1094" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="numberHelpingFragment2">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="984" />
-                            <option name="y" value="638" />
+                            <option name="x" value="626" />
+                            <option name="y" value="538" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -1787,6 +1799,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_patientHomeFragment_to_trackingMoodFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -1797,8 +1814,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1228" />
-                            <option name="y" value="1080" />
+                            <option name="x" value="1294" />
+                            <option name="y" value="862" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -1821,8 +1838,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="984" />
-                            <option name="y" value="1350" />
+                            <option name="x" value="840" />
+                            <option name="y" value="850" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -1873,6 +1890,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_profileFragment_to_myPointsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_profileFragment_to_numberHelpingFragment2">
                               <value>
                                 <LayoutPositions />
@@ -1888,6 +1910,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_profileFragment_to_trackingMoodFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -1898,8 +1925,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="984" />
-                            <option name="y" value="994" />
+                            <option name="x" value="695" />
+                            <option name="y" value="742" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -1953,8 +1980,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-572" />
-                            <option name="y" value="568" />
+                            <option name="x" value="-156" />
+                            <option name="y" value="488" />
                           </Point>
                         </option>
                       </LayoutPositions>
