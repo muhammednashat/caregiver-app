@@ -32,7 +32,6 @@ class AdapterPoints(private val numberTracking: Int) : RecyclerView.Adapter<Adap
         log(position.toString())
         log(numberTracking.toString())
         if (position < numberTracking){
-            log("if position")
             holder.imageView.setImageResource(R.drawable.star2)
             holder.root.setBackgroundResource(R.drawable.image_background2w)
         }else{

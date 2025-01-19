@@ -23,7 +23,6 @@ class TrackingMoodAdapter
     private  val emojisStatus: List<EmojiMood>
 ) : RecyclerView.Adapter<TrackingMoodAdapter.ViewHolder>() {
 
-
     inner class ViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         val day: TextView = itemView.findViewById(R.id.day)
         val text: TextView = itemView.findViewById(R.id.text)
@@ -58,6 +57,7 @@ class TrackingMoodAdapter
         var isExtended = false
         val preMood =emojisStatus [trackingMood.preMoodIndex!!]
         val postMood = emojisStatus[trackingMood.postMoodIndex!!]
+
         holder.day.text = trackingMood.day.toString()
         holder.moodBefore.text = preMood.name
         holder.imageBefore.setImageResource(preMood.emoji)
@@ -67,10 +67,10 @@ class TrackingMoodAdapter
         holder.imageAfter.setImageResource(postMood.emoji)
 
         holder.extend.setOnClickListener {
-            isExtended =!isExtended
+            isExtended =!isExtended  // t = f
             if (isExtended){
                 holder.container.visibility = View.VISIBLE
-                holder.extend.setImageResource(R.drawable.ic_forward_ios)
+                holder.extend.setImageResource(R.drawable.baseline_keyboard_arrow_up_24)
             }else{
                 holder.container.visibility = View.GONE
                 holder.extend.setImageResource(R.drawable.baseline_keyboard_arrow_down_24)
