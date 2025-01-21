@@ -54,6 +54,13 @@ const val LIBRARY_CONTENTS = "library_contents"
 const val USER_PROFILES = "user_profiles"
 const val DAILY_PROGRAM_STATES = "daily_program_states"
 
+const val PERMISSION_MOOD= "mood_permission"
+const val PERMISSION_MASSAGE= "massage_permission"
+const val PERMISSION_POINTS= "points_permission"
+
+const val SHARING= "sharing"
+const val MOOD= "mood"
+const val PROGRAM= "program"
 
 const val CHATS = "chats"
 const val LIBRARY = "library"

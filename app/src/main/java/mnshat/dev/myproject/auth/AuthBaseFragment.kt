@@ -107,7 +107,6 @@ open abstract class AuthBaseFragment<T : ViewDataBinding> : BaseFragment2<T>() {
             }
         }
     }
-
     private fun addSuppToUser(registrationData: RegistrationData?, callBack: (Boolean) -> Unit) {
         var list = mutableListOf<String>()
         if (registrationData?.numberSupporters != 0) {

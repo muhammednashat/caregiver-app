@@ -54,12 +54,17 @@
             <TextView
                 android:id="@+id/nameUser"
                 style="@style/TextAppearance.AppCompat.Large"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginEnd="@dimen/margin_large"
                 android:layout_marginStart="@dimen/margin_large"
+
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
                 android:text="fasdfsdafsdfdsfasf"
                 android:textColor="@color/white"
+                app:layout_constraintEnd_toStartOf="@+id/image_user"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
 

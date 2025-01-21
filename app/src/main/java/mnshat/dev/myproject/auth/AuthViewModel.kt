@@ -17,6 +17,9 @@ import mnshat.dev.myproject.util.ID_PARTNER
 import mnshat.dev.myproject.util.IMAGE_PARTNER
 import mnshat.dev.myproject.util.IS_LOGGED
 import mnshat.dev.myproject.util.NAME_PARTNER
+import mnshat.dev.myproject.util.PERMISSION_MASSAGE
+import mnshat.dev.myproject.util.PERMISSION_MOOD
+import mnshat.dev.myproject.util.PERMISSION_POINTS
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER_EMAIL
@@ -175,6 +178,9 @@ class AuthViewModel(
             sharedPreferences.storeString(ID_PARTNER, partner?.idPartner)
             sharedPreferences.storeString(EMAIL_PARTNER, partner?.emailPartner)
             sharedPreferences.storeString(IMAGE_PARTNER, partner?.imagePartner)
+            sharedPreferences.storeBoolean(PERMISSION_MOOD, false)
+            sharedPreferences.storeBoolean(PERMISSION_MASSAGE, false)
+            sharedPreferences.storeBoolean(PERMISSION_POINTS, false)
         }
     }
 

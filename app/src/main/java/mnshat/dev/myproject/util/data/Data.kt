@@ -4,13 +4,18 @@ import android.content.Context
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.model.DataPatient
 import mnshat.dev.myproject.model.Step
+import mnshat.dev.myproject.util.MOOD
+import mnshat.dev.myproject.util.PROGRAM
+import mnshat.dev.myproject.util.SHARING
 
 
 fun itemList() = listOf(
-    DataPatient(R.drawable.ic_daily_program3,"البرنامج اليومي" ,"Daily Program" ,"يمكنك الاطلاع على نتائج البرنامج اليومى للمستخدم" ,"You can view the results of the user's daily program","program"),
-    DataPatient(R.drawable.ic_mood4,"الحالة المزاجية" ,"Mood" ,"يمكنك  الحالة المزاجية الخاصة بالمستخدم" ,"You can track the user's mood","mood"),
+    DataPatient(R.drawable.ic_daily_program3,"البرنامج اليومي" ,"Daily Program" ,"يمكنك الاطلاع على نتائج البرنامج اليومى للمستخدم" ,"You can view the results of the user's daily program",
+        PROGRAM),
+    DataPatient(R.drawable.ic_mood4,"الحالة المزاجية" ,"Mood" ,"يمكنك  الحالة المزاجية الخاصة بالمستخدم" ,"You can track the user's mood",
+        MOOD),
 //    DataPatient(R.drawable.ic_reports6,"التقارير" ,"Reports" ,"يمكنك الاطلاع على نتائج البرنامج اليومى للمستخدم" ,"You can view the results of the user's daily program"),
-    DataPatient(R.drawable.ic_posts5,"المشاركات" ,"Posts" ,"رؤية ما تم مشاركته معك" ,"See what has been shared with you","sharing"),
+    DataPatient(R.drawable.ic_posts5,"المشاركات" ,"Posts" ,"رؤية ما تم مشاركته معك" ,"See what has been shared with you",SHARING),
 )
 
 fun   stepsBuildStrengthList(context: Context) = listOf(

@@ -620,6 +620,8 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="mood_tracker">Mood tracker</string>
     <string name="things_that_affected_your_mood">Things that affected your mood</string>
     <string name="the_results_of_your_daily_program_completion_will">The results of your daily program completion will appear within 30 days</string>
+    <string name="you_do_not_have_access_to_the_mood">You do not have access to the mood</string>
+    <string name="you_do_not_have_permission_to_view_the_daily_program">You do not have permission to view the daily program</string>
 
 
 </resources>

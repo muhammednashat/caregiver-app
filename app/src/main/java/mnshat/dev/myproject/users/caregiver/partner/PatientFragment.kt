@@ -11,7 +11,13 @@ import mnshat.dev.myproject.users.caregiver.main.BaseCaregiverFragment
 import mnshat.dev.myproject.util.ID_PARTNER
 import mnshat.dev.myproject.util.IMAGE_PARTNER
 import mnshat.dev.myproject.util.LANGUAGE
+import mnshat.dev.myproject.util.MOOD
 import mnshat.dev.myproject.util.NAME_PARTNER
+import mnshat.dev.myproject.util.PERMISSION_MASSAGE
+import mnshat.dev.myproject.util.PERMISSION_MOOD
+import mnshat.dev.myproject.util.PERMISSION_POINTS
+import mnshat.dev.myproject.util.PROGRAM
+import mnshat.dev.myproject.util.SHARING
 import mnshat.dev.myproject.util.data.itemList
 import mnshat.dev.myproject.util.loadImage
 
@@ -28,8 +34,12 @@ class PatientFragment : BaseCaregiverFragment<FragmentPatientBinding>(), ItemCli
         }
 
         binding.messaging.setOnClickListener {
-          navigateToChatWithPatient(sharedPreferences.getString(NAME_PARTNER),sharedPreferences.getString(
-              ID_PARTNER),sharedPreferences.getString(IMAGE_PARTNER))
+
+            if (sharedPreferences.getBoolean(PERMISSION_MASSAGE) ) {
+                navigateToChatWithPatient(sharedPreferences.getString(NAME_PARTNER),sharedPreferences.getString(
+                    ID_PARTNER),sharedPreferences.getString(IMAGE_PARTNER))            }else{
+                showToast(getString(R.string.you_do_not_have_access_to_the_mood))
+            }
         }
 
     }
@@ -64,9 +74,23 @@ class PatientFragment : BaseCaregiverFragment<FragmentPatientBinding>(), ItemCli
 
     override fun onItemClick(flag: String) {
         when(flag){
-            "program" -> {findNavController().navigate(R.id.action_usersFragment_to_myPointsFragment2)}
-            "sharing" -> {findNavController().navigate(R.id.action_usersFragment_to_postsFragment2)}
-            "mood" -> {findNavController().navigate(R.id.action_usersFragment_to_trackingMoodFragment2)}
+            PROGRAM -> {
+                if (sharedPreferences.getBoolean(PERMISSION_POINTS) ) {
+                    findNavController().navigate(R.id.action_usersFragment_to_myPointsFragment2)
+                }else{
+                    showToast(getString(R.string.you_do_not_have_permission_to_view_the_daily_program))
+                }
+            }
+            SHARING -> {
+                    findNavController().navigate(R.id.action_usersFragment_to_postsFragment2)
+            }
+            MOOD -> {
+                if (sharedPreferences.getBoolean(PERMISSION_MOOD) ) {
+                    findNavController().navigate(R.id.action_usersFragment_to_trackingMoodFragment2)
+                }else{
+                    showToast(getString(R.string.you_do_not_have_access_to_the_mood))
+                }
+            }
         }
         }
     }
