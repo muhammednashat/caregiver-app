@@ -7,7 +7,8 @@ data class DataPatient(
     val arTitle: String,
     val enTitle: String,
     val arDescription: String,
-    val enDescription: String
+    val enDescription: String,
+    val flag: String,
 )
 
 

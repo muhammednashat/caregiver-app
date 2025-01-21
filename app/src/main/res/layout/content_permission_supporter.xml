@@ -91,6 +91,8 @@ android:layout_marginTop="@dimen/margin_large"
 
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:visibility="gone"
+
                     android:layout_marginTop="@dimen/margin_large"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
@@ -119,6 +121,8 @@ android:id="@+id/allow_encouragement_reply"
 
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:visibility="gone"
+
                     android:layout_marginTop="@dimen/margin_large"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
@@ -133,6 +137,7 @@ android:id="@+id/allow_encouragement_reply"
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+
                         android:layout_marginStart="@dimen/margin_large"
                         android:layout_weight="1"
                         android:text="@string/allow_video_voice_call"
@@ -181,6 +186,7 @@ android:id="@+id/allow_encouragement_reply"
                 <LinearLayout
                     android:id="@+id/view_reporting"
                     android:layout_width="match_parent"
+                    android:visibility="gone"
                     android:layout_marginTop="@dimen/margin_large"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
@@ -212,6 +218,7 @@ android:id="@+id/allow_encouragement_reply"
                 <LinearLayout
                     android:id="@+id/notification"
                     android:layout_width="match_parent"
+                     android:visibility="gone"
                     android:layout_marginTop="@dimen/margin_large"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">

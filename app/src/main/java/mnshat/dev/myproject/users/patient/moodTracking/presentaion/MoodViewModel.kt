@@ -17,8 +17,11 @@ import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetEffecti
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetEmojisStatusUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.StoreDayMoodTrackingLocallyUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.StoreDayMoodTrackingRemotelyUseCase
+import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.CURRENT_DAY
+import mnshat.dev.myproject.util.ID_PARTNER
 import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.log
 import javax.inject.Inject
@@ -94,7 +97,8 @@ class MoodViewModel @Inject constructor
     fun getPostMoodIndex(): Int  = postMoodIndex
 
      fun getDayMoodTracking() = liveData<List<DayMoodTracking>?> {
-        getDayTrackingMoodUseCase(sharedPreferences.getString(USER_ID, "")).collect {
+         val userId = if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER  ) sharedPreferences.getString(USER_ID, "") else sharedPreferences.getString(ID_PARTNER, "")
+        getDayTrackingMoodUseCase(userId).collect {
                  emit(it)
         }
     }

@@ -3,6 +3,7 @@ package mnshat.dev.myproject.users.caregiver.partner
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.adapters.ItemClickListener
 import mnshat.dev.myproject.adapters.RecyclerAdapter
 import mnshat.dev.myproject.commonFeatures.chatting.MessagesListFragmentDirections
 import mnshat.dev.myproject.databinding.FragmentPatientBinding
@@ -15,7 +16,7 @@ import mnshat.dev.myproject.util.data.itemList
 import mnshat.dev.myproject.util.loadImage
 
 
-class PatientFragment : BaseCaregiverFragment<FragmentPatientBinding>() {
+class PatientFragment : BaseCaregiverFragment<FragmentPatientBinding>(), ItemClickListener {
 
     override fun getLayout()= R.layout.fragment_patient
 
@@ -54,13 +55,20 @@ class PatientFragment : BaseCaregiverFragment<FragmentPatientBinding>() {
 
     private fun setUpRecyclerData() {
         val adapter =
-            RecyclerAdapter(itemList(), sharedPreferences.getString(LANGUAGE), requireContext())
+            RecyclerAdapter(itemList(), sharedPreferences.getString(LANGUAGE),this)
         val gridLayoutManager = GridLayoutManager(context, 2)
         binding.recycler.layoutManager =
             gridLayoutManager
         binding.recycler.adapter = adapter
     }
 
+    override fun onItemClick(flag: String) {
+        when(flag){
+            "program" -> {findNavController().navigate(R.id.action_usersFragment_to_myPointsFragment2)}
+            "sharing" -> {findNavController().navigate(R.id.action_usersFragment_to_postsFragment2)}
+            "mood" -> {findNavController().navigate(R.id.action_usersFragment_to_trackingMoodFragment2)}
+        }
+        }
+    }
 
 
-}

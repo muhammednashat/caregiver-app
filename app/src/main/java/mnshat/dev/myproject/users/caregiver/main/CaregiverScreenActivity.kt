@@ -5,20 +5,27 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseActivity
 import mnshat.dev.myproject.databinding.ActivityCaregiverScreenBinding
 import mnshat.dev.myproject.databinding.ActivityUserScreensBinding
 import mnshat.dev.myproject.util.log
 
-class CaregiverScreenActivity : BaseActivity<ActivityCaregiverScreenBinding>() {
 
-    override fun getLayout(): ActivityCaregiverScreenBinding {
+@AndroidEntryPoint
+class CaregiverScreenActivity : AppCompatActivity() {
 
-        return ActivityCaregiverScreenBinding.inflate(layoutInflater)
+    private lateinit var binding: ActivityCaregiverScreenBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityCaregiverScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        initializeViews()
 
     }
-    override fun initializeViews() {
+     fun initializeViews() {
 
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_caregiver_screen)

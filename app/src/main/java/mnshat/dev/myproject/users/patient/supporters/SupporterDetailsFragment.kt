@@ -62,9 +62,7 @@ class SupporterDetailsFragment : BaseSupporterFragment<FragmentSupporterDetailsB
                 true
             if (it.allowMoodTrackingDetails) binding.permissions.viewMoodTrackingDetails.isChecked =
                 true
-            if (it.allowEncouragementReply) binding.permissions.allowEncouragementReply.isChecked =
-                true
-            if (it.allowVideoVoiceCall) binding.permissions.allowVideoVoiceCall.isChecked = true
+
             if (it.allowPrivateMessages) binding.permissions.allowPrivateMessages.isChecked = true
         }
     }

@@ -5,10 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Permissions(
-    var allowDailyProgramDetails: Boolean = true,
-    var allowMoodTrackingDetails: Boolean = true,
-    var allowEncouragementReply: Boolean = false,
-    var allowVideoVoiceCall: Boolean = false,
+    var allowDailyProgramDetails: Boolean = false,
+    var allowMoodTrackingDetails: Boolean = false,
     var allowPrivateMessages: Boolean = false,
 
     var allowViewReports: Boolean = true,

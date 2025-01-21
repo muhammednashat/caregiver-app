@@ -34,6 +34,15 @@
         <action
             android:id="@+id/action_usersFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_usersFragment_to_postsFragment2"
+            app:destination="@id/postsFragment2" />
+        <action
+            android:id="@+id/action_usersFragment_to_myPointsFragment2"
+            app:destination="@id/myPointsFragment2" />
+        <action
+            android:id="@+id/action_usersFragment_to_trackingMoodFragment2"
+            app:destination="@id/trackingMoodFragment2" />
     </fragment>
 
         <navigation
@@ -158,5 +167,13 @@
         android:id="@+id/numberHelpingFragment"
         android:name="mnshat.dev.myproject.commonFeatures.numbersHelping.NumberHelpingFragment"
         android:label="NumberHelpingFragment" />
+    <fragment
+        android:id="@+id/myPointsFragment2"
+        android:name="mnshat.dev.myproject.users.patient.points.presentation.MyPointsFragment"
+        android:label="MyPointsFragment" />
+    <fragment
+        android:id="@+id/trackingMoodFragment2"
+        android:name="mnshat.dev.myproject.users.patient.moodTracking.presentaion.TrackingMoodFragment"
+        android:label="TrackingMoodFragment" />
 
 </navigation>
