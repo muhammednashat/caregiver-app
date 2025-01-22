@@ -58,7 +58,6 @@
                 android:ellipsize="end"
                 android:layout_marginEnd="@dimen/margin_large"
                 android:layout_marginStart="@dimen/margin_large"
-
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
                 android:text="fasdfsdafsdfdsfasf"

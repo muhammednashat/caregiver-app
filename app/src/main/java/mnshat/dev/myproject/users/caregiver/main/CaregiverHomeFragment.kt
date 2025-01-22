@@ -1,6 +1,7 @@
 package mnshat.dev.myproject.users.caregiver.main
 
 import android.content.Intent
+import android.text.Html
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.LibraryActivity
@@ -20,8 +21,10 @@ class CaregiverHomeFragment : BaseCaregiverFragment<FragmentCaregiverHomeBinding
         super.initializeViews()
         binding.nameUser.text = sharedPreferences.getString(USER_NAME)
         loadImage(requireActivity(),sharedPreferences.getString(USER_IMAGE),binding.imageUser)
-
     }
+
+
+
     override fun setupClickListener() {
 
         super.setupClickListener()

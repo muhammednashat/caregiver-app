@@ -18,7 +18,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="@dimen/margin_2_super"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="38dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_pause_circle" />
@@ -27,8 +27,8 @@
             android:id="@+id/linearLayoutCompat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_2_super"
-            app:layout_constraintStart_toStartOf="@+id/constraint"
+            android:layout_marginStart="@dimen/margin_2_super"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ic_pause">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,17 +50,17 @@
                     app:layout_constraintVertical_bias="0.5" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <View
                 android:id="@+id/line1"
                 android:layout_width="20dp"
-                android:background="#a6bec8"
                 android:layout_height="2dp"
                 android:layout_gravity="center"
-                />
+                android:background="#a6bec8" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="35dp"
                 android:id="@+id/constraint_task2"
+                android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:background="@drawable/circle_gray2">
 
@@ -78,18 +78,18 @@
                     app:layout_constraintVertical_bias="0.5" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <View
                 android:id="@+id/line2"
                 android:layout_width="20dp"
-                android:background="#a6bec8"
                 android:layout_height="2dp"
                 android:layout_gravity="center"
-                />
+                android:background="#a6bec8" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_task3"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:id="@+id/constraint_task3"
                 android:background="@drawable/circle_gray2">
 
                 <ImageView
@@ -97,7 +97,6 @@
                     android:layout_width="12dp"
                     android:layout_height="12dp"
                     android:src="@drawable/ic_puzzle"
-
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -110,87 +109,30 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btn_recommend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_large"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/gradient_green"
-           android:backgroundTint="#99d7eb"
-            android:padding="4dp"
-            app:layout_constraintStart_toStartOf="@+id/text_description"
-            app:layout_constraintTop_toBottomOf="@+id/text_description"
-
-            >
-
-            <TextView
-                android:id="@+id/text_qu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/another_challenge"
-                android:textColor="#296b7f"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_margin="@dimen/margin_medium"
-                android:layout_marginStart="28dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/text_qu"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.526"
-                app:srcCompat="@drawable/ic_shuffle" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_done"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-           android:visibility="gone"
-            android:backgroundTint="@color/white"
-            android:layout_marginStart="44dp"
-            android:background="@drawable/gradient_green"
-            android:text="@string/done"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/linearLayoutCompat"
-            app:layout_constraintEnd_toEndOf="@+id/constraint"
-            app:layout_constraintTop_toTopOf="@+id/linearLayoutCompat" />
         <androidx.cardview.widget.CardView
-            android:id="@+id/constraint"
             android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:layout_marginStart="@dimen/margin_large"
-            android:layout_marginTop="35dp"
-            android:layout_marginEnd="@dimen/margin_large"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="4dp"
+            android:layout_height="150dp"
+            android:layout_margin="@dimen/margin_large"
+            app:cardCornerRadius="12dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat">
+
             <ImageView
                 android:id="@+id/image_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                android:visibility="gone"
                 android:src="@drawable/ic_books"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5" />
+
             <com.google.android.exoplayer2.ui.PlayerView
                 android:id="@+id/exoPlayer"
                 android:layout_width="match_parent"
@@ -205,51 +147,128 @@
 
         </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/text_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-         android:textSize="18sp"
-            android:layout_marginTop="@dimen/margin_large"
-            android:text="المهمة 2 :تحدى اليوم "
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/constraint"
-            app:layout_constraintTop_toBottomOf="@+id/constraint" />
-
-        <TextView
-            android:id="@+id/text_description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="فى هذه المهمة عليك القيام فى هذه المهمة عليك القيام فى هذه المهمة عليك القيام فى هذه المهمة عليك القيام"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/constraint"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/text_title"
-            app:layout_constraintTop_toBottomOf="@+id/text_title" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_previous"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_large"
-            android:background="@drawable/corner_four_gray"
-            android:backgroundTint="@color/light_grayish_blue"
-            android:text="@string/previous"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_next"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_next"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_large"
-            android:layout_marginBottom="28dp"
-            android:background="@drawable/gradient_orange"
-            android:text="@string/next"
-            android:textColor="@color/white"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="75dp"
+            android:background="@drawable/corner_top_lift_right"
+            android:padding="@dimen/margin_large"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat">
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_previous"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_large"
+                android:background="@drawable/corner_four_gray"
+                android:backgroundTint="@color/light_grayish_blue"
+                android:text="@string/previous"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_next"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ScrollView
+                android:id="@+id/scrollView2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="90dp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_next"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="المهمة 2 :تحدى اليوم "
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/text_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="فى هذه المهمة عليك القيام فى هذه المهمة عليك القيام فى هذه المهمة عليك القيام فى هذه المهمة عليك القيام"
+                        android:textColor="@color/black"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@+id/text_title"
+                        app:layout_constraintTop_toBottomOf="@+id/text_title" />
+
+
+                </LinearLayout>
+            </ScrollView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btn_recommend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gradient_green"
+                android:backgroundTint="#99d7eb"
+                android:padding="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scrollView2">
+
+                <TextView
+                    android:id="@+id/text_qu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/another_challenge"
+                    android:textColor="#296b7f"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:layout_marginStart="28dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/text_qu"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.526"
+                    app:srcCompat="@drawable/ic_shuffle" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_next"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:background="@drawable/gradient_orange"
+                android:text="@string/next"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
