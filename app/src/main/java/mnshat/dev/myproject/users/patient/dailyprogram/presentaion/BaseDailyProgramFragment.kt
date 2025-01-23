@@ -1,6 +1,7 @@
 package mnshat.dev.myproject.users.patient.dailyprogram.presentaion
 
 import android.net.Uri
+import android.text.Html
 import android.view.View
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -35,7 +36,7 @@ open class BaseDailyProgramFragment : BaseFragment() {
                 val currentLang = viewModel.sharedPreferences.getString(LANGUAGE)
                 if (currentLang != ENGLISH_KEY) {
                     binding.textTitle.text = getString(R.string.mission, numberTask, task.arTitle)
-                    binding.textDescription.text = task.arDescription
+                    binding.textDescription.text = Html.fromHtml(task.arDescription)
                 } else {
                     binding.textTitle.text = getString(R.string.mission, numberTask, task.enTitle)
                     binding.textDescription.text = task.enDescription

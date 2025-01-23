@@ -192,6 +192,7 @@
                         android:layout_height="wrap_content"
                         android:text="المهمة 2 :تحدى اليوم "
                         android:textColor="@color/black"
+
                         android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -205,6 +206,18 @@
                         android:layout_marginTop="20dp"
                         android:text="فى هذه المهمة عليك القيام فى هذه المهمة عليك القيام فى هذه المهمة عليك القيام فى هذه المهمة عليك القيام"
                         android:textColor="@color/black"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@+id/text_title"
+                        app:layout_constraintTop_toBottomOf="@+id/text_title" />
+
+           <TextView
+                        android:id="@+id/text2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/black"
+               android:visibility="gone"
+
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="@+id/text_title"
                         app:layout_constraintTop_toBottomOf="@+id/text_title" />
