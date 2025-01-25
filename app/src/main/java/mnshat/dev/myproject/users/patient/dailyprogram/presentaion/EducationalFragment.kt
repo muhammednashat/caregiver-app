@@ -34,9 +34,10 @@ class EducationalFragment : BaseDailyProgramFragment() {
         viewModel.get()
         observeViewModel()
         log("EducationalFragment onCreateView")
-        binding.text2.text = Html.fromHtml(
 
-        )
+//        binding.text2.text = Html.fromHtml(
+//
+//        )
 
 //
         return  binding.root
@@ -65,13 +66,16 @@ class EducationalFragment : BaseDailyProgramFragment() {
         binding.btnPrevious.visibility = View.GONE
         viewModel. currentDay.value.let {
             viewModel.listOfTasks = it?.dayTask?.educational as List<Task>
-            if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
+            binding.btnRecommend.visibility = View.GONE
+//            if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
             getTaskFromList(viewModel.status.currentIndexEducational!!, 2)
             changeColorStatus()
         }
 
         hideSpiritualIcon(binding.constraintTask2, binding.line1)
     }
+
+
 
     private fun isPreChecked() {
         if (viewModel.status.preChecked == false){
@@ -158,6 +162,7 @@ class EducationalFragment : BaseDailyProgramFragment() {
 
 
     private fun navigateToNextTask() {
+
         if (viewModel.sharedPreferences.getBoolean(RELIGION)) {
             findNavController().navigate(R.id.action_educationalFragment_to_spiritualFragment)
         } else {

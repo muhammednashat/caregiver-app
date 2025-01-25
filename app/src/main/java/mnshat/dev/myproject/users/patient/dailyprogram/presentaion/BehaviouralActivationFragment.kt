@@ -41,7 +41,11 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
     fun initializeViews() {
         viewModel.currentDay.value.let {
             viewModel.listOfTasks = it?.dayTask?.behaviorActivation as List<Task>
+
             if ( viewModel.listOfTasks.size == 1) binding.btnRecommend.visibility = View.GONE
+
+            witchFragment("BehaviouralActivationFragment")
+
             getTaskFromList(viewModel.status.currentIndexBehavioral!!, 2)
             changeColorStatus()
         }

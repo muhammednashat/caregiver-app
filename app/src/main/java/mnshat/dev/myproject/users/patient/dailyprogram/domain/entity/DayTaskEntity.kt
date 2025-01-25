@@ -15,7 +15,7 @@ import kotlinx.parcelize.Parcelize
 data class DayTaskEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     var spiritual: List<Task?>? = null,
-    val behaviorActivation: List<Task?>? = null,
+    var behaviorActivation: List<Task?>? = null,
     val educational: List<Task?>? = null
 ) : Parcelable
 

@@ -12,10 +12,7 @@ import mnshat.dev.myproject.util.loadImage
 
 class CaregiverHomeFragment : BaseCaregiverFragment<FragmentCaregiverHomeBinding>() {
 
-
-
     override fun getLayout()= R.layout.fragment_caregiver_home
-
 
     override fun initializeViews() {
         super.initializeViews()
@@ -24,11 +21,8 @@ class CaregiverHomeFragment : BaseCaregiverFragment<FragmentCaregiverHomeBinding
     }
 
 
-
     override fun setupClickListener() {
-
         super.setupClickListener()
-
         binding.enter.setOnClickListener {
             findNavController().navigate(R.id.action_caregiverHomeFragment_to_usersFragment)
         }

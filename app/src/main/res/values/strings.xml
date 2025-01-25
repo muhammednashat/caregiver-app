@@ -226,7 +226,7 @@
     <string name="day">Day %1$d </string>
     <string name="current_level">Level %1$d </string>
     <string name="another_challenge">Another challenge</string>
-    <string name="mission">Mission %1$d:  %2$s</string>
+    <string name="mission">}Challenge %1$d:  %2$s</string>
     <string name="take_a_few_minutes_and_write">Take a few minutes and write down what you are grateful for</string>
     <string name="you_must_complete_all_previous_tasks">You must complete all the previous tasks for the day</string>
     <string name="finish">Finish</string>

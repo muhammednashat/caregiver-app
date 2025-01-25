@@ -189,7 +189,7 @@
     <string name="day">اليوم %1$d</string>
     <string name="current_level">المستوى %1$d</string>
     <string name="another_challenge">اقتراح تحدى اخر</string>
-    <string name="mission">المهمة  %1$d: %2$s</string>
+    <string name="mission">التحدى  %1$d: %2$s</string>
     <string name="take_a_few_minutes_and_write">خذ من وقتك بضع دقائق واكتب ما الذى تشعر باﻹمتنان له</string>
     <string name="you_must_complete_all_previous_tasks">يجب عليك انهاء جميع مهام السابقة</string>
     <string name="finish">إنهاء</string>

@@ -22,29 +22,56 @@ import mnshat.dev.myproject.util.RELIGION
 open class BaseDailyProgramFragment : BaseFragment() {
 
      val viewModel: DayTaskViewModel by viewModels()
-
+    private  var _fragment = ""
     lateinit var binding: LayoutTaskBinding
     lateinit var task: Task
     var player: ExoPlayer? = null
     var isSyncNeeded = false
 
-    fun getTaskFromList(index: Int, numberTask: Int) {
+    fun getTaskFromList(index: Int, numberTask: Int ,) {
         showProgressDialog()
         viewModel.listOfTasks.let { listOfTasks ->
              task = listOfTasks[index]
             task.let {
                 val currentLang = viewModel.sharedPreferences.getString(LANGUAGE)
                 if (currentLang != ENGLISH_KEY) {
-                    binding.textTitle.text = getString(R.string.mission, numberTask, task.arTitle)
-                    binding.textDescription.text = Html.fromHtml(task.arDescription)
+                    setText( numberTask,task.arTitle , task.arDescription)
+//
+//                   if (_fragment == "BehaviouralActivationFragment"){
+//                       binding.textTitle.text = getString(R.string.mission, numberTask, task.arTitle)
+//                   }else{
+//                       binding.textTitle.text = task.arTitle
+//                   }
+//                    binding.textDescription.text = Html.fromHtml(task.arDescription)
+
                 } else {
-                    binding.textTitle.text = getString(R.string.mission, numberTask, task.enTitle)
-                    binding.textDescription.text = task.enDescription
+                    setText( numberTask,task.enTitle , task.enDescription)
+
+//                    if (_fragment == "BehaviouralActivationFragment"){
+//                        binding.textTitle.text = getString(R.string.mission, numberTask, task.enTitle)
+//                    }else{
+//                        binding.textTitle.text = task.enTitle
+//                    }
+//                    binding.textDescription.text = Html.fromHtml(task.enDescription)
                 }
                 checkType(task.type)
             }
         }
     }
+
+    private fun setText ( numberTask: Int ,title: String?, description: String?){
+      if (title?.isEmpty() == true){
+          binding.textTitle.visibility = View.GONE
+      }else{
+          if (_fragment == "BehaviouralActivationFragment"){
+              binding.textTitle.text = getString(R.string.mission, numberTask, title)
+          }else{
+              binding.textTitle.text = title
+          }
+      }
+        binding.textDescription.text = Html.fromHtml(description)
+    }
+
     fun changeColorOfTaskImage(status: Int?, root: ConstraintLayout, image: ImageView){
         when(status){
             1 -> {
@@ -67,7 +94,9 @@ open class BaseDailyProgramFragment : BaseFragment() {
             line.visibility = View.GONE
         }
     }
-
+    fun witchFragment(fragment: String) {
+        _fragment = fragment
+    }
     fun getNextTask(index: Int, numberTask: Int):Int {
          player?.pause()
       return  if (viewModel.listOfTasks != null) {

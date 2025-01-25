@@ -68,6 +68,7 @@ class DayTaskRepository @Inject constructor(
         if (!isReligious) {
             dayTask.spiritual = null
             statusDailyProgram.remaining = 2
+            dayTask.behaviorActivation =  dayTask.behaviorActivation?.filter { it?.religion == false }
         }
         val email = sharedPreferences.getString(USER_EMAIL, null.toString())
         log("filterBasedProfile: ${statusDailyProgram.postChecked}")
