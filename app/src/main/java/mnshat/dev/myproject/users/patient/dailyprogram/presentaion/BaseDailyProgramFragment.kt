@@ -36,23 +36,8 @@ open class BaseDailyProgramFragment : BaseFragment() {
                 val currentLang = viewModel.sharedPreferences.getString(LANGUAGE)
                 if (currentLang != ENGLISH_KEY) {
                     setText( numberTask,task.arTitle , task.arDescription)
-//
-//                   if (_fragment == "BehaviouralActivationFragment"){
-//                       binding.textTitle.text = getString(R.string.mission, numberTask, task.arTitle)
-//                   }else{
-//                       binding.textTitle.text = task.arTitle
-//                   }
-//                    binding.textDescription.text = Html.fromHtml(task.arDescription)
-
                 } else {
                     setText( numberTask,task.enTitle , task.enDescription)
-
-//                    if (_fragment == "BehaviouralActivationFragment"){
-//                        binding.textTitle.text = getString(R.string.mission, numberTask, task.enTitle)
-//                    }else{
-//                        binding.textTitle.text = task.enTitle
-//                    }
-//                    binding.textDescription.text = Html.fromHtml(task.enDescription)
                 }
                 checkType(task.type)
             }
