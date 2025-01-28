@@ -37,8 +37,9 @@ class PatientFragment : BaseCaregiverFragment<FragmentPatientBinding>(), ItemCli
 
             if (sharedPreferences.getBoolean(PERMISSION_MASSAGE) ) {
                 navigateToChatWithPatient(sharedPreferences.getString(NAME_PARTNER),sharedPreferences.getString(
-                    ID_PARTNER),sharedPreferences.getString(IMAGE_PARTNER))            }else{
-                showToast(getString(R.string.you_do_not_have_access_to_the_mood))
+                    ID_PARTNER),sharedPreferences.getString(IMAGE_PARTNER))
+            }else{
+                showToast(getString(R.string.you_do_not_have_access_to_send_a_private_message))
             }
         }
 

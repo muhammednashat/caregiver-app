@@ -138,6 +138,8 @@
                            android:layout_height="20dp"
                            android:layout_marginEnd="16dp"
                            android:tint="@color/medium_gray"
+                           android:visibility="gone"
+
                            app:layout_constraintBottom_toBottomOf="@+id/status"
                            app:layout_constraintEnd_toEndOf="parent"
                            app:layout_constraintTop_toTopOf="@+id/status"
@@ -149,6 +151,7 @@
                            android:layout_height="20dp"
                            android:layout_marginEnd="28dp"
                            android:tint="@color/medium_gray"
+                         android:visibility="gone"
                            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView3"
                            app:layout_constraintEnd_toStartOf="@+id/appCompatImageView3"
                            app:layout_constraintTop_toTopOf="@+id/appCompatImageView3"
@@ -159,6 +162,8 @@
                            android:layout_width="20dp"
                            android:layout_height="20dp"
                            android:layout_marginEnd="28dp"
+                           android:visibility="gone"
+
                            android:tint="@color/medium_gray"
                            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView3"
                            app:layout_constraintEnd_toStartOf="@+id/appCompatImageView4"

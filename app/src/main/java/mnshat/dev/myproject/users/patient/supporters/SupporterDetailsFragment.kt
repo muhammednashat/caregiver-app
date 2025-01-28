@@ -16,15 +16,6 @@ import mnshat.dev.myproject.util.STATUS
 import mnshat.dev.myproject.util.log
 
 
-
-//  test with tow devices
-
-
-
-
-
-
-
 class SupporterDetailsFragment : BaseSupporterFragment<FragmentSupporterDetailsBinding>() {
     private lateinit var supporter: RegistrationData
     private lateinit var action: NavDirections

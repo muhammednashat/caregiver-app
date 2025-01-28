@@ -624,5 +624,6 @@
     <string name="the_results_of_your_daily_program_completion_will">ستظهر نتائج انجازك لبرنامجك اليومى خلال ال 30 يوما</string>
     <string name="you_do_not_have_access_to_the_mood">ليس لديك صلاحية للاطلاع على الحالة المزاجية</string>
     <string name="you_do_not_have_permission_to_view_the_daily_program">ليس لديك صلاحية للاطلاع على البرنامج اليومى</string>
+    <string name="you_do_not_have_access_to_send_a_private_message">ليس لديك صلاحية لإرسال رسالة خاصة</string>
 
 </resources>

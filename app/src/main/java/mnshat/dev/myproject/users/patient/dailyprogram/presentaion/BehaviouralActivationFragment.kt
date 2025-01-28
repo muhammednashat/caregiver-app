@@ -34,6 +34,7 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
         binding = LayoutTaskBinding.inflate(inflater, container, false)
         setupClickListener()
         initializeViews()
+
         return binding.root
     }
 

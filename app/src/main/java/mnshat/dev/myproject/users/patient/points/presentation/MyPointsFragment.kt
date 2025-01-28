@@ -5,8 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.gson.Gson
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentMyPointsBinding
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
+import mnshat.dev.myproject.util.CURRENT_DAY
+import mnshat.dev.myproject.util.SharedPreferencesManager
 
 
 class MyPointsFragment : BaseFragment() {
@@ -20,7 +24,7 @@ class MyPointsFragment : BaseFragment() {
     ): View? {
 
         binding = FragmentMyPointsBinding.inflate(inflater, container, false)
-        setUpRecycleriew(2)
+        setUpRecycleriew(getCurrentDayLocally())
         return  binding.root
     }
 
@@ -31,5 +35,14 @@ class MyPointsFragment : BaseFragment() {
         binding.recyclerView.adapter = adapterPoints
 
     }
+    private fun getCurrentDayLocally(): Int {
+        val sharedPreferences = SharedPreferencesManager(requireActivity())
+        val string = sharedPreferences.getString(CURRENT_DAY, null.toString())
+        val gson = Gson()
+        val currentDay = gson.fromJson(string, CurrentDay::class.java)
+        return currentDay.status?.day?.minus(1)!!
+
+    }
+
 
 }

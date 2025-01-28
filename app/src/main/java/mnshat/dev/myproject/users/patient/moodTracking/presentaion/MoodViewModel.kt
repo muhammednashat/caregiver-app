@@ -97,7 +97,8 @@ class MoodViewModel @Inject constructor
     fun getPostMoodIndex(): Int  = postMoodIndex
 
      fun getDayMoodTracking() = liveData<List<DayMoodTracking>?> {
-         val userId = if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER  ) sharedPreferences.getString(USER_ID, "") else sharedPreferences.getString(ID_PARTNER, "")
+         val userId = if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER  ) sharedPreferences.getString(ID_PARTNER, "") else sharedPreferences.getString(USER_ID, "")
+         log(userId)
         getDayTrackingMoodUseCase(userId).collect {
                  emit(it)
         }
