@@ -1,21 +1,56 @@
 package mnshat.dev.myproject.users.patient.profile.presentation
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.Window
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
+import mnshat.dev.myproject.databinding.DialogConfirmUpdateReligionBinding
 import mnshat.dev.myproject.databinding.FragmentEditProfileBinding
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.GENDER
+import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.RELIGION
+import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
 import mnshat.dev.myproject.util.loadImage
+@AndroidEntryPoint
+class EditProfileFragment : BaseFragment() {
 
-class EditProfileFragment : BaseEditProfileFragment<FragmentEditProfileBinding>() {
-    override fun initializeViews() {
+    private lateinit var binding: FragmentEditProfileBinding
+    private val viewModel:ProfileViewModel by viewModels()
+    private var currentLang = ""
+    private lateinit var sharedPreferences: SharedPreferencesManager
+   private  var canChecked = true
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentEditProfileBinding.inflate(inflater, container, false)
+        sharedPreferences = viewModel.sharedPreferences
+        initializeViews()
+        setupClickListener()
+        return binding.root
+    }
 
+
+
+
+     fun initializeViews() {
+         currentLang = viewModel.sharedPreferences.getString(LANGUAGE)
         if (currentLang != ENGLISH_KEY) {
             binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
         }
@@ -33,24 +68,24 @@ class EditProfileFragment : BaseEditProfileFragment<FragmentEditProfileBinding>(
         binding.metadata.textGender.text = getTextGender(sharedPreferences.getInt(GENDER))
     }
 
-    override fun getLayout() = R.layout.fragment_edit_profile
 
 
-    override fun setupClickListener() {
+    private fun setupClickListener() {
         binding.metadata.groupRoot.setOnCheckedChangeListener { group, checkedId ->
-            when (checkedId) {
-                R.id.yes -> {
-                    editReligion(RELIGION,true)
-                }
-                R.id.no -> {
-                    editReligion(RELIGION,false)
+            if (canChecked){
+                when (checkedId) {
+                    R.id.yes -> {
+                        showDialog(RELIGION,true)
+                    }
+                    R.id.no -> {
+                        showDialog(RELIGION,false)
+                    }
                 }
             }
         }
 
 
         binding.icBack.setOnClickListener {
-//            startActivity(Intent(requireActivity(), UserScreensActivity::class.java))
             activity?.finish()
         }
         binding.metadata.name.setOnClickListener {
@@ -64,13 +99,10 @@ class EditProfileFragment : BaseEditProfileFragment<FragmentEditProfileBinding>(
         }
         binding.metadata.gender.setOnClickListener {
             findNavController().navigate(R.id.action_editProfileFragment_to_editGenderFragment)
-
         }
-
     }
 
     private fun editReligion(key: String, needReligion: Boolean) {
-
         if (needReligion != sharedPreferences.getBoolean(RELIGION)){
         showProgressDialog()
         val map = mapOf<String, Any>(key to needReligion)
@@ -85,12 +117,63 @@ class EditProfileFragment : BaseEditProfileFragment<FragmentEditProfileBinding>(
         }
     }
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        binding.lifecycleOwner = this
+    fun getTextAge( age: Int?):String? {
+        return  when(age){
+            1 ->  getString(R.string.young_adulthood)
+            2 ->  getString(R.string.middle_age)
+            3 ->  getString(R.string.older)
+            else -> null
+        }
 
     }
 
+    fun getTextGender(gender: Int?) :String? {
+        return  when(gender){
+            1 -> getString(R.string.male)
+            2 -> getString(R.string.female)
+            else -> null
+        }
+
+    }
+    fun showDialog(key: String, needReligion: Boolean) {
+        sharedDialog = Dialog(requireContext())
+        sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = DialogConfirmUpdateReligionBinding.inflate(layoutInflater)
+        sharedDialog.setContentView(dialogBinding.root)
+        sharedDialog.setCanceledOnTouchOutside(true)
+
+        val window = sharedDialog.window
+        window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            val layoutParams = attributes
+            layoutParams.width = (resources.displayMetrics.widthPixels * 0.9).toInt()
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            attributes = layoutParams
+        }
+        dialogBinding.icClose.setOnClickListener {
+            sharedDialog.dismiss()
+            resetChecked(needReligion)
+        }
+        dialogBinding.btnLogout.setOnClickListener {
+            sharedDialog.dismiss()
+
+            editReligion(RELIGION,needReligion)
+        }
+        dialogBinding.btnCancel.setOnClickListener {
+            sharedDialog.dismiss()
+            resetChecked(needReligion)
+        }
+        sharedDialog.show()
+    }
+
+    private fun resetChecked(boolean: Boolean){
+        canChecked = false
+        if (boolean){
+            binding.metadata.no.isChecked = true
+        }else{
+            binding.metadata.yes.isChecked = true
+        }
+        canChecked = true
+    }
 
 }

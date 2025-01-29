@@ -213,7 +213,7 @@ class CalenderActivitiesRepo @Inject constructor(private val sharedPreferences: 
         isReligious: Boolean,
         activities: List<CalenderActivity>
     ) = if (isReligious) {
-        activities.filter { it.religion == true }
+        activities
     } else {
         activities.filter { it.religion == false }
     }
