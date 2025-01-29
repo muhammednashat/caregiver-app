@@ -16,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.auth.presentation.AuthActivity
+import mnshat.dev.myproject.dataSource.room.AppDatabase
 import mnshat.dev.myproject.databinding.DialogBinding
 import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
 import mnshat.dev.myproject.firebase.FirebaseService
@@ -126,6 +127,7 @@ open class BaseFragment: Fragment() {
     }
 
     private fun logOut(sharedPreferences: SharedPreferencesManager) {
+        AppDatabase.getDatabase(requireActivity()).close()
         val result = requireActivity().deleteDatabase("database-name")
         if (result) {
             log("database deleted")

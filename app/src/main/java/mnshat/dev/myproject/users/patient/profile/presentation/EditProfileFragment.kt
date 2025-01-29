@@ -23,7 +23,6 @@ class EditProfileFragment : BaseEditProfileFragment<FragmentEditProfileBinding>(
         if (sharedPreferences.getBoolean(RELIGION)) {
             binding.metadata.yes.isChecked = true
         }
-
         else {
             binding.metadata.no.isChecked = true
         }

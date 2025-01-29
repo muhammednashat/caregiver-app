@@ -23,7 +23,7 @@ class DayTaskRepository @Inject constructor(
 ) {
 
     suspend fun getCurrentDay(): CurrentDay {
-        log(dao.getAllDayTasks()?.size.toString())
+        log("getCurrentDay ->  "+dao.getAllDayTasks()?.size.toString())
         return if (dao.getAllDayTasks()?.size != 0) {
                 getCurrentDayLocally()
         } else {

@@ -63,11 +63,7 @@ open abstract class AuthBaseFragment<T : ViewDataBinding> : BaseFragment2<T>() {
                     _viewModel.invitationCode.value = userId?.take(8)
                 }
                 _viewModel.id =userId
-//                _viewModel.retrieveTaskDayFromDatabase("1",_viewModel.email.value?.trim()!!,userId!!,sharedPreferences){
-
                     saveUserAdditionalInfo(registrationData) // 8
-
-//                }
             } else {
                 dismissProgressDialog()
                 showToast(userId!!)

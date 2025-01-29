@@ -15,6 +15,7 @@ import mnshat.dev.myproject.util.INVITATION_CODE
 import mnshat.dev.myproject.util.IS_LOGGED
 import mnshat.dev.myproject.util.NAME_PARTNER
 import mnshat.dev.myproject.util.NUMBER_SUPPORTERS
+import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER
@@ -33,7 +34,7 @@ data class RegistrationData(
     var partner: Partner? = null,
     var gender: Int? = null,
     var ageGroup: Int? = null,
-
+    var religion : Boolean? = null,
     var token: String? = null,
     var invitationCode: String? = null,
     var typeOfUser: String? = null,
@@ -63,6 +64,7 @@ data class RegistrationData(
         sharedPreferences.storeInt(AGE_GROUP, ageGroup)
         sharedPreferences.storeBoolean(IS_LOGGED, true)
         sharedPreferences.storeString(USER_ID, id)
+
         sharedPreferences.storeString(USER_IMAGE, imageUser)
         sharedPreferences.storeString(NAME_PARTNER, partner?.namePartner)
         sharedPreferences.storeString(ID_PARTNER, partner?.idPartner)
@@ -70,6 +72,7 @@ data class RegistrationData(
         sharedPreferences.storeString(IMAGE_PARTNER, partner?.imagePartner)
         sharedPreferences.storeString(INVITATION_CODE, invitationCode)
         sharedPreferences.storeBoolean(CODE_USED, codeUsed)
+        sharedPreferences.storeBoolean(RELIGION, religion)
         sharedPreferences.storeString(BASE_CODE, baseCode)
         sharedPreferences.storeInt(NUMBER_SUPPORTERS, numberSupporters)
 

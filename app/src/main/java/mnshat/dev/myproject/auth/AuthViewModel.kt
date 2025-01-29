@@ -20,6 +20,7 @@ import mnshat.dev.myproject.util.NAME_PARTNER
 import mnshat.dev.myproject.util.PERMISSION_MASSAGE
 import mnshat.dev.myproject.util.PERMISSION_MOOD
 import mnshat.dev.myproject.util.PERMISSION_POINTS
+import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER_EMAIL
@@ -173,6 +174,7 @@ class AuthViewModel(
         sharedPreferences.storeString(USER_NAME, name.value)
         sharedPreferences.storeBoolean(HAS_PARTNER, false)
         sharedPreferences.storeBoolean(IS_LOGGED, true)
+        sharedPreferences.storeBoolean(RELIGION,true)
         if ( typeOfUser.value == CAREGIVER){
             sharedPreferences.storeString(NAME_PARTNER, partner?.namePartner)
             sharedPreferences.storeString(ID_PARTNER, partner?.idPartner)
@@ -200,6 +202,7 @@ class AuthViewModel(
             numberSupporters = 0,
             hasPartner = false,
             currentTaskDay = 1,
+            religion = true
         )
     }
 
