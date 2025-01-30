@@ -29,6 +29,7 @@ class EducationalFragment : BaseDailyProgramFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = LayoutTaskBinding.inflate(inflater, container, false)
+        hideSpiritualIcon(binding.constraintTask2, binding.line1)
         setupClickListener()
         showProgressDialog()
         viewModel.get()
@@ -72,7 +73,6 @@ class EducationalFragment : BaseDailyProgramFragment() {
             changeColorStatus()
         }
 
-        hideSpiritualIcon(binding.constraintTask2, binding.line1)
     }
 
 

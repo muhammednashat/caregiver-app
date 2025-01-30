@@ -62,7 +62,6 @@ object FirebaseService {
             } else {
                 callBack("")
             }
-
         }
     }
 

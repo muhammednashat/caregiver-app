@@ -46,9 +46,6 @@ class EditProfileFragment : BaseFragment() {
         return binding.root
     }
 
-
-
-
      fun initializeViews() {
          currentLang = viewModel.sharedPreferences.getString(LANGUAGE)
         if (currentLang != ENGLISH_KEY) {
@@ -110,6 +107,8 @@ class EditProfileFragment : BaseFragment() {
             if (it) {
                 showToast("تم تحديث الحالة الدينية")
                 sharedPreferences.storeBoolean(key, needReligion!!)
+                viewModel.resetCurrentDay()
+
             } else {
                 showToast(getString(R.string.update_failed))
             }
@@ -154,9 +153,8 @@ class EditProfileFragment : BaseFragment() {
             sharedDialog.dismiss()
             resetChecked(needReligion)
         }
-        dialogBinding.btnLogout.setOnClickListener {
+        dialogBinding.btnOk.setOnClickListener {
             sharedDialog.dismiss()
-
             editReligion(RELIGION,needReligion)
         }
         dialogBinding.btnCancel.setOnClickListener {

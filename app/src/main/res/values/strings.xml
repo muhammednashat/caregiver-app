@@ -623,6 +623,7 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="you_do_not_have_access_to_the_mood">You do not have access to the mood</string>
     <string name="you_do_not_have_permission_to_view_the_daily_program">You do not have permission to view the daily program</string>
     <string name="you_do_not_have_access_to_send_a_private_message">you do not have access to send a private message</string>
+    <string name="will_reset_the_current_day_from_beginning">will reset the current day from beginning</string>
 
 
 </resources>

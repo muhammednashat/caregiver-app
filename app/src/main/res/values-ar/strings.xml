@@ -625,5 +625,6 @@
     <string name="you_do_not_have_access_to_the_mood">ليس لديك صلاحية للاطلاع على الحالة المزاجية</string>
     <string name="you_do_not_have_permission_to_view_the_daily_program">ليس لديك صلاحية للاطلاع على البرنامج اليومى</string>
     <string name="you_do_not_have_access_to_send_a_private_message">ليس لديك صلاحية لإرسال رسالة خاصة</string>
+    <string name="will_reset_the_current_day_from_beginning">سيتم إعادة تعيين اليوم الحالي من البداية</string>
 
 </resources>
