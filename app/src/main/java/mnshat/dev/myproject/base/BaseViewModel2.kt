@@ -89,99 +89,9 @@ fun isConnected():Boolean{
         currentLang.value = lang
     }
 
-    fun retrieveTaskDayFromDatabase(
-        day: String,
-        email: String,
-        userId: String,
-        sharedPreferences: SharedPreferencesManager,
-        callBack: () -> Unit
-    ) {
-        val db = Firebase.firestore
-        db.collection("daily_programs").document(day).get()
-            .addOnSuccessListener { document ->
-                if (document != null && document.exists()) {
-                    val dayTask = document.toObject(DayTask::class.java)
-                    filterBasedOnProfilePreferences(
-                        dayTask!!,
-                        userId,
-                        day,
-                        email,
-                        sharedPreferences
-                    ) { // 6
-                        log("retrieveTaskDayFromDatabase  1")
-
-                        callBack() // 7
-                    }
-                    log("retrieveTaskDayFromDatabase 2")
-
-                } else {
-                    callBack()
-                }
-                log("retrieveTaskDayFromDatabase 4")
-
-            }
-            .addOnFailureListener { exception ->
-                log("retrieveTaskDayFromDatabase 5")
-
-                callBack()
-            }
-    }
-
-    private fun filterBasedOnProfilePreferences(
-        dayTask: DayTask,
-        userId: String,
-        day: String,
-        email: String,
-        sharedPreferences: SharedPreferencesManager,
-        callBack: () -> Unit
-    ) {
-       val statusDailyProgram =  StatusDailyProgram2(day = day.toInt())
-        val isReligious = sharedPreferences.getBoolean(RELIGION)
-        if (!isReligious) {
-            dayTask.spiritual = null
-            statusDailyProgram.remaining = 2
-        }
 
 
-        storeCurrentTaskRemotely(dayTask, userId, email, sharedPreferences,statusDailyProgram) {
 
-            callBack()  //5
-        }
-
-
-    }
-
-    private fun storeCurrentTaskRemotely(
-        dayTask: DayTask,
-        userId: String,
-        email: String,
-        sharedPreferences: SharedPreferencesManager,
-        statusDailyProgram:StatusDailyProgram2,
-        callBack: () -> Unit
-
-    ) {
-        FirebaseService.storeCurrentTaskRemotely(
-            userId,
-            CurrentTask2(email, dayTask,statusDailyProgram)
-        ) {
-            it?.let {
-                storeCurrentTaskLocally(it, sharedPreferences) { // 2
-                    callBack() // 3
-                }
-            }
-        }
-
-    }
-
-    fun storeCurrentTaskLocally(
-        currentTask: CurrentTask2,
-        sharedPreferences: SharedPreferencesManager,
-        callBack: () -> Unit
-    ) {
-        log("storeCurrentTaskLocally ")
-        sharedPreferences.storeObject(CURRENT_DAY, currentTask)
-        callBack()  // 1
-    }
 
 
 }

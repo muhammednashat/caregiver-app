@@ -1,7 +1,9 @@
 package mnshat.dev.myproject.auth
 
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.launch
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentLoginBinding
 import mnshat.dev.myproject.util.AGE_GROUP
@@ -34,12 +36,13 @@ class LoginFragment2 : AuthBaseFragment<FragmentLoginBinding>() {
             if (_viewModel.validToLogin(requireContext())){
              if(_viewModel.isConnected()){
                  showProgressDialog()
-                 login{
+                 lifecycleScope.launch { login{
                      if (it){
                          updateRegistrationInfoLocally()
                      }
-                 }
-             }else{
+                 }}
+             }
+             else{
                  showNoInternetSnackBar(view)
              }
 

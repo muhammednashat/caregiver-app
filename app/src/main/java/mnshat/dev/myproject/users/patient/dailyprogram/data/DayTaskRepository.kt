@@ -3,6 +3,7 @@ package mnshat.dev.myproject.users.patient.dailyprogram.data
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
+import kotlinx.coroutines.tasks.await
 import mnshat.dev.myproject.users.patient.dailyprogram.data.daos.DayTaskDao
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.DayTaskEntity
@@ -41,7 +42,6 @@ class DayTaskRepository @Inject constructor(
          log("currentDay: $currentDay")
          updateCurrentDayLocally(currentDay)
          updateCurrentDayRemotely(currentDay)
-
         return getCurrentDayLocally()
     }
 
@@ -98,6 +98,14 @@ class DayTaskRepository @Inject constructor(
         val userId = sharedPreferences.getString(USER_ID, null.toString())
         dailyProgramStates.child(userId).setValue(currentDay)
     }
+
+    suspend fun getCurrentDayRemotely(userId: String): CurrentDay {
+        val firebaseDatabase = FirebaseDatabase.getInstance()
+        val dailyProgramStates = firebaseDatabase.getReference(DAILY_PROGRAM_STATES)
+//        val userId = sharedPreferences.getString(USER_ID, null.toString())
+        return dailyProgramStates.child(userId).get().await().value as CurrentDay
+      }
+
 
 
 }
