@@ -45,13 +45,13 @@ class MyApplication: Application() {
     }
 
     private fun onUserDataChanged(sharedPreferences: SharedPreferencesManager) {
-
        val databaseRef = FirebaseDatabase.getInstance().getReference()
            .child(USER_PROFILES)
            .child(sharedPreferences.getString(USER_ID, ""))
            databaseRef.addValueEventListener(object:ValueEventListener{
            override fun onDataChange(snapshot: DataSnapshot) {
                val userProfile = snapshot.getValue(RegistrationData::class.java)
+               log(userProfile?.permissions?.allowMoodTrackingDetails.toString())
                sharedPreferences.storeBoolean(PERMISSION_MOOD,userProfile?.permissions?.allowMoodTrackingDetails)
                sharedPreferences.storeBoolean(PERMISSION_MASSAGE,userProfile?.permissions?.allowPrivateMessages)
                sharedPreferences.storeBoolean(PERMISSION_POINTS,userProfile?.permissions?.allowDailyProgramDetails)

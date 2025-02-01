@@ -35,6 +35,7 @@ class SupportersFragment : BaseSupporterFragment<FragmentSupportersBinding>() {
          binding.recyclerSupporters.adapter = adapter
         FirebaseService.listenForUserDataChanges {
             it?.let {
+                log(it?.supports?.get(0)!!.toString())
                 it.storeDataLocally(sharedPreferences)
 
                 if (sharedPreferences.getBoolean(HAS_PARTNER)){

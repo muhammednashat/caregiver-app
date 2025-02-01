@@ -58,12 +58,11 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
             if (viewModel.status.behavioral != 1){
                 showDialogAskingForCompletion()
             }else{
-
                 startActivity(Intent(requireContext(), PostMoodTrackingActivity::class.java))
                 activity?.finish()
-
             }
         }
+
         binding.icPause.setOnClickListener {
             showTemporallyDialog(
                 getString(R.string.do_you_want_to_pause_this_task_temporarily),
