@@ -17,6 +17,7 @@ import mnshat.dev.myproject.util.ID_PARTNER
 import mnshat.dev.myproject.util.IMAGE_PARTNER
 import mnshat.dev.myproject.util.NAME_PARTNER
 import mnshat.dev.myproject.util.TYPE_OF_USER
+import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
@@ -71,7 +72,7 @@ class ChooseUserToChatFragment : BaseBottomSheetDialogFragment2<FragmentChooseUs
 
 
         } else {
-            getSupporters()
+            retrieveUsers()
             binding.itemUser.visibility = View.GONE
             binding.recyclerView.visibility = View.VISIBLE
 
@@ -92,27 +93,17 @@ class ChooseUserToChatFragment : BaseBottomSheetDialogFragment2<FragmentChooseUs
         viewModel = ViewModelProvider(requireActivity(), factory)[ChatViewModel::class.java]
     }
 
-    private fun getSupporters(){
-
-        FirebaseService.listenForUserDataChanges {
-            it?.let {
-                it.storeDataLocally(sharedPreferences)
-                if (sharedPreferences.getBoolean(HAS_PARTNER)){
-                    FirebaseService.retrieveUsersByEmails(it.supports){
-                        it?.let {
-                            adapter = SupportersChattingAdapter(it,requireActivity(),this)
-                            binding.recyclerView.adapter =adapter
-                        }
-                    }
-                }
-
-                else{
-                    log("No Supporter ")
+    private fun retrieveUsers() {
+        FirebaseService.retrieveUser(sharedPreferences.getString(USER_ID)){ user ->
+            user?.storeDataLocally(sharedPreferences)
+            FirebaseService.retrieveUsers(user?.supports){
+                it?.let {
+                    adapter = SupportersChattingAdapter(it,requireActivity(),this)
+                    binding.recyclerView.adapter =adapter
                 }
                 dismissProgressDialog()
             }
         }
-
     }
 
     override fun onItemClicked(name: String, idPartner: String, urlImage: String) {

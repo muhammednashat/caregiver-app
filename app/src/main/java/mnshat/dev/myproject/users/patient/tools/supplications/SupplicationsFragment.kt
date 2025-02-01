@@ -20,6 +20,7 @@ import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
+import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.SUPPLICATIONS
 import mnshat.dev.myproject.util.data.getListHands
 import mnshat.dev.myproject.util.data.getListSebha
@@ -115,9 +116,6 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
         return when (menuItem.itemId) {
             R.id.menu_sharing -> {
                 navigateToChooseSupporter()
-
-
-
                 true
             }
             else -> false
@@ -125,9 +123,15 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
 }
 
     private fun navigateToChooseSupporter() {
-        val fragment = ChooseSupporterFragment()
-        fragment.initOnConfirmButtonClicked(this)
-        fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
+        if (sharedPreferences.getBoolean(HAS_PARTNER)){
+            val fragment = ChooseSupporterFragment()
+            fragment.initOnConfirmButtonClicked(this)
+            fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
+        }else{
+            showToast(getString(R.string.no_supporters_text))
+        }
+
+
     }
 
     private fun showFullTextSupplicationDialog(supplicationText:String) {

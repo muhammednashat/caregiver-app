@@ -17,6 +17,8 @@ import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.NUMBER_SUPPORTERS
+import mnshat.dev.myproject.util.USER_EMAIL
+import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.log
 
 
@@ -26,50 +28,49 @@ class SupportersFragment : BaseSupporterFragment<FragmentSupportersBinding>() {
     override fun initializeViews() {
         showProgressDialog()
 
-        adapter = SupportersAdapter(requireActivity(), SupporterListener {
-
-            val action = SupportersFragmentDirections.actionSupportesFragmentToSupporterDetailsFragment(it)
-            findNavController().navigate(action)
-
-        })
-         binding.recyclerSupporters.adapter = adapter
-        FirebaseService.listenForUserDataChanges {
-            it?.let {
-                log(it?.supports?.get(0)!!.toString())
-                it.storeDataLocally(sharedPreferences)
-
-                if (sharedPreferences.getBoolean(HAS_PARTNER)){
-
-                    FirebaseService.retrieveUsersByEmails(it.supports){
-                        it?.let {
-                            log("${it.toString()} ")
-                 adapter.submitList(it)
-                        }
-
-                    }
-                }
-
-                else{
-                    log("No Supporter ")
-                }
-
-                isHasSupporter()
-                dismissProgressDialog()
-            }
+        initAdapter()
+        if (sharedPreferences.getBoolean(HAS_PARTNER)){
+            retrieveUsers()
+        }else{
+            showRecycler(false)
         }
+
         if (currentLang != ENGLISH_KEY) {
             binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
         }
     }
 
-    private fun isHasSupporter() {
-        if (sharedPreferences.getBoolean(HAS_PARTNER)) {
+    private fun initAdapter() {
+        adapter = SupportersAdapter(requireActivity(), SupporterListener {
+            val action = SupportersFragmentDirections.actionSupportesFragmentToSupporterDetailsFragment(it)
+            findNavController().navigate(action)
+        })
+        binding.recyclerSupporters.adapter = adapter
+    }
+
+    private fun retrieveUsers() {
+            FirebaseService.retrieveUser(sharedPreferences.getString(USER_ID)){ user ->
+                user?.storeDataLocally(sharedPreferences)
+                FirebaseService.retrieveUsers(user?.supports){
+                    it?.let {
+                        adapter.submitList(it)
+                        showRecycler(true)
+                    }
+                }
+            }
+    }
+
+    private fun showRecycler(boolean: Boolean) {
+        dismissProgressDialog()
+
+        if (boolean) {
             binding.noSupporters.visibility = View.GONE
             binding.supporters.visibility = View.VISIBLE
         } else {
             binding.supporters.visibility = View.GONE
             binding.noSupporters.visibility = View.VISIBLE
         }
+
     }
 
 

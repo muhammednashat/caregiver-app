@@ -20,6 +20,7 @@ import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.GRATITUDE
+import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.getGratitudeQuestionsList
 import mnshat.dev.myproject.util.isValidInput
 import mnshat.dev.myproject.util.log
@@ -141,7 +142,11 @@ private fun addGratitude(gratitude: Gratitude) {
         sharedDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         dialogBinding.btOk.setOnClickListener {
-            navigateToChooseSupporter()
+            if (sharedPreferences.getBoolean(HAS_PARTNER)){
+                navigateToChooseSupporter()
+            }else{
+                showToast(getString(R.string.no_supporters_text))
+            }
         }
 
         dialogBinding.icClose.setOnClickListener {

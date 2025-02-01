@@ -16,6 +16,7 @@ import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.util.AUDIO
+import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.LIBRARY
 import mnshat.dev.myproject.util.loadImage
@@ -40,9 +41,13 @@ class AudioFragment : BaseLibraryFragment<FragmentAudioBinding>(), OnSendButtonC
             findNavController().popBackStack()
         }
         binding.share.setOnClickListener {
-            val fragment = ChooseSupporterFragment()
-            fragment.initOnConfirmButtonClicked(this)
-            fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
+            if (sharedPreferences.getBoolean(HAS_PARTNER)){
+                val fragment = ChooseSupporterFragment()
+                fragment.initOnConfirmButtonClicked(this)
+                fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
+            }else{
+                showToast(getString(R.string.no_supporters_text))
+            }
         }
 
         binding.playButton.setOnClickListener {

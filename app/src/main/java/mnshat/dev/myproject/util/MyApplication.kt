@@ -39,6 +39,7 @@ class MyApplication: Application() {
              }
 
              override fun onCancelled(error: DatabaseError) {
+
              }
 
          })
@@ -55,6 +56,7 @@ class MyApplication: Application() {
                sharedPreferences.storeBoolean(PERMISSION_MOOD,userProfile?.permissions?.allowMoodTrackingDetails)
                sharedPreferences.storeBoolean(PERMISSION_MASSAGE,userProfile?.permissions?.allowPrivateMessages)
                sharedPreferences.storeBoolean(PERMISSION_POINTS,userProfile?.permissions?.allowDailyProgramDetails)
+               sharedPreferences.storeBoolean(HAS_PARTNER,userProfile?.hasPartner ?: false)
                sharedPreferences.storeObject(USER_PROFILES,userProfile)
            }
 

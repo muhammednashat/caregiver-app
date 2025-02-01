@@ -9,6 +9,7 @@ import mnshat.dev.myproject.interfaces.ItemMessagesListClicked
 import mnshat.dev.myproject.model.Messages
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.ENGLISH_KEY
+import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.ID_PARTNER
 import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER_ID
@@ -34,17 +35,26 @@ class MessagesListFragment : BaseChattingFragment<FragmentMessagesListBinding>()
     override fun setupClickListener() {
         super.setupClickListener()
 
-        binding.icBack.setOnClickListener{
-
-          }
         binding.btStartMessaging.setOnClickListener {
-            ChooseUserToChatFragment().show(childFragmentManager, ChooseUserToChatFragment::class.java.name)
+            chooseUserToChatWith()
         }
         binding.icAdd.setOnClickListener {
-            ChooseUserToChatFragment().show(childFragmentManager, ChooseUserToChatFragment::class.java.name)
+         chooseUserToChatWith()
         }
 
     }
+
+    private fun chooseUserToChatWith() {
+        if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER) {
+            ChooseUserToChatFragment().show(childFragmentManager, ChooseUserToChatFragment::class.java.name)
+        } else {
+            if (sharedPreferences.getBoolean(HAS_PARTNER)){
+                ChooseUserToChatFragment().show(childFragmentManager, ChooseUserToChatFragment::class.java.name)
+            }else{
+                showToast(getString(R.string.no_supporters_text))
+            }
+        }    }
+
     override fun observeViewModel() {
         super.observeViewModel()
         observeGettingMessagesList()

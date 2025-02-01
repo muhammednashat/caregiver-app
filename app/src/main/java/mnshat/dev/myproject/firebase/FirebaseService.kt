@@ -39,7 +39,6 @@ object FirebaseService {
     val dailyProgramStates = firebaseDatabase.getReference(DAILY_PROGRAM_STATES)
      val libraryContents = firebaseDatabase.getReference(LIBRARY_CONTENTS)
 
-
     private val fireAuth = FirebaseAuth.getInstance()
     private val currentUser = fireAuth.currentUser
     val userEmail = currentUser?.email
@@ -114,35 +113,6 @@ object FirebaseService {
         })
     }
 
-    fun retrieveUsersByEmails(emails: List<String>?, callback: (List<RegistrationData>?) -> Unit) {
-        emails?.let {
-            val query = userProfiles.orderByChild(USER_EMAIL).apply {
-                emails?.forEach { email ->
-                    equalTo(email)
-                }
-            }
-
-            query.addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    val userList = mutableListOf<RegistrationData>()
-
-                    for (userSnapshot in dataSnapshot.children) {
-                        val user = userSnapshot.getValue(RegistrationData::class.java)
-                        user?.let {
-                            if (it.email != userEmail) {
-                                userList.add(it)
-                            }
-                        }
-                    }
-                    callback(userList.takeIf { it.isNotEmpty() })
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-                    callback(null)
-                }
-            })
-        }
-    }
 
 
     fun changeCurrentPassword(
@@ -236,6 +206,39 @@ object FirebaseService {
     }
 
 
+    fun retrieveUser(userId:String,callBack: (RegistrationData?) -> Unit) {
+        log(userId)
+        userProfiles.child(userId).get().addOnSuccessListener { dataSnapShot->
+            val user = dataSnapShot.getValue(RegistrationData::class.java)
+            if (user != null) {
+                log(user.email!!)
+                callBack(user)
+            } else {
+                callBack(null)
+            }
+        }
+    }
+
+    fun retrieveUsers(emails: List<String>?, callback: (List<RegistrationData>?) -> Unit){
+        userProfiles.get().addOnSuccessListener { snapshot ->
+            val matchingProfiles = snapshot.children.filter { dataSnapshot ->
+                val email = dataSnapshot.child(USER_EMAIL).getValue(String::class.java)
+                log("email - > $email")
+                emails?.contains(email) == true
+            }
+            val userList = mutableListOf<RegistrationData>()
+
+            matchingProfiles.forEach { profile ->
+                userList.add(profile.getValue(RegistrationData::class.java)!!)
+                println("Matching user: ${profile.value}")
+            }
+            callback(userList)
+
+        }
+            .addOnFailureListener { e ->
+                println("Error fetching data: ${e.message}")
+            }
+    }
     fun listenForUserDataChanges(callBack: (RegistrationData?) -> Unit) {
         val userListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -246,7 +249,6 @@ object FirebaseService {
                     callBack(null)
                 }
             }
-
             override fun onCancelled(databaseError: DatabaseError) {
                 callBack(null)
                 Log.e("TAG", "loadUserData:onCancelled ${databaseError.toException()}")

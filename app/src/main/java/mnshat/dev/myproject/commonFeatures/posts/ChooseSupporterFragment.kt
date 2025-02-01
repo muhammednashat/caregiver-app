@@ -10,6 +10,7 @@ import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.HAS_PARTNER
+import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.log
 
 // ToDo check it  , Fragment ChooseSupporterFragment{ea89e49} (8b694ba6-c9a2-43aa-85ca-30a6d9987f3f) not attached to an activity.
@@ -24,7 +25,8 @@ private lateinit var chooseAdapter: ChooseSupporterAdapter
             binding.close.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
             binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
         }
-       retrieveSupporters()
+
+        retrieveUsers()
     }
 
     override fun setupClickListener() {
@@ -43,22 +45,13 @@ private lateinit var chooseAdapter: ChooseSupporterAdapter
         this.onSendButtonClicked = onSendButtonClicked
     }
 
-    private fun retrieveSupporters() {
-        FirebaseService.listenForUserDataChanges {
-            it?.let {
-                it.storeDataLocally(sharedPreferences)
-                if (sharedPreferences.getBoolean(HAS_PARTNER)){
-                    FirebaseService.retrieveUsersByEmails(it.supports){
-                        it?.let {
-                            log("${it.toString()} ")
-                            updateUi(it)
-                        }
-                    }
+    private fun retrieveUsers() {
+        FirebaseService.retrieveUser(sharedPreferences.getString(USER_ID)){ user ->
+            user?.storeDataLocally(sharedPreferences)
+            FirebaseService.retrieveUsers(user?.supports){
+                it?.let {
+                    updateUi(it)
                 }
-                else{
-                    log("No Supporter ")
-                }
-                dismissProgressDialog()
             }
         }
     }
