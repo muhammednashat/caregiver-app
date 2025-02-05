@@ -129,11 +129,6 @@ class HomeFragment : BaseFragment() {
     }
 
 
-
-    // Register the permissions callback, which handles the user's response to the
-// system permissions dialog. Save the return value, an instance of
-// ActivityResultLauncher. You can use either a val, as shown in this snippet,
-// or a lateinit var in your onAttach() or onCreate() method.
     val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
@@ -145,7 +140,6 @@ class HomeFragment : BaseFragment() {
 
             }
         }
-
 
 
 
