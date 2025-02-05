@@ -1,10 +1,15 @@
 package mnshat.dev.myproject.users.patient.main.presentaion
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,6 +23,7 @@ import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramA
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
 import mnshat.dev.myproject.util.loadImage
+import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment() {
@@ -25,6 +31,9 @@ class HomeFragment : BaseFragment() {
 
     private lateinit var binding: FragmentUserHomeBinding
     private val viewModel: PatientViewModel by viewModels()
+
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +43,31 @@ class HomeFragment : BaseFragment() {
         setupClickListener()
         initializeViews()
         observeViewModel()
+        isPermissionGranted()
         return binding.root
+    }
+
+    private fun isPermissionGranted() {
+        when {
+
+            ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.POST_NOTIFICATIONS)
+                == PackageManager.PERMISSION_GRANTED -> {
+               log("the Permission is granted")
+              }
+            ActivityCompat.shouldShowRequestPermissionRationale(
+                requireActivity(), Manifest.permission.POST_NOTIFICATIONS) -> {
+                log("shouldShowRequestPermissionRationale")
+
+            }
+            else -> {
+                // You can directly ask for the permission.
+                // The registered ActivityResultCallback gets the result of this request.
+                requestPermissionLauncher.launch(
+                    Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
+
+        ContextCompat.checkSelfPermission(requireActivity(),Manifest.permission.POST_NOTIFICATIONS)
     }
 
     override fun onStart() {
@@ -94,4 +127,29 @@ class HomeFragment : BaseFragment() {
 
         }
     }
+
+
+
+    // Register the permissions callback, which handles the user's response to the
+// system permissions dialog. Save the return value, an instance of
+// ActivityResultLauncher. You can use either a val, as shown in this snippet,
+// or a lateinit var in your onAttach() or onCreate() method.
+    val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                // Permission is granted. Continue the action or workflow in your
+                // app.
+            } else {
+
+            }
+        }
+
+
+
+
+
+
+
 }
