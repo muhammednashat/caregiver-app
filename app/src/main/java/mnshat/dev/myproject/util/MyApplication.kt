@@ -1,15 +1,17 @@
 package mnshat.dev.myproject.util
 
 import android.app.Application
-import android.widget.NumberPicker.OnValueChangeListener
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import com.google.android.exoplayer2.util.NotificationUtil
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import dagger.hilt.android.HiltAndroidApp
+import mnshat.dev.myproject.R
 import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
-import mnshat.dev.myproject.util.SharedPreferencesManager
 
 @HiltAndroidApp
 class MyApplication: Application() {
@@ -18,7 +20,8 @@ class MyApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
-    sharedPreferences = SharedPreferencesManager(applicationContext)
+        createChannel(getString(R.string.encouragement_messages), ENCOURAGEMENT_CHANNEL_ID, "", NotificationUtil.IMPORTANCE_DEFAULT)
+        sharedPreferences = SharedPreferencesManager(applicationContext)
     onUserDataChanged(sharedPreferences)
     if (sharedPreferences.getString(TYPE_OF_USER ) == CAREGIVER){
         observeUserDailyProgramStates(sharedPreferences.getString(ID_PARTNER))
@@ -26,6 +29,19 @@ class MyApplication: Application() {
         observeUserDailyProgramStates(sharedPreferences.getString(USER_ID))
     }
 
+    }
+
+
+    private fun createChannel(
+        name: String,
+        channelId: String,
+        descriptionText: String,
+        importance: Int
+    ) {
+        val mChannel = NotificationChannel(channelId, name, importance)
+        mChannel.description = descriptionText
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(mChannel)
     }
 
     private fun observeUserDailyProgramStates(userId: String) {

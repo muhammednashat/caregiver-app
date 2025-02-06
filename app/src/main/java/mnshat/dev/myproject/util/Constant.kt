@@ -67,3 +67,5 @@ const val LIBRARY = "library"
 const val SUPPLICATIONS = "supplications"
 const val GRATITUDE = "gratitude"
 const val   POSTS = "posts"
+
+const val ENCOURAGEMENT_CHANNEL_ID ="encouragementChannelId"

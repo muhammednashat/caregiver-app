@@ -15,37 +15,29 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.users.patient.main.presentaion.UserScreensActivity
+import mnshat.dev.myproject.util.ENCOURAGEMENT_CHANNEL_ID
 import mnshat.dev.myproject.util.SplashActivity
 
 class MyFirebaseMessagingService: FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
+
     }
 
-    fun createNotificationChannel(){
-            val name = "name "
-            val descriptionText = "descrip"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val mChannel = NotificationChannel("CHANNEL_ID", name, importance)
-            mChannel.description = descriptionText
-            val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(mChannel)
-    }
+
 
     @SuppressLint("MissingPermission")
     fun sendNotification(context: Context){
-        // Create an explicit intent for an Activity in your app.
         val intent = Intent(this, UserScreensActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
-        val builder = NotificationCompat.Builder(this, "CHANNEL_ID")
+        val builder = NotificationCompat.Builder(this, ENCOURAGEMENT_CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_user)
             .setContentTitle("My notification")
             .setContentText("Hello World!")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            // Set the intent that fires when the user taps the notification.
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 

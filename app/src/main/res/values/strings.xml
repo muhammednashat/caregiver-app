@@ -612,8 +612,7 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="activity_30">Organise or participate in charitable activities such as food distribution or volunteer work.</string>
     <string name="activity_31">Listen to the Quran recitations or calming Nasheeds (Islamic songs).</string>
     <string name="activity_32">Attend Quran study circles or lectures at your local mosque or community centre.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="change_language">Change Language</string>
     <string name="you_have_completed_your_entire_plan_for_the_day_great_job">You have completed your entire plan for the day. Great job</string>
     <string name="no_internet_connection">No internet connection</string>
@@ -624,6 +623,8 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="you_do_not_have_permission_to_view_the_daily_program">You do not have permission to view the daily program</string>
     <string name="you_do_not_have_access_to_send_a_private_message">you do not have access to send a private message</string>
     <string name="will_reset_the_current_day_from_beginning">will reset the current day from beginning</string>
+    <string name="encouragement_notification_channel_id">Encouragement messages</string>
+    <string name="encouragement_messages">Encouragement messages</string>
 
 
 </resources>
