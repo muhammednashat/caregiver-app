@@ -21,6 +21,10 @@ class MyApplication: Application() {
     override fun onCreate() {
         super.onCreate()
         createChannel(getString(R.string.encouragement_messages), ENCOURAGEMENT_CHANNEL_ID, "", NotificationUtil.IMPORTANCE_DEFAULT)
+
+        createChannel(getString(R.string.encouragement_messages), ENCOURAGEMENT_CHANNEL_ID, "", NotificationUtil.IMPORTANCE_DEFAULT)
+
+
         sharedPreferences = SharedPreferencesManager(applicationContext)
     onUserDataChanged(sharedPreferences)
     if (sharedPreferences.getString(TYPE_OF_USER ) == CAREGIVER){

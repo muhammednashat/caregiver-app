@@ -86,7 +86,9 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx:22.1.2")
     implementation("com.google.firebase:firebase-database-ktx:20.2.2")
     implementation("com.google.firebase:firebase-firestore-ktx:24.8.1")
+
     implementation("com.google.firebase:firebase-messaging:23.4.1")
+
     implementation("com.google.firebase:firebase-inappmessaging-display:20.4.1")
     implementation("com.firebaseui:firebase-ui-auth:8.0.2")
     implementation("com.firebaseui:firebase-ui-database:8.0.2")

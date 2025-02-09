@@ -25,20 +25,6 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
     }
     val TAG  = "TAG"
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
-        // [START_EXCLUDE]
-        // There are two types of messages data messages and notification messages. Data messages are handled
-        // here in onMessageReceived whether the app is in the foreground or background. Data messages are the type
-        // traditionally used with GCM. Notification messages are only received here in onMessageReceived when the app
-        // is in the foreground. When the app is in the background an automatically generated notification is displayed.
-        // When the user taps on the notification they are returned to the app. Messages containing both notification
-        // and data payloads are treated as notification messages. The Firebase console always sends notification
-        // messages. For more see: https://firebase.google.com/docs/cloud-messaging/concept-options
-        // [END_EXCLUDE]
-
-
-        // c33_2ED4Tj2O_9dWw-5Qzu:APA91bH6bMY291t3FzVja4DSJ1qtdoytPaJatDYRqLHKEEr7dDdfTq6D2Bgulix78inpQR0LGtOBSCGl-Fq04SpChdEjmuIkjXvlQ31GUyb-amcj8xnnOjc
-
-        // Check if message contains a data payload.
         if (remoteMessage.data.isNotEmpty()) {
 
             Log.e(TAG, "Message data payload: ${remoteMessage.data}")
@@ -64,6 +50,7 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
 
     @SuppressLint("MissingPermission")
     fun sendNotification(text:String){
+
         val intent = Intent(this, UserScreensActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
