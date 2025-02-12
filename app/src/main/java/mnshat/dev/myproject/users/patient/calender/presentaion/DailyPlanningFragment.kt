@@ -26,6 +26,7 @@ class DailyPlanningFragment : BaseFragment(),OnDayClickListener {
     ): View{
         binding = FragmentDailyPlanningBinding.inflate(inflater, container, false)
         binding.calendarView.selectedDate = viewModel.today
+
         viewModel.getDays()
         setListeners()
         observing()
