@@ -1,17 +1,27 @@
 package mnshat.dev.myproject.users.patient.calender.presentaion
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequest
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.WorkRequest
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentDailyPlanningBinding
+import mnshat.dev.myproject.util.MyWorkManager
 import mnshat.dev.myproject.util.log
+import java.util.Calendar
+import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
 class DailyPlanningFragment : BaseFragment(),OnDayClickListener {
@@ -26,12 +36,16 @@ class DailyPlanningFragment : BaseFragment(),OnDayClickListener {
     ): View{
         binding = FragmentDailyPlanningBinding.inflate(inflater, container, false)
         binding.calendarView.selectedDate = viewModel.today
-
         viewModel.getDays()
         setListeners()
         observing()
         return  binding.root
     }
+
+
+
+
+
 
     private fun setListeners() {
         binding.addButton.setOnClickListener{

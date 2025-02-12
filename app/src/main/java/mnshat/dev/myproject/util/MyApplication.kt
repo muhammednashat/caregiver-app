@@ -3,6 +3,10 @@ package mnshat.dev.myproject.util
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.Context
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.google.android.exoplayer2.util.NotificationUtil
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -12,6 +16,8 @@ import dagger.hilt.android.HiltAndroidApp
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
+import java.util.Calendar
+import java.util.concurrent.TimeUnit
 
 @HiltAndroidApp
 class MyApplication: Application() {
@@ -20,9 +26,10 @@ class MyApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
+        scheduleDailyTask(context = applicationContext)
         createChannel(getString(R.string.encouragement_messages), ENCOURAGEMENT_CHANNEL_ID, "", NotificationUtil.IMPORTANCE_DEFAULT)
 
-        createChannel(getString(R.string.encouragement_messages), ENCOURAGEMENT_CHANNEL_ID, "", NotificationUtil.IMPORTANCE_DEFAULT)
+        createChannel(getString(R.string.activities_reminder), CALENDER_CHANNEL_ID, "", NotificationUtil.IMPORTANCE_DEFAULT)
 
 
         sharedPreferences = SharedPreferencesManager(applicationContext)
@@ -86,5 +93,36 @@ class MyApplication: Application() {
        })
 
     }
+
+    private fun scheduleDailyTask(context: Context) {
+        val workManager = WorkManager.getInstance(context)
+
+        val now = Calendar.getInstance()
+
+
+        val targetTime = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, 16) // 4 PM
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+        }
+
+
+        if (now.after(targetTime)) {
+            targetTime.add(Calendar.DAY_OF_YEAR, 1)
+        }
+
+        val initialDelay = targetTime.timeInMillis - now.timeInMillis
+
+        val dailyWorkRequest = PeriodicWorkRequestBuilder<MyWorkManager>(24, TimeUnit.HOURS)
+            .setInitialDelay(initialDelay, TimeUnit.MILLISECONDS)
+            .build()
+
+        workManager.enqueueUniquePeriodicWork(
+            "DailyTask",
+            ExistingPeriodicWorkPolicy.UPDATE,
+            dailyWorkRequest
+        )
+    }
+
 
 }

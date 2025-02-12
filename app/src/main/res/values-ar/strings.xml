@@ -629,5 +629,6 @@
     <string name="encouragement_notification_channel_id">Encouragement messages</string>
     <string name="encouragement_messages">رسائل تشجيعية
 </string>
+    <string name="activities_reminder">Activities reminder</string>
 
 </resources>

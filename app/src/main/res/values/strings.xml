@@ -625,6 +625,7 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="will_reset_the_current_day_from_beginning">will reset the current day from beginning</string>
     <string name="encouragement_notification_channel_id">Encouragement messages</string>
     <string name="encouragement_messages">Encouragement messages</string>
+    <string name="activities_reminder">Activities reminder</string>
 
 
 </resources>
