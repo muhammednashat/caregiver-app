@@ -11,14 +11,23 @@
         android:layout_height="match_parent"
         android:background="@drawable/img_background_dailyprogram3">
 
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:backgroundTint="#99d7eb"
+            android:id="@+id/station_description"
+            android:src="@drawable/icon_mood"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayoutCompat"
+            app:layout_constraintStart_toStartOf="@+id/linearLayoutCompat"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btn_recommend"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="@dimen/margin_2_super"
             android:layout_marginTop="38dp"
-            android:background="@drawable/gradient_green"
-            android:backgroundTint="#99d7eb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 

@@ -15,6 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogPreMoodSelectionBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
+import mnshat.dev.myproject.databinding.StaionDescriptionDialogBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
 import mnshat.dev.myproject.users.patient.moodTracking.presentaion.MoodTrackingActivity
 import mnshat.dev.myproject.util.RELIGION
@@ -115,6 +116,11 @@ class EducationalFragment : BaseDailyProgramFragment() {
 
 
    private  fun setupClickListener() {
+
+       binding.stationDescription.setOnClickListener {
+           showDescriptionDialog(R.drawable.ic_timer,
+               getString(R.string.a_step_towards_change),getString(R.string.a_step_towards_change))
+       }
         binding.btnNext.setOnClickListener {
             updateStatus()
         }
@@ -137,6 +143,7 @@ class EducationalFragment : BaseDailyProgramFragment() {
             viewModel.updateCurrentTaskLocally()
         }
     }
+
 
     private fun changeColorStatus() {
         if (viewModel.status.educational == 1) binding.line1.setBackgroundColor(Color.parseColor("#6db7d3"))

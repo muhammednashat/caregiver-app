@@ -626,6 +626,9 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="encouragement_notification_channel_id">Encouragement messages</string>
     <string name="encouragement_messages">Encouragement messages</string>
     <string name="activities_reminder">Activities reminder</string>
+    <string name="a_whiff_of_faith">Whiff of faith</string>
+    <string name="a_step_towards_change">Step towards change</string>
+    <string name="time_of_adventure">Time of adventure</string>
 
 
 </resources>

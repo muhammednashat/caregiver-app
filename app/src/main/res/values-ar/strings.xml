@@ -630,5 +630,8 @@
     <string name="encouragement_messages">رسائل تشجيعية
 </string>
     <string name="activities_reminder">Activities reminder</string>
+    <string name="a_whiff_of_faith">نفحة إيمانية</string>
+    <string name="a_step_towards_change">خطوة نحو التغيير</string>
+    <string name="time_of_adventure">ميدان المغامرة</string>
 
 </resources>

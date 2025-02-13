@@ -1,8 +1,13 @@
 package mnshat.dev.myproject.users.patient.dailyprogram.presentaion
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.text.Html
 import android.view.View
+import android.view.ViewGroup
+import android.view.Window
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
@@ -13,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
+import mnshat.dev.myproject.databinding.StaionDescriptionDialogBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.LANGUAGE
@@ -166,6 +172,36 @@ open class BaseDailyProgramFragment : BaseFragment() {
             }
 
         }
+    }
+     fun showDescriptionDialog(image:Int,title:String,text:String) {
+
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = StaionDescriptionDialogBinding.inflate(layoutInflater)
+        dialog.setContentView(dialogBinding.root)
+        dialog.setCanceledOnTouchOutside(false)
+
+        val window = dialog.window
+        window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            val layoutParams = attributes
+            layoutParams.width = (resources.displayMetrics.widthPixels * 0.8).toInt()
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            attributes = layoutParams
+        }
+
+        dialogBinding.image.setImageResource(image)
+        dialogBinding.title.text = title
+        dialogBinding.text.text= text
+
+        dialogBinding.icClose.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialogBinding.button.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
 
