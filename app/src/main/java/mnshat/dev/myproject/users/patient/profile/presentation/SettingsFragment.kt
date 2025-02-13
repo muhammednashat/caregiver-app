@@ -13,7 +13,9 @@ import mnshat.dev.myproject.databinding.FragmentSettingsBinding
 import mnshat.dev.myproject.util.ARABIC_KEY
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.LANGUAGE
+import mnshat.dev.myproject.util.SCHEDULING_TIME
 import mnshat.dev.myproject.util.SplashActivity
+import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 class SettingsFragment : BaseFragment() {
@@ -56,8 +58,27 @@ class SettingsFragment : BaseFragment() {
         }
         _updatingLang= _currentLang
         setUpRadioGroup()
+        setUpReminderRadioGroup()
     }
 
+
+    private fun setUpReminderRadioGroup(){
+      val schedulingTime =   viewModel.sharedPreferences.getInt(SCHEDULING_TIME , 7)
+      when(schedulingTime){
+          7 -> binding.rbMorning.isChecked = true // 7 am
+          13 -> binding.rbAfternoon.isChecked = true // 1pm
+          20 -> binding.rbEvening.isChecked = true // 8 pm
+      }
+
+        binding.groupRoot2.setOnCheckedChangeListener {  group, checkedId ->
+            when(checkedId){
+                binding.rbMorning.id -> viewModel.sharedPreferences.storeInt(SCHEDULING_TIME,7)
+                binding.rbAfternoon.id -> viewModel.sharedPreferences.storeInt(SCHEDULING_TIME,13)
+                binding.rbEvening.id ->viewModel.sharedPreferences.storeInt(SCHEDULING_TIME,20)
+            }
+
+        }
+    }
     private fun setUpRadioGroup() {
         if (_currentLang == ENGLISH_KEY) {
             binding.rbEnglish.isChecked = true

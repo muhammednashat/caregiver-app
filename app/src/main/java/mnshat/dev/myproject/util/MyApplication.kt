@@ -26,13 +26,16 @@ class MyApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        sharedPreferences = SharedPreferencesManager(applicationContext)
+
         scheduleDailyTask(context = applicationContext)
+
         createChannel(getString(R.string.encouragement_messages), ENCOURAGEMENT_CHANNEL_ID, "", NotificationUtil.IMPORTANCE_DEFAULT)
 
         createChannel(getString(R.string.activities_reminder), CALENDER_CHANNEL_ID, "", NotificationUtil.IMPORTANCE_DEFAULT)
 
 
-        sharedPreferences = SharedPreferencesManager(applicationContext)
     onUserDataChanged(sharedPreferences)
     if (sharedPreferences.getString(TYPE_OF_USER ) == CAREGIVER){
         observeUserDailyProgramStates(sharedPreferences.getString(ID_PARTNER))
@@ -95,13 +98,11 @@ class MyApplication: Application() {
     }
 
     private fun scheduleDailyTask(context: Context) {
+        val schedulingTime = sharedPreferences.getInt(key =SCHEDULING_TIME , defaultValue = 7)
         val workManager = WorkManager.getInstance(context)
-
         val now = Calendar.getInstance()
-
-
         val targetTime = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, 16) // 4 PM
+            set(Calendar.HOUR_OF_DAY, schedulingTime) // 4 PM
             set(Calendar.MINUTE, 0)
             set(Calendar.SECOND, 0)
         }

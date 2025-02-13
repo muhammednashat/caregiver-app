@@ -70,3 +70,5 @@ const val   POSTS = "posts"
 
 const val ENCOURAGEMENT_CHANNEL_ID ="encouragementChannelId"
 const val CALENDER_CHANNEL_ID ="calenderChannelId"
+
+const val SCHEDULING_TIME ="schedulingTime"

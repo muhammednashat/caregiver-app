@@ -629,6 +629,10 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="a_whiff_of_faith">Whiff of faith</string>
     <string name="a_step_towards_change">Step towards change</string>
     <string name="time_of_adventure">Time of adventure</string>
+    <string name="morning">Morning</string>
+    <string name="afternoon">Afternoon</string>
+    <string name="evening">Evening</string>
+    <string name="activity_reminder">Activity Reminder</string>
 
 
 </resources>

@@ -26,17 +26,8 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
     val TAG  = "TAG"
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         if (remoteMessage.data.isNotEmpty()) {
-
             Log.e(TAG, "Message data payload: ${remoteMessage.data}")
 
-            // Check if data needs to be processed by long running job
-//            if (isLongRunningJob()) {
-//                // For long-running tasks (10 seconds or more) use WorkManager.
-//                scheduleJob()
-//            } else {
-//                // Handle message within 10 seconds
-//                handleNow()
-//            }
         }
 
         // Check if message contains a notification payload.
@@ -51,14 +42,14 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
     @SuppressLint("MissingPermission")
     fun sendNotification(text:String){
 
-        val intent = Intent(this, UserScreensActivity::class.java).apply {
+        val intent = Intent(this, SplashActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val builder = NotificationCompat.Builder(this, ENCOURAGEMENT_CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_user)
-            .setContentTitle("My notification")
+//            .setSmallIcon(R.drawable.ic_user)
+            .setContentTitle("My Application")
             .setContentText(text)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
