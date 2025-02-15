@@ -37,7 +37,7 @@ class SpiritualFragment : BaseDailyProgramFragment() {
 
 
         binding.stationDescription.setOnClickListener {
-            showDescriptionDialog(R.drawable.ic_timer,
+            showDescriptionDialog(R.drawable.icon_descriptionw,
                 getString(R.string.a_whiff_of_faith),getString(R.string.a_step_towards_change))
         }
         binding.btnNext.setOnClickListener {

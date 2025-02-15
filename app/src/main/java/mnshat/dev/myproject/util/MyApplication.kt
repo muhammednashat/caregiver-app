@@ -102,7 +102,7 @@ class MyApplication: Application() {
         val workManager = WorkManager.getInstance(context)
         val now = Calendar.getInstance()
         val targetTime = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, schedulingTime) // 4 PM
+            set(Calendar.HOUR_OF_DAY, 15) // 4 PM
             set(Calendar.MINUTE, 0)
             set(Calendar.SECOND, 0)
         }

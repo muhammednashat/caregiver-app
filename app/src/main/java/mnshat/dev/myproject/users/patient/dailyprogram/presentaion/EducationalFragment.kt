@@ -118,7 +118,7 @@ class EducationalFragment : BaseDailyProgramFragment() {
    private  fun setupClickListener() {
 
        binding.stationDescription.setOnClickListener {
-           showDescriptionDialog(R.drawable.ic_timer,
+           showDescriptionDialog(R.drawable.icon_lamp,
                getString(R.string.a_step_towards_change),getString(R.string.a_step_towards_change))
        }
         binding.btnNext.setOnClickListener {

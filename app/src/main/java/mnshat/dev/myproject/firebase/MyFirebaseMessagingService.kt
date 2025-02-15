@@ -48,7 +48,7 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val builder = NotificationCompat.Builder(this, ENCOURAGEMENT_CHANNEL_ID)
-//            .setSmallIcon(R.drawable.ic_user)
+            .setSmallIcon(R.drawable.ic_launcher_background)
             .setContentTitle("My Application")
             .setContentText(text)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)

@@ -12,14 +12,21 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         app:cardCornerRadius="@dimen/margin_super"
-        android:padding="@dimen/margin_2_super"
+        android:paddingStart="@dimen/margin_2_super"
+        android:paddingBottom="@dimen/margin_2_super"
+        android:paddingEnd="@dimen/margin_2_super"
+
         android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background432"
-        android:padding="@dimen/padding_large">
+        android:paddingStart="@dimen/margin_2_super"
+        android:paddingBottom="@dimen/margin_2_super"
+        android:paddingEnd="@dimen/margin_2_super"
+
+        android:background="@drawable/background_description"
+        >
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ic_close"
@@ -40,8 +47,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ic_close"
-            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/circularImageViewShape"
             app:srcCompat="@drawable/icon_mood_track" />
 
@@ -66,7 +72,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
-            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_small"
             android:gravity="center"
 android:text="تتنتم يسمبنت تنسميب تنسيمبش تنبم  اتسنميش بسيشبا اتسبيب ابشسيا سيبسشيتا يسبانتب يبانتسيش بيابنتي اينتبسي يبسينات يسشانتيب اتنبسي اتي "
             android:textColor="@color/black"
@@ -82,7 +88,9 @@ android:text="تتنتم يسمبنت تنسميب تنسيمبش تنبم  ات
             android:layout_width="wrap_content"
             android:background="@drawable/gradient_orange"
             android:text="@string/okay"
-
+            android:padding="4dp"
+            android:layout_height="wrap_content"
+android:layout_marginTop="@dimen/margin_2_super"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

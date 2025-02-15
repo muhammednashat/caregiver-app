@@ -56,7 +56,7 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
     fun setupClickListener() {
 
         binding.stationDescription.setOnClickListener {
-            showDescriptionDialog(R.drawable.ic_timer,
+            showDescriptionDialog(R.drawable.icon_descriptionww,
                 getString(R.string.time_of_adventure),getString(R.string.a_step_towards_change))
         }
 

@@ -54,7 +54,7 @@ class MyWorkManager(private val context: Context, workerParams: WorkerParameters
         val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val builder = NotificationCompat.Builder(context, CALENDER_CHANNEL_ID)
-//            .setSmallIcon(R.drawable.ic_user)
+            .setSmallIcon(R.drawable.ic_launcher_background)
             .setContentTitle("My Application")
             .setContentText(text)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
