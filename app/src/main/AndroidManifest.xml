@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+
     <application
         android:name=".util.MyApplication"
         android:allowBackup="true"
@@ -87,6 +88,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+        <receiver android:name=".util.AlarmReceiver" android:exported="false" />
 
 
     </application>

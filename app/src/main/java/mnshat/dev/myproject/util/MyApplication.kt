@@ -1,8 +1,11 @@
 package mnshat.dev.myproject.util
 
+import android.annotation.SuppressLint
+import android.app.AlarmManager
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
@@ -18,6 +21,7 @@ import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
+import android.content.Intent
 
 @HiltAndroidApp
 class MyApplication: Application() {
@@ -30,7 +34,7 @@ class MyApplication: Application() {
         sharedPreferences = SharedPreferencesManager(applicationContext)
 
         scheduleDailyTask(context = applicationContext)
-
+        scheduleDailyAlarm(applicationContext)
         createChannel(getString(R.string.encouragement_messages), ENCOURAGEMENT_CHANNEL_ID, "", NotificationUtil.IMPORTANCE_DEFAULT)
 
         createChannel(getString(R.string.activities_reminder), CALENDER_CHANNEL_ID, "", NotificationUtil.IMPORTANCE_DEFAULT)
@@ -98,22 +102,26 @@ class MyApplication: Application() {
     }
 
     private fun scheduleDailyTask(context: Context) {
-        val schedulingTime = sharedPreferences.getInt(key =SCHEDULING_TIME , defaultValue = 7)
+//        val schedulingTime = sharedPreferences.getInt(key =SCHEDULING_TIME , defaultValue = 7)
         val workManager = WorkManager.getInstance(context)
         val now = Calendar.getInstance()
         val targetTime = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, 15) // 4 PM
+            set(Calendar.HOUR_OF_DAY, 17) // 4 PM
             set(Calendar.MINUTE, 0)
             set(Calendar.SECOND, 0)
         }
 
 
         if (now.after(targetTime)) {
+            log("after")
+
             targetTime.add(Calendar.DAY_OF_YEAR, 1)
         }
 
         val initialDelay = targetTime.timeInMillis - now.timeInMillis
-
+          log(now.timeInMillis.toString())
+          log(targetTime.timeInMillis.toString())
+          log(initialDelay.toString())
         val dailyWorkRequest = PeriodicWorkRequestBuilder<MyWorkManager>(24, TimeUnit.HOURS)
             .setInitialDelay(initialDelay, TimeUnit.MILLISECONDS)
             .build()
@@ -123,6 +131,28 @@ class MyApplication: Application() {
             ExistingPeriodicWorkPolicy.UPDATE,
             dailyWorkRequest
         )
+    }
+
+    @SuppressLint("ScheduleExactAlarm")
+    fun scheduleDailyAlarm(context: Context) {
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(context, AlarmReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+
+        val calendar = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, 20) // 5 PM
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+
+            // If the time has already passed today, schedule for tomorrow
+            if (before(Calendar.getInstance())) {
+                add(Calendar.DAY_OF_YEAR, 1)
+            }
+        }
+
+        // Schedule exact alarm
+        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
+
     }
 
 
