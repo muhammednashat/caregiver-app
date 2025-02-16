@@ -14,10 +14,6 @@ class AlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
         log("Alarm Triggered: Running Task!")
         sendNotification("qwertttt0",context)
-        // Start the WorkManager task or run your code here
-//        val workManager = WorkManager.getInstance(context)
-//        val dailyWorkRequest = OneTimeWorkRequestBuilder<MyWorkManager>().build()
-//        workManager.enqueue(dailyWorkRequest)
     }
     @SuppressLint("MissingPermission")
     fun sendNotification(text:String,context: Context){
