@@ -43,28 +43,27 @@
         <activity
             android:name=".users.patient.supporters.SupportersActivity"
             android:exported="false" />
+
         <activity
             android:name=".users.patient.profile.presentation.EditProfileActivity"
             android:exported="false" />
+
         <activity
             android:name=".util.TermsPrivacyActivity"
             android:exported="false" />
+
         <activity
             android:name=".users.patient.main.presentaion.UserScreensActivity"
             android:exported="false" />
+
         <activity
             android:name=".users.caregiver.main.CaregiverScreenActivity"
             android:exported="false" />
+
         <activity
             android:name=".auth.presentation.AuthActivity"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".ui.user.intro.IntroActivity" -->
-        <!-- android:exported="true"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.MAIN" /> -->
-        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-        <!-- </intent-filter> -->
-        <!-- </activity> -->
+            android:exported="false" />
+
         <activity
             android:name=".users.patient.intro.IntroActivity"
             android:exported="false" />
@@ -73,7 +72,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

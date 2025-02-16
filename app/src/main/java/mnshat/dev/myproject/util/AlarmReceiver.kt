@@ -11,9 +11,13 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.users.patient.main.presentaion.UserScreensActivity
 
 class AlarmReceiver : BroadcastReceiver() {
+
     override fun onReceive(context: Context, intent: Intent?) {
+
         log("Alarm Triggered: Running Task!")
+
         sendNotification("qwertttt0",context)
+
     }
     @SuppressLint("MissingPermission")
     fun sendNotification(text:String,context: Context){
