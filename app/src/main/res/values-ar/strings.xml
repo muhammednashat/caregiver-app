@@ -637,5 +637,6 @@
     <string name="afternoon">بعد الظهيره</string>
     <string name="evening">المساء</string>
     <string name="activity_reminder">تذكير بالانشطة</string>
+    <string name="where_am_i">📍أين أنا الآن؟</string>
 
 </resources>

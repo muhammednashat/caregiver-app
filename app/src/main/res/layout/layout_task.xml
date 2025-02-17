@@ -12,54 +12,25 @@
         android:background="@drawable/img_background_dailyprogram3">
 
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:backgroundTint="#99d7eb"
-            android:id="@+id/station_description"
-            android:src="@drawable/icon_mood"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayoutCompat"
-            app:layout_constraintStart_toStartOf="@+id/linearLayoutCompat"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btn_recommend"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="@dimen/margin_2_super"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/station_description"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_marginTop="38dp"
+            android:layout_marginEnd="@dimen/margin_large"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            >
 
             <TextView
-                android:id="@+id/text_qu"
                 android:layout_width="wrap_content"
+               android:padding="@dimen/margin_medium"
                 android:layout_height="wrap_content"
-                android:text="@string/another_challenge"
-                android:textColor="#296b7f"
-                android:textSize="16sp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="@string/where_am_i" />
+        </LinearLayout>
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="@dimen/margin_medium"
-                android:layout_marginStart="28dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/text_qu"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.526"
-                app:srcCompat="@drawable/ic_shuffle" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ic_pause"
@@ -202,7 +173,10 @@
             android:layout_height="0dp"
             android:layout_marginTop="75dp"
             android:background="@drawable/corner_top_lift_right"
-            android:padding="@dimen/margin_large"
+            android:paddingTop="100dp"
+            android:paddingStart="@dimen/margin_large"
+            android:paddingEnd="@dimen/margin_large"
+            android:paddingBottom="@dimen/margin_large"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -221,16 +195,55 @@
                 app:layout_constraintBottom_toBottomOf="@+id/btn_next"
                 app:layout_constraintEnd_toEndOf="parent" />
 
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btn_recommend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gradient_green"
+                android:backgroundTint="#99d7eb"
+                android:padding="4dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/another_challenge"
+                    android:textColor="#296b7f"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:layout_marginStart="28dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView8"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.526"
+                    app:srcCompat="@drawable/ic_shuffle" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <ScrollView
                 android:id="@+id/scrollView2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="90dp"
                 android:scrollbarSize="0dp"
+                android:layout_marginTop="4dp"
                 app:layout_constraintBottom_toTopOf="@+id/btn_next"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/btn_recommend">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -260,13 +273,13 @@
                         app:layout_constraintStart_toStartOf="@+id/text_title"
                         app:layout_constraintTop_toBottomOf="@+id/text_title" />
 
-           <TextView
+                    <TextView
                         android:id="@+id/text2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:textColor="@color/black"
-               android:visibility="gone"
+                        android:visibility="gone"
 
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="@+id/text_title"

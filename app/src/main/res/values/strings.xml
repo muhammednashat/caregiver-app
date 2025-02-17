@@ -633,6 +633,7 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="afternoon">Afternoon</string>
     <string name="evening">Evening</string>
     <string name="activity_reminder">Activity Reminder</string>
+    <string name="where_am_i">📍Where am I now?</string>
 
 
 </resources>

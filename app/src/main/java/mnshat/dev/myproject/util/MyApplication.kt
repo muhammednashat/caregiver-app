@@ -142,8 +142,8 @@ class MyApplication: Application() {
         val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 
         val calendar = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, 20) // 5 PM
-            set(Calendar.MINUTE, 0)
+            set(Calendar.HOUR_OF_DAY, 14) // 5 PM
+            set(Calendar.MINUTE,38)
             set(Calendar.SECOND, 0)
 
             // If the time has already passed today, schedule for tomorrow
