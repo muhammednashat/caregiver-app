@@ -1,7 +1,6 @@
 package mnshat.dev.myproject.users.patient.dailyprogram.presentaion
 
 import android.os.Bundle
-import com.bumptech.glide.Glide
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.databinding.FragmentSuggestedChallengesBinding
@@ -11,7 +10,9 @@ import mnshat.dev.myproject.util.ENGLISH_KEY
 import kotlin.properties.Delegates
 
 class SuggestedChallengesFragment() :
+
     BaseBottomSheetDialogFragment2<FragmentSuggestedChallengesBinding>() {
+    private lateinit var adapter: SuggestedChallengesAdapter
 
     interface OnTaskItemClickListener {
         fun onTaskItemClicked(position:Int)
@@ -20,6 +21,7 @@ class SuggestedChallengesFragment() :
 
     private var tasks: List<Task> = emptyList()
     private var currentIndex by Delegates.notNull<Int>()
+    private  var lang = ""
     private var _itemClickListener: OnTaskItemClickListener? = null
     override fun getLayout() = R.layout.fragment_suggested_challenges
 
@@ -34,56 +36,27 @@ class SuggestedChallengesFragment() :
         arguments?.let {
             tasks = it.getParcelableArrayList(ARG_TASKS) ?: emptyList()
             currentIndex = it.getInt(ARG_CURRENT_INDEX)
+            lang = it.getString(ARG_LANG)!!
+            adapter = SuggestedChallengesAdapter(tasks, currentIndex,lang)
+            binding.recycler.adapter = adapter
+
+
             val newListOfTasks = mutableListOf<TestD>()
             for (index in tasks.indices) {
                 if (index != currentIndex) newListOfTasks.add(TestD(index, tasks[index].image!!))
             }
-            setUpImageTask1(newListOfTasks)
-            setUpImageTask2(newListOfTasks)
-            setUpImageTask3(newListOfTasks)
-            setUpImageTask4(newListOfTasks)
 
         }
     }
 
-    private fun setUpImageTask1(list: List<TestD>) {
-        Glide.with(binding.root)
-            .load(list[0].image)
-            .centerCrop()
-            .into(binding.imageTask1)
-        binding.imageTask1.setOnClickListener {
-            onItemClick(list[0].index)
-        }
-
-    }
-    private fun setUpImageTask2(list: List<TestD>) {
-        Glide.with(binding.root)
-            .load(list[1].image)
-            .centerCrop()
-            .into(binding.imageTask2)
-        binding.imageTask2.setOnClickListener {
-            onItemClick(list[1].index)
-        }
-
-    }
-    private fun setUpImageTask3(list: List<TestD>) {
-        Glide.with(binding.root)
-            .load(list[2].image)
-            .centerCrop()
-            .into(binding.imageTask3)
-        binding.imageTask3.setOnClickListener {
-            onItemClick(list[2].index)
-        }
-
-    }
     private fun setUpImageTask4(list: List<TestD>) {
-        Glide.with(binding.root)
-            .load(list[3].image)
-            .centerCrop()
-            .into(binding.imageTask4)
-        binding.imageTask4.setOnClickListener {
-            onItemClick(list[3].index)
-        }
+//        Glide.with(binding.root)
+//            .load(list[3].image)
+//            .centerCrop()
+//            .into(binding.imageTask4)
+//        binding.imageTask4.setOnClickListener {
+//            onItemClick(list[3].index)
+//        }
 
     }
 
@@ -110,11 +83,13 @@ class SuggestedChallengesFragment() :
     companion object {
         private const val ARG_TASKS = "tasks"
         private const val ARG_CURRENT_INDEX ="currentIndex"
-        fun newInstance(itemClickListener: OnTaskItemClickListener, currentIndex:Int, tasks: List<Task>) =
+        private const val  ARG_LANG = "lang"
+        fun newInstance(itemClickListener: OnTaskItemClickListener, currentIndex:Int, tasks: List<Task>,lang:String) =
             SuggestedChallengesFragment().apply {
                 _itemClickListener=itemClickListener
                 arguments = Bundle().apply {
                     putInt(ARG_CURRENT_INDEX,currentIndex)
+                    putString(ARG_LANG,lang)
                     putParcelableArrayList(ARG_TASKS, ArrayList(tasks))
                 }
              }

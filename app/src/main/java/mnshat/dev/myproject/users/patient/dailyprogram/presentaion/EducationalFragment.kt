@@ -68,7 +68,7 @@ class EducationalFragment : BaseDailyProgramFragment() {
         binding.btnPrevious.visibility = View.GONE
         viewModel. currentDay.value.let {
             viewModel.listOfTasks = it?.dayTask?.educational as List<Task>
-            if ( viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
+//            if ( viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
             getTaskFromList(viewModel.status.currentIndexEducational!!, 2)
             changeColorStatus()
         }

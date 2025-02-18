@@ -1,5 +1,6 @@
 package mnshat.dev.myproject.adapters
 
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +31,8 @@ private val language:String, private val itemClickListener: ItemClickListener
         val item = itemList[position]
         holder.imageView.setImageResource(item.image)
         holder.title.text =  if (language == "en") item.enTitle else item.arTitle
+
+
         holder.description.text = if (language == "en") item.enDescription else item.arDescription
 
 

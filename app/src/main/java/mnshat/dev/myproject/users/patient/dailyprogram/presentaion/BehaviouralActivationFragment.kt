@@ -20,6 +20,7 @@ import mnshat.dev.myproject.databinding.DialogDoCompleteTaskBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
 import mnshat.dev.myproject.users.patient.moodTracking.presentaion.PostMoodTrackingActivity
+import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
@@ -42,7 +43,7 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
     fun initializeViews() {
         viewModel.currentDay.value.let {
             viewModel.listOfTasks = it?.dayTask?.behaviorActivation as List<Task>
-
+             log(viewModel.listOfTasks.size.toString())
             if ( viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
 
             witchFragment("BehaviouralActivationFragment")
@@ -95,7 +96,8 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
         val suggestedChallengesFragment = SuggestedChallengesFragment.newInstance(
             this,
             viewModel.status.currentIndexBehavioral!!,
-            viewModel.listOfTasks
+            viewModel.listOfTasks,
+            viewModel.sharedPreferences.getString(LANGUAGE)
         )
         suggestedChallengesFragment.show(
             childFragmentManager,
