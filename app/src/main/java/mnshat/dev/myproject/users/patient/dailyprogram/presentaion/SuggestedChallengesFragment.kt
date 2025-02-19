@@ -62,6 +62,14 @@ class SuggestedChallengesFragment() :
 
     override fun setupClickListener() {
         super.setupClickListener()
+
+        binding.buttonConfirm.setOnClickListener {
+            onItemClick(adapter.getSelectedPosition())
+            dismiss()
+        }
+
+
+
       binding.close.setOnClickListener{
           dismiss()
       }

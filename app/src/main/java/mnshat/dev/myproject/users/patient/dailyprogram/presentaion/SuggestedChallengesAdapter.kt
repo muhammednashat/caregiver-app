@@ -54,11 +54,11 @@ class SuggestedChallengesAdapter(
 
 //
 //        holder.textView.text = item
-//        holder.itemView.setOnClickListener {
-//            notifyItemChanged(selectedPosition)
-//            selectedPosition = holder.adapterPosition
-//            notifyItemChanged(selectedPosition)
-//        }
+        holder.itemView.setOnClickListener {
+            notifyItemChanged(selectedPosition)
+            selectedPosition = holder.adapterPosition
+            notifyItemChanged(selectedPosition)
+        }
     }
 
     override fun getItemCount() = tasks.size
