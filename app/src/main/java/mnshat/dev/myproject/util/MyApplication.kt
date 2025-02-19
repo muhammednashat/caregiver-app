@@ -7,9 +7,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
-import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkManager
+import android.content.Intent
 import com.google.android.exoplayer2.util.NotificationUtil
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -20,8 +18,6 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import java.util.Calendar
-import java.util.concurrent.TimeUnit
-import android.content.Intent
 
 @HiltAndroidApp
 class MyApplication: Application() {
@@ -32,8 +28,6 @@ class MyApplication: Application() {
         super.onCreate()
 
         sharedPreferences = SharedPreferencesManager(applicationContext)
-
-        scheduleDailyTask(context = applicationContext)
         scheduleDailyAlarm(applicationContext)
         createChannel(getString(R.string.encouragement_messages), ENCOURAGEMENT_CHANNEL_ID, "", NotificationUtil.IMPORTANCE_DEFAULT)
 
@@ -101,62 +95,25 @@ class MyApplication: Application() {
 
     }
 
-    private fun scheduleDailyTask(context: Context) {
-//        val schedulingTime = sharedPreferences.getInt(key =SCHEDULING_TIME , defaultValue = 7)
-        val workManager = WorkManager.getInstance(context)
-        val now = Calendar.getInstance()
-        val targetTime = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, 17) // 4 PM
-            set(Calendar.MINUTE, 0)
-            set(Calendar.SECOND, 0)
-        }
 
-
-        if (now.after(targetTime)) {
-            log("after")
-
-            targetTime.add(Calendar.DAY_OF_YEAR, 1)
-        }
-
-        val initialDelay = targetTime.timeInMillis - now.timeInMillis
-          log(now.timeInMillis.toString())
-          log(targetTime.timeInMillis.toString())
-          log(initialDelay.toString())
-        val dailyWorkRequest = PeriodicWorkRequestBuilder<MyWorkManager>(24, TimeUnit.HOURS)
-            .setInitialDelay(initialDelay, TimeUnit.MILLISECONDS)
-            .build()
-
-        workManager.enqueueUniquePeriodicWork(
-            "DailyTask",
-            ExistingPeriodicWorkPolicy.UPDATE,
-            dailyWorkRequest
-        )
-    }
 
     @SuppressLint("ScheduleExactAlarm")
     fun scheduleDailyAlarm(context: Context) {
 
-
+        val schedulingTime = sharedPreferences.getInt(key = SCHEDULING_TIME, defaultValue = 7)
+        println(schedulingTime)
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
-
         val calendar = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, 14) // 5 PM
-            set(Calendar.MINUTE,38)
+            set(Calendar.HOUR_OF_DAY, schedulingTime) // 5 PM
+            set(Calendar.MINUTE, 0)
             set(Calendar.SECOND, 0)
-
-            // If the time has already passed today, schedule for tomorrow
             if (before(Calendar.getInstance())) {
                 add(Calendar.DAY_OF_YEAR, 1)
             }
         }
-
-        // Schedule exact alarm
-//        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.timeInMillis,AlarmManager.INTERVAL_DAY,pendingIntent)
-//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.timeInMillis,AlarmManager.INTERVAL_DAY,pendingIntent)
         alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
-
     }
 
 

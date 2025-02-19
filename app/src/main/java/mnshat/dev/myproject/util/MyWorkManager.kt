@@ -37,11 +37,7 @@ class MyWorkManager(private val context: Context, workerParams: WorkerParameters
 
         if (list.contains(today)){
             sendNotification("لا تنسى القيام بمهام اليوم" , context)
-        }else{
-            log("no")
         }
-
-
 
         return Result.success()
     }

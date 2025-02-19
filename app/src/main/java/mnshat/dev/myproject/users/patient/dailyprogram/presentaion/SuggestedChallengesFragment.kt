@@ -10,7 +10,6 @@ import mnshat.dev.myproject.util.ENGLISH_KEY
 import kotlin.properties.Delegates
 
 class SuggestedChallengesFragment() :
-
     BaseBottomSheetDialogFragment2<FragmentSuggestedChallengesBinding>() {
     private lateinit var adapter: SuggestedChallengesAdapter
 
