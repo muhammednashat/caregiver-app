@@ -61,6 +61,7 @@ open class BaseDailyProgramFragment : BaseFragment() {
           }
       }
         binding.textDescription.text = Html.fromHtml(description )
+
     }
     fun changeColorOfTaskImage(status: Int?, root: ConstraintLayout, image: ImageView){
         when(status){

@@ -17,6 +17,7 @@ import java.util.Date
 class AlarmReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent?) {
+
         runBlocking {
             val today = CalendarDay.today()
             val database = AppDatabase.getDatabase(context = context)

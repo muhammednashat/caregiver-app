@@ -18,13 +18,13 @@ import mnshat.dev.myproject.util.BASE_CODE
 import mnshat.dev.myproject.util.CODE_USED
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.INVITATION_CODE
-
+import mnshat.dev.myproject.util.USER_ID
 
 
 class AddSupporterFragment : BaseSupporterFragment<FragmentAddSupporterBinding>() {
 
     override fun initializeViews() {
-        FirebaseService.listenForUserDataChanges {
+        FirebaseService.listenForUserDataChanges(sharedPreferences.getString(USER_ID)) {
             it?.let {
                 it.storeDataLocally(sharedPreferences)
                 isCodeUsed()

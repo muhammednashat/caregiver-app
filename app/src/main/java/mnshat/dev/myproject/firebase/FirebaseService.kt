@@ -241,7 +241,7 @@ object FirebaseService {
                 println("Error fetching data: ${e.message}")
             }
     }
-    fun listenForUserDataChanges(callBack: (RegistrationData?) -> Unit) {
+    fun listenForUserDataChanges(userId: String,callBack: (RegistrationData?) -> Unit) {
         val userListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val user = dataSnapshot.getValue(RegistrationData::class.java)

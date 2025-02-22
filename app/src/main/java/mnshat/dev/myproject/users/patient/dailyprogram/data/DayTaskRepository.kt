@@ -24,15 +24,21 @@ class DayTaskRepository @Inject constructor(
 ) {
 
     suspend fun getCurrentDay(): CurrentDay {
-        log("getCurrentDay ->  "+dao.getAllDayTasks()?.size.toString())
         return if (dao.getAllDayTasks()?.size != 0) {
                 getCurrentDayLocally()
         } else {
             fetchDays().let {
+                log("getCurrentDay()")
+                it.forEach{ j ->
+                    log(j.educational?.get(0)?.arDescription!!)
+                }
                 dao.insertAll(it)
                 getNextDay(1)
             }
         }
+
+
+
 
     }
 

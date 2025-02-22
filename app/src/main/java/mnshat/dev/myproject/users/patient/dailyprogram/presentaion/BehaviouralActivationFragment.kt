@@ -58,7 +58,7 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
 
         binding.stationDescription.setOnClickListener {
             showDescriptionDialog(R.drawable.icon_descriptionww,
-                getString(R.string.time_of_adventure),getString(R.string.a_step_towards_change))
+                getString(R.string.time_of_adventure),getString(R.string.time_of_adventure))
         }
 
         binding.btnNext.setOnClickListener {
