@@ -106,8 +106,8 @@ class MyApplication: Application() {
         val intent = Intent(context, AlarmReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
         val calendar = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, 13) // 5 PM
-            set(Calendar.MINUTE, 30 )
+            set(Calendar.HOUR_OF_DAY, schedulingTime) // 5 PM
+            set(Calendar.MINUTE, 0 )
             set(Calendar.SECOND, 0)
             if (before(Calendar.getInstance())) {
                 add(Calendar.DAY_OF_YEAR, 1)
