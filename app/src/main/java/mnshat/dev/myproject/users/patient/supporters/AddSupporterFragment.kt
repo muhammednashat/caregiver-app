@@ -24,6 +24,7 @@ import mnshat.dev.myproject.util.USER_ID
 class AddSupporterFragment : BaseSupporterFragment<FragmentAddSupporterBinding>() {
 
     override fun initializeViews() {
+
         FirebaseService.listenForUserDataChanges(sharedPreferences.getString(USER_ID)) {
             it?.let {
                 it.storeDataLocally(sharedPreferences)
@@ -34,6 +35,7 @@ class AddSupporterFragment : BaseSupporterFragment<FragmentAddSupporterBinding>(
             binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
         }
         isCodeUsed()
+
     }
 
     private fun isCodeUsed() {

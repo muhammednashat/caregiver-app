@@ -24,9 +24,7 @@ import mnshat.dev.myproject.util.SharedPreferencesManager
 @AndroidEntryPoint
 open class BaseBottomSheetDialogFragment: BottomSheetDialogFragment() {
 
-
     private lateinit var progressDialog: Dialog
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         progressDialog = Dialog(requireContext())

@@ -634,6 +634,9 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="evening">Evening</string>
     <string name="activity_reminder">Activity Reminder</string>
     <string name="where_am_i">📍Where am I now?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="skip">skip</string>
 
 
 </resources>

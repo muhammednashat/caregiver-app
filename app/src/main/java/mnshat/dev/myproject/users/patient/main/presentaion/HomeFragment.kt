@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.auth.LanguageFragment
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.LibraryActivity
 import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
 import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderActivity
@@ -28,23 +29,25 @@ import mnshat.dev.myproject.util.log
 @AndroidEntryPoint
 class HomeFragment : BaseFragment() {
 
-
     private lateinit var binding: FragmentUserHomeBinding
     private val viewModel: PatientViewModel by viewModels()
-
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentUserHomeBinding.inflate(inflater,container, false)
+        onBoarding()
         setupClickListener()
         initializeViews()
+
         observeViewModel()
         isPermissionGranted()
         return binding.root
+    }
+
+    private fun onBoarding() {
+        OnBoardingFragment().show(childFragmentManager,null)
+
     }
 
     private fun isPermissionGranted() {

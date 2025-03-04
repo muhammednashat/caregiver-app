@@ -109,6 +109,7 @@ dependencies {
 
    //work manager
     implementation("androidx.work:work-runtime-ktx:2.9.0")
+    implementation("com.tbuonomo:dotsindicator:4.3")
 
 
 }
