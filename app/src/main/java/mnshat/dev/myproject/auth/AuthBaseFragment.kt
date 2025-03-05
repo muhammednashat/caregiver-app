@@ -135,19 +135,23 @@ open abstract class AuthBaseFragment<T : ViewDataBinding> : BaseFragment2<T>() {
     private fun navigateToActivity(typeOfUser: String?) {
         when (typeOfUser) {
             USER -> {
-                if (sharedPreferences.getBoolean(IS_SIGNING)) {
-                    if (sharedPreferences.getBoolean(IS_SECOND_TIME)) {
                         startActivity(Intent(requireActivity(), UserScreensActivity::class.java))
-                    }
-                    else {
-                        startActivity(Intent(requireActivity(), IntroActivity::class.java))
-                        sharedPreferences.storeBoolean(IS_SECOND_TIME, true)
-                    }
-                    sharedPreferences.storeBoolean(IS_SIGNING, false)
-                }
-                else {
-                    startActivity(Intent(requireActivity(), UserScreensActivity::class.java))
-                }
+
+//                if (sharedPreferences.getBoolean(IS_SIGNING)) {
+//                    if (sharedPreferences.getBoolean(
+            //
+            //                    )) {
+//                        startActivity(Intent(requireActivity(), UserScreensActivity::class.java))
+//                    }
+//                    else {
+//                        startActivity(Intent(requireActivity(), IntroActivity::class.java))
+//                        sharedPreferences.storeBoolean(IS_SECOND_TIME, true)
+//                    }
+//                    sharedPreferences.storeBoolean(IS_SIGNING, false)
+//                }
+//                else {
+//                    startActivity(Intent(requireActivity(), UserScreensActivity::class.java))
+//                }
             }
 
             CAREGIVER -> {

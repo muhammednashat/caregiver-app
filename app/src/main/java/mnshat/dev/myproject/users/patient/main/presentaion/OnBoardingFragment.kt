@@ -1,14 +1,14 @@
 package mnshat.dev.myproject.users.patient.main.presentaion
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewpager2.widget.ViewPager2
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.databinding.FragmentOnBoardingBinding
+import mnshat.dev.myproject.util.log
 
 
 class OnBoardingFragment : BaseBottomSheetDialogFragment() {
@@ -20,10 +20,24 @@ class OnBoardingFragment : BaseBottomSheetDialogFragment() {
     ): View? {
 
         binding = FragmentOnBoardingBinding.inflate(inflater,container,false)
-
         initViewPager()
 
+        binding.button.setOnClickListener {
+            dismiss()
+        }
+        binding.skip.setOnClickListener {
+            dismiss()
+        }
+
+        binding.next.setOnClickListener {
+            binding.viewPager.currentItem += 1
+        }
+        binding.previose.setOnClickListener {
+            binding.viewPager.currentItem -= 1
+        }
+
         return  binding.root
+
     }
 
     private fun initViewPager() {
@@ -33,6 +47,28 @@ class OnBoardingFragment : BaseBottomSheetDialogFragment() {
         val images = listOf(R.drawable.image_on_bording1, R.drawable.image_on_bording2,R.drawable.image_on_bording3, R.drawable.image_on_bording4)
         val adapter = OnboardingAdapter(images)
         binding.viewPager.adapter = adapter
+
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                if (position == 0) {
+                    binding.button.visibility = View.GONE
+                    binding.previose.visibility = View.GONE
+                    binding.next.alpha = 1.0f
+                } else if (position == 3) {
+                    binding.button.visibility = View.VISIBLE
+                    binding.previose.visibility = View.GONE
+                    binding.next.alpha = 0.0f
+                } else {
+                    binding.next.alpha = 1.0f
+                    binding.previose.visibility = View.VISIBLE
+                    binding.button.visibility = View.GONE
+                }
+                log("$position")
+                super.onPageSelected(position)
+            }
+
+        }
+        )
 //        dotsIndicator.attachTo(viewPager)
     }
 

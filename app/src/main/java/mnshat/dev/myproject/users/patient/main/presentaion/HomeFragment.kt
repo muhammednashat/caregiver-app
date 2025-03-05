@@ -21,6 +21,7 @@ import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
 import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderActivity
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
+import mnshat.dev.myproject.util.IS_SECOND_TIME
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
 import mnshat.dev.myproject.util.loadImage
@@ -39,14 +40,17 @@ class HomeFragment : BaseFragment() {
         onBoarding()
         setupClickListener()
         initializeViews()
-
         observeViewModel()
         isPermissionGranted()
         return binding.root
     }
 
     private fun onBoarding() {
-        OnBoardingFragment().show(childFragmentManager,null)
+        if (viewModel.sharedPreferences.getBoolean(IS_SECOND_TIME)) {
+            OnBoardingFragment().show(childFragmentManager,null)
+            viewModel.sharedPreferences.storeBoolean(IS_SECOND_TIME,true)
+
+        }
 
     }
 
