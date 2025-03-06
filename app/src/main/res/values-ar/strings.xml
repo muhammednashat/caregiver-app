@@ -16,7 +16,7 @@
     <string name="middle_age">متوسط العمر ( أقل من 60 سنه )</string>
     <string name="older">كبار السن</string>
     <string name="label_choose_language">حدد لغتك المفضلة</string>
-    <string name="sign_up"> إنشاء حساب</string>
+    <string name="sign_up">إنشاء حساب</string>
     <string name="current_lang">عربي</string>
     <string name="password_hint">كلمة المرور</string>
     <string name="create_new_account">انشاء حساب جديد</string>

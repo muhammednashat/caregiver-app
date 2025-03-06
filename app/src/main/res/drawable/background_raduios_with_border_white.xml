@@ -6,7 +6,7 @@
         android:radius="28dp"/>
     <solid android:color="#204167" />
     <stroke
-        android:width="2dp"
-        android:color="#abd0eb"
+        android:width="3dp"
+        android:color="@color/white"
         />
 </shape>

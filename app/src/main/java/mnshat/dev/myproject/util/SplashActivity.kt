@@ -27,7 +27,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = Color.TRANSPARENT
         val background: Drawable =
-            this@SplashActivity.getResources().getDrawable(R.drawable.img_background_auth)
+            this@SplashActivity.getResources().getDrawable(R.drawable.background53)
         window.setBackgroundDrawable(background)
         Handler().postDelayed({
             isLogged()
