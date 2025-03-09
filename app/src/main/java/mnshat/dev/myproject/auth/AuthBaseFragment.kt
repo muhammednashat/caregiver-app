@@ -18,7 +18,6 @@ import mnshat.dev.myproject.util.CODE_USED
 import mnshat.dev.myproject.util.CURRENT_DAY
 import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.INVITATION_CODE
-import mnshat.dev.myproject.util.IS_SECOND_TIME
 import mnshat.dev.myproject.util.IS_SIGNING
 import mnshat.dev.myproject.util.NUMBER_SUPPORTERS
 import mnshat.dev.myproject.util.SUPPORTERS

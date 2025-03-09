@@ -46,10 +46,11 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun onBoarding() {
-        if (viewModel.sharedPreferences.getBoolean(IS_SECOND_TIME)) {
+        val islogged = viewModel.sharedPreferences.getBoolean(IS_SECOND_TIME)
+        log(" this is the first logining => $islogged")
+        if (!islogged) {
             OnBoardingFragment().show(childFragmentManager,null)
             viewModel.sharedPreferences.storeBoolean(IS_SECOND_TIME,true)
-
         }
 
     }
