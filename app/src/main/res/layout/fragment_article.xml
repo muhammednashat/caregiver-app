@@ -82,6 +82,7 @@
                 android:layout_marginTop="@dimen/margin_large"
                 android:background="@drawable/corner_top_lift_right"
                 android:padding="@dimen/margin_large"
+                android:backgroundTint="#E3F2FD"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -107,6 +108,7 @@
                     android:layout_margin="@dimen/margin_large"
                     android:text="2/10/2022"
                     android:textSize="@dimen/text_size_large"
+                    android:textColor="@color/black"
                     app:layout_constraintStart_toEndOf="@+id/appCompatImageView5"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -125,7 +127,7 @@
                         android:id="@+id/article"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_large"
+                        android:layout_margin="@dimen/margin_medium"
                         android:text="2/10/2fdfsdfdsfTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwTextViefdfsdfsdfsdafsdfsdfsdfsdfdsfsdfsdfdsfasdfsdafasdfasdfsdfasdfsdafdfsdafsdfsdfwsdfdasfsdfsda022"
                         android:textSize="@dimen/text_size_large"
                         app:layout_constraintStart_toEndOf="@+id/appCompatImageView5"
