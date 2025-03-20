@@ -31,11 +31,10 @@
     </style>
 
     <style name="ic_back">
-        <item name="android:layout_width">50dp</item>
-        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_width">55dp</item>
+        <item name="android:layout_height">55dp</item>
         <item name="android:layout_marginTop">@dimen/margin_large</item>
-        <item name="android:background">@drawable/background_back_lift</item>
-        <item name="android:padding">@dimen/padding_small</item>
+        <item name="android:padding">@dimen/padding_medium</item>
     </style>
 
     <style name="ic_checked">
