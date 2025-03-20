@@ -55,9 +55,7 @@ class PostsFragment : BasePatientFragment<FragmentPostsBinding>(), ItemPostsClic
 
         }
 
-        if (currentLang != ENGLISH_KEY) {
-            binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-        }
+
 
     }
 

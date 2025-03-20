@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.DialogProgressMoodBinding
@@ -40,6 +41,12 @@ class CompareResultsFragment : BaseFragment() {
         val day = currentDay.status?.day
         log("$day gggggggggg")
         viewModel.getNextDay(day!!+1)
+
+
+        binding.icBack.setOnClickListener{
+            findNavController().popBackStack()
+        }
+
         return  binding.root
     }
 

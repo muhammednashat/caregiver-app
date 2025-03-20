@@ -13,6 +13,15 @@
         android:background="#0f161a"
         android:layout_height="match_parent"
         tools:context=".users.patient.moodTracking.presentaion.PostDailyProgramFragment">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ic_back"
+            style="@style/ic_back"
+            android:tint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back_ios" />
+
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="190dp"

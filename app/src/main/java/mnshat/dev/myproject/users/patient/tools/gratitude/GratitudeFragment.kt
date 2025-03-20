@@ -36,7 +36,6 @@ private lateinit var answer:String
     private lateinit var currentQuestion: String
 
     override fun initializeViews() {
-        intiBackgroundBasedOnLang()
     }
 
     private fun setText(text: String) {

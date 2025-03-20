@@ -34,12 +34,13 @@
                 android:layout_height="35dp"
                 android:layout_marginStart="@dimen/margin_large"
                 android:layout_marginTop="28dp"
-                android:background="@drawable/circle_gray"
                 android:padding="@dimen/margin_medium"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_arrow_back_ios"
-                app:tint="@color/black" />
+                app:tint="@color/white"
+
+                />
 
             <TextView
                 android:id="@+id/subCategory"

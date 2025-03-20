@@ -19,7 +19,6 @@ class CustomizedContentFragment : BaseLibraryFragment<FragmentCustomizedContentB
 
     override fun initializeViews() {
         super.initializeViews()
-        intiBackgroundBasedOnLang()
         retrieveDataFromArguments()
     }
 

@@ -48,7 +48,6 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
     private fun setArticle(content: LibraryContent) {
         val headerColor = "#204167"
         val textColor = "#204167"
-
         log(content.arDescription.toString())
 
         val htmlText = if (sharedPreferences.getString(LANGUAGE) == "en") {
@@ -60,7 +59,6 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
         val formattedHtml = htmlText.replace("\$headerColor", headerColor)
         val spannedText = HtmlCompat.fromHtml(formattedHtml, HtmlCompat.FROM_HTML_MODE_LEGACY)
         binding.article.text = spannedText
-
 
     }
 

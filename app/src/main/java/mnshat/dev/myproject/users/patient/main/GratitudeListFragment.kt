@@ -26,10 +26,6 @@ class GratitudeListFragment : BasePatientFragment<FragmentGratitudeListBinding>(
 
     override fun initializeViews() {
         retrieveGratitudeList()
-        if (currentLang != ENGLISH_KEY) {
-            binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-        }
-
     }
 
     private fun retrieveGratitudeList(){

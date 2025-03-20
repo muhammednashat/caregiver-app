@@ -11,6 +11,12 @@
         android:layout_height="match_parent"
         android:background="@drawable/img_background_dailyprogram3">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ic_back"
+            style="@style/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back_ios" />
 
 
         <LinearLayout

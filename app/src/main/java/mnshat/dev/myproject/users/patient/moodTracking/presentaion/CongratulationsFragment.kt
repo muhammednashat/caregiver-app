@@ -22,6 +22,9 @@ class CongratulationsFragment : BaseFragment() {
         binding.btnNext.setOnClickListener {
             findNavController().navigate(R.id.action_congratulationsFragment2_to_postDailyProgramFragment)
         }
+        binding.icBack.setOnClickListener {
+            activity?.finish()
+        }
 
         return binding.root
     }

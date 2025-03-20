@@ -34,6 +34,10 @@ class SpiritualFragment : BaseDailyProgramFragment() {
     }
 
     fun setupClickListener() {
+        binding.icBack.setOnClickListener{
+
+          findNavController().popBackStack()
+        }
         binding.stationDescription.setOnClickListener {
             showDescriptionDialog(R.drawable.icon_descriptionw,
                 getString(R.string.a_whiff_of_faith),getString(R.string.a_whiff_of_faith))
