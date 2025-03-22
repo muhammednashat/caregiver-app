@@ -1,5 +1,6 @@
 package mnshat.dev.myproject.users.patient.tools.breath
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -8,14 +9,15 @@ import mnshat.dev.myproject.databinding.FragmentMainBreathBinding
 import mnshat.dev.myproject.factories.BreathViewModelFactory
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.ENGLISH_KEY
-
+import android.media.MediaPlayer
 
 class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
 
     private lateinit var viewModel: BreathViewModel
+    private var selectedSoundResId: Int = R.raw.tick1
+    private var mediaPlayer: MediaPlayer? = null
     override fun initializeViews() {
         super.initializeViews()
-        intiBackgroundBasedOnLang()
         binding.remainingTimeFormat.text = getString(R.string.remaining_time_format,0,"ثواني متبقية")
     }
 
@@ -26,8 +28,19 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
             binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
         }
     }
+    fun showSoundSelectionDialog() {
+        val soundOptions = arrayOf("Tick Sound", "Clock Tick", "Metronome Tick")
+        val soundResIds = arrayOf(R.raw.tick1, R.raw.tick_2, R.raw.tick_3)
 
-
+        AlertDialog.Builder(context).setTitle("Choose a Sound")
+            .setItems(soundOptions) { _, which ->
+                setSound(soundResIds[which])
+            }
+            .show()
+    }
+    fun setSound(soundResId: Int) {
+        selectedSoundResId = soundResId
+    }
 
     override fun setupClickListener() {
         super.setupClickListener()
@@ -42,11 +55,13 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
 
         }
         binding.icBack.setOnClickListener{
-            findNavController().popBackStack()
+            showSoundSelectionDialog()
+//            findNavController().popBackStack()
         }
 
         binding.finishExercise.setOnClickListener {
             viewModel.clearData()
+            stopTickSound()
             findNavController().popBackStack()
         }
 
@@ -177,6 +192,16 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
         super.onDestroy()
         binding.progressBar.progress = 100
         viewModel.clearData()
+    }
+    private fun playTickSound() {
+        mediaPlayer?.release()
+        mediaPlayer = MediaPlayer.create(context, R.raw.tick1)
+        mediaPlayer?.start()
+    }
+
+    private fun stopTickSound() {
+        mediaPlayer?.release()
+        mediaPlayer = null
     }
 
 

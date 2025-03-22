@@ -18,13 +18,15 @@
         android:paddingBottom="@dimen/margin_large"
 
         >
+
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ic_back"
             style="@style/ic_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:tint="@color/white"
             app:srcCompat="@drawable/ic_arrow_back_ios" />
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout13"

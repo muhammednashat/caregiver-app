@@ -5,9 +5,9 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.view.View
 import android.widget.PopupMenu
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -21,9 +21,12 @@ import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.HAS_PARTNER
+import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.SUPPLICATIONS
 import mnshat.dev.myproject.util.data.getListHands
 import mnshat.dev.myproject.util.data.getListSebha
+import mnshat.dev.myproject.util.log
+import java.util.Locale
 
 
 class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>() ,
@@ -37,7 +40,7 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
 
     private fun setUiData(supplication: Supplication) {
         binding.textNameSupplication.text = supplication.name
-        binding.textBaseNumber.text = supplication.number.toString()
+        binding.textBaseNumber.text = getLocalizedNumber( supplication.number!!)
     }
 
     private fun retrieveDataFromArguments() {
@@ -59,11 +62,17 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
         }
 
         viewModel.numberRemaining.observe(viewLifecycleOwner) {
-            binding.textRemaining.text = it.toString()
+            binding.textRemaining.text = getLocalizedNumber(it)
         }
 
     }
+    fun getLocalizedNumber(number: Int): String {
+        var  lang = sharedPreferences.getString(LANGUAGE) ;
+        lang = if ((lang == null || lang.isEmpty())) "ar" else lang
+        log(lang)
 
+        return String.format(Locale(lang), "%d", number)
+    }
 
     override fun setupClickListener() {
         super.setupClickListener()
