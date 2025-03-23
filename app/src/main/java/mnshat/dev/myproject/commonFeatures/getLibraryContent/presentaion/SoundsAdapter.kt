@@ -19,7 +19,7 @@ import mnshat.dev.myproject.util.loadImage
 
 
 class SoundsAdapter(
-    private val sounds: List<Sound>?,
+    private val sounds: List<Sound>,
     private val context: Context,
     private val onItemSoundClicked: OnItemSoundClicked
 ) :
@@ -35,10 +35,12 @@ class SoundsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // card
-        val sound = sounds?.get(position)
+        val sound = sounds?.get(position)!!
          holder.title.text = sound?.name;
+
+        holder.imageView.setImageResource(sound.image)
         holder.itemView.setOnClickListener {
-//            onItemLibraryContentClicked.onItemClicked()
+            onItemSoundClicked.onItemClicked(sound.sound)
     }
 
     }
@@ -49,7 +51,7 @@ class SoundsAdapter(
     }
 
     override fun getItemCount(): Int {
-        return sounds?.size!!
+        return sounds.size!!
     }
 
 

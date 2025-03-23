@@ -25,6 +25,7 @@ class ChooseSuondFragment : BaseBottomSheetDialogFragment(), OnItemSoundClicked 
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentChooseSuondBinding.inflate(inflater, container, false)
+        initViewModel()
         setRecycler(getSoundsList(requireActivity()))
         return binding.root
     }

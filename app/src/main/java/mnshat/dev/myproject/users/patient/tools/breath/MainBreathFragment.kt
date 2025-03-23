@@ -1,6 +1,7 @@
 package mnshat.dev.myproject.users.patient.tools.breath
 
 import android.app.AlertDialog
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -9,27 +10,27 @@ import mnshat.dev.myproject.databinding.FragmentMainBreathBinding
 import mnshat.dev.myproject.factories.BreathViewModelFactory
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.ENGLISH_KEY
-import android.media.MediaPlayer
-import mnshat.dev.myproject.auth.AgeFragment
 import mnshat.dev.myproject.util.log
 
-class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
+class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>() {
 
     private lateinit var viewModel: BreathViewModel
-    private var selectedSoundResId: Int = R.raw.tick1
+    private var selectedSoundResId: Int = R.raw.rain
     private var mediaPlayer: MediaPlayer? = null
     override fun initializeViews() {
         super.initializeViews()
-        binding.remainingTimeFormat.text = getString(R.string.remaining_time_format,0,"ثواني متبقية")
+        binding.remainingTimeFormat.text =
+            getString(R.string.remaining_time_format, 0, "ثواني متبقية")
     }
 
 
-    override fun getLayout()= R.layout.fragment_main_breath
+    override fun getLayout() = R.layout.fragment_main_breath
     private fun intiBackgroundBasedOnLang() {
         if (currentLang != ENGLISH_KEY) {
             binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
         }
     }
+
     fun showSoundSelectionDialog() {
         val soundOptions = arrayOf("Tick Sound", "Clock Tick", "Metronome Tick")
         val soundResIds = arrayOf(R.raw.tick1, R.raw.tick_2, R.raw.tick_3)
@@ -40,6 +41,7 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
             }
             .show()
     }
+
     private fun setSound(soundResId: Int) {
         selectedSoundResId = soundResId
     }
@@ -56,10 +58,12 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
             )
 
         }
-        binding.icBack.setOnClickListener{
+
+        binding.icBack.setOnClickListener {
             findNavController().popBackStack()
         }
-        binding.sound.setOnClickListener{
+
+        binding.sound.setOnClickListener {
             ChooseSuondFragment().show(childFragmentManager, ChooseSuondFragment::class.java.name)
         }
 
@@ -68,8 +72,6 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
             stopTickSound()
             findNavController().popBackStack()
         }
-
-
 
     }
 
@@ -87,8 +89,8 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
     }
-    private fun observeViewModel(){
 
+    private fun observeViewModel() {
 
         viewModel.progressState.observe(viewLifecycleOwner) {
 
@@ -99,27 +101,28 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
             }
         }
         viewModel.soundId.observe(viewLifecycleOwner) {
-if (it !=null){
-    log("$it")
+            if (it != null) {
+                selectedSoundResId = it
+                log("$it")
 
-}
+            }
         }
 
         viewModel.showDialog.observe(viewLifecycleOwner) {
-         it?.let {
-             if (it) {
-                 showRepeatedExerciseDialog()
-                 viewModel.restShowDialog()
-             }
-         }
+            it?.let {
+                if (it) {
+                    showRepeatedExerciseDialog()
+                    viewModel.restShowDialog()
+                }
+            }
 
         }
 
-        viewModel.remainingTime.observe(viewLifecycleOwner){
-            it?.let{
-                if(it != 0){
+        viewModel.remainingTime.observe(viewLifecycleOwner) {
+            it?.let {
+                if (it != 0) {
                     playTickSound()
-                }else{
+                } else {
                     stopTickSound()
                 }
                 binding.remainingTimeFormat.text =
@@ -129,13 +132,13 @@ if (it !=null){
         }
 
         viewModel.resetProgress.observe(viewLifecycleOwner) {
-         it?.let {
-            if (it){
-                resetProgress()
-                viewModel.resetRestProgress()
+            it?.let {
+                if (it) {
+                    resetProgress()
+                    viewModel.resetRestProgress()
 
+                }
             }
-         }
 
         }
 
@@ -160,13 +163,13 @@ if (it !=null){
     }
 
     private fun updateStartingButtonUi(it: Boolean) {
-      val text = if (it)  getString(R.string.starting_over) else getString(R.string.click_to_start)
-       val imageResource = if (it) R.drawable.ic_sync else R.drawable.ic_play
-       binding.textView.text = text
-       binding.imageView.setImageResource(imageResource)
+        val text = if (it) getString(R.string.starting_over) else getString(R.string.click_to_start)
+        val imageResource = if (it) R.drawable.ic_sync else R.drawable.ic_play
+        binding.textView.text = text
+        binding.imageView.setImageResource(imageResource)
     }
 
-    private fun resetProgress(){
+    private fun resetProgress() {
         binding.imageViewFace.setImageResource(R.drawable.image_face0)
         binding.progressBar.progress = 100
         binding.textInstructions.text = getString(R.string.click_on_the_box_below_to_get_started)
@@ -177,21 +180,24 @@ if (it !=null){
     private fun updateUiBaseCurrentPhase(remainingTime: Int) {
         val listPhases = viewModel.gitDurationAsPhases()
         val phase = listPhases[3].plus(1)
-        when(remainingTime){
+        when (remainingTime) {
             listPhases[0] -> {
                 binding.imageViewFace.setImageResource(R.drawable.image_face1)
                 binding.textInstructions.text = getString(R.string.inhale, phase)
             }
+
             listPhases[1] -> {
                 binding.imageViewFace.setImageResource(R.drawable.image_face2)
 
                 binding.textInstructions.text = getString(R.string.hold_air, phase)
             }
+
             listPhases[2] -> {
                 binding.imageViewFace.setImageResource(R.drawable.image_face3)
 
                 binding.textInstructions.text = getString(R.string.exhale_slowly, phase)
             }
+
             listPhases[3] -> {
                 binding.imageViewFace.setImageResource(R.drawable.image_face0)
 
@@ -210,6 +216,7 @@ if (it !=null){
         binding.progressBar.progress = 100
         viewModel.clearData()
     }
+
     private fun playTickSound() {
         mediaPlayer?.release()
         mediaPlayer = MediaPlayer.create(context, selectedSoundResId)
@@ -220,9 +227,6 @@ if (it !=null){
         mediaPlayer?.release()
         mediaPlayer = null
     }
-
-
-
 
 
 }
