@@ -639,5 +639,8 @@
     <string name="activity_reminder">تذكير بالانشطة</string>
     <string name="where_am_i">📍أين أنا الآن؟</string>
     <string name="skip">تخطى</string>
+    <string name="choose_sound">اختيار الصوت</string>
+    <string name="sound_rain">صوت المطر</string>
+    <string name="sound_sea">صوت البحر</string>
 
 </resources>

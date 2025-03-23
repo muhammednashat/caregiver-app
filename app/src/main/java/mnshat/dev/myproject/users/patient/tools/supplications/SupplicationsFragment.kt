@@ -3,6 +3,7 @@ package mnshat.dev.myproject.users.patient.tools.supplications
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -35,7 +36,8 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
     private lateinit var viewModel: SupplicationsViewModel
     private lateinit var fullTextSupplicationDialog: Dialog
      private lateinit var supplicationText: String
-
+    private var selectedSoundResId: Int = R.raw.tick1
+    private var mediaPlayer: MediaPlayer? = null
 
 
     private fun setUiData(supplication: Supplication) {
@@ -62,11 +64,14 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
         }
 
         viewModel.numberRemaining.observe(viewLifecycleOwner) {
+            if(it != 0){
+                playTickSound()
+            }
             binding.textRemaining.text = getLocalizedNumber(it)
         }
 
     }
-    fun getLocalizedNumber(number: Int): String {
+    private fun getLocalizedNumber(number: Int): String {
         var  lang = sharedPreferences.getString(LANGUAGE) ;
         lang = if ((lang == null || lang.isEmpty())) "ar" else lang
         log(lang)
@@ -198,5 +203,19 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
         }
 
     }
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer?.release()
+        mediaPlayer = null
+    }
+    private fun playTickSound() {
+        mediaPlayer?.release()
+        mediaPlayer = MediaPlayer.create(context, R.raw.tick4)
+        mediaPlayer?.start()
+    }
 
+    private fun stopTickSound() {
+        mediaPlayer?.release()
+        mediaPlayer = null
+    }
 }

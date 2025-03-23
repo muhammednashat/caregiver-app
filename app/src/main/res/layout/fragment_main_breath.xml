@@ -16,17 +16,29 @@
         android:background="#87c1e7"
         android:paddingTop="@dimen/margin_large"
         android:paddingBottom="@dimen/margin_large"
-
         >
 
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ic_back"
             style="@style/ic_back"
+            android:layout_marginTop="4dp"
+            android:tint="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:tint="@color/white"
             app:srcCompat="@drawable/ic_arrow_back_ios" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/sound"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="12dp"
+            android:background="@drawable/circle_blue"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout13"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout13"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout13"
+            app:srcCompat="@drawable/musiz" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout13"

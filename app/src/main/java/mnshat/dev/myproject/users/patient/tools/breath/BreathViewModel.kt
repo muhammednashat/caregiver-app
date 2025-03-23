@@ -44,6 +44,8 @@ class BreathViewModel(
     val remainingTime: LiveData<Int>
         get() = _remainingTime
 
+     val soundId = MutableLiveData<Int?>()
+
     private var countdownTimer: CountDownTimer? = null
 
 
@@ -77,7 +79,9 @@ class BreathViewModel(
         return 1 * 60 * 1000L
     }
 
-
+fun  updateSound (id:Int?){
+    soundId.value = id
+}
     private fun startCountdown(selectedDurationInMillis: Long) {
         counter++  // counter = counter + 1  counter=3
         _progressState.value =  selectedDurationInMillis

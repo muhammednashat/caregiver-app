@@ -10,6 +10,8 @@ import mnshat.dev.myproject.factories.BreathViewModelFactory
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import android.media.MediaPlayer
+import mnshat.dev.myproject.auth.AgeFragment
+import mnshat.dev.myproject.util.log
 
 class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
 
@@ -38,7 +40,7 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
             }
             .show()
     }
-    fun setSound(soundResId: Int) {
+    private fun setSound(soundResId: Int) {
         selectedSoundResId = soundResId
     }
 
@@ -55,8 +57,10 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
 
         }
         binding.icBack.setOnClickListener{
-            showSoundSelectionDialog()
-//            findNavController().popBackStack()
+            findNavController().popBackStack()
+        }
+        binding.sound.setOnClickListener{
+            ChooseSuondFragment().show(childFragmentManager, ChooseSuondFragment::class.java.name)
         }
 
         binding.finishExercise.setOnClickListener {
@@ -94,6 +98,12 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
                     it.toDouble().div(selectedDuration).times(100).toInt()
             }
         }
+        viewModel.soundId.observe(viewLifecycleOwner) {
+if (it !=null){
+    log("$it")
+
+}
+        }
 
         viewModel.showDialog.observe(viewLifecycleOwner) {
          it?.let {
@@ -107,6 +117,11 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
 
         viewModel.remainingTime.observe(viewLifecycleOwner){
             it?.let{
+                if(it != 0){
+                    playTickSound()
+                }else{
+                    stopTickSound()
+                }
                 binding.remainingTimeFormat.text =
                     getString(R.string.remaining_time_format, it, "ثواني متبقية")
                 updateUiBaseCurrentPhase(it)
@@ -190,12 +205,14 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>(){
 
     override fun onDestroy() {
         super.onDestroy()
+        mediaPlayer?.release()
+        mediaPlayer = null
         binding.progressBar.progress = 100
         viewModel.clearData()
     }
     private fun playTickSound() {
         mediaPlayer?.release()
-        mediaPlayer = MediaPlayer.create(context, R.raw.tick1)
+        mediaPlayer = MediaPlayer.create(context, selectedSoundResId)
         mediaPlayer?.start()
     }
 
