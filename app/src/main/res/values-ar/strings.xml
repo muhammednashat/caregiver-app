@@ -642,5 +642,8 @@
     <string name="choose_sound">اختيار الصوت</string>
     <string name="sound_rain">صوت المطر</string>
     <string name="sound_sea">صوت البحر</string>
+    <string name="no_sound">بلا صوت</string>
+    <string name="sound_air">نسيم الهواء</string>
+    <string name="sound_birds">صوت الطيور</string>
 
 </resources>

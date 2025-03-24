@@ -15,7 +15,7 @@ import mnshat.dev.myproject.util.log
 class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>() {
 
     private lateinit var viewModel: BreathViewModel
-    private var selectedSoundResId: Int = R.raw.rain
+    private var selectedSoundResId: Int? = R.raw.rain
     private var mediaPlayer: MediaPlayer? = null
     override fun initializeViews() {
         super.initializeViews()
@@ -31,20 +31,7 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>() {
         }
     }
 
-    fun showSoundSelectionDialog() {
-        val soundOptions = arrayOf("Tick Sound", "Clock Tick", "Metronome Tick")
-        val soundResIds = arrayOf(R.raw.tick1, R.raw.tick_2, R.raw.tick_3)
 
-        AlertDialog.Builder(context).setTitle("Choose a Sound")
-            .setItems(soundOptions) { _, which ->
-                setSound(soundResIds[which])
-            }
-            .show()
-    }
-
-    private fun setSound(soundResId: Int) {
-        selectedSoundResId = soundResId
-    }
 
     override fun setupClickListener() {
         super.setupClickListener()
@@ -101,11 +88,15 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>() {
             }
         }
         viewModel.soundId.observe(viewLifecycleOwner) {
-            if (it != null) {
                 selectedSoundResId = it
-                log("$it")
+            if (selectedSoundResId == null){
+                binding.sound.setImageResource(R.drawable.no_musiz)
 
+            }else{
+                binding.sound.setImageResource(R.drawable.musiz)
             }
+                playTickSound()
+                log("$it")
         }
 
         viewModel.showDialog.observe(viewLifecycleOwner) {
@@ -120,9 +111,9 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>() {
 
         viewModel.remainingTime.observe(viewLifecycleOwner) {
             it?.let {
-                if (it != 0) {
+                if (it == 59) {
                     playTickSound()
-                } else {
+                } else if(it == 0){
                     stopTickSound()
                 }
                 binding.remainingTimeFormat.text =
@@ -218,8 +209,12 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>() {
     }
 
     private fun playTickSound() {
+        if(selectedSoundResId == null){
+            stopTickSound()
+            return;
+        }
         mediaPlayer?.release()
-        mediaPlayer = MediaPlayer.create(context, selectedSoundResId)
+        mediaPlayer = MediaPlayer.create(context, selectedSoundResId!!)
         mediaPlayer?.start()
     }
 

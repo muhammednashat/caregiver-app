@@ -640,6 +640,9 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="choose_sound">Choose sound</string>
     <string name="sound_rain">Sound Rain</string>
     <string name="sound_sea">Sound Sea</string>
+    <string name="no_sound">No sound</string>
+    <string name="sound_air">Air breeze</string>
+    <string name="sound_birds">Bird sound</string>
 
 
 </resources>

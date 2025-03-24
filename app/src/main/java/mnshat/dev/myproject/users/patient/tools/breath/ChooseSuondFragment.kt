@@ -48,7 +48,7 @@ class ChooseSuondFragment : BaseBottomSheetDialogFragment(), OnItemSoundClicked 
         viewModel = ViewModelProvider(requireActivity(), factory)[BreathViewModel::class.java]
     }
 
-    override fun onItemClicked(soundId: Int) {
+    override fun onItemClicked(soundId: Int?) {
     viewModel.updateSound(soundId)
         dismiss()
     }

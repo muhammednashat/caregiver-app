@@ -36,7 +36,6 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
     private lateinit var viewModel: SupplicationsViewModel
     private lateinit var fullTextSupplicationDialog: Dialog
      private lateinit var supplicationText: String
-    private var selectedSoundResId: Int = R.raw.tick1
     private var mediaPlayer: MediaPlayer? = null
 
 

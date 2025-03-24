@@ -45,10 +45,7 @@ class SoundsAdapter(
 
     }
 
-    fun prin(){
-        println("")
 
-    }
 
     override fun getItemCount(): Int {
         return sounds.size!!
@@ -65,6 +62,6 @@ class SoundsAdapter(
 
 interface OnItemSoundClicked {
 
-    fun onItemClicked(soundId: Int)
+    fun onItemClicked(soundId: Int?)
 }
 
