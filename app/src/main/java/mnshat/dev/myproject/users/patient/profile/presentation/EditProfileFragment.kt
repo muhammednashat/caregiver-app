@@ -3,22 +3,25 @@ package mnshat.dev.myproject.users.patient.profile.presentation
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
-import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
 import mnshat.dev.myproject.databinding.DialogConfirmUpdateReligionBinding
 import mnshat.dev.myproject.databinding.FragmentEditProfileBinding
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.util.AGE_GROUP
-import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.GENDER
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.RELIGION
@@ -26,6 +29,9 @@ import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
 import mnshat.dev.myproject.util.loadImage
+import mnshat.dev.myproject.util.log
+import java.util.UUID
+
 @AndroidEntryPoint
 class EditProfileFragment : BaseFragment() {
 
@@ -34,6 +40,8 @@ class EditProfileFragment : BaseFragment() {
     private var currentLang = ""
     private lateinit var sharedPreferences: SharedPreferencesManager
    private  var canChecked = true
+    private var imageUri: Uri? = null
+private  var isPicked = false
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,9 +56,9 @@ class EditProfileFragment : BaseFragment() {
 
      fun initializeViews() {
          currentLang = viewModel.sharedPreferences.getString(LANGUAGE)
-        if (currentLang != ENGLISH_KEY) {
-            binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-        }
+//        if (currentLang != ENGLISH_KEY) {
+//            binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
+//        }
 
         if (sharedPreferences.getBoolean(RELIGION)) {
             binding.metadata.yes.isChecked = true
@@ -68,6 +76,15 @@ class EditProfileFragment : BaseFragment() {
 
 
     private fun setupClickListener() {
+
+        binding.updateImage.setOnClickListener {
+            if (isPicked){
+                uploadImageToFireStorage(imageUri!!)
+            }else{
+                pickImageFromGallery()
+            }
+        }
+
         binding.metadata.groupRoot.setOnCheckedChangeListener { group, checkedId ->
             if (canChecked){
                 when (checkedId) {
@@ -98,6 +115,8 @@ class EditProfileFragment : BaseFragment() {
             findNavController().navigate(R.id.action_editProfileFragment_to_editGenderFragment)
         }
     }
+
+
 
     private fun editReligion(key: String, needReligion: Boolean) {
         if (needReligion != sharedPreferences.getBoolean(RELIGION)){
@@ -172,6 +191,51 @@ class EditProfileFragment : BaseFragment() {
             binding.metadata.yes.isChecked = true
         }
         canChecked = true
+    }
+
+
+    private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        uri?.let {
+            imageUri = it
+            binding.imageUser.setImageURI(it)
+            binding.updateImage.text = getString(R.string.save)
+            isPicked = true
+                }
+    }
+
+    // Pick Image from Gallery
+    private fun pickImageFromGallery() {
+        pickImageLauncher.launch("image/*")
+    }
+    // Upload Image to Firebase Storage
+    private fun uploadImageToFireStorage(imageUri: Uri) {
+        log(imageUri.toString())
+//        val storageRef = FirebaseStorage.getInstance().reference.child("images/${UUID.randomUUID()}.jpg")
+//
+//        storageRef.putFile(imageUri)
+//            .addOnSuccessListener {
+//                storageRef.downloadUrl.addOnSuccessListener { uri ->
+//                    saveImageUrlToFirestore(uri.toString()) // Save URL to Firestore
+//                }
+//            }
+//            .addOnFailureListener {
+////                Toast.makeText(this, "Upload failed: ${it.message}", Toast.LENGTH_SHORT).show()
+//            }
+
+    }
+
+    // Save Image URL to Firestore
+    private fun saveImageUrlToFirestore(imageUrl: String) {
+        val db = FirebaseFirestore.getInstance()
+        val imageMap = hashMapOf("imageUrl" to imageUrl)
+
+        db.collection("images").add(imageMap)
+            .addOnSuccessListener {
+//                Toast.makeText(re, "Image uploaded successfully", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+//                Toast.makeText(this, "Failed to save image URL", Toast.LENGTH_SHORT).show()
+            }
     }
 
 }

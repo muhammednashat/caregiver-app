@@ -49,7 +49,7 @@ class AuthViewModel(
     val typeOfUser = MutableLiveData<String?>()
     var errorMessage: String? = ""
     var id: String? = null
-    var imageUser: String? = "https://firebasestorage.googleapis.com/v0/b/myproject-18932.appspot.com/o/images%2Fimg1.jpg?alt=media&token=d0823e7a-416f-4798-ac0a-ee91976c8082"
+    var imageUser: String? = null ;
 
     fun clearData() {
         name.value = null
@@ -164,7 +164,7 @@ class AuthViewModel(
 
 
     fun storeDataLocally() {
-        log(" storeDataLocally 1234 ")
+        initImageUser()
         sharedPreferences.storeString(USER_ID, id)
         sharedPreferences.storeString(USER_EMAIL, email.value)
         sharedPreferences.storeString(USER_IMAGE, imageUser)
@@ -187,6 +187,7 @@ class AuthViewModel(
     }
 
     fun getRegistrationDataForUser(): RegistrationData {
+        initImageUser()
         return RegistrationData(
             id = id,
             name = name.value,
@@ -206,7 +207,12 @@ class AuthViewModel(
         )
     }
 
+    private fun initImageUser() {
+         imageUser =       if (intGender.value == 1) "https://firebasestorage.googleapis.com/v0/b/myproject-18932.appspot.com/o/images%2Fman.png?alt=media&token=442a95f6-c82c-4725-9432-5fef0b516b06" else "https://firebasestorage.googleapis.com/v0/b/myproject-18932.appspot.com/o/images%2Fusers%20(2).png?alt=media&token=889b15ae-fd46-4255-a757-de712e1b5113"
+    }
+
     fun getRegistrationDataForCaregiver(): RegistrationData {
+        initImageUser()
         return RegistrationData(
             id = id,
             name = name.value,

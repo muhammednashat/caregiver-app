@@ -89,13 +89,14 @@
                     app:srcCompat="@drawable/ic_user_profile" />
 
                 <TextView
-                    android:id="@+id/name_user"
+                    android:id="@+id/updateImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/padding_medium"
+                    android:textStyle="bold"
                     android:gravity="center"
                     android:text="@string/edit_profile_picture"
-                    android:textColor="#3f484f"
+                    android:textColor="@color/sky_blue"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -108,7 +109,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/name_user" />
+                    app:layout_constraintTop_toBottomOf="@+id/updateImage" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
