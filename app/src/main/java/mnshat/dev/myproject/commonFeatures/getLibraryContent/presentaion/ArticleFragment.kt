@@ -1,7 +1,7 @@
 package mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion
 
+import android.content.res.ColorStateList
 import android.graphics.Color
-import android.text.Html
 import androidx.core.text.HtmlCompat
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
@@ -14,6 +14,7 @@ import mnshat.dev.myproject.util.ARTICLE
 import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.LIBRARY
+import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
 
@@ -31,8 +32,14 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
 
     private fun initializeView() {
         val content = viewModel.getContent()
+//        content.arText = "#0081bf"
+        binding.container.backgroundTintList = ColorStateList.valueOf(Color.parseColor(content.backgroundColor)); // Change to any color
+
         setArticle(content)
         setTitles(content)
+        loadImage(requireActivity(),content.imageURL,binding.imageView)
+        loadImage(requireActivity(),content.imageURL,binding.imageView2)
+
         binding.date.text = content.date
 
     }

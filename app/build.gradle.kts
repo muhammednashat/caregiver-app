@@ -30,6 +30,7 @@ android {
         }
     }
 
+
     compileOptions {
 //        sourceCompatibility = JavaVersion.VERSION_11
         sourceCompatibility = JavaVersion.VERSION_17
@@ -65,7 +66,6 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-android:2.8.3")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-    implementation("com.google.firebase:firebase-storage-ktx:21.0.1")
 
 
     //Test
@@ -82,15 +82,14 @@ dependencies {
 
 
     //Firebase SDK
-    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation(platform("com.google.firebase:firebase-bom:33.11.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")
-    implementation("com.google.firebase:firebase-auth-ktx:22.1.2")
-    implementation("com.google.firebase:firebase-database-ktx:20.2.2")
-    implementation("com.google.firebase:firebase-firestore-ktx:24.8.1")
-
-    implementation("com.google.firebase:firebase-messaging:23.4.1")
-
-    implementation("com.google.firebase:firebase-inappmessaging-display:20.4.1")
+    implementation("com.google.firebase:firebase-auth-ktx:23.2.0")
+    implementation("com.google.firebase:firebase-database-ktx:21.0.0")
+    implementation("com.google.firebase:firebase-firestore-ktx:25.1.3")
+    implementation("com.google.firebase:firebase-storage-ktx:21.0.1")
+    implementation("com.google.firebase:firebase-messaging:24.1.1")
+    implementation("com.google.firebase:firebase-inappmessaging-display:21.0.2")
     implementation("com.firebaseui:firebase-ui-auth:8.0.2")
     implementation("com.firebaseui:firebase-ui-database:8.0.2")
 

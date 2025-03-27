@@ -13,7 +13,7 @@ data class LibraryContent(
     val id: Int? = null,
     val date: String? = null,
     val category: String? = null,
-    val arText: String? = null,
+    var backgroundColor: String? = null,
     val enText: String? = null,
     val arDescription: String? = null,
     val enDescription: String? = null,

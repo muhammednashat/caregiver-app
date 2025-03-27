@@ -37,7 +37,7 @@ class DisplayArticleFragment : BasePatientFragment<FragmentDisplayArticleBinding
 
             binding.article.text = content.enText?.repeat(100) // repeat the text 100 times
         } else {
-            binding.article.text = content.arText?.repeat(100) // repeat the text 100 times
+            binding.article.text = content.arTitle?.repeat(100) // repeat the text 100 times
         }
     }
 

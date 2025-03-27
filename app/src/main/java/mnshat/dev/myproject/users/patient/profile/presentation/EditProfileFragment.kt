@@ -26,6 +26,7 @@ import mnshat.dev.myproject.util.GENDER
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
 import mnshat.dev.myproject.util.loadImage
@@ -76,6 +77,10 @@ private  var isPicked = false
 
 
     private fun setupClickListener() {
+
+        binding.imageUser.setOnClickListener{
+            pickImageFromGallery()
+        }
 
         binding.updateImage.setOnClickListener {
             if (isPicked){
@@ -203,39 +208,41 @@ private  var isPicked = false
                 }
     }
 
-    // Pick Image from Gallery
     private fun pickImageFromGallery() {
         pickImageLauncher.launch("image/*")
     }
-    // Upload Image to Firebase Storage
+
     private fun uploadImageToFireStorage(imageUri: Uri) {
-        log(imageUri.toString())
-//        val storageRef = FirebaseStorage.getInstance().reference.child("images/${UUID.randomUUID()}.jpg")
-//
-//        storageRef.putFile(imageUri)
-//            .addOnSuccessListener {
-//                storageRef.downloadUrl.addOnSuccessListener { uri ->
-//                    saveImageUrlToFirestore(uri.toString()) // Save URL to Firestore
-//                }
-//            }
-//            .addOnFailureListener {
-////                Toast.makeText(this, "Upload failed: ${it.message}", Toast.LENGTH_SHORT).show()
-//            }
+        showProgressDialog()
+        val storageRef = FirebaseStorage.getInstance().reference.child("users_images/${sharedPreferences.getString(
+            USER_ID)}")
+        storageRef.putFile(imageUri)
+            .addOnSuccessListener {
+                storageRef.downloadUrl.addOnSuccessListener { uri ->
+                    saveImageUrlToFirestore(uri.toString())
+                }
+            }
+            .addOnFailureListener {
+                dismissProgressDialog()
+                showToast("خظأ اثناء حفظ الصورة/n رجاءا المحاولة فى وقت لاحق")
+            }
 
     }
 
-    // Save Image URL to Firestore
     private fun saveImageUrlToFirestore(imageUrl: String) {
-        val db = FirebaseFirestore.getInstance()
-        val imageMap = hashMapOf("imageUrl" to imageUrl)
+        val map = mapOf<String,Any>("imageUser"  to imageUrl)
+      FirebaseService.updateItemsProfileUser(sharedPreferences.getString(USER_ID), map){ resaul ->
+        if(resaul){
+            sharedPreferences.storeString(USER_IMAGE,imageUrl)
+            showToast("تم تغير الصورة بنجاح")
+            binding.updateImage.text = getString(R.string.edit_profile_picture)
+            isPicked = false
+        }else{
+            showToast("خظأ اثناء حفظ الصورة/n رجاءا المحاولة فى وقت لاحق")
 
-        db.collection("images").add(imageMap)
-            .addOnSuccessListener {
-//                Toast.makeText(re, "Image uploaded successfully", Toast.LENGTH_SHORT).show()
-            }
-            .addOnFailureListener {
-//                Toast.makeText(this, "Failed to save image URL", Toast.LENGTH_SHORT).show()
-            }
+        }
+          dismissProgressDialog()
+      }
     }
 
 }

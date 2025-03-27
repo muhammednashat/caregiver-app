@@ -66,12 +66,14 @@ class ProfileFragment : BaseFragment() {
     }
 
      fun initializeViews() {
-        binding.nameUser.text = viwModel.sharedPreferences.getString(USER_NAME)
-        loadImage(requireActivity(),viwModel.sharedPreferences.getString(USER_IMAGE),binding.imageUser)
+//        binding.nameUser.text = viwModel.sharedPreferences.getString(USER_NAME)
+//        loadImage(requireActivity(),viwModel.sharedPreferences.getString(USER_IMAGE),binding.imageUser)
     }
     override fun onStart() {
         super.onStart()
         binding.nameUser.text = viwModel.sharedPreferences.getString(USER_NAME)
+        loadImage(requireActivity(),viwModel.sharedPreferences.getString(USER_IMAGE),binding.imageUser)
+
     }
 
 

@@ -18,7 +18,7 @@ import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.TaskListCon
 
 @Database(
     entities = [LibraryContent::class , DayEntity::class,TaskEntity::class, DayTaskEntity::class],
-    version = 6,
+    version = 8,
     exportSchema = false
 )
 @TypeConverters(TaskListConverter::class)
