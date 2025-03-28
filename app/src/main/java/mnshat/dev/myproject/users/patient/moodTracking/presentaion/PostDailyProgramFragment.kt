@@ -36,6 +36,10 @@ private lateinit var binding:FragmentPostDailyProgramBinding
     }
 
     private fun setUpListener() {
+        binding.backBtn.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         binding.btnNext.setOnClickListener {
             if (canClickingButton){
                 findNavController().navigate(R.id.action_postDailyProgramFragment_to_suggestionsFragment)

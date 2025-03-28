@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.gson.Gson
 import mnshat.dev.myproject.base.BaseFragment
@@ -25,6 +26,10 @@ class MyPointsFragment : BaseFragment() {
 
         binding = FragmentMyPointsBinding.inflate(inflater, container, false)
         setUpRecycleriew(getCurrentDayLocally())
+
+        binding.backBtn.setOnClickListener {
+            findNavController().popBackStack()
+        }
         return  binding.root
     }
 

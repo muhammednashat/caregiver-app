@@ -31,6 +31,10 @@ class SuggestionsFragment : BaseFragment() {
     }
 
     private fun setUpListeners() {
+        binding.backBtn.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         binding.btnNext.setOnClickListener {
             viewModel.updateCurrentDayPostMood()
          findNavController().navigate(R.id.action_suggestionsFragment_to_compareResultsFragment)

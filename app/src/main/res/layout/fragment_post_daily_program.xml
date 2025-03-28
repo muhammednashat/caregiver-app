@@ -13,6 +13,17 @@
         android:id="@+id/root"
         android:layout_height="match_parent"
         tools:context=".users.patient.moodTracking.presentaion.PostDailyProgramFragment">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="@dimen/margin_large"
+            app:srcCompat="@drawable/ic_arrow_back_ios"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="190dp"

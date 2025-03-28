@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.PopupMenu
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
@@ -80,7 +81,9 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
 
     override fun setupClickListener() {
         super.setupClickListener()
-
+        binding.icBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
 
         binding.imageViewHand.setOnClickListener{

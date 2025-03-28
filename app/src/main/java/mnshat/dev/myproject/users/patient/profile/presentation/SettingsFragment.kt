@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.R
@@ -40,6 +41,10 @@ class SettingsFragment : BaseFragment() {
     }
 
     private fun setUpListeners() {
+        binding.icBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         binding.button.setOnClickListener {
          if (_currentLang == _updatingLang){
              activity?.onBackPressed()

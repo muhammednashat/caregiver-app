@@ -10,6 +10,10 @@ class ToolsFragment : BaseFragment2<FragmentToolsBinding>() {
 
     override fun setupClickListener() {
 
+
+        binding.icBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
         binding.imageSupplications.setOnClickListener{
             findNavController().navigate(R.id.action_toolsFragment_to_mainSupplicationsFragment)
         }

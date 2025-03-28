@@ -46,9 +46,8 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:padding="@dimen/margin_large"
+            app:srcCompat="@drawable/ic_arrow_back_ios"
 
-            android:visibility="invisible"
-            android:src="@drawable/baseline_arrow_back_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/white" />

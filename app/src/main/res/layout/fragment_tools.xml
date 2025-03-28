@@ -13,20 +13,31 @@
         android:background="@drawable/image_background_tools"
         tools:context=".users.patient.tools.ToolsFragment">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ic_back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:padding="@dimen/margin_medium"
+            android:layout_margin="@dimen/margin_large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back_ios"
+            app:tint="@color/black" />
+
 
         <TextView
             android:id="@+id/textView32"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="56dp"
             android:layout_marginEnd="@dimen/margin_medium"
             android:gravity="center"
+            android:layout_marginTop="@dimen/margin_medium"
             android:text="@string/tools_that_help_you_change_your_mood_and_psychological_state_and_get_rid_of_overthinking_and_stress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/ic_back" />
 
         <ImageView
             android:id="@+id/imageBreath"

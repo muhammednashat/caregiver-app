@@ -39,6 +39,10 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
 
     private fun setUpListener() {
 
+        binding.backBtn.setOnClickListener {
+            activity?.finish()
+        }
+
       binding.btnNext.setOnClickListener {
           if (canClickingButton){
               findNavController().navigate(R.id.action_preMoodSelectionFragment2_to_shareWhatEffectingMoodFragment2)
