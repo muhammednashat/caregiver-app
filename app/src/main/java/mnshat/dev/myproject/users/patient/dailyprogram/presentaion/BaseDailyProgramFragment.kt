@@ -60,9 +60,21 @@ open class BaseDailyProgramFragment : BaseFragment() {
               binding.textTitle.text = title
           }
       }
-        binding.textDescription.text = Html.fromHtml(description )
+
+           setDescriptionText()
+      
+
 
     }
+
+    private fun setDescriptionText() {
+        val headerColor = "#204167"
+//        binding.textDescription.text = Html.fromHtml(description )
+        binding.textDescription.text = Html.fromHtml(
+"<h2><font color='red'>What I sometimes feel:</font></h2>Sometimes I feel like I can't see anything in life except black and white... I feel a pain that exhausts my soul and my mind... I have the right to live happily... Feeling this sadness and pain means that there is something wrong with me, and I don't know what to do. <h2><font color='red'>What I need to know?</font></h2>It is absolutely okay to feel upset, sad or in pain. These are human feelings that do not shame the person who feels them, and they do not mean objection to the decrees of Allaah The Almighty or time to give up. It is okay to not be okay sometimes. These feelings are part of life, and if you are looking forward to your quest for perfection, you must accept that you are weak, because you were created imperfect and will never be complete, and there is no perfect person on this earth who is always happy. The key to healing is to cope with these feelings and not deny them.<br><br>\\\" + Others often suggest that we should suppress these feelings, saying things like 'Look at the troubles of others; your misfortune will seem easier’' and other words that make me feel that I am not satisfied with “God's will . Such words can be frustrating and may leave us feeling invalidated or misunderstood, as if our emotions or our right to feel them are not being acknowledged.  As the proverb says, ‘Whose hand is not under the stone does not hurt’, so  practise saying the proverb ‘Let it go in one ear and out the other’. It’s okay to acknowledge and accept these feelings. The proverb says, ‘Patience is a door to bitterness until it passes’, and this is the first step towards understanding yourself better, regaining your acceptance of life’s challenges and experiences to help face its circumstances. <h2><font color='red'>What to do?</font></h2><b>1. Accept and acknowledge your feelings:</b> It is important to allow yourself to accept your feelings without feeling guilty or ashamed.<br> <b>2. Talk about it with somebody you are comfortable talking with:</b> Whether you talk with a friend, family member, or counsellor, talking about your feelings can provide you with comfort. You do not have to go through this alone.<br> <b>3. Allow yourself to cry or rest:</b> Sometimes, emotions can be overwhelming, and that’s normal. Crying or taking time to recharge are important steps in healing.<br> <b>4. Practice self-care:</b> Participate in activities that help you relax and recharge your energy, whether by, for example, journalling or going for a walk. Self-care allows you to focus on your well-being.<br> <b>5. Seek professional support:</b> If grief or pain becomes overwhelming or persistent, a mental health professional can provide guidance, tools, and strategies to help you express that grief and to heal."        )
+
+    }
+
     fun changeColorOfTaskImage(status: Int?, root: ConstraintLayout, image: ImageView){
         when(status){
             1 -> {
