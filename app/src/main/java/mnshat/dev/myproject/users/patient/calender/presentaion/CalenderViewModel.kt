@@ -17,7 +17,6 @@ import mnshat.dev.myproject.util.log
 import java.util.Date
 import javax.inject.Inject
 
-//TODO replace CoroutineScope by viewmodelScope OR Cancel The Jop
 
 @HiltViewModel
 class CalenderViewModel @Inject constructor(
@@ -38,11 +37,12 @@ class CalenderViewModel @Inject constructor(
         calendarUseCaseManager.getCalenderActivitiesUseCase(context)
 
 
-
     fun setCustomActivity(activity: CalenderActivity) = run { customActivity = activity }
 
-    fun setChosenActivities(activities: List<CalenderActivity>) = run {  chosenActivities = activities}
-    fun  getChosenActivities() = chosenActivities
+    fun setChosenActivities(activities: List<CalenderActivity>) =
+        run { chosenActivities = activities }
+
+    fun getChosenActivities() = chosenActivities
 
     fun setPickedDate(date: CalendarDay) = run { pickedDate = date }
     fun getPickedDate() = pickedDate
@@ -51,15 +51,32 @@ class CalenderViewModel @Inject constructor(
     fun createDayPlan(day: DayEntity, tasks: List<TaskEntity>) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val result = calendarUseCaseManager.createDayUseCase(day)
+
+                val result = calendarUseCaseManager.getDayUseCase(day.day)
                 if (result.isSuccess) {
-                    val id = result.getOrNull()
-                    log("Successfully created day with ID: $id")
-                    addTasks(tasks)
+                    val result = result.getOrNull()
+                    if (result != null) {
+                        log("Day is  ->: ${result.day},")
+                        addTasks(tasks)
+                    } else {
+                        log("Day is null ,")
+                        val result = calendarUseCaseManager.createDayUseCase(day)
+                        if (result.isSuccess) {
+                            val id = result.getOrNull()
+                            log("Successfully created day with ID: $id")
+                            addTasks(tasks)
+                        } else {
+                            val exception = result.exceptionOrNull()
+                            log("Failed to create day: ${exception?.message}")
+
+                        }
+                    }
+
                 } else {
-                    val exception = result.exceptionOrNull()
-                    log("Failed to create day: ${exception?.message}")
+                    log("Failed to fetch day: ${result.exceptionOrNull()?.message}")
                 }
+
+
             } catch (e: Exception) {
                 log("Unexpected error: ${e.message}")
             }
@@ -73,7 +90,7 @@ class CalenderViewModel @Inject constructor(
                 val result = calendarUseCaseManager.getAllDaysUseCase()
                 if (result.isSuccess) {
                     val days = result.getOrNull()
-                    days?.let { postDays(days)}
+                    days?.let { postDays(days) }
                 } else {
                     log("Failed to fetch days: ${result.exceptionOrNull()?.message}")
                 }
@@ -84,9 +101,10 @@ class CalenderViewModel @Inject constructor(
 
     }
 
-    fun clearData(){
+    fun clearData() {
         _taskList.postValue(mutableListOf())
     }
+
     private fun postDays(days: List<DayEntity>?) {
         val list = mutableSetOf<CalendarDay>()
         log("Days are${days?.get(0)?.day}")
@@ -101,13 +119,13 @@ class CalenderViewModel @Inject constructor(
         _daysList.postValue(list.toHashSet())
     }
 
-    fun getDay(date:String) {
+    fun getDay(date: String) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val result = calendarUseCaseManager.getDayUseCase(date)
                 if (result.isSuccess) {
                     val day = result.getOrNull()
-                    day?.let{ day ->
+                    day?.let { day ->
                         log("Day is  ->: ${day.day},")
                     }
                 } else {
@@ -135,9 +153,9 @@ class CalenderViewModel @Inject constructor(
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val result = calendarUseCaseManager.addTasksUseCase(tasks)
-                if (result.isSuccess){
+                if (result.isSuccess) {
                     val ids = result.getOrNull()
-                     log("the ids are $ids")
+                    log("the ids are $ids")
                 } else {
                     log("Failed to fetch days: ${result.exceptionOrNull()?.message}")
                 }
@@ -147,11 +165,11 @@ class CalenderViewModel @Inject constructor(
         }
     }
 
-    fun getTasks(day:String) {
+    fun getTasks(day: String) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val result = calendarUseCaseManager.getTasksUseCase(day)
-                if (result.isSuccess){
+                if (result.isSuccess) {
                     val tasks = result.getOrNull()
                     log("tasks are $tasks")
                     tasks?.let { postTasks(it) }
@@ -200,7 +218,6 @@ class CalenderViewModel @Inject constructor(
         }
 
     }
-
 
 
 }
