@@ -110,6 +110,7 @@ class MyApplication: Application() {
             set(Calendar.HOUR_OF_DAY, 14) // 5 PM
             set(Calendar.MINUTE, 30)
             set(Calendar.SECOND, 0)
+            // this is test for git
             if (before(Calendar.getInstance())) {
                 add(Calendar.DAY_OF_YEAR, 1)
             }
