@@ -64,8 +64,12 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
         }
 
       binding.addButton.setOnClickListener {
-          val action = DayPlanFragmentDirections.actionDayPlanFragmentToCreateOwnActivityFragment("updating")
-         findNavController().navigate(action)
+
+          findNavController().navigate(R.id.action_dayPlanFragment_to_chooseActivitiesFragment)
+//          val action = DayPlanFragmentDirections.actionDayPlanFragmentToCreateOwnActivityFragment("updating")
+//
+//          findNavController().navigate(action)
+
       }
         binding.back.setOnClickListener{
             findNavController().popBackStack()
@@ -150,6 +154,7 @@ class DayPlanFragment : BaseFragment(), OnItemClickListener {
         dialogBinding.text.text =
             getString(R.string.you_have_completed_your_entire_plan_for_the_day_great_job)
         dialogBinding.button.setOnClickListener {
+            findNavController().popBackStack()
             dialog.dismiss()
         }
 

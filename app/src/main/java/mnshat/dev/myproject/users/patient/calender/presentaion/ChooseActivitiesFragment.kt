@@ -15,6 +15,7 @@ import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.DialogCalenderBinding
 import mnshat.dev.myproject.databinding.FragmentChooseActiviesBinding
 import mnshat.dev.myproject.users.patient.calender.domain.entity.CalenderActivity
+import mnshat.dev.myproject.util.log
 
 
 @AndroidEntryPoint
@@ -31,6 +32,7 @@ class ChooseActivitiesFragment : BaseFragment() , OnActivityClickListener{
         binding = FragmentChooseActiviesBinding.inflate(inflater,container, false)
         setUpRecyclerView()
         setListener()
+        log(viewModel.getPickedDate().toString() + " ............. 456" + viewModel.getDayEntity())
         return binding.root
     }
 

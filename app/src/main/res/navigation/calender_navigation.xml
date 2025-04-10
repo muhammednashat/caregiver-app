@@ -38,5 +38,8 @@
         <action
             android:id="@+id/action_dayPlanFragment_to_createOwnActivityFragment"
             app:destination="@id/createOwnActivityFragment" />
+        <action
+            android:id="@+id/action_dayPlanFragment_to_chooseActivitiesFragment"
+            app:destination="@id/chooseActivitiesFragment" />
     </fragment>
 </navigation>
