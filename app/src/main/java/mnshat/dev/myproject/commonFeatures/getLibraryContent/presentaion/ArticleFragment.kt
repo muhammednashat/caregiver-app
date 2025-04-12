@@ -2,6 +2,11 @@ package mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion
 
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.os.Build
+import android.speech.tts.TextToSpeech
+import android.speech.tts.UtteranceProgressListener
+import android.text.Html
+import android.text.Spanned
 import androidx.core.text.HtmlCompat
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
@@ -18,12 +23,12 @@ import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
 
-class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendButtonClicked {
+class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendButtonClicked, TextToSpeech.OnInitListener {
 
 
     override fun getLayout() = R.layout.fragment_article
-
-
+    private lateinit var htmlText: String
+    private lateinit var textToSpeech: TextToSpeech
     override fun initializeViews() {
         super.initializeViews()
         initializeView()
@@ -31,33 +36,58 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
 
 
     private fun initializeView() {
+        textToSpeech = TextToSpeech(requireActivity(), this)
         val content = viewModel.getContent()
 //        content.arText = "#0081bf"
-        binding.container.backgroundTintList = ColorStateList.valueOf(Color.parseColor(content.backgroundColor)); // Change to any color
+        binding.container.backgroundTintList =
+            ColorStateList.valueOf(Color.parseColor(content.backgroundColor)); // Change to any color
 
         setArticle(content)
         setTitles(content)
-        loadImage(requireActivity(),content.imageURL,binding.imageView)
-        loadImage(requireActivity(),content.imageURL,binding.imageView2)
+        loadImage(requireActivity(), content.imageURL, binding.imageView)
+        loadImage(requireActivity(), content.imageURL, binding.imageView2)
 
         binding.date.text = content.date
+
+
+        textToSpeech.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+            override fun onStart(utteranceId: String?) {
+                log("TTS", "Speech started")
+            }
+
+            override fun onDone(utteranceId: String?) {
+                log("TTS", "Speech done")
+            }
+
+            override fun onError(utteranceId: String?) {
+                log("TTS", "Speech error for utterance: $utteranceId")
+            }
+        })
+
 
     }
 
     private fun setTitles(content: LibraryContent) {
-        if (sharedPreferences.getString(LANGUAGE) ==  "en" ) {
+        if (sharedPreferences.getString(LANGUAGE) == "en") {
             binding.title.text = content.enTitle
         } else {
             binding.title.text = content.arTitle
         }
     }
 
+    private fun htmlToText(html: String): String {
+        val spanned: Spanned =
+            Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY)
+        return spanned.toString()
+    }
+
+
     private fun setArticle(content: LibraryContent) {
         val headerColor = "#204167"
         val textColor = "#204167"
         log(content.arDescription.toString())
 
-        val htmlText = if (sharedPreferences.getString(LANGUAGE) == "en") {
+        htmlText = if (sharedPreferences.getString(LANGUAGE) == "en") {
             content.enDescription.toString()
         } else {
             log("ar")
@@ -77,12 +107,21 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
             findNavController().popBackStack()
         }
 
+       binding.article.setOnClickListener {
+           val plainText = htmlToText(htmlText)
+           val parts = plainText.chunked(4000)
+           for ((index, part) in parts.withIndex()) {
+               textToSpeech.speak(part, TextToSpeech.QUEUE_ADD, null, "chunk_$index")
+           }
+       }
+
+
         binding.share.setOnClickListener {
-            if (sharedPreferences.getBoolean(HAS_PARTNER)){
+            if (sharedPreferences.getBoolean(HAS_PARTNER)) {
                 val fragment = ChooseSupporterFragment()
                 fragment.initOnConfirmButtonClicked(this)
                 fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
-            }else{
+            } else {
                 showToast(getString(R.string.no_supporters_text))
             }
         }
@@ -103,7 +142,7 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
         showProgressDialog()
         viewModel.shareContent(post(list)) {
             if (it == null) {
-                showToast( "done" )
+                showToast("done")
             } else {
                 showToast(it)
             }
@@ -119,5 +158,13 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
             supporters = list
         )
 
+    override fun onInit(p0: Int) {
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        textToSpeech.stop()
+        textToSpeech.shutdown()
+    }
 
 }

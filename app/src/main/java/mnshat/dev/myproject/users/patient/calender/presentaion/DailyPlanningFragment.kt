@@ -28,13 +28,13 @@ class DailyPlanningFragment : BaseFragment(),OnDayClickListener {
 
     private lateinit var  binding: FragmentDailyPlanningBinding
     private val viewModel: CalenderViewModel by viewModels()
-    private lateinit var daysAdapter: DaysAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View{
         binding = FragmentDailyPlanningBinding.inflate(inflater, container, false)
+
         binding.calendarView.selectedDate = viewModel.today
         viewModel.getDays()
         setListeners()
