@@ -50,6 +50,20 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
         binding.date.text = content.date
 
 
+        textToSpeech.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+            override fun onStart(utteranceId: String?) {
+                log("TTS", "Speech started")
+            }
+
+            override fun onDone(utteranceId: String?) {
+                log("TTS", "Speech done")
+            }
+
+            override fun onError(utteranceId: String?) {
+                log("TTS", "Speech error for utterance: $utteranceId")
+            }
+        })
+
 
     }
 
@@ -94,7 +108,11 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
         }
 
        binding.article.setOnClickListener {
-
+           val plainText = htmlToText(htmlText)
+           val parts = plainText.chunked(4000)
+           for ((index, part) in parts.withIndex()) {
+               textToSpeech.speak(part, TextToSpeech.QUEUE_ADD, null, "chunk_$index")
+           }
        }
 
 
