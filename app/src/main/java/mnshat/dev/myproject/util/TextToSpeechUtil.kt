@@ -1,11 +1,12 @@
 package mnshat.dev.myproject.util
 
 import android.speech.tts.TextToSpeech
+import android.speech.tts.TextToSpeechService
 import android.speech.tts.UtteranceProgressListener
 import android.text.Html
 import android.text.Spanned
 
-class TextToSpeechUtil (private val  textToSpeech: TextToSpeech) :TextToSpeech.OnInitListener {
+class TextToSpeechUtil ( val  textToSpeech: TextToSpeech) {
 
 
     fun debug(){
@@ -42,9 +43,6 @@ class TextToSpeechUtil (private val  textToSpeech: TextToSpeech) :TextToSpeech.O
         }
     }
 
-    override fun onInit(p0: Int) {
-
-    }
 
     fun release(){
         textToSpeech.stop()

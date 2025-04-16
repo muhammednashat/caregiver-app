@@ -2,6 +2,7 @@ package mnshat.dev.myproject.users.patient.dailyprogram.presentaion
 
 import android.graphics.Color
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
+import mnshat.dev.myproject.util.TextToSpeechUtil
+
 @AndroidEntryPoint
 
 class SpiritualFragment : BaseDailyProgramFragment() {
@@ -24,6 +27,8 @@ class SpiritualFragment : BaseDailyProgramFragment() {
     }
 
     fun initializeViews() {
+        textToSpeech =  TextToSpeechUtil(TextToSpeech(requireActivity(), null))
+
         viewModel.currentDay.value.let {
             viewModel.listOfTasks = it?.dayTask?.spiritual as List<Task>
 //            if ( viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
@@ -34,6 +39,18 @@ class SpiritualFragment : BaseDailyProgramFragment() {
     }
 
     fun setupClickListener() {
+
+        binding.play.setOnClickListener {
+            if(textToSpeech.textToSpeech.isSpeaking){
+                textToSpeech.textToSpeech.stop()
+                binding.play.setImageResource(R.drawable.icon_stop_sound)
+            }else{
+                textToSpeech.speakText(htmlText)
+                binding.play.setImageResource(R.drawable.icon_play_sound)
+
+            }
+        }
+
         binding.icBack.setOnClickListener{
 
           findNavController().popBackStack()

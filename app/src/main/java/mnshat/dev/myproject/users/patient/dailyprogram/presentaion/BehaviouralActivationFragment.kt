@@ -6,6 +6,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
 import mnshat.dev.myproject.users.patient.moodTracking.presentaion.PostMoodTrackingActivity
 import mnshat.dev.myproject.util.LANGUAGE
+import mnshat.dev.myproject.util.TextToSpeechUtil
 import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
@@ -41,6 +43,8 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
 
 
     fun initializeViews() {
+        textToSpeech =  TextToSpeechUtil(TextToSpeech(requireActivity(), null))
+
         viewModel.currentDay.value.let {
             viewModel.listOfTasks = it?.dayTask?.behaviorActivation as List<Task>
              log(viewModel.listOfTasks.size.toString())
@@ -55,6 +59,16 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
 
 
     fun setupClickListener() {
+        binding.play.setOnClickListener {
+            if(textToSpeech.textToSpeech.isSpeaking){
+                textToSpeech.textToSpeech.stop()
+                binding.play.setImageResource(R.drawable.icon_stop_sound)
+            }else{
+                textToSpeech.speakText(htmlText)
+                binding.play.setImageResource(R.drawable.icon_play_sound)
+
+            }
+        }
 
         binding.stationDescription.setOnClickListener {
             showDescriptionDialog(R.drawable.icon_descriptionww,

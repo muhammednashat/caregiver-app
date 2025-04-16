@@ -47,7 +47,6 @@ android:scaleType="fitXY"
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ic_back"
-
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="@dimen/margin_large"
@@ -57,6 +56,19 @@ android:scaleType="fitXY"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_arrow_back_ios"
                 app:tint="#204167" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/play"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="@dimen/margin_large"
+                android:padding="@dimen/margin_medium"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/icon_stop_sound"
+                />
 
             <TextView
                 android:id="@+id/subCategory"

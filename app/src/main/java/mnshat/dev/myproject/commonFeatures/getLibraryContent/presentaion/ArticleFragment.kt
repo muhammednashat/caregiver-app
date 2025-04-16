@@ -19,6 +19,7 @@ import mnshat.dev.myproject.util.ARTICLE
 import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.LIBRARY
+import mnshat.dev.myproject.util.TextToSpeechUtil
 import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
@@ -28,7 +29,7 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
 
     override fun getLayout() = R.layout.fragment_article
     private lateinit var htmlText: String
-    private lateinit var textToSpeech: TextToSpeech
+    private lateinit var textToSpeech: TextToSpeechUtil
     override fun initializeViews() {
         super.initializeViews()
         initializeView()
@@ -36,35 +37,16 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
 
 
     private fun initializeView() {
-        textToSpeech = TextToSpeech(requireActivity(), this)
+        textToSpeech =  TextToSpeechUtil(TextToSpeech(requireActivity(), this))
         val content = viewModel.getContent()
 //        content.arText = "#0081bf"
         binding.container.backgroundTintList =
             ColorStateList.valueOf(Color.parseColor(content.backgroundColor)); // Change to any color
-
         setArticle(content)
         setTitles(content)
         loadImage(requireActivity(), content.imageURL, binding.imageView)
         loadImage(requireActivity(), content.imageURL, binding.imageView2)
-
         binding.date.text = content.date
-
-
-        textToSpeech.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
-            override fun onStart(utteranceId: String?) {
-                log("TTS", "Speech started")
-            }
-
-            override fun onDone(utteranceId: String?) {
-                log("TTS", "Speech done")
-            }
-
-            override fun onError(utteranceId: String?) {
-                log("TTS", "Speech error for utterance: $utteranceId")
-            }
-        })
-
-
     }
 
     private fun setTitles(content: LibraryContent) {
@@ -74,13 +56,6 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
             binding.title.text = content.arTitle
         }
     }
-    // CHAT gpt
-    private fun htmlToText(html: String): String {
-        val spanned: Spanned =
-            Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY)
-        return spanned.toString()
-    }
-
 
     private fun setArticle(content: LibraryContent) {
         val headerColor = "#204167"
@@ -99,7 +74,6 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
 
     }
 
-
     override fun setupClickListener() {
         super.setupClickListener()
 
@@ -107,11 +81,14 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
             findNavController().popBackStack()
         }
 
-       binding.article.setOnClickListener {
-           val plainText = htmlToText(htmlText)
-           val parts = plainText.chunked(4000)
-           for ((index, part) in parts.withIndex()) {
-               textToSpeech.speak(part, TextToSpeech.QUEUE_ADD, null, "chunk_$index")
+       binding.play.setOnClickListener {
+           if(textToSpeech.textToSpeech.isSpeaking){
+               textToSpeech.textToSpeech.stop()
+               binding.play.setImageResource(R.drawable.icon_stop_sound)
+           }else{
+               textToSpeech.speakText(htmlText)
+               binding.play.setImageResource(R.drawable.icon_play_sound)
+
            }
        }
 
@@ -163,8 +140,7 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
 
     override fun onDestroy() {
         super.onDestroy()
-        textToSpeech.stop()
-        textToSpeech.shutdown()
+        textToSpeech.release()
     }
 
 }

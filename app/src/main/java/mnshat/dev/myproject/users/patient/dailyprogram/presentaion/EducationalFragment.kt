@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ import mnshat.dev.myproject.databinding.StaionDescriptionDialogBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
 import mnshat.dev.myproject.users.patient.moodTracking.presentaion.MoodTrackingActivity
 import mnshat.dev.myproject.util.RELIGION
+import mnshat.dev.myproject.util.TextToSpeechUtil
 import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
@@ -30,24 +32,19 @@ class EducationalFragment : BaseDailyProgramFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = LayoutTaskBinding.inflate(inflater, container, false)
+        textToSpeech =  TextToSpeechUtil(TextToSpeech(requireActivity(), null))
+
         hideSpiritualIcon(binding.constraintTask2, binding.line1)
         setupClickListener()
         showProgressDialog()
         viewModel.get()
         observeViewModel()
         log("EducationalFragment onCreateView")
-
-//        binding.text2.text = Html.fromHtml(
-//
-//        )
-
-//
         return  binding.root
     }
 
     override fun onStart() {
        log("EducationalFragment onStart")
-
         super.onStart()
 
     }
@@ -115,6 +112,18 @@ class EducationalFragment : BaseDailyProgramFragment() {
 
 
    private  fun setupClickListener() {
+
+
+       binding.play.setOnClickListener {
+           if(textToSpeech.textToSpeech.isSpeaking){
+               textToSpeech.textToSpeech.stop()
+               binding.play.setImageResource(R.drawable.icon_stop_sound)
+           }else{
+               textToSpeech.speakText(htmlText)
+               binding.play.setImageResource(R.drawable.icon_play_sound)
+
+           }
+       }
 
        binding.icBack.setOnClickListener{
            activity?.finish()
