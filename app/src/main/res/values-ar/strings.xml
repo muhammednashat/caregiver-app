@@ -645,5 +645,7 @@
     <string name="no_sound">بلا صوت</string>
     <string name="sound_air">نسيم الهواء</string>
     <string name="sound_birds">صوت الطيور</string>
+    <string name="caf_for_restructuring_ideas">مقهى إعادة هيكلة الافكار</string>
+    <string name="entry_to_caf">الدخول للمقهى</string>
 
 </resources>

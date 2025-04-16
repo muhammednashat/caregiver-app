@@ -643,6 +643,8 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="no_sound">No sound</string>
     <string name="sound_air">Air breeze</string>
     <string name="sound_birds">Bird sound</string>
+    <string name="caf_for_restructuring_ideas">Café for Restructuring Ideas</string>
+    <string name="entry_to_caf">Entry to café</string>
 
 
 </resources>
