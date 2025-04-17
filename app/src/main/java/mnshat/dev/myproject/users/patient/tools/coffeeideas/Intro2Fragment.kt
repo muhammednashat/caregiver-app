@@ -7,13 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import mnshat.dev.myproject.R
 
-class IntroFragment : Fragment() {
+
+class Intro2Fragment : Fragment() {
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_intro, container, false)
+        return inflater.inflate(R.layout.fragment_intro_cofe2, container, false)
     }
 
 }

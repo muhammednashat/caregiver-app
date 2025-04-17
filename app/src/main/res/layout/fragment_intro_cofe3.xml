@@ -3,10 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".users.patient.tools.coffeeideas.Blank5Fragment">
-    <ImageView
-android:scaleType="fitXY"
+    tools:context=".users.patient.tools.coffeeideas.Intro3Fragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/image_step5"/>
+        android:text="@string/hello_blank_fragment" />
+
 </FrameLayout>

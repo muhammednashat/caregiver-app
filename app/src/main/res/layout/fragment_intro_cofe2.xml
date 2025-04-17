@@ -3,10 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".users.patient.tools.coffeeideas.Blank5Fragment">
-    <ImageView
-android:scaleType="fitXY"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/image_step5"/>
+    android:background="@drawable/image_intro_cofe2"
+    tools:context=".users.patient.tools.coffeeideas.Intro2Fragment">
+
+
 </FrameLayout>
