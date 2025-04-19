@@ -649,5 +649,14 @@
     <string name="entry_to_caf">الدخول للمقهى</string>
     <string name="choose_your_cup_carefully">اختر كوبك بعناية</string>
     <string name="coffee">القهوة</string>
+    <string name="result">النتيجة</string>
+    <string name="bitter_coffee">القهوة المرة</string>
+    <string name="unbalanced_negative_thoughts">أفكار سلبية غير متوازنة</string>
+    <string name="will_you_let_discouraging_thoughts_take_over_starting_your_day_with_feelings_of_helplessness_and_frustration">هل ستسمح للأفكار المحبطة أن تسيطر عليك، فتبدا يومك بشعور من العجز والإحباط؟</string>
+    <string name="temporary_comfort_but_in_the_end_you_ll_find_yourself_stuck_in_the_same_place_without_progress">ستعيش في دائرة من التوتر والتردد، حيث يبدو كل شيء أصعب مما هو عليه</string>
+    <string name="over_sugary_coffee">القهوة السكرية الزائدة</string>
+    <string name="escaping_from_reality">هروب من الواقع</string>
+    <string name="will_you_choose_to_escape_into_an_illusion_of_comfort_ignoring_real_problems_and_challenges">هل ستختار الهروب إلى وهم الراحة، متجاهلاً المشكلات والتحديات الحقيقية؟</string>
+    <string name="you_will_live_in_a_cycle_of_stress_and_hesitation_where_everything_seems_harder_than_it_really_is">ستعيش في دائرة من التوتر والتردد، حيث يبدو كل شيء أصعب مما هو عليه.</string>
 
 </resources>

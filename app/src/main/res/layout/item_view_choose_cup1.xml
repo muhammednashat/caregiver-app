@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageView31"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/image_cofe1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView31"
         app:layout_constraintVertical_bias="0.0">
 
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/image_cofe1" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,22 +33,15 @@
 
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/coffee"
-                android:textColor="#204167"
-                android:textSize="16sp"
-                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                android:textSize="16sp"
+                android:text="@string/bitter_coffee"
 
-                android:text="@string/coffee"
                 android:textColor="#d40f20"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
 
@@ -51,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
-                android:text="coffee cofffe coffee coffee "
+                android:text="@string/unbalanced_negative_thoughts"
                 android:textColor="#204167" />
 
         </LinearLayout>
@@ -60,8 +58,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_medium"
-            android:text="Will you let discouraging thoughts take over, starting your day with feelings of helplessness and frustration?"
-            android:textColor="#204167"/>
+            android:text="@string/will_you_let_discouraging_thoughts_take_over_starting_your_day_with_feelings_of_helplessness_and_frustration"
+            android:textColor="#204167" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,10 +71,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="#204167"
+                android:padding="4dp"
                 android:text="@string/result"
                 android:textColor="@color/white"
-                android:padding="4dp"
-                android:background="#204167"
                 android:textStyle="bold" />
 
             <ImageView
@@ -89,7 +88,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="2dp"
-                android:text="Temporary comfort, but in the end, you’ll find yourself stuck in the same place without progress."
+                android:text="@string/you_will_live_in_a_cycle_of_stress_and_hesitation_where_everything_seems_harder_than_it_really_is"
+
                 android:textColor="#204167" />
 
         </LinearLayout>

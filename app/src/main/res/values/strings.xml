@@ -647,6 +647,15 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="entry_to_caf">Entry to café</string>
     <string name="choose_your_cup_carefully">Choose your cup carefully</string>
     <string name="coffee">The coffee</string>
+    <string name="result">Result</string>
+    <string name="bitter_coffee">Bitter coffee</string>
+    <string name="unbalanced_negative_thoughts">Unbalanced negative thoughts</string>
+    <string name="will_you_let_discouraging_thoughts_take_over_starting_your_day_with_feelings_of_helplessness_and_frustration">Will you let discouraging thoughts take over, starting your day with feelings of helplessness and frustration?</string>
+    <string name="temporary_comfort_but_in_the_end_you_ll_find_yourself_stuck_in_the_same_place_without_progress">Temporary comfort, but in the end, you’ll find yourself stuck in the same place without progress.</string>
+    <string name="over_sugary_coffee">Over-sugary coffee</string>
+    <string name="escaping_from_reality">Escaping from reality</string>
+    <string name="will_you_choose_to_escape_into_an_illusion_of_comfort_ignoring_real_problems_and_challenges">Will you choose to escape into an illusion of comfort, ignoring real problems and challenges?</string>
+    <string name="you_will_live_in_a_cycle_of_stress_and_hesitation_where_everything_seems_harder_than_it_really_is">You will live in a cycle of stress and hesitation, where everything seems harder than it really is.</string>
 
 
 </resources>
