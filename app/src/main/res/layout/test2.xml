@@ -10,127 +10,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/img_background_dailyprogram3">
+        >
 
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ic_pause"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="@dimen/margin_2_super"
-            android:layout_marginTop="48dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_pause_circle" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearLayoutCompat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_2_super"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ic_pause">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraint_task1"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/circle_gray2">
-
-                <ImageView
-                    android:id="@+id/image_task1"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:src="@drawable/ic_play"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View
-                android:id="@+id/line1"
-                android:layout_width="20dp"
-                android:layout_height="2dp"
-                android:layout_gravity="center"
-                android:background="#a6bec8" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraint_task2"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/circle_gray2">
-
-                <ImageView
-                    android:id="@+id/image_task2"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:src="@drawable/ic_play"
-
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View
-                android:id="@+id/line2"
-                android:layout_width="20dp"
-                android:layout_height="2dp"
-                android:layout_gravity="center"
-                android:background="#a6bec8" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraint_task3"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/circle_gray2">
-
-                <ImageView
-                    android:id="@+id/image_task3"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:src="@drawable/ic_puzzle"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            app:cardCornerRadius="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="75dp"
-            android:background="@drawable/corner_top_lift_right"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat">
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+            tools:itemCount="3"
+            tools:listitem="@layout/item_view_cofe_cup" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

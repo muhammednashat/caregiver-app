@@ -664,7 +664,8 @@
     <string name="this_cup_gives_you_the_strength_to_keep_growing_and_developing_without_exaggeration_or_minimization">هذا الفنجان يمنحك القوة لمواصلة النمو والتطور دون تهويل أو تهوين</string>
     <string name="step_1_choose_your_thought">الخطوة ١: اختر فكرتك!</string>
     <string name="what_thought_is_on_your_mind_today">ما الفكرة التي تدور في ذهنك اليوم؟</string>
-    <string name="my_thought">My thought:</string>
-    <string name="today_i_found_myself_thinking_about">Today, I found myself thinking about...</string>
+    <string name="my_thought">فكرتي:</string>
+    <string name="today_i_found_myself_thinking_about">اليوم، وجدت نفسي أفكر في...</string>
+    <string name="now_which_cup_does_this_thought_belong_to">الآن، إلى أي فنجان تنتمي هذه الفكرة؟</string>
 
 </resources>
