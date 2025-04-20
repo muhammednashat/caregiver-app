@@ -9,8 +9,8 @@
         android:id="@+id/imageView31"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:src="@drawable/image_cofe1"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/image_cup3"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
@@ -38,9 +38,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                android:text="@string/coffee"
+                android:text="@string/balanced_coffee"
 
-                android:textColor="#d40f20"
+                android:textColor="#5cb348"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
-                android:text="coffee cofffe coffee coffee "
+                android:text="@string/positive_restructuring"
                 android:textColor="#204167" />
 
         </LinearLayout>
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_medium"
-            android:text="Will you let discouraging thoughts take over, starting your day with feelings of helplessness and frustration?"
+android:text="@string/will_you_approach_your_day_with_a_realistic_and_balanced_mindset_embracing_challenges_consciously_and_seeking_solutions_instead_of_getting_stuck_on_obstacles"
             android:textColor="#204167" />
 
         <LinearLayout
@@ -81,14 +81,14 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/baseline_arrow_forward_24"
-                app:tint="#d40f20" />
+                app:tint="#5cb348" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="2dp"
-                android:text="Temporary comfort, but in the end, you’ll find yourself stuck in the same place without progress."
+                android:text="@string/this_cup_gives_you_the_strength_to_keep_growing_and_developing_without_exaggeration_or_minimization"
                 android:textColor="#204167" />
 
         </LinearLayout>
