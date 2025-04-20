@@ -667,5 +667,6 @@
     <string name="my_thought">فكرتي:</string>
     <string name="today_i_found_myself_thinking_about">اليوم، وجدت نفسي أفكر في...</string>
     <string name="now_which_cup_does_this_thought_belong_to">الآن، إلى أي فنجان تنتمي هذه الفكرة؟</string>
+    <string name="exit_the_caf">الخروج من المقهى</string>
 
 </resources>

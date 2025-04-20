@@ -131,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="#193453"
                     android:text="@string/now_which_cup_does_this_thought_belong_to"
-                   android:textSize="16sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:listitem="@layout/item_view"
+                tools:listitem="@layout/item_view_cofe_cup"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout16" />
