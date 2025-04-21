@@ -682,6 +682,12 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="just_as_you_add_sugar_or_milk_to_adjus">Just as you add sugar or milk to adjust the taste of your coffee, reframe your ideas in a balanced way.</string>
     <string name="choose_the_method_that_works_best_for_you_to_prepare_the">Choose the method that works best for you to prepare the</string>
     <string name="most_balanced_blend">most balanced blend</string>
+    <string name="restructure_with_a_supporter">Restructure with a supporter:</string>
+    <string name="exchange_cups_with_a_friend">Exchange cups with a friend</string>
+    <string name="restructure_yourself">Restructure yourself:</string>
+    <string name="take_a_moment_to_review_your_idea_use_the_challenge_questions_and_then_rewrite_it_in_a_more_balanced_style">Take a moment to review your idea, use the challenge questions, and then rewrite it in a more balanced style.</string>
+    <string name="friend_reset_the_thought_myself">friend Reset the thought myself</string>
+    <string name="share_your_idea">Share your idea with a supporter, who will help you reframe it from a new, more balanced perspective, and then send it back to you.</string>
 
 
 </resources>
