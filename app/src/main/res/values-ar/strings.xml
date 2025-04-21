@@ -668,5 +668,20 @@
     <string name="today_i_found_myself_thinking_about">اليوم، وجدت نفسي أفكر في...</string>
     <string name="now_which_cup_does_this_thought_belong_to">الآن، إلى أي فنجان تنتمي هذه الفكرة؟</string>
     <string name="exit_the_caf">الخروج من المقهى</string>
-
+    <string name="step_2_taste_the_idea_is_it_balanced">الخطوة ٢: تذوق الفكرة – هل هي متوازنة؟</string>
+    <string name="start_by_identifying_your_emotion"><font color ='#5994d5'>ابدأ بتحديد المشاعر ولاحظ كيف تؤثّر هذه المشاعر على تفكيرك</font>ما هي المشاعر التي تولدها هذه الفكرة؟ هل تشعر بالقلق، الخوف، أو الإحباط؟</string>
+    <string name="one">١</string>
+    <string name="two">٢</string>
+    <string name="three">٣</string>
+    <string name="four">٤</string>
+    <string name="five">٥</string>
+    <string name="check_the_truth_of_the_idea_and_whether_there_is_evidence_to_support_it_is_this_idea_based_on_concrete_facts_or_merely_an_assumption_or_an_emotional_response_to_a_particular_situation"><font color ='#5994d5'>تحقق من حقيقة الفكرة وما إذا كانت هناك أدلة تدعمها</font>هل هذه الفكرة مبنية على حقائق ملموسة أم مجرد افتراضات أو استجابة عاطفية لحالة معينة؟</string>
+    <string name="consider_the_effect_of_the_idea"><font color ='#5994d5'>فكر في تأثير الفكرة على سلوكك</font>كيف ستؤثر هذه الفكرة على تصرفاتك وسلوكك اليوم؟</string>
+    <string name="examine_the_available_evidence"><font color ='#5994d5'> افحص الأدلة المتاحة</font>ما هي الأدلة التي تدعم هذه الفكرة؟ وما هي الأدلة التي تتناقض معها؟ هل هناك معلومات قد تكون غفلت عنها؟</string>
+    <string name="reframe_the_idea_what_do_i_have"><font color ='#5994d5'>أعد صياغة الفكرة</font>ماذا سأشعر إذا تمسكت بهذه الفكرة، وما الذي يمكنني كسبه إذا اخترت رؤية الموقف بشكل أكثر إيجابية؟ كيف يمكنك تعديل هذه الفكرة لتكون أكثر توازنًا وواقعية؟</string>
+    <string name="before_you_drink">قبل أن "تجرب" هذه الفكرة، لنختبرها بالإجابة على الأسئلة التالية:</string>
+    <string name="step_3_how_would">الخطوة ٣: كيف تود إعادة ضبط نكهة فكرتك؟</string>
+    <string name="just_as_you_add_sugar_or_milk_to_adjus">كما تضيف السكر أو الحليب لتعديل مذاق قهوتك، أعد صياغة أفكارك بطريقة متوازنة.</string>
+    <string name="choose_the_method_that_works_best_for_you_to_prepare_the">اختر الطريقة التي تناسبك لتحضير </string>
+    <string name="most_balanced_blend">المزيج الأكثر توازنًا</string>
 </resources>

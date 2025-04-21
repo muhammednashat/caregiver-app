@@ -666,6 +666,22 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="today_i_found_myself_thinking_about">Today, I found myself thinking about...</string>
     <string name="now_which_cup_does_this_thought_belong_to">Now, which cup does this thought belong to?</string>
     <string name="exit_the_caf">Exit the café</string>
+    <string name="step_2_taste_the_idea_is_it_balanced">Step 2:Taste the idea – is it balanced?</string>
+    <string name="start_by_identifying_your_emotion"><font color = '#5994d5'>Start by identifying your emotions and notice how these emotions influence your thinking:</font> What feelings does this idea generate? Do you feel anxious, fearful, or frustrated?</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="check_the_truth_of_the_idea_and_whether_there_is_evidence_to_support_it_is_this_idea_based_on_concrete_facts_or_merely_an_assumption_or_an_emotional_response_to_a_particular_situation"><font color = '#5994d5'>Check the truth of the idea and whether there is evidence to support it:</font>Is this idea based on concrete facts or merely an assumption or an emotional response to a particular situation?</string>
+    <string name="consider_the_effect_of_the_idea"><font color = '#5994d5'>Consider the effect of the idea on your behaviour:</font>How will this idea influence your actions and behaviour today?</string>
+    <string name="examine_the_available_evidence"><font color = '#5994d5'>Examine the available evidence:</font>What evidence supports this idea? What evidence contradicts it? Is there information you may have overlooked?</string>
+    <string name="reframe_the_idea_what_do_i_have"><font color = '#5994d5'>Reframe the idea:</font> What do I have to lose if I hold on to this idea, and what do I have to gain if I choose to view the situation more positively? How can you modify this idea to be morebalanced and realistic?</string>
+    <string name="before_you_drink">Before you ‘drink’ this idea, let\'s test it by answering the following questions:</string>
+    <string name="step_3_how_would">Step 3:How would you like to re-flavour your idea?</string>
+    <string name="just_as_you_add_sugar_or_milk_to_adjus">Just as you add sugar or milk to adjust the taste of your coffee, reframe your ideas in a balanced way.</string>
+    <string name="choose_the_method_that_works_best_for_you_to_prepare_the">Choose the method that works best for you to prepare the</string>
+    <string name="most_balanced_blend">most balanced blend</string>
 
 
 </resources>
