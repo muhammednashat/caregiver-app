@@ -690,4 +690,15 @@
     <string name="take_a_moment_to_review_your_idea_use_the_challenge_questions_and_then_rewrite_it_in_a_more_balanced_style">خذ لحظة لمراجعة فكرتك، استخدم أسئلة التحدي، ثم أعد كتابتها بأسلوب أكثر اتزانًا.</string>
     <string name="friend_reset_the_thought_myself">أعد ضبط الفكرة بنفسي</string>
     <string name="share_your_idea">شارك فكرتك مع الداعم، ليساعدك في إعادة صياغتها بمنظور جديد وأكثر اتزانًا، ثم يرسلها إليك.</string>
+    <string name="step_4_now_adjust_the_mix">الخطوة ٤: إعادة الهيكلة بنفسك</string>
+    <string name="rewrite_the_idea_in_a_more_balanced_way">الان عدل المزيج! \n أعد كتابةالفكرة بطريقة أكثر توازنا</string>
+    <string name="a_better_way_to_think_about_this_is">طريقة أفضل للتفكير فى هذا هى ..</string>
+    <string name="step_5_taste_the_new_thought">الخطوة ٥ : تذوق الفكرة الجديدة </string>
+    <string name="now_read_the_reframed_thought_aloud_and_reflect_on_it">الآن، اقرأ بصوت عال الفكرة بعد أعادة صياغتها وتأمل فيها: </string>
+    <string name="how_do_you_feel_now_that">كيف تغير شعورك الآن بعد إعادة صياغة الفكرة؟ هل أصبح لديك شعور بالراحة أو الإيجابية أكثر؟
+ما الذي اختلف عن البداية ؟
+</string>
+    <string name="has_this_new_reframing">هل غيرت هذه الصياغة الجديدة من طريقة تفكيرك حول الموقف ؟ هل أصبحت أكثر تفهماً أو أقل توتراً تجاهه؟ </string>
+    <string name="how_can_you_continue">كيف يمكنك الاستمرار في " تحضير " أفكار متوازنة كل يوم؟ ما هي الخطوات التي يمكنك اتخاذها لتستمر في التفكير بشكل إيجابي و متوازن في تحديات الحياة المقبلة ؟</string>
+    <string name="always_choose_thoughts_that">دائماً اختر الأفكار التي تمنحك القوة والتفاؤل. و تساعدك على التحسن المستمر. أجعل كل فكرة تساهم في بناء نسخة أفضل من نفسك</string>
 </resources>
