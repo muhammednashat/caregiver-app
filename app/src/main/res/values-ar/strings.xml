@@ -22,7 +22,7 @@
     <string name="create_new_account">انشاء حساب جديد</string>
     <string name="contact_us">تواصل معنا</string>
     <string name="email_hint">البريد الإلكتروني</string>
-    <string name="save_registration_info" >حفظ معلومات التسجيل</string>
+    <string name="save_registration_info">حفظ معلومات التسجيل</string>
     <string name="please_select_account_type">من فضلك قم بإختيار نوع الحساب</string>
     <string name="invitation_code_hint">كود الدعوة</string>
     <string name="already_have_account">لديك حساب بالفعل؟</string>
@@ -669,16 +669,16 @@
     <string name="now_which_cup_does_this_thought_belong_to">الآن، إلى أي فنجان تنتمي هذه الفكرة؟</string>
     <string name="exit_the_caf">الخروج من المقهى</string>
     <string name="step_2_taste_the_idea_is_it_balanced">الخطوة ٢: تذوق الفكرة – هل هي متوازنة؟</string>
-    <string name="start_by_identifying_your_emotion"><font color ='#5994d5'>ابدأ بتحديد المشاعر ولاحظ كيف تؤثّر هذه المشاعر على تفكيرك</font>ما هي المشاعر التي تولدها هذه الفكرة؟ هل تشعر بالقلق، الخوف، أو الإحباط؟</string>
+    <string name="start_by_identifying_your_emotion"><font color='#5994d5'>ابدأ بتحديد المشاعر ولاحظ كيف تؤثّر هذه المشاعر على تفكيرك</font>ما هي المشاعر التي تولدها هذه الفكرة؟ هل تشعر بالقلق، الخوف، أو الإحباط؟</string>
     <string name="one">١</string>
     <string name="two">٢</string>
     <string name="three">٣</string>
     <string name="four">٤</string>
     <string name="five">٥</string>
-    <string name="check_the_truth_of_the_idea_and_whether_there_is_evidence_to_support_it_is_this_idea_based_on_concrete_facts_or_merely_an_assumption_or_an_emotional_response_to_a_particular_situation"><font color ='#5994d5'>تحقق من حقيقة الفكرة وما إذا كانت هناك أدلة تدعمها</font>هل هذه الفكرة مبنية على حقائق ملموسة أم مجرد افتراضات أو استجابة عاطفية لحالة معينة؟</string>
-    <string name="consider_the_effect_of_the_idea"><font color ='#5994d5'>فكر في تأثير الفكرة على سلوكك</font>كيف ستؤثر هذه الفكرة على تصرفاتك وسلوكك اليوم؟</string>
-    <string name="examine_the_available_evidence"><font color ='#5994d5'> افحص الأدلة المتاحة</font>ما هي الأدلة التي تدعم هذه الفكرة؟ وما هي الأدلة التي تتناقض معها؟ هل هناك معلومات قد تكون غفلت عنها؟</string>
-    <string name="reframe_the_idea_what_do_i_have"><font color ='#5994d5'>أعد صياغة الفكرة</font>ماذا سأشعر إذا تمسكت بهذه الفكرة، وما الذي يمكنني كسبه إذا اخترت رؤية الموقف بشكل أكثر إيجابية؟ كيف يمكنك تعديل هذه الفكرة لتكون أكثر توازنًا وواقعية؟</string>
+    <string name="check_the_truth_of_the_idea_and_whether_there_is_evidence_to_support_it_is_this_idea_based_on_concrete_facts_or_merely_an_assumption_or_an_emotional_response_to_a_particular_situation"><font color='#5994d5'>تحقق من حقيقة الفكرة وما إذا كانت هناك أدلة تدعمها</font>هل هذه الفكرة مبنية على حقائق ملموسة أم مجرد افتراضات أو استجابة عاطفية لحالة معينة؟</string>
+    <string name="consider_the_effect_of_the_idea"><font color='#5994d5'>فكر في تأثير الفكرة على سلوكك</font>كيف ستؤثر هذه الفكرة على تصرفاتك وسلوكك اليوم؟</string>
+    <string name="examine_the_available_evidence"><font color='#5994d5'> افحص الأدلة المتاحة</font>ما هي الأدلة التي تدعم هذه الفكرة؟ وما هي الأدلة التي تتناقض معها؟ هل هناك معلومات قد تكون غفلت عنها؟</string>
+    <string name="reframe_the_idea_what_do_i_have"><font color='#5994d5'>أعد صياغة الفكرة</font>ماذا سأشعر إذا تمسكت بهذه الفكرة، وما الذي يمكنني كسبه إذا اخترت رؤية الموقف بشكل أكثر إيجابية؟ كيف يمكنك تعديل هذه الفكرة لتكون أكثر توازنًا وواقعية؟</string>
     <string name="before_you_drink">قبل أن "تجرب" هذه الفكرة، لنختبرها بالإجابة على الأسئلة التالية:</string>
     <string name="step_3_how_would">الخطوة ٣: كيف تود إعادة ضبط نكهة فكرتك؟</string>
     <string name="just_as_you_add_sugar_or_milk_to_adjus">كما تضيف السكر أو الحليب لتعديل مذاق قهوتك، أعد صياغة أفكارك بطريقة متوازنة.</string>
@@ -701,7 +701,7 @@
     <string name="has_this_new_reframing">هل غيرت هذه الصياغة الجديدة من طريقة تفكيرك حول الموقف ؟ هل أصبحت أكثر تفهماً أو أقل توتراً تجاهه؟ </string>
     <string name="how_can_you_continue">كيف يمكنك الاستمرار في " تحضير " أفكار متوازنة كل يوم؟ ما هي الخطوات التي يمكنك اتخاذها لتستمر في التفكير بشكل إيجابي و متوازن في تحديات الحياة المقبلة ؟</string>
     <string name="always_choose_thoughts_that">دائماً اختر الأفكار التي تمنحك القوة والتفاؤل. و تساعدك على التحسن المستمر. أجعل كل فكرة تساهم في بناء نسخة أفضل من نفسك</string>
-    <string name="stop_for_a_moment">Stop for a moment.. and be honest with yourself</string>
-    <string name="if_you_feel_that_restructuring">If you feel that restructuring the thought hasn\'t eased its burden, or that the negative thought still haunts you despite your efforts, or if a new thought doesn\'t make any difference to your feelings...</string>
-    <string name="don_t_hesitate_to_seek_help_from_a_mental_health_professional">Don\'t hesitate to seek help from a mental health professional</string>
+    <string name="stop_for_a_moment">توقف لحظة...وكن صادقاً مع نفسك. </string>
+    <string name="if_you_feel_that_restructuring">إذا شعرت أن إعادة هيكلة الفكرة لم تخفف من ثقلها، أو أن الفكرة السلبية ما زالت تلاحقك رغم محاولتك، أو إذا لم تحدث الفكرة الجديدة أي فرق في مشاعرك...</string>
+    <string name="don_t_hesitate_to_seek_help_from_a_mental_health_professional">فلا تتردد في طلب المساعدة من مختص نفسي. </string>
 </resources>
