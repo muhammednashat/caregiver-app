@@ -24,19 +24,16 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     }
 
     override fun initializeViews() {
-
-//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-//        window.statusBarColor = Color.TRANSPARENT
-//        val background: Drawable =
-//            this@SplashActivity.getResources().getDrawable(R.drawable.background53)
-//        window.setBackgroundDrawable(background)
-//        Handler().postDelayed({
-//            isLogged()
-//            //
-//            setLocale(if (sharedPreferences.getString(LANGUAGE) == "en") "en" else "ar")
-//        }, 2000)
-//
-
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = Color.TRANSPARENT
+        val background: Drawable =
+            this@SplashActivity.getResources().getDrawable(R.drawable.background53)
+        window.setBackgroundDrawable(background)
+        Handler().postDelayed({
+            isLogged()
+            //
+            setLocale(if (sharedPreferences.getString(LANGUAGE) == "en") "en" else "ar")
+        }, 2000)
     }
 
 
