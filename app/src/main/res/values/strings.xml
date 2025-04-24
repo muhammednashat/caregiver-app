@@ -706,6 +706,7 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="choose_a_simple_activity">Choose a simple activity that expresses this new change (e.g., taking a break, completing a postponed task)...</string>
     <string name="and_schedule_it_in_your_calendar"><b><font color ="#204167">And schedule it in your calendar today or this week,</font></b> so it becomes part of your reality.</string>
     <string name="the_idea_is_not_complete"><b><font color ="#5994d5">The idea</font></b> is not complete until it finds a place in your day and resonates in your mind.</string>
+    <string name="go_to_the_daily_planner">Go to the daily planner</string>
 
 
 </resources>
