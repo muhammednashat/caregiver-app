@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/image_intro_cofe2"
-    tools:context=".users.patient.tools.coffeeideas.Intro2Fragment">
+    tools:context=".users.patient.tools.coffeeideas.presentaion.Intro2Fragment">
 
 
 </FrameLayout>

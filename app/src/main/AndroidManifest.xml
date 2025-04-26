@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:name=".util.MyApplication"
@@ -19,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyProject"
         tools:targetApi="31">
+        <activity
+            android:name=".users.patient.tools.coffeeideas.presentaion.CofeActivity"
+            android:exported="false" />
         <activity
             android:name=".users.patient.moodTracking.presentaion.PostMoodTrackingActivity"
             android:exported="false" />
@@ -34,7 +36,6 @@
         <activity
             android:name=".commonFeatures.getLibraryContent.presentaion.LibraryActivity"
             android:exported="false" />
-
         <activity
             android:name=".maybeneedlater.TasksActivity"
             android:exported="false" />
@@ -44,27 +45,21 @@
         <activity
             android:name=".users.patient.supporters.SupportersActivity"
             android:exported="false" />
-
         <activity
             android:name=".users.patient.profile.presentation.EditProfileActivity"
             android:exported="false" />
-
         <activity
             android:name=".util.TermsPrivacyActivity"
             android:exported="false" />
-
         <activity
             android:name=".users.patient.main.presentaion.UserScreensActivity"
             android:exported="false" />
-
         <activity
             android:name=".users.caregiver.main.CaregiverScreenActivity"
             android:exported="false" />
-
         <activity
             android:name=".auth.presentation.AuthActivity"
             android:exported="false" />
-
         <activity
             android:name=".users.patient.intro.IntroActivity"
             android:exported="false" />
@@ -73,13 +68,14 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value= "encouragementChannelId" />
+            android:value="encouragementChannelId" />
 
         <service
             android:name=".firebase.MyFirebaseMessagingService"
@@ -89,9 +85,12 @@
             </intent-filter>
         </service>
 
-        <receiver android:name=".util.AlarmReceiver" android:exported="false" />
-        <receiver android:name=".util.BootReceiver" android:exported="false"/>
-
+        <receiver
+            android:name=".util.AlarmReceiver"
+            android:exported="false" />
+        <receiver
+            android:name=".util.BootReceiver"
+            android:exported="false" />
     </application>
 
 </manifest>

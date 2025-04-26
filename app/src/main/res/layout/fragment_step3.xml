@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/image_cofe_54"
-    tools:context=".users.patient.tools.coffeeideas.Step1Fragment">
+    tools:context=".users.patient.tools.coffeeideas.presentaion.Step1Fragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
