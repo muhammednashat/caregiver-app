@@ -21,7 +21,6 @@ class Step2Fragment : Fragment() {
     ): View? {
 
         binding = FragmentStep2Binding.inflate(inflater)
-
         binding.constraintNext.setOnClickListener {
             findNavController().navigate(R.id.action_step2Fragment_to_step3Fragment)
         }

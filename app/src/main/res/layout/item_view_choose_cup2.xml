@@ -55,7 +55,9 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="@string/escaping_from_reality"
-                android:textColor="#204167" />
+                android:textColor="#204167"
+
+                />
 
         </LinearLayout>
 

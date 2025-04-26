@@ -711,4 +711,12 @@
     <string name="and_schedule_it_in_your_calendar"><b><font color ="#204167">و جدولها اليوم أو هذا الأسبوع في تقويمك</font></b>حتى تكون جزءاً من واقعك</string>
     <string name="the_idea_is_not_complete"> <b><font color ="#5994d5">فالفكرة</font></b> لا تكتمل إلا عندما تجد مكاناً في يومك, كما وجدت صدى في عقلك</string>
     <string name="go_to_the_daily_planner">انتقل إلى المخطط اليومي</string>
+    <string name="unrealistic_thinking">(التفكير غير الواقعي)</string>
+    <string name="ignoring_challenges">تجاهل التحديات أو الطمأنة المفرطة مثل: "كل شيء سيتحسن لا أحتاج بذل أي جهد!"</string>
+    <string name="negative_thinking">(التفكير السلبي)</string>
+    <string name="depressing_thoughts">أفكار محبطة مثل:
+"هذا صعب جدا. لن أنجح أبدا"
+</string>
+    <string name="realistic_thinking">(التفكير الواقعي)</string>
+    <string name="acknowledge_the_difficulties">الاعتراف بالصعوبات لكن مع رؤية إيجابية مثل: "هذا تحد، لكن يمكنني التحسن مع الوقت"</string>
 </resources>

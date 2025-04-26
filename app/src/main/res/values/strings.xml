@@ -707,6 +707,15 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="and_schedule_it_in_your_calendar"><b><font color="#204167">And schedule it in your calendar today or this week,</font></b> so it becomes part of your reality.</string>
     <string name="the_idea_is_not_complete"><b><font color="#5994d5">The idea</font></b> is not complete until it finds a place in your day and resonates in your mind.</string>
     <string name="go_to_the_daily_planner">Go to the daily planner</string>
+    <string name="unrealistic_thinking">(unrealistic thinking)</string>
+    <string name="ignoring_challenges">IIgnoring challenges or overly reassuring ones
+such as: "Everything will get better. I don't need
+to put in any effort!"</string>
+    <string name="negative_thinking">(negative thinking)</string>
+    <string name="depressing_thoughts">Depressing thoughts such as: "This
+is too hard. I'll never succeed.</string>
+    <string name="realistic_thinking">(Realistic Thinking)</string>
+    <string name="acknowledge_the_difficulties">Acknowledge the difficulties but with a positive outlook such as: “This is a challenge, but I can improve with time.</string>
 
 
 </resources>
