@@ -21,6 +21,7 @@ import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
 import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderActivity
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
+import mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion.CofeActivity
 import mnshat.dev.myproject.util.IS_SECOND_TIME
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
@@ -104,7 +105,7 @@ class HomeFragment : BaseFragment() {
      fun setupClickListener() {
 
         binding.dailyProgram.setOnClickListener() {
-            startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
+            startActivity(Intent(requireActivity(), CofeActivity::class.java))
         }
          binding.statistics.setOnClickListener() {
              findNavController().navigate(R.id.action_patientHomeFragment_to_trackingMoodFragment)

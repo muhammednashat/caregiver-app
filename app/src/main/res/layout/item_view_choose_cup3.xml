@@ -41,14 +41,18 @@
                 android:text="@string/balanced_coffee"
 
                 android:textColor="#5cb348"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:layout_marginEnd="2dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 android:text="@string/positive_restructuring"
                 android:textColor="#204167" />
 
@@ -58,6 +62,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_medium"
+            android:textStyle="bold"
+
 android:text="@string/will_you_approach_your_day_with_a_realistic_and_balanced_mindset_embracing_challenges_consciously_and_seeking_solutions_instead_of_getting_stuck_on_obstacles"
             android:textColor="#204167" />
 
@@ -88,6 +94,8 @@ android:text="@string/will_you_approach_your_day_with_a_realistic_and_balanced_m
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="2dp"
+                android:textStyle="bold"
+
                 android:text="@string/this_cup_gives_you_the_strength_to_keep_growing_and_developing_without_exaggeration_or_minimization"
                 android:textColor="#204167" />
 

@@ -11,7 +11,7 @@
         android:label="fragment_intro"
         tools:layout="@layout/fragment_intro" >
         <action
-            android:id="@+id/action_introFragment_to_intro2Fragment2"
+            android:id="@+id/action_introFragment_to_introCofe2Fragment2"
             app:destination="@id/intro2Fragment2" />
     </fragment>
     <fragment

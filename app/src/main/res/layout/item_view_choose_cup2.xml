@@ -41,14 +41,19 @@
                 android:text="@string/over_sugary_coffee"
 
                 android:textColor="#f4aa34"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="2dp"
+
+                />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 android:text="@string/escaping_from_reality"
                 android:textColor="#204167" />
 
@@ -58,6 +63,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_medium"
+            android:textStyle="bold"
+
             android:text="@string/will_you_choose_to_escape_into_an_illusion_of_comfort_ignoring_real_problems_and_challenges"
             android:textColor="#204167" />
 
@@ -88,6 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/temporary_comfort_but_in_the_end_you_ll_find_yourself_stuck_in_the_same_place_without_progress"
+                android:textStyle="bold"
 
                 android:layout_marginStart="2dp"
                 android:textColor="#204167" />
