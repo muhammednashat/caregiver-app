@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.tools.coffeeideas
+package mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,15 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import mnshat.dev.myproject.R
 
-
-class Step5Fragment : Fragment() {
-
+class Step2Fragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_step5, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_step2, container, false)
     }
 
 }

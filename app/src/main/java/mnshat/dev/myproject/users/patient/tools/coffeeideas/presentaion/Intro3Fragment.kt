@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.tools.coffeeideas
+package mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import mnshat.dev.myproject.R
 
 
-class Step6Fragment : Fragment() {
+class Intro3Fragment : Fragment() {
 
 
     override fun onCreateView(
@@ -16,7 +16,7 @@ class Step6Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_step6, container, false)
+        return inflater.inflate(R.layout.fragment_intro_cofe3, container, false)
     }
 
 }
