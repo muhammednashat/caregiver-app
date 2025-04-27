@@ -729,7 +729,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_introFragment_to_intro2Fragment2">
+                            <entry key="action_introFragment_to_introCofe2Fragment2">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -786,8 +786,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1186" />
-                            <option name="y" value="14" />
+                            <option name="x" value="1232" />
+                            <option name="y" value="12" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -807,8 +807,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1368" />
-                            <option name="y" value="4" />
+                            <option name="x" value="1476" />
+                            <option name="y" value="12" />
                           </Point>
                         </option>
                         <option name="myPositions">
