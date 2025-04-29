@@ -720,4 +720,6 @@
 </string>
     <string name="realistic_thinking">(التفكير الواقعي)</string>
     <string name="acknowledge_the_difficulties">الاعتراف بالصعوبات لكن مع رؤية إيجابية مثل: "هذا تحد، لكن يمكنني التحسن مع الوقت"</string>
+    <string name="please_enter_your_idea">Please enter your idea</string>
+    <string name="please_select_the_cup">Please select the cup</string>
 </resources>
