@@ -20,6 +20,7 @@ class Step1Fragment : BaseFragment() {
     private lateinit var binding: FragmentStep1Binding
 
     private val viewModel: CofeViewModel by viewModels()
+    private var selectedCup: View? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,14 +40,14 @@ class Step1Fragment : BaseFragment() {
     private fun setUpListeners() {
 
         binding.constraintNext.setOnClickListener {
-            if (binding.editText.text.toString().isNotEmpty() && viewModel.cupNumber != 0 ) {
-               log(viewModel.cupNumber.toString())
+            if (binding.editText.text.toString().isNotEmpty() && viewModel.cupNumber != 0) {
+                log(viewModel.cupNumber.toString())
                 log(viewModel.textIdea.value!!)
                 findNavController().navigate(R.id.action_step1Fragment_to_step2Fragment)
-            }else{
-                if (binding.editText.text.toString().isEmpty()){
+            } else {
+                if (binding.editText.text.toString().isEmpty()) {
                     showToast(getString(R.string.please_enter_your_idea))
-                }else{
+                } else {
                     showToast(getString(R.string.please_select_the_cup))
                 }
             }
@@ -57,6 +58,45 @@ class Step1Fragment : BaseFragment() {
         binding.back.setOnClickListener {
             findNavController().popBackStack()
         }
+
+        binding.chooseCup.cup1.setOnClickListener { view ->
+            updateBackground(view, 1)
+        }
+
+        binding.chooseCup.cup2.setOnClickListener { view ->
+            updateBackground(view, 2)
+        }
+
+        binding.chooseCup.cup3.setOnClickListener { view ->
+            updateBackground(view, 3)
+        }
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (viewModel.cupNumber != 0) {
+            val cupView = when (viewModel.cupNumber) {
+                1 -> binding.chooseCup.cup1
+                2 -> binding.chooseCup.cup2
+                3 -> binding.chooseCup.cup3
+                else -> null
+            }
+
+            cupView?.let {
+                updateBackground(it, viewModel.cupNumber)
+            }
+
+        }
+    }
+
+    private fun updateBackground(view: View, cupNumber: Int) {
+        log(cupNumber.toString() + "  fsdfdsf ")
+        selectedCup?.setBackgroundColor(getResources().getColor(R.color.white))
+        view.setBackgroundResource(R.drawable.corner_border_blue2)
+        selectedCup = view
+        viewModel.cupNumber = cupNumber
     }
 
 }

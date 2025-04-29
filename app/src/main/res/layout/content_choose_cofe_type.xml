@@ -16,12 +16,12 @@
             android:layout_width="170dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/margin_large"
-
             app:cardCornerRadius="25dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/cup1"
                 android:padding="@dimen/margin_medium">
 
                 <ImageView
@@ -92,6 +92,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="170dp"
+
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/margin_large"
 
@@ -100,6 +101,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/cup2"
+
                 android:padding="@dimen/margin_medium">
 
                 <ImageView
@@ -165,6 +168,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="170dp"
+
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/margin_large"
 
@@ -172,6 +176,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
+                android:id="@+id/cup3"
+
                 android:layout_height="match_parent"
                 android:padding="@dimen/margin_medium">
 

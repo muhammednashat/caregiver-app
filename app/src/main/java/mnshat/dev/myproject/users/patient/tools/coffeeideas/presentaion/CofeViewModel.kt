@@ -1,5 +1,6 @@
 package mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion
 
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,8 +21,11 @@ class CofeViewModel @Inject constructor():ViewModel(){
     var textQuestion2: MutableLiveData<String> = _textQuestion2
 
     var cupNumber = 0
+    var cupView: View? = null
 
 
-    
+    fun updateCupNumber(number: Int) {
+        cupNumber = number
+    }
 
 }
