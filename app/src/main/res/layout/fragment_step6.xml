@@ -112,6 +112,7 @@
                             android:orientation="horizontal"
                             android:layout_marginTop="@dimen/margin_large"
                             android:padding="@dimen/margin_small"
+                            android:id="@+id/goToDailyPlanner"
                             android:layout_width="wrap_content"
                             android:background="@drawable/corner_large"
                             android:backgroundTint="#e7f2f8"

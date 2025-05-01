@@ -1,5 +1,6 @@
 package mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentStep2Binding
 import mnshat.dev.myproject.databinding.FragmentStep6Binding
+import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderActivity
 
 
 class Step6Fragment : Fragment() {
@@ -23,6 +25,12 @@ class Step6Fragment : Fragment() {
     ): View? {
 
         binding = FragmentStep6Binding.inflate(inflater)
+
+        binding.goToDailyPlanner.setOnClickListener {
+            startActivity(Intent(requireContext(), CalenderActivity::class.java))
+            requireActivity().finish()
+
+        }
 
         binding.constraintNext.setOnClickListener {
             findNavController().navigate(R.id.action_step6Fragment_to_exitCofeFragment)

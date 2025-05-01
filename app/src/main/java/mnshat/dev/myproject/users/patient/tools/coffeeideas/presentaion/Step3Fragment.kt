@@ -23,7 +23,12 @@ class Step3Fragment : Fragment() {
 
         binding = FragmentStep3Binding.inflate(inflater)
 
-        binding.constraintNext.setOnClickListener {
+        binding.user.enter.setOnClickListener {
+
+            findNavController().navigate(R.id.action_step3Fragment_to_step4Fragment)
+
+        }
+        binding.friend.enter.setOnClickListener {
             findNavController().navigate(R.id.action_step3Fragment_to_step4Fragment)
         }
 

@@ -1,6 +1,7 @@
 package mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion
 
 import android.view.View
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,6 +17,10 @@ class CofeViewModel @Inject constructor():ViewModel(){
 
     private val _textIdea = MutableLiveData<String>()
     var textIdea: MutableLiveData<String> = _textIdea
+
+
+    private val _userAdjustedText = MutableLiveData<String>()
+    var userAdjustedText: MutableLiveData<String> = _userAdjustedText
 
     private val _textQuestion1 = MutableLiveData<String>()
     var textQuestion1: MutableLiveData<String> = _textQuestion1

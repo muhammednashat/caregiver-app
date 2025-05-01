@@ -13,26 +13,25 @@
         android:background="@drawable/image_background_tools"
         tools:context=".users.patient.tools.ToolsFragment">
 
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ic_back"
             android:layout_width="35dp"
             android:layout_height="35dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
             android:padding="@dimen/margin_medium"
-            android:layout_margin="@dimen/margin_large"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_arrow_back_ios"
             app:tint="@color/black" />
 
-
         <TextView
             android:id="@+id/textView32"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginTop="12dp"
             android:gravity="center"
-            android:layout_marginTop="@dimen/margin_medium"
             android:text="@string/tools_that_help_you_change_your_mood_and_psychological_state_and_get_rid_of_overthinking_and_stress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -40,39 +39,55 @@
             app:layout_constraintTop_toBottomOf="@+id/ic_back" />
 
         <ImageView
-            android:id="@+id/imageBreath"
-            android:layout_width="0dp"
-            android:layout_height="140dp"
-            android:layout_marginEnd="44dp"
-            android:src="@drawable/image21"
+            android:id="@+id/imageCofe"
+            android:layout_width="162dp"
+            android:layout_height="160dp"
+            android:scaleType="fitXY"
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/imageSupplications"
-            app:layout_constraintTop_toTopOf="@+id/imageSupplications" />
-
-        <ImageView
-            android:id="@+id/imageSupplications"
-            android:layout_width="0dp"
-            android:layout_height="140dp"
-            android:layout_marginStart="44dp"
-            android:src="@drawable/image22"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/image_background_cofe"
             app:layout_constraintEnd_toStartOf="@+id/imageBreath"
             app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView32" />
 
         <ImageView
-            android:layout_width="0dp"
+            android:id="@+id/imageBreath"
+            android:layout_width="162dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="50dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/image_background_breadth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageCofe"
+            app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+        <ImageView
+            android:id="@+id/imageSupplications"
+            android:scaleType="fitXY"
+
+            android:layout_width="162dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/background_dua3"
+            app:layout_constraintEnd_toEndOf="@+id/imageCofe"
+            app:layout_constraintStart_toStartOf="@+id/imageCofe"
+            app:layout_constraintTop_toBottomOf="@+id/imageCofe" />
+
+        <ImageView
             android:id="@+id/imageGratitude"
-            android:layout_height="140dp"
-            android:layout_marginTop="@dimen/margin_super"
-            android:src="@drawable/image54"
-            app:layout_constraintEnd_toStartOf="@+id/imageBreath"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/imageSupplications"
-            app:layout_constraintTop_toBottomOf="@+id/imageSupplications" />
+            android:layout_width="162dp"
+            android:layout_height="160dp"
+            android:scaleType="fitXY"
+
+            android:layout_marginTop="16dp"
+            android:src="@drawable/background_gratitude3"
+            app:layout_constraintEnd_toEndOf="@+id/imageBreath"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/imageBreath"
+            app:layout_constraintTop_toBottomOf="@+id/imageBreath" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
