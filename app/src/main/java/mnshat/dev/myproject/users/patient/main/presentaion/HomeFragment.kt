@@ -69,8 +69,6 @@ class HomeFragment : BaseFragment() {
 
             }
             else -> {
-                // You can directly ask for the permission.
-                // The registered ActivityResultCallback gets the result of this request.
                 requestPermissionLauncher.launch(
                     Manifest.permission.POST_NOTIFICATIONS)
             }
@@ -105,14 +103,17 @@ class HomeFragment : BaseFragment() {
      fun setupClickListener() {
 
         binding.dailyProgram.setOnClickListener() {
-            startActivity(Intent(requireActivity(), CofeActivity::class.java))
+            startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
         }
+
          binding.statistics.setOnClickListener() {
              findNavController().navigate(R.id.action_patientHomeFragment_to_trackingMoodFragment)
         }
+
         binding.rootTools.setOnClickListener{
             findNavController().navigate(R.id.action_patientHomeFragment_to_mainAzcarFragment)
         }
+
         binding.rootEducationalContent.setOnClickListener{
             startActivity(Intent(requireActivity(), LibraryActivity::class.java))
         }

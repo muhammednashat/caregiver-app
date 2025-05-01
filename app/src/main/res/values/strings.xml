@@ -720,6 +720,10 @@ is too hard. I'll never succeed.</string>
     <string name="please_select_the_cup">Please select the cup</string>
     <string name="please_answer_all_questions">Please answer all questions</string>
     <string name="please_write_your_idea">Please Write Your Idea</string>
+    <string name="step_4_now_your_supporter">Step 4: Now, your supporter will help you to adjust the mix!</string>
+    <string name="your_friend_rephrases">Your friend rephrases your idea in a more balanced and realistic way.</string>
+    <string name="your_friend_s_reply">Your friend\'s reply</string>
+    <string name="choose_a_friend_whom_you_would_like_to_share_your_thoughts_with">Choose a friend whom you would like to share your thoughts with</string>
 
 
 </resources>

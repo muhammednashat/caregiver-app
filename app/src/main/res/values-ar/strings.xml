@@ -234,7 +234,7 @@
     <string name="please_write_the_number_of_repetitions_you_want_to_reach">رجاءا اكتب عدد التكرارات المراد الوصول اليه</string>
     <string name="number_not_valid">الرقم الذى ادخلته غير صالح</string>
     <string name="please_write_the_supplication_that_you_want">رجاءا اكتب الذكر المراد</string>
-    <string name="tools_that_help_you_change_your_mood_and_psychological_state_and_get_rid_of_overthinking_and_stress">ادوات تساعدك على تغير حالتك المزاجية والنفسية والتخلص من التفكير الزائد والتوتر.....</string>
+    <string name="tools_that_help_you_change_your_mood_and_psychological_state_and_get_rid_of_overthinking_and_stress">ادوات تساعدك على تغير حالتك المزاجية والنفسية\n والتخلص من التفكير الزائد والتوتر.....</string>
     <string name="finish_exercise">إنهاء التمرين</string>
     <string name="starting_over">البدء من جديد</string>
     <string name="duration_of_exercise">مدة التمرين</string>
@@ -720,8 +720,12 @@
 </string>
     <string name="realistic_thinking">(التفكير الواقعي)</string>
     <string name="acknowledge_the_difficulties">الاعتراف بالصعوبات لكن مع رؤية إيجابية مثل: "هذا تحد، لكن يمكنني التحسن مع الوقت"</string>
-    <string name="please_enter_your_idea">Please enter your idea</string>
-    <string name="please_select_the_cup">Please select the cup</string>
-    <string name="please_answer_all_questions">Please answer all questions</string>
-    <string name="please_write_your_idea">Please Write Your Idea</string>
+    <string name="please_enter_your_idea">يرجى إدخال فكرتك</string>
+    <string name="please_select_the_cup">يرجى اختيار الكوب</string>
+    <string name="please_answer_all_questions">يرجى الإجابة على جميع الأسئلة</string>
+    <string name="please_write_your_idea">يرجى كتابة فكرتك</string>
+    <string name="step_4_now_your_supporter">الخطوة ٤: الآن، سيساعدك داعمك على تعديل المزيج!</string>
+    <string name="your_friend_rephrases">صديقك يعيد صياغة فكرتك بطريقة أكثر توازنًا وواقعية.</string>
+    <string name="your_friend_s_reply">رد صديقك</string>
+    <string name="choose_a_friend_whom_you_would_like_to_share_your_thoughts_with">اختر صديقك الذى تود تبادل افكارك معه...</string>
 </resources>

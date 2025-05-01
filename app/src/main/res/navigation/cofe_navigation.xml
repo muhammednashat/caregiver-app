@@ -68,6 +68,9 @@
         <action
             android:id="@+id/action_step3Fragment_to_step4Fragment"
             app:destination="@id/step4Fragment" />
+        <action
+            android:id="@+id/action_step3Fragment_to_friendIdeaEditingFragment"
+            app:destination="@id/friendIdeaEditingFragment" />
     </fragment>
     <fragment
         android:id="@+id/step4Fragment"
@@ -93,4 +96,13 @@
         tools:layout="@layout/fragment_exit_cofe"
         android:name="mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion.ExitCofeFragment"
         android:label="ExitCofeFragment" />
+    <fragment
+        android:id="@+id/friendIdeaEditingFragment"
+        tools:layout="@layout/fragment_friend_idea_editing"
+        android:name="mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion.FriendIdeaEditingFragment"
+        android:label="FriendIdeaEditingFragment" >
+        <action
+            android:id="@+id/action_friendIdeaEditingFragment_to_step5Fragment"
+            app:destination="@id/step5Fragment" />
+    </fragment>
 </navigation>
