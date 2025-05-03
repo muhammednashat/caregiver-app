@@ -91,7 +91,10 @@ class Step3Fragment : BaseFragment(), ItemListener {
     }
 
     override fun onItemClick(supporter: RegistrationData) {
+
         chooseUserDialog.dismiss()
-            findNavController().navigate(R.id.action_step3Fragment_to_friendIdeaEditingFragment)
+        val action = Step3FragmentDirections.actionStep3FragmentToFriendIdeaEditingFragment(supporter)
+        findNavController().navigate(action)
+
     }
 }

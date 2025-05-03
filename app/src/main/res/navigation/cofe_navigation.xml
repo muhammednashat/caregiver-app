@@ -104,5 +104,8 @@
         <action
             android:id="@+id/action_friendIdeaEditingFragment_to_step5Fragment"
             app:destination="@id/step5Fragment" />
+        <argument
+            android:name="suppurter"
+            app:argType="mnshat.dev.myproject.model.RegistrationData" />
     </fragment>
 </navigation>

@@ -112,16 +112,19 @@ android:text="@string/step_4_now_your_supporter"                android:textColo
 android:layout_marginStart="@dimen/margin_large"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView39" />
+                        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-                    <ImageView
-                        android:id="@+id/imageView39"
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imageView"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
+                        android:scaleType="fitXY"
                         android:background="@drawable/circle_with_border_white"
                         android:src="@drawable/icon_mood_track"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:shapeAppearanceOverlay="@style/circularImageViewShape"
+
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
