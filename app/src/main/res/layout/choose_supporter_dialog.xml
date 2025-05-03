@@ -28,13 +28,14 @@
 
         <TextView
             android:id="@+id/textView2"
-            style="@style/TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_super"
             android:gravity="center"
             android:text="@string/choose_a_friend_whom_you_would_like_to_share_your_thoughts_with"
-            android:textColor="@color/black"
+            android:textColor="#204167"
+            android:textStyle="bold"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

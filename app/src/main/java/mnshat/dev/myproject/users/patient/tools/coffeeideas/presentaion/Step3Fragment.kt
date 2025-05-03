@@ -21,12 +21,12 @@ import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
-class Step3Fragment : BaseFragment() {
+class Step3Fragment : BaseFragment(), ItemListener {
 
 
     private lateinit var binding: FragmentStep3Binding
     private val viewModel: CofeViewModel by viewModels()
-
+  private lateinit var chooseUserDialog: Dialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,7 +40,6 @@ class Step3Fragment : BaseFragment() {
         }
         binding.friend.enter.setOnClickListener {
             retrieveUsers()
-//            findNavController().navigate(R.id.action_step3Fragment_to_friendIdeaEditingFragment)
 
         }
 
@@ -67,7 +66,7 @@ class Step3Fragment : BaseFragment() {
     }
 
     private fun chooseSupport(supporters: List<RegistrationData>) {
-        val chooseUserDialog = Dialog(requireContext())
+         chooseUserDialog = Dialog(requireContext())
         chooseUserDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = ChooseSupporterDialogBinding.inflate(layoutInflater)
         chooseUserDialog.setContentView(dialogBinding.root)
@@ -81,7 +80,7 @@ class Step3Fragment : BaseFragment() {
             layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
             attributes = layoutParams
         }
-        val adapter = SupportersAdapter2(supporters)
+        val adapter = SupportersAdapter2(supporters, this)
         dialogBinding.recyclerView.adapter = adapter
         dialogBinding.icClose.setOnClickListener {
             chooseUserDialog.dismiss()
@@ -89,5 +88,10 @@ class Step3Fragment : BaseFragment() {
 
         chooseUserDialog.show()
 
+    }
+
+    override fun onItemClick(supporter: RegistrationData) {
+        chooseUserDialog.dismiss()
+            findNavController().navigate(R.id.action_step3Fragment_to_friendIdeaEditingFragment)
     }
 }
