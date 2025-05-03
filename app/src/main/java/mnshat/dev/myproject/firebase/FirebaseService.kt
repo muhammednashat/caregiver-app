@@ -225,7 +225,6 @@ object FirebaseService {
         userProfiles.get().addOnSuccessListener { snapshot ->
             val matchingProfiles = snapshot.children.filter { dataSnapshot ->
                 val email = dataSnapshot.child(USER_EMAIL).getValue(String::class.java)
-                log("email - > $email")
                 emails?.contains(email) == true
             }
             val userList = mutableListOf<RegistrationData>()

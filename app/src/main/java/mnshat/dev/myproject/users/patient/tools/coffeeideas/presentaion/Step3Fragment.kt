@@ -4,23 +4,28 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.databinding.DialogConfirmUpdateReligionBinding
-import mnshat.dev.myproject.databinding.FragmentStep2Binding
+import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.databinding.ChooseSupporterDialogBinding
 import mnshat.dev.myproject.databinding.FragmentStep3Binding
-import mnshat.dev.myproject.util.RELIGION
+import mnshat.dev.myproject.firebase.FirebaseService
+import mnshat.dev.myproject.model.RegistrationData
+import mnshat.dev.myproject.util.USER_ID
+import mnshat.dev.myproject.util.log
 
-class Step3Fragment : Fragment() {
+@AndroidEntryPoint
+class Step3Fragment : BaseFragment() {
 
 
     private lateinit var binding: FragmentStep3Binding
-
+    private val viewModel: CofeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,14 +33,13 @@ class Step3Fragment : Fragment() {
     ): View? {
 
         binding = FragmentStep3Binding.inflate(inflater)
-
         binding.user.enter.setOnClickListener {
 
             findNavController().navigate(R.id.action_step3Fragment_to_step4Fragment)
 
         }
         binding.friend.enter.setOnClickListener {
-
+            retrieveUsers()
 //            findNavController().navigate(R.id.action_step3Fragment_to_friendIdeaEditingFragment)
 
         }
@@ -47,10 +51,25 @@ class Step3Fragment : Fragment() {
 
     }
 
-    fun chooseSupport() {
+    private fun retrieveUsers() {
+        showProgressDialog()
+        FirebaseService.retrieveUser(viewModel.sharedPreferences.getString(USER_ID)){ user ->
+            log("userId is ${viewModel.sharedPreferences.getString(USER_ID)}")
+            user?.storeDataLocally(viewModel.sharedPreferences)
+            FirebaseService.retrieveUsers(user?.supports){
+                it?.let {
+                    dismissProgressDialog()
+                    chooseSupport(it)
+                    log("users are $it")
+                }
+            }
+        }
+    }
+
+    private fun chooseSupport(supporters: List<RegistrationData>) {
         val chooseUserDialog = Dialog(requireContext())
         chooseUserDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        val dialogBinding = DialogConfirmUpdateReligionBinding.inflate(layoutInflater)
+        val dialogBinding = ChooseSupporterDialogBinding.inflate(layoutInflater)
         chooseUserDialog.setContentView(dialogBinding.root)
         chooseUserDialog.setCanceledOnTouchOutside(true)
 
@@ -62,6 +81,8 @@ class Step3Fragment : Fragment() {
             layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
             attributes = layoutParams
         }
+        val adapter = SupportersAdapter2(supporters)
+        dialogBinding.recyclerView.adapter = adapter
         dialogBinding.icClose.setOnClickListener {
             chooseUserDialog.dismiss()
         }

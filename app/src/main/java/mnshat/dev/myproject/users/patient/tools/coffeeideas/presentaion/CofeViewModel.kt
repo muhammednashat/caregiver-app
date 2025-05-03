@@ -1,16 +1,20 @@
 package mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion
 
+import android.content.SharedPreferences
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import mnshat.dev.myproject.base.BaseViewModel
+import mnshat.dev.myproject.util.SharedPreferencesManager
 import javax.inject.Inject
 
 @HiltViewModel
 
-class CofeViewModel @Inject constructor():ViewModel(){
+class CofeViewModel @Inject constructor(
+    val sharedPreferences: SharedPreferencesManager
+):ViewModel(){
 
 
     var cupNumber = 0
