@@ -25,13 +25,11 @@ class Step4Fragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentStep4Binding.inflate(inflater)
-
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-
 
         setUPListener()
 

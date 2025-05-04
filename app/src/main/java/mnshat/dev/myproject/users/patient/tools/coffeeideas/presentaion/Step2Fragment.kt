@@ -37,14 +37,14 @@ class Step2Fragment : BaseFragment() {
     private fun setUpListeners(){
 
         binding.constraintNext.setOnClickListener {
-            findNavController().navigate(R.id.action_step2Fragment_to_step3Fragment)
+//            findNavController().navigate(R.id.action_step2Fragment_to_step3Fragment)
 
-//         if (viewModel.isAllQuestionsAnswered())
-//         {
-//             findNavController().navigate(R.id.action_step2Fragment_to_step3Fragment)
-//         }else{
-//          showToast(getString(R.string.please_answer_all_questions))
-//         }
+         if (viewModel.isAllQuestionsAnswered())
+         {
+             findNavController().navigate(R.id.action_step2Fragment_to_step3Fragment)
+         }else{
+          showToast(getString(R.string.please_answer_all_questions))
+         }
 
         }
 

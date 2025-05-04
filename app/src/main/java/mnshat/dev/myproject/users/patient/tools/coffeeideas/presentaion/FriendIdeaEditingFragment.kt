@@ -18,7 +18,6 @@ import mnshat.dev.myproject.util.log
 @AndroidEntryPoint
 class FriendIdeaEditingFragment : BaseFragment() {
 
-
     private lateinit var binding: FragmentFriendIdeaEditingBinding
     private val viewModel: CofeViewModel by viewModels()
     private lateinit var supporter: RegistrationData

@@ -29,7 +29,6 @@ class Step1Fragment : BaseFragment() {
 
         binding = FragmentStep1Binding.inflate(inflater)
 
-
         setUpListeners()
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -40,19 +39,19 @@ class Step1Fragment : BaseFragment() {
     private fun setUpListeners() {
 
         binding.constraintNext.setOnClickListener {
-            findNavController().navigate(R.id.action_step1Fragment_to_step2Fragment)
+//            findNavController().navigate(R.id.action_step1Fragment_to_step2Fragment)
 
-//            if (binding.editText.text.toString().isNotEmpty() && viewModel.cupNumber != 0) {
-//                log(viewModel.cupNumber.toString())
-//                log(viewModel.textIdea.value!!)
-//                findNavController().navigate(R.id.action_step1Fragment_to_step2Fragment)
-//            } else {
-//                if (binding.editText.text.toString().isEmpty()) {
-//                    showToast(getString(R.string.please_enter_your_idea))
-//                } else {
-//                    showToast(getString(R.string.please_select_the_cup))
-//                }
-//            }
+            if (binding.editText.text.toString().isNotEmpty() && viewModel.cupNumber != 0) {
+                log(viewModel.cupNumber.toString())
+                log(viewModel.textIdea.value!!)
+                findNavController().navigate(R.id.action_step1Fragment_to_step2Fragment)
+            } else {
+                if (binding.editText.text.toString().isEmpty()) {
+                    showToast(getString(R.string.please_enter_your_idea))
+                } else {
+                    showToast(getString(R.string.please_select_the_cup))
+                }
+            }
 
 
         }
