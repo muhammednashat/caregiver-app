@@ -643,28 +643,28 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="no_sound">No sound</string>
     <string name="sound_air">Air breeze</string>
     <string name="sound_birds">Bird sound</string>
-    <string name="caf_for_restructuring_ideas">Café for Restructuring Ideas</string>
+    <string name="caf_for_restructuring_ideas">Thought Restructuring Cafe!</string>
     <string name="entry_to_caf">Entry to café</string>
-    <string name="choose_your_cup_carefully">Choose your cup carefully</string>
+    <string name="choose_your_cup_carefully">Choose your cup carefully!</string>
     <string name="coffee">The coffee</string>
     <string name="result">Result</string>
     <string name="bitter_coffee">Bitter coffee</string>
     <string name="unbalanced_negative_thoughts">Unbalanced negative thoughts</string>
-    <string name="will_you_let_discouraging_thoughts_take_over_starting_your_day_with_feelings_of_helplessness_and_frustration">Will you let discouraging thoughts take over, starting your day with feelings of helplessness and frustration?</string>
-    <string name="temporary_comfort_but_in_the_end_you_ll_find_yourself_stuck_in_the_same_place_without_progress">Temporary comfort, but in the end, you’ll find yourself stuck in the same place without progress.</string>
-    <string name="over_sugary_coffee">Over-sugary coffee</string>
-    <string name="escaping_from_reality">Escaping from reality</string>
-    <string name="will_you_choose_to_escape_into_an_illusion_of_comfort_ignoring_real_problems_and_challenges">Will you choose to escape into an illusion of comfort, ignoring real problems and challenges?</string>
-    <string name="you_will_live_in_a_cycle_of_stress_and_hesitation_where_everything_seems_harder_than_it_really_is">You will live in a cycle of stress and hesitation, where everything seems harder than it really is.</string>
+    <string name="will_you_let_discouraging_thoughts_take_over_starting_your_day_with_feelings_of_helplessness_and_frustration">Will you allow discouraging thoughts to take over, starting your day feeling helpless and frustrated?</string>
+    <string name="temporary_comfort_but_in_the_end_you_ll_find_yourself_stuck_in_the_same_place_without_progress">Temporary relief, but ultimately, you\'ll find yourself in the same place without any progress</string>
+    <string name="over_sugary_coffee">Excessive Sugary Coffee</string>
+    <string name="escaping_from_reality">An Escape from Reality</string>
+    <string name="will_you_choose_to_escape_into_an_illusion_of_comfort_ignoring_real_problems_and_challenges">Will you choose to escape into the illusion of comfort, ignoring real problems and challenges?</string>
+    <string name="you_will_live_in_a_cycle_of_stress_and_hesitation_where_everything_seems_harder_than_it_really_is">You\'ll live in a cycle of stress and hesitation, where everything seems harder than it is.</string>
     <string name="balanced_coffee">Balanced coffee</string>
-    <string name="positive_restructuring">Positive restructuring</string>
-    <string name="will_you_approach_your_day_with_a_realistic_and_balanced_mindset_embracing_challenges_consciously_and_seeking_solutions_instead_of_getting_stuck_on_obstacles">Will you approach your day with a realistic and balanced mindset, embracing challenges consciously and seeking solutions instead of getting stuck on obstacles?</string>
-    <string name="this_cup_gives_you_the_strength_to_keep_growing_and_developing_without_exaggeration_or_minimization">This cup gives you the strength to keep growing and developing without exaggeration or minimization.</string>
+    <string name="positive_restructuring">A Positive Restructuring</string>
+    <string name="will_you_approach_your_day_with_a_realistic_and_balanced_mindset_embracing_challenges_consciously_and_seeking_solutions_instead_of_getting_stuck_on_obstacles">Will you face your day with a clear and balanced mindset, consciously accepting challenges, and looking for solutions instead of stopping at obstacles?</string>
+    <string name="this_cup_gives_you_the_strength_to_keep_growing_and_developing_without_exaggeration_or_minimization">This cup gives you the strength to continue growing and developing without over-emphasizing or underestimating.</string>
     <string name="step_1_choose_your_thought">Step 1: Choose your thought!</string>
-    <string name="what_thought_is_on_your_mind_today">What thought is on your mind today?</string>
+    <string name="what_thought_is_on_your_mind_today">What thought is filling your cup today?</string>
     <string name="my_thought">My thought:</string>
     <string name="today_i_found_myself_thinking_about">Today, I found myself thinking about...</string>
-    <string name="now_which_cup_does_this_thought_belong_to">Now, which cup does this thought belong to?</string>
+    <string name="now_which_cup_does_this_thought_belong_to">Now, which cup does this thought belong in?\n Click one of the options:</string>
     <string name="exit_the_caf">Exit the café</string>
     <string name="step_2_taste_the_idea_is_it_balanced">Step 2:Taste the idea – is it balanced?</string>
     <string name="start_by_identifying_your_emotion"><font color='#5994d5'>Start by identifying your emotions and notice how these emotions influence your thinking:</font> What feelings does this idea generate? Do you feel anxious, fearful, or frustrated?</string>
@@ -708,7 +708,7 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="the_idea_is_not_complete"><b><font color="#5994d5">The idea</font></b> is not complete until it finds a place in your day and resonates in your mind.</string>
     <string name="go_to_the_daily_planner">Go to the daily planner</string>
     <string name="unrealistic_thinking">(unrealistic thinking)</string>
-    <string name="ignoring_challenges">IIgnoring challenges or overly reassuring ones
+    <string name="ignoring_challenges">Ignoring challenges or overly reassuring ones
 such as: "Everything will get better. I don't need
 to put in any effort!"</string>
     <string name="negative_thinking">(negative thinking)</string>

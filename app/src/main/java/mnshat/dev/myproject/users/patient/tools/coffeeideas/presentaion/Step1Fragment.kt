@@ -28,7 +28,6 @@ class Step1Fragment : BaseFragment() {
     ): View? {
 
         binding = FragmentStep1Binding.inflate(inflater)
-
         setUpListeners()
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
