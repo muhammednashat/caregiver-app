@@ -769,4 +769,30 @@
 </string>
     <string name="your_support_is_important"> وجودك مهم، لكن في بعض المواقف، الدعم المهني يصبح ضرورة لا بديل لها</string>
     <string name="important">تنبيه مهم:</string>
+    <string name="this_is_the_thought">هذه هي الرسالة التي وصلتك من صديقك:
+</string>
+    <string name="the_thought_he_s_having">الفكرة التي تراوده:</string>
+    <string name="the_cup_he_thinks_belongs_to"> الفنجان الذي يعتقد أنها تنتمي إليه:</string>
+    <string name="now_let_us_begin_together">والآن، دعنا نبدأ معًا خطوة بخطوة… لنحضّر فنجان التغيير، ونكون الرفيق الهادئ لمن نحب
+</string>
+    <string name="what_does_cups_mean">ما معنى الفناجين؟</string>
+    <string name="when_your_friend_write">عندما يقوم صديقك بكتابة الفكرة التي تراوده دانه سيختار أحد الفناجين الثلاثة التي تنتمي إليها فكرته. إليك على الطاولة بالأسفل شرح المعاني الفناجين.</string>
+    <string name="receive_the_thought">استقبل الفكرة باحتواء (من دون رفض أو تصحيح فوري)</string>
+    <string name="to_create_a_safe_space_for_conversation">لخلق مساحة آمنة للحديث دون حكم، عندما يشاركك الشخص فكرة سلبية، مثل:</string>
+    <string name="i_m_a_burden_on_everyone_my_existence_is_meaningless">أنا عبء على الكل... وجودي ما له معنى.</string>
+    <string name="no_that_s_not_true_or_why_do_you_think_that">لا، مو صحيح!" أو "ليش بتفكر هيك؟</string>
+    <string name="instead_say">قل بدلاً من ذلك:</string>
+    <string name="i_think_this_is_a_painful">أنا شايف إنها فكرة موجعة... خلينا نحاول نفهمها سوي.</string>
+    <string name="i_understand_that_you_feel">أفهم إنك حاسس بهالشي، وخلينا نمر عليها خطوة خطوة.</string>
+    <string name="don_t_say">لا تقل:</string>
+    <string name="examine_the_thought_using_the_consciousness_filter">Examine the thought using the Consciousness Filter</string>
+    <string name="does_it_contain_expressions">Does it contain expressions such as: I\'m always a failure or No one ever loves me?</string>
+    <string name="if_the_thought_is_generalizing_or_judgemental">If the thought is generalizing or judgemental, it\'s likely inaccurate and needs to be recalibrated</string>
+    <string name="does_the_thought_only_reflect_their_current">Does the thought only reflect their current feelings? Did they say it because they were just in an embarrassing situation, feeling lonely, or frustrated?</string>
+    <string name="if_so_this_is_often_a_temporary_thought_stemming">If so, this is often a temporary thought stemming from an emotion, not a fact they believe all the time, and we can mitigate its power</string>
+    <string name="does_the_thought_actually_seem_realistic_has_something">Does the thought actually seem realistic? Has something happened to confirm this thought? Or are emotions driving it?</string>
+    <string name="if_there_s_no_clear_evidence_it_s_likely_a_distorted_thought_due_to_their_psychological_state_and_they_can_be_gently_restructured">If there\'s no clear evidence, it\'s likely a distorted thought due to their psychological state, and they can be gently restructured.</string>
+    <string name="is_there_another_angle_they_could_see">Is there another angle they could see? Can I help them see details they\'ve forgotten or aspects they\'ve missed?</string>
+    <string name="rebalancing_begins_with_broadening_their_perspective_not_denying_it">Rebalancing begins with broadening their perspective, not denying it</string>
+    <string name="when_your_loved_one_shares">When your loved one shares a negative thought, don\'t rush to respond. Take a moment and ask yourself:</string>
 </resources>

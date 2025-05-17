@@ -750,6 +750,30 @@ is too hard. I'll never succeed.</string>
     <string name="this_is_an_indication">this is an indication that the situation requires immediate professional intervention. In this case, do not hesitate to contact a psychologist or emergency services.</string>
     <string name="your_support_is_important">Your support is important, but in some situations, professional support becomes an absolute necessity.</string>
     <string name="important">Important :</string>
+    <string name="this_is_the_thought">This is the thought that your loved one shared with you:</string>
+    <string name="the_thought_he_s_having">The thought he\'s having:</string>
+    <string name="the_cup_he_thinks_belongs_to">The cup he thinks belongs to:</string>
+    <string name="now_let_us_begin_together">Now, let us begin together, step by step...to prepare the cup of change, and be a calm companion to those we love.</string>
+    <string name="what_does_cups_mean">What does cups mean?</string>
+    <string name="when_your_friend_write">When your friend writes down the idea they\'re having, they\'ll choose one of the three cups to which their idea belongs. Below, you\'ll find the meanings of the cups.</string>
+    <string name="receive_the_thought">Receive the thought with acceptance (without immediate rejection or correction)</string>
+    <string name="to_create_a_safe_space_for_conversation">To create a safe space for conversation without judgement, when someone shares a negative thought, such as:</string>
+    <string name="i_m_a_burden_on_everyone_my_existence_is_meaningless">I\'m a burden on everyone... My existence is meaningless</string>
+    <string name="no_that_s_not_true_or_why_do_you_think_that">No, that\'s not true! or Why do you think that?</string>
+    <string name="instead_say">Instead, say:</string>
+    <string name="i_think_this_is_a_painful">I think this is a painful thought... Let\'s try to understand it together.</string>
+    <string name="i_understand_that_you_feel">I understand that you feel this way, and let\'s go through it step by step</string>
+    <string name="don_t_say">Don\'t say:</string>
+    <string name="examine_the_thought_using_the_consciousness_filter">Examine the thought using the Consciousness Filter</string>
+    <string name="does_it_contain_expressions">Does it contain expressions such as: I\'m always a failure or No one ever loves me?</string>
+    <string name="if_the_thought_is_generalizing_or_judgemental">If the thought is generalizing or judgemental, it\'s likely inaccurate and needs to be recalibrated</string>
+    <string name="does_the_thought_only_reflect_their_current">Does the thought only reflect their current feelings? Did they say it because they were just in an embarrassing situation, feeling lonely, or frustrated?</string>
+    <string name="if_so_this_is_often_a_temporary_thought_stemming">If so, this is often a temporary thought stemming from an emotion, not a fact they believe all the time, and we can mitigate its power</string>
+    <string name="does_the_thought_actually_seem_realistic_has_something">Does the thought actually seem realistic? Has something happened to confirm this thought? Or are emotions driving it?</string>
+    <string name="if_there_s_no_clear_evidence_it_s_likely_a_distorted_thought_due_to_their_psychological_state_and_they_can_be_gently_restructured">If there\'s no clear evidence, it\'s likely a distorted thought due to their psychological state, and they can be gently restructured.</string>
+    <string name="is_there_another_angle_they_could_see">Is there another angle they could see? Can I help them see details they\'ve forgotten or aspects they\'ve missed?</string>
+    <string name="rebalancing_begins_with_broadening_their_perspective_not_denying_it">Rebalancing begins with broadening their perspective, not denying it</string>
+    <string name="when_your_loved_one_shares">When your loved one shares a negative thought, don\'t rush to respond. Take a moment and ask yourself:</string>
 
 
 </resources>

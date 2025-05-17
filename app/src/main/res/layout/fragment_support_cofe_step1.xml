@@ -30,7 +30,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
-                android:text="@string/step_2_taste_the_idea_is_it_balanced"
+                android:text="@string/step_1"
+
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView32" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/receive_the_thought"
 
                 android:textColor="#193453"
                 android:textSize="16sp"
@@ -38,7 +51,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageView32" />
+                app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -52,9 +65,10 @@
                 android:paddingEnd="@dimen/margin_large"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0">
 
                 <ScrollView
                     android:layout_width="match_parent"
@@ -71,16 +85,14 @@
                         android:orientation="vertical">
 
 
-
-
                         <TextView
                             android:layout_width="wrap_content"
-                            android:textColor="#193453"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="30dp"
-                            android:layout_marginBottom="30dp"
                             android:layout_marginEnd="4dp"
-                            android:text="fsafdsfdf  fdfdfdsf afd"
-                            android:layout_height="wrap_content"/>
+                            android:layout_marginBottom="30dp"
+                            android:text="@string/to_create_a_safe_space_for_conversation"
+                            android:textColor="#193453" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -91,21 +103,145 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_marginEnd="4dp"
+                                android:src="@drawable/icon_face5" />
 
-                                android:src="@drawable/icon_face5"/>
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:textColor="#193453"
-android:background="@drawable/background_shape"
-                                android:gravity="center"
+                                android:layout_height="50dp"
                                 android:layout_gravity="center"
-                                android:text="fsafdsfdf  fdfdfdsf afd"
-                                android:layout_height="50dp"/>
+                                android:background="@drawable/background_shape"
+                                android:gravity="center"
+                                android:text="@string/i_m_a_burden_on_everyone_my_existence_is_meaningless"
+                                android:textColor="#193453" />
+
 
                         </LinearLayout>
 
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/margin_large"
+                                android:background="#f4855e"
+                                android:padding="@dimen/margin_large">
+
+                                <LinearLayout
+                                    android:id="@+id/linearLayout2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.5">
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1.5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:background="#f8b7a0" />
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1.5dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="#f8b7a0" />
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1.5dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="#f8b7a0" />
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1.5dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="#f8b7a0" />
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1.5dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="#f8b7a0" />
 
 
+                                </LinearLayout>
+
+
+                                <TextView
+                                    android:id="@+id/textView79"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:text="@string/don_t_say"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold"
+                                    app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+                                    app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="21dp"
+                                    android:text="@string/no_that_s_not_true_or_why_do_you_think_that"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/textView79" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:rotation="23"
+                                android:rotationY="-206"
+                                android:src="@drawable/icon_clip" />
+
+                        </FrameLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_large"
+                            android:text="@string/instead_say" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="50dp"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:layout_marginEnd="50dp"
+                            android:text="@string/i_think_this_is_a_painful" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="50dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginEnd="4dp"
+                                android:src="@drawable/icon_smile_face7" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_medium"
+                                android:text="@string/i_understand_that_you_feel" />
+
+                        </LinearLayout>
 
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -189,8 +325,6 @@ android:background="@drawable/background_shape"
                     </LinearLayout>
 
                 </ScrollView>
-
-
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

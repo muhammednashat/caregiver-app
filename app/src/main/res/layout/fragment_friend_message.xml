@@ -30,8 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
-                android:text="@string/step_2_taste_the_idea_is_it_balanced"
-
+                android:text="@string/this_is_the_thought"
                 android:textColor="#193453"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -109,31 +108,35 @@
 
                             <androidx.cardview.widget.CardView
                                 android:layout_width="match_parent"
-                                android:layout_margin="20dp"
                                 android:layout_height="150dp"
+                                android:layout_margin="20dp"
                                 app:cardCornerRadius="@dimen/margin_large"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/textView76">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:background="#ffffff"
-    android:padding="@dimen/margin_medium"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:textColor="#193453"
-        android:text="fsafdsfdf  fdfdfdsf afd"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:textColor="#193453"
-        android:text="fsafdsfdf  fdfdfdsf afd"
-        android:layout_height="wrap_content"/>
 
-</LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="#ffffff"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/margin_medium">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/the_thought_he_s_having"
+                                        android:textColor="#193453"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="fsafdsfdf  fdfdfdsf afd"
+                                        android:textColor="#193453" />
+
+                                </LinearLayout>
                             </androidx.cardview.widget.CardView>
 
                             <com.google.android.material.imageview.ShapeableImageView
@@ -150,30 +153,32 @@
                                 app:shapeAppearanceOverlay="@style/circularImageViewShape" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:orientation="horizontal"
-    android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:textColor="#193453"
-        android:layout_marginEnd="4dp"
-        android:layout_gravity="center"
-        android:text="fsafdsfdf  fdfdfdsf afd"
-        android:layout_height="wrap_content"/>
-    <ImageView
-        android:layout_width="24dp"
-        android:src="@drawable/icon_info5"
-        android:layout_height="24dp"/>
-</LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginEnd="4dp"
+                                android:text="@string/the_cup_he_thinks_belongs_to"
+                                android:textColor="#193453" />
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/icon_info5" />
+                        </LinearLayout>
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
-                            app:cardCornerRadius="18dp"
+                            android:layout_height="150dp"
                             android:layout_marginTop="@dimen/margin_medium"
 
-                            android:layout_height="150dp">
+                            app:cardCornerRadius="18dp">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="match_parent"
@@ -182,10 +187,10 @@
 
                                 <ImageView
                                     android:id="@+id/coffe"
-                                    android:src="@drawable/image_cofe1"
                                     android:layout_width="75dp"
                                     android:layout_height="75dp"
                                     android:layout_marginStart="16dp"
+                                    android:src="@drawable/image_cofe1"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
@@ -196,11 +201,11 @@
                                     android:id="@+id/textView75"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textStyle="bold"
-                                    android:textColor="#193453"
-
                                     android:layout_marginTop="36dp"
                                     android:text="fdfjdfds"
+
+                                    android:textColor="#193453"
+                                    android:textStyle="bold"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.501"
                                     app:layout_constraintStart_toEndOf="@+id/coffe"
@@ -210,8 +215,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="20dp"
-                                android:textColor="#6b86a1"
                                     android:text="fdfjdfds"
+                                    android:textColor="#6b86a1"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.504"
                                     app:layout_constraintStart_toEndOf="@+id/coffe"
@@ -225,13 +230,13 @@
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:textColor="#193453"
-                            android:layout_marginTop="30dp"
-                            android:layout_marginBottom="30dp"
-                            android:layout_marginEnd="4dp"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="fsafdsfdf  fdfdfdsf afd"
-                            android:layout_height="wrap_content"/>
+                            android:layout_marginTop="30dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="30dp"
+                            android:text="@string/now_let_us_begin_together"
+                            android:textColor="#193453" />
 
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -315,8 +320,6 @@
                     </LinearLayout>
 
                 </ScrollView>
-
-
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
