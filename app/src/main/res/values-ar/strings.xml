@@ -708,8 +708,8 @@
     <string name="now_that_you_ve_gained_a_more_balanced_perspective_it_s_time_to_put_it_into_practice">الآن بعد أن حصلت على منظور أكثر توازنا، حان وقت التطبيق </string>
     <string name="do_you_want_to_solidify">هل ترغب في ترسيخ الفكرة الجديدة و تحسين مزاجك ؟ </string>
     <string name="choose_a_simple_activity">اختر نشاطاً بسيطاً يعبر عن هذا التغيير الجديد ( مثل: أخذ استراحة, إتمام مهمة مؤجلة ) .... </string>
-    <string name="and_schedule_it_in_your_calendar"><b><font color ="#204167">و جدولها اليوم أو هذا الأسبوع في تقويمك</font></b>حتى تكون جزءاً من واقعك</string>
-    <string name="the_idea_is_not_complete"> <b><font color ="#5994d5">فالفكرة</font></b> لا تكتمل إلا عندما تجد مكاناً في يومك, كما وجدت صدى في عقلك</string>
+    <string name="and_schedule_it_in_your_calendar"><b><font color="#204167">و جدولها اليوم أو هذا الأسبوع في تقويمك</font></b>حتى تكون جزءاً من واقعك</string>
+    <string name="the_idea_is_not_complete"> <b><font color="#5994d5">فالفكرة</font></b> لا تكتمل إلا عندما تجد مكاناً في يومك, كما وجدت صدى في عقلك</string>
     <string name="go_to_the_daily_planner">انتقل إلى المخطط اليومي</string>
     <string name="unrealistic_thinking">(التفكير غير الواقعي)</string>
     <string name="ignoring_challenges">تجاهل التحديات أو الطمأنة المفرطة مثل: "كل شيء سيتحسن لا أحتاج بذل أي جهد!"</string>
@@ -728,4 +728,45 @@
     <string name="your_friend_rephrases">صديقك يعيد صياغة فكرتك بطريقة أكثر توازنًا وواقعية.</string>
     <string name="your_friend_s_reply">رد صديقك</string>
     <string name="choose_a_friend_whom_you_would_like_to_share_your_thoughts_with">اختر صديقك الذى تود تبادل افكارك معه...</string>
+    <string name="in_this_mindful_caf_we_filter">تمامًا كما تختلف نكهات القهوة، تختلف أيضًا طرق التفكير. بعض الأفكار تكون مرّة تثقل القلب، وأخرى زائدة الحلاوة تزيّف الواقع، بينما هناك أفكار متوازنة تمنحنا طاقة حقيقية ووضوحًا داخليًا.</string>
+    <string name="the_thought_restructuring_caf">مقهى إعادة الافكار</string>
+    <string name="welcome_to">مرحبًا بك في</string>
+    <string name="through_this_simple_and_gentle">من خلال هذا التمرين البسيط واللطيف، يمكنك أن تساعد من تحب على التعرّف إلى "الفكر" الذي يشربه كل يوم، هل هو يرهقه؟ يخدّره؟ أم يمنحه قوة؟ومن هناك، تبدأ الرحلة لإعادة تحضير فكرة أكثر توازنًا... فكرة تُشبه فنجان القهوة الذي يُنعشك دون أن يُرهقك، ويواسيك دون أن يُخدّرك.</string>
+    <string name="what_is_the_goal_of_the_thought_restructuring_caf">ما هدف مقهى الأفكار؟</string>
+    <string name="depression_isn_t_just">الاكتئاب ليس فقط شعور بالحزن، بل غالبًا ما يكون محاطًا بأفكار قاسية، وغير واقعية.مقهى الأفكار مصمم لمساعدة الشخص العزيز عليك في التعامل مع أفكاره السلبية دون هجوم أو إنكار، بل من خلال مشاركة داعمة، حنونة، وخطوات عملية لإعادة صياغة هذه الافكار، وجعلها:
+</string>
+    <string name="more_realistic">أكثر واقعية
+</string>
+    <string name="less_harsh">أقل قسوة
+</string>
+    <string name="more_balanced">أقرب للتوازن
+</string>
+    <string name="more_supportive_of_mental_health">أكثر دعمًا للصحة النفسية</string>
+    <string name="in_simple_words">بكلمات بسيطة، هذا التمرين ليس عن "تغيير رأيه"، بل عن مرافقته بلطف داخل عقله حتى يرى بأن هناك فنجانًا آخر يمكنه اختياره.</string>
+    <string name="why_is_the_caf_important">لماذا مقهى الأفكار مهم؟
+</string>
+    <string name="because_it_creates">لأنه يخلق مساحة آمنة للتفكير دون حُكم.
+</string>
+    <string name="because_it_gives_the_patient">لأنه يمنح المريض شعورًا بأنه ليس وحده في مواجهة أفكاره.
+</string>
+    <string name="because_it_cultivates_the_concept_of_i_choose_my_thoughts_rather_than_my_thoughts_control_me">لأنه يزرع مفهوم "أنا أختار أفكاري" بدل "أفكاري تتحكم بي".</string>
+    <string name="you_don_t_need">أنت لا تحتاج أن تكون معالجًا نفسيًا... أنت فقط تحتاج أن تكون "رفيق فكر".شخص يُمسك بيده فنجان القهوة الثاني، ويدعو من يحب للجلوس والحديث... ثم يختاروا معًا الفكرة التي تستحق أن تُشرب.
+</string>
+    <string name="note_before_you_begin">ملاحظة قبل البدء:
+</string>
+    <string name="in_the_thought_restructuring">في مقهى الأفكار، سنرافقك خطوة بخطوة لتعلّم كيف تساعد من تحب في إعادة هيكلة أفكاره السلبية لتمكينك من لعب دور داعم وفعّال، ولكن بطريقة آمنة ومدروسة. هدفنا ليس أن تحل محل المختص، بل أن تكون رفيقًا واعيًا وداعمًا في لحظة صعبة، وأن تساعده على رؤية الأمور من زوايا جديدة وبنَفَس أكثر توازنًا.
+</string>
+    <string name="when_your_loved_one_shares_their_troubling_thoughts_with_you_they_give_you_a_window_into_their_inner_world_therefore_we_strongly_recommend_following_the_steps_outlined_in_the_guide_to_ensure_you_provide_the_best_possible_support_in_a_safe_manner">حين يشاركك من تحب ما يزعجه من أفكار، فهو يمنحك نافذة على عالمه الداخلي. ولهذا، نوصي بشدة بـ اتباع الخطوات كما وردت في الدليل، لضمان تقديم الدعم بأفضل شكل ممكن، وبطريقة آمنة.
+</string>
+    <string name="this_exercise_is_intended_for_dealing_with_everyday_negative_thoughts_associated_with_depression_and_anxiety_not_for_acute_psychological_crises_if_you_notice_that_the_person_you_are_supporting">هذا التمرين مخصص للتعامل مع الأفكار السلبية اليومية المرتبطة بالاكتئاب والقلق، وليس للأزمات النفسية الحادة.إذا لاحظت أن الشخص الذي تدعمه:
+</string>
+    <string name="expresses_a_desire_to_harm_themselves_or_others">يُعبّر عن رغبة في إيذاء نفسه أو الآخرين،
+</string>
+    <string name="talks_about_suicide_or_a_complete_loss_of_interest_in_life">يتحدث عن الانتحار أو فقدان الرغبة الكاملة في الحياة،
+</string>
+    <string name="exhibits_a_complete_detachment_from_reality_or_exhibits_severe_disturbing_behavioural_changes">يُظهر انفصالًا تامًا عن الواقع، أو تغيّرات سلوكية مقلقة بشكل حاد،</string>
+    <string name="this_is_an_indication">فهذا مؤشر على أن الوضع يتطلب تدخّلًا مهنيًا فوريًا. في هذه الحالة، لا تتردد في التواصل مع مختص نفسي أو خدمات الطوارئ.
+</string>
+    <string name="your_support_is_important"> وجودك مهم، لكن في بعض المواقف، الدعم المهني يصبح ضرورة لا بديل لها</string>
+    <string name="important">تنبيه مهم:</string>
 </resources>

@@ -44,9 +44,8 @@
                         android:id="@+id/textView26"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tedfdf fsdfsd dfsdf dsfads sdfafsdafdsfsadfsadfdfdafdfdafxtView"
+                        android:text="@string/what_is_the_goal_of_the_thought_restructuring_caf"
                         android:textColor="@color/white"
-
                         android:textStyle="bold" />
 
                     <TextView
@@ -55,8 +54,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_small"
                         android:layout_marginBottom="@dimen/margin_small"
-                        android:text="Tedfdf fsdfsd dfsdf dsfads sdfafsdafdsfsadfsadfdfdafdfdafxtView"
-                        android:textColor="#cccecf" />
+android:text="@string/depression_isn_t_just"                        android:textColor="#cccecf" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -64,6 +62,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
+
                         android:layout_height="wrap_content">
 
                         <ImageView
@@ -78,12 +77,14 @@
                             android:layout_gravity="center"
                             android:layout_marginStart="4dp"
                             android:gravity="center"
-                            android:text="fdsf"
+                            android:text="@string/more_realistic"
                             android:textColor="#cccecf" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
+                        android:gravity="center"
+
                         android:layout_height="wrap_content">
 
                         <ImageView
@@ -98,7 +99,29 @@
                             android:layout_gravity="center"
                             android:layout_marginStart="4dp"
                             android:gravity="center"
-                            android:text="fdsf"
+                            android:text="@string/more_balanced"
+                            android:textColor="#cccecf" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="5dp"
+                            android:layout_height="5dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/circle_gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="4dp"
+                            android:gravity="center"
+                            android:text="@string/less_harsh"
                             android:textColor="#cccecf" />
                     </LinearLayout>
 
@@ -125,27 +148,7 @@
                                 android:layout_gravity="center"
                                 android:layout_marginStart="4dp"
                                 android:gravity="center"
-                                android:text="fdsf"
-                                android:textColor="#cccecf" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content">
-
-                            <ImageView
-                                android:layout_width="5dp"
-                                android:layout_height="5dp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/circle_gray" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginStart="4dp"
-                                android:gravity="center"
-                                android:text="fdsf"
+                                android:text="@string/more_supportive_of_mental_health"
                                 android:textColor="#cccecf" />
                         </LinearLayout>
 
@@ -157,8 +160,7 @@
                         android:layout_marginStart="@dimen/margin_2_super"
                         android:layout_marginEnd="@dimen/margin_2_super"
                         android:gravity="center"
-                        android:text="fdsfafgdggfg g g fdsg fgdfg fdgfd gfdsg fdgdf sgfdg fdgfdgfdgfdgfggfdgfdgfgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdsgfdgfdgfdgfdsggfdggfdgfdgfdgfdgfdgfdgfdgfdgfdgfdsgfsgfdgsfdgfdsgfdgsfdgsfdgfdgfgfgfgfgfgfgfdgfdf"
-                        android:textColor="#cccecf" />
+android:text="@string/in_simple_words"                        android:textColor="#cccecf" />
 
                 </LinearLayout>
 

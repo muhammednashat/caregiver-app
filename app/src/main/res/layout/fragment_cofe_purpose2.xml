@@ -45,8 +45,7 @@
                         android:layout_marginBottom="@dimen/margin_medium"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tedfdf fsdfsd dfsdf dsfads sdfafsdafdsfsadfsadfdfdafdfdafxtView"
-                        android:textColor="@color/white"
+android:text="@string/why_is_the_caf_important"                        android:textColor="@color/white"
 
                         android:textStyle="bold" />
                     <LinearLayout
@@ -64,8 +63,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginStart="4dp"
-                            android:text="fdsfgfdgdsfgfdgfdgsfdgdsggfsdfgfsdgfgsgfgfdgfdgfdgfgfgfgfgfgfgfg"
-                            android:textColor="#cccecf" />
+android:text="@string/because_it_creates"                            android:textColor="#cccecf" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -84,8 +82,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginStart="4dp"
-                            android:text="fdsfgfdgdsfgfdgfdgsfdgdsggfsdfgfsdgfgsgfgfdgfdgfdgfgfgfgfgfgfgfg"
-                            android:textColor="#cccecf" />
+android:text="@string/because_it_gives_the_patient"                            android:textColor="#cccecf" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -103,8 +100,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginStart="4dp"
-                            android:text="fdsfgfdgdsfgfdgfdgsfdgdsggfsdfgfsdgfgsgfgfdgfdgfdgfgfgfgfgfgfgfg"
-                            android:textColor="#cccecf" />
+android:text="@string/because_it_cultivates_the_concept_of_i_choose_my_thoughts_rather_than_my_thoughts_control_me"                            android:textColor="#cccecf" />
                     </LinearLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -130,8 +126,7 @@
                                 android:layout_marginBottom="@dimen/margin_large"
                                 android:gravity="center"
                                 android:padding="@dimen/margin_2_super"
-                                android:text="fdsfafgdggfgsfgfgfdgsfdgsfsdfdsffsdfdsafdfsdfasdfsafdsfsdafdfsdafdfdfdfdfdfdfdfdfdfdfasdfsdfdfsdaffasdfdfsdfdfdfdfdfadfdsafdfdsafdfdafdafdfasdfdfdsfdfdsfdsafdfasdfdsafdfdfgsdfgfsdgfdgsfdfgsfdgdsfgdsfgfdsggfgsfdfgfdggfdsgfgfdsgsdfgg g g fdsg fgdfg fdgfd gfdsg fdgdf sgfdg fdgfdgfdgfdgfggfdgfdgfgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdsgfdgfdgfdgfdsggfdggfdgfdgfdgfdgfdgfdgfdgfdgfdgfdsgfsgfdgsfdgfdsgfdgsfdgsfdgfdgfgfgfgfgfgfgfdgfdf"
-                                android:textColor="#cccecf"
+android:text="@string/you_don_t_need"                                android:textColor="#cccecf"
                                 />
 
                       <View
