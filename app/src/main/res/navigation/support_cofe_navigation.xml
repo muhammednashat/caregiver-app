@@ -14,6 +14,7 @@
             android:id="@+id/action_cofeIntroFragment_to_cofeIntro2Fragment"
             app:destination="@id/cofeIntro2Fragment" />
     </fragment>
+
     <fragment
         android:id="@+id/cofeIntro2Fragment"
         android:name="mnshat.dev.myproject.users.caregiver.tools.cofe.presintaion.CofeIntro2Fragment"
