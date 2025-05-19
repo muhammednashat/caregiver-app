@@ -799,15 +799,27 @@
 </string>
     <string name="the_purpose_of_these_questions_is_to_help_you_understand">الهدف من هذه الأسئلة مساعدتك على فهم "الفنجان" الذي يشربه من تحب، قبل أن تعرض عليه فنجانًا آخر بلطف ووعي.
 </string>
-    <string name="prepare_a_cup_of_change_the_balanced_thought">Prepare a Cup of Change – The Balanced Thought</string>
-    <string name="use_the_previous_questions">Use the previous questions and help your loved one reframe the idea with a more balanced flavour… one that gives them a sense of comfort and a clearer vision of what they\'re going through.</string>
-    <string name="example">Example:</string>
-    <string name="i_m_a_burden_to_everyone">I\'m a burden to everyone</string>
-    <string name="you_re_going_through_a_difficult">You\'re going through a difficult time and need support. This is normal and doesn\'t diminish your value</string>
-    <string name="avoid_phrases_that_reflect">Avoid phrases that reflect</string>
-    <string name="excessive_positivity">excessive positivity</string>
-    <string name="everything_is_fine_and_there_s_nothing_wrong">Everything is fine and there\'s nothing wrong</string>
-    <string name="the_person_may_feel">The person may feel unheard or that their feelings are unjustified.</string>
-    <string name="yes_not_everything_is_fine_but_there_are_things">Yes, not everything is fine... but there are things you can handle, even if it takes small steps</string>
-    <string name="this_phrase_shows_empathy_and_reinforces_a_sense">This phrase shows empathy and reinforces a sense of empowerment without denying the pain.</string>
+    <string name="prepare_a_cup_of_change_the_balanced_thought">تحضّير فنجان التغيير – الفكرة المتوازنة
+</string>
+    <string name="use_the_previous_questions">استعن بالأسئلة السابقة، وساعد من تحب على إعادة تحضير الفكرة بنكهة أكثر توازنًا… نكهة تمنحه شعورًا بالراحة، ورؤية أوضح لما يمرّ به
+</string>
+    <string name="example">مثال:</string>
+    <string name="i_m_a_burden_to_everyone">أنا عبء على كل الناس.</string>
+    <string name="you_re_going_through_a_difficult">أنت تمر بمرحلة صعبة، وتحتاج دعم، وهذا شيء طبيعي وما بنقص من قيمتك</string>
+    <string name="avoid_phrases_that_reflect">تجنّب العبارات التي تعكس</string>
+    <string name="excessive_positivity">الإيجابية الزائدة</string>
+    <string name="everything_is_fine_and_there_s_nothing_wrong">كل شيء تمام وما في مشكلة.</string>
+    <string name="the_person_may_feel">قد يشعر الشخص أنه غير مسموع أو أن مشاعره غير مبررة.
+</string>
+    <string name="yes_not_everything_is_fine_but_there_are_things">صح، مش كل شيء تمام… بس في أشياء تقدر تتعامل معها، حتى لو بخطوات صغيرة.</string>
+    <string name="this_phrase_shows_empathy_and_reinforces_a_sense">هذه الجملة تُظهر التعاطف، وتعزز الشعور بالقدرة دون إنكار الألم.</string>
+    <string name="unsure_how_to_respond">محتار كيف ترد؟ مو مشكلة… خلينا نبدأ من مكان بسيط.
+لما يشاركك شخص تحبه فكرة سلبية، تحس إنك لازم تقول شيء "صح"… لكن تخاف تظهر وكأنك تنصحه أو تحاول تصلّح مشاعره بسرعة. وأحيانًا، فعلاً بيكون من الصعب الرد على فكرة مؤلمة من غير ما نبدو ناصحين أو نُشعره إنه غلطان. بس الحقيقة أنت ما تحتاج تكون معالج… يكفي تكون حاضر، صادق، ومهتم.
+</string>
+    <string name="present_friend_idea">عرض الفكرة التى تراود صديقك</string>
+    <string name="to_make_it_easier">علشان نسهّل عليك البداية، جهزنا لك مجموعة من العبارات البسيطة والداعمة، استخدمها كبداية، وحرّرها بطريقتك</string>
+    <string name="suggested_phrases_of_sympathy_and_containment">عبارات تعاطف واحتواء</string>
+    <string name="now_it_s_your_turn_take_a_breath">والآن، جاء دورك… خذ نفسًا وفكّر، لو كنت مكانه، ماذا كنت تحتاج أن تسمع؟ أكتبها الآن.
+</string>
+    <string name="edit_the_suggestion">(قم بتعديل الاقتراح أو اضف بكتابة ردك الخاص هنا...)</string>
 </resources>
