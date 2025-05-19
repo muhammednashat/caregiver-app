@@ -822,4 +822,8 @@
     <string name="now_it_s_your_turn_take_a_breath">والآن، جاء دورك… خذ نفسًا وفكّر، لو كنت مكانه، ماذا كنت تحتاج أن تسمع؟ أكتبها الآن.
 </string>
     <string name="edit_the_suggestion">(قم بتعديل الاقتراح أو اضف بكتابة ردك الخاص هنا...)</string>
+    <string name="thank_you_your_response_has_been_delivered">شكرا لك! تم تسليم رسالتك
+</string>
+    <string name="remember">تذكر...</string>
+    <string name="you_re_not_here_to_take_away_their_pain">أنت لست هنا لتحمل عنهم الألم اولإصلاح كل شيء، بل لترافقهم بلُطف وصبر، دون ضغط وأحكام،  بينما يعيدون بناء أنفسهم.</string>
 </resources>

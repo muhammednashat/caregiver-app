@@ -792,6 +792,9 @@ is too hard. I'll never succeed.</string>
     <string name="suggested_phrases_of_sympathy_and_containment">Phrases of sympathy and containment</string>
     <string name="now_it_s_your_turn_take_a_breath">Now, it\'s your turn... Take a breath and think, if you were in his/her place, what would you need to hear? Write it down now.</string>
     <string name="edit_the_suggestion">(Edit the suggestion or add your own response here...)</string>
+    <string name="thank_you_your_response_has_been_delivered">Thank you! Your response has been delivered.</string>
+    <string name="remember">Remember…</string>
+    <string name="you_re_not_here_to_take_away_their_pain">You\'re not here to take away their pain or fix everything, but to accompany them with kindness and patience, without pressure or judgement, while they rebuild themselves.</string>
 
 
 </resources>
