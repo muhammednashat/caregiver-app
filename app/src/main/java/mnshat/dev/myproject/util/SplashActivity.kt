@@ -17,6 +17,7 @@ import mnshat.dev.myproject.users.patient.main.presentaion.UserScreensActivity
 import java.util.Locale
 
 
+
 class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
     override fun getLayout(): ActivitySplashBinding {
@@ -24,6 +25,8 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     }
 
     override fun initializeViews() {
+
+
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = Color.TRANSPARENT
         val background: Drawable =
@@ -31,11 +34,9 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
         window.setBackgroundDrawable(background)
         Handler().postDelayed({
             isLogged()
-            //
             setLocale(if (sharedPreferences.getString(LANGUAGE) == "en") "en" else "ar")
         }, 2000)
     }
-
 
     private fun isLogged() {
         if (sharedPreferences.getBoolean(IS_LOGGED)) {
