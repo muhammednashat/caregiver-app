@@ -744,8 +744,9 @@
 </string>
     <string name="more_supportive_of_mental_health">أكثر دعمًا للصحة النفسية</string>
     <string name="in_simple_words">بكلمات بسيطة، هذا التمرين ليس عن "تغيير رأيه"، بل عن مرافقته بلطف داخل عقله حتى يرى بأن هناك فنجانًا آخر يمكنه اختياره.</string>
-    <string name="why_is_the_caf_important">لماذا مقهى الأفكار مهم؟
-</string>
+    <string name="why_is_the_caf_important"><font color = '#35a1e8'> لماذا</font> مقهى إعادة الأفكار</string>
+    <string name="important2">مهم</string>
+
     <string name="because_it_creates">لأنه يخلق مساحة آمنة للتفكير دون حُكم.
 </string>
     <string name="because_it_gives_the_patient">لأنه يمنح المريض شعورًا بأنه ليس وحده في مواجهة أفكاره.
@@ -753,8 +754,8 @@
     <string name="because_it_cultivates_the_concept_of_i_choose_my_thoughts_rather_than_my_thoughts_control_me">لأنه يزرع مفهوم "أنا أختار أفكاري" بدل "أفكاري تتحكم بي".</string>
     <string name="you_don_t_need">أنت لا تحتاج أن تكون معالجًا نفسيًا... أنت فقط تحتاج أن تكون "رفيق فكر".شخص يُمسك بيده فنجان القهوة الثاني، ويدعو من يحب للجلوس والحديث... ثم يختاروا معًا الفكرة التي تستحق أن تُشرب.
 </string>
-    <string name="note_before_you_begin">ملاحظة قبل البدء:
-</string>
+    <string name="note">ملاحظة</string>
+    <string name="before_you_begin"> قبل البدء:</string>
     <string name="in_the_thought_restructuring">في مقهى الأفكار، سنرافقك خطوة بخطوة لتعلّم كيف تساعد من تحب في إعادة هيكلة أفكاره السلبية لتمكينك من لعب دور داعم وفعّال، ولكن بطريقة آمنة ومدروسة. هدفنا ليس أن تحل محل المختص، بل أن تكون رفيقًا واعيًا وداعمًا في لحظة صعبة، وأن تساعده على رؤية الأمور من زوايا جديدة وبنَفَس أكثر توازنًا.
 </string>
     <string name="when_your_loved_one_shares_their_troubling_thoughts_with_you_they_give_you_a_window_into_their_inner_world_therefore_we_strongly_recommend_following_the_steps_outlined_in_the_guide_to_ensure_you_provide_the_best_possible_support_in_a_safe_manner">حين يشاركك من تحب ما يزعجه من أفكار، فهو يمنحك نافذة على عالمه الداخلي. ولهذا، نوصي بشدة بـ اتباع الخطوات كما وردت في الدليل، لضمان تقديم الدعم بأفضل شكل ممكن، وبطريقة آمنة.

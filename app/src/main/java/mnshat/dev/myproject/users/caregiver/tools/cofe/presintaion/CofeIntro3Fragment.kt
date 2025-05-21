@@ -40,7 +40,6 @@ class CofeIntro3Fragment : Fragment() {
         spannable.setSpan(AbsoluteSizeSpan(16, true), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         spannable.setSpan(StyleSpan(android.graphics.Typeface.BOLD), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.text.text = spannable
-
     }
 
 

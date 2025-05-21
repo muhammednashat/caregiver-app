@@ -735,12 +735,14 @@ is too hard. I'll never succeed.</string>
     <string name="more_balanced">More balanced</string>
     <string name="more_supportive_of_mental_health">More supportive of mental health</string>
     <string name="in_simple_words">In simple words, this exercise is not about ‘changing mind’, but about gently guiding your loved one inside his/her mind until he/she sees that there is another cup he/she could choose.</string>
-    <string name="why_is_the_caf_important">Why is the Café important?</string>
+    <string name="important2">important?</string>
+    <string name="why_is_the_caf_important"><font color = '#35a1e8'>Why </font>is the thought restructuring cafe </string>
     <string name="because_it_creates">Because it creates a safe space for sharing thoughts without judgement.</string>
     <string name="because_it_gives_the_patient">Because it gives the patient a sense that they are not alone in confronting their thoughts.</string>
     <string name="because_it_cultivates_the_concept_of_i_choose_my_thoughts_rather_than_my_thoughts_control_me">Because it cultivates the concept of I choose my thoughts rather than My thoughts control me.</string>
     <string name="you_don_t_need">You don\'t need to be a psychotherapist... you just need to be a ‘thought buddy’. Someone who holds a second cup of coffee invites their loved ones to sit and talk... and then together they choose the thought that is worth ‘drinking’.</string>
-    <string name="note_before_you_begin">Note before you begin:</string>
+    <string name="note">Note</string>
+    <string name="before_you_begin"> before you begin:</string>
     <string name="in_the_thought_restructuring">In the Thought Restructuring Café, we will walk you through how to help your loved one restructure their negative thoughts, enabling you to play a supportive and effective role, but in a safe and thoughtful manner. Our goal is not to replace a professional, but rather to be a conscious and supportive companion in a difficult moment, helping them see things from new perspectives and with a more balanced attitude.</string>
     <string name="when_your_loved_one_shares_their_troubling_thoughts_with_you_they_give_you_a_window_into_their_inner_world_therefore_we_strongly_recommend_following_the_steps_outlined_in_the_guide_to_ensure_you_provide_the_best_possible_support_in_a_safe_manner">When your loved one shares their troubling thoughts with you, they give you a window into their inner world. Therefore, we strongly recommend following the steps outlined in the guide to ensure you provide the best possible support in a safe manner.</string>
     <string name="this_exercise_is_intended_for_dealing_with_everyday_negative_thoughts_associated_with_depression_and_anxiety_not_for_acute_psychological_crises_if_you_notice_that_the_person_you_are_supporting">This exercise is intended for dealing with everyday negative thoughts associated with depression and anxiety, not for acute psychological crises. If you notice that the person you are supporting:</string>

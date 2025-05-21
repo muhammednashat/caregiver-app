@@ -44,9 +44,9 @@
                         android:id="@+id/textView26"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                      android:textSize="16sp"
                         android:text="@string/what_is_the_goal_of_the_thought_restructuring_caf"
                         android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -55,87 +55,93 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_small"
                         android:layout_marginBottom="@dimen/margin_small"
-android:text="@string/depression_isn_t_just"                        android:textColor="#cccecf" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:layout_width="5dp"
-                            android:layout_height="5dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/circle_gray" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="4dp"
-                            android:gravity="center"
-                            android:text="@string/more_realistic"
-                            android:textColor="#cccecf" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:layout_width="5dp"
-                            android:layout_height="5dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/circle_gray" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="4dp"
-                            android:gravity="center"
-                            android:text="@string/more_balanced"
-                            android:textColor="#cccecf" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:layout_width="5dp"
-                            android:layout_height="5dp"
-                            android:layout_marginStart="4dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/circle_gray" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="4dp"
-                            android:gravity="center"
-                            android:text="@string/less_harsh"
-                            android:textColor="#cccecf" />
-                    </LinearLayout>
-
-                </LinearLayout>
+                        android:text="@string/depression_isn_t_just"
+                        android:textColor="#cccecf" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_marginBottom="@dimen/margin_large"
                         android:layout_height="wrap_content">
+
                         <LinearLayout
                             android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="5dp"
+                                android:layout_height="5dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/circle_gray" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="4dp"
+                                android:gravity="center"
+                                android:text="@string/more_realistic"
+                                android:textColor="#cccecf" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_height="wrap_content">
+
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="5dp"
+                                android:layout_height="5dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/circle_gray" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="4dp"
+                                android:gravity="center"
+                                android:text="@string/more_balanced"
+                                android:textColor="#cccecf" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="5dp"
+                                android:layout_height="5dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="4dp"
+                                android:src="@drawable/circle_gray" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="4dp"
+                                android:gravity="center"
+                                android:text="@string/less_harsh"
+                                android:textColor="#cccecf" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                      android:layout_marginBottom="@dimen/margin_large"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
 
                             <ImageView
                                 android:layout_width="5dp"
@@ -157,16 +163,18 @@ android:text="@string/depression_isn_t_just"                        android:text
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-android:background="@drawable/background_shape_89"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/dsf"
+
+                        >
 
                         <TextView
+                            android:id="@+id/textView84"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginStart="@dimen/margin_2_super"
-                            android:layout_marginEnd="@dimen/margin_2_super"
                             android:gravity="center"
+                            android:padding="30dp"
                             android:text="@string/in_simple_words"
                             android:textColor="#cccecf"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -175,6 +183,7 @@ android:background="@drawable/background_shape_89"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.5" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
