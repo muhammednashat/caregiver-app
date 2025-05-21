@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#3b4d59"
     android:layout_height="match_parent"
+    android:background="#3b4d59"
     tools:context=".users.caregiver.tools.cofe.presintaion.CofeInstructionFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,6 +27,7 @@
             android:layout_height="0dp"
             android:layout_margin="@dimen/margin_large"
             android:background="@drawable/background_instruction"
+            android:scrollbarSize="0dp"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout23"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -34,159 +35,222 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView32">
 
             <LinearLayout
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/margin_medium"
-    android:layout_height="wrap_content">
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="@string/note_before_you_begin"
-        android:layout_gravity="center"
-        android:textColor="#2a2f35"
-
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        android:layout_marginStart="@dimen/margin_medium"
-        android:layout_marginEnd="@dimen/margin_medium"
-        android:gravity="center"
-        android:textColor="#2a2f35"
-android:text="@string/in_the_thought_restructuring"        android:layout_gravity="center"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        android:layout_marginStart="@dimen/margin_medium"
-        android:layout_marginEnd="@dimen/margin_medium"
-android:text="@string/when_your_loved_one_shares_their_troubling_thoughts_with_you_they_give_you_a_window_into_their_inner_world_therefore_we_strongly_recommend_following_the_steps_outlined_in_the_guide_to_ensure_you_provide_the_best_possible_support_in_a_safe_manner"        android:layout_gravity="center"
-        android:layout_height="wrap_content"/>
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="400dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:background="#fff9c5"
-        android:padding="@dimen/padding_medium"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:orientation="vertical"
-        android:layout_height="400dp">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/important"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/this_exercise_is_intended_for_dealing_with_everyday_negative_thoughts_associated_with_depression_and_anxiety_not_for_acute_psychological_crises_if_you_notice_that_the_person_you_are_supporting"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="5dp"
-                android:layout_height="5dp"
-                android:layout_gravity="center"
-                android:src="@drawable/circle_gray"
-                app:tint="#f4855e" />
-
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="4dp"
-                android:gravity="center"
-                android:text="@string/expresses_a_desire_to_harm_themselves_or_others"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_medium">
 
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <androidx.constraintlayout.widget.ConstraintLayout
 
-            <ImageView
-                android:layout_width="5dp"
-                android:layout_height="5dp"
-                android:layout_gravity="center"
-                android:src="@drawable/circle_gray"
-                app:tint="#f4855e" />
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="4dp"
-                android:gravity="center"
-                android:text="@string/talks_about_suicide_or_a_complete_loss_of_interest_in_life"
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitXY"
+                        android:layout_marginTop="25dp"
+                        android:src="@drawable/zigzag_line"
+                        app:layout_constraintEnd_toEndOf="@+id/textView85"
+                        app:layout_constraintStart_toStartOf="@+id/textView85"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="#f4855e" />
 
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/textView85"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/note"
+                        android:layout_marginEnd="4dp"
+                        android:textColor="#2a2f35"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView87"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5" />
 
-            <ImageView
-                android:layout_width="5dp"
-                android:layout_height="5dp"
-                android:layout_gravity="center"
-                android:src="@drawable/circle_gray"
-                app:tint="#f4855e" />
+                    <TextView
+                        android:id="@+id/textView87"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/before_you_begin"
+                        android:textColor="#2a2f35"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/textView85"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="4dp"
-                android:gravity="center"
-                android:text="@string/exhibits_a_complete_detachment_from_reality_or_exhibits_severe_disturbing_behavioural_changes"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:id="@+id/text2"
+                    android:textSize="16sp"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:gravity="center"
+                    android:text="@string/in_the_thought_restructuring"
+                    android:textColor="#2a2f35" />
 
-                />
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    android:layout_gravity="center"
+                    android:paddingStart="60dp"
+                    android:visibility="gone"
+                    android:layout_marginBottom="@dimen/margin_large"
+                    android:gravity="center"
+                    android:paddingEnd="60dp"
+                    android:background="@drawable/background_text87"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:text="@string/when_your_loved_one_shares_their_troubling_thoughts_with_you_they_give_you_a_window_into_their_inner_world_therefore_we_strongly_recommend_following_the_steps_outlined_in_the_guide_to_ensure_you_provide_the_best_possible_support_in_a_safe_manner" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:background="#fff9c5"
+                        android:orientation="vertical"
+                        android:padding="@dimen/padding_medium">
+                        <TextView
+                            android:layout_width="180dp"
+                            android:layout_height="80dp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="#161819"
+                            android:backgroundTint="#f4855e"
+                            android:background="@drawable/backround_shape8u"
+                            android:text="@string/important"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+
+                            android:text="@string/this_exercise_is_intended_for_dealing_with_everyday_negative_thoughts_associated_with_depression_and_anxiety_not_for_acute_psychological_crises_if_you_notice_that_the_person_you_are_supporting" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_width="5dp"
+                                android:layout_height="5dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/circle_gray"
+                                app:tint="#f4855e" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="4dp"
+                                android:gravity="center"
+                                android:text="@string/expresses_a_desire_to_harm_themselves_or_others"
+
+                                />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_width="5dp"
+                                android:layout_height="5dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/circle_gray"
+                                app:tint="#f4855e" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="4dp"
+                                android:gravity="center"
+                                android:text="@string/talks_about_suicide_or_a_complete_loss_of_interest_in_life"
+
+                                />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_width="5dp"
+                                android:layout_height="5dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/circle_gray"
+                                app:tint="#f4855e" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="4dp"
+                                android:gravity="center"
+                                android:text="@string/exhibits_a_complete_detachment_from_reality_or_exhibits_severe_disturbing_behavioural_changes"
+
+                                />
+                        </LinearLayout>
 
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/this_is_an_indication" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/this_is_an_indication"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/your_support_is_important"/>
-
-
-    </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/your_support_is_important" />
 
 
-    <ImageView
-        android:layout_width="64dp"
-        android:layout_gravity="end"
-        android:layout_height="64dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/icon_pin"
-        />
-</FrameLayout>
+                    </LinearLayout>
 
 
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_gravity="end"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/icon_pin" />
+                </FrameLayout>
 
-</LinearLayout>
 
-
+            </LinearLayout>
 
 
         </ScrollView>
+
         <ImageView
             android:layout_width="64dp"
             android:layout_height="64dp"
+            android:layout_marginTop="80dp"
             android:scaleType="fitXY"
             android:src="@drawable/icon_attached"
-            android:layout_marginTop="80dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.563"
             app:layout_constraintStart_toStartOf="parent"
