@@ -30,6 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
+                android:gravity="center"
+                android:padding="@dimen/margin_medium"
                 android:text="@string/this_is_the_thought"
                 android:textColor="#193453"
                 android:textSize="16sp"
@@ -99,17 +101,18 @@
                                 android:id="@+id/textView76"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_large"
                                 android:text="@string/your_friend_s_reply"
                                 android:textColor="#193453"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintHorizontal_bias="0.498"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
                             <androidx.cardview.widget.CardView
                                 android:layout_width="match_parent"
                                 android:layout_height="150dp"
-                                android:layout_margin="20dp"
+                                android:layout_margin="@dimen/margin_large"
                                 app:cardCornerRadius="@dimen/margin_large"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.5"
@@ -121,20 +124,23 @@
                                     android:layout_height="match_parent"
                                     android:background="#ffffff"
                                     android:orientation="vertical"
-                                    android:padding="@dimen/margin_medium">
+                                    android:padding="@dimen/margin_large">
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="@string/the_thought_he_s_having"
                                         android:textColor="#193453"
-                                        android:textStyle="bold" />
+                                        android:textStyle="bold"
+
+                                        />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="fsafdsfdf  fdfdfdsf afd"
-                                        android:textColor="#193453" />
+                                        android:layout_marginTop="@dimen/margin_medium"
+                                        android:text="fsafdsfdf  fdfdfgdfgsfdggsfdgfdsgfdfdsfgdfgdfggdfgf gfdgsfg gsfdg fg fdgsfg fgsg fgsfd fgsg fgfg gsfdg gsfdg fgsfd gsfd gsfdg fggsfdgfgsfdgdsf afd"
+                                        android:textColor="#8c99a9" />
 
                                 </LinearLayout>
                             </androidx.cardview.widget.CardView>
@@ -164,8 +170,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginEnd="4dp"
+
                                 android:text="@string/the_cup_he_thinks_belongs_to"
-                                android:textColor="#193453" />
+                                android:textColor="#193453"
+                                android:textStyle="bold"
+
+                                />
 
                             <ImageView
                                 android:layout_width="24dp"
@@ -196,15 +206,13 @@
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:layout_constraintVertical_bias="0.506" />
 
-
                                 <TextView
                                     android:id="@+id/textView75"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="36dp"
-                                    android:text="fdfjdfds"
-
-                                    android:textColor="#193453"
+                                    android:text="@string/bitter_coffee"
+                                    android:textColor="#d40f20"
                                     android:textStyle="bold"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.501"
@@ -212,29 +220,79 @@
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
+                                    android:id="@+id/textView89"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="20dp"
-                                    android:text="fdfjdfds"
-                                    android:textColor="#6b86a1"
+                                    android:text="@string/negative_thinking"
+
+                                    android:textColor="#193453"
+                                    android:textStyle="bold"
+
                                     app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintHorizontal_bias="0.504"
+                                    app:layout_constraintHorizontal_bias="0.501"
                                     app:layout_constraintStart_toEndOf="@+id/coffe"
                                     app:layout_constraintTop_toBottomOf="@+id/textView75" />
+
+
+                                <TextView
+                                    android:id="@+id/textView88"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/margin_medium"
+                                    android:text="@string/depressing_thoughts"
+                                    android:textColor="#6b86a1"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/coffe"
+                                    app:layout_constraintTop_toBottomOf="@+id/textView89" />
 
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                         </androidx.cardview.widget.CardView>
 
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="30dp"
-                            android:layout_marginEnd="4dp"
-                            android:layout_marginBottom="30dp"
+                            android:text="@string/now_let_us_begin_together6"
+                            android:textColor="#193453" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center">
+
+                            <TextView
+                                android:id="@+id/textView90"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/step_by_step"
+                                android:textColor="#193453"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/background_tow_lines"
+                                app:layout_constraintEnd_toEndOf="@+id/textView90"
+                                app:layout_constraintStart_toStartOf="@+id/textView90"
+                                app:layout_constraintTop_toBottomOf="@+id/textView90" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="50dp"
+                            android:layout_marginEnd="50dp"
+                            android:gravity="center"
                             android:text="@string/now_let_us_begin_together"
                             android:textColor="#193453" />
 

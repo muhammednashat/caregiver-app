@@ -109,24 +109,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="300dp"
                     android:layout_gravity="center"
-                    android:paddingStart="60dp"
-                    android:visibility="gone"
-                    android:layout_marginBottom="@dimen/margin_large"
-                    android:gravity="center"
-                    android:paddingEnd="60dp"
-                    android:background="@drawable/background_text87"
                     android:layout_marginStart="@dimen/margin_medium"
                     android:layout_marginTop="@dimen/margin_small"
                     android:layout_marginEnd="@dimen/margin_medium"
+                    android:layout_marginBottom="@dimen/margin_large"
+                    android:background="@drawable/background_text87"
+                    android:gravity="center"
+                    android:paddingStart="60dp"
+                    android:paddingEnd="60dp"
                     android:text="@string/when_your_loved_one_shares_their_troubling_thoughts_with_you_they_give_you_a_window_into_their_inner_world_therefore_we_strongly_recommend_following_the_steps_outlined_in_the_guide_to_ensure_you_provide_the_best_possible_support_in_a_safe_manner" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="400dp">
+                    android:layout_height="wrap_content">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="400dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:background="#fff9c5"
                         android:orientation="vertical"
@@ -165,6 +164,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:textColor="#161819"
+
                                 android:layout_marginStart="4dp"
                                 android:gravity="center"
                                 android:text="@string/expresses_a_desire_to_harm_themselves_or_others"
@@ -187,6 +188,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:textColor="#161819"
+
                                 android:layout_marginStart="4dp"
                                 android:gravity="center"
                                 android:text="@string/talks_about_suicide_or_a_complete_loss_of_interest_in_life"
@@ -209,6 +212,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:textColor="#161819"
+
                                 android:layout_marginStart="4dp"
                                 android:gravity="center"
                                 android:text="@string/exhibits_a_complete_detachment_from_reality_or_exhibits_severe_disturbing_behavioural_changes"
@@ -219,12 +224,20 @@
 
                         <TextView
                             android:layout_width="wrap_content"
+                            android:layout_marginTop="@dimen/margin_medium"
                             android:layout_height="wrap_content"
+
                             android:text="@string/this_is_an_indication" />
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:textStyle="bold"
+                            android:padding="@dimen/margin_large"
+                            android:background="@drawable/background_text32"
                             android:text="@string/your_support_is_important" />
 
 

@@ -87,21 +87,16 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
 
     private fun styleText(lang:String) {
-//        val textView = findViewById<TextView>(R.id.text1)
-//        val text = getString(R.string.note_before_you_begin)
+//                val textView = findViewById<TextView>(R.id.text2)
+//        val text = getString(R.string.in_the_thought_restructuring)
 //        val spannable = SpannableString(text)
-//        val start = if(lang == "ar") text.indexOf("ملاحظة") else text.indexOf("Note")
-//        val end =  if(lang == "ar") text.indexOf("قبل") else  text.indexOf("before")
-//        val vectorDrawable = ContextCompat.getDrawable(this, R.drawable.zigzag_line)
-//        vectorDrawable?.setBounds(0, 0, vectorDrawable.intrinsicWidth, vectorDrawable.intrinsicHeight)
+//        val start = if(lang == "ar") text.indexOf("رفيقًا") else text.indexOf(" supportive")
+//        val end =  if(lang == "ar") text.indexOf("في لحظة") else  text.indexOf(", but")
 //
-//        val imageSpan = ImageSpan(vectorDrawable!!, ImageSpan.ALIGN_BASELINE)
-//         spannable.setSpan(imageSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-//
-////        spannable.setSpan(ForegroundColorSpan(Color.parseColor("#204167")), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-////        spannable.setSpan(BackgroundColorSpan(Color.parseColor("#c2e3f8")), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-////        spannable.setSpan(AbsoluteSizeSpan(16, true), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-////        spannable.setSpan(StyleSpan(android.graphics.Typeface.BOLD), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+//        spannable.setSpan(ForegroundColorSpan(Color.parseColor("#204167")), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+//        spannable.setSpan(BackgroundColorSpan(Color.parseColor("#c2e3f8")), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+//        spannable.setSpan(AbsoluteSizeSpan(16, true), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+//        spannable.setSpan(StyleSpan(android.graphics.Typeface.BOLD), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 //        textView.text = spannable
     }
 }

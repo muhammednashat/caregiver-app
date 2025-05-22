@@ -775,7 +775,7 @@
 </string>
     <string name="the_thought_he_s_having">الفكرة التي تراوده:</string>
     <string name="the_cup_he_thinks_belongs_to"> الفنجان الذي يعتقد أنها تنتمي إليه:</string>
-    <string name="now_let_us_begin_together">والآن، دعنا نبدأ معًا خطوة بخطوة… لنحضّر فنجان التغيير، ونكون الرفيق الهادئ لمن نحب
+    <string name="now_let_us_begin_together">لنحضّر فنجان التغيير، ونكون الرفيق الهادئ لمن نحب
 </string>
     <string name="what_does_cups_mean">ما معنى الفناجين؟</string>
     <string name="when_your_friend_write">عندما يقوم صديقك بكتابة الفكرة التي تراوده دانه سيختار أحد الفناجين الثلاثة التي تنتمي إليها فكرته. إليك على الطاولة بالأسفل شرح المعاني الفناجين.</string>
@@ -828,4 +828,6 @@
 </string>
     <string name="remember">تذكر...</string>
     <string name="you_re_not_here_to_take_away_their_pain">أنت لست هنا لتحمل عنهم الألم اولإصلاح كل شيء، بل لترافقهم بلُطف وصبر، دون ضغط وأحكام،  بينما يعيدون بناء أنفسهم.</string>
+    <string name="now_let_us_begin_together6">Now, let us begin together,</string>
+    <string name="step_by_step">step by step...</string>
 </resources>

@@ -755,7 +755,7 @@ is too hard. I'll never succeed.</string>
     <string name="this_is_the_thought">This is the thought that your loved one shared with you:</string>
     <string name="the_thought_he_s_having">The thought he\'s having:</string>
     <string name="the_cup_he_thinks_belongs_to">The cup he thinks belongs to:</string>
-    <string name="now_let_us_begin_together">Now, let us begin together, step by step...to prepare the cup of change, and be a calm companion to those we love.</string>
+    <string name="now_let_us_begin_together">to prepare the cup of change, and be a calm companion to those we love.</string>
     <string name="what_does_cups_mean">What does cups mean?</string>
     <string name="when_your_friend_write">When your friend writes down the idea they\'re having, they\'ll choose one of the three cups to which their idea belongs. Below, you\'ll find the meanings of the cups.</string>
     <string name="receive_the_thought">Receive the thought with acceptance (without immediate rejection or correction)</string>
@@ -797,6 +797,8 @@ is too hard. I'll never succeed.</string>
     <string name="thank_you_your_response_has_been_delivered">Thank you! Your response has been delivered.</string>
     <string name="remember">Remember…</string>
     <string name="you_re_not_here_to_take_away_their_pain">You\'re not here to take away their pain or fix everything, but to accompany them with kindness and patience, without pressure or judgement, while they rebuild themselves.</string>
+    <string name="now_let_us_begin_together6">Now, let us begin together,</string>
+    <string name="step_by_step">step by step...</string>
 
 
 </resources>
