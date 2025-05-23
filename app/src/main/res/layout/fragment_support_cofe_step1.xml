@@ -44,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/receive_the_thought"
+                android:gravity="center"
 
                 android:textColor="#193453"
                 android:textSize="16sp"
@@ -68,7 +69,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0">
+                app:layout_constraintVertical_bias="0.0">
 
                 <ScrollView
                     android:layout_width="match_parent"
@@ -89,6 +90,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="30dp"
+                            android:textStyle="bold"
                             android:layout_marginEnd="4dp"
                             android:layout_marginBottom="30dp"
                             android:text="@string/to_create_a_safe_space_for_conversation"
@@ -103,11 +105,13 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_marginEnd="4dp"
-                                android:src="@drawable/icon_face5" />
+                                android:src="@drawable/icon_face5"
+                                app:tint="#1b1d1f" />
 
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="50dp"
+                                android:layout_height="70dp"
+                                android:padding="@dimen/margin_small"
                                 android:layout_gravity="center"
                                 android:background="@drawable/background_shape"
                                 android:gravity="center"
@@ -176,28 +180,41 @@
 
                                 <TextView
                                     android:id="@+id/textView79"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="16dp"
+                                    android:layout_width="100dp"
+                                    android:layout_height="70dp"
+                                    android:background="@drawable/backround_shape8u"
+                                    android:backgroundTint="@color/white"
+                                    android:gravity="center"
                                     android:text="@string/don_t_say"
+                                    android:textSize="16sp"
                                     android:textColor="@color/white"
                                     android:textStyle="bold"
                                     app:layout_constraintStart_toStartOf="@+id/linearLayout2"
-                                    app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
+                                    app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
+                                    android:id="@+id/textView86"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="21dp"
+                                    android:gravity="center"
                                     android:text="@string/no_that_s_not_true_or_why_do_you_think_that"
                                     android:textColor="@color/black"
                                     android:textStyle="bold"
+                                    android:textSize="16sp"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.5"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/textView79" />
 
-
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="15dp"
+                                    android:src="@drawable/background_tow_lines"
+                                    android:tint="@color/white"
+                                    app:layout_constraintEnd_toEndOf="@+id/textView86"
+                                    app:layout_constraintStart_toStartOf="@+id/textView86"
+                                    app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                             <ImageView

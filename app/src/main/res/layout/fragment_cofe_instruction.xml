@@ -139,6 +139,7 @@
                             android:textColor="#161819"
                             android:backgroundTint="#f4855e"
                             android:background="@drawable/backround_shape8u"
+
                             android:text="@string/important"
                             />
 
