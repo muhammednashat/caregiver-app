@@ -789,13 +789,15 @@
     <string name="don_t_say">لا تقل:</string>
     <string name="examine_the_thought_using_the_consciousness_filter">افحص الفكرة باستخدام "مصفاة الوعي"
 </string>
-    <string name="does_it_contain_expressions">هل الفكرة فيها مبالغة أو كلام قاسي؟ هل تحتوي على كلمات مثل:"أنا فاشل دائمًا" أو "ما حدا يحبني أبدًا"؟</string>
+    <string name="does_it_contain_expressions"><font color='#5994d5'>هل الفكرة فيها مبالغة أو كلام قاسي؟</font> هل تحتوي على كلمات مثل:"أنا فاشل دائمًا" أو "ما حدا يحبني أبدًا"</string>
     <string name="if_the_thought_is_generalizing_or_judgemental">إذا كانت الفكرة فيها تعميم أو أحكام مطلقة، فهي على الأرجح غير دقيقة وتحتاج لإعادة توازن</string>
-    <string name="does_the_thought_only_reflect_their_current">هل الفكرة تعكس شعوره الحالي فقط؟ هل قالها لأنه كان للتو في موقف محرج أو يشعر بالوحدة أو الإحباط؟</string>
+    <string name="does_the_thought_only_reflect_their_current"><font color='#5994d5'>هل الفكرة تعكس شعوره الحالي فقط؟</font> هل قالها لأنه كان للتو في موقف محرج أو يشعر بالوحدة أو الإحباط؟</string>
     <string name="if_so_this_is_often_a_temporary_thought_stemming">إذا نعم، فهذه غالبًا فكرة مؤقتة ناتجة عن شعور، وليست حقيقة يؤمن بها طوال الوقت، ونقدر نخفف قوتها.</string>
-    <string name="does_the_thought_actually_seem_realistic_has_something">هل حدث شيء يثبت هذه الفكرة؟  أم أن المشاعر فقط هي التي تحركها؟ هل تبدو الفكرة واقعية فعلًا؟</string>
+    <string name="does_the_thought_actually_seem_realistic_has_something"><font color='#5994d5'>هل تبدو الفكرة واقعية فعلًا؟
+</font> هل حدث شيء يثبت هذه الفكرة؟  أم أن المشاعر فقط هي التي تحركها؟ هل تبدو الفكرة واقعية فعلًا؟</string>
     <string name="if_there_s_no_clear_evidence_it_s_likely_a_distorted_thought_due_to_their_psychological_state_and_they_can_be_gently_restructured">إذا ما في دليل واضح، فهي غالبًا فكرة مشوّهة بسبب الحالة النفسية، ويمكن العمل على إعادة هيكلتها بلطف.</string>
-    <string name="is_there_another_angle_they_could_see">هل أقدر أساعده يشوف تفاصيل نسيها أو جانب ما انتبه له؟ هل هناك زاوية أخرى ممكن يراها؟</string>
+    <string name="is_there_another_angle_they_could_see"><font color='#5994d5'>هل هناك زاوية أخرى ممكن يراها؟
+</font> هل أقدر أساعده يشوف تفاصيل نسيها أو جانب ما انتبه له؟ هل هناك زاوية أخرى ممكن يراها؟</string>
     <string name="rebalancing_begins_with_broadening_their_perspective_not_denying_it">إعادة التوازن تبدأ من توسيع النظرة، مش نفيها.</string>
     <string name="when_your_loved_one_shares">حين يشاركك من تحب فكرة سلبية، لا تستعجل الرد. خذ لحظة واسأل نفسك:
 </string>
