@@ -53,13 +53,14 @@
                         android:id="@+id/textVigew26"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_small"
-                        android:layout_marginBottom="@dimen/margin_small"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_marginBottom="@dimen/margin_medium"
                         android:text="@string/depression_isn_t_just"
                         android:textColor="#cccecf" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/margin_medium"
                         android:layout_height="wrap_content">
 
                         <LinearLayout
@@ -163,6 +164,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
+                       android:layout_marginTop="@dimen/margin_super"
                         android:layout_height="wrap_content"
                         android:background="@drawable/dsf"
 
@@ -174,6 +176,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+
                             android:padding="30dp"
                             android:text="@string/in_simple_words"
                             android:textColor="#cccecf"

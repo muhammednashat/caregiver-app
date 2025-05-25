@@ -1,0 +1,17 @@
+package mnshat.dev.myproject.users.caregiver.tools.cofe.presintaion
+
+import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import dagger.hilt.android.AndroidEntryPoint
+import mnshat.dev.myproject.R
+@AndroidEntryPoint
+class SupportCofeActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_support_cofe)
+
+    }
+}

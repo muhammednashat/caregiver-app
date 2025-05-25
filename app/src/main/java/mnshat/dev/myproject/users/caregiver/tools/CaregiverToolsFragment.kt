@@ -1,14 +1,12 @@
 package mnshat.dev.myproject.users.caregiver.tools
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.content.Intent
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentCaregiverToolsBinding
 import mnshat.dev.myproject.users.caregiver.main.BaseCaregiverFragment
+import mnshat.dev.myproject.users.caregiver.tools.cofe.presintaion.SupportCofeActivity
+import mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion.CofeActivity
 
 
 class CaregiverToolsFragment : BaseCaregiverFragment<FragmentCaregiverToolsBinding>() {
@@ -21,8 +19,11 @@ class CaregiverToolsFragment : BaseCaregiverFragment<FragmentCaregiverToolsBindi
 
       binding.strengthBuildingPlan.setOnClickListener {
        findNavController().navigate(R.id.action_caregiverToolsFragment_to_strengthBuildingPlanFragment)
-     }
+      }
 
+        binding.cofe.setOnClickListener{
+            startActivity(Intent(requireContext(), SupportCofeActivity::class.java))
+        }
         binding.supporterCompass.setOnClickListener {
        findNavController().navigate(R.id.action_caregiverToolsFragment_to_supporterCompassFragment)
      }

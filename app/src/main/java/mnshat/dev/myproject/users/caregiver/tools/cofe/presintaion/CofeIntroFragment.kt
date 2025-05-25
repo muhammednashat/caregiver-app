@@ -22,6 +22,7 @@ class CofeIntroFragment : Fragment() {
         binding = FragmentIntroBinding.inflate(inflater)
 
         binding.constraintNext.setOnClickListener {
+            findNavController().navigate(R.id.action_cofeIntroFragment_to_cofeIntro2Fragment)
         }
 
         binding.back.setOnClickListener {

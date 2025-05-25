@@ -5,18 +5,31 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.databinding.FragmentCofeIntro2Binding
 
 
 class CofeIntro2Fragment : Fragment() {
 
+private lateinit var binding: FragmentCofeIntro2Binding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cofe_intro2, container, false)
+
+        binding = FragmentCofeIntro2Binding.inflate(inflater)
+
+        binding.constraintNext.setOnClickListener {
+            findNavController().navigate(R.id.action_cofeIntro2Fragment_to_cofeIntro3Fragment)
+        }
+        binding.back.setOnClickListener {
+           findNavController().popBackStack()
+        }
+
+        return binding.root
+
     }
 
 }

@@ -19,6 +19,9 @@
         android:theme="@style/Theme.MyProject"
         tools:targetApi="31">
         <activity
+            android:name=".users.caregiver.tools.cofe.presintaion.SupportCofeActivity"
+            android:exported="false" />
+        <activity
             android:name=".users.patient.tools.coffeeideas.presentaion.CofeActivity"
             android:exported="false" />
         <activity

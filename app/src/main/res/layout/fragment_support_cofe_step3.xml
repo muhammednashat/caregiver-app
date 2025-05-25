@@ -86,9 +86,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:visibility="gone"
 
-                            android:gravity="center"
                             android:text="@string/use_the_previous_questions"
                             android:textColor="#193453"
                             android:textSize="16sp"
@@ -100,7 +98,6 @@
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
-                            android:visibility="gone"
 
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/margin_large"
@@ -115,23 +112,36 @@
 
                                 <androidx.constraintlayout.widget.ConstraintLayout
                                     android:id="@+id/constraintLayout279"
-                                    android:layout_width="100dp"
-                                    android:layout_height="30dp"
+                                    android:layout_width="90dp"
+                                    android:background="@drawable/corner_top_lift_down_right"
+                                    android:layout_height="wrap_content"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent">
 
                                     <TextView
+                                        android:id="@+id/textView93"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="@string/example"
                                         android:textColor="@color/white"
-                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:textStyle="bold"
+                                        android:layout_marginTop="@dimen/margin_medium"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintHorizontal_bias="0.5"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent"
                                         app:layout_constraintVertical_bias="0.5" />
 
+                                    <ImageView
+                                        android:layout_width="0dp"
+                                        android:layout_height="30dp"
+                                        android:layout_marginTop="13dp"
+                                        android:src="@drawable/zigzag_line"
+                                        app:layout_constraintEnd_toEndOf="@+id/textView93"
+                                        app:layout_constraintHorizontal_bias="0.525"
+                                        app:layout_constraintStart_toStartOf="@+id/textView93"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:tint="#f8845c" />
 
                                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -284,7 +294,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_marginStart="@dimen/margin_medium"
-android:text="@string/everything_is_fine_and_there_s_nothing_wrong"                                    android:textColor="@color/white"
+                                    android:text="@string/everything_is_fine_and_there_s_nothing_wrong"                                    android:textColor="@color/white"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.5"
@@ -311,7 +321,7 @@ android:text="@string/everything_is_fine_and_there_s_nothing_wrong"             
                                     android:layout_marginStart="@dimen/margin_medium"
                                     android:layout_marginEnd="@dimen/margin_medium"
                                     android:layout_weight="1"
-android:text="@string/the_person_may_feel"                                    android:textColor="@color/white"
+                                    android:text="@string/the_person_may_feel"                                    android:textColor="@color/white"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.5"
@@ -343,7 +353,7 @@ android:text="@string/the_person_may_feel"                                    an
                                 android:id="@+id/linearLayout32"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-android:layout_marginTop="@dimen/margin_large"
+                                android:layout_marginTop="@dimen/margin_large"
                                 android:layout_marginStart="@dimen/margin_large"
                                 android:orientation="horizontal"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -361,7 +371,7 @@ android:layout_marginTop="@dimen/margin_large"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_marginStart="@dimen/margin_medium"
-                                   android:text="@string/yes_not_everything_is_fine_but_there_are_things"
+                                    android:text="@string/yes_not_everything_is_fine_but_there_are_things"
                                     android:textColor="@color/white"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
@@ -411,14 +421,14 @@ android:layout_marginTop="@dimen/margin_large"
 
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_marginTop="@dimen/margin_large"
-    android:background="@color/black"
-    android:layout_height="150dp">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/margin_large"
+                            android:background="@color/black"
+                            android:layout_height="150dp">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
