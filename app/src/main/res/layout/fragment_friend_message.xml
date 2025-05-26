@@ -270,6 +270,7 @@
                                 android:layout_gravity="center"
                                 android:text="@string/step_by_step"
                                 android:textColor="#193453"
+                                android:gravity="center"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -277,7 +278,7 @@
 
                             <ImageView
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="15dp"
                                 android:src="@drawable/background_tow_lines"
                                 app:layout_constraintEnd_toEndOf="@+id/textView90"
                                 app:layout_constraintStart_toStartOf="@+id/textView90"

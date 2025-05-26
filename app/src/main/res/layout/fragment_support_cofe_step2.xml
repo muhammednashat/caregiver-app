@@ -95,6 +95,7 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
+
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/margin_large">
 
@@ -354,9 +355,10 @@
                                 app:layout_constraintTop_toBottomOf="@+id/imageView41" />
 
                             <ImageView
+                                android:id="@id/imageView32"
                                 android:layout_width="100dp"
                                 android:layout_height="80dp"
-                                android:id="@id/imageView32"
+                                android:rotationY="-173"
                                 android:scaleType="fitXY"
                                 android:src="@drawable/background_hand_cup0"
                                 app:layout_constraintBottom_toBottomOf="parent"
