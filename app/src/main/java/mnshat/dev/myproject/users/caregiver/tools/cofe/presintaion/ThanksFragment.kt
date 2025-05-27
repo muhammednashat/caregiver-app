@@ -5,18 +5,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.databinding.FragmentSupportResponseBinding
+import mnshat.dev.myproject.databinding.FragmentThanksBinding
 
 
 class ThanksFragment : Fragment() {
 
 
+    private lateinit var binding: FragmentThanksBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_thanks, container, false)
+
+        binding = FragmentThanksBinding.inflate(inflater,container, false)
+
+
+        binding.constraintNext.setOnClickListener {
+            findNavController().navigate(R.id.action_supportResponseFragment_to_thanksFragment)
+        }
+
+        return binding.root
     }
 
 }

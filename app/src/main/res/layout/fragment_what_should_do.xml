@@ -24,20 +24,120 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
-                android:text="@string/unsure_how_to_respond"
-                android:textColor="@color/white"
-                android:textSize="16sp"
+                android:background="@drawable/background_face44"
+
+                android:orientation="vertical"
+                android:paddingStart="60dp"
+                android:paddingTop="@dimen/margin_large"
+                android:paddingEnd="60dp"
+                android:paddingBottom="60dp"
                 app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView32" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView32">
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:text="@string/unsure_how_to_respond0"
+                    android:textColor="#204167"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView32" />
+
+                <View
+                    android:layout_width="150dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/background_tow_lines" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:text="@string/no_problem_let_s_start_simple"
+                    android:textColor="#204167"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView32" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:text="@string/unsure_how_to_respond"
+                    android:textColor="#35373a"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView32" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/margin_super"
+                    android:paddingEnd="@dimen/margin_super"
+                    android:text="@string/it_s_enough_to_be_present_honest_and_caring"
+                    android:textColor="#35373a"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView32" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout28"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView49"
+                app:srcCompat="@drawable/icon_cup_cofei" />
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="100dp"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout28"
+                app:layout_constraintEnd_toStartOf="@+id/imageView49"
+                app:layout_constraintStart_toStartOf="@+id/imageView32"
+                app:srcCompat="@drawable/image_flowers5" />
+
+            <ImageView
+                android:id="@+id/imageView49"
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout28"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+                app:srcCompat="@drawable/image_thinking" />
 
             <View
+                android:id="@+id/view6"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="#204167"

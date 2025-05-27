@@ -788,8 +788,8 @@ is too hard. I'll never succeed.</string>
     <string name="the_person_may_feel">The person may feel unheard or that their feelings are unjustified.</string>
     <string name="yes_not_everything_is_fine_but_there_are_things">Yes, not everything is fine... but there are things you can handle, even if it takes small steps</string>
     <string name="this_phrase_shows_empathy_and_reinforces_a_sense">This phrase shows empathy and reinforces a sense of empowerment without denying the pain.</string>
-    <string name="unsure_how_to_respond">Unsure how to respond? No problem… Let\'s start simple. When someone you love shares a negative thought with you, you feel you need to say something correct… but you\'re afraid to appear as if you\'re advising them or trying to quickly fix their feelings. Sometimes, it\'s really difficult to respond to a painful thought without sounding like we\'re advising them or making them feel wrong. But the truth is, you don\'t need to be a therapist… it\'s enough to be present, honest, and caring.</string>
-    <string name="present_friend_idea">عرض الفكرة التى تراود صديقك</string>
+    <string name="unsure_how_to_respond">When someone you love shares a negative thought with you, you feel you need to say something correct… but you\'re afraid to appear as if you\'re advising them or trying to quickly fix their feelings. Sometimes, it\'s really difficult to respond to a painful thought without sounding like we\'re advising them or making them feel wrong. But the truth is, you don\'t need to be a therapist…</string>
+    <string name="present_friend_idea">Present your friend\'s idea</string>
     <string name="to_make_it_easier">To make it easier for you to get started, we\'ve prepared a set of simple, supportive phrases. Use them as a start and edit them in your own way.</string>
     <string name="suggested_phrases_of_sympathy_and_containment">Phrases of sympathy and containment</string>
     <string name="now_it_s_your_turn_take_a_breath">Now, it\'s your turn... Take a breath and think, if you were in his/her place, what would you need to hear? Write it down now.</string>
@@ -803,6 +803,9 @@ is too hard. I'll never succeed.</string>
     <string name="remember2">Remember:</string>
     <string name="balance_is_key">Balance is key</string>
     <string name="don_t_minimize_the_pain">Don\'t minimize the pain or dramatize the problem. Just make room for realistic hope.</string>
+    <string name="unsure_how_to_respond0">Unsure how to respond?</string>
+    <string name="no_problem_let_s_start_simple">No problem… Let\'s start simple.</string>
+    <string name="it_s_enough_to_be_present_honest_and_caring">it\'s enough to be present, honest, and caring.</string>
 
 
 </resources>
