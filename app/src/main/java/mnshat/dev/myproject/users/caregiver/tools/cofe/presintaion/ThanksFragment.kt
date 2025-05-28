@@ -25,9 +25,11 @@ class ThanksFragment : Fragment() {
 
 
         binding.constraintNext.setOnClickListener {
-            findNavController().navigate(R.id.action_supportResponseFragment_to_thanksFragment)
+            findNavController().navigate(R.id.action_thanksFragment_to_exitCofeFragment2)
         }
-
+         binding.back.setOnClickListener {
+             findNavController().popBackStack()
+         }
         return binding.root
     }
 

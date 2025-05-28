@@ -837,7 +837,16 @@
     <string name="unsure_how_to_respond0">محتار كيف ترد؟</string>
     <string name="no_problem_let_s_start_simple">مو مشكلة… خلينا نبدأ من مكان بسيط.</string>
     <string name="it_s_enough_to_be_present_honest_and_caring">يكفي تكون حاضر، صادق، ومهتم.</string>
-
     <string name="unsure_how_to_respond">لما يشاركك شخص تحبه فكرة سلبية، تحس إنك لازم تقول شيء "صح"… لكن تخاف تظهر وكأنك تنصحه أو تحاول تصلّح مشاعره بسرعة. وأحيانًا، فعلاً بيكون من الصعب الرد على فكرة مؤلمة من غير ما نبدو ناصحين أو نُشعره إنه غلطان. بس الحقيقة أنت ما تحتاج تكون معالج…</string>
-
+        <string name="phrase1">أنا معك، ومش لازم تمر بهاي المشاعر لحالك.</string>
+        <string name="phrase2">أفهم إنك تعبان، وفكرتك تستحق نوقف عندها، مو نمرّ عليها مرور الكرام.</string>
+        <string name="phrase3">مش لازم نحل كل شيء الآن… بس نقدر نبدأ سوا نعيد ترتيب الأفكار.</string>
+        <string name="phrase4">أنا معك، ومش لازم تمر بهالشي وحدك.</string>
+        <string name="phrase5">أنا سامعك… ورح نمر على هالفكرة سوا، خطوة بخطوة.</string>
+        <string name="phrase6">مش غلط تحس هيك… المهم إنك مش لوحدك.</string>
+        <string name="phrase7">مو ضروري نصلح كل شي الآن… بس خلينا نبدأ نفهم شو صاير سوا.</string>
+        <string name="phrase8">مش لازم نغير كل شي… بس نقدر نراجع هالفكرة ونشوف كيف نخفف ثقلها.</string>
+        <string name="phrase9">شو رأيك نعيد النظر بالفكرة سوا؟ يمكن لو شفناها من زاوية ثانية، تخفّ وطأتها شوي.</string>
+        <string name="phrase10">حاسس بألمك… وكل شي بيوجعك مهم، حتى لو حدا تاني ما شافه كبير.</string>
+        <string name="phrase11">بعرف إن هالشي ثقيل عليك… بس صدقني، أنا معك وما رح أتركك تواجهه لحالك.</string>
 </resources>

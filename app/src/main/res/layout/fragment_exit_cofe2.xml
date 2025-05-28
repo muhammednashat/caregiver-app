@@ -34,6 +34,7 @@
                 android:id="@+id/exit"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_super"
                 android:background="@drawable/corner_normal"
                 android:backgroundTint="#204167"
                 android:gravity="center"
@@ -42,12 +43,10 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="@dimen/margin_super"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.445"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.924" />
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
