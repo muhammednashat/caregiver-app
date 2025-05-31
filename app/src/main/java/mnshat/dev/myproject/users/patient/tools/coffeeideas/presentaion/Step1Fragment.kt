@@ -38,11 +38,8 @@ class Step1Fragment : BaseFragment() {
     private fun setUpListeners() {
 
         binding.constraintNext.setOnClickListener {
-//            findNavController().navigate(R.id.action_step1Fragment_to_step2Fragment)
 
             if (binding.editText.text.toString().isNotEmpty() && viewModel.cupNumber != 0) {
-                log(viewModel.cupNumber.toString())
-                log(viewModel.textIdea.value!!)
                 findNavController().navigate(R.id.action_step1Fragment_to_step2Fragment)
             } else {
                 if (binding.editText.text.toString().isEmpty()) {

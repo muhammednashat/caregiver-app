@@ -7,10 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentFriendIdeaEditingBinding
+import mnshat.dev.myproject.firebase.FirebaseService.userId
+import mnshat.dev.myproject.firebase.FirebaseService.userProfiles
 import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
@@ -32,6 +37,7 @@ class FriendIdeaEditingFragment : BaseFragment() {
         loadImage(requireContext(), supporter.imageUser, binding.imageView)
         log("supporter is $supporter")
         setUpListeners()
+        listenToData()
         return  binding.root
 
 
@@ -44,6 +50,26 @@ class FriendIdeaEditingFragment : BaseFragment() {
         binding.back.setOnClickListener {
          findNavController().popBackStack()
         }
+    }
+
+
+    fun listenToData() {
+        userProfiles.child(userId!!).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    val user = snapshot.getValue(RegistrationData::class.java)
+
+                    log("idea is ${user?.userIdea?.idea}")
+                    log("response is ${user?.userIdea?.response}")
+                } else {
+                    log("supporter is null")
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                log("Database error: ${error.message}")
+            }
+        })
     }
 
 }

@@ -3,6 +3,7 @@ package mnshat.dev.myproject.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import mnshat.dev.myproject.users.caregiver.tools.cofe.domain.model.UserIdea
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.BASE_CODE
 import mnshat.dev.myproject.util.CODE_USED
@@ -25,7 +26,6 @@ import mnshat.dev.myproject.util.USER_NAME
 
 @Parcelize
 data class RegistrationData(
-
     var id: String? = null,
     var name: String? = null,
     var email: String? = null,
@@ -39,18 +39,14 @@ data class RegistrationData(
     var invitationCode: String? = null,
     var typeOfUser: String? = null,
     var codeUsed: Boolean? = null,
-
     var supports: List<String>? = null,
     var gratitudeList: MutableList<Gratitude>? = null,
     val permissions: Permissions? = null,
     var numberSupporters: Int? = null,
     var hasPartner: Boolean? = null,
     var baseCode: String? = null,
-
     var status: Int? = null,
-
-
-
+    var userIdea: UserIdea? = null,
     var currentTaskDay: Int? = null
 
 ): Parcelable {
@@ -64,7 +60,6 @@ data class RegistrationData(
         sharedPreferences.storeInt(AGE_GROUP, ageGroup)
         sharedPreferences.storeBoolean(IS_LOGGED, true)
         sharedPreferences.storeString(USER_ID, id)
-
         sharedPreferences.storeString(USER_IMAGE, imageUser)
         sharedPreferences.storeString(NAME_PARTNER, partner?.namePartner)
         sharedPreferences.storeString(ID_PARTNER, partner?.idPartner)

@@ -13,9 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
 import mnshat.dev.myproject.databinding.FragmentSupportResponseBinding
-import mnshat.dev.myproject.databinding.FragmentWhatShouldDoBinding
 import mnshat.dev.myproject.databinding.FriendMessageDialogBinding
 
 @AndroidEntryPoint
@@ -31,9 +29,22 @@ class SupportResponseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentSupportResponseBinding.inflate(inflater,container, false)
+        binding = FragmentSupportResponseBinding.inflate(inflater, container, false)
 
 
+        setUpListener()
+          observeData()
+        return binding.root
+    }
+
+    private fun observeData() {
+        viewModel.selectedText.observe(viewLifecycleOwner) {
+          val previousText = binding.editText.text.toString()
+            binding.editText.setText(previousText+" "+ it)
+        }
+    }
+
+    private fun setUpListener() {
         binding.suggestedSympathy.setOnClickListener {
             SuggestedPhrasesSympathyFragment().show(childFragmentManager, "")
         }
@@ -46,12 +57,10 @@ class SupportResponseFragment : Fragment() {
         binding.constraintNext.setOnClickListener {
             findNavController().navigate(R.id.action_supportResponseFragment_to_thanksFragment)
         }
-
-        return binding.root
     }
 
-    fun showDialogConfirmLogout() {
-     val dialog = Dialog(requireContext())
+    private fun showDialogConfirmLogout() {
+        val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = FriendMessageDialogBinding.inflate(layoutInflater)
         dialog.setContentView(dialogBinding.root)
@@ -65,18 +74,12 @@ class SupportResponseFragment : Fragment() {
             layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
             attributes = layoutParams
         }
-//        dialogBinding.icClose.setOnClickListener {
-//            dialog.dismiss()
-//        }
-//        dialogBinding.btnLogout.setOnClickListener {
-//            logOut()
-//            dialog.dismiss()
-//        }
-//        dialogBinding.btnCancel.setOnClickListener {
-//            dialog.dismiss()
-//        }
+        dialogBinding.close.setOnClickListener {
+            dialog.dismiss()
+        }
+
         dialog.show()
     }
-    
+
 
 }

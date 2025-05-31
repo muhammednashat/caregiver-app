@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,6 +18,7 @@ import mnshat.dev.myproject.databinding.ChooseSupporterDialogBinding
 import mnshat.dev.myproject.databinding.FragmentStep3Binding
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.RegistrationData
+import mnshat.dev.myproject.users.caregiver.tools.cofe.domain.model.UserIdea
 import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.log
 
@@ -26,7 +28,8 @@ class Step3Fragment : BaseFragment(), ItemListener {
 
     private lateinit var binding: FragmentStep3Binding
     private val viewModel: CofeViewModel by viewModels()
-  private lateinit var chooseUserDialog: Dialog
+
+    private lateinit var chooseUserDialog: Dialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,6 +49,10 @@ class Step3Fragment : BaseFragment(), ItemListener {
         binding.back.setOnClickListener {
             findNavController().popBackStack()
         }
+        log("1 idea is ${viewModel.textIdea.value}")
+        log("1f idea is ${viewModel.textQuestion1.value}")
+
+
         return binding.root
 
     }
@@ -93,8 +100,39 @@ class Step3Fragment : BaseFragment(), ItemListener {
     override fun onItemClick(supporter: RegistrationData) {
 
         chooseUserDialog.dismiss()
-        val action = Step3FragmentDirections.actionStep3FragmentToFriendIdeaEditingFragment(supporter)
-        findNavController().navigate(action)
+        updateUserData(UserIdea(idea = viewModel.textIdea.value, response = "") , supporter)
 
+
+    }
+
+    fun updateUserData(userIdea: UserIdea ,supporter: RegistrationData){
+
+        showProgressDialog()
+
+        val map = mapOf<String, Any>("userIdea" to userIdea)
+        FirebaseService.updateItemsProfileUser(FirebaseService.userId, map) {
+            if (it) {
+                updateSupportData(userIdea,supporter)
+            } else {
+            }
+            dismissProgressDialog()
+
+        }
+    }
+
+    fun updateSupportData(userIdea: UserIdea ,supporter: RegistrationData){
+
+
+        val map = mapOf<String, Any>("userIdea" to userIdea)
+        FirebaseService.updateItemsProfileUser(supporter.id!!, map) {
+            if (it) {
+                val action = Step3FragmentDirections.actionStep3FragmentToFriendIdeaEditingFragment(supporter)
+                findNavController().navigate(action)
+            } else {
+
+            }
+            dismissProgressDialog()
+
+        }
     }
 }

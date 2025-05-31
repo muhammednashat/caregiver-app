@@ -8,6 +8,7 @@ import mnshat.dev.myproject.base.BaseViewModel2
 import mnshat.dev.myproject.model.Partner
 import mnshat.dev.myproject.model.Permissions
 import mnshat.dev.myproject.model.RegistrationData
+import mnshat.dev.myproject.users.caregiver.tools.cofe.domain.model.UserIdea
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.EMAIL_PARTNER
@@ -203,7 +204,8 @@ class AuthViewModel(
             numberSupporters = 0,
             hasPartner = false,
             currentTaskDay = 1,
-            religion = true
+            religion = true,
+            userIdea = UserIdea(idea = "", response = "")
         )
     }
 
@@ -223,7 +225,8 @@ class AuthViewModel(
             hasPartner = true,
             partner = partner,
             permissions = Permissions(),
-            status = 1
+            status = 1,
+            userIdea = UserIdea(idea = "", response = "")
         )
     }
 }

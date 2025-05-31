@@ -1,12 +1,8 @@
 package mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion
 
-import android.content.SharedPreferences
-import android.view.View
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import mnshat.dev.myproject.base.BaseViewModel
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import javax.inject.Inject
 
@@ -42,6 +38,10 @@ class CofeViewModel @Inject constructor(
     var textQuestion5: MutableLiveData<String> = _textQuestion5
 
 
+    fun setTextIdea(text: String) {
+        _textIdea.value = text
+
+    }
 
     fun isAllQuestionsAnswered() =
              _textQuestion1.value != null

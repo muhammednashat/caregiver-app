@@ -10,8 +10,8 @@ import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentSuggestedPhrasesSympathyBinding
 
 @AndroidEntryPoint
-class SuggestedPhrasesSympathyFragment : BaseBottomSheetDialogFragment() {
-    private val viewModel: SupportCafeViewModel by viewModels()
+class SuggestedPhrasesSympathyFragment : BaseBottomSheetDialogFragment() , OnItemSelectedListener{
+     private val viewModel: SupportCafeViewModel by viewModels()
      private lateinit var adapter :SuggestedSympathyAdapter
 
      private lateinit var binding: FragmentSuggestedPhrasesSympathyBinding
@@ -32,9 +32,15 @@ class SuggestedPhrasesSympathyFragment : BaseBottomSheetDialogFragment() {
 
     private fun initRecyclerView() {
         val list = viewModel.getPhrases(requireContext())
-        adapter = SuggestedSympathyAdapter(list)
+        adapter = SuggestedSympathyAdapter(this, viewModel.selectedItem,list)
         binding.recycler.adapter = adapter
 
+    }
+
+    override fun onItemSelected(position: Int, item: String) {
+      viewModel.setSelectedText(item)
+      viewModel.selectedItem = position
+        dismiss()
     }
 
 

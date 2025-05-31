@@ -177,7 +177,7 @@ android:text="@string/now_it_s_your_turn_take_a_breath"
     android:layout_width="match_parent"
     app:cardCornerRadius="24dp"
     android:layout_marginBottom="@dimen/margin_large"
-    android:layout_height="150dp">
+    android:layout_height="200dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -190,7 +190,7 @@ android:text="@string/now_it_s_your_turn_take_a_breath"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-
+android:textSize="12sp"
             android:text="@string/edit_the_suggestion"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -199,12 +199,12 @@ android:text="@string/now_it_s_your_turn_take_a_breath"
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="130dp"
             android:background="#f3f3f3"
+            android:id="@+id/editText"
             android:textColor="#193453"
             android:gravity="top"
             android:layout_marginTop="@dimen/margin_large"
-            android:text="fgda gdgfd fdgfdgsf fdgsd fdgg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
