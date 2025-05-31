@@ -53,6 +53,9 @@ class SupportResponseFragment : Fragment() {
         }
         binding.back.setOnClickListener {
             findNavController().popBackStack()
+
+            //
+
         }
         binding.constraintNext.setOnClickListener {
             findNavController().navigate(R.id.action_supportResponseFragment_to_thanksFragment)
