@@ -86,33 +86,51 @@ android:text="@string/step_4_now_your_supporter"                android:textColo
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.352">
 
-                    <EditText
-                        android:id="@+id/editText"
+                    <ScrollView
+                        android:id="@+id/scrollView3"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:layout_margin="@dimen/margin_medium"
                         android:background="@drawable/corner_four_dark_blue"
                         android:backgroundTint="#F5F5F5"
-                        android:padding="@dimen/margin_large"
-                        android:paddingTop="30dp"
-                        android:text="@={viewModel.userAdjustedText}"
-                        android:textSize="16sp"
+
+                        android:paddingTop="55dp"
+                        android:paddingBottom="@dimen/margin_small"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:padding="@dimen/margin_large"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/editText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="#F5F5F5"
+                                android:text="fdgfdgfdgdfgsadfssadfsafdfasfdsfasdsfasdfsafdasdfafafadsfdfafdasfdfdafdfafasdsfasdfsafdasdfafafadsfdfafdasfdfdafdfafasdsfasdfsafdasdfafafadsfdfafdasfdfdafdfafasdsfasdfsafdasdfafafadsfdfafdasfdfdafdfafasdsfasdfsafdasdfafafadsfdfafdasfdfdafdfafasdsfasdfsafdasdfafafadsfdfafdasfdfdafdfafasdsfasdfsafdasdfafafadsfdfafdasfdfdafdfafasdsfasdfsafdasdfafafadsfdfafdasfdfdafdfafasdsfasdfsafdasdfafafadsfdfafdasfdfdafdfafasdsfasdfsafdasdfafafadsfdfafdasfdfdafdfafasdsfasdfsafdasdfafafadsfdfafdasfdfdafdfafasdsfasdfsafdasdfafafadsfdfafdasfdfdafdfafasdsfasdfsafdasdfafafadsfdfafdasfdfdafdfafasdsfasdfsafdasdfafafadsfdfafdasfdfdafdfafasdsfasdfsafdasdfafafadsfdfafdasfdfdafdfafasdsfasdfsafdasdfafafadsfdfafdasfdfdafdfafasdfsafdasdfafafadsfdfafdasfdfdafdfafasfdfsdfdfdf"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+
+                    </ScrollView>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_large"
                         android:text="@string/your_friend_s_reply"
                         android:textColor="#193453"
+                        android:layout_marginTop="@dimen/margin_super"
                         android:textSize="16sp"
-android:layout_marginStart="@dimen/margin_large"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                        app:layout_constraintTop_toTopOf="@+id/scrollView3" />
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/imageView"

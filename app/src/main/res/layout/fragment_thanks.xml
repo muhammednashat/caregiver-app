@@ -166,7 +166,7 @@
                     android:layout_marginEnd="@dimen/margin_small"
                     android:background="@drawable/circle_border_blue3"
                     android:padding="@dimen/margin_medium"
-
+android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/constraintNext"
                     app:layout_constraintEnd_toStartOf="@+id/constraintNext"
                     app:layout_constraintHorizontal_bias="0.5"

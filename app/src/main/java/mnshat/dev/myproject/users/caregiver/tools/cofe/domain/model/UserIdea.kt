@@ -7,4 +7,5 @@ import kotlinx.parcelize.Parcelize
 data class UserIdea(
     val idea:String? =null,
     val response:String? = null,
+    val cupIdea:Int? = null,
 ): Parcelable

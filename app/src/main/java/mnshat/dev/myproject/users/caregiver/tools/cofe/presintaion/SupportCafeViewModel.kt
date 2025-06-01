@@ -13,7 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 
 class SupportCafeViewModel @Inject constructor(
-    sharedPreferences: SharedPreferencesManager,
+   val sharedPreferences: SharedPreferencesManager,
 
     private val repository: Repository): ViewModel()  {
     private  val _selectedText = MutableLiveData<String>()

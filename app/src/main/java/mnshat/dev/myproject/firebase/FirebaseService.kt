@@ -51,7 +51,6 @@ object FirebaseService {
         fireAuth.signInWithEmailAndPassword(email, password).await().let { auth ->
             if (auth.user != null) {
                 fetchDays().let {
-                    //
                     AppDatabase.getDatabase(context).dayTaskDao().insertAll(it)
                     getCurrentDayRemotely(auth?.user?.uid!!){
                         log(it?.email.toString())

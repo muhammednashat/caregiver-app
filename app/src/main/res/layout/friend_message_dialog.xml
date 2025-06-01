@@ -85,6 +85,7 @@ android:backgroundTint="@color/white"
 
                 <TextView
                     android:layout_width="wrap_content"
+                    android:id="@+id/text"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_medium"
                     android:text="fsafdsfdf  fdfdfgdfgsfdggsfdgfdsgfdfdsfgdfgdfggdfgf gfdgsfg gsfdg fg fdgsfg fgsg fgsfd fgsg fgfg gsfdg gsfdg fgsfd gsfd gsfdg fggsfdgfgsfdgdsf afd"

@@ -13,12 +13,17 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentSupportResponseBinding
 import mnshat.dev.myproject.databinding.FriendMessageDialogBinding
+import mnshat.dev.myproject.firebase.FirebaseService
+import mnshat.dev.myproject.firebase.FirebaseService.userId
+import mnshat.dev.myproject.users.caregiver.tools.cofe.domain.model.UserIdea
+import mnshat.dev.myproject.util.ID_PARTNER
 
 @AndroidEntryPoint
 
-class SupportResponseFragment : Fragment() {
+class SupportResponseFragment : BaseFragment() {
 
     private val viewModel: SupportCafeViewModel by viewModels()
 
@@ -30,9 +35,7 @@ class SupportResponseFragment : Fragment() {
     ): View? {
 
         binding = FragmentSupportResponseBinding.inflate(inflater, container, false)
-
-
-        setUpListener()
+         setUpListener()
           observeData()
         return binding.root
     }
@@ -53,16 +56,20 @@ class SupportResponseFragment : Fragment() {
         }
         binding.back.setOnClickListener {
             findNavController().popBackStack()
-
-
-
         }
         binding.constraintNext.setOnClickListener {
-            findNavController().navigate(R.id.action_supportResponseFragment_to_thanksFragment)
+            if (binding.editText.text.toString().isNotEmpty()) {
+                val idea =  viewModel.sharedPreferences.getString("userIdea")
+                val cupIdea =  viewModel.sharedPreferences.getInt("cupIdea")
+                val response = binding.editText.text.toString()
+                val userIdea = UserIdea(response = response , idea = idea, cupIdea = cupIdea)
+                updateUserData(userIdea)
+            }
         }
     }
 
     private fun showDialogConfirmLogout() {
+        val idea =  viewModel.sharedPreferences.getString("userIdea")
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = FriendMessageDialogBinding.inflate(layoutInflater)
@@ -80,9 +87,33 @@ class SupportResponseFragment : Fragment() {
         dialogBinding.close.setOnClickListener {
             dialog.dismiss()
         }
+        dialogBinding.text.text = idea
 
         dialog.show()
     }
+    fun updateUserData(userIdea: UserIdea){
 
+        showProgressDialog()
+        val map = mapOf<String, Any>("userIdea" to userIdea)
+        FirebaseService.updateItemsProfileUser(viewModel.sharedPreferences.getString(ID_PARTNER), map) {
+            if (it) {
+                updateSupportData()
+            } else {
+            }
+            dismissProgressDialog()
+        }
+    }
+
+    fun updateSupportData(){
+        val map = mapOf<String, Any>("userIdea" to UserIdea())
+        FirebaseService.updateItemsProfileUser(userId, map) {
+            if (it) {
+            findNavController().navigate(R.id.action_supportResponseFragment_to_thanksFragment)
+            } else {
+            }
+            dismissProgressDialog()
+
+        }
+    }
 
 }

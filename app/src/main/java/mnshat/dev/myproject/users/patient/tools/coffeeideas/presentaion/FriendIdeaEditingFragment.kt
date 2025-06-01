@@ -40,8 +40,6 @@ class FriendIdeaEditingFragment : BaseFragment() {
         listenToData()
         return  binding.root
 
-
-
     }
     private fun setUpListeners() {
         binding.constraintNext.setOnClickListener {
@@ -53,19 +51,20 @@ class FriendIdeaEditingFragment : BaseFragment() {
     }
 
 
-    fun listenToData() {
+    private fun listenToData() {
         userProfiles.child(userId!!).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val user = snapshot.getValue(RegistrationData::class.java)
-
+                    if(user?.userIdea?.response != null){
+                        binding.editText.setText(user.userIdea?.response)
+                    }
                     log("idea is ${user?.userIdea?.idea}")
                     log("response is ${user?.userIdea?.response}")
                 } else {
                     log("supporter is null")
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 log("Database error: ${error.message}")
             }

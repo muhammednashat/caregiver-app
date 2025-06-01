@@ -98,11 +98,8 @@ class Step3Fragment : BaseFragment(), ItemListener {
     }
 
     override fun onItemClick(supporter: RegistrationData) {
-
         chooseUserDialog.dismiss()
-        updateUserData(UserIdea(idea = viewModel.textIdea.value, response = "") , supporter)
-
-
+        updateUserData(UserIdea(idea = viewModel.textIdea.value, response = "" , cupIdea = viewModel.cupNumber) , supporter)
     }
 
     fun updateUserData(userIdea: UserIdea ,supporter: RegistrationData){
