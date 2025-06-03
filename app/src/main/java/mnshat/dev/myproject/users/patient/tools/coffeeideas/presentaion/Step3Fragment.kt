@@ -99,7 +99,11 @@ class Step3Fragment : BaseFragment(), ItemListener {
 
     override fun onItemClick(supporter: RegistrationData) {
         chooseUserDialog.dismiss()
-        updateUserData(UserIdea(idea = viewModel.textIdea.value, response = "" , cupIdea = viewModel.cupNumber) , supporter)
+        updateUserData(
+            UserIdea(idea = viewModel.textIdea.value,
+                response = "" , cupIdea = viewModel.cupNumber
+            ) , supporter)
+
     }
 
     fun updateUserData(userIdea: UserIdea ,supporter: RegistrationData){
@@ -118,7 +122,6 @@ class Step3Fragment : BaseFragment(), ItemListener {
     }
 
     fun updateSupportData(userIdea: UserIdea ,supporter: RegistrationData){
-
 
         val map = mapOf<String, Any>("userIdea" to userIdea)
         FirebaseService.updateItemsProfileUser(supporter.id!!, map) {

@@ -18,8 +18,11 @@ import mnshat.dev.myproject.databinding.FragmentSupportResponseBinding
 import mnshat.dev.myproject.databinding.FriendMessageDialogBinding
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.firebase.FirebaseService.userId
+import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.users.caregiver.tools.cofe.domain.model.UserIdea
 import mnshat.dev.myproject.util.ID_PARTNER
+import mnshat.dev.myproject.util.PARTNER_PROFILE
+import mnshat.dev.myproject.util.loadImage
 
 @AndroidEntryPoint
 
@@ -28,6 +31,8 @@ class SupportResponseFragment : BaseFragment() {
     private val viewModel: SupportCafeViewModel by viewModels()
 
     private lateinit var binding: FragmentSupportResponseBinding
+    private lateinit var partnerProfile: RegistrationData
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +42,8 @@ class SupportResponseFragment : BaseFragment() {
         binding = FragmentSupportResponseBinding.inflate(inflater, container, false)
          setUpListener()
           observeData()
+        partnerProfile = viewModel.sharedPreferences.getObjectProfilePartner(PARTNER_PROFILE)
+        loadImage(requireContext(),partnerProfile.imageUser, binding.userImage)
         return binding.root
     }
 
@@ -52,7 +59,7 @@ class SupportResponseFragment : BaseFragment() {
             SuggestedPhrasesSympathyFragment().show(childFragmentManager, "")
         }
         binding.friendIdea.setOnClickListener {
-            showDialogConfirmLogout()
+            showDialog()
         }
         binding.back.setOnClickListener {
             findNavController().popBackStack()
@@ -61,6 +68,7 @@ class SupportResponseFragment : BaseFragment() {
             if (binding.editText.text.toString().isNotEmpty()) {
                 val idea =  viewModel.sharedPreferences.getString("userIdea")
                 val cupIdea =  viewModel.sharedPreferences.getInt("cupIdea")
+
                 val response = binding.editText.text.toString()
                 val userIdea = UserIdea(response = response , idea = idea, cupIdea = cupIdea)
                 updateUserData(userIdea)
@@ -68,7 +76,7 @@ class SupportResponseFragment : BaseFragment() {
         }
     }
 
-    private fun showDialogConfirmLogout() {
+    private fun showDialog() {
         val idea =  viewModel.sharedPreferences.getString("userIdea")
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -88,9 +96,11 @@ class SupportResponseFragment : BaseFragment() {
             dialog.dismiss()
         }
         dialogBinding.text.text = idea
-
+        dialogBinding.userName.text = partnerProfile.name
+        loadImage(requireContext(),partnerProfile.imageUser, dialogBinding.imageView)
         dialog.show()
     }
+
     fun updateUserData(userIdea: UserIdea){
 
         showProgressDialog()

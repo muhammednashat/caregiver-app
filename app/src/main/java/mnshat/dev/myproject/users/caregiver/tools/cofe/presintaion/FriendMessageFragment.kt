@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.DataSnapshot
@@ -18,11 +17,11 @@ import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.firebase.FirebaseService.userId
 import mnshat.dev.myproject.firebase.FirebaseService.userProfiles
 import mnshat.dev.myproject.model.RegistrationData
-import mnshat.dev.myproject.users.caregiver.tools.cofe.domain.model.UserIdea
 import mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion.CofeViewModel
-import mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion.Step3FragmentDirections
-import mnshat.dev.myproject.util.ID_PARTNER
-import mnshat.dev.myproject.util.PASSWORD
+import mnshat.dev.myproject.util.EMAIL_PARTNER
+import mnshat.dev.myproject.util.PARTNER_PROFILE
+import mnshat.dev.myproject.util.USER_EMAIL
+import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
@@ -43,9 +42,21 @@ class FriendMessageFragment : BaseFragment() {
         binding.back.setOnClickListener {
             findNavController().popBackStack()
         }
-
+        getPartnerData()
         listenToData()
         return binding.root
+    }
+
+    private fun getPartnerData(){
+        FirebaseService.retrieveUser(null,
+            viewModel.sharedPreferences.getString(EMAIL_PARTNER)){
+            if (it == null){
+            }else{
+           loadImage(requireActivity(),it.imageUser,binding.imageView)
+                binding.nameUser.text = it.name
+           viewModel.sharedPreferences.storeObject(PARTNER_PROFILE,it)
+            }
+        }
     }
 
     private fun listenToData() {

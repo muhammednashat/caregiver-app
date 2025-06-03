@@ -40,7 +40,7 @@ const val SUPPORTERS = "supports"
 const val STATUS = "status"
 const val CURRENT_DAY = "CurrentTask"
 const val DAY_TASK = "dayTask"
-const val GRATITUDE_LIST = "gratitudeList"
+const val PARTNER_PROFILE = "partnerProfile"
 
 const val ARTICLE = "article"
 const val VIDEO = "video"

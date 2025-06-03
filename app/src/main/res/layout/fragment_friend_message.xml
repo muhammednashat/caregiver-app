@@ -98,11 +98,10 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
-                                android:id="@+id/textView76"
+                                android:id="@+id/nameUser"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/margin_large"
-                                android:text="@string/your_friend_s_reply"
                                 android:textColor="#193453"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.498"
@@ -117,7 +116,7 @@
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/textView76">
+                                app:layout_constraintTop_toBottomOf="@+id/nameUser">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -157,7 +156,6 @@
                                 android:layout_height="70dp"
                                 android:background="@drawable/circle_with_border_white"
                                 android:scaleType="fitXY"
-                                android:src="@drawable/icon_mood_track"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
