@@ -27,12 +27,10 @@ class Step4Fragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentStep4Binding.inflate(inflater)
+        binding = FragmentStep4Binding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-
         setUPListener()
-
         return binding.root
 
     }
@@ -40,17 +38,15 @@ class Step4Fragment : BaseFragment() {
     private fun setUPListener(){
 
         binding.constraintNext.setOnClickListener {
+            if (binding.editText.text.isNullOrEmpty()){
+                  log("please write your idea")
+                showToast(getString(R.string.please_write_your_idea))
 
-            findNavController().navigate(R.id.action_step4Fragment_to_step5Fragment)
-
-//            if (viewModel.userAdjustedText.value.isNullOrEmpty()){
-//                  log("please write your idea")
-//                showToast(getString(R.string.please_write_your_idea))
-//
-//            }else{
-//                log("next")
-//                findNavController().navigate(R.id.action_step4Fragment_to_step5Fragment)
-//            }
+            }else{
+                log("next")
+                log("your idea is  ${binding.editText.text.toString()}")
+                findNavController().navigate(R.id.action_step4Fragment_to_step5Fragment)
+            }
 
         }
 

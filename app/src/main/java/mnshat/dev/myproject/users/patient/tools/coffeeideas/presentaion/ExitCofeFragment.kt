@@ -6,14 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentExitCofeBinding
-import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderActivity
 
+@AndroidEntryPoint
 
 class ExitCofeFragment : Fragment() {
 
     private lateinit var binding: FragmentExitCofeBinding
+    private val viewModel: CofeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,6 +26,7 @@ class ExitCofeFragment : Fragment() {
         binding = FragmentExitCofeBinding.inflate(inflater)
 
         binding.exit.setOnClickListener {
+            viewModel.clearData()
             activity?.finish()
 
         }
@@ -30,5 +34,7 @@ class ExitCofeFragment : Fragment() {
         return  binding.root
 
     }
+
+
 
 }

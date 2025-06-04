@@ -7,7 +7,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import mnshat.dev.myproject.base.BaseViewModel2
-import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.model.Posts
 import mnshat.dev.myproject.model.Supplication
@@ -15,12 +14,15 @@ import mnshat.dev.myproject.model.SupplicationsUser
 import mnshat.dev.myproject.util.POSTS
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USER_EMAIL
+import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.data.getListHands
 
 
 //ToDo Clear Data after onStop called
 
-class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesManager,
+class SupplicationsViewModel(
+    
+    private val sharedPreferences: SharedPreferencesManager,
                              application: Application
 ):BaseViewModel2(sharedPreferences,application) {
 
@@ -31,7 +33,7 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
 
     //TODo chane the way of getting email
     private var supplicationsUsersDoc =
-        firestore.collection("supplications").document(FirebaseService.userEmail!!)
+        firestore.collection("supplications").document(sharedPreferences.getString(USER_ID))
 
     private val _isDismissProgressDialog = MutableLiveData<Boolean>()
     val isDismissProgressDialog: LiveData<Boolean> get() = _isDismissProgressDialog
@@ -116,7 +118,6 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
                 } else {
                     onResult(emptyList(), null)
                     _isDismissProgressDialog.value = true
-
                 }
             }
             .addOnFailureListener { exception ->
@@ -142,8 +143,7 @@ class SupplicationsViewModel(private val sharedPreferences: SharedPreferencesMan
     }
 
     fun getUserSupplications(onResult: (List<Supplication>) -> Unit){
-        getSupplicationsList(FirebaseService.userEmail!!
-        ) { items, exception ->
+        getSupplicationsList(sharedPreferences.getString(USER_EMAIL)) { items, exception ->
             _userSupplications.value = items
             onResult(items)
         }

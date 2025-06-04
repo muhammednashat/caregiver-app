@@ -17,11 +17,11 @@ import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentSupportResponseBinding
 import mnshat.dev.myproject.databinding.FriendMessageDialogBinding
 import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.firebase.FirebaseService.userId
 import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.users.caregiver.tools.cofe.domain.model.UserIdea
 import mnshat.dev.myproject.util.ID_PARTNER
 import mnshat.dev.myproject.util.PARTNER_PROFILE
+import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.loadImage
 
 @AndroidEntryPoint
@@ -116,7 +116,7 @@ class SupportResponseFragment : BaseFragment() {
 
     fun updateSupportData(){
         val map = mapOf<String, Any>("userIdea" to UserIdea())
-        FirebaseService.updateItemsProfileUser(userId, map) {
+        FirebaseService.updateItemsProfileUser(viewModel.sharedPreferences.getString(USER_ID), map) {
             if (it) {
             findNavController().navigate(R.id.action_supportResponseFragment_to_thanksFragment)
             } else {

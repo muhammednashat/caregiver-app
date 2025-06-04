@@ -14,15 +14,15 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentFriendMessageBinding
 import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.firebase.FirebaseService.userId
 import mnshat.dev.myproject.firebase.FirebaseService.userProfiles
 import mnshat.dev.myproject.model.RegistrationData
 import mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion.CofeViewModel
 import mnshat.dev.myproject.util.EMAIL_PARTNER
 import mnshat.dev.myproject.util.PARTNER_PROFILE
-import mnshat.dev.myproject.util.USER_EMAIL
+import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
+import androidx.core.graphics.toColorInt
 
 @AndroidEntryPoint
 class FriendMessageFragment : BaseFragment() {
@@ -60,7 +60,7 @@ class FriendMessageFragment : BaseFragment() {
     }
 
     private fun listenToData() {
-        userProfiles.child(userId!!).addValueEventListener(object : ValueEventListener {
+        userProfiles.child(viewModel.sharedPreferences.getString(USER_ID)).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val user = snapshot.getValue(RegistrationData::class.java)
@@ -69,6 +69,7 @@ class FriendMessageFragment : BaseFragment() {
                         binding.constraintNext.visibility = View.VISIBLE
                         viewModel.sharedPreferences.storeString("userIdea", user.userIdea?.idea)
                         viewModel.sharedPreferences.storeInt("cupIdea", user.userIdea?.cupIdea)
+                        setUpCupInfo(user.userIdea?.cupIdea)
                         binding.cupInfo.visibility = View.VISIBLE
 
                     }
@@ -84,7 +85,26 @@ class FriendMessageFragment : BaseFragment() {
         })
     }
 
+    private fun setUpCupInfo(cupIdea: Int?) {
+        when (cupIdea) {
+           2-> {
+                updateUiData(getString(R.string.over_sugary_coffee),getString(R.string.unrealistic_thinking),getString(R.string.ignoring_challenges),"#f4aa34",R.drawable.image_cup2)
+            }
+          3 -> {
+               updateUiData(getString(R.string.balanced_coffee),getString(R.string.realistic_thinking),getString(R.string.acknowledge_the_difficulties),"#5cb348",R.drawable.image_cup3)
+            }
 
 
+    }
 
+
+}
+
+    private fun updateUiData(text1: String, text2: String, text3: String, color:String, image: Int) {
+        binding.typeCofe.text = text1
+        binding.typeCofe.setTextColor(color.toColorInt())
+        binding.feeling.text = text2
+        binding.example.text = text3
+        binding.coffe.setImageResource(image)
+    }
 }
