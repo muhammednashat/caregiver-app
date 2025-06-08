@@ -19,7 +19,7 @@ class SupportCafeViewModel @Inject constructor(
     private  val _selectedText = MutableLiveData<String>()
     val selectedText: LiveData<String> = _selectedText
 
-    var selectedItem: Int = -1
+    var selectedItem: Int = 0
 
 
     fun getPhrases(context: Context) = repository.getPhrases(context)

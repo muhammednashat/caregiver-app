@@ -65,8 +65,14 @@ class Step3Fragment : BaseFragment(), ItemListener {
             FirebaseService.retrieveUsers(user?.supports){
                 it?.let {
                     dismissProgressDialog()
-                    chooseSupport(it)
-                    log("users are $it")
+
+                    if (it.isNotEmpty()){
+                        chooseSupport(it)
+                        log("users are $it")
+                    }else{
+                        showToast(getString(R.string.no_supporters_text))
+                    }
+
                 }
             }
         }
@@ -127,6 +133,8 @@ class Step3Fragment : BaseFragment(), ItemListener {
         FirebaseService.updateItemsProfileUser(supporter.id!!, map) {
             if (it) {
                 val action = Step3FragmentDirections.actionStep3FragmentToFriendIdeaEditingFragment(supporter)
+                viewModel.sharedPreferences.storeObject("supporter", supporter)
+                viewModel.sharedPreferences.storeBoolean("isThereConnection", true)
                 findNavController().navigate(action)
             } else {
 

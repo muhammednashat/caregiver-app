@@ -817,6 +817,8 @@ is too hard. I'll never succeed.</string>
     <string name="phrase9">What do you think about reconsidering the idea together? Maybe if we look at it from a different perspective, its impact will be a little lighter.</string>
     <string name="phrase10">I feel your pain... and everything that hurts you is important, even if no one else sees it as significant.</string>
     <string name="phrase11">I know this is hard for you... but believe me, I\'m with you and I won\'t leave you to face it alone.</string>
+    <string name="please_enter_your_response">Please enter your response</string>
+    <string name="no_ideas_received_yet_nyou_can_only_continue_after_receiving_a_message_from_your_friend">No ideas received yet!\\nYou can only continue after receiving a message from your friend.</string>
 
 
 </resources>

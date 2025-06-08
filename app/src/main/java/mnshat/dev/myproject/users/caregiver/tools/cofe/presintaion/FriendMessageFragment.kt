@@ -64,7 +64,7 @@ class FriendMessageFragment : BaseFragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val user = snapshot.getValue(RegistrationData::class.java)
-                    if(user?.userIdea?.idea?.isNotEmpty() == true){
+                    if(user?.userIdea?.idea?.isNotEmpty() == true ){
                         binding.message.text = user.userIdea?.idea
                         binding.constraintNext.visibility = View.VISIBLE
                         viewModel.sharedPreferences.storeString("userIdea", user.userIdea?.idea)
@@ -72,6 +72,9 @@ class FriendMessageFragment : BaseFragment() {
                         setUpCupInfo(user.userIdea?.cupIdea)
                         binding.cupInfo.visibility = View.VISIBLE
 
+                    }else{
+                        binding.message.text =
+                            getString(R.string.no_ideas_received_yet_nyou_can_only_continue_after_receiving_a_message_from_your_friend)
                     }
                     log("idea is ${user?.userIdea?.idea}")
                     log("response is ${user?.userIdea?.response}")

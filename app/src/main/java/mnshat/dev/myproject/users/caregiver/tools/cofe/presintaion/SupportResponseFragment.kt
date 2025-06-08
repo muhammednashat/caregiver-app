@@ -41,12 +41,16 @@ class SupportResponseFragment : BaseFragment() {
 
         binding = FragmentSupportResponseBinding.inflate(inflater, container, false)
          setUpListener()
+         setSuggestedResponse()
           observeData()
         partnerProfile = viewModel.sharedPreferences.getObjectProfilePartner(PARTNER_PROFILE)
         loadImage(requireContext(),partnerProfile.imageUser, binding.userImage)
         return binding.root
     }
 
+    private fun setSuggestedResponse(){
+        binding.editText.setText(getString(R.string.phrase1))
+    }
     private fun observeData() {
         viewModel.selectedText.observe(viewLifecycleOwner) {
           val previousText = binding.editText.text.toString()
@@ -68,10 +72,11 @@ class SupportResponseFragment : BaseFragment() {
             if (binding.editText.text.toString().isNotEmpty()) {
                 val idea =  viewModel.sharedPreferences.getString("userIdea")
                 val cupIdea =  viewModel.sharedPreferences.getInt("cupIdea")
-
                 val response = binding.editText.text.toString()
                 val userIdea = UserIdea(response = response , idea = idea, cupIdea = cupIdea)
                 updateUserData(userIdea)
+            }else{
+                showToast(getString(R.string.please_enter_your_response))
             }
         }
     }

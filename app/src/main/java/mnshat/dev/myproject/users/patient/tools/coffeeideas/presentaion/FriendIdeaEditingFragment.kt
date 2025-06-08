@@ -51,13 +51,18 @@ class FriendIdeaEditingFragment : BaseFragment() {
     }
 
 
+    // راجع ك
+
     private fun listenToData() {
         userProfiles.child(userId!!).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val user = snapshot.getValue(RegistrationData::class.java)
                     if(user?.userIdea?.response != null){
+                        binding.label.visibility = View.VISIBLE
+                        binding.subText.visibility = View.GONE
                         binding.editText.setText(user.userIdea?.response)
+                        viewModel.sharedPreferences.storeBoolean("isThereConnection", false)
                     }
                     log("idea is ${user?.userIdea?.idea}")
                     log("response is ${user?.userIdea?.response}")

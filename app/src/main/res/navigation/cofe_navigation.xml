@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_introFragment_to_introCofe2Fragment2"
             app:destination="@id/intro2Fragment2" />
+        <action
+            android:id="@+id/action_introFragment_to_friendIdeaEditingFragment"
+            app:destination="@id/friendIdeaEditingFragment" />
     </fragment>
     <fragment
         android:id="@+id/intro2Fragment2"

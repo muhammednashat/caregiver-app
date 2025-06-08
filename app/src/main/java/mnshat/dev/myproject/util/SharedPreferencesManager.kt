@@ -71,9 +71,11 @@ class SharedPreferencesManager @Inject constructor(context: Context) {
     }
 
     fun getObjectProfilePartner(key: String) :RegistrationData {
-        val string = sharedPreferences.getString(PARTNER_PROFILE, null.toString())
+        val string = sharedPreferences.getString(key, null.toString())
         val gson = Gson()
         return gson.fromJson(string, RegistrationData::class.java)
     }
+
+
 
 }

@@ -142,7 +142,7 @@
         android:id="@+id/message"
         android:gravity="center"
         android:layout_marginTop="@dimen/margin_medium"
-        android:text="لا يوجد اى افكار مستلمة حتى الان!\n لا يمكنك الاستمرار إلا بعد استلام رسالة من صديقك"
+android:text="@string/no_ideas_received_yet_nyou_can_only_continue_after_receiving_a_message_from_your_friend"
         android:textColor="#8c99a9" />
 </ScrollView>
 
@@ -167,6 +167,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:id="@+id/cupInfo"
+    android:visibility="gone"
     android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"

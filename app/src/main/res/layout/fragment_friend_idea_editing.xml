@@ -47,6 +47,7 @@ android:text="@string/step_4_now_your_supporter"                android:textColo
 
             <TextView
                 android:layout_width="0dp"
+                android:id="@+id/subText"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_large"
                 android:layout_marginEnd="@dimen/margin_large"
@@ -124,6 +125,8 @@ android:text="@string/step_4_now_your_supporter"                android:textColo
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_large"
                         android:text="@string/your_friend_s_reply"
+                        android:id="@+id/label"
+                        android:visibility="gone"
                         android:textColor="#193453"
                         android:layout_marginTop="@dimen/margin_super"
                         android:textSize="16sp"
