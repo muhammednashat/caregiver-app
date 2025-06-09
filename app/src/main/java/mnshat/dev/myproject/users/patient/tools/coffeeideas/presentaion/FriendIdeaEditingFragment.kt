@@ -52,9 +52,6 @@ class FriendIdeaEditingFragment : BaseFragment() {
         }
     }
 
-
-    // راجع ك
-
     private fun listenToData() {
         userProfiles.child(userId!!).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
