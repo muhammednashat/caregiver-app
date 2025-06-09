@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -21,12 +22,13 @@ import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
+
 class FriendIdeaEditingFragment : BaseFragment() {
 
     private lateinit var binding: FragmentFriendIdeaEditingBinding
     private val viewModel: CofeViewModel by viewModels()
     private lateinit var supporter: RegistrationData
-
+    private var isThereConnection = true;
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
@@ -58,11 +60,13 @@ class FriendIdeaEditingFragment : BaseFragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val user = snapshot.getValue(RegistrationData::class.java)
-                    if(user?.userIdea?.response != null){
+                    if(user?.userIdea?.response != null && user.userIdea?.response != ""){
                         binding.label.visibility = View.VISIBLE
                         binding.subText.visibility = View.GONE
                         binding.editText.setText(user.userIdea?.response)
-                        viewModel.sharedPreferences.storeBoolean("isThereConnection", false)
+                        isThereConnection = false
+                    }else{
+                        isThereConnection = true
                     }
                     log("idea is ${user?.userIdea?.idea}")
                     log("response is ${user?.userIdea?.response}")
@@ -74,6 +78,15 @@ class FriendIdeaEditingFragment : BaseFragment() {
                 log("Database error: ${error.message}")
             }
         })
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if (isThereConnection == false){
+            log("onStop")
+            log("isThereConnection is false")
+            viewModel.sharedPreferences.storeBoolean("isThereConnection", false)
+        }
     }
 
 }

@@ -682,8 +682,17 @@
                         <option name="myPosition">
                           <Point>
                             <option name="x" value="1471" />
-                            <option name="y" value="-170" />
+                            <option name="y" value="-267" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_friendIdeaEditingFragment_to_step5Fragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -693,12 +702,17 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="256" />
-                            <option name="y" value="12" />
+                            <option name="x" value="181" />
+                            <option name="y" value="148" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_intro2Fragment2_to_friendIdeaEditingFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_intro2Fragment2_to_intro3Fragment2">
                               <value>
                                 <LayoutPositions />
@@ -714,8 +728,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="500" />
-                            <option name="y" value="12" />
+                            <option name="x" value="491" />
+                            <option name="y" value="91" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -735,8 +749,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
+                            <option name="x" value="36" />
+                            <option name="y" value="-276" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -804,6 +818,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_step3Fragment_to_friendIdeaEditingFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_step3Fragment_to_step4Fragment">
                               <value>
                                 <LayoutPositions />
