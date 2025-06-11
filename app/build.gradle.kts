@@ -111,6 +111,12 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:2.9.0")
     implementation("com.tbuonomo:dotsindicator:4.3")
 
+        //okhttp
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    // define any required OkHttp artifacts without version
+//    implementation("com.squareup.okhttp3:okhttp")
+//    implementation("com.squareup.okhttp3:logging-interceptor")
+
 
 }
 

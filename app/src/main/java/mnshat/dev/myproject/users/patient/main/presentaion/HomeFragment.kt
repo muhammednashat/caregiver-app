@@ -13,20 +13,28 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import mnshat.dev.myproject.base.BaseFragment
+import kotlinx.coroutines.GlobalScope
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.auth.LanguageFragment
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.LibraryActivity
 import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
 import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderActivity
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
-import mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion.CofeActivity
 import mnshat.dev.myproject.util.IS_SECOND_TIME
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
 import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.IOException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaType
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment() {
@@ -103,7 +111,12 @@ class HomeFragment : BaseFragment() {
      fun setupClickListener() {
 
         binding.dailyProgram.setOnClickListener() {
-            startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
+          fetchData(
+              "fA9JAa3iRay9dCR4sms1LL:APA91bHxMJztQf92kd4-Ram5hPMFw6HCmTqI6FQcfDcV4ev5vdMlV8Xng-ln4osqb7tuBRId3jwknraOEWYBaYQ-hHH6zNRejyCBdBujyPCdYt6v9x11BI8",
+              "title",
+              "body"
+          )
+//            startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
         }
 
          binding.statistics.setOnClickListener() {
@@ -153,6 +166,43 @@ class HomeFragment : BaseFragment() {
 
 
 
+
+
+    fun fetchData(token:String, title:String, body:String) {
+        val mediaType =  "application/json; charset=utf-8".toMediaType() //
+       val requestBody = """
+          {
+          "token":"fA9JAa3iRay9dCR4sms1LL:APA91bHxMJztQf92kd4-Ram5hPMFw6HCmTqI6FQcfDcV4ev5vdMlV8Xng-ln4osqb7tuBRId3jwknraOEWYBaYQ-hHH6zNRejyCBdBujyPCdYt6v9x11BI8",
+          "title":"title",
+          "body":"body",
+          }
+      """.trimIndent().toRequestBody(mediaType)
+
+        GlobalScope.launch(Dispatchers.IO) {  // Run in background thread
+            val client = OkHttpClient()
+            val request = Request.Builder()
+//                .url("http://10.0.2.2:3000/send-notification")
+                .url("https://shopping-app-ihvt.onrender.com/send-notification")
+                .post(requestBody)
+                .build()
+
+            try {
+                client.newCall(request).execute().use { response ->
+                    if (!response.isSuccessful) throw IOException("Unexpected code $response")
+                    val responseBody = response.body?.string()
+                    log("==========   $responseBody")
+                    println(responseBody)
+
+                    // Update UI (must switch back to Main thread)
+                    launch(Dispatchers.Main) {
+//                        textView.text = responseBody
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
 
 
 

@@ -34,8 +34,7 @@ class FriendIdeaEditingFragment : BaseFragment() {
 
         binding = FragmentFriendIdeaEditingBinding.inflate(inflater)
         val args = FriendIdeaEditingFragmentArgs.fromBundle(requireArguments())
-
-         supporter = args.suppurter
+        supporter = args.suppurter
         loadImage(requireContext(), supporter.imageUser, binding.imageView)
         log("supporter is $supporter")
         setUpListeners()
@@ -43,13 +42,16 @@ class FriendIdeaEditingFragment : BaseFragment() {
         return  binding.root
 
     }
+
     private fun setUpListeners() {
+
         binding.constraintNext.setOnClickListener {
             findNavController().navigate(R.id.action_friendIdeaEditingFragment_to_step5Fragment)
         }
         binding.back.setOnClickListener {
          findNavController().popBackStack()
         }
+
     }
 
     private fun listenToData() {
