@@ -23,6 +23,7 @@ import mnshat.dev.myproject.util.ID_PARTNER
 import mnshat.dev.myproject.util.PARTNER_PROFILE
 import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.loadImage
+import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 
@@ -74,7 +75,7 @@ class SupportResponseFragment : BaseFragment() {
                 val cupIdea =  viewModel.sharedPreferences.getInt("cupIdea")
                 val response = binding.editText.text.toString()
                 val userIdea = UserIdea(response = response , idea = idea, cupIdea = cupIdea)
-                updateUserData(userIdea)
+                updateUserData(userIdea ,viewModel.sharedPreferences.getString(ID_PARTNER))
             }else{
                 showToast(getString(R.string.please_enter_your_response))
             }
@@ -106,18 +107,20 @@ class SupportResponseFragment : BaseFragment() {
         dialog.show()
     }
 
-    fun updateUserData(userIdea: UserIdea){
+    fun updateUserData(userIdea: UserIdea ,partnerId: String){
 
         showProgressDialog()
         val map = mapOf<String, Any>("userIdea" to userIdea)
-        FirebaseService.updateItemsProfileUser(viewModel.sharedPreferences.getString(ID_PARTNER), map) {
+        FirebaseService.updateItemsProfileUser(partnerId, map) {
             if (it) {
+                sendNotification("0fkfkZ0WXePQQ8CdOG6XVDIeMmm2","title","body")
                 updateSupportData()
             } else {
             }
             dismissProgressDialog()
         }
     }
+
 
     fun updateSupportData(){
         val map = mapOf<String, Any>("userIdea" to UserIdea())

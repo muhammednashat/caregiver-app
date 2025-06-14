@@ -14,6 +14,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.auth.presentation.AuthActivity
 import mnshat.dev.myproject.dataSource.room.AppDatabase
@@ -26,6 +29,11 @@ import mnshat.dev.myproject.util.PASSWORD
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.log
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.IOException
 
 @AndroidEntryPoint
 open class BaseFragment: Fragment() {
@@ -125,6 +133,46 @@ open class BaseFragment: Fragment() {
         }
         sharedDialog.show()
     }
+
+    fun sendNotification(userId:String, title:String, body:String) {
+        val mediaType =  "application/json".toMediaType() //
+        val requestBody = """
+          {
+          "userId":"$userId",
+          "title":"$title",
+          "body":"$body"
+          }
+      """.trimIndent().toRequestBody(mediaType)
+        GlobalScope.launch(Dispatchers.IO) {  // Run in background thread
+            val client = OkHttpClient()
+            val request = Request.Builder()
+                .url("https://shopping-app-ihvt.onrender.com/send-notification")
+                .post(requestBody)
+                .build()
+
+            try {
+                client.newCall(request).execute().use { response ->
+                    if (!response.isSuccessful) {
+                        println(response.message)
+                        throw IOException("Unexpected code $response")
+                    }
+                    val responseBody = response.body?.string()
+                    log("==========   $responseBody")
+                    println(responseBody)
+
+                    // Update UI (must switch back to Main thread)
+                    launch(Dispatchers.Main) {
+//                        textView.text = responseBody
+                    }
+                }
+            } catch (e: Exception) {
+                println(e.message)
+                println(e)
+                e.printStackTrace()
+            }
+        }
+    }
+
 
     private fun logOut(sharedPreferences: SharedPreferencesManager) {
         AppDatabase.getDatabase(requireActivity()).close()

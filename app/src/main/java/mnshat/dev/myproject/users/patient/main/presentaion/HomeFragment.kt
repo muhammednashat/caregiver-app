@@ -111,11 +111,7 @@ class HomeFragment : BaseFragment() {
      fun setupClickListener() {
 
         binding.dailyProgram.setOnClickListener() {
-          fetchData(
-              "fA9JAa3iRay9dCR4sms1LL:APA91bHxMJztQf92kd4-Ram5hPMFw6HCmTqI6FQcfDcV4ev5vdMlV8Xng-ln4osqb7tuBRId3jwknraOEWYBaYQ-hHH6zNRejyCBdBujyPCdYt6v9x11BI8",
-              "title",
-              "body"
-          )
+            sendNotification("0fkfkZ0WXePQQ8CdOG6XVDIeMmm2","title","body")
 //            startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
         }
 
@@ -168,41 +164,6 @@ class HomeFragment : BaseFragment() {
 
 
 
-    fun fetchData(token:String, title:String, body:String) {
-        val mediaType =  "application/json; charset=utf-8".toMediaType() //
-       val requestBody = """
-          {
-          "token":"fA9JAa3iRay9dCR4sms1LL:APA91bHxMJztQf92kd4-Ram5hPMFw6HCmTqI6FQcfDcV4ev5vdMlV8Xng-ln4osqb7tuBRId3jwknraOEWYBaYQ-hHH6zNRejyCBdBujyPCdYt6v9x11BI8",
-          "title":"title",
-          "body":"body",
-          }
-      """.trimIndent().toRequestBody(mediaType)
-
-        GlobalScope.launch(Dispatchers.IO) {  // Run in background thread
-            val client = OkHttpClient()
-            val request = Request.Builder()
-//                .url("http://10.0.2.2:3000/send-notification")
-                .url("https://shopping-app-ihvt.onrender.com/send-notification")
-                .post(requestBody)
-                .build()
-
-            try {
-                client.newCall(request).execute().use { response ->
-                    if (!response.isSuccessful) throw IOException("Unexpected code $response")
-                    val responseBody = response.body?.string()
-                    log("==========   $responseBody")
-                    println(responseBody)
-
-                    // Update UI (must switch back to Main thread)
-                    launch(Dispatchers.Main) {
-//                        textView.text = responseBody
-                    }
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
 
 
 
