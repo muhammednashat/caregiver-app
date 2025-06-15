@@ -66,7 +66,7 @@ open abstract class AuthBaseFragment<T : ViewDataBinding> : BaseFragment2<T>() {
                     _viewModel.invitationCode.value = userId?.take(8)
                 }
                 _viewModel.id =userId
-                    saveUserAdditionalInfo(registrationData) // 8
+                    saveUserAdditionalInfo(userId!!,registrationData) // 8
             } else {
                 dismissProgressDialog()
                 showToast(userId!!)
@@ -90,8 +90,8 @@ open abstract class AuthBaseFragment<T : ViewDataBinding> : BaseFragment2<T>() {
         }
     }
 
-    private fun saveUserAdditionalInfo(registrationData: RegistrationData?) {
-        FirebaseService.getToken { str ->
+    private fun saveUserAdditionalInfo(userId:String , registrationData: RegistrationData?) {
+        FirebaseService.getToken(userId){ str ->
            _viewModel.token.value =   str
             _viewModel.storeDataLocally()
             sharedPreferences.storeBoolean(IS_SIGNING, true)

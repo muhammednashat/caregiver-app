@@ -113,9 +113,10 @@ class SupportResponseFragment : BaseFragment() {
         val map = mapOf<String, Any>("userIdea" to userIdea)
         FirebaseService.updateItemsProfileUser(partnerId, map) {
             if (it) {
-                sendNotification("0fkfkZ0WXePQQ8CdOG6XVDIeMmm2","title","body")
+                sendNotification(partnerId,"title","body")
                 updateSupportData()
             } else {
+
             }
             dismissProgressDialog()
         }

@@ -132,7 +132,7 @@ class Step3Fragment : BaseFragment(), ItemListener {
         val map = mapOf<String, Any>("userIdea" to userIdea)
         FirebaseService.updateItemsProfileUser(supporter.id!!, map) {
             if (it) {
-                sendNotification("0fkfkZ0WXePQQ8CdOG6XVDIeMmm2","title","body")
+                sendNotification(supporter.id!!,"title","body")
                 val action = Step3FragmentDirections.actionStep3FragmentToFriendIdeaEditingFragment(supporter)
                 viewModel.sharedPreferences.storeObject("supporter", supporter)
                 viewModel.sharedPreferences.storeBoolean("isThereConnection", true)

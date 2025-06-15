@@ -3,6 +3,7 @@ package mnshat.dev.myproject.firebase
 import android.content.Context
 import android.util.Log
 import com.google.android.gms.tasks.Task
+import com.google.firebase.Firebase
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -10,6 +11,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.firestore
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.tasks.await
 import mnshat.dev.myproject.R
@@ -79,14 +81,21 @@ object FirebaseService {
 
 
 
-    fun getToken(callback: (String?) -> Unit) {
+    fun getToken(userId: String,callback: (String?) -> Unit) {
         FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
             if (task.isSuccessful) {
+                storeToken(userId,task.result)
                 callback(task.result)
             } else {
                 callback(null)
             }
         }
+    }
+
+    fun storeToken (id: String ,token:String,){
+        val db = Firebase.firestore
+        val data = hashMapOf("token" to token, )
+        db.collection("Users").document(id).set(data)
     }
 
     fun retrieveUser(typeOfUser: String?, string: String?, callback: (RegistrationData?) -> Unit) {

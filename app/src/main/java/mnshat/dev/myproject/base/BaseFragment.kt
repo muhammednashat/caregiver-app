@@ -135,6 +135,7 @@ open class BaseFragment: Fragment() {
     }
 
     fun sendNotification(userId:String, title:String, body:String) {
+        log(userId)
         val mediaType =  "application/json".toMediaType() //
         val requestBody = """
           {

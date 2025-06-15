@@ -31,7 +31,13 @@ fun errorSnackBar( view: View,text: String) {
 
 
 
-fun log(text:String,tag:String = "TAG" ) = Log.e(tag , text)
+fun log(text:String,tag:String = "TAG" ) {
+    Log.e(tag , "=================================================")
+    Log.e(tag , text)
+    Log.e(tag , "=================================================")
+
+
+}
 
 
 fun getDateAsString(currentTimeMillis:Long):String{

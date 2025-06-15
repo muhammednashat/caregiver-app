@@ -12,6 +12,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.GlobalScope
 import mnshat.dev.myproject.R
@@ -34,6 +35,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.IOException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import mnshat.dev.myproject.firebase.FirebaseService
 import okhttp3.MediaType.Companion.toMediaType
 
 @AndroidEntryPoint
@@ -111,8 +113,10 @@ class HomeFragment : BaseFragment() {
      fun setupClickListener() {
 
         binding.dailyProgram.setOnClickListener() {
-            sendNotification("0fkfkZ0WXePQQ8CdOG6XVDIeMmm2","title","body")
-//            startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
+
+//            sendNotification("0fkfkZ0WXePQQ8CdOG6XVDIeMmm2","title","body")
+            startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
+
         }
 
          binding.statistics.setOnClickListener() {
