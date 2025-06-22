@@ -144,7 +144,7 @@ open class BaseFragment: Fragment() {
           "body":"$body"
           }
       """.trimIndent().toRequestBody(mediaType)
-        GlobalScope.launch(Dispatchers.IO) {  // Run in background thread
+        GlobalScope.launch(Dispatchers.IO) {
             val client = OkHttpClient()
             val request = Request.Builder()
                 .url("https://shopping-app-ihvt.onrender.com/send-notification")

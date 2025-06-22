@@ -69,6 +69,7 @@ class SupportResponseFragment : BaseFragment() {
         binding.back.setOnClickListener {
             findNavController().popBackStack()
         }
+
         binding.constraintNext.setOnClickListener {
             if (binding.editText.text.toString().isNotEmpty()) {
                 val idea =  viewModel.sharedPreferences.getString("userIdea")
