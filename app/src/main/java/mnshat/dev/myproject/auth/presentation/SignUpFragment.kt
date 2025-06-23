@@ -1,51 +1,51 @@
-package mnshat.dev.myproject.auth
+package mnshat.dev.myproject.auth.presentation
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentSignUpBinding
-import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.model.Partner
-import mnshat.dev.myproject.model.RegistrationData
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.USER
-import mnshat.dev.myproject.util.log
 
-class SignUpFragment : AuthBaseFragment<FragmentSignUpBinding>(){
-    override fun initializeViews() {
-    }
+@AndroidEntryPoint
 
-    override fun getLayout() = R.layout.fragment_sign_up
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        binding.lifecycleOwner = this
-        binding.viewModel = _viewModel
-        observeViewModel()
-    }
+class SignUpFragment : BaseFragment(){
 
-    private fun observeViewModel() {
-        _viewModel.strGender.value = getString(R.string.gender)
-        _viewModel.strAge.value = getString(R.string.age_group)
-        _viewModel.typeOfUser.observe(viewLifecycleOwner) {
-            it?.let {
-                hideContentUser(it == USER)
-                changeUserUi(it)
-            }
-        }
+private  lateinit var binding: FragmentSignUpBinding
+
+private val viewModel: AuthViewModel by viewModels()
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentSignUpBinding.inflate(inflater,container,false)
+
+        setupClickListener()
+
+
+        return  binding.root
     }
 
 
-     override fun setupClickListener() {
+
+
+      fun setupClickListener() {
         binding.chooseUser.user.setOnClickListener {
-            _viewModel.typeOfUser.value = USER
+            viewModel.typeOfUser.value = USER
         }
         binding.chooseUser.caregiver.setOnClickListener {
-            _viewModel.typeOfUser.value = CAREGIVER
+            viewModel.typeOfUser.value = CAREGIVER
         }
         binding.logIn.setOnClickListener {
             findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
-                _viewModel.clearData()
+                viewModel.clearData()
         }
         binding.contactUs.setOnClickListener {
             findNavController().navigate(R.id.action_signUpFragment_to_contactUsFragment)
@@ -57,46 +57,13 @@ class SignUpFragment : AuthBaseFragment<FragmentSignUpBinding>(){
             GenderFragment().show(childFragmentManager, GenderFragment::class.java.name)
         }
 
-        binding.btnSign.setOnClickListener {view ->
-            if (_viewModel.validToRegisterUser(requireContext())) {
-                if (_viewModel.typeOfUser.value == CAREGIVER){
-                    retrieveUser()
-                }
-                else{
-                    if(_viewModel.isConnected()){
-                        showProgressDialog()
-                        signUp(null)
-                    }else{
-                        showNoInternetSnackBar(view)
-                    }
+        binding.btnSign.setOnClickListener {
 
-                }
-            }else showToast(_viewModel.errorMessage!!)
         }
     }
 
-private fun retrieveUser(){
-     showProgressDialog()
-    log(_viewModel.invitationCode.value!!)
-    FirebaseService.retrieveUser(_viewModel.typeOfUser.value,_viewModel.invitationCode.value?.trim()){
-        if (it == null){
-            dismissProgressDialog()
-            showToast(getString(R.string.enter_valid_invitation))
-        }else{
-            setPartner(it)
-        }
-    }
-}
 
-    private fun setPartner(it: RegistrationData) {
-        _viewModel.partner = Partner(
-            it.id,
-            it.email,
-            it.name,
-            it.imageUser
-        )
-        signUp(it)
-    }
+
 
     private fun changeUserUi(type: String) {
 
@@ -133,6 +100,30 @@ private fun retrieveUser(){
             binding.additionalContent.visibility = View.INVISIBLE
         }
     }
+
+
+
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        viewModel.strGender.value = getString(R.string.gender)
+        viewModel.strAge.value = getString(R.string.age_group)
+        viewModel.typeOfUser.observe(viewLifecycleOwner) {
+            it?.let {
+                hideContentUser(it == USER)
+                changeUserUi(it)
+            }
+        }
+    }
+
+
+
 
 
 }

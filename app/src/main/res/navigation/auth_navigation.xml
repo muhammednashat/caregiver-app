@@ -5,7 +5,7 @@
     app:startDestination="@id/mainAuthFragment">
     <fragment
         android:id="@+id/loginFragment"
-        android:name="mnshat.dev.myproject.auth.LoginFragment2"
+        android:name="mnshat.dev.myproject.auth.presentation.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
@@ -36,7 +36,7 @@
 
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="mnshat.dev.myproject.auth.SignUpFragment"
+        android:name="mnshat.dev.myproject.auth.presentation.SignUpFragment"
         android:label="SignUpFragment"
         tools:layout="@layout/fragment_sign_up">
         <action
@@ -65,7 +65,7 @@
         tools:layout="@layout/fragment_contact_us" />
     <fragment
         android:id="@+id/mainAuthFragment"
-        android:name="mnshat.dev.myproject.auth.MainAuthFragment"
+        android:name="mnshat.dev.myproject.auth.presentation.MainAuthFragment"
         android:label="fragment_main_auth"
         tools:layout="@layout/fragment_main_auth" >
         <action

@@ -1,31 +1,44 @@
-package mnshat.dev.myproject.auth
+package mnshat.dev.myproject.auth.presentation
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentAgeBinding
-import mnshat.dev.myproject.factories.AuthViewModelFactory
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.ENGLISH_KEY
 
+@AndroidEntryPoint
+class AgeFragment : BaseBottomSheetDialogFragment() {
+    private  val viewModel: AuthViewModel by viewModels()
+    private  lateinit var binding: FragmentAgeBinding
 
-class AgeFragment : BaseBottomSheetDialogFragment2<FragmentAgeBinding>() {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentAgeBinding.inflate(inflater,container,false)
+        setupClickListener()
+        initializeViews()
+        return  binding.root
+    }
 
-   private lateinit var viewModel: AuthViewModel
-
-    override fun setupClickListener() {
+     fun setupClickListener() {
         binding.close.setOnClickListener {
             dismiss()
         }
     }
 
-    override fun initializeViews() {
-        if (currentLang != ENGLISH_KEY) {
+     fun initializeViews() {
+        if (viewModel.currentLang.value != ENGLISH_KEY) {
             binding.close.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
             binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
         }
-        setChoosenAge(sharedPreferences.getInt(AGE_GROUP))
+        setChoosenAge(viewModel.sharedPreferences.getInt(AGE_GROUP))
     }
 
     private fun setChoosenAge(age: Int?) {
@@ -38,24 +51,17 @@ class AgeFragment : BaseBottomSheetDialogFragment2<FragmentAgeBinding>() {
         }
     }
 
-
-    override fun getLayout() = R.layout.fragment_age
-
     private fun observeViewModel() {
         viewModel.intAge.observe(viewLifecycleOwner) {
             it?.let {
-                viewModel.setStrAge(requireActivity(),sharedPreferences,it)
+                viewModel.setStrAge(requireActivity(),viewModel.sharedPreferences,it)
                 setChoosenAge(it)
             }
         }
     }
 
-
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val factory = AuthViewModelFactory(sharedPreferences,activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[AuthViewModel::class.java]
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         observeViewModel()

@@ -10,9 +10,8 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentIntroBinding
-import mnshat.dev.myproject.model.RegistrationData
-import mnshat.dev.myproject.util.log
-import kotlin.math.log
+import mnshat.dev.myproject.auth.data.entity.RegistrationData
+
 @AndroidEntryPoint
 
 class IntroFragment : Fragment() {

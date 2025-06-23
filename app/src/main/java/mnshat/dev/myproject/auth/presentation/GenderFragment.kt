@@ -1,35 +1,51 @@
-package mnshat.dev.myproject.auth
+package mnshat.dev.myproject.auth.presentation
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentGenderBinding
-import mnshat.dev.myproject.factories.AuthViewModelFactory
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.GENDER
 
-class GenderFragment  :  BaseBottomSheetDialogFragment2<FragmentGenderBinding>() {
-    lateinit var viewModel: AuthViewModel
+@AndroidEntryPoint
+class GenderFragment : BaseBottomSheetDialogFragment() {
+    private  val viewModel: AuthViewModel by viewModels()
 
-    override fun setupClickListener() {
+
+    private  lateinit var binding: FragmentGenderBinding
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentGenderBinding.inflate(inflater,container,false)
+        setupClickListener()
+        initializeViews()
+        return  binding.root
+    }
+
+     fun setupClickListener() {
         binding.close.setOnClickListener{
             dismiss()
         }
     }
-    override fun initializeViews() {
-        if (currentLang != ENGLISH_KEY) {
+
+     fun initializeViews() {
+        if (viewModel.currentLang.value != ENGLISH_KEY) {
             binding.close.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
             binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
         }
-        changeUserUi(sharedPreferences.getInt(GENDER))
+        changeUserUi(viewModel.sharedPreferences.getInt(GENDER))
     }
-    override fun getLayout()= R.layout.fragment_gender
+
 
   private fun observeViewModel(){
-        viewModel.intGender.observe(viewLifecycleOwner) {
-            viewModel.setStrGender(requireActivity(),sharedPreferences,it)
+            viewModel.intGender.observe(viewLifecycleOwner) {
+            viewModel.setStrGender(requireActivity(),viewModel.sharedPreferences,it)
             changeUserUi(it)
         }
     }
@@ -63,8 +79,6 @@ class GenderFragment  :  BaseBottomSheetDialogFragment2<FragmentGenderBinding>()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val factory = AuthViewModelFactory(sharedPreferences,activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[AuthViewModel::class.java]
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         observeViewModel()

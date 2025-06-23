@@ -10,7 +10,7 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentSupporterDetailsBinding
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Permissions
-import mnshat.dev.myproject.model.RegistrationData
+import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.STATUS
 import mnshat.dev.myproject.util.log

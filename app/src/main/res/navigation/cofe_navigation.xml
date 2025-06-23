@@ -109,6 +109,6 @@
             app:destination="@id/step5Fragment" />
         <argument
             android:name="suppurter"
-            app:argType="mnshat.dev.myproject.model.RegistrationData" />
+            app:argType="mnshat.dev.myproject.auth.data.entity.RegistrationData" />
     </fragment>
 </navigation>

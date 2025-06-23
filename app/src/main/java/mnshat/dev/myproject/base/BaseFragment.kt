@@ -134,45 +134,6 @@ open class BaseFragment: Fragment() {
         sharedDialog.show()
     }
 
-    fun sendNotification(userId:String, title:String, body:String) {
-        log(userId)
-        val mediaType =  "application/json".toMediaType() //
-        val requestBody = """
-          {
-          "userId":"$userId",
-          "title":"$title",
-          "body":"$body"
-          }
-      """.trimIndent().toRequestBody(mediaType)
-        GlobalScope.launch(Dispatchers.IO) {
-            val client = OkHttpClient()
-            val request = Request.Builder()
-                .url("https://shopping-app-ihvt.onrender.com/send-notification")
-                .post(requestBody)
-                .build()
-
-            try {
-                client.newCall(request).execute().use { response ->
-                    if (!response.isSuccessful) {
-                        println(response.message)
-                        throw IOException("Unexpected code $response")
-                    }
-                    val responseBody = response.body?.string()
-                    log("==========   $responseBody")
-                    println(responseBody)
-
-                    // Update UI (must switch back to Main thread)
-                    launch(Dispatchers.Main) {
-//                        textView.text = responseBody
-                    }
-                }
-            } catch (e: Exception) {
-                println(e.message)
-                println(e)
-                e.printStackTrace()
-            }
-        }
-    }
 
 
     private fun logOut(sharedPreferences: SharedPreferencesManager) {

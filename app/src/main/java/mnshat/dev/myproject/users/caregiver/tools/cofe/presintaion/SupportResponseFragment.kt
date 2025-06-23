@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,13 +16,12 @@ import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentSupportResponseBinding
 import mnshat.dev.myproject.databinding.FriendMessageDialogBinding
 import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.model.RegistrationData
+import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import mnshat.dev.myproject.users.caregiver.tools.cofe.domain.model.UserIdea
 import mnshat.dev.myproject.util.ID_PARTNER
 import mnshat.dev.myproject.util.PARTNER_PROFILE
 import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.loadImage
-import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 
@@ -114,7 +112,7 @@ class SupportResponseFragment : BaseFragment() {
         val map = mapOf<String, Any>("userIdea" to userIdea)
         FirebaseService.updateItemsProfileUser(partnerId, map) {
             if (it) {
-                sendNotification(partnerId,"title","body")
+//                sendNotification(partnerId,"title","body")
                 updateSupportData()
             } else {
 

@@ -1,13 +1,15 @@
-package mnshat.dev.myproject.auth
+package mnshat.dev.myproject.auth.presentation
 
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseViewModel2
 import mnshat.dev.myproject.model.Partner
 import mnshat.dev.myproject.model.Permissions
-import mnshat.dev.myproject.model.RegistrationData
+import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import mnshat.dev.myproject.users.caregiver.tools.cofe.domain.model.UserIdea
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.CAREGIVER
@@ -28,17 +30,18 @@ import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME
-import mnshat.dev.myproject.util.log
+import javax.inject.Inject
 
-class AuthViewModel(
-    private val sharedPreferences: SharedPreferencesManager,
-    application: Application
+@HiltViewModel
+class AuthViewModel @Inject constructor(
+    val sharedPreferences: SharedPreferencesManager,
 
-) : BaseViewModel2(
-    sharedPreferences,
-    application
-) {
-
+) : ViewModel() {
+    var intGender = MutableLiveData<Int?>()
+    var strGender = MutableLiveData<String?>()
+    var intAge = MutableLiveData<Int?>()
+    var strAge = MutableLiveData<String?>()
+    val currentLang = MutableLiveData<String>()
     var partner: Partner? = null
     var name = MutableLiveData<String?>()
     var token = MutableLiveData<String>()
@@ -71,7 +74,50 @@ class AuthViewModel(
         return true
     }
 
+    fun setAge(int: Int) {
+        intAge.value = int
+    }
 
+    fun setStrAge(context: Context, sharedPreferences: SharedPreferencesManager, age: Int?) {
+        age?.let {
+            sharedPreferences.storeInt(AGE_GROUP, age)
+            when (age) {
+                1 -> {
+                    strAge.value = context.getString(R.string.young_adulthood1)
+                }
+
+                2 -> {
+                    strAge.value = context.getString(R.string.middle_age1)
+                }
+
+                3 -> {
+                    strAge.value = context.getString(R.string.older)
+                }
+            }
+        }
+    }
+    fun setStrGender(context: Context, sharedPreferences: SharedPreferencesManager, gender: Int?) {
+        gender?.let {
+            sharedPreferences.storeInt(GENDER, gender)
+            when (gender) {
+                1 -> {
+                    strGender.value = context.getString(R.string.male)
+                }
+
+                2 -> {
+                    strGender.value = context.getString(R.string.female)
+                }
+            }
+        }
+    }
+
+
+    fun setFavoriteLange(lang: String) {
+        currentLang.value = lang
+    }
+    fun setGender(int: Int) {
+        intGender.value = int
+    }
     fun validToRegisterUser(context: Context): Boolean {
 
         if (!isValidUserType(context)) {

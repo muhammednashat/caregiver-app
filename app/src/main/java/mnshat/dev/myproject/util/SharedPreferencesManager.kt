@@ -3,8 +3,7 @@ package mnshat.dev.myproject.util
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
-import mnshat.dev.myproject.model.RegistrationData
-import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
+import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import javax.inject.Inject
 
 class SharedPreferencesManager @Inject constructor(context: Context) {
@@ -70,7 +69,7 @@ class SharedPreferencesManager @Inject constructor(context: Context) {
         }
     }
 
-    fun getObjectProfilePartner(key: String) :RegistrationData {
+    fun getObjectProfilePartner(key: String) : RegistrationData {
         val string = sharedPreferences.getString(key, null.toString())
         val gson = Gson()
         return gson.fromJson(string, RegistrationData::class.java)

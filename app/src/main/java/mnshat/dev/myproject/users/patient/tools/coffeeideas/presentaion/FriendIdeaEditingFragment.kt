@@ -1,12 +1,10 @@
 package mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -17,7 +15,7 @@ import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentFriendIdeaEditingBinding
 import mnshat.dev.myproject.firebase.FirebaseService.userId
 import mnshat.dev.myproject.firebase.FirebaseService.userProfiles
-import mnshat.dev.myproject.model.RegistrationData
+import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
