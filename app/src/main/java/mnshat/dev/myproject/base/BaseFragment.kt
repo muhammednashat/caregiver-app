@@ -14,12 +14,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.auth.presentation.AuthActivity
-import mnshat.dev.myproject.dataSource.room.AppDatabase
+import mnshat.dev.myproject.util.AppDatabase
 import mnshat.dev.myproject.databinding.DialogBinding
 import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
 import mnshat.dev.myproject.firebase.FirebaseService
@@ -29,11 +26,6 @@ import mnshat.dev.myproject.util.PASSWORD
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.log
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody.Companion.toRequestBody
-import java.io.IOException
 
 @AndroidEntryPoint
 open class BaseFragment: Fragment() {

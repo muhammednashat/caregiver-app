@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import mnshat.dev.myproject.dataSource.room.AppDatabase
+import mnshat.dev.myproject.util.AppDatabase
 import mnshat.dev.myproject.users.patient.dailyprogram.data.DayTaskRepository
 import mnshat.dev.myproject.users.patient.dailyprogram.data.daos.DayTaskDao
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.DailyProgramManagerUseCase

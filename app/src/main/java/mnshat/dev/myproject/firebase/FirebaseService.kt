@@ -16,7 +16,7 @@ import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.tasks.await
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
-import mnshat.dev.myproject.dataSource.room.AppDatabase
+import mnshat.dev.myproject.util.AppDatabase
 import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.DayTaskEntity

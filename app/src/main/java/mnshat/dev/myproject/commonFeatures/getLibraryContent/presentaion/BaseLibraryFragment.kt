@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import mnshat.dev.myproject.base.BaseFragment2
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.data.LibraryContentRepo
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.useCase.GetLibraryContentUseCase
-import mnshat.dev.myproject.dataSource.room.AppDatabase
+import mnshat.dev.myproject.util.AppDatabase
 import mnshat.dev.myproject.factories.LibraryViewModelFactory
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 

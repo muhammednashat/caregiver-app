@@ -8,16 +8,10 @@ import androidx.core.app.NotificationCompat
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.prolificinteractive.materialcalendarview.CalendarDay
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.dataSource.room.AppDatabase
-import mnshat.dev.myproject.users.patient.calender.domain.entity.DayEntity
 import mnshat.dev.myproject.users.patient.main.presentaion.UserScreensActivity
 import java.util.Date
 import android.content.Context
-import android.content.ContextWrapper
 
 class MyWorkManager(private val context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context, workerParams) {

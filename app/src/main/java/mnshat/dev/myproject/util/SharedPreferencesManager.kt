@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import javax.inject.Inject
+import androidx.core.content.edit
 
 class SharedPreferencesManager @Inject constructor(context: Context) {
 
@@ -26,16 +27,7 @@ class SharedPreferencesManager @Inject constructor(context: Context) {
         }
     }
 
-    fun storeLang(key: String, value: Long?) {
-        if (value != null) {
-            val editor = sharedPreferences.edit()
-            editor.putLong(key, value)
-            editor.apply()
-        }
-    }
 
-    fun getLong(key: String, defaultValue: Long = 0L)=
-        sharedPreferences.getLong(key, defaultValue)
 
     fun getString(key: String, defaultValue: String = "")= sharedPreferences.getString(key, defaultValue) ?: defaultValue
 
@@ -55,17 +47,17 @@ class SharedPreferencesManager @Inject constructor(context: Context) {
 
 
     fun clearData() {
-        val editor = sharedPreferences.edit()
-        editor.clear()
-        editor.apply()
+        sharedPreferences.edit() {
+            clear()
+        }
     }
     fun storeObject(key:String,obj: Any?) {
         if (obj != null) {
-            val editor = sharedPreferences.edit()
-            val  gson = Gson()
-            val json: String = gson.toJson(obj)
-            editor.putString(key, json)
-            editor.apply()
+            sharedPreferences.edit() {
+                val gson = Gson()
+                val json: String = gson.toJson(obj)
+                putString(key, json)
+            }
         }
     }
 

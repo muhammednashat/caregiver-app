@@ -10,7 +10,6 @@ import androidx.core.app.NotificationCompat
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import kotlinx.coroutines.runBlocking
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.dataSource.room.AppDatabase
 import mnshat.dev.myproject.users.patient.main.presentaion.UserScreensActivity
 import java.util.Date
 

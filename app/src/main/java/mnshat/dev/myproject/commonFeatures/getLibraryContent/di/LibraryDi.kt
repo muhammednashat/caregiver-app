@@ -5,7 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.data.LibraryDao
-import mnshat.dev.myproject.dataSource.room.AppDatabase
+import mnshat.dev.myproject.util.AppDatabase
 import javax.inject.Singleton
 
 

@@ -1,48 +1,34 @@
 package mnshat.dev.myproject.auth.presentation
 
-import android.app.Application
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseViewModel2
+import mnshat.dev.myproject.auth.data.entity.UserProfile
+import mnshat.dev.myproject.auth.data.repo.AuthRepo
 import mnshat.dev.myproject.model.Partner
-import mnshat.dev.myproject.model.Permissions
-import mnshat.dev.myproject.auth.data.entity.RegistrationData
-import mnshat.dev.myproject.users.caregiver.tools.cofe.domain.model.UserIdea
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.CAREGIVER
-import mnshat.dev.myproject.util.EMAIL_PARTNER
 import mnshat.dev.myproject.util.GENDER
-import mnshat.dev.myproject.util.HAS_PARTNER
-import mnshat.dev.myproject.util.ID_PARTNER
-import mnshat.dev.myproject.util.IMAGE_PARTNER
-import mnshat.dev.myproject.util.IS_LOGGED
-import mnshat.dev.myproject.util.NAME_PARTNER
-import mnshat.dev.myproject.util.PERMISSION_MASSAGE
-import mnshat.dev.myproject.util.PERMISSION_MOOD
-import mnshat.dev.myproject.util.PERMISSION_POINTS
-import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
-import mnshat.dev.myproject.util.TYPE_OF_USER
-import mnshat.dev.myproject.util.USER_EMAIL
-import mnshat.dev.myproject.util.USER_ID
-import mnshat.dev.myproject.util.USER_IMAGE
-import mnshat.dev.myproject.util.USER_NAME
+import mnshat.dev.myproject.util.log
 import javax.inject.Inject
+
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
     val sharedPreferences: SharedPreferencesManager,
-
+    val authRepo: AuthRepo,
 ) : ViewModel() {
+
     var intGender = MutableLiveData<Int?>()
     var strGender = MutableLiveData<String?>()
     var intAge = MutableLiveData<Int?>()
     var strAge = MutableLiveData<String?>()
     val currentLang = MutableLiveData<String>()
-    var partner: Partner? = null
     var name = MutableLiveData<String?>()
     var token = MutableLiveData<String>()
     var invitationCode = MutableLiveData<String>()
@@ -55,6 +41,35 @@ class AuthViewModel @Inject constructor(
     var id: String? = null
     var imageUser: String? = null ;
 
+
+
+    fun testStoringRe(){
+        val fakeUser = UserProfile(
+            id = "user001",
+            name = "Alice Smith",
+            email = "alice@example.com",
+            password = "secret123",
+            imageUser = "https://example.com/profile.jpg",
+            gender = 0,
+            ageGroup = 2,
+            religion = true,
+            token = "fake_token_abc123",
+            invitationCode = "INVITE2025",
+            typeOfUser = "standard",
+            isInvitationUsed = false,
+            numberSupporters = 10,
+            hasPartner = true,
+            invitationBase = "BASE789",
+            status = 1
+        )
+
+
+        viewModelScope.launch {
+            log("testStoringRe()")
+            authRepo.storeUserDataRemote(fakeUser)
+        }
+
+    }
     fun clearData() {
         name.value = null
         email.value = null
@@ -210,32 +225,10 @@ class AuthViewModel @Inject constructor(
     }
 
 
-    fun storeDataLocally() {
-        initImageUser()
-        sharedPreferences.storeString(USER_ID, id)
-        sharedPreferences.storeString(USER_EMAIL, email.value)
-        sharedPreferences.storeString(USER_IMAGE, imageUser)
-        sharedPreferences.storeInt(GENDER, intGender.value)
-        sharedPreferences.storeInt(AGE_GROUP, intAge.value)
-        sharedPreferences.storeString(TYPE_OF_USER, typeOfUser.value)
-        sharedPreferences.storeString(USER_NAME, name.value)
-        sharedPreferences.storeBoolean(HAS_PARTNER, false)
-        sharedPreferences.storeBoolean(IS_LOGGED, true)
-        sharedPreferences.storeBoolean(RELIGION,true)
-        if ( typeOfUser.value == CAREGIVER){
-            sharedPreferences.storeString(NAME_PARTNER, partner?.namePartner)
-            sharedPreferences.storeString(ID_PARTNER, partner?.idPartner)
-            sharedPreferences.storeString(EMAIL_PARTNER, partner?.emailPartner)
-            sharedPreferences.storeString(IMAGE_PARTNER, partner?.imagePartner)
-            sharedPreferences.storeBoolean(PERMISSION_MOOD, false)
-            sharedPreferences.storeBoolean(PERMISSION_MASSAGE, false)
-            sharedPreferences.storeBoolean(PERMISSION_POINTS, false)
-        }
-    }
 
-    fun getRegistrationDataForUser(): RegistrationData {
+    fun getRegistrationDataForUser(): UserProfile {
         initImageUser()
-        return RegistrationData(
+        return UserProfile(
             id = id,
             name = name.value,
             email = email.value,
@@ -244,14 +237,11 @@ class AuthViewModel @Inject constructor(
             ageGroup = intAge.value,
             token = token.value,
             invitationCode = invitationCode.value,
-            baseCode = invitationCode.value,
             typeOfUser = typeOfUser.value ?: "",
-            codeUsed = false,
             numberSupporters = 0,
             hasPartner = false,
-            currentTaskDay = 1,
+            status = 1,
             religion = true,
-            userIdea = UserIdea(idea = "", response = "")
         )
     }
 
@@ -259,20 +249,4 @@ class AuthViewModel @Inject constructor(
          imageUser =       if (intGender.value == 1) "https://firebasestorage.googleapis.com/v0/b/myproject-18932.appspot.com/o/images%2Fman.png?alt=media&token=442a95f6-c82c-4725-9432-5fef0b516b06" else "https://firebasestorage.googleapis.com/v0/b/myproject-18932.appspot.com/o/images%2Fusers%20(2).png?alt=media&token=889b15ae-fd46-4255-a757-de712e1b5113"
     }
 
-    fun getRegistrationDataForCaregiver(): RegistrationData {
-        initImageUser()
-        return RegistrationData(
-            id = id,
-            name = name.value,
-            email = email.value,
-            imageUser = imageUser,
-            token = token.value,
-            typeOfUser = typeOfUser.value ?: "",
-            hasPartner = true,
-            partner = partner,
-            permissions = Permissions(),
-            status = 1,
-            userIdea = UserIdea(idea = "", response = "")
-        )
-    }
 }
