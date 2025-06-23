@@ -57,7 +57,8 @@ class SignUpFragment : AuthBaseFragment<FragmentSignUpBinding>(){
             GenderFragment().show(childFragmentManager, GenderFragment::class.java.name)
         }
 
-        binding.btnSign.setOnClickListener {view ->
+        binding.btnSign.setOnClickListener {
+            view ->
             if (_viewModel.validToRegisterUser(requireContext())) {
                 if (_viewModel.typeOfUser.value == CAREGIVER){
                     retrieveUser()
