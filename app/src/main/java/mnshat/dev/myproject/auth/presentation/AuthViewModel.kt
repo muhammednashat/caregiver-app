@@ -33,8 +33,6 @@ class AuthViewModel @Inject constructor(
     var token = MutableLiveData<String>()
     var invitationCode = MutableLiveData<String>()
     var email = MutableLiveData<String?>()
-
-
     var password = MutableLiveData<String?>()
     val typeOfUser = MutableLiveData<String?>()
     var errorMessage: String? = ""
@@ -66,7 +64,7 @@ class AuthViewModel @Inject constructor(
 
         viewModelScope.launch {
             log("testStoringRe()")
-            authRepo.storeUserDataRemote(fakeUser)
+            authRepo.signUp(fakeUser)
         }
 
     }

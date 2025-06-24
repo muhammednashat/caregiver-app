@@ -18,30 +18,25 @@ class AuthRepo(
     private val sharedPreferences: SharedPreferencesManager
 ) {
 
-    suspend fun getToken(): String {
-        return try {
-            firebaseMessaging.token.await()
-        } catch (e: Exception) {
-            ""
-        }
-    }
-
-    suspend fun signInWithEmailAndPassword(email: String, password: String): AuthResult? {
-        return try {
-            fireAuth.signInWithEmailAndPassword(email, password).await()
-
-        } catch (e: Exception) {
-            null
-        }
-    }
-
     suspend fun createUserWithEmailAndPassword(email: String, password: String): AuthResult? {
+
         return try {
             fireAuth.createUserWithEmailAndPassword(email, password).await()
         } catch (e: Exception) {
             null
         }
     }
+
+   suspend fun signUp( userProfile:  UserProfile):Boolean{
+      val authResult =  createUserWithEmailAndPassword(userProfile.email!! , userProfile.password!!)
+      return if (authResult != null) {
+         storeUserDataRemote(userProfile, authResult)
+        }else{
+        false
+        }
+   }
+
+
 
     fun storeUserDataLocally( userProfile: UserProfile): Boolean {
         return try {
@@ -51,8 +46,15 @@ class AuthRepo(
             false
         }
     }
+    suspend fun newUserProfile(userProfile: UserProfile, authResult: AuthResult): UserProfile{
+        val token = getToken()
+        val id = authResult.user?.uid
+        val
+    }
 
-    suspend fun storeUserDataRemote( userProfile:  UserProfile): Boolean {
+    private suspend fun storeUserDataRemote(userProfile: UserProfile, authResult: AuthResult): Boolean {
+
+
         return try {
             firestore
                 .collection(USERS)
@@ -66,8 +68,20 @@ class AuthRepo(
             false
         }
     }
-
-
+    suspend fun getToken(): String {
+        return try {
+            firebaseMessaging.token.await()
+        } catch (e: Exception) {
+            ""
+        }
+    }
+    private suspend fun signInWithEmailAndPassword(email: String, password: String): AuthResult? {
+        return try {
+            fireAuth.signInWithEmailAndPassword(email, password).await()
+        } catch (e: Exception) {
+            null
+        }
+    }
     fun isValidInvitation(invitationCode: String) {
 
     }
@@ -89,9 +103,6 @@ class AuthRepo(
     }
 
 
-    fun signUp( userProfile:  UserProfile) {
-
-    }
 
 
 
