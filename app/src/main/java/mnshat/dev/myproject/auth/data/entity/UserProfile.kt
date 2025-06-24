@@ -49,7 +49,7 @@ data class UserProfile(
 ): Parcelable {
 
     override fun toString(): String {
-        return "RegistrationData(" +
+        return "UserProfile(" +
                 "name=$name, " +
                 "email=$email, " +
                 "password=$password," +

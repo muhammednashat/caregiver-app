@@ -35,7 +35,7 @@ class MainAuthFragment : BaseFragment(){
 
         binding.logIn.setOnClickListener {
 
-            viewModel.testStoringRe()
+            viewModel.signUp()
 //            findNavController().navigate(R.id.action_mainAuthFragment_to_loginFragment)
 
         }

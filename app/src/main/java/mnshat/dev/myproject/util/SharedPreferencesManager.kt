@@ -6,6 +6,7 @@ import com.google.gson.Gson
 import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import javax.inject.Inject
 import androidx.core.content.edit
+import mnshat.dev.myproject.auth.data.entity.UserProfile
 
 class SharedPreferencesManager @Inject constructor(context: Context) {
 
@@ -60,6 +61,13 @@ class SharedPreferencesManager @Inject constructor(context: Context) {
             }
         }
     }
+
+    fun getUserProfile(key: String) : UserProfile {
+        val string = sharedPreferences.getString(key, null.toString())
+        val gson = Gson()
+        return gson.fromJson(string, UserProfile::class.java)
+    }
+
 
     fun getObjectProfilePartner(key: String) : RegistrationData {
         val string = sharedPreferences.getString(key, null.toString())

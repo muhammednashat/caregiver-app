@@ -9,11 +9,11 @@ import kotlinx.coroutines.launch
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.auth.data.entity.UserProfile
 import mnshat.dev.myproject.auth.data.repo.AuthRepo
-import mnshat.dev.myproject.model.Partner
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.GENDER
 import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.USER
 import mnshat.dev.myproject.util.log
 import javax.inject.Inject
 
@@ -40,34 +40,52 @@ class AuthViewModel @Inject constructor(
     var imageUser: String? = null ;
 
 
-
-    fun testStoringRe(){
-        val fakeUser = UserProfile(
-            id = "user001",
+    fun signUp(){
+        val userProfile = UserProfile(
             name = "Alice Smith",
-            email = "alice@example.com",
-            password = "secret123",
-            imageUser = "https://example.com/profile.jpg",
-            gender = 0,
+            email = "alice31dj@example.com",
+            password = "secfsdff3",
+            gender = 1,
             ageGroup = 2,
+            typeOfUser = USER,
             religion = true,
-            token = "fake_token_abc123",
-            invitationCode = "INVITE2025",
-            typeOfUser = "standard",
-            isInvitationUsed = false,
-            numberSupporters = 10,
-            hasPartner = true,
-            invitationBase = "BASE789",
-            status = 1
+            hasPartner = false,
+            numberSupporters = 0,
+            isInvitationUsed = false
         )
-
-
         viewModelScope.launch {
-            log("testStoringRe()")
-            authRepo.signUp(fakeUser)
+            if (userProfile.typeOfUser == CAREGIVER){
+                caregiverRegistration(userProfile)
+            }else{
+                userRegistration(userProfile)
+            }
         }
 
     }
+
+
+
+   private suspend fun caregiverRegistration(userProfile: UserProfile){
+       val partner =   authRepo.isValidInvitation("D4StwV9bd" )
+       if (partner != null){
+           authRepo.signUp(userProfile)
+//           addPartner(partner.email)
+
+       }else{
+           log("no user found ")
+       }
+    }
+
+    private suspend fun userRegistration(userProfile: UserProfile){
+       val result = authRepo.signUp(userProfile)
+        if (result.isNotEmpty()){
+            log("done")
+        }else{
+            log(result)
+        }
+
+    }
+
     fun clearData() {
         name.value = null
         email.value = null
@@ -225,7 +243,6 @@ class AuthViewModel @Inject constructor(
 
 
     fun getRegistrationDataForUser(): UserProfile {
-        initImageUser()
         return UserProfile(
             id = id,
             name = name.value,
@@ -243,8 +260,6 @@ class AuthViewModel @Inject constructor(
         )
     }
 
-    private fun initImageUser() {
-         imageUser =       if (intGender.value == 1) "https://firebasestorage.googleapis.com/v0/b/myproject-18932.appspot.com/o/images%2Fman.png?alt=media&token=442a95f6-c82c-4725-9432-5fef0b516b06" else "https://firebasestorage.googleapis.com/v0/b/myproject-18932.appspot.com/o/images%2Fusers%20(2).png?alt=media&token=889b15ae-fd46-4255-a757-de712e1b5113"
-    }
+
 
 }
