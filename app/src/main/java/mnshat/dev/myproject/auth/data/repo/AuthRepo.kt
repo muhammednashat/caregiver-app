@@ -8,6 +8,7 @@ import kotlinx.coroutines.tasks.await
 import mnshat.dev.myproject.auth.data.entity.UserProfile
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.INVITATION_CODE
+import mnshat.dev.myproject.util.PARTNERS
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USERS
 import mnshat.dev.myproject.util.USER_PROFILE
@@ -71,7 +72,7 @@ class AuthRepo(
             userProfile.religion = null
             userProfile.ageGroup = null
             userProfile.status = 1
-            userProfile.numberSupporters = null
+            userProfile.supportersNumber = null
             userProfile.isInvitationUsed = null
         } else {
             val invitationCode = userId.take(8)
@@ -115,13 +116,7 @@ class AuthRepo(
     }
 
 
-    private suspend fun signInWithEmailAndPassword(email: String, password: String): AuthResult? {
-        return try {
-            fireAuth.signInWithEmailAndPassword(email, password).await()
-        } catch (e: Exception) {
-            null
-        }
-    }
+
 
     suspend fun isValidInvitation(invitationCode: String): UserProfile? {
         return try {
@@ -134,11 +129,51 @@ class AuthRepo(
 
     }
 
-    fun retrievePartners() {
 
+    suspend fun linkPartnerToUser(userId: String, partnerId: String): String {
+        return try {
+            val data = hashMapOf("id" to partnerId )
+            val snapShot =
+                firestore.collection(USERS)
+                    .document(userId)
+                    .collection(PARTNERS)
+                    .document(partnerId)
+                    .set(data)
+                    .await()
+            ""
+        } catch (e: Exception) {
+            e.message.toString()
+        }
     }
 
-    fun addPartner() {
+    suspend fun updateUserData(userId: String, updatedData: HashMap<String, Any>): String{
+
+        log("updateSupportersNumber $updatedData ")
+        return  try {
+             firestore.collection(USERS)
+                .document(userId)
+                .update( updatedData)
+                .await()
+
+            ""
+        }catch (e:Exception){
+            e.message.toString()
+        }
+    }
+
+
+    private suspend fun signInWithEmailAndPassword(email: String, password: String): AuthResult? {
+        return try {
+            fireAuth.signInWithEmailAndPassword(email, password).await()
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+
+
+
+    fun retrievePartners() {
 
     }
 
@@ -158,8 +193,6 @@ class AuthRepo(
     fun resetPassword() {
 
     }
-
-
 
 
 

@@ -13,7 +13,6 @@ import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.GENDER
 import mnshat.dev.myproject.util.SharedPreferencesManager
-import mnshat.dev.myproject.util.USER
 import mnshat.dev.myproject.util.log
 import javax.inject.Inject
 
@@ -23,6 +22,9 @@ class AuthViewModel @Inject constructor(
     val sharedPreferences: SharedPreferencesManager,
     val authRepo: AuthRepo,
 ) : ViewModel() {
+
+
+    var partner: UserProfile? = null
 
     var intGender = MutableLiveData<Int?>()
     var strGender = MutableLiveData<String?>()
@@ -43,19 +45,19 @@ class AuthViewModel @Inject constructor(
     fun signUp(){
         val userProfile = UserProfile(
             name = "Alice Smith",
-            email = "alice31dj@example.com",
-            password = "secfsdff3",
+            email = "altfdddsfddddadsdfdffsdfd@example.com",
+            password = "123456",
             gender = 1,
             ageGroup = 2,
-            typeOfUser = USER,
+            typeOfUser = CAREGIVER,
             religion = true,
             hasPartner = false,
-            numberSupporters = 0,
+            supportersNumber = 0,
             isInvitationUsed = false
         )
         viewModelScope.launch {
             if (userProfile.typeOfUser == CAREGIVER){
-                caregiverRegistration(userProfile)
+                isValidInvitation(userProfile)
             }else{
                 userRegistration(userProfile)
             }
@@ -63,25 +65,72 @@ class AuthViewModel @Inject constructor(
 
     }
 
+    private suspend fun isValidInvitation(userProfile: UserProfile) {
+        val partner = authRepo.isValidInvitation("dwMLVNYF")
+        if (partner != null) {
+            this.partner = partner
+            caregiverRegistration(userProfile)
+        } else {
+            log("no user found ")
+        }
+    }
 
-
-   private suspend fun caregiverRegistration(userProfile: UserProfile){
-       val partner =   authRepo.isValidInvitation("D4StwV9bd" )
-       if (partner != null){
-           authRepo.signUp(userProfile)
-//           addPartner(partner.email)
-
+    private suspend fun caregiverRegistration(userProfile: UserProfile) {
+        val result = authRepo.signUp(userProfile)
+        if (result.isNotEmpty()) {
+            log(result)
        }else{
-           log("no user found ")
+            addPartnerToCaregiver(userProfile.id ?: "")
        }
     }
+
+    private suspend fun addPartnerToCaregiver(userId: String) {
+        val result = authRepo.linkPartnerToUser(userId, partner?.id ?: "")
+        if (result.isNotEmpty()) {
+            log("addPartnerToCaregiver ${result} ")
+        } else {
+            addSupporterToUser(userId)
+        }
+
+    }
+
+    private suspend fun addSupporterToUser(partnerId: String) {
+        val result = authRepo.linkPartnerToUser(partner?.id ?: "", partnerId)
+        if (result.isNotEmpty()) {
+            log(result)
+        } else {
+            updateUserData()
+        }
+
+    }
+
+    private suspend fun updateUserData() {
+        val updatedNumber = partner?.supportersNumber!!.plus(1)
+        val updatedData: HashMap<String, Any> = hashMapOf(
+            "supportersNumber" to updatedNumber,
+            "hasPartner" to true,
+            "invitationCode" to "%%%%%%%$$$$%%%%%%%%%%",
+            "invitationUsed" to true
+        )
+
+
+        val result = authRepo.updateUserData(partner?.id ?: "", updatedData)
+        if (result.isNotEmpty()) {
+            log(result)
+        } else {
+            log("done")
+        }
+    }
+
 
     private suspend fun userRegistration(userProfile: UserProfile){
        val result = authRepo.signUp(userProfile)
         if (result.isNotEmpty()){
-            log("done")
-        }else{
+            // has error
             log(result)
+        }else{
+
+            log("done")
         }
 
     }
@@ -253,7 +302,7 @@ class AuthViewModel @Inject constructor(
             token = token.value,
             invitationCode = invitationCode.value,
             typeOfUser = typeOfUser.value ?: "",
-            numberSupporters = 0,
+            supportersNumber = 0,
             hasPartner = false,
             status = 1,
             religion = true,

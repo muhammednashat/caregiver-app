@@ -1,6 +1,7 @@
 package mnshat.dev.myproject.util
 
 const val USERS = "Users"
+const val PARTNERS = "Partners"
 const val USER = "user"
 const val USER_PROFILE = "profile"
 const val CAREGIVER = "caregiver"
