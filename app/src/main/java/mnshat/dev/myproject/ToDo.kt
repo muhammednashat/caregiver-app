@@ -2,8 +2,10 @@ package mnshat.dev.myproject
 
 
 /**
- * git daily program
- * 
+ *  sign up
+ * sign in
+ * navigate to user to get daily  program
+ * navigate to caregiver
  */
 
 

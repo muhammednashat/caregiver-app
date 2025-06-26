@@ -1,6 +1,7 @@
 package mnshat.dev.myproject.auth.presentation
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,10 +10,13 @@ import kotlinx.coroutines.launch
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.auth.data.entity.UserProfile
 import mnshat.dev.myproject.auth.data.repo.AuthRepo
+import mnshat.dev.myproject.users.patient.dailyprogram.data.DailyProgramRepository
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.DayTaskEntity
 import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.GENDER
 import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.util.USER
 import mnshat.dev.myproject.util.log
 import javax.inject.Inject
 
@@ -20,11 +24,18 @@ import javax.inject.Inject
 @HiltViewModel
 class AuthViewModel @Inject constructor(
     val sharedPreferences: SharedPreferencesManager,
-    val authRepo: AuthRepo,
+    private val dailyProgramRepo: DailyProgramRepository,
+    private  val authRepo: AuthRepo,
 ) : ViewModel() {
 
 
     var partner: UserProfile? = null
+
+    private var _authStatus: MutableLiveData<String>? = null
+    val authStatus:LiveData<String>? = _authStatus
+
+
+
 
     var intGender = MutableLiveData<Int?>()
     var strGender = MutableLiveData<String?>()
@@ -45,22 +56,26 @@ class AuthViewModel @Inject constructor(
     fun signUp(){
         val userProfile = UserProfile(
             name = "Alice Smith",
-            email = "altfdddsfddddadsdfdffsdfd@example.com",
+            email = "altadsdfdffsdfd@example.com",
             password = "123456",
             gender = 1,
             ageGroup = 2,
-            typeOfUser = CAREGIVER,
+            typeOfUser = USER,
             religion = true,
             hasPartner = false,
             supportersNumber = 0,
             isInvitationUsed = false
         )
         viewModelScope.launch {
-            if (userProfile.typeOfUser == CAREGIVER){
-                isValidInvitation(userProfile)
-            }else{
-                userRegistration(userProfile)
-            }
+            fetchContentDailyProgramRemote(2)
+
+//            if (userProfile.typeOfUser == CAREGIVER){
+//                isValidInvitation(userProfile)
+//            }else{
+//                userRegistration(userProfile)
+//            }
+
+
         }
 
     }
@@ -126,14 +141,30 @@ class AuthViewModel @Inject constructor(
     private suspend fun userRegistration(userProfile: UserProfile){
        val result = authRepo.signUp(userProfile)
         if (result.isNotEmpty()){
-            // has error
             log(result)
         }else{
-
-            log("done")
+            fetchContentDailyProgramRemote(1)
         }
 
     }
+
+    private  fun fetchContentDailyProgramRemote(numberOfDay:Int){
+
+        viewModelScope.launch {
+          val result =  dailyProgramRepo.fetchContentDailyProgram(numberOfDay)
+            if (result){
+                log("done")
+            }else{
+                log("error")
+            }
+
+        }
+    }
+
+
+
+
+
 
     fun clearData() {
         name.value = null

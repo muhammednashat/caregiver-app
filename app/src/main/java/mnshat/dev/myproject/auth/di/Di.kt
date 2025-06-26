@@ -9,6 +9,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import mnshat.dev.myproject.auth.data.repo.AuthRepo
 import mnshat.dev.myproject.auth.presentation.AuthViewModel
+import mnshat.dev.myproject.users.patient.dailyprogram.data.DailyProgramRepository
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import javax.inject.Singleton
 
@@ -20,8 +21,9 @@ object Di {
     @Singleton
     fun provideAuthViewModel(
         sharedPreferences: SharedPreferencesManager,
-        authRepo: AuthRepo
-    ) = AuthViewModel(sharedPreferences, authRepo)
+        dailyProgramRepo: DailyProgramRepository,
+        authRepo: AuthRepo,
+    ) = AuthViewModel(sharedPreferences, dailyProgramRepo, authRepo)
 
 
     @Provides
