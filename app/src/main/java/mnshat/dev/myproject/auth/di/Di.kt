@@ -17,13 +17,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object Di {
 
-    @Provides
-    @Singleton
-    fun provideAuthViewModel(
-        sharedPreferences: SharedPreferencesManager,
-        dailyProgramRepo: DailyProgramRepository,
-        authRepo: AuthRepo,
-    ) = AuthViewModel(sharedPreferences, dailyProgramRepo, authRepo)
+//    @Provides
+//    @Singleton
+//    fun provideAuthViewModel(
+//        sharedPreferences: SharedPreferencesManager,
+//        dailyProgramRepo: DailyProgramRepository,
+//        authRepo: AuthRepo,
+//    ) = AuthViewModel(sharedPreferences, dailyProgramRepo, authRepo)
 
 
     @Provides

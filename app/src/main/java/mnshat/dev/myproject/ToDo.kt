@@ -2,10 +2,18 @@ package mnshat.dev.myproject
 
 
 /**
- *  sign up
- * sign in
- * navigate to user to get daily  program
- * navigate to caregiver
+ * set age
+ * set gender
+ * lang at first time
+ * review auth carefully
+ * check splash screen
+ * home user
+ * daily program
+ *
  */
 
 
+//later
+/**
+ * Check why dose sign up screen hold age and gender even if you restart app , hint check shared preferences
+ */

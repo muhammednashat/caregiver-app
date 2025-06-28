@@ -32,20 +32,13 @@ class DailyProgramRepository @Inject constructor(
             log(tasks?.size.toString())
 
              if (tasks?.size == 0){
-//                 log("tasks?.size == 0")
                  val data = fetchContentDailyProgramRemote()
                  storeDailyProgramListLocally(data)
-                 tasks = dao.getAllDayTasks()
               }
 
-//            log("tasks => ${tasks.toString()}")
             val dayTask = dao.getDayTaskById(numberOfDay)
-//             log("currentDay: $dayTask")
-
             val currentDay = filterBasedProfile(dayTask!!, numberOfDay)
-//             log("currentDay: $currentDay")
              updateCurrentDayLocally(currentDay)
-//              log("current =>>> ${getCurrentDayLocally()}")
             updateCurrentDayRemotely(currentDay)
             true
         } catch (e: Exception) {

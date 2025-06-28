@@ -54,7 +54,7 @@ class AgeFragment : BaseBottomSheetDialogFragment() {
     private fun observeViewModel() {
         viewModel.intAge.observe(viewLifecycleOwner) {
             it?.let {
-                viewModel.setStrAge(requireActivity(),viewModel.sharedPreferences,it)
+//                viewModel.setStrAge(requireActivity(),viewModel.sharedPreferences,it)
                 setChoosenAge(it)
             }
         }

@@ -45,7 +45,7 @@ class GenderFragment : BaseBottomSheetDialogFragment() {
 
   private fun observeViewModel(){
             viewModel.intGender.observe(viewLifecycleOwner) {
-            viewModel.setStrGender(requireActivity(),viewModel.sharedPreferences,it)
+            viewModel.setStrGender(viewModel.sharedPreferences,it)
             changeUserUi(it)
         }
     }

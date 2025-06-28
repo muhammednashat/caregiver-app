@@ -1,5 +1,6 @@
 package mnshat.dev.myproject.auth.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +11,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentSignUpBinding
 import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.users.caregiver.main.CaregiverScreenActivity
+import mnshat.dev.myproject.users.patient.main.presentaion.UserScreensActivity
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.USER
+import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 
@@ -28,8 +32,6 @@ private val viewModel: AuthViewModel by viewModels()
         binding = FragmentSignUpBinding.inflate(inflater,container,false)
 
         setupClickListener()
-
-
         return  binding.root
     }
 
@@ -59,6 +61,22 @@ private val viewModel: AuthViewModel by viewModels()
 
         binding.btnSign.setOnClickListener {
 
+//            viewModel.signUp()
+         if (viewModel.validToRegisterUser()){
+             signUp()
+         }else{
+             showToast(viewModel.errorMessage!!)
+         }
+        }
+    }
+
+
+    private fun signUp(){
+        if (isConnected()){
+            showProgressDialog()
+            viewModel.signUp(requireActivity())
+        }else{
+            showNoInternetSnackBar(binding.root)
         }
     }
 
@@ -114,12 +132,40 @@ private val viewModel: AuthViewModel by viewModels()
     private fun observeViewModel() {
         viewModel.strGender.value = getString(R.string.gender)
         viewModel.strAge.value = getString(R.string.age_group)
+
+        viewModel.authStatus.observe(viewLifecycleOwner){
+            dismissProgressDialog()
+            if (it.isNotEmpty()){
+                showToast(it)
+            }else{
+                viewModel.updateAuthStatusLocale()
+                showToast(getString(R.string.welcome))
+                navigateBasedUserType()
+
+            }
+        }
+
         viewModel.typeOfUser.observe(viewLifecycleOwner) {
             it?.let {
                 hideContentUser(it == USER)
                 changeUserUi(it)
             }
         }
+    }
+
+    private fun navigateBasedUserType() {
+        log("navigateBasedUserType() called with: typeOfUser = ${viewModel.typeOfUser.value}")
+      if (viewModel.typeOfUser.value == CAREGIVER){
+          startActivity(Intent(requireContext(),CaregiverScreenActivity::class.java))
+      }else{
+          startActivity(Intent(requireContext(), UserScreensActivity::class.java))
+      }
+    }
+
+
+    override fun onStop() {
+        super.onStop()
+        viewModel.clearData()
     }
 
 

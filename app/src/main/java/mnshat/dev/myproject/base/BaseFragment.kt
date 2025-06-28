@@ -22,6 +22,7 @@ import mnshat.dev.myproject.databinding.DialogConfirmLogoutBinding
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.util.IS_SECOND_TIME
 import mnshat.dev.myproject.util.LANGUAGE
+import mnshat.dev.myproject.util.NetworkMonitor
 import mnshat.dev.myproject.util.PASSWORD
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USER_EMAIL
@@ -96,6 +97,11 @@ open class BaseFragment: Fragment() {
             temporallyDialog.dismiss()
         }
         temporallyDialog.show()
+    }
+
+    fun isConnected():Boolean{
+        val networkMonitor = NetworkMonitor(requireActivity())
+        return  networkMonitor.isConnected()
     }
 
     fun showDialogConfirmLogout(sharedPreferences: SharedPreferencesManager) {
