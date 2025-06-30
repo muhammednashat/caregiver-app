@@ -25,11 +25,17 @@ class AuthRepo(
     suspend fun signUp(userProfile: UserProfile):String {
       return   try {
             val (authResult , errorOrId) =
-                createUserWithEmailAndPassword(userProfile.email!!, userProfile.password!!)
+
+               createUserWithEmailAndPassword(userProfile.email!!, userProfile.password!!)
+
                if (authResult){
-                val newUserProfile = newUserProfile(userProfile, errorOrId)
-                storeUserDataRemote(newUserProfile)
-                storeUserDataLocally(newUserProfile)
+
+                 val newUserProfile = newUserProfile(userProfile, errorOrId)
+
+
+
+                 storeUserDataRemote(newUserProfile)
+                 storeUserDataLocally(newUserProfile)
 
                    ""
                }else{
@@ -44,8 +50,11 @@ class AuthRepo(
         email: String,
         password: String
     ):Pair<Boolean, String> {
+
         return try {
+
             val result = fireAuth.createUserWithEmailAndPassword(email, password).await()
+
             val uid = result.user?.uid
             if (uid != null) {
                 Pair(true, uid)
@@ -62,8 +71,11 @@ class AuthRepo(
         userProfile: UserProfile,
         userId: String
     ): UserProfile {
+
         userProfile.imageUser =
             if (userProfile.gender == 1) "https://firebasestorage.googleapis.com/v0/b/myproject-18932.appspot.com/o/images%2Fman.png?alt=media&token=442a95f6-c82c-4725-9432-5fef0b516b06" else "https://firebasestorage.googleapis.com/v0/b/myproject-18932.appspot.com/o/images%2Fusers%20(2).png?alt=media&token=889b15ae-fd46-4255-a757-de712e1b5113"
+
+
         userProfile.password = "***********"
         userProfile.id = userId
         userProfile.token = getToken()
@@ -72,6 +84,7 @@ class AuthRepo(
             userProfile.hasPartner = true
             userProfile.status = 1
         } else {
+
             val invitationCode = userId.take(8)
             userProfile.invitationCode = invitationCode
             userProfile.invitationBase = invitationCode
@@ -79,6 +92,7 @@ class AuthRepo(
             userProfile.hasPartner = false
             userProfile.religion = true
             userProfile.isInvitationUsed = false
+
         }
         return userProfile
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
@@ -11,10 +12,11 @@ import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentGenderBinding
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.GENDER
+import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 class GenderFragment : BaseBottomSheetDialogFragment() {
-    private  val viewModel: AuthViewModel by viewModels()
+    private  val viewModel: AuthViewModel by activityViewModels()
 
 
     private  lateinit var binding: FragmentGenderBinding
@@ -25,6 +27,7 @@ class GenderFragment : BaseBottomSheetDialogFragment() {
         binding = FragmentGenderBinding.inflate(inflater,container,false)
         setupClickListener()
         initializeViews()
+        log("GenderFragment() called=>  ${viewModel.name.value}" )
         return  binding.root
     }
 
@@ -39,16 +42,18 @@ class GenderFragment : BaseBottomSheetDialogFragment() {
             binding.close.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
             binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
         }
-        changeUserUi(viewModel.sharedPreferences.getInt(GENDER))
+        changeUserUi(viewModel.intGender.value)
     }
 
 
   private fun observeViewModel(){
-            viewModel.intGender.observe(viewLifecycleOwner) {
-            viewModel.setStrGender(viewModel.sharedPreferences,it)
+          viewModel.intGender.observe(viewLifecycleOwner) {
+            viewModel.setStrGender(requireContext())
             changeUserUi(it)
         }
     }
+
+
     private fun changeUserUi(type: Int?){
         when (type) {
             1 -> {

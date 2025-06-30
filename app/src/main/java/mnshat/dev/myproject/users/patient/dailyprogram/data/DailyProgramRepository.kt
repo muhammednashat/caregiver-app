@@ -26,6 +26,7 @@ class DailyProgramRepository @Inject constructor(
 ) {
 
     suspend fun fetchContentDailyProgram(numberOfDay: Int): Boolean {
+
         return try {
             var tasks = dao.getAllDayTasks()
 
@@ -38,8 +39,10 @@ class DailyProgramRepository @Inject constructor(
 
             val dayTask = dao.getDayTaskById(numberOfDay)
             val currentDay = filterBasedProfile(dayTask!!, numberOfDay)
+
              updateCurrentDayLocally(currentDay)
-            updateCurrentDayRemotely(currentDay)
+             updateCurrentDayRemotely(currentDay)
+
             true
         } catch (e: Exception) {
             false
@@ -53,8 +56,6 @@ class DailyProgramRepository @Inject constructor(
         for (document in querySnapShot) {
             dailyProgramList.add(document.toObject(DayTaskEntity::class.java))
         }
-        log(dailyProgramList.toString())
-        log("Retrieving data has completed")
         return dailyProgramList
 
        }

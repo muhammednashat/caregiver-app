@@ -2,14 +2,13 @@ package mnshat.dev.myproject
 
 
 /**
- * set age
- * set gender
- * lang at first time
  * review auth carefully
+ * lang at first time
  * check splash screen
  * home user
  * daily program
- *
+ * show onboarding screens with each new account
+ *  check  connect with supporter and it's permission
  */
 
 

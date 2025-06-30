@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
@@ -14,7 +14,9 @@ import mnshat.dev.myproject.util.ENGLISH_KEY
 
 @AndroidEntryPoint
 class AgeFragment : BaseBottomSheetDialogFragment() {
-    private  val viewModel: AuthViewModel by viewModels()
+
+    private  val viewModel: AuthViewModel by activityViewModels()
+
     private  lateinit var binding: FragmentAgeBinding
 
     override fun onCreateView(
@@ -27,18 +29,20 @@ class AgeFragment : BaseBottomSheetDialogFragment() {
         return  binding.root
     }
 
+
      fun setupClickListener() {
         binding.close.setOnClickListener {
             dismiss()
         }
     }
 
+
      fun initializeViews() {
         if (viewModel.currentLang.value != ENGLISH_KEY) {
             binding.close.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
             binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
         }
-        setChoosenAge(viewModel.sharedPreferences.getInt(AGE_GROUP))
+        setChoosenAge(viewModel.intAge.value)
     }
 
     private fun setChoosenAge(age: Int?) {
@@ -54,7 +58,7 @@ class AgeFragment : BaseBottomSheetDialogFragment() {
     private fun observeViewModel() {
         viewModel.intAge.observe(viewLifecycleOwner) {
             it?.let {
-//                viewModel.setStrAge(requireActivity(),viewModel.sharedPreferences,it)
+                viewModel.setStrAge(requireActivity())
                 setChoosenAge(it)
             }
         }

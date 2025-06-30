@@ -2,13 +2,12 @@ package mnshat.dev.myproject.auth.presentation
 
 import android.annotation.SuppressLint
 import android.content.Context
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.isActive
-import kotlinx.coroutines.job
 import kotlinx.coroutines.launch
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.auth.data.entity.UserProfile
@@ -20,7 +19,6 @@ import mnshat.dev.myproject.util.GENDER
 import mnshat.dev.myproject.util.IS_LOGGED
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.TYPE_OF_USER
-import mnshat.dev.myproject.util.USER
 import mnshat.dev.myproject.util.log
 import javax.inject.Inject
 
@@ -48,6 +46,10 @@ class AuthViewModel @Inject constructor(
     val typeOfUser = MutableLiveData<String?>()
     var errorMessage: String? = ""
 
+
+
+
+
     fun userProfile(): UserProfile {
 //        return UserProfile(
 //            name = "name.value",
@@ -64,29 +66,37 @@ class AuthViewModel @Inject constructor(
             name = name.value,
             email = email.value,
             password = password.value,
-            gender = 2,
-            ageGroup = 2,
-//            gender = intGender.value,
-//            ageGroup = intAge.value,
+//            gender = 2,
+//            ageGroup = 2,
+            gender = intGender.value,
+            ageGroup = intAge.value,
             typeOfUser = typeOfUser.value ?: "",
         )
     }
 
     fun signUp( context: Context) {
         this.context = context
+
         try {
+
             viewModelScope.launch {
+
                 if (userProfile().typeOfUser == CAREGIVER) {
+
                     isValidInvitation(invitationCode.value!!)
+
                 } else {
+
                     userRegistration(userProfile())
                 }
+
             }
-        } catch (e: Exception) {
+        }
+        catch (e: Exception) {
+
             log("${e.message}")
 
         }
-
 
     }
 
@@ -147,13 +157,19 @@ class AuthViewModel @Inject constructor(
     }
 
     private suspend fun userRegistration(userProfile: UserProfile) {
+
         val result = authRepo.signUp(userProfile)
+
+
+
         if (result.isNotEmpty()) {
             _authStatus.value = result
             log(result)
         } else {
+
             fetchContentDailyProgramRemote(1)
         }
+
     }
 
     private fun fetchContentDailyProgramRemote(numberOfDay: Int) {
@@ -169,10 +185,10 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    fun validToLogin(): Boolean {
-        if (!isEmailValid()) {
+    fun validToLogin(context: Context): Boolean {
+        if (!isEmailValid(context)) {
             return false
-        } else if (!isPasswordValid()) {
+        } else if (!isPasswordValid(context)) {
             return false
         }
         return true
@@ -180,30 +196,19 @@ class AuthViewModel @Inject constructor(
 
     fun setAge(int: Int) {
         intAge.value = int
-        setStrAge()
     }
 
-    fun setStrAge() {
+    fun setStrAge(context: Context) {
         intAge.value?.let {
-//            sharedPreferences.storeInt(AGE_GROUP, intAge.value)
             when (intAge.value) {
-                1 -> strAge.value = "df"
-                2 -> strAge.value = "df3"
-                3 -> strAge.value = "df65"
-//                3 -> strAge.value = context.getString(R.string.older)
+                1 -> strAge.value = context.getString(R.string.young_adulthood1)
+                2 -> strAge.value = context.getString(R.string.middle_age1)
+                3 -> strAge.value = context.getString(R.string.older)
             }
         }
     }
 
-    fun setStrGender( sharedPreferences: SharedPreferencesManager, gender: Int?) {
-        gender?.let {
-            sharedPreferences.storeInt(GENDER, gender)
-            when (gender) {
-                1 -> strGender.value = context?.getString(R.string.male)
-                2 -> strGender.value = context?.getString(R.string.female)
-            }
-        }
-    }
+
 
     fun setFavoriteLange(lang: String) {
         currentLang.value = lang
@@ -212,20 +217,28 @@ class AuthViewModel @Inject constructor(
     fun setGender(int: Int) {
         intGender.value = int
     }
+    fun setStrGender(context: Context ) {
+        val gender = intGender.value
+        gender?.let {
+            when (gender) {
+                1 -> strGender.value = context.getString(R.string.male)
+                2 -> strGender.value = context.getString(R.string.female)
+            }
+        }
+    }
 
-    fun validToRegisterUser(): Boolean {
-        if (!isValidUserType()) return false
-        if (!isValidName()) return false
-        if (!isEmailValid()) return false
-        if (!isPasswordValid()) return false
-//        if (!isValidAgeGroup()) return false
-//        if (!isValidGender()) return false
-        if (typeOfUser.value == CAREGIVER) return isValidInvitationCode()
+    fun validToRegisterUser(context: Context): Boolean {
+        if (!isValidUserType(context)) return false
+        if (!isValidName(context)) return false
+        if (!isEmailValid(context)) return false
+        if (!isPasswordValid(context)) return false
+        if (!isValidAgeGroup(context)) return false
+        if (!isValidGender(context)) return false
+        if (typeOfUser.value == CAREGIVER) return isValidInvitationCode(context)
         return true
     }
 
-    private fun isEmailValid(): Boolean {
-        log("isEmailValid() called")
+    private fun isEmailValid(context: Context): Boolean {
         return if (email.value.isNullOrEmpty()) {
             errorMessage = context?.getString(R.string.enter_email)
             false
@@ -240,7 +253,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    private fun isPasswordValid(): Boolean {
+    private fun isPasswordValid(context: Context): Boolean {
         return if (password.value.isNullOrEmpty()) {
             errorMessage = context?.getString(R.string.enter_password)
             false
@@ -252,21 +265,22 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    private fun isValidUserType(): Boolean {
+    private fun isValidUserType(context: Context): Boolean {
         return if (typeOfUser.value.isNullOrEmpty()) {
             errorMessage = context?.getString(R.string.select_user_type)
             false
         } else true
     }
 
-    private fun isValidName(): Boolean {
+    private fun isValidName(context: Context): Boolean {
+        log("isValidName() called with: name = ${name.value}")
         return if (name.value.isNullOrEmpty()) {
             errorMessage = context?.getString(R.string.enter_username)
             false
         } else true
     }
 
-    private fun isValidAgeGroup(): Boolean {
+    private fun isValidAgeGroup(context: Context): Boolean {
         return if (typeOfUser.value == CAREGIVER) {
             true
         } else {
@@ -277,18 +291,20 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    private fun isValidGender(): Boolean {
+    private fun isValidGender(context: Context): Boolean {
         return if (typeOfUser.value == CAREGIVER) {
             true
         } else {
             if (strGender.value == context?.getString(R.string.gender)) {
                 errorMessage = context?.getString(R.string.select_gender)
                 false
-            } else true
+            } else {
+                true
+            }
         }
     }
 
-    private fun isValidInvitationCode(): Boolean {
+    private fun isValidInvitationCode(context: Context): Boolean {
         return if (this.invitationCode.value.isNullOrEmpty()) {
             errorMessage = context?.getString(R.string.enter_invitation)
             false

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,14 +24,13 @@ class SignUpFragment : BaseFragment(){
 
 private  lateinit var binding: FragmentSignUpBinding
 
-private val viewModel: AuthViewModel by viewModels()
+private val viewModel: AuthViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSignUpBinding.inflate(inflater,container,false)
-
         setupClickListener()
         return  binding.root
     }
@@ -60,12 +60,11 @@ private val viewModel: AuthViewModel by viewModels()
         }
 
         binding.btnSign.setOnClickListener {
-
-//            viewModel.signUp()
-         if (viewModel.validToRegisterUser()){
+         if (viewModel.validToRegisterUser(requireActivity())){
              signUp()
          }else{
              showToast(viewModel.errorMessage!!)
+
          }
         }
     }
@@ -79,8 +78,6 @@ private val viewModel: AuthViewModel by viewModels()
             showNoInternetSnackBar(binding.root)
         }
     }
-
-
 
 
     private fun changeUserUi(type: String) {
@@ -120,8 +117,6 @@ private val viewModel: AuthViewModel by viewModels()
     }
 
 
-
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.lifecycleOwner = this
@@ -130,6 +125,7 @@ private val viewModel: AuthViewModel by viewModels()
     }
 
     private fun observeViewModel() {
+
         viewModel.strGender.value = getString(R.string.gender)
         viewModel.strAge.value = getString(R.string.age_group)
 
@@ -141,7 +137,6 @@ private val viewModel: AuthViewModel by viewModels()
                 viewModel.updateAuthStatusLocale()
                 showToast(getString(R.string.welcome))
                 navigateBasedUserType()
-
             }
         }
 
@@ -154,7 +149,6 @@ private val viewModel: AuthViewModel by viewModels()
     }
 
     private fun navigateBasedUserType() {
-        log("navigateBasedUserType() called with: typeOfUser = ${viewModel.typeOfUser.value}")
       if (viewModel.typeOfUser.value == CAREGIVER){
           startActivity(Intent(requireContext(),CaregiverScreenActivity::class.java))
       }else{
