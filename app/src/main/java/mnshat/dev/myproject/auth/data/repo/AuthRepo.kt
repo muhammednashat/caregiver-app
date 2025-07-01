@@ -176,12 +176,14 @@ class AuthRepo(
         }
     }
 
-
-    private suspend fun signInWithEmailAndPassword(email: String, password: String): AuthResult? {
+     suspend fun signInWithEmailAndPassword(email: String, password: String): String {
         return try {
             fireAuth.signInWithEmailAndPassword(email, password).await()
+            log("login success2")
+            ""
         } catch (e: Exception) {
-            null
+            log("login failed2")
+            e.toString()
         }
     }
 
@@ -192,7 +194,15 @@ class AuthRepo(
 
     }
 
-    fun retrieveUserRemoteByEmail() {
+    suspend fun retrieveUserRemoteByEmail(email: String):Pair<UserProfile?, String> {
+
+   return  try {
+        val snapShot = firestore.collection(USERS).whereEqualTo("email", email).get().await()
+          log(snapShot.toString())
+         Pair(null, "")
+     }catch (e:Exception){
+       Pair(null, e.message!!)
+     }
 
     }
 
@@ -208,6 +218,7 @@ class AuthRepo(
     fun resetPassword() {
 
     }
+
 
 
 

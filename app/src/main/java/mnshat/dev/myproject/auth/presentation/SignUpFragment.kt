@@ -131,13 +131,16 @@ private val viewModel: AuthViewModel by activityViewModels()
 
         viewModel.authStatus.observe(viewLifecycleOwner){
             dismissProgressDialog()
-            if (it.isNotEmpty()){
-                showToast(it)
-            }else{
-                viewModel.updateAuthStatusLocale()
-                showToast(getString(R.string.welcome))
-                navigateBasedUserType()
+            it?.let {
+                if (it.isNotEmpty()){
+                    showToast(it)
+                }else{
+                    viewModel.updateAuthStatusLocale()
+                    showToast(getString(R.string.welcome))
+                    navigateBasedUserType()
+                }
             }
+
         }
 
         viewModel.typeOfUser.observe(viewLifecycleOwner) {

@@ -32,8 +32,8 @@ class AuthViewModel @Inject constructor(
 
     var context:Context? = null
     var partner: UserProfile? = null
-    private var _authStatus = MutableLiveData<String>()
-    val authStatus: LiveData<String> = _authStatus
+    private var _authStatus = MutableLiveData<String?>()
+    val authStatus: LiveData<String?> = _authStatus
     var intGender = MutableLiveData<Int?>()
     var strGender = MutableLiveData<String?>()
     var intAge = MutableLiveData<Int?>()
@@ -186,6 +186,7 @@ class AuthViewModel @Inject constructor(
     }
 
     fun validToLogin(context: Context): Boolean {
+        log("validToLogin() called with: context = $context")
         if (!isEmailValid(context)) {
             return false
         } else if (!isPasswordValid(context)) {
@@ -239,6 +240,7 @@ class AuthViewModel @Inject constructor(
     }
 
     private fun isEmailValid(context: Context): Boolean {
+        log("isEmailValid() called with: context = $context")
         return if (email.value.isNullOrEmpty()) {
             errorMessage = context?.getString(R.string.enter_email)
             false
@@ -254,6 +256,7 @@ class AuthViewModel @Inject constructor(
     }
 
     private fun isPasswordValid(context: Context): Boolean {
+        log("isPasswordValid() called with: context = $context")
         return if (password.value.isNullOrEmpty()) {
             errorMessage = context?.getString(R.string.enter_password)
             false
@@ -324,4 +327,32 @@ class AuthViewModel @Inject constructor(
         sharedPreferences.storeBoolean(IS_LOGGED,true)
         sharedPreferences.storeString(TYPE_OF_USER , typeOfUser.value ?: "")
     }
+
+    fun login() {
+        viewModelScope.launch {
+//            val result:String = authRepo.signInWithEmailAndPassword(email.value!!, password.value!!)
+            val result:String = authRepo.signInWithEmailAndPassword("sr@gmail.com","123456")
+      if (result.isNullOrEmpty()){
+          retrieveUserRemote()
+      }else{
+          _authStatus.value = result
+      }
+        }
+    }
+
+    private fun retrieveUserRemote(){
+        viewModelScope.launch {
+            val userProfile = authRepo.retrieveUserRemoteByEmail("sr@gmail.com")
+
+        }
+
+
+        _authStatus.value = ""
+    }
+
+    fun  resetAuthStatus() {
+        _authStatus.value = null
+    }
+
+
 }

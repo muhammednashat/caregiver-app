@@ -2,6 +2,8 @@ package mnshat.dev.myproject
 
 
 /**
+ * login
+ * she needs some comments
  * review auth carefully
  * lang at first time
  * check splash screen
