@@ -23,8 +23,10 @@ data class UserProfile(
     var hasPartner: Boolean? = null,
     var invitationBase: String? = null,
     var status: Int? = null,
+    var currentDay:Int? = null,
 
-    ): Parcelable {
+): Parcelable {
+
 
     override fun toString(): String {
         return "UserProfile(" +

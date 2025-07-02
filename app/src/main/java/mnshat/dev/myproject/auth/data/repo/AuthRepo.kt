@@ -1,8 +1,8 @@
 package mnshat.dev.myproject.auth.data.repo
 
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.toObject
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.tasks.await
 import mnshat.dev.myproject.auth.data.entity.UserProfile
@@ -89,6 +89,7 @@ class AuthRepo(
             userProfile.invitationCode = invitationCode
             userProfile.invitationBase = invitationCode
             userProfile.supportersNumber = 0
+            userProfile.currentDay = 1
             userProfile.hasPartner = false
             userProfile.religion = true
             userProfile.isInvitationUsed = false
@@ -119,18 +120,17 @@ class AuthRepo(
         }
     }
 
-    private fun storeUserDataLocally(userProfile: UserProfile): Boolean {
+     fun storeUserDataLocally(userProfile: UserProfile): Boolean {
         return try {
             sharedPreferences.storeObject(USER_PROFILE, userProfile)
-//            val userProfile = sharedPreferences.getUserProfile(USER_PROFILE)
-//            log(userProfile.toString())
             true
         } catch (e: Exception) {
             false
         }
     }
 
-
+    fun currentUserProfile() =
+        sharedPreferences.getUserProfile(USER_PROFILE)
 
 
     suspend fun isValidInvitation(invitationCode: String): UserProfile? {
@@ -196,13 +196,14 @@ class AuthRepo(
 
     suspend fun retrieveUserRemoteByEmail(email: String):Pair<UserProfile?, String> {
 
-   return  try {
-        val snapShot = firestore.collection(USERS).whereEqualTo("email", email).get().await()
-          log(snapShot.toString())
-         Pair(null, "")
-     }catch (e:Exception){
-       Pair(null, e.message!!)
-     }
+       return  try {
+           val snapShot = firestore.collection(USERS).whereEqualTo("email", email).get().await()
+           val userProfile =
+               snapShot.first()?.toObject(UserProfile::class.java)
+           Pair(userProfile, "")
+         }catch (e:Exception){
+           Pair(null, e.message!!)
+       }
 
     }
 

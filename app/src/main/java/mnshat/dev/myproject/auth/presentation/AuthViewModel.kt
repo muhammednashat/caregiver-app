@@ -2,7 +2,6 @@ package mnshat.dev.myproject.auth.presentation
 
 import android.annotation.SuppressLint
 import android.content.Context
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,12 +12,11 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.auth.data.entity.UserProfile
 import mnshat.dev.myproject.auth.data.repo.AuthRepo
 import mnshat.dev.myproject.users.patient.dailyprogram.data.DailyProgramRepository
-import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.CAREGIVER
-import mnshat.dev.myproject.util.GENDER
 import mnshat.dev.myproject.util.IS_LOGGED
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.TYPE_OF_USER
+import mnshat.dev.myproject.util.USER
 import mnshat.dev.myproject.util.log
 import javax.inject.Inject
 
@@ -173,14 +171,13 @@ class AuthViewModel @Inject constructor(
     }
 
     private fun fetchContentDailyProgramRemote(numberOfDay: Int) {
+
         viewModelScope.launch {
             val result = dailyProgramRepo.fetchContentDailyProgram(numberOfDay)
             if (result) {
                 _authStatus.value = ""
-                log("done")
             } else {
                 _authStatus.value = "error"
-                log("error")
             }
         }
     }
@@ -322,17 +319,21 @@ class AuthViewModel @Inject constructor(
         intAge.value = null
         intGender.value = null
     }
+    fun currentUserProfile() = authRepo.currentUserProfile()
+
+
 
     fun updateAuthStatusLocale() {
+        val userType = currentUserProfile().typeOfUser
         sharedPreferences.storeBoolean(IS_LOGGED,true)
-        sharedPreferences.storeString(TYPE_OF_USER , typeOfUser.value ?: "")
+        sharedPreferences.storeString(TYPE_OF_USER, userType)
     }
 
     fun login() {
         viewModelScope.launch {
-//            val result:String = authRepo.signInWithEmailAndPassword(email.value!!, password.value!!)
-            val result:String = authRepo.signInWithEmailAndPassword("sr@gmail.com","123456")
-      if (result.isNullOrEmpty()){
+            val result: String =
+                authRepo.signInWithEmailAndPassword(email.value!!, password.value!!)
+            if (result.isEmpty()) {
           retrieveUserRemote()
       }else{
           _authStatus.value = result
@@ -340,15 +341,53 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    private fun retrieveUserRemote(){
-        viewModelScope.launch {
-            val userProfile = authRepo.retrieveUserRemoteByEmail("sr@gmail.com")
+    private suspend fun retrieveUserRemote() {
 
+        val (userProfile, message) = authRepo.retrieveUserRemoteByEmail(email.value!!)
+        if (message.isNotEmpty()) {
+            log("retrieveUserRemote() error ")
+            _authStatus.value = "Error, please try again."
+        } else {
+            log("retrieveUserRemote() success ")
+            storeUserLocally(userProfile!!)
         }
 
-
-        _authStatus.value = ""
     }
+
+    private fun storeUserLocally(userProfile: UserProfile) {
+        try {
+            val result = authRepo.storeUserDataLocally(userProfile)
+            if (result) {
+                log("storeUserLocally() success ")
+                checkUsertype(userProfile)
+            } else {
+                log("storeUserLocally() error ")
+                _authStatus.value = "Error, please try again."
+            }
+        } catch (e: Exception) {
+            log("storeUserLocally() Exception ${e.message} ")
+            _authStatus.value = "Error, please try again."
+        }
+
+    }
+
+    private fun checkUsertype(userProfile: UserProfile) {
+        log(userProfile.typeOfUser.toString())
+
+        when (userProfile.typeOfUser) {
+            CAREGIVER -> {
+                log("CAREGIVER")
+                _authStatus.value = ""
+            }
+
+            USER -> {
+                log("USER")
+                fetchContentDailyProgramRemote(userProfile.currentDay!!)
+            }
+        }
+
+    }
+
 
     fun  resetAuthStatus() {
         _authStatus.value = null

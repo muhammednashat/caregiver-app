@@ -140,9 +140,7 @@ private val viewModel: AuthViewModel by activityViewModels()
                     navigateBasedUserType()
                 }
             }
-
         }
-
         viewModel.typeOfUser.observe(viewLifecycleOwner) {
             it?.let {
                 hideContentUser(it == USER)
@@ -152,11 +150,13 @@ private val viewModel: AuthViewModel by activityViewModels()
     }
 
     private fun navigateBasedUserType() {
-      if (viewModel.typeOfUser.value == CAREGIVER){
-          startActivity(Intent(requireContext(),CaregiverScreenActivity::class.java))
-      }else{
-          startActivity(Intent(requireContext(), UserScreensActivity::class.java))
-      }
+        val userType = viewModel.currentUserProfile().typeOfUser
+
+        if (userType == CAREGIVER){
+            startActivity(Intent(requireContext(), CaregiverScreenActivity::class.java))
+        }else{
+            startActivity(Intent(requireContext(), UserScreensActivity::class.java))
+        }
     }
 
 

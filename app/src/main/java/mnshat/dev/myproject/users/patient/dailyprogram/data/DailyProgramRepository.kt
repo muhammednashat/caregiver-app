@@ -1,6 +1,5 @@
 package mnshat.dev.myproject.users.patient.dailyprogram.data
 
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import kotlinx.coroutines.tasks.await
@@ -9,12 +8,8 @@ import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.DayTaskEntity
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.StatusDailyProgram
 import mnshat.dev.myproject.util.CURRENT_DAY
-import mnshat.dev.myproject.util.DAILY_PROGRAM_STATES
-import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USERS
-import mnshat.dev.myproject.util.USER_EMAIL
-import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.USER_PROFILE
 import mnshat.dev.myproject.util.log
 import javax.inject.Inject
@@ -29,24 +24,38 @@ class DailyProgramRepository @Inject constructor(
 
         return try {
             var tasks = dao.getAllDayTasks()
-
-            log(tasks?.size.toString())
-
              if (tasks?.size == 0){
                  val data = fetchContentDailyProgramRemote()
                  storeDailyProgramListLocally(data)
               }
 
-            val dayTask = dao.getDayTaskById(numberOfDay)
-            val currentDay = filterBasedProfile(dayTask!!, numberOfDay)
 
+            val dayTask = dao.getDayTaskById(numberOfDay)
+            log("dayTask = $dayTask")
+
+            val currentDay = filterBasedProfile(dayTask!!, numberOfDay)
+            log("currentDay = $currentDay")
              updateCurrentDayLocally(currentDay)
+            updateNumberDayInUseProfile(numberOfDay)
              updateCurrentDayRemotely(currentDay)
 
             true
         } catch (e: Exception) {
+            log(e.message.toString())
             false
         }
+    }
+
+    private suspend fun updateNumberDayInUseProfile(numberOfDay: Int) {
+        val userProfile = sharedPreferences.getUserProfile(USER_PROFILE)
+        val userId = userProfile.id!!
+        val data: HashMap<String, Any> = hashMapOf("currentDay" to numberOfDay)
+        try {
+            firestore.collection(USERS).document(userId).update(data).await()
+        } catch (e: Exception) {
+          log(e.message.toString())
+        }
+
     }
 
     private suspend fun fetchContentDailyProgramRemote(): List<DayTaskEntity> {

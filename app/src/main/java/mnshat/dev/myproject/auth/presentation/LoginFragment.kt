@@ -50,14 +50,11 @@ class LoginFragment : BaseFragment() {
         }
 
           binding.logIn.setOnClickListener {
-
-              login()
-
-//              if (viewModel.validToLogin(requireActivity())){
-//                  login()
-//              }else{
-//                  showToast(viewModel.errorMessage!!)
-//              }
+              if (viewModel.validToLogin(requireActivity())){
+                  login()
+              }else{
+                  showToast(viewModel.errorMessage!!)
+              }
           }
 
     }
@@ -124,7 +121,7 @@ class LoginFragment : BaseFragment() {
                 }else{
 //                viewModel.updateAuthStatusLocale()
                     showToast(getString(R.string.welcome))
-//                navigateBasedUserType()
+                navigateBasedUserType()
                 }
                 viewModel.resetAuthStatus()
 
@@ -134,7 +131,9 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun navigateBasedUserType() {
-        if (viewModel.typeOfUser.value == CAREGIVER){
+        val userType = viewModel.currentUserProfile().typeOfUser
+
+        if (userType == CAREGIVER){
             startActivity(Intent(requireContext(), CaregiverScreenActivity::class.java))
         }else{
             startActivity(Intent(requireContext(), UserScreensActivity::class.java))

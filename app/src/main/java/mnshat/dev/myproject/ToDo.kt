@@ -2,13 +2,24 @@ package mnshat.dev.myproject
 
 
 /**
- * login
+ *
  * she needs some comments
- * review auth carefully
+ *
+ *
+ *
+ * does you forgot password?
+ *
+ *
  * lang at first time
+ *
+ * save info's registration
+ *
  * check splash screen
+ *
  * home user
+ *
  * daily program
+ *
  * show onboarding screens with each new account
  *  check  connect with supporter and it's permission
  */
@@ -16,5 +27,7 @@ package mnshat.dev.myproject
 
 //later
 /**
- * Check why dose sign up screen hold age and gender even if you restart app , hint check shared preferences
+ *
+ *
+ *
  */
