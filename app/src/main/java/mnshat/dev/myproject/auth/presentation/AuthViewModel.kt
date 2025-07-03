@@ -29,7 +29,7 @@ class AuthViewModel @Inject constructor(
 ) : ViewModel() {
 
     var context:Context? = null
-    var partner: UserProfile? = null
+    private var partner: UserProfile? = null
     private var _authStatus = MutableLiveData<String?>()
     val authStatus: LiveData<String?> = _authStatus
     var intGender = MutableLiveData<Int?>()
@@ -44,60 +44,37 @@ class AuthViewModel @Inject constructor(
     val typeOfUser = MutableLiveData<String?>()
     var errorMessage: String? = ""
 
-
-
-
-
-    fun userProfile(): UserProfile {
-//        return UserProfile(
-//            name = "name.value",
-//            email = "emailfdffalue@gmail.com",
-//            password = "password.value",
-//            gender = 2,
-//            ageGroup = 2,
-////            gender = intGender.value,
-////            ageGroup = intAge.value,
-//            typeOfUser = USER,
-
-
+    // Returns a UserProfile object based on the current input values
+    private fun userProfile(): UserProfile {
         return UserProfile(
             name = name.value,
             email = email.value,
             password = password.value,
-//            gender = 2,
-//            ageGroup = 2,
             gender = intGender.value,
             ageGroup = intAge.value,
             typeOfUser = typeOfUser.value ?: "",
         )
     }
 
+    // Starts the sign-up process based on the user type
     fun signUp( context: Context) {
         this.context = context
-
         try {
-
             viewModelScope.launch {
-
                 if (userProfile().typeOfUser == CAREGIVER) {
-
                     isValidInvitation(invitationCode.value!!)
-
                 } else {
-
                     userRegistration(userProfile())
                 }
-
             }
         }
         catch (e: Exception) {
-
             log("${e.message}")
-
         }
 
     }
 
+    // Checks if the caregiver's invitation code is valid
     private suspend fun isValidInvitation(invitationCode: String) {
         val partner = authRepo.isValidInvitation(invitationCode)
         if (partner != null) {
@@ -108,6 +85,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    // Registers the caregiver if invitation is val
     private suspend fun caregiverRegistration(userProfile: UserProfile) {
         val result = authRepo.signUp(userProfile)
         if (result.isNotEmpty()) {
@@ -117,6 +95,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    // Links the user to caregiver
     private suspend fun addPartnerToCaregiver(userId: String) {
         val result = authRepo.linkPartnerToUser(userId, partner?.id ?: "")
         if (result.isNotEmpty()) {
@@ -126,6 +105,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    // Links the caregiver to the  user
     private suspend fun addSupporterToUser(partnerId: String) {
         val result = authRepo.linkPartnerToUser(partner?.id ?: "", partnerId)
         if (result.isNotEmpty()) {
@@ -136,6 +116,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    // Updates the  user data after linking
     private suspend fun updateUserData(){
         val updatedNumber = partner?.supportersNumber!!.plus(1)
         val updatedData: HashMap<String, Any> = hashMapOf(
@@ -154,22 +135,19 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    // Registers a regular user
     private suspend fun userRegistration(userProfile: UserProfile) {
-
         val result = authRepo.signUp(userProfile)
-
-
-
         if (result.isNotEmpty()) {
             _authStatus.value = result
             log(result)
         } else {
-
             fetchContentDailyProgramRemote(1)
         }
 
     }
 
+    // Fetches daily program content after successful user registration
     private fun fetchContentDailyProgramRemote(numberOfDay: Int) {
 
         viewModelScope.launch {
@@ -182,6 +160,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    // Validates login form (email + password)
     fun validToLogin(context: Context): Boolean {
         log("validToLogin() called with: context = $context")
         if (!isEmailValid(context)) {
@@ -225,6 +204,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    // Validates all registration fields before submitting
     fun validToRegisterUser(context: Context): Boolean {
         if (!isValidUserType(context)) return false
         if (!isValidName(context)) return false
@@ -306,6 +286,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    // Checks if invitation code is provided for caregivers
     private fun isValidInvitationCode(context: Context): Boolean {
         return if (this.invitationCode.value.isNullOrEmpty()) {
             errorMessage = context?.getString(R.string.enter_invitation)
@@ -313,6 +294,7 @@ class AuthViewModel @Inject constructor(
         } else true
     }
 
+    // Clears all user input data
     fun clearData() {
         name.value = null
         email.value = null
@@ -343,6 +325,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    // Retrieves user data from remote after successful login
     private suspend fun retrieveUserRemote() {
 
         val (userProfile, message) = authRepo.retrieveUserRemoteByEmail(email.value!!)
@@ -356,6 +339,7 @@ class AuthViewModel @Inject constructor(
 
     }
 
+    // Stores user data locally in device storage
     private fun storeUserLocally(userProfile: UserProfile) {
         try {
             val result = authRepo.storeUserDataLocally(userProfile)
@@ -373,6 +357,7 @@ class AuthViewModel @Inject constructor(
 
     }
 
+    // Checks the user type and proceeds accordingly
     private fun checkUsertype(userProfile: UserProfile) {
         log(userProfile.typeOfUser.toString())
 
@@ -390,11 +375,12 @@ class AuthViewModel @Inject constructor(
 
     }
 
-
+    // Resets the auth status to null (used to clear error/success states)
     fun  resetAuthStatus() {
         _authStatus.value = null
     }
 
+    // Tries to retrieve user by email and sends reset password email if found
     fun tryRetrieveUser(value: String , context: Context) {
         viewModelScope.launch {
             try {
@@ -413,8 +399,8 @@ class AuthViewModel @Inject constructor(
 
     }
 
+    // Sends password reset email to the given address
     private suspend fun sendResetEmail(email: String) {
-
         try {
             val result = authRepo.sendEmailToResetPassword(email)
             log("sendResetEmail() $result")

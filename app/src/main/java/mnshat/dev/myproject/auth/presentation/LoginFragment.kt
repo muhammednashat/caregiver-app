@@ -69,24 +69,20 @@ class LoginFragment : BaseFragment() {
     }
     }
 
-     fun updateRegistrationInfoLocally(){
+     private fun updateRegistrationInfoLocally(){
         if(isRememberMe){
                 viewModel.sharedPreferences.storeString(USER_EMAIL ,viewModel.email.value)
-                viewModel.sharedPreferences.storeString(PASSWORD , viewModel.password.value)
         }else{
             viewModel.sharedPreferences.storeString(USER_EMAIL ,   "")
-            viewModel.sharedPreferences.storeString(PASSWORD ,   "")
         }
     }
 
-    fun setUpSwitch() {
+    private fun setUpSwitch() {
         val email = viewModel.sharedPreferences.getString(USER_EMAIL)
-        val pass = viewModel.sharedPreferences.getString(PASSWORD)
         if (email != ""){
             isRememberMe = true
             binding.switch1.isChecked = true
             viewModel.email.value = email
-            viewModel.password.value = pass
         }
         binding.switch1.setOnCheckedChangeListener { buttonView, isChecked ->
             isRememberMe = isChecked
@@ -96,32 +92,26 @@ class LoginFragment : BaseFragment() {
     override fun onStart() {
         super.onStart()
         setUpSwitch()
-        viewModel.sharedPreferences.storeInt(GENDER,0)
-        viewModel.sharedPreferences.storeInt(AGE_GROUP,0)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-
         observeViewModel()
     }
 
     private fun observeViewModel() {
         viewModel.authStatus.observe(viewLifecycleOwner){
             it?.let {
-
-                log("observeViewModel() called with: it = $it")
                 dismissProgressDialog()
-
                 if (it.isNotEmpty()){
                     showToast(it)
                 }else{
-//                viewModel.updateAuthStatusLocale()
+                viewModel.updateAuthStatusLocale()
+                    updateRegistrationInfoLocally()
                     showToast(getString(R.string.welcome))
-                navigateBasedUserType()
+                  navigateBasedUserType()
                 }
                 viewModel.resetAuthStatus()
 
