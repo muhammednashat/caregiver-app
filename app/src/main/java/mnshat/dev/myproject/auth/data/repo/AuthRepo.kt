@@ -2,7 +2,6 @@ package mnshat.dev.myproject.auth.data.repo
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.toObject
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.tasks.await
 import mnshat.dev.myproject.auth.data.entity.UserProfile
@@ -207,20 +206,14 @@ class AuthRepo(
 
     }
 
-    fun retrieveUserLocal() {
-
+    suspend fun sendEmailToResetPassword(email: String):String {
+       return try {
+            fireAuth.sendPasswordResetEmail(email).await()
+           ""
+        } catch (e: Exception) {
+        e.message ?: "There is an exception"
+        }
     }
-
-
-
-
-
-
-    fun resetPassword() {
-
-    }
-
-
 
 
 }

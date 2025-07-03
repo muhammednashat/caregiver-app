@@ -12,13 +12,14 @@ import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentVerificationEmailBinding
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.LANGUAGE
+import mnshat.dev.myproject.util.log
 
 
 @AndroidEntryPoint
 class VerificationEmailFragment : BaseFragment() {
 
 private lateinit var binding : FragmentVerificationEmailBinding
-private val baseViewModel : AuthViewModel by viewModels()
+private val viewModel : AuthViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +29,7 @@ private val baseViewModel : AuthViewModel by viewModels()
 
         binding = FragmentVerificationEmailBinding.inflate(inflater, container, false)
         setupClickListener()
-        initializeViews()
+        observeViewModel()
         return binding.root
     }
 
@@ -37,12 +38,11 @@ private val baseViewModel : AuthViewModel by viewModels()
             findNavController().popBackStack()
         }
         binding.btnNext.setOnClickListener {
-
-            if(isEmailValid(binding.editEmail.text.toString())){
-                showProgressDialog()
-//                retrieveUser()
+            viewModel.email.value = binding.editEmail.text.toString()
+            if(viewModel.isEmailValid(requireActivity())){
+                tryRetrieveUser()
             }else{
-
+                showToast(viewModel.errorMessage!!)
             }
         }
         binding.contactUs.setOnClickListener {
@@ -50,29 +50,31 @@ private val baseViewModel : AuthViewModel by viewModels()
         }
     }
 
-    private fun isEmailValid(_email:String): Boolean {
-        var email = _email
-        return if (email.isEmpty()) {
-            showToast(getString(R.string.enter_email))
-            false
-        } else {
-            email = email!!.trim()
-            val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
-            if (!email!!.matches(emailPattern.toRegex())) {
-                showToast(getString(R.string.email_error))
-                false
-            } else
-                true
+    private fun tryRetrieveUser(){
+
+        if (isConnected()){
+            showProgressDialog()
+            viewModel.tryRetrieveUser(viewModel.email.value!!, requireActivity())
+        }else{
+            showNoInternetSnackBar(binding.root)
         }
     }
 
 
-     fun initializeViews() {
+    private fun observeViewModel() {
+        viewModel.authStatus.observe(viewLifecycleOwner){
+            it?.let {
+                dismissProgressDialog()
+                if (it.isNotEmpty()){
+                    showToast(it)
+                }else{
+                    showToast(getString(R.string.password_reset_email_sent))
+                    findNavController().popBackStack()
+                }
+                viewModel.resetAuthStatus()
+            }
 
-        if (baseViewModel.sharedPreferences.getString(LANGUAGE) != ENGLISH_KEY) {
-            binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
         }
-
     }
 
 

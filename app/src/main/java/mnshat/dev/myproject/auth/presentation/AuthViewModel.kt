@@ -236,17 +236,19 @@ class AuthViewModel @Inject constructor(
         return true
     }
 
-    private fun isEmailValid(context: Context): Boolean {
-        log("isEmailValid() called with: context = $context")
+    fun isEmailValid(context: Context): Boolean {
+        log("isEmailValid() called")
         return if (email.value.isNullOrEmpty()) {
-            errorMessage = context?.getString(R.string.enter_email)
+            log("isEmailValid() isNullOrEmpty()")
+            errorMessage = context.getString(R.string.enter_email)
             false
         } else {
+            log("isEmailValid() !isNullOrEmpty()")
             email.value = email.value!!.trim()
             log(email.value!!)
             val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
             if (!email.value!!.matches(emailPattern.toRegex())) {
-                errorMessage = context?.getString(R.string.email_error)
+                errorMessage = context.getString(R.string.email_error)
                 false
             } else true
         }
@@ -391,6 +393,38 @@ class AuthViewModel @Inject constructor(
 
     fun  resetAuthStatus() {
         _authStatus.value = null
+    }
+
+    fun tryRetrieveUser(value: String , context: Context) {
+        viewModelScope.launch {
+            try {
+                val (userProfile, message) = authRepo.retrieveUserRemoteByEmail(value)
+                if (message.isEmpty()) {
+                    sendResetEmail(userProfile!!.email!!)
+                } else {
+                    _authStatus.value = context.getString(R.string.user_not_found)
+                }
+            } catch (e: Exception) {
+                _authStatus.value = context.getString(R.string.reset_password_failure)
+            }
+
+        }
+
+
+    }
+
+    private suspend fun sendResetEmail(email: String) {
+
+        try {
+            val result = authRepo.sendEmailToResetPassword(email)
+            log("sendResetEmail() $result")
+            _authStatus.value = result
+        } catch (e: Exception) {
+            _authStatus.value = e.message
+
+        }
+
+
     }
 
 
