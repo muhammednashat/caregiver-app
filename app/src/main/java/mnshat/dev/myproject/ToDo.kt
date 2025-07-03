@@ -5,7 +5,7 @@ package mnshat.dev.myproject
  * refactor login and sign up process
  * reviewed auth carefully
  * reviewed  forgot password process
- *
+ * save login in info in shared preferences
  *
 
  */
