@@ -393,9 +393,7 @@ class AuthViewModel @Inject constructor(
             } catch (e: Exception) {
                 _authStatus.value = context.getString(R.string.reset_password_failure)
             }
-
         }
-
 
     }
 
