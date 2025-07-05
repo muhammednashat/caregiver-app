@@ -3,41 +3,54 @@ package mnshat.dev.myproject.users.patient.supporters
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.SupporterListener
 import mnshat.dev.myproject.adapters.SupportersAdapter
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.DialogAddSupporterBinding
 import mnshat.dev.myproject.databinding.DialogCannotAddSupporterBinding
 import mnshat.dev.myproject.databinding.FragmentSupportersBinding
-import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.util.ENGLISH_KEY
-import mnshat.dev.myproject.util.HAS_PARTNER
-import mnshat.dev.myproject.util.NUMBER_SUPPORTERS
-import mnshat.dev.myproject.util.USER_EMAIL
-import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.log
 
+@AndroidEntryPoint
+class SupportersFragment : BaseFragment() {
 
-class SupportersFragment : BaseSupporterFragment<FragmentSupportersBinding>() {
+    private lateinit var binding: FragmentSupportersBinding
+
     private lateinit var adapter: SupportersAdapter
+    private val viewModel: SupporterViewModel by viewModels()
 
-    override fun initializeViews() {
-        showProgressDialog()
-
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentSupportersBinding.inflate(inflater, container, false)
+        initializeViews()
         initAdapter()
-        if (sharedPreferences.getBoolean(HAS_PARTNER)){
-            retrieveUsers()
+
+        setupClickListener()
+        return binding.root
+
+    }
+
+
+    private fun initializeViews() {
+        if (viewModel.userProfile.hasPartner!!) {
+            log("has partner")
+            viewModel.retrieveSupporters()
         }else{
+            log("no partner")
             showRecycler(false)
         }
 
-        if (currentLang != ENGLISH_KEY) {
-            binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-        }
+
     }
 
     private fun initAdapter() {
@@ -49,15 +62,15 @@ class SupportersFragment : BaseSupporterFragment<FragmentSupportersBinding>() {
     }
 
     private fun retrieveUsers() {
-            FirebaseService.retrieveUser(sharedPreferences.getString(USER_ID)){ user ->
-                user?.storeDataLocally(sharedPreferences)
-                FirebaseService.retrieveUsers(user?.supports){
-                    it?.let {
-                        adapter.submitList(it)
-                        showRecycler(true)
-                    }
-                }
-            }
+//            FirebaseService.retrieveUser(sharedPreferences.getString(USER_ID)){ user ->
+//                user?.storeDataLocally(sharedPreferences)
+//                FirebaseService.retrieveUsers(user?.supports){
+//                    it?.let {
+//                        adapter.submitList(it)
+//                        showRecycler(true)
+//                    }
+//                }
+//            }
     }
 
     private fun showRecycler(boolean: Boolean) {
@@ -74,17 +87,13 @@ class SupportersFragment : BaseSupporterFragment<FragmentSupportersBinding>() {
     }
 
 
-
-    override fun getLayout() =
-        R.layout.fragment_supporters
-
-    override fun setupClickListener() {
+  private  fun setupClickListener() {
 
         binding.btAddSupporter.setOnClickListener {
             showDialogAdding()
         }
         binding.icAdd.setOnClickListener {
-            if (sharedPreferences.getInt(NUMBER_SUPPORTERS) >= 3) {
+            if (viewModel.userProfile.supportersNumber!! >= 3) {
                 showDialogCannotAdding()
             }else{
                 showDialogAdding()
@@ -101,7 +110,7 @@ class SupportersFragment : BaseSupporterFragment<FragmentSupportersBinding>() {
         val dialogBinding = DialogAddSupporterBinding.inflate(layoutInflater)
         sharedDialog.setContentView(dialogBinding.root)
         sharedDialog.setCanceledOnTouchOutside(true)
-        if (sharedPreferences.getInt(NUMBER_SUPPORTERS) >= 3) {
+        if (viewModel.userProfile.supportersNumber!! >= 3) {
             dialogBinding.icClose.visibility = View.GONE
         }
         val window = sharedDialog.window
