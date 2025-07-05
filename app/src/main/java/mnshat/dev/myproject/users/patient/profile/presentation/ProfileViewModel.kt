@@ -5,6 +5,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import mnshat.dev.myproject.auth.data.entity.UserProfile
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.GetCurrentDayLocallyUseCase
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.GetNextDayUseCase
 import mnshat.dev.myproject.util.SharedPreferencesManager
@@ -17,6 +18,10 @@ class ProfileViewModel @Inject constructor(val sharedPreferences: SharedPreferen
                                            private val getNextDayUseCase: GetNextDayUseCase
 )
     : ViewModel() {
+
+    val userProfile: UserProfile = sharedPreferences.getUserProfile()
+
+
     fun resetCurrentDay() {
         CoroutineScope(Dispatchers.IO).launch {
 

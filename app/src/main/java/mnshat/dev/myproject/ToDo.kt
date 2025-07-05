@@ -8,6 +8,9 @@ package mnshat.dev.myproject
  * reviewed  forgot password process
  * saved login in info in shared preferences
  * added comments
+ * merged registration with develop branch
+ *
+ *
  */
 
 

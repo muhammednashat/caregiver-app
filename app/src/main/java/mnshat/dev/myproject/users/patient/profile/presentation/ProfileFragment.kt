@@ -21,15 +21,24 @@ class ProfileFragment : BaseFragment() {
 
     private  lateinit var binding: FragmentProfileBinding
    private val viwModel:ProfileViewModel by viewModels()
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProfileBinding.inflate(inflater,container,false)
-        initializeViews()
         setupClickListener()
         return  binding.root
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        binding.nameUser.text = viwModel.userProfile.name
+        loadImage(requireActivity(),viwModel.userProfile.imageUser,binding.imageUser)
     }
 
      fun setupClickListener() {
@@ -65,16 +74,7 @@ class ProfileFragment : BaseFragment() {
         }
     }
 
-     fun initializeViews() {
-//        binding.nameUser.text = viwModel.sharedPreferences.getString(USER_NAME)
-//        loadImage(requireActivity(),viwModel.sharedPreferences.getString(USER_IMAGE),binding.imageUser)
-    }
-    override fun onStart() {
-        super.onStart()
-        binding.nameUser.text = viwModel.sharedPreferences.getString(USER_NAME)
-        loadImage(requireActivity(),viwModel.sharedPreferences.getString(USER_IMAGE),binding.imageUser)
 
-    }
 
 
 

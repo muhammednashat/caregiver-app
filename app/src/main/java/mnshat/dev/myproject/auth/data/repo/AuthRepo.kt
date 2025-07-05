@@ -118,7 +118,7 @@ class AuthRepo(
 
     // Gets the current user profile from local storage
     fun currentUserProfile() =
-        sharedPreferences.getUserProfile(USER_PROFILE)
+        sharedPreferences.getUserProfile()
 
     // Validates caregiver invitation code and returns the associated user
     suspend fun isValidInvitation(invitationCode: String): UserProfile? {
