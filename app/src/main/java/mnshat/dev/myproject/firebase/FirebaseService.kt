@@ -15,10 +15,9 @@ import com.google.firebase.firestore.firestore
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.tasks.await
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.model.CurrentTask2
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
-import mnshat.dev.myproject.dataSource.room.AppDatabase
-import mnshat.dev.myproject.model.RegistrationData
+import mnshat.dev.myproject.util.AppDatabase
+import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.DayTaskEntity
 import mnshat.dev.myproject.util.CAREGIVER
@@ -48,55 +47,6 @@ object FirebaseService {
     val userId = currentUser?.uid
     fun logOut() = fireAuth.signOut()
 
-  suspend  fun login(email: String, password: String,context: Context,sharedPreferences: SharedPreferencesManager, callBack: (String?) -> Unit) {
-
-        fireAuth.signInWithEmailAndPassword(email, password).await().let { auth ->
-            if (auth.user != null) {
-                fetchDays().let {
-                    AppDatabase.getDatabase(context).dayTaskDao().insertAll(it)
-                    getCurrentDayRemotely(auth?.user?.uid!!){
-                        log(it?.email.toString())
-                        sharedPreferences.storeObject(CURRENT_DAY, it!!)
-                        callBack(null)
-                    }
-                }
-
-            } else {
-                callBack("")
-            }
-        }
-    }
-
-
-    fun signUp(email: String, password: String, callBack: (Boolean, String?) -> Unit) {
-        fireAuth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    callBack(true, task.result?.user?.uid)
-                } else {
-                    callBack(false, task.exception.toString())
-                }
-            }
-    }
-
-
-
-    fun getToken(userId: String,callback: (String?) -> Unit) {
-        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                storeToken(userId,task.result)
-                callback(task.result)
-            } else {
-                callback(null)
-            }
-        }
-    }
-
-    fun storeToken (id: String ,token:String,){
-        val db = Firebase.firestore
-        val data = hashMapOf("token" to token, )
-        db.collection("Users").document(id).set(data)
-    }
 
     fun retrieveUser(typeOfUser: String?, string: String?, callback: (RegistrationData?) -> Unit) {
         val query = if (typeOfUser == CAREGIVER)
@@ -143,33 +93,9 @@ object FirebaseService {
         }
     }
 
-    fun resetUserPassword(email: String, callBack: (Boolean) -> Unit) {
-        fireAuth.sendPasswordResetEmail(email)
-            .addOnCompleteListener { task ->
-                handleResult(task, callBack)
-            }
-    }
 
-    private fun handleResult(
-        task: Task<Void>,
-        callBack: (Boolean) -> Unit
-    ) {
-        if (task.isSuccessful) {
-            callBack(true)
-        } else {
-            callBack(false)
-        }
-    }
 
-    fun saveUserAdditionalInfo(registrationData: RegistrationData) {
-        userProfiles.child(registrationData.id!!).setValue(registrationData)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                } else {
-                }
 
-            }
-    }
 
     fun updateItemsProfileUser(
         userId: String? ,
@@ -268,16 +194,6 @@ object FirebaseService {
 
     }
 
-     private fun getCurrentDayRemotely(userId: String, callBack: (CurrentDay?) -> Unit) {
-        val firebaseDatabase = FirebaseDatabase.getInstance()
-        val dailyProgramStates = firebaseDatabase.getReference(DAILY_PROGRAM_STATES)
-         dailyProgramStates.child(userId).get().addOnSuccessListener {
-             val value = it.getValue(CurrentDay::class.java)
-            callBack(value)
-          }
-    }
-
-
 
 
 
@@ -304,24 +220,6 @@ object FirebaseService {
 
     }
 
-    private suspend fun fetchDays():
-            List<DayTaskEntity> = suspendCoroutine { continuation ->
-        val dayTaskList = mutableListOf<DayTaskEntity>()
-        val firestore = FirebaseFirestore.getInstance()
-        firestore.collection("daily_programs")
-            .get()
-            .addOnSuccessListener { querySnapshot ->
-                for (document in querySnapshot) {
-                    val dayTask = document.toObject(DayTaskEntity::class.java)
-                    dayTaskList.add(dayTask)
-                }
-                continuation.resume(dayTaskList)
-            }
-            .addOnFailureListener { e ->
-                continuation.resume(emptyList())
-                println("Error fetching data: $e")
-            }
-    }
 
 
 }

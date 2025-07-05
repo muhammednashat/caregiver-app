@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.ItemViewSupporterBinding
-import mnshat.dev.myproject.model.RegistrationData
+import mnshat.dev.myproject.auth.data.entity.RegistrationData
 
 class SupportersAdapter
     ( val context:Context,

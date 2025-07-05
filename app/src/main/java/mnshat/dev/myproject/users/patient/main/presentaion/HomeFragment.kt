@@ -50,15 +50,14 @@ class HomeFragment : BaseFragment() {
         binding = FragmentUserHomeBinding.inflate(inflater,container, false)
         onBoarding()
         setupClickListener()
-        initializeViews()
-        observeViewModel()
+//        initializeViews()
+//        observeViewModel()
         isPermissionGranted()
         return binding.root
     }
 
     private fun onBoarding() {
         val islogged = viewModel.sharedPreferences.getBoolean(IS_SECOND_TIME)
-        log(" this is the first logining => $islogged")
         if (!islogged) {
             OnBoardingFragment().show(childFragmentManager,null)
             viewModel.sharedPreferences.storeBoolean(IS_SECOND_TIME,true)
@@ -88,7 +87,7 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun onStart() {
-        showProgressDialog()
+//        showProgressDialog()
         viewModel.getCurrentTask()
         super.onStart()
     }
@@ -105,7 +104,10 @@ class HomeFragment : BaseFragment() {
 
     fun initializeViews() {
         loadImage(requireActivity(),viewModel.sharedPreferences.getString(USER_IMAGE),binding.imageUser)
+
         binding.nameUser.text = viewModel.sharedPreferences.getString(USER_NAME)
+
+
     }
 
 
@@ -114,7 +116,6 @@ class HomeFragment : BaseFragment() {
 
         binding.dailyProgram.setOnClickListener() {
 
-//            sendNotification("0fkfkZ0WXePQQ8CdOG6XVDIeMmm2","title","body")
             startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
 
         }

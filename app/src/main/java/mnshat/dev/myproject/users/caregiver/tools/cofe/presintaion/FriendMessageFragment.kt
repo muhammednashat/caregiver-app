@@ -15,7 +15,7 @@ import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentFriendMessageBinding
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.firebase.FirebaseService.userProfiles
-import mnshat.dev.myproject.model.RegistrationData
+import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion.CofeViewModel
 import mnshat.dev.myproject.util.EMAIL_PARTNER
 import mnshat.dev.myproject.util.PARTNER_PROFILE

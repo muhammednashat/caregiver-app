@@ -1,11 +1,12 @@
 package mnshat.dev.myproject.users.patient.dailyprogram.di
 
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import mnshat.dev.myproject.dataSource.room.AppDatabase
-import mnshat.dev.myproject.users.patient.dailyprogram.data.DayTaskRepository
+import mnshat.dev.myproject.util.AppDatabase
+import mnshat.dev.myproject.users.patient.dailyprogram.data.DailyProgramRepository
 import mnshat.dev.myproject.users.patient.dailyprogram.data.daos.DayTaskDao
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.DailyProgramManagerUseCase
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.GetCurrentDayLocallyUseCase
@@ -43,15 +44,15 @@ object Di {
     }
 
     @Provides
-    fun provideUpdateCurrentTaskUseCase(repository: DayTaskRepository) = GetNextDayUseCase(repository)
+    fun provideUpdateCurrentTaskUseCase(repository: DailyProgramRepository) = GetNextDayUseCase(repository)
 
 
     @Provides
-    fun  provideGetCurrentTaskLocallyUseCase(repository: DayTaskRepository) = GetCurrentDayLocallyUseCase(repository)
+    fun  provideGetCurrentTaskLocallyUseCase(repository: DailyProgramRepository) = GetCurrentDayLocallyUseCase(repository)
 
     @Provides
     @Singleton
-    fun provideDayTaskRepository(dao: DayTaskDao,sharedPreferences: SharedPreferencesManager)  = DayTaskRepository(dao,sharedPreferences)
+    fun provideDayTaskRepository(dao: DayTaskDao, firestore: FirebaseFirestore, sharedPreferences: SharedPreferencesManager)  = DailyProgramRepository(dao, firestore, sharedPreferences)
 
     @Provides
     @Singleton

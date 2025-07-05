@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.dataSource.room
+package mnshat.dev.myproject.util
 
 
 import android.content.Context

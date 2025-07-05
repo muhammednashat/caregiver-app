@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.model.RegistrationData
+import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import mnshat.dev.myproject.util.loadImage
 
 class SupportersAdapter2(

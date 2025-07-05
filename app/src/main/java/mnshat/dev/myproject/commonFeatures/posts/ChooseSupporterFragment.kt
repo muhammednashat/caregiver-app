@@ -7,7 +7,7 @@ import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.databinding.FragmentChooseSupporterBinding
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.interfaces.OnSendButtonClicked
-import mnshat.dev.myproject.model.RegistrationData
+import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.USER_ID
 

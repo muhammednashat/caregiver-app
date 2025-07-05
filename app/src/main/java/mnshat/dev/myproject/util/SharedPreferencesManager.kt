@@ -3,9 +3,10 @@ package mnshat.dev.myproject.util
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
-import mnshat.dev.myproject.model.RegistrationData
-import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
+import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import javax.inject.Inject
+import androidx.core.content.edit
+import mnshat.dev.myproject.auth.data.entity.UserProfile
 
 class SharedPreferencesManager @Inject constructor(context: Context) {
 
@@ -27,16 +28,7 @@ class SharedPreferencesManager @Inject constructor(context: Context) {
         }
     }
 
-    fun storeLang(key: String, value: Long?) {
-        if (value != null) {
-            val editor = sharedPreferences.edit()
-            editor.putLong(key, value)
-            editor.apply()
-        }
-    }
 
-    fun getLong(key: String, defaultValue: Long = 0L)=
-        sharedPreferences.getLong(key, defaultValue)
 
     fun getString(key: String, defaultValue: String = "")= sharedPreferences.getString(key, defaultValue) ?: defaultValue
 
@@ -56,21 +48,28 @@ class SharedPreferencesManager @Inject constructor(context: Context) {
 
 
     fun clearData() {
-        val editor = sharedPreferences.edit()
-        editor.clear()
-        editor.apply()
+        sharedPreferences.edit() {
+            clear()
+        }
     }
     fun storeObject(key:String,obj: Any?) {
         if (obj != null) {
-            val editor = sharedPreferences.edit()
-            val  gson = Gson()
-            val json: String = gson.toJson(obj)
-            editor.putString(key, json)
-            editor.apply()
+            sharedPreferences.edit() {
+                val gson = Gson()
+                val json: String = gson.toJson(obj)
+                putString(key, json)
+            }
         }
     }
 
-    fun getObjectProfilePartner(key: String) :RegistrationData {
+    fun getUserProfile(key: String) : UserProfile {
+        val string = sharedPreferences.getString(key, null.toString())
+        val gson = Gson()
+        return gson.fromJson(string, UserProfile::class.java)
+    }
+
+
+    fun getObjectProfilePartner(key: String) : RegistrationData {
         val string = sharedPreferences.getString(key, null.toString())
         val gson = Gson()
         return gson.fromJson(string, RegistrationData::class.java)

@@ -851,4 +851,5 @@
         <string name="phrase11">بعرف إن هالشي ثقيل عليك… بس صدقني، أنا معك وما رح أتركك تواجهه لحالك.</string>
     <string name="please_enter_your_response">رجاءا اضف ردك الخاص</string>
     <string name="no_ideas_received_yet_nyou_can_only_continue_after_receiving_a_message_from_your_friend">لا يوجد اى افكار مستلمة حتى الان!\n لا يمكنك الاستمرار إلا بعد استلام رسالة من صديقك</string>
+    <string name="welcome">مرحبا</string>
 </resources>

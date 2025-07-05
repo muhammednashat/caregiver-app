@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import dagger.hilt.android.HiltAndroidApp
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.model.RegistrationData
+import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import java.util.Calendar
 

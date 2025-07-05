@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="mnshat.dev.myproject.auth.AuthViewModel" />
+            type="mnshat.dev.myproject.auth.presentation.AuthViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -244,6 +244,7 @@
 
                     <TextView
                         android:id="@+id/contact_us"
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"

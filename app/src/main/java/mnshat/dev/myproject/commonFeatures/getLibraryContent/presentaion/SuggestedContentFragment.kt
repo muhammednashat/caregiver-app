@@ -11,7 +11,7 @@ import mnshat.dev.myproject.factories.LibraryViewModelFactory
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.useCase.GetLibraryContentUseCase
-import mnshat.dev.myproject.dataSource.room.AppDatabase
+import mnshat.dev.myproject.util.AppDatabase
 import mnshat.dev.myproject.util.ENGLISH_KEY
 
 class SuggestedContentFragment : BaseBottomSheetDialogFragment2<FragmentSuggestedContentBinding>(),

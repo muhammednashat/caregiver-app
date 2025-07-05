@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import mnshat.dev.myproject.dataSource.room.AppDatabase
+import mnshat.dev.myproject.util.AppDatabase
 import mnshat.dev.myproject.users.patient.calender.data.daos.DayDao
 import mnshat.dev.myproject.users.patient.calender.data.daos.TaskDao
 import mnshat.dev.myproject.users.patient.calender.data.repo.CalenderActivitiesRepo
