@@ -134,10 +134,10 @@ class AuthRepo(
     // Creates a link between two users (caregiver <-> partner)
     suspend fun linkPartnerToUser(userId: String, partnerId: String): String {
         return try {
-            val data = hashMapOf("id" to partnerId)
-            firestore.collection(USERS)
+            val data = hashMapOf("id" to partnerId) // done
+            firestore.collection(USERS) // main col
                 .document(userId)
-                .collection(PARTNERS)
+                .collection(PARTNERS) // subCol
                 .document(partnerId)
                 .set(data)
                 .await()
@@ -180,7 +180,9 @@ class AuthRepo(
             val snapShot = firestore.collection(USERS)
                 .whereEqualTo("email", email).get().await()
             val userProfile = snapShot.first()?.toObject(UserProfile::class.java)
+
             Pair(userProfile, "")
+
         } catch (e: Exception) {
             Pair(null, e.message ?: "Error retrieving user")
         }

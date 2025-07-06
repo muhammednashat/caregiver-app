@@ -10,9 +10,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentVerificationEmailBinding
-import mnshat.dev.myproject.util.ENGLISH_KEY
-import mnshat.dev.myproject.util.LANGUAGE
-import mnshat.dev.myproject.util.log
 
 
 @AndroidEntryPoint

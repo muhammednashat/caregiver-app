@@ -78,7 +78,7 @@ class AuthViewModel @Inject constructor(
     private suspend fun isValidInvitation(invitationCode: String) {
         val partner = authRepo.isValidInvitation(invitationCode)
         if (partner != null) {
-            this.partner = partner
+            this.partner = partner // user  not caregiver
             caregiverRegistration(userProfile())
         } else {
             _authStatus.value = context?.getString(R.string.user_not_found)
@@ -99,7 +99,7 @@ class AuthViewModel @Inject constructor(
     private suspend fun addPartnerToCaregiver(userId: String) {
         val result = authRepo.linkPartnerToUser(userId, partner?.id ?: "")
         if (result.isNotEmpty()) {
-            _authStatus.value = result
+            _authStatus.value = result // exc
         } else {
             addSupporterToUser(userId)
         }
@@ -122,7 +122,7 @@ class AuthViewModel @Inject constructor(
         val updatedData: HashMap<String, Any> = hashMapOf(
             "supportersNumber" to updatedNumber,
             "hasPartner" to true,
-            "invitationCode" to "%%%%%%%$$$$%%%%%%%%%%",
+            "invitationCode" to "%%%%%%%$$%%f%%%%%%lfjdgjkfdsgkfd;g%%",
             "invitationUsed" to true
         )
         val result = authRepo.updateUserData(partner?.id ?: "", updatedData)

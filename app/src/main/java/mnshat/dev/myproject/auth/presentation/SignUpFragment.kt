@@ -129,11 +129,15 @@ class SignUpFragment : BaseFragment(){
         viewModel.strGender.value = getString(R.string.gender)
         viewModel.strAge.value = getString(R.string.age_group)
 
+
+
+
         viewModel.authStatus.observe(viewLifecycleOwner){
+
             dismissProgressDialog()
             it?.let {
                 if (it.isNotEmpty()){
-                    showToast(it)
+                    showToast(it) // error message
                 }else{
                     viewModel.updateAuthStatusLocale()
                     showToast(getString(R.string.welcome))
@@ -141,6 +145,7 @@ class SignUpFragment : BaseFragment(){
                 }
             }
         }
+
         viewModel.typeOfUser.observe(viewLifecycleOwner) {
             it?.let {
                 hideContentUser(it == USER)
