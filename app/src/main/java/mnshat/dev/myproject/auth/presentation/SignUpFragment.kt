@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
@@ -16,7 +15,6 @@ import mnshat.dev.myproject.users.caregiver.main.CaregiverScreenActivity
 import mnshat.dev.myproject.users.patient.main.presentaion.UserScreensActivity
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.USER
-import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 

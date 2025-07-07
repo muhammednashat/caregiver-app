@@ -62,8 +62,8 @@ class SharedPreferencesManager @Inject constructor(context: Context) {
         }
     }
 
-    fun getUserProfile(key: String) : UserProfile {
-        val string = sharedPreferences.getString(key, null.toString())
+    fun getUserProfile() : UserProfile {
+        val string = sharedPreferences.getString(USER_PROFILE, null.toString())
         val gson = Gson()
         return gson.fromJson(string, UserProfile::class.java)
     }

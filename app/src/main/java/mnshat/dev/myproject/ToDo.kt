@@ -13,7 +13,7 @@ package mnshat.dev.myproject
 
 //later
 /**
- * Ui enhancement
+ *
  * 
  * * lang at first time
  *  *

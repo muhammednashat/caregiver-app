@@ -47,7 +47,7 @@ class DailyProgramRepository @Inject constructor(
     }
 
     private suspend fun updateNumberDayInUseProfile(numberOfDay: Int) {
-        val userProfile = sharedPreferences.getUserProfile(USER_PROFILE)
+        val userProfile = sharedPreferences.getUserProfile()
         val userId = userProfile.id!!
         val data: HashMap<String, Any> = hashMapOf("currentDay" to numberOfDay)
         try {
@@ -78,7 +78,7 @@ class DailyProgramRepository @Inject constructor(
 
     private fun filterBasedProfile(dayTask: DayTaskEntity, day: Int): CurrentDay {
         val statusDailyProgram = StatusDailyProgram(day = day)
-        val userProfile = sharedPreferences.getUserProfile(USER_PROFILE)
+        val userProfile = sharedPreferences.getUserProfile()
         val isReligious = userProfile.religion!!
         if (!isReligious) {
             dayTask.spiritual = null
@@ -104,7 +104,7 @@ class DailyProgramRepository @Inject constructor(
 
     suspend fun updateCurrentDayRemotely(currentDay: CurrentDay){
         try {
-            val userProfile = sharedPreferences.getUserProfile(USER_PROFILE)
+            val userProfile = sharedPreferences.getUserProfile()
             firestore.collection(USERS)
                 .document(userProfile.id!!)
                 .collection("DailyProgram")
