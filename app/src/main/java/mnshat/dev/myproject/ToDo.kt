@@ -4,14 +4,22 @@ package mnshat.dev.myproject
 // Done
 /**
  * refactor login and sign up process
- *
  * reviewed  forgot password process
  * saved login in info in shared preferences
  * added comments
+ *
+ *
  */
 
 
-//later
+//Doing
+/**
+ * refactor adding supporters process
+ *
+ */
+
+
+//ToDo
 /**
  * Ui enhancement
  * 

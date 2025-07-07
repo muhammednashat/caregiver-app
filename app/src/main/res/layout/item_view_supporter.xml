@@ -8,7 +8,7 @@
     <data>
         <variable
             name="supporter"
-            type="mnshat.dev.myproject.auth.data.entity.RegistrationData" />
+            type="mnshat.dev.myproject.auth.data.entity.UserProfile" />
 
    <variable
        name="clickListener"

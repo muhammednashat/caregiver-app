@@ -9,19 +9,19 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.ItemViewSupporterBinding
-import mnshat.dev.myproject.auth.data.entity.RegistrationData
+import mnshat.dev.myproject.auth.data.entity.UserProfile
 
 class SupportersAdapter
     ( val context:Context,
     private val clickListener: SupporterListener
    ) :
-    ListAdapter<RegistrationData, SupportersAdapter.SupportersViewHolder>(ItemDiffUtil()) {
+    ListAdapter<UserProfile, SupportersAdapter.SupportersViewHolder>(ItemDiffUtil()) {
 
     class SupportersViewHolder private constructor(val binding: ItemViewSupporterBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(
-            supporter: RegistrationData, clickListener: SupporterListener
+            supporter: UserProfile, clickListener: SupporterListener
             ) {
 
             binding.supporter = supporter
@@ -62,17 +62,17 @@ class SupportersAdapter
 }
 
 
-class ItemDiffUtil() : DiffUtil.ItemCallback<RegistrationData>() {
-    override fun areItemsTheSame(old: RegistrationData, new: RegistrationData): Boolean {
+class ItemDiffUtil() : DiffUtil.ItemCallback<UserProfile>() {
+    override fun areItemsTheSame(old: UserProfile, new: UserProfile): Boolean {
         return old.id == new.id
     }
 
-    override fun areContentsTheSame(old: RegistrationData, new: RegistrationData): Boolean {
+    override fun areContentsTheSame(old: UserProfile, new: UserProfile): Boolean {
         return old.equals(new)
     }
 
 }
 
-class SupporterListener(private val clickListener: (supporter: RegistrationData) -> Unit) {
-    fun onClick(supporter: RegistrationData) = clickListener(supporter)
+class SupporterListener(private val clickListener: (supporter: UserProfile) -> Unit) {
+    fun onClick(supporter: UserProfile) = clickListener(supporter)
 }

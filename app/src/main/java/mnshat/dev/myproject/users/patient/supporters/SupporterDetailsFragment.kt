@@ -10,14 +10,14 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentSupporterDetailsBinding
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Permissions
-import mnshat.dev.myproject.auth.data.entity.RegistrationData
+import mnshat.dev.myproject.auth.data.entity.UserProfile
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.STATUS
 import mnshat.dev.myproject.util.log
 
 
 class SupporterDetailsFragment : BaseSupporterFragment<FragmentSupporterDetailsBinding>() {
-    private lateinit var supporter: RegistrationData
+    private lateinit var supporter: UserProfile
     private lateinit var action: NavDirections
    private var currentPermissions = mutableListOf(false,false,false)
    private  val modifiedPermissions = mutableListOf(false,false,false)
@@ -65,20 +65,20 @@ class SupporterDetailsFragment : BaseSupporterFragment<FragmentSupporterDetailsB
             updateSupporterPermissionsRemotely(modifiedPermissions)
         }
 
-        binding.permissions.viewReporting.setOnClickListener {
-            action =
-                SupporterDetailsFragmentDirections.actionSupporterDetailsFragmentToSetViewReportingPermissionFragment(
-                    supporter.permissions!!
-                )
-            findNavController().navigate(action)
-        }
-        binding.permissions.notification.setOnClickListener {
-            action =
-                SupporterDetailsFragmentDirections.actionSupporterDetailsFragmentToSetNotificationPermissionFragment(
-                    supporter.permissions!!
-                )
-            findNavController().navigate(action)
-        }
+//        binding.permissions.viewReporting.setOnClickListener {
+//            action =
+//                SupporterDetailsFragmentDirections.actionSupporterDetailsFragmentToSetViewReportingPermissionFragment(
+//                    supporter.permissions!!
+//                )
+//            findNavController().navigate(action)
+//        }
+//        binding.permissions.notification.setOnClickListener {
+//            action =
+//                SupporterDetailsFragmentDirections.actionSupporterDetailsFragmentToSetNotificationPermissionFragment(
+//                    supporter.permissions!!
+//                )
+//            findNavController().navigate(action)
+//        }
 
     }
 
@@ -96,26 +96,28 @@ class SupporterDetailsFragment : BaseSupporterFragment<FragmentSupporterDetailsB
         }
     }
 
-    private fun setUpUiSupporter(supporter: RegistrationData) {
+    private fun setUpUiSupporter(supporter: UserProfile) {
+
         binding.nameSupporter.text = supporter.name
         checkStatus()
-        supporter.permissions?.let {
-            if (it.allowDailyProgramDetails){
-                binding.permissions.viewDailyProgramDetails.isChecked =true
-                currentPermissions[0] = true
-                modifiedPermissions[0] = true
-            }
-            if (it.allowMoodTrackingDetails) {
-                binding.permissions.viewMoodTrackingDetails.isChecked =true
-                currentPermissions[1] = true
-                modifiedPermissions[1] = true
-            }
-            if (it.allowPrivateMessages) {
-                binding.permissions.allowPrivateMessages.isChecked =true
-                currentPermissions[2] = true
-                modifiedPermissions[2] = true
-            }
-        }
+
+//        supporter.permissions?.let {
+//            if (it.allowDailyProgramDetails){
+//                binding.permissions.viewDailyProgramDetails.isChecked =true
+//                currentPermissions[0] = true
+//                modifiedPermissions[0] = true
+//            }
+//            if (it.allowMoodTrackingDetails) {
+//                binding.permissions.viewMoodTrackingDetails.isChecked =true
+//                currentPermissions[1] = true
+//                modifiedPermissions[1] = true
+//            }
+//            if (it.allowPrivateMessages) {
+//                binding.permissions.allowPrivateMessages.isChecked =true
+//                currentPermissions[2] = true
+//                modifiedPermissions[2] = true
+//            }
+//        }
     }
 
     private fun checkStatus() {

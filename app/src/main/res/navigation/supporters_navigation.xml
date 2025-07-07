@@ -40,7 +40,7 @@
         android:label="SupporterDetailsFragment" >
         <argument
             android:name="supporter"
-            app:argType="mnshat.dev.myproject.auth.data.entity.RegistrationData" />
+            app:argType="mnshat.dev.myproject.auth.data.entity.UserProfile" />
         <action
             android:id="@+id/action_supporterDetailsFragment_to_setViewReportingPermissionFragment"
             app:destination="@id/setViewReportingPermissionFragment" />

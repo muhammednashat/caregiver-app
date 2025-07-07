@@ -35,14 +35,28 @@ class SupportersFragment : BaseFragment() {
         initializeViews()
         initAdapter()
         setupClickListener()
+        observeViewModel()
         return binding.root
 
+    }
+
+    private fun observeViewModel() {
+        viewModel.supportersProfile.observe(viewLifecycleOwner) {
+            if (it != null) {
+                adapter.submitList(it)
+                showRecycler(true)
+            } else {
+                showRecycler(false)
+            log(" observeViewModel supportersProfile =>  $it")
+        }
+    }
     }
 
 
     private fun initializeViews() {
         if (viewModel.userProfile.hasPartner!!) {
             log("has partner")
+            showProgressDialog()
             viewModel.retrieveSupporters()
         }else{
             log("no partner")
@@ -60,17 +74,7 @@ class SupportersFragment : BaseFragment() {
         binding.recyclerSupporters.adapter = adapter
     }
 
-    private fun retrieveUsers() {
-//            FirebaseService.retrieveUser(sharedPreferences.getString(USER_ID)){ user ->
-//                user?.storeDataLocally(sharedPreferences)
-//                FirebaseService.retrieveUsers(user?.supports){
-//                    it?.let {
-//                        adapter.submitList(it)
-//                        showRecycler(true)
-//                    }
-//                }
-//            }
-    }
+
 
     private fun showRecycler(boolean: Boolean) {
         dismissProgressDialog()
