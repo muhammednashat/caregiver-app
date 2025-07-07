@@ -34,7 +34,6 @@ class SupportersFragment : BaseFragment() {
         binding = FragmentSupportersBinding.inflate(inflater, container, false)
         initializeViews()
         initAdapter()
-
         setupClickListener()
         return binding.root
 

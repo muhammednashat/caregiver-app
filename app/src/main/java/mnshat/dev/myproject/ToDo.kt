@@ -1,8 +1,8 @@
 package mnshat.dev.myproject
 
 
+// Done
 /**
- *
  * refactor login and sign up process
  *
  * reviewed  forgot password process
@@ -13,7 +13,7 @@ package mnshat.dev.myproject
 
 //later
 /**
- *
+ * Ui enhancement
  * 
  * * lang at first time
  *  *
