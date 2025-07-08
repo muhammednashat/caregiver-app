@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/supportesFragment"
-        android:name="mnshat.dev.myproject.users.patient.supporters.SupportersFragment"
+        android:name="mnshat.dev.myproject.users.patient.supporters.presentation.SupportersFragment"
         android:label="fragment_supportes"
         tools:layout="@layout/fragment_supporters" >
         <action
@@ -25,18 +25,22 @@
     </fragment>
     <fragment
         android:id="@+id/suppporterRecoveryFragment"
-        android:name="mnshat.dev.myproject.users.patient.supporters.SuppporterRecoveryFragment"
+        android:name="mnshat.dev.myproject.users.patient.supporters.presentation.SuppporterRecoveryFragment"
         android:label="fragment_suppporter_recovery"
         tools:layout="@layout/fragment_suppporter_recovery" />
     <fragment
         android:id="@+id/addSupporterFragment"
       tools:layout="@layout/fragment_add_supporter"
-        android:name="mnshat.dev.myproject.users.patient.supporters.AddSupporterFragment"
-        android:label="AddSupporterFragment" />
+        android:name="mnshat.dev.myproject.users.patient.supporters.presentation.AddSupporterFragment"
+        android:label="AddSupporterFragment" >
+        <action
+            android:id="@+id/action_addSupporterFragment_to_createNewInvitationCodeFragment"
+            app:destination="@id/createNewInvitationCodeFragment" />
+    </fragment>
     <fragment
         tools:layout="@layout/fragment_supporter_details"
         android:id="@+id/supporterDetailsFragment"
-        android:name="mnshat.dev.myproject.users.patient.supporters.SupporterDetailsFragment"
+        android:name="mnshat.dev.myproject.users.patient.supporters.presentation.SupporterDetailsFragment"
         android:label="SupporterDetailsFragment" >
         <argument
             android:name="supporter"
@@ -53,7 +57,7 @@
     <fragment
         tools:layout="@layout/fragment_reporting_permission"
         android:id="@+id/setViewReportingPermissionFragment"
-        android:name="mnshat.dev.myproject.users.patient.supporters.ReportingPermissionFragment"
+        android:name="mnshat.dev.myproject.users.patient.supporters.presentation.ReportingPermissionFragment"
         android:label="SetViewReportingPermissionFragment" >
         <argument
             android:name="permission"
@@ -62,7 +66,7 @@
     <fragment
         tools:layout="@layout/fragment_notification_permission"
         android:id="@+id/setNotificationPermissionFragment"
-        android:name="mnshat.dev.myproject.users.patient.supporters.NotificationPermissionFragment"
+        android:name="mnshat.dev.myproject.users.patient.supporters.presentation.NotificationPermissionFragment"
         android:label="SetNotificationPermissionFragment">
 
 
@@ -70,4 +74,8 @@
             android:name="permission"
             app:argType="mnshat.dev.myproject.model.Permissions" />
     </fragment>
+    <fragment
+        android:id="@+id/createNewInvitationCodeFragment"
+        android:name="mnshat.dev.myproject.users.patient.supporters.presentation.CreateNewInvitationCodeFragment"
+        android:label="CreateNewInvitationCodeFragment" />
 </navigation>

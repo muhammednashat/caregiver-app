@@ -44,7 +44,7 @@
             android:name=".users.patient.dailyprogram.presentaion.DailyProgramActivity"
             android:exported="false" />
         <activity
-            android:name=".users.patient.supporters.SupportersActivity"
+            android:name=".users.patient.supporters.presentation.SupportersActivity"
             android:exported="false" />
         <activity
             android:name=".users.patient.profile.presentation.EditProfileActivity"

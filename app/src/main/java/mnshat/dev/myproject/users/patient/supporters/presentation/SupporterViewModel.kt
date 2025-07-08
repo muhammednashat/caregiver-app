@@ -1,13 +1,10 @@
-package mnshat.dev.myproject.users.patient.supporters
+package mnshat.dev.myproject.users.patient.supporters.presentation
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import mnshat.dev.myproject.auth.data.entity.UserProfile
-import mnshat.dev.myproject.users.patient.supporters.data.SupportersRepo
+import mnshat.dev.myproject.users.patient.supporters.data.repos.SupportersRepo
 import mnshat.dev.myproject.util.log
 import javax.inject.Inject
 

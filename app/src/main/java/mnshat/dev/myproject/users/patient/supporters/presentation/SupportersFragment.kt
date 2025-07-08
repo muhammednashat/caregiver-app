@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.supporters
+package mnshat.dev.myproject.users.patient.supporters.presentation
 
 import android.app.Dialog
 import android.graphics.Color
@@ -32,12 +32,19 @@ class SupportersFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSupportersBinding.inflate(inflater, container, false)
-        initializeViews()
+        checkConnection()
         initAdapter()
         setupClickListener()
         observeViewModel()
         return binding.root
 
+    }
+    private fun checkConnection() {
+        if(isConnected()){
+            initializeViews()
+        }else{
+            binding.noInternet.layout.visibility = View.VISIBLE
+        }
     }
 
     private fun observeViewModel() {
@@ -51,6 +58,17 @@ class SupportersFragment : BaseFragment() {
         }
     }
     }
+
+    private fun retry(){
+        if(isConnected()){
+            binding.noInternet.layout.visibility = View.GONE
+
+            initializeViews()
+        }else{
+            binding.noInternet.layout.visibility = View.VISIBLE
+        }
+    }
+
 
 
     private fun initializeViews() {
@@ -105,6 +123,9 @@ class SupportersFragment : BaseFragment() {
         binding.icBack.setOnClickListener {
             activity?.finish()
         }
+      binding.noInternet.btRetry.setOnClickListener {
+          retry()
+      }
     }
 
     private fun showDialogAdding() {

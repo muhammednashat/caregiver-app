@@ -1,13 +1,12 @@
-package mnshat.dev.myproject.users.patient.supporters.data
+package mnshat.dev.myproject.users.patient.supporters.data.repos
 
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import mnshat.dev.myproject.auth.data.entity.UserProfile
-import mnshat.dev.myproject.users.patient.supporters.entity.Partner
+import mnshat.dev.myproject.users.patient.supporters.data.entity.Partner
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USERS
-import mnshat.dev.myproject.util.log
 
 class SupportersRepo (
     private val firestore: FirebaseFirestore,

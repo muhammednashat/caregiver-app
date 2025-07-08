@@ -1,6 +1,8 @@
 package mnshat.dev.myproject.base
 
 import android.app.Dialog
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -57,6 +59,12 @@ open class BaseFragment: Fragment() {
         progressDialog.dismiss()
     }
 
+    fun copyTextToClipboard( text: String) {
+        val clipboard = context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText("Copied Text", text)
+        clipboard.setPrimaryClip(clip)
+        showToast(getString(R.string.copied))
+    }
     fun showNoInternetSnackBar(view: View) {
         Snackbar.make(view, getString(R.string.no_internet_connection), Snackbar.LENGTH_LONG)
             .show()

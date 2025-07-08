@@ -11,9 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentProfileBinding
-import mnshat.dev.myproject.users.patient.supporters.SupportersActivity
-import mnshat.dev.myproject.util.USER_IMAGE
-import mnshat.dev.myproject.util.USER_NAME
+import mnshat.dev.myproject.users.patient.supporters.presentation.SupportersActivity
 import mnshat.dev.myproject.util.loadImage
 
 @AndroidEntryPoint

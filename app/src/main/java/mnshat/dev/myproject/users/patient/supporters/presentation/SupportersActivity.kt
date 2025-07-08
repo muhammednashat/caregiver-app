@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.supporters
+package mnshat.dev.myproject.users.patient.supporters.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

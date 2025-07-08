@@ -1,8 +1,7 @@
-package mnshat.dev.myproject.users.patient.supporters
+package mnshat.dev.myproject.users.patient.supporters.presentation
 
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.ViewModelProvider
 import mnshat.dev.myproject.users.patient.main.BasePatientFragment
 
 open abstract class BaseSupporterFragment<T : ViewDataBinding> : BasePatientFragment<T>() {

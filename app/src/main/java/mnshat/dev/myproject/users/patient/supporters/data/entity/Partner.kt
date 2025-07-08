@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.supporters.entity
+package mnshat.dev.myproject.users.patient.supporters.data.entity
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
