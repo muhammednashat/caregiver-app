@@ -7,10 +7,11 @@ import mnshat.dev.myproject.auth.data.entity.UserProfile
 import mnshat.dev.myproject.users.patient.supporters.data.entity.Partner
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USERS
+import mnshat.dev.myproject.util.USER_PROFILE
 
 class SupportersRepo (
     private val firestore: FirebaseFirestore,
-    private val sharedPreferences: SharedPreferencesManager
+    val sharedPreferences: SharedPreferencesManager
 ) {
 
     val supportersProfile = MutableLiveData<List<UserProfile>?>()
@@ -49,6 +50,25 @@ class SupportersRepo (
 
     }
 
+    suspend fun storeNewInvitationCode(newInvitationCode: String): Void? {
+
+        val updateData = hashMapOf<String, Any>(
+                            "invitationCode" to newInvitationCode,
+                            "invitationBase" to newInvitationCode,
+                            "invitationUsed" to false,
+                        )
+
+        val userRef = firestore.collection(USERS).document(userProfile().id!!)
+        return  userRef.update(updateData).await()
+    }
+
+    fun updateUserProfileLocal(newInvitationCode: String) {
+        val userProfile = userProfile()
+        userProfile.invitationCode = newInvitationCode
+        userProfile.invitationBase = newInvitationCode
+        userProfile.invitationUsed = false
+        sharedPreferences.storeObject(USER_PROFILE, userProfile)
+    }
 
 
 }

@@ -16,16 +16,17 @@ data class UserProfile(
     var ageGroup: Int? = null,
     var religion : Boolean? = null,
     var token: String? = null,
-    var invitationCode: String? = null,
     var typeOfUser: String? = null,
-    var isInvitationUsed: Boolean? = null,
+    var invitationUsed: Boolean? = null,
+    var invitationBase: String? = null,
+    var invitationCode: String? = null,
+
     var supportersNumber: Int? = null,
     var hasPartner: Boolean? = null,
-    var invitationBase: String? = null,
     var status: Int? = null,
     var currentDay:Int? = null,
 
-): Parcelable {
+    ): Parcelable {
 
 
     override fun toString(): String {
@@ -52,7 +53,7 @@ data class UserProfile(
         token = null
         invitationCode = null
         typeOfUser = USER
-        isInvitationUsed = false
+        invitationUsed = false
         supportersNumber = null
         hasPartner = null
         invitationBase = null

@@ -820,6 +820,7 @@ is too hard. I'll never succeed.</string>
     <string name="please_enter_your_response">Please enter your response</string>
     <string name="no_ideas_received_yet_nyou_can_only_continue_after_receiving_a_message_from_your_friend">No ideas received yet!\\nYou can only continue after receiving a message from your friend.</string>
     <string name="welcome">Welcome</string>
+    <string name="new_invitation_code_has_been_created">New invitation code has been created</string>
 
 
 </resources>

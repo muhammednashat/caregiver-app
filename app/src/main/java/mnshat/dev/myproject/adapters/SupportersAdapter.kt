@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.ItemViewSupporterBinding
 import mnshat.dev.myproject.auth.data.entity.UserProfile
+import mnshat.dev.myproject.util.loadImage
 
 class SupportersAdapter
     ( val context:Context,
@@ -47,7 +48,8 @@ class SupportersAdapter
         holder.bind(getItem(position), clickListener)
         val supporter = getItem(position)
         holder.binding.nameSupporter.text = supporter.name
-        
+        loadImage(holder.binding.root.context, supporter.imageUser!!, holder.binding.imageUser)
+
         if (supporter.status == 1){
             holder.binding.status.background =    AppCompatResources. getDrawable(context,R.drawable.corner_light_blue)
 

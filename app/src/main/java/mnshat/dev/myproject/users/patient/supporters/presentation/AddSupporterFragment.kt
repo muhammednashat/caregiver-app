@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentAddSupporterBinding
+import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 
@@ -24,15 +25,22 @@ class AddSupporterFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddSupporterBinding.inflate(inflater, container, false)
-        setTextCode()
-        isInvitationUsed()
+
         setupClickListener()
         return binding.root
     }
 
+    override fun onStart() {
+        super.onStart()
+       log("onStart")
+        setTextCode()
+        isInvitationUsed()
+    }
+
 
     private fun isInvitationUsed() {
-        if (true) {
+
+        if (viewModel.userProfile.invitationUsed!!) {
             binding.txLabelCode.text = getString(R.string.code_already_used)
             binding.btnCopy.alpha = 0.0f
             binding.btnEditCode.alpha = 1.0f

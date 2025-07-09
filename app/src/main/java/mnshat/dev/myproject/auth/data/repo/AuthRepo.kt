@@ -77,7 +77,7 @@ class AuthRepo(
             userProfile.currentDay = 1
             userProfile.hasPartner = false
             userProfile.religion = true
-            userProfile.isInvitationUsed = false
+            userProfile.invitationUsed = false
         }
 
         return userProfile
