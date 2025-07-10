@@ -72,7 +72,7 @@ class SupportersFragment : BaseFragment() {
 
 
     private fun initializeViews() {
-        if (viewModel.userProfile.hasPartner!!) {
+        if (viewModel.userProfile().hasPartner!!) {
             log("has partner")
             showProgressDialog()
             viewModel.retrieveSupporters()
@@ -114,7 +114,7 @@ class SupportersFragment : BaseFragment() {
             showDialogAdding()
         }
         binding.icAdd.setOnClickListener {
-            if (viewModel.userProfile.supportersNumber!! >= 3) {
+            if (viewModel.userProfile().supportersNumber!! >= 3) {
                 showDialogCannotAdding()
             }else{
                 showDialogAdding()
@@ -134,7 +134,7 @@ class SupportersFragment : BaseFragment() {
         val dialogBinding = DialogAddSupporterBinding.inflate(layoutInflater)
         sharedDialog.setContentView(dialogBinding.root)
         sharedDialog.setCanceledOnTouchOutside(true)
-        if (viewModel.userProfile.supportersNumber!! >= 3) {
+        if (viewModel.userProfile().supportersNumber!! >= 3) {
             dialogBinding.icClose.visibility = View.GONE
         }
         val window = sharedDialog.window
@@ -149,7 +149,8 @@ class SupportersFragment : BaseFragment() {
         }
         dialogBinding.btRecovery.setOnClickListener {
             sharedDialog.dismiss()
-            findNavController().navigate(R.id.action_supportesFragment_to_suppporterRecoveryFragment)
+//            showToast("Comeing soon")
+//            findNavController().navigate(R.id.action_supportesFragment_to_suppporterRecoveryFragment)
         }
         sharedDialog.show()
     }

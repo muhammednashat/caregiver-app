@@ -69,6 +69,9 @@ class AuthRepo(
         if (userProfile.typeOfUser == CAREGIVER) {
             userProfile.hasPartner = true
             userProfile.status = 1
+            userProfile.allowDailyProgramDetails = true
+            userProfile.allowMoodTrackingDetails = true
+            userProfile.allowPrivateMessages = true
         } else {
             val invitationCode = userId.take(8)
             userProfile.invitationCode = invitationCode

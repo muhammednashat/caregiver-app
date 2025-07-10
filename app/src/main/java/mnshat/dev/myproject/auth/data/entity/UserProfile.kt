@@ -20,11 +20,14 @@ data class UserProfile(
     var invitationUsed: Boolean? = null,
     var invitationBase: String? = null,
     var invitationCode: String? = null,
-
     var supportersNumber: Int? = null,
     var hasPartner: Boolean? = null,
     var status: Int? = null,
     var currentDay:Int? = null,
+    var allowDailyProgramDetails: Boolean? = null,
+    var allowMoodTrackingDetails: Boolean? = null,
+    var allowPrivateMessages: Boolean? = null,
+
 
     ): Parcelable {
 
@@ -40,22 +43,8 @@ data class UserProfile(
                 " token=$token, " +
                 "typeOfUser=$typeOfUser, " +
                 "invitationCode=$invitationCode" +
+                "invitationUsed=$invitationUsed" +
                 ")"
     }
 
-    fun clearData() {
-        id = null
-        name = null
-        email = null
-        password = null
-        gender = null
-        ageGroup = null
-        token = null
-        invitationCode = null
-        typeOfUser = USER
-        invitationUsed = false
-        supportersNumber = null
-        hasPartner = null
-        invitationBase = null
-    }
 }

@@ -25,33 +25,34 @@ class AddSupporterFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddSupporterBinding.inflate(inflater, container, false)
-
         setupClickListener()
         return binding.root
     }
 
     override fun onStart() {
         super.onStart()
-       log("onStart")
         setTextCode()
         isInvitationUsed()
     }
 
 
     private fun isInvitationUsed() {
-
-        if (viewModel.userProfile.invitationUsed!!) {
+        if (viewModel.userProfile().invitationUsed!!) {
             binding.txLabelCode.text = getString(R.string.code_already_used)
             binding.btnCopy.alpha = 0.0f
             binding.btnEditCode.alpha = 1.0f
+            binding.btnCopy.isEnabled = false
+            binding.btnEditCode.isEnabled = true
         } else {
             binding.btnCopy.alpha = 1.0f
             binding.btnEditCode.alpha = 0.0f
+            binding.btnCopy.isEnabled = true
+            binding.btnEditCode.isEnabled = false
         }
     }
 
     private fun setTextCode() {
-        val baseCode = viewModel.userProfile.invitationBase
+        val baseCode = viewModel.userProfile().invitationBase
         binding.edCode.setText(baseCode)
     }
 
@@ -66,7 +67,7 @@ class AddSupporterFragment : BaseFragment() {
         }
 
         binding.btnCopy.setOnClickListener {
-            copyTextToClipboard(viewModel.userProfile.invitationBase!!)
+            copyTextToClipboard(viewModel.userProfile().invitationBase!!)
         }
 
     }

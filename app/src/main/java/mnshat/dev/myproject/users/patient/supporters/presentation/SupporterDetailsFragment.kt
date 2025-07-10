@@ -1,50 +1,64 @@
 package mnshat.dev.myproject.users.patient.supporters.presentation
 
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentSupporterDetailsBinding
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Permissions
 import mnshat.dev.myproject.auth.data.entity.UserProfile
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.STATUS
+import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
+@AndroidEntryPoint
+class SupporterDetailsFragment : BaseFragment() {
 
-class SupporterDetailsFragment : BaseSupporterFragment<FragmentSupporterDetailsBinding>() {
+    private lateinit var binding: FragmentSupporterDetailsBinding
+    private val viewModel: SupporterViewModel by viewModels()
+
     private lateinit var supporter: UserProfile
     private lateinit var action: NavDirections
-   private var currentPermissions = mutableListOf(false,false,false)
-   private  val modifiedPermissions = mutableListOf(false,false,false)
-    override fun getLayout() = R.layout.fragment_supporter_details
+    private  var currentPermissions = mutableListOf(false,false,false)
+    private  val modifiedPermissions = mutableListOf(false,false,false)
 
 
-    override fun initializeViews() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentSupporterDetailsBinding.inflate(inflater, container, false)
+        initializeViews()
+        setupClickListener()
+        return binding.root
+    }
+     fun initializeViews() {
         val args: SupporterDetailsFragmentArgs by navArgs()
         supporter = args.supporter
         setUpUiSupporter(args.supporter)
         setUpSwitchesListener()
-        if (currentLang != ENGLISH_KEY) {
-            binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-        }
+
     }
 
     private fun setUpSwitchesListener() {
-    log(currentPermissions.toString())
-    log(modifiedPermissions.toString())
      binding.permissions.viewDailyProgramDetails.setOnCheckedChangeListener { _, isChecked ->updateSwitching(0,isChecked)}
      binding.permissions.viewMoodTrackingDetails.setOnCheckedChangeListener { _, isChecked ->updateSwitching(1,isChecked)}
      binding.permissions.allowPrivateMessages.setOnCheckedChangeListener { _, isChecked ->updateSwitching(2,isChecked)}
     }
     private fun updateSwitching(index:Int, isChecked:Boolean){
         modifiedPermissions[index] = isChecked
-        log(currentPermissions.toString())
-        log(modifiedPermissions.toString())
         if (currentPermissions == modifiedPermissions){
             binding.save.visibility = View.GONE
         }else{
@@ -52,7 +66,7 @@ class SupporterDetailsFragment : BaseSupporterFragment<FragmentSupporterDetailsB
         }
     }
 
-    override fun setupClickListener() {
+     fun setupClickListener() {
 
         binding.icBack.setOnClickListener {
             findNavController().popBackStack()
@@ -99,25 +113,24 @@ class SupporterDetailsFragment : BaseSupporterFragment<FragmentSupporterDetailsB
     private fun setUpUiSupporter(supporter: UserProfile) {
 
         binding.nameSupporter.text = supporter.name
+        loadImage(requireActivity(), supporter.imageUser, binding.imageUser)
         checkStatus()
 
-//        supporter.permissions?.let {
-//            if (it.allowDailyProgramDetails){
-//                binding.permissions.viewDailyProgramDetails.isChecked =true
-//                currentPermissions[0] = true
-//                modifiedPermissions[0] = true
-//            }
-//            if (it.allowMoodTrackingDetails) {
-//                binding.permissions.viewMoodTrackingDetails.isChecked =true
-//                currentPermissions[1] = true
-//                modifiedPermissions[1] = true
-//            }
-//            if (it.allowPrivateMessages) {
-//                binding.permissions.allowPrivateMessages.isChecked =true
-//                currentPermissions[2] = true
-//                modifiedPermissions[2] = true
-//            }
-//        }
+            if (supporter.allowDailyProgramDetails!!){
+                binding.permissions.viewDailyProgramDetails.isChecked =true
+                currentPermissions[0] = true
+                modifiedPermissions[0] = true
+            }
+            if (supporter.allowMoodTrackingDetails!!) {
+                binding.permissions.viewMoodTrackingDetails.isChecked =true
+                currentPermissions[1] = true
+                modifiedPermissions[1] = true
+            }
+            if (supporter.allowPrivateMessages!!) {
+                binding.permissions.allowPrivateMessages.isChecked =true
+                currentPermissions[2] = true
+                modifiedPermissions[2] = true
+            }
     }
 
     private fun checkStatus() {
@@ -141,14 +154,9 @@ class SupporterDetailsFragment : BaseSupporterFragment<FragmentSupporterDetailsB
 
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.menu_encouragement_messages -> {
-
-                }
-
                 R.id.menu_suspend_temporarily -> {
                     isSupporterSuspend()
                 }
-
                 else ->
                     showTemporallyDialog(
                     getString(R.string.remove_supporter),

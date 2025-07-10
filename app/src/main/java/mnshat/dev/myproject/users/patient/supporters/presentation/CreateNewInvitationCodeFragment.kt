@@ -31,7 +31,7 @@ class CreateNewInvitationCodeFragment : BaseFragment() {
 
 
     private fun initView() {
-        val baseCode = viewModel.userProfile.invitationBase?.take(4)
+        val baseCode = viewModel.userProfile().invitationBase?.take(4)
         binding.edCurrentCode.setText(baseCode)
     }
 
@@ -48,7 +48,7 @@ class CreateNewInvitationCodeFragment : BaseFragment() {
         binding.confirmation.setOnClickListener {
             val code = binding.edNewCode.text.toString().trim()
             if (isValidCode(code)) {
-                val baseCode = viewModel.userProfile.invitationBase?.take(4)
+                val baseCode = viewModel.userProfile().invitationBase?.take(4)
                 checkConnection(baseCode + code)
             }
         }

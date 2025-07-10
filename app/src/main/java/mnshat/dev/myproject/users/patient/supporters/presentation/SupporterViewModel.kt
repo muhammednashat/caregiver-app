@@ -24,14 +24,14 @@ class SupporterViewModel @Inject constructor(
     val supportersProfile = supportersRepo.supportersProfile
 
 
-   val userProfile = supportersRepo.userProfile()
+   fun userProfile()= supportersRepo.userProfile()
 
 
 
     fun retrieveSupporters(){
         viewModelScope.launch {
             try {
-                    supportersRepo.retrieveSupportersIds(userProfile.id!!)
+                    supportersRepo.retrieveSupportersIds(userProfile().id!!)
             }catch (e:Exception){
                 log("Exception")
                log(e.message.toString())
@@ -51,6 +51,7 @@ class SupporterViewModel @Inject constructor(
     }
 
     private fun updateUserProfileLocal(newInvitationCode: String) {
+
         try {
             supportersRepo.updateUserProfileLocal(newInvitationCode)
             _status.value = ""
@@ -59,7 +60,7 @@ class SupporterViewModel @Inject constructor(
             _status.value = e.message
         }
 
-    supportersRepo.sharedPreferences.storeObject(USER_PROFILE, userProfile)
+    supportersRepo.sharedPreferences.storeObject(USER_PROFILE, userProfile())
 
     }
 

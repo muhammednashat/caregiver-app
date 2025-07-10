@@ -14,7 +14,7 @@ package mnshat.dev.myproject
 
 //Doing
 /**
- * refactor adding supporters process (review after change code )
+ * refactor adding supporters process (update permissions )
  *
  */
 
@@ -34,7 +34,7 @@ package mnshat.dev.myproject
  *  * show onboarding screens with each new account
  *  *  check  connect with supporter and it's permission
  *
- *
+ *  solve bug when login after logout related to room
  *
  *
  *
