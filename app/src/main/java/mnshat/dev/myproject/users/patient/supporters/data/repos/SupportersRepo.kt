@@ -70,5 +70,16 @@ class SupportersRepo (
         sharedPreferences.storeObject(USER_PROFILE, userProfile)
     }
 
+   suspend fun updateSupporterPermissionsRemotely
+               (supporterId: String, updatedPermissions: HashMap<String, Boolean>): Void? {
+      return firestore.collection(USERS).document(supporterId).update(updatedPermissions.toMap()).await()
+    }
+
+    suspend fun changeStatusOfSupporter(supporterId: String, updateData: Map<String, Int?>): Void? {
+
+        return firestore.collection(USERS).document(supporterId).update(updateData).await()
+
+    }
+
 
 }

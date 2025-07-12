@@ -853,4 +853,7 @@
     <string name="no_ideas_received_yet_nyou_can_only_continue_after_receiving_a_message_from_your_friend">لا يوجد اى افكار مستلمة حتى الان!\n لا يمكنك الاستمرار إلا بعد استلام رسالة من صديقك</string>
     <string name="welcome">مرحبا</string>
     <string name="new_invitation_code_has_been_created">تم إنشاء كود دعوة جديد</string>
+    <string name="supporter_s_permission_have_been_updated">تم تحديث صلاحيات الداعم</string>
+    <string name="failed_try_again_later">فشل، حاول مرة أخرى لاحقًا</string>
+    <string name="supporter_status_changed">تم تغيير حالة الداعم</string>
 </resources>

@@ -17,10 +17,8 @@ import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.model.Permissions
 import mnshat.dev.myproject.auth.data.entity.UserProfile
 import mnshat.dev.myproject.base.BaseFragment
-import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.STATUS
 import mnshat.dev.myproject.util.loadImage
-import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 class SupporterDetailsFragment : BaseFragment() {
@@ -29,7 +27,6 @@ class SupporterDetailsFragment : BaseFragment() {
     private val viewModel: SupporterViewModel by viewModels()
 
     private lateinit var supporter: UserProfile
-    private lateinit var action: NavDirections
     private  var currentPermissions = mutableListOf(false,false,false)
     private  val modifiedPermissions = mutableListOf(false,false,false)
 
@@ -42,6 +39,7 @@ class SupporterDetailsFragment : BaseFragment() {
         binding = FragmentSupporterDetailsBinding.inflate(inflater, container, false)
         initializeViews()
         setupClickListener()
+        observeViewModel()
         return binding.root
     }
      fun initializeViews() {
@@ -66,7 +64,7 @@ class SupporterDetailsFragment : BaseFragment() {
         }
     }
 
-     fun setupClickListener() {
+   private  fun setupClickListener() {
 
         binding.icBack.setOnClickListener {
             findNavController().popBackStack()
@@ -75,40 +73,15 @@ class SupporterDetailsFragment : BaseFragment() {
             showPopupMenu(it)
         }
         binding.save.setOnClickListener {
-            showProgressDialog()
-            updateSupporterPermissionsRemotely(modifiedPermissions)
-        }
-
-//        binding.permissions.viewReporting.setOnClickListener {
-//            action =
-//                SupporterDetailsFragmentDirections.actionSupporterDetailsFragmentToSetViewReportingPermissionFragment(
-//                    supporter.permissions!!
-//                )
-//            findNavController().navigate(action)
-//        }
-//        binding.permissions.notification.setOnClickListener {
-//            action =
-//                SupporterDetailsFragmentDirections.actionSupporterDetailsFragmentToSetNotificationPermissionFragment(
-//                    supporter.permissions!!
-//                )
-//            findNavController().navigate(action)
-//        }
-
-    }
-
-    private fun updateSupporterPermissionsRemotely(modifiedPermissions: MutableList<Boolean>) {
-        val permissions = Permissions(allowDailyProgramDetails = modifiedPermissions[0] , allowMoodTrackingDetails =modifiedPermissions[1] , allowPrivateMessages= modifiedPermissions[2])
-        val map = mapOf("permissions" to permissions)
-        FirebaseService.updateItemsProfileUser(supporter.id!!, map) {
-            if (it) {
-             currentPermissions = modifiedPermissions.toMutableList()
-             binding.save.visibility = View.GONE
-            } else {
-
+            if(isConnected()){
+                showProgressDialog()
+                viewModel.updateSupporterPermissionsRemotely(supporter.id!!,modifiedPermissions, requireActivity())
+            }else{
+                showNoInternetSnackBar(binding.root)
             }
-            dismissProgressDialog()
         }
     }
+
 
     private fun setUpUiSupporter(supporter: UserProfile) {
 
@@ -162,7 +135,6 @@ class SupporterDetailsFragment : BaseFragment() {
                     getString(R.string.remove_supporter),
                     getString(R.string.confirm_remove_supporter),
                         R.drawable.ic_user_profile,
-
                     getString(R.string.remove_supporter_confirmation),
                 ){}
             }
@@ -177,41 +149,61 @@ class SupporterDetailsFragment : BaseFragment() {
                 getString(R.string.remove_temporary_suspend),
                 getString(R.string.confirm_remove_temporary_suspend),
                 R.drawable.ic_user_profile,
-
                 getString(R.string.remove_temporary_suspend),
             ){
-                changeStatusOfSupporter(1)
+                updateSupporterStatus(1)
             }
         } else {
-
             showTemporallyDialog(
                 getString(R.string.suspend_temporarily),
                 getString(R.string.confirm_temporarily_suspend_supporter),
                 R.drawable.ic_user_profile,
-
                 getString(R.string.suspend_temporarily)
 
             ){
-                changeStatusOfSupporter(0)
+                updateSupporterStatus(0)
             }
         }
 
     }
 
-    private fun changeStatusOfSupporter(status: Int?) {
-        val updateData = mutableMapOf(
-            STATUS to status,
-        )
+    private fun updateSupporterStatus(status: Int) {
+   if(isConnected()){
+       showProgressDialog()
+       viewModel.changeStatusOfSupporter(supporter.id!!,status)
+   }else{
+       showNoInternetSnackBar(binding.root)
+   }
+    }
 
-        FirebaseService.updateItemsProfileUser(supporter.id!!, updateData) {
-            if (it) {
-                supporter.status = status
-                checkStatus()
-            } else {
 
-            }
+    private fun observeViewModel() {
+
+        viewModel.updateStatus.observe(viewLifecycleOwner) {
             dismissProgressDialog()
+            it?.let {
+                if (it.isEmpty()) {
+                    showToast(getString(R.string.supporter_status_changed))
+                    updateUi()
+                }else{
+                    showToast(getString(R.string.failed_try_again_later))
+                }
+            }
+        }
+
+        viewModel.status.observe(viewLifecycleOwner) {
+            dismissProgressDialog()
+            it?.let {
+                showToast(it)
+                binding.save.visibility = View.GONE
+            }
         }
     }
+
+    private fun updateUi() {
+        supporter.status = if (supporter.status == 0) 1 else 0
+        checkStatus()
+    }
+
 
 }

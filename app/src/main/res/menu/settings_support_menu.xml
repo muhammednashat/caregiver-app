@@ -8,7 +8,6 @@
         android:id="@+id/menu_suspend_temporarily"
         android:title="@string/suspend_temporarily" />
 
-    <item
-        android:id="@+id/menu_permanent_remove"
-        android:title="@string/remove_supporter_permanently" />
+
+
 </menu>

@@ -45,35 +45,9 @@
         <argument
             android:name="supporter"
             app:argType="mnshat.dev.myproject.auth.data.entity.UserProfile" />
-        <action
-            android:id="@+id/action_supporterDetailsFragment_to_setViewReportingPermissionFragment"
-            app:destination="@id/setViewReportingPermissionFragment" />
-        <action
-            android:id="@+id/action_supporterDetailsFragment_to_setNotificationPermissionFragment"
-            app:destination="@id/setNotificationPermissionFragment" />
 
     </fragment>
 
-    <fragment
-        tools:layout="@layout/fragment_reporting_permission"
-        android:id="@+id/setViewReportingPermissionFragment"
-        android:name="mnshat.dev.myproject.users.patient.supporters.presentation.ReportingPermissionFragment"
-        android:label="SetViewReportingPermissionFragment" >
-        <argument
-            android:name="permission"
-            app:argType="mnshat.dev.myproject.model.Permissions" />
-    </fragment>
-    <fragment
-        tools:layout="@layout/fragment_notification_permission"
-        android:id="@+id/setNotificationPermissionFragment"
-        android:name="mnshat.dev.myproject.users.patient.supporters.presentation.NotificationPermissionFragment"
-        android:label="SetNotificationPermissionFragment">
-
-
-        <argument
-            android:name="permission"
-            app:argType="mnshat.dev.myproject.model.Permissions" />
-    </fragment>
     <fragment
         android:id="@+id/createNewInvitationCodeFragment"
         android:name="mnshat.dev.myproject.users.patient.supporters.presentation.CreateNewInvitationCodeFragment"
