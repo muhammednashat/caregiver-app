@@ -7,14 +7,14 @@ package mnshat.dev.myproject
  * reviewed  forgot password process
  * saved login in info in shared preferences
  * added comments
- *
+ * refactor adding supporters process
  *
  */
 
 
 //Doing
 /**
- * refactor adding supporters process (update permissions )
+ *
  *
  */
 
