@@ -3,7 +3,7 @@ package mnshat.dev.myproject.commonFeatures.posts
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentDisplayArticleBinding
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
-import mnshat.dev.myproject.users.patient.main.BasePatientFragment
+import mnshat.dev.myproject.users.patient.BasePatientFragment
 import mnshat.dev.myproject.util.LANGUAGE
 
 class DisplayArticleFragment : BasePatientFragment<FragmentDisplayArticleBinding>() {

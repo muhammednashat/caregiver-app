@@ -2,9 +2,8 @@ package mnshat.dev.myproject.commonFeatures.posts
 
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentDisplayGratitudeBinding
-import mnshat.dev.myproject.users.patient.main.BasePatientFragment
+import mnshat.dev.myproject.users.patient.BasePatientFragment
 import mnshat.dev.myproject.util.dateTime
-import mnshat.dev.myproject.util.getDateAsString
 import mnshat.dev.myproject.util.getGratitudeQuestionsList
 
 

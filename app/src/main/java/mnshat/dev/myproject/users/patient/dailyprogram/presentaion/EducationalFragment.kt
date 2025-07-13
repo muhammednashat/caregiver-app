@@ -38,7 +38,7 @@ class EducationalFragment : BaseDailyProgramFragment() {
         setupClickListener()
         showProgressDialog()
         viewModel.get()
-        observeViewModel()
+//        observeViewModel()
         log("EducationalFragment onCreateView")
         return  binding.root
     }

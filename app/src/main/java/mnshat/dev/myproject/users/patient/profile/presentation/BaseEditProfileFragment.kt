@@ -2,7 +2,7 @@ package mnshat.dev.myproject.users.patient.profile.presentation
 
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
-import mnshat.dev.myproject.users.patient.main.BasePatientFragment
+import mnshat.dev.myproject.users.patient.BasePatientFragment
 
 open abstract class BaseEditProfileFragment<T : ViewDataBinding> : BasePatientFragment<T>() {
 

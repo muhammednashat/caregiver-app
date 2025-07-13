@@ -4,7 +4,7 @@ import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.HelpingAdapterAdapter
 import mnshat.dev.myproject.databinding.FragmentNumberHelpingBinding
-import mnshat.dev.myproject.users.patient.main.BasePatientFragment
+import mnshat.dev.myproject.users.patient.BasePatientFragment
 
 
 class NumberHelpingFragment : BasePatientFragment<FragmentNumberHelpingBinding>() {

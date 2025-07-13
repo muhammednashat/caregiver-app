@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.main
+package mnshat.dev.myproject.users.patient
 
 import android.view.View
 import android.widget.ImageView

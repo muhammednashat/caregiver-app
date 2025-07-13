@@ -49,7 +49,7 @@
     <fragment
         android:id="@+id/gratitudeListFragment"
        tools:layout="@layout/fragment_gratitude_list"
-        android:name="mnshat.dev.myproject.users.patient.main.GratitudeListFragment"
+        android:name="mnshat.dev.myproject.users.patient.GratitudeListFragment"
         android:label="GratitudeListFragment"
         app:popUpTo="@id/profileFragment"
         app:popUpToInclusive="false" >

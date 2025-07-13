@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.main
+package mnshat.dev.myproject.users.patient
 
 import android.view.View
 import androidx.navigation.fragment.findNavController
@@ -6,7 +6,6 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.GratitudeAdapter
 import mnshat.dev.myproject.databinding.FragmentGratitudeListBinding
 import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.getGratitudeQuestionsList
 
 class GratitudeListFragment : BasePatientFragment<FragmentGratitudeListBinding>() {

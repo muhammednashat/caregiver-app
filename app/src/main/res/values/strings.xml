@@ -181,7 +181,7 @@
     <string name="change_preferred_dialect">Change Your Preferred Dialect</string>
     <string name="preferred_dialect">Preferred Dialect</string>
     <string name="preferred_dialect_changed_successfully">Your preferred dialect has been changed successfully</string>
-    <string name="educational_content">Educational</string>
+    <string name="educational_content">Knowledge Bank</string>
     <string name="learn_more">Learn More</string>
     <string name="track_mood_status">Track Mood Status</string>
     <string name="verified">Verified</string>
@@ -313,8 +313,8 @@
     <string name="suggest_other_articles">Suggest other articles</string>
     <string name="how_are_you_today">How are you today?</string>
     <string name="enter">Enter</string>
-    <string name="auxiliary_tools">Auxiliary tools</string>
-    <string name="emergency_help">Emergency help</string>
+    <string name="auxiliary_tools">Self-Help Tools</string>
+    <string name="emergency_help">Emergency Help</string>
     <string name="don_t_hesitate_ask_for_help_now">Don\'t hesitate, ask for help now</string>
     <string name="help_numbers">Help numbers</string>
     <string name="easy_access_to_the_relevant_authorities">Easy access relevant authorities</string>
@@ -479,7 +479,7 @@ cannot fully express the anguish between my ribs\n</string>
     <string name="you_can_seek_help_and_psychological_support_n_from_the_relevant_authorities">You can seek help and psychological support \n from the relevant authorities</string>
     <string name="no_internet">No Internet\n</string>
     <string name="plan_your_day">Plan your day</string>
-    <string name="daily_planner">Daily planning</string>
+    <string name="daily_planner">My Daily Planner</string>
     <string name="no_plans_for_today">No plans for today. Add your tasks now!</string>
 
     <string name="choose_day">Choose Day</string>

@@ -164,7 +164,7 @@
     <string name="change_preferred_dialect">تغيير لهجتك المفضلة</string>
     <string name="preferred_dialect">اللهجة المفضلة</string>
     <string name="preferred_dialect_changed_successfully">تم تغيير لهجتك المفضلة بنجاح</string>
-    <string name="educational_content">المحتوى التثقيفي</string>
+    <string name="educational_content">بنك المعرفة</string>
     <string name="learn_more">تعلم المزيد</string>
     <string name="track_mood_status">تتبع الحالة المزاجية</string>
     <string name="verified">تم التحقق</string>
@@ -275,9 +275,9 @@
     <string name="suggest_other_articles">اقتراح موضوعات اخرى</string>
     <string name="how_are_you_today">كيف حالك اليوم؟</string>
     <string name="enter">دخول</string>
-    <string name="auxiliary_tools">أدوات المساعدة
+    <string name="auxiliary_tools">أدوات المساعدة الذاتية
 </string>
-    <string name="emergency_help">مساعدة طارئة</string>
+    <string name="emergency_help">المساعدة الطارئة</string>
     <string name="don_t_hesitate_ask_for_help_now">لا تتردد, اطلب المساعدة الان</string>
     <string name="help_numbers">ارقام مساعدة</string>
     <string name="easy_access_to_the_relevant_authorities">الوصول للجهات المختصة بسهوله</string>

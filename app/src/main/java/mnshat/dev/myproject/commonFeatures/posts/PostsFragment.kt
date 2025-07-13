@@ -13,12 +13,11 @@ import mnshat.dev.myproject.model.Gratitude
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.model.Supplication
-import mnshat.dev.myproject.users.patient.main.BasePatientFragment
+import mnshat.dev.myproject.users.patient.BasePatientFragment
 import mnshat.dev.myproject.util.ARTICLE
 import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.EMAIL_PARTNER
-import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.GRATITUDE
 import mnshat.dev.myproject.util.LIBRARY
 import mnshat.dev.myproject.util.SUPPLICATIONS

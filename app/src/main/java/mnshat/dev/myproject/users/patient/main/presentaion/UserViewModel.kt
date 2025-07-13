@@ -1,0 +1,38 @@
+package mnshat.dev.myproject.users.patient.main.presentaion
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
+import mnshat.dev.myproject.users.patient.main.data.UserDataRepository
+import mnshat.dev.myproject.util.log
+import javax.inject.Inject
+
+@HiltViewModel
+ class UserViewModel @Inject constructor(
+     private  val userDataRepository: UserDataRepository
+) : ViewModel() {
+
+
+    val userProfile = userDataRepository.userProfile()
+
+
+    fun currentTask() : CurrentDay {
+        val day = userDataRepository.getCurrentDayLocally()
+        log("day = $day")
+       return day
+
+
+    }
+
+    fun updateLoggedStatus() {
+        userDataRepository.updateLoggedStatus()
+    }
+
+    val isUserLogged = userDataRepository.isLogged()
+
+
+
+}
+

@@ -23,12 +23,13 @@ class DailyProgramRepository @Inject constructor(
     suspend fun fetchContentDailyProgram(numberOfDay: Int): Boolean {
 
         return try {
+            log("fetchContentDailyProgram() called with: numberOfDay = $numberOfDay")
             var tasks = dao.getAllDayTasks()
              if (tasks?.size == 0){
+                 log("fetchContentDailyProgram() empty")
                  val data = fetchContentDailyProgramRemote()
                  storeDailyProgramListLocally(data)
-              }
-
+               }
 
             val dayTask = dao.getDayTaskById(numberOfDay)
             log("dayTask = $dayTask")
@@ -36,7 +37,7 @@ class DailyProgramRepository @Inject constructor(
             val currentDay = filterBasedProfile(dayTask!!, numberOfDay)
             log("currentDay = $currentDay")
              updateCurrentDayLocally(currentDay)
-            updateNumberDayInUseProfile(numberOfDay)
+             updateNumberDayInUseProfile(numberOfDay)
              updateCurrentDayRemotely(currentDay)
 
             true
@@ -91,6 +92,8 @@ class DailyProgramRepository @Inject constructor(
     private suspend fun getDayTaskFromRoom(day: Int): DayTaskEntity {
         return dao.getDayTaskById(day)!!
     }
+
+
     private fun getCurrentDayLocally(): CurrentDay{
         val string = sharedPreferences.getString(CURRENT_DAY, null.toString())
         val gson = Gson()
@@ -99,6 +102,7 @@ class DailyProgramRepository @Inject constructor(
 
 
     fun updateCurrentDayLocally(currentDay: CurrentDay) {
+        log("updateCurrentDayLocally() called with: currentDay = $currentDay")
         sharedPreferences.storeObject(CURRENT_DAY, currentDay)
     }
 

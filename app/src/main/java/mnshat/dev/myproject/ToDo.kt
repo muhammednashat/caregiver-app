@@ -8,7 +8,7 @@ package mnshat.dev.myproject
  * saved login in info in shared preferences
  * added comments
  * refactor adding supporters process
- *
+ * Ui enhancement
  */
 
 

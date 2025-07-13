@@ -8,7 +8,7 @@ import com.google.android.exoplayer2.MediaItem
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentVideoBinding
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
-import mnshat.dev.myproject.users.patient.main.BasePatientFragment
+import mnshat.dev.myproject.users.patient.BasePatientFragment
 import mnshat.dev.myproject.util.LANGUAGE
 
 
