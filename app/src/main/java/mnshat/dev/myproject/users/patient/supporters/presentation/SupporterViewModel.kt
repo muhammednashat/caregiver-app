@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.users.patient.supporters.data.repos.SupportersRepo
 import mnshat.dev.myproject.util.STATUS
 import mnshat.dev.myproject.util.USER_PROFILE
@@ -72,15 +71,7 @@ class SupporterViewModel @Inject constructor(
 
     }
 
-    fun deleteSupporter(supporterId: String) {
-        viewModelScope.launch {
-            try {
-//                supportersRepo.deleteSupporter(supporterId)
-            } catch (e: Exception) {
-                _status.value = e.message
-            }
-        }
-    }
+
 
     fun changeStatusOfSupporter(supporterId:String,status: Int?) {
         val updateData = mapOf(

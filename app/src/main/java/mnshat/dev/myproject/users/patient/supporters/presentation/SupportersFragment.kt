@@ -138,6 +138,13 @@ class SupportersFragment : BaseFragment() {
             dialogBinding.icClose.visibility = View.GONE
         }
         val window = sharedDialog.window
+        window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            val layoutParams = attributes
+            layoutParams.width = (resources.displayMetrics.widthPixels * 0.9).toInt()
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            attributes = layoutParams
+        }
         window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         sharedDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialogBinding.btAddNew.setOnClickListener {
@@ -147,11 +154,7 @@ class SupportersFragment : BaseFragment() {
         dialogBinding.icClose.setOnClickListener {
             sharedDialog.dismiss()
         }
-        dialogBinding.btRecovery.setOnClickListener {
-            sharedDialog.dismiss()
-//            showToast("Comeing soon")
-//            findNavController().navigate(R.id.action_supportesFragment_to_suppporterRecoveryFragment)
-        }
+
         sharedDialog.show()
     }
 

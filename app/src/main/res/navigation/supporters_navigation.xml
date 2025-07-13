@@ -12,9 +12,8 @@
         <action
             android:id="@+id/action_supportesFragment_to_addSupporterFragment"
             app:destination="@id/addSupporterFragment" />
-        <action
-            android:id="@+id/action_supportesFragment_to_suppporterRecoveryFragment"
-            app:destination="@id/suppporterRecoveryFragment" />
+
+
         <action
             android:id="@+id/action_supportesFragment_to_supporterDetailsFragment"
             app:destination="@id/supporterDetailsFragment">
@@ -23,11 +22,8 @@
         </action>
 
     </fragment>
-    <fragment
-        android:id="@+id/suppporterRecoveryFragment"
-        android:name="mnshat.dev.myproject.users.patient.supporters.presentation.SuppporterRecoveryFragment"
-        android:label="fragment_suppporter_recovery"
-        tools:layout="@layout/fragment_suppporter_recovery" />
+
+
     <fragment
         android:id="@+id/addSupporterFragment"
       tools:layout="@layout/fragment_add_supporter"

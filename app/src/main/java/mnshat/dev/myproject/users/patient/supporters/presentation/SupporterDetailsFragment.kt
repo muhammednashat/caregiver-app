@@ -7,17 +7,13 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentSupporterDetailsBinding
-import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.model.Permissions
 import mnshat.dev.myproject.auth.data.entity.UserProfile
 import mnshat.dev.myproject.base.BaseFragment
-import mnshat.dev.myproject.util.STATUS
 import mnshat.dev.myproject.util.loadImage
 
 @AndroidEntryPoint

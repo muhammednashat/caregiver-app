@@ -10,10 +10,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentAddSupporterBinding
-import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
-
 class AddSupporterFragment : BaseFragment() {
 
     private lateinit var binding: FragmentAddSupporterBinding
