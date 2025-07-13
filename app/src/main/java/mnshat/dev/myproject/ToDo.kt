@@ -14,7 +14,7 @@ package mnshat.dev.myproject
 
 //Doing
 /**
- *
+ * refactor daily program
  *
  */
 
