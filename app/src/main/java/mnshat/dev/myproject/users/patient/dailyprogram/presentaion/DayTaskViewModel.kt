@@ -1,60 +1,60 @@
 package mnshat.dev.myproject.users.patient.dailyprogram.presentaion
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
+import mnshat.dev.myproject.users.patient.dailyprogram.data.DailyProgramRepository
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.StatusDailyProgram
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
-import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.DailyProgramManagerUseCase
-import mnshat.dev.myproject.util.CURRENT_DAY
-import mnshat.dev.myproject.util.DAY_TASK
-import mnshat.dev.myproject.util.STATUS
 import mnshat.dev.myproject.util.SharedPreferencesManager
-import mnshat.dev.myproject.util.log
 import javax.inject.Inject
 
 @HiltViewModel
 class DayTaskViewModel @Inject constructor(
-    private val dailyProgramManagerUseCase: DailyProgramManagerUseCase,
+    private val dailyProgramRepository: DailyProgramRepository,
     val sharedPreferences: SharedPreferencesManager,
 ) : ViewModel() {
 
+    private var currentDayLocal = dailyProgramRepository.getCurrentDayLocally()
+    val userProfile = dailyProgramRepository.getUserProfile()
+
     lateinit var status: StatusDailyProgram
     lateinit var listOfTasks: List<Task>
+
+    fun initTasksList(phase:String){
+        status = currentDayLocal.status!!
+        listOfTasks =  when (phase){
+            "educational" ->  currentDayLocal.dayTask?.educational as List<Task>
+            "spiritual" ->  currentDayLocal.dayTask?.spiritual as List<Task>
+            else -> currentDayLocal.dayTask?.behaviorActivation as List<Task>
+        }
+    }
+
+
     val _isSyncNeeded: MutableLiveData<Boolean> = MutableLiveData()
 
-    private  val _currentDay = MutableLiveData<CurrentDay?>()
-    val currentDay: LiveData<CurrentDay?> = _currentDay
 
-    fun get() {
-        CoroutineScope(Dispatchers.IO).launch {
-            _currentDay.postValue(dailyProgramManagerUseCase.getCurrentDayLocallyUseCase())
-//            status = _currentDay.value?.status!!
+    fun updateCompletionRate() {
+       status.remaining = status.remaining?.minus(1)
+        if (userProfile.religion!!) {
+            status.completionRate = status.completionRate?.plus(30)
+        } else {
+           status.completionRate = status.completionRate?.plus(50)
         }
+
+       updateCurrentTaskLocally()
+
     }
 
     fun updateCurrentTaskLocally() {
-        sharedPreferences.storeObject(CURRENT_DAY,  _currentDay.value)
+
         _isSyncNeeded.value = true
     }
+
     fun updateCurrentTaskRemotely() {
-        val map = mapOf(DAY_TASK to  _currentDay.value?.dayTask!!, STATUS to  _currentDay.value?.status!!)
-        FirebaseService.updateTasksUser(FirebaseService.userId, map) {
-        }
-    }
-
-    override fun onCleared() {
-    log("DayTaskViewModel onCleared")
-        _currentDay.value = null
-        super.onCleared()
 
     }
+
+
 
 }

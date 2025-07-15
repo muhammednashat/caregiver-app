@@ -35,12 +35,13 @@ class MyApplication: Application() {
         createChannel(getString(R.string.activities_reminder), CALENDER_CHANNEL_ID, "", NotificationUtil.IMPORTANCE_DEFAULT)
 
 
-    onUserDataChanged(sharedPreferences)
-    if (sharedPreferences.getString(TYPE_OF_USER ) == CAREGIVER){
-        observeUserDailyProgramStates(sharedPreferences.getString(ID_PARTNER))
-    }else{
-        observeUserDailyProgramStates(sharedPreferences.getString(USER_ID))
-    }
+//    onUserDataChanged(sharedPreferences)
+//
+//    if (sharedPreferences.getString(TYPE_OF_USER ) == CAREGIVER){
+//        observeUserDailyProgramStates(sharedPreferences.getString(ID_PARTNER))
+//    }else{
+//        observeUserDailyProgramStates(sharedPreferences.getString(USER_ID))
+//    }
 
     }
 
@@ -66,7 +67,6 @@ class MyApplication: Application() {
                sharedPreferences.storeObject(CURRENT_DAY,currentDay)
               log(currentDay?.status?.day.toString())
              }
-
              override fun onCancelled(error: DatabaseError) {
 
              }

@@ -1,27 +1,17 @@
 package mnshat.dev.myproject.users.patient.dailyprogram.presentaion
 
-import android.app.Dialog
-import android.content.Intent
+import android.app.AlertDialog
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.databinding.DialogPreMoodSelectionBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
-import mnshat.dev.myproject.databinding.StaionDescriptionDialogBinding
-import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
-import mnshat.dev.myproject.users.patient.moodTracking.presentaion.MoodTrackingActivity
-import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.TextToSpeechUtil
-import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 class EducationalFragment : BaseDailyProgramFragment() {
@@ -32,87 +22,50 @@ class EducationalFragment : BaseDailyProgramFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = LayoutTaskBinding.inflate(inflater, container, false)
-        textToSpeech =  TextToSpeechUtil(TextToSpeech(requireActivity(), null))
-
         hideSpiritualIcon(binding.constraintTask2, binding.line1)
-        setupClickListener()
-        showProgressDialog()
-        viewModel.get()
-//        observeViewModel()
-        log("EducationalFragment onCreateView")
+        binding.btnPrevious.visibility = View.GONE
+        checkInternetConnection()
         return  binding.root
     }
 
-    override fun onStart() {
-       log("EducationalFragment onStart")
-        super.onStart()
-
+    private fun checkInternetConnection() {
+        if (isConnected()) {
+            init()
+        } else {
+            showNoInternetDialog()
+        }
     }
 
-    fun observeViewModel(){
-       viewModel.currentDay.observe(viewLifecycleOwner){
-          it?.let{
-              log("EducationalFragment observeViewModel ${it.status}")
-               dismissProgressDialog()
-              viewModel.status = it.status!!
-               isPreChecked()
-               initializeViews()
-           }
-       }
+    private fun showNoInternetDialog() {
+        AlertDialog.Builder(requireActivity())
+            .setTitle(getString(R.string.no_internet_connection))
+            .setMessage(getString(R.string.please_check_your_internet_connection_and_try_again))
+            .setPositiveButton(getString(R.string.try_again)) { dialog, _ ->
+                checkInternetConnection()
+                dialog.dismiss()
+            }
+            .setCancelable(false)
+            .show()
     }
+
+
+    private fun init() {
+        textToSpeech = TextToSpeechUtil(TextToSpeech(requireActivity(), null))
+        viewModel.initTasksList("educational")
+//     isPreChecked()
+        initializeViews()
+        setupClickListener()
+    }
+
 
      fun initializeViews() {
-        binding.btnPrevious.visibility = View.GONE
-        viewModel. currentDay.value.let {
-            viewModel.listOfTasks = it?.dayTask?.educational as List<Task>
-//            if ( viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
+         if (viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
             getTaskFromList(viewModel.status.currentIndexEducational!!, 2)
             changeColorStatus()
-        }
-
-    }
-
-
-
-    private fun isPreChecked() {
-        if (viewModel.status.preChecked == false){
-            showDailyProgram()
-        }
-    }
-
-
-
-    private fun showDailyProgram() {
-        val dialog = Dialog(requireContext())
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        val dialogBinding = DialogPreMoodSelectionBinding.inflate(layoutInflater)
-        dialog.setContentView(dialogBinding.root)
-        dialog.setCanceledOnTouchOutside(false)
-
-        val window = dialog.window
-        window?.apply {
-            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            val layoutParams = attributes
-            layoutParams.width = (resources.displayMetrics.widthPixels * 0.8).toInt()
-            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
-            attributes = layoutParams
-        }
-
-        dialogBinding.icClose.setOnClickListener {
-            dialog.dismiss()
-        }
-        dialogBinding.button.setOnClickListener {
-            dialog.dismiss()
-            startActivity(Intent(requireContext(), MoodTrackingActivity::class.java))
-            activity?.finish()
-        }
-
-        dialog.show()
     }
 
 
    private  fun setupClickListener() {
-
 
        binding.play.setOnClickListener {
            if(textToSpeech.textToSpeech.isSpeaking){
@@ -136,17 +89,7 @@ class EducationalFragment : BaseDailyProgramFragment() {
             updateStatus()
         }
 
-        binding.icPause.setOnClickListener {
-            showTemporallyDialog(
-                getString(R.string.do_you_want_to_pause_this_task_temporarily),
-                getString(R.string.you_can_exit_this_task_and_come_back_again_whatever_you_want),
-                R.drawable.ic_timer,
-                getString(R.string.pause_task_temporarily)
-            ) {
-                requireActivity().finish()
-            }
 
-        }
 
         binding.btnRecommend.setOnClickListener {
             val currentIndex = getNextTask(viewModel.status.currentIndexEducational!!, 1)
@@ -173,7 +116,7 @@ class EducationalFragment : BaseDailyProgramFragment() {
 
     private fun updateStatusData() {
         viewModel.status.educational = 1
-        updateCompletionRate()
+        viewModel.updateCompletionRate()
         showToast(getString(R.string.the_first_task_was_completed_successfully))
    }
 
@@ -181,7 +124,7 @@ class EducationalFragment : BaseDailyProgramFragment() {
 
     private fun navigateToNextTask() {
 
-        if (viewModel.sharedPreferences.getBoolean(RELIGION)) {
+        if (viewModel.userProfile.religion!!) {
             findNavController().navigate(R.id.action_educationalFragment_to_spiritualFragment)
         } else {
             findNavController().navigate(R.id.action_educationFragment_to_behaviorActivationFragment)
@@ -189,7 +132,6 @@ class EducationalFragment : BaseDailyProgramFragment() {
     }
 
     override fun onStop() {
-        log("EducationalFragment onStop")
         super.onStop()
         player?.pause()
         if (viewModel._isSyncNeeded.value == true){

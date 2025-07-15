@@ -37,7 +37,6 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
         binding = LayoutTaskBinding.inflate(inflater, container, false)
         setupClickListener()
         initializeViews()
-
         return binding.root
     }
 
@@ -45,15 +44,16 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
     fun initializeViews() {
         textToSpeech =  TextToSpeechUtil(TextToSpeech(requireActivity(), null))
 
-        viewModel.currentDay.value.let {
-            viewModel.listOfTasks = it?.dayTask?.behaviorActivation as List<Task>
-             log(viewModel.listOfTasks.size.toString())
-            if ( viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
+//        viewModel.currentDay.value.let {
+//            viewModel.listOfTasks = it?.dayTask?.behaviorActivation as List<Task>
+//             log(viewModel.listOfTasks.size.toString())
+//            if ( viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
+//
+//            witchFragment("BehaviouralActivationFragment")
+//            getTaskFromList(viewModel.status.currentIndexBehavioral!!, 2)
+//            changeColorStatus()
+//        }
 
-            witchFragment("BehaviouralActivationFragment")
-            getTaskFromList(viewModel.status.currentIndexBehavioral!!, 2)
-            changeColorStatus()
-        }
         hideSpiritualIcon(binding.constraintTask2, binding.line2)
     }
 
@@ -139,7 +139,7 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
     }
     private fun updateStatusData() {
         viewModel.status.behavioral = 1
-        updateCompletionRate()
+        viewModel.updateCompletionRate()
     }
 
     private fun showDialogAskingForCompletion(){

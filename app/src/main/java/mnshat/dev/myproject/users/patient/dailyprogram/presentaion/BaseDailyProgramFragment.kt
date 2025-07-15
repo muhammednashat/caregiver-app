@@ -1,6 +1,7 @@
 package mnshat.dev.myproject.users.patient.dailyprogram.presentaion
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -17,9 +18,11 @@ import com.google.android.exoplayer2.MediaItem
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.databinding.DialogPreMoodSelectionBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.databinding.StaionDescriptionDialogBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.MoodTrackingActivity
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.RELIGION
@@ -104,7 +107,7 @@ open class BaseDailyProgramFragment : BaseFragment() {
 
 
     fun hideSpiritualIcon(constraintTask: ConstraintLayout, line: View) {
-        if (!viewModel.sharedPreferences.getBoolean(RELIGION)) {
+        if (!viewModel.userProfile.religion!!) {
             constraintTask.visibility = View.GONE
             line.visibility = View.GONE
         }
@@ -123,16 +126,7 @@ open class BaseDailyProgramFragment : BaseFragment() {
         } else 0
     }
 
-    fun updateCompletionRate() {
-        viewModel.status.remaining = viewModel.status.remaining?.minus(1)
-        if (viewModel.sharedPreferences.getBoolean(RELIGION)) {
-            viewModel.status.completionRate = viewModel.status.completionRate?.plus(30)
-        } else {
-            viewModel.status.completionRate = viewModel.status.completionRate?.plus(50)
-        }
-        viewModel.updateCurrentTaskLocally()
 
-    }
 
     private fun checkType(type: Int?) {
         when (type) {
@@ -239,6 +233,38 @@ open class BaseDailyProgramFragment : BaseFragment() {
             textToSpeech.release()
         }
 
+    }
+    fun isPreChecked() {
+        if (viewModel.status.preChecked == false){
+            showDailyProgram()
+        }
+    }
+
+    private fun showDailyProgram() {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = DialogPreMoodSelectionBinding.inflate(layoutInflater)
+        dialog.setContentView(dialogBinding.root)
+        dialog.setCanceledOnTouchOutside(false)
+
+        val window = dialog.window
+        window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            val layoutParams = attributes
+            layoutParams.width = (resources.displayMetrics.widthPixels * 0.8).toInt()
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            attributes = layoutParams
+        }
+
+        dialogBinding.icClose.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialogBinding.button.setOnClickListener {
+            dialog.dismiss()
+            startActivity(Intent(requireContext(), MoodTrackingActivity::class.java))
+            activity?.finish()
+        }
+        dialog.show()
     }
 
 

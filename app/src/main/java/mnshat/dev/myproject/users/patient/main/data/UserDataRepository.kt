@@ -11,7 +11,7 @@ class UserDataRepository (
     val sharedPreferences: SharedPreferencesManager,
 ){
 
-    fun userProfile () = sharedPreferences.getUserProfile()
+     fun userProfile () = sharedPreferences.getUserProfile()
 
 
      fun getCurrentDayLocally(): CurrentDay {
@@ -21,6 +21,7 @@ class UserDataRepository (
     }
 
     fun isLogged() = sharedPreferences.getBoolean(IS_LOGGED)
+
     fun updateLoggedStatus() { sharedPreferences.storeBoolean(IS_SECOND_TIME,true)  }
 
 

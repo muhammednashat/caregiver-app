@@ -856,4 +856,6 @@
     <string name="supporter_s_permission_have_been_updated">تم تحديث صلاحيات الداعم</string>
     <string name="failed_try_again_later">فشل، حاول مرة أخرى لاحقًا</string>
     <string name="supporter_status_changed">تم تغيير حالة الداعم</string>
+    <string name="please_check_your_internet_connection_and_try_again">يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى</string>
+    <string name="try_again">حاول مرة آخرى</string>
 </resources>

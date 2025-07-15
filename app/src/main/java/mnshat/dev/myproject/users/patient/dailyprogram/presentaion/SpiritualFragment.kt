@@ -29,13 +29,13 @@ class SpiritualFragment : BaseDailyProgramFragment() {
     fun initializeViews() {
         textToSpeech =  TextToSpeechUtil(TextToSpeech(requireActivity(), null))
 
-        viewModel.currentDay.value.let {
-            viewModel.listOfTasks = it?.dayTask?.spiritual as List<Task>
-//            if ( viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
-
-            getTaskFromList(viewModel.status.currentIndexSpiritual!!, 2)
-            changeColorStatus()
-        }
+//        viewModel.currentDay.value.let {
+//            viewModel.listOfTasks = it?.dayTask?.spiritual as List<Task>
+////            if ( viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
+//
+//            getTaskFromList(viewModel.status.currentIndexSpiritual!!, 2)
+//            changeColorStatus()
+//        }
     }
 
     fun setupClickListener() {
@@ -101,7 +101,7 @@ class SpiritualFragment : BaseDailyProgramFragment() {
 
     private fun updateStatusData() {
         viewModel.status.spiritual = 1
-        updateCompletionRate()
+        viewModel.updateCompletionRate()
         showToast(getString(R.string.the_second_task_was_completed_successfully))
     }
     override fun onStop() {

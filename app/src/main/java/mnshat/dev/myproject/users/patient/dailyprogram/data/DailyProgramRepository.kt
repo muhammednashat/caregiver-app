@@ -20,6 +20,10 @@ class DailyProgramRepository @Inject constructor(
     private val sharedPreferences: SharedPreferencesManager
 ) {
 
+
+
+    fun getUserProfile() = sharedPreferences.getUserProfile()
+
     suspend fun fetchContentDailyProgram(numberOfDay: Int): Boolean {
 
         return try {
@@ -94,7 +98,7 @@ class DailyProgramRepository @Inject constructor(
     }
 
 
-    private fun getCurrentDayLocally(): CurrentDay{
+     fun getCurrentDayLocally(): CurrentDay{
         val string = sharedPreferences.getString(CURRENT_DAY, null.toString())
         val gson = Gson()
         return gson.fromJson(string, CurrentDay::class.java)

@@ -24,8 +24,8 @@ object Di {
 
     @Provides
     @Singleton
-    fun provideDayTaskViewModel(  dailyProgramManagerUseCase: DailyProgramManagerUseCase,
-                                  sharedPreferences: SharedPreferencesManager)= DayTaskViewModel(dailyProgramManagerUseCase,sharedPreferences)
+    fun provideDayTaskViewModel(                                    dailyProgramRepository: DailyProgramRepository,
+                                  sharedPreferences: SharedPreferencesManager)= DayTaskViewModel(dailyProgramRepository,sharedPreferences)
 
     @Provides
     @Singleton
