@@ -1,12 +1,16 @@
 package mnshat.dev.myproject.users.patient.main.presentaion
 
 import android.Manifest
+import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -16,10 +20,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.LibraryActivity
+import mnshat.dev.myproject.databinding.DialogPreMoodSelectionBinding
 import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
 import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderActivity
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.MoodTrackingActivity
 import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
@@ -66,7 +72,11 @@ class HomeFragment : BaseFragment() {
      fun setupClickListener() {
 
         binding.dailyProgram.setOnClickListener() {
+            if (viewModel.currentTask().status?.preChecked!!){
             startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
+            }else{
+                showMoodTrackingDialog()
+            }
         }
 
          binding.statistics.setOnClickListener() {
@@ -95,12 +105,38 @@ class HomeFragment : BaseFragment() {
             binding.currentDayLevel.text= buildString {
                 append(getString(R.string.day, status?.day))
                 append(" ")
-                append(getString(R.string.current_level, status?.currentLevel))
             }
 
         }
     }
 
+
+    private fun showMoodTrackingDialog() {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = DialogPreMoodSelectionBinding.inflate(layoutInflater)
+        dialog.setContentView(dialogBinding.root)
+        dialog.setCanceledOnTouchOutside(false)
+
+        val window = dialog.window
+        window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            val layoutParams = attributes
+            layoutParams.width = (resources.displayMetrics.widthPixels * 0.8).toInt()
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            attributes = layoutParams
+        }
+
+        dialogBinding.icClose.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialogBinding.button.setOnClickListener {
+            dialog.dismiss()
+            startActivity(Intent(requireContext(), MoodTrackingActivity::class.java))
+            activity?.finish()
+        }
+        dialog.show()
+    }
 
     private fun isPermissionGranted() {
         when {

@@ -52,7 +52,6 @@ class EducationalFragment : BaseDailyProgramFragment() {
     private fun init() {
         textToSpeech = TextToSpeechUtil(TextToSpeech(requireActivity(), null))
         viewModel.initTasksList("educational")
-//     isPreChecked()
         initializeViews()
         setupClickListener()
     }
@@ -60,8 +59,8 @@ class EducationalFragment : BaseDailyProgramFragment() {
 
      fun initializeViews() {
          if (viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
-            getTaskFromList(viewModel.status.currentIndexEducational!!, 2)
-            changeColorStatus()
+         getTaskFromList(viewModel.status.currentIndexEducational!!, 2)
+         changeColorStatus()
     }
 
 
@@ -131,14 +130,7 @@ class EducationalFragment : BaseDailyProgramFragment() {
         }
     }
 
-    override fun onStop() {
-        super.onStop()
-        player?.pause()
-        if (viewModel._isSyncNeeded.value == true){
-            viewModel.updateCurrentTaskRemotely()
-            viewModel._isSyncNeeded.value = false
-        }
-    }
+
 
 
 

@@ -1,5 +1,6 @@
 package mnshat.dev.myproject.users.patient.dailyprogram.presentaion
 
+import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.content.res.ColorStateList
@@ -19,42 +20,57 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogDoCompleteTaskBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
-import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
 import mnshat.dev.myproject.users.patient.moodTracking.presentaion.PostMoodTrackingActivity
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.TextToSpeechUtil
-import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 class BehaviouralActivationFragment : BaseDailyProgramFragment(),
     SuggestedChallengesFragment.OnTaskItemClickListener {
 
     private var currentStatus: Boolean = true
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = LayoutTaskBinding.inflate(inflater, container, false)
-        setupClickListener()
-        initializeViews()
+        checkInternetConnection()
         return binding.root
     }
 
 
-    fun initializeViews() {
+    private fun checkInternetConnection() {
+        if (isConnected()) {
+            init()
+        } else {
+            showNoInternetDialog()
+        }
+    }
+
+    private fun showNoInternetDialog() {
+        AlertDialog.Builder(requireActivity())
+            .setTitle(getString(R.string.no_internet_connection))
+            .setMessage(getString(R.string.please_check_your_internet_connection_and_try_again))
+            .setPositiveButton(getString(R.string.try_again)) { dialog, _ ->
+                checkInternetConnection()
+                dialog.dismiss()
+            }
+            .setCancelable(false)
+            .show()
+    }
+
+
+    private fun init() {
         textToSpeech =  TextToSpeechUtil(TextToSpeech(requireActivity(), null))
-
-//        viewModel.currentDay.value.let {
-//            viewModel.listOfTasks = it?.dayTask?.behaviorActivation as List<Task>
-//             log(viewModel.listOfTasks.size.toString())
-//            if ( viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
-//
-//            witchFragment("BehaviouralActivationFragment")
-//            getTaskFromList(viewModel.status.currentIndexBehavioral!!, 2)
-//            changeColorStatus()
-//        }
-
+        viewModel.initTasksList("behaviorActivation")
+        if (viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
+        witchFragment("BehaviouralActivationFragment")
+        getTaskFromList(viewModel.status.currentIndexBehavioral!!, 2)
+        changeColorStatus()
         hideSpiritualIcon(binding.constraintTask2, binding.line2)
+        setupClickListener()
+
     }
 
 
@@ -84,23 +100,17 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
             }
         }
 
-        binding.icPause.setOnClickListener {
-            showTemporallyDialog(
-                getString(R.string.do_you_want_to_pause_this_task_temporarily),
-                getString(R.string.you_can_exit_this_task_and_come_back_again_whatever_you_want),
-                R.drawable.ic_timer,
-                getString(R.string.pause_task_temporarily)
-            ) {
-                requireActivity().finish()
-            }
 
-        }
 
         binding.btnRecommend.setOnClickListener {
             showSuggestedChallengesFragment()
 
         }
         binding.btnPrevious.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        binding.icBack.setOnClickListener {
             findNavController().popBackStack()
         }
     }
@@ -137,6 +147,7 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
         startActivity(Intent(requireContext(), PostMoodTrackingActivity::class.java))
         activity?.finish()
     }
+
     private fun updateStatusData() {
         viewModel.status.behavioral = 1
         viewModel.updateCompletionRate()
@@ -209,12 +220,6 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
         viewModel.status.currentIndexBehavioral = position
         viewModel.updateCurrentTaskLocally()
     }
-    override fun onStop() {
-        super.onStop()
-        player?.pause()
-        if (viewModel._isSyncNeeded.value == true){
-            viewModel.updateCurrentTaskRemotely()
-            viewModel._isSyncNeeded.value = false
-        }
-    }
+
+
 }

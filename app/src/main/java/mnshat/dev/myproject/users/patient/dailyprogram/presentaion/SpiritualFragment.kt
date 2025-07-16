@@ -1,5 +1,6 @@
 package mnshat.dev.myproject.users.patient.dailyprogram.presentaion
 
+import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
@@ -10,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
-import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
 import mnshat.dev.myproject.util.TextToSpeechUtil
 
 @AndroidEntryPoint
@@ -21,24 +21,45 @@ class SpiritualFragment : BaseDailyProgramFragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = LayoutTaskBinding.inflate(inflater, container, false)
-        setupClickListener()
-        initializeViews()
+        checkInternetConnection()
         return binding.root
     }
 
-    fun initializeViews() {
-        textToSpeech =  TextToSpeechUtil(TextToSpeech(requireActivity(), null))
 
-//        viewModel.currentDay.value.let {
-//            viewModel.listOfTasks = it?.dayTask?.spiritual as List<Task>
-////            if ( viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
-//
-//            getTaskFromList(viewModel.status.currentIndexSpiritual!!, 2)
-//            changeColorStatus()
-//        }
+
+    private fun checkInternetConnection() {
+        if (isConnected()) {
+            init()
+        } else {
+            showNoInternetDialog()
+        }
     }
 
-    fun setupClickListener() {
+    private fun showNoInternetDialog() {
+        AlertDialog.Builder(requireActivity())
+            .setTitle(getString(R.string.no_internet_connection))
+            .setMessage(getString(R.string.please_check_your_internet_connection_and_try_again))
+            .setPositiveButton(getString(R.string.try_again)) { dialog, _ ->
+                checkInternetConnection()
+                dialog.dismiss()
+            }
+            .setCancelable(false)
+            .show()
+    }
+
+
+
+
+    private fun init() {
+        textToSpeech =  TextToSpeechUtil(TextToSpeech(requireActivity(), null))
+        viewModel.initTasksList("spiritual")
+        if ( viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
+        getTaskFromList(viewModel.status.currentIndexSpiritual!!, 2)
+        changeColorStatus()
+        setupClickListener()
+    }
+
+  private  fun setupClickListener() {
 
         binding.play.setOnClickListener {
             if(textToSpeech.textToSpeech.isSpeaking){
@@ -104,12 +125,5 @@ class SpiritualFragment : BaseDailyProgramFragment() {
         viewModel.updateCompletionRate()
         showToast(getString(R.string.the_second_task_was_completed_successfully))
     }
-    override fun onStop() {
-        super.onStop()
-        player?.pause()
-        if (viewModel._isSyncNeeded.value == true){
-            viewModel.updateCurrentTaskRemotely()
-            viewModel._isSyncNeeded.value = false
-        }
-    }
+
 }

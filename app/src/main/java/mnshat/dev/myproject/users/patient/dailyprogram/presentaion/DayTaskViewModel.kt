@@ -1,8 +1,9 @@
 package mnshat.dev.myproject.users.patient.dailyprogram.presentaion
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import mnshat.dev.myproject.users.patient.dailyprogram.data.DailyProgramRepository
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.StatusDailyProgram
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
@@ -20,18 +21,18 @@ class DayTaskViewModel @Inject constructor(
 
     lateinit var status: StatusDailyProgram
     lateinit var listOfTasks: List<Task>
+     var isSyncNeeded = false
 
     fun initTasksList(phase:String){
         status = currentDayLocal.status!!
         listOfTasks =  when (phase){
             "educational" ->  currentDayLocal.dayTask?.educational as List<Task>
             "spiritual" ->  currentDayLocal.dayTask?.spiritual as List<Task>
-            else -> currentDayLocal.dayTask?.behaviorActivation as List<Task>
+             else -> currentDayLocal.dayTask?.behaviorActivation as List<Task>
         }
     }
 
 
-    val _isSyncNeeded: MutableLiveData<Boolean> = MutableLiveData()
 
 
     fun updateCompletionRate() {
@@ -47,12 +48,16 @@ class DayTaskViewModel @Inject constructor(
     }
 
     fun updateCurrentTaskLocally() {
-
-        _isSyncNeeded.value = true
+        currentDayLocal.status = status
+        dailyProgramRepository.updateCurrentDayLocally(currentDayLocal)
+        isSyncNeeded = true
     }
 
-    fun updateCurrentTaskRemotely() {
-
+     fun updateCurrentTaskRemotely() {
+         viewModelScope.launch {
+             dailyProgramRepository.updateCurrentDayRemotely(currentDayLocal)
+             isSyncNeeded = false
+         }
     }
 
 

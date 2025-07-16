@@ -39,7 +39,6 @@ open class BaseDailyProgramFragment : BaseFragment() {
     lateinit var binding: LayoutTaskBinding
     lateinit var task: Task
     var player: ExoPlayer? = null
-    var isSyncNeeded = false
 
     fun getTaskFromList(index: Int, numberTask: Int) {
         showProgressDialog()
@@ -94,11 +93,10 @@ open class BaseDailyProgramFragment : BaseFragment() {
                 image.setImageResource(R.drawable.ic_check_blue)
                 root.setBackgroundResource(R.drawable.circle_blue_dark)
             }
-
             2 -> {
                 val params = root.layoutParams
-                params.width = 70
-                params.height = 70
+                params.width = 115
+                params.height = 115
                 root.layoutParams = params
                 root.setBackgroundResource(R.drawable.circle_orange_with_border)
             }
@@ -227,46 +225,22 @@ open class BaseDailyProgramFragment : BaseFragment() {
         dialog.show()
     }
 
+
+
+
+
     override fun onStop() {
         super.onStop()
+        player?.pause()
+
         if (::textToSpeech.isInitialized) {
             textToSpeech.release()
         }
+        if (viewModel.isSyncNeeded){
+            viewModel.updateCurrentTaskRemotely()
+        }
 
     }
-    fun isPreChecked() {
-        if (viewModel.status.preChecked == false){
-            showDailyProgram()
-        }
-    }
-
-    private fun showDailyProgram() {
-        val dialog = Dialog(requireContext())
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        val dialogBinding = DialogPreMoodSelectionBinding.inflate(layoutInflater)
-        dialog.setContentView(dialogBinding.root)
-        dialog.setCanceledOnTouchOutside(false)
-
-        val window = dialog.window
-        window?.apply {
-            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            val layoutParams = attributes
-            layoutParams.width = (resources.displayMetrics.widthPixels * 0.8).toInt()
-            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
-            attributes = layoutParams
-        }
-
-        dialogBinding.icClose.setOnClickListener {
-            dialog.dismiss()
-        }
-        dialogBinding.button.setOnClickListener {
-            dialog.dismiss()
-            startActivity(Intent(requireContext(), MoodTrackingActivity::class.java))
-            activity?.finish()
-        }
-        dialog.show()
-    }
-
 
     override fun onDestroy() {
         super.onDestroy()
