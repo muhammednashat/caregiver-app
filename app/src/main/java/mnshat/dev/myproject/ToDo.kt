@@ -14,7 +14,11 @@ package mnshat.dev.myproject
 
 //Doing
 /**
+ * set the exact data for daily program based on day
  * refactor daily program (pre mood tracking)
+ * track recommend more activities current index on firestore
+ * check internet connection
+ * hundle back button in daily program specially when user click on dialog
  *
  */
 

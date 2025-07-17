@@ -5,15 +5,24 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.tasks.await
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.users.patient.dailyprogram.data.DailyProgramRepository
+import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.DayMoodTracking
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EffectingMood
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.SuggestionToDo
+import mnshat.dev.myproject.util.USERS
 import javax.inject.Inject
 
-class MoodRepository @Inject constructor(private val firestore: FirebaseFirestore){
+class MoodTrackingRepository @Inject constructor(
+    private val firestore: FirebaseFirestore,
+     val dailyProgramRepository: DailyProgramRepository
+){
 
+
+     fun currentDayLocally() = dailyProgramRepository.getCurrentDayLocally()
 
     fun getEmojisStatus(context: Context) = listOf(
         EmojiMood(
@@ -139,12 +148,22 @@ class MoodRepository @Inject constructor(private val firestore: FirebaseFirestor
         moodTrackingRef.add(dayMoodTracking)
     }
 
-    fun storeDayMoodTrackingRemotely(dayMoodTracking: DayMoodTracking) {
+    suspend fun storeDayMoodTrackingRemotely() {
+        val currentDay = currentDayLocally()
+        val userProfile = dailyProgramRepository.getUserProfile()
+        val moodTracking = currentDay.toDayMoodTracking()
+        try {
+            firestore.collection(USERS)
+                .document(userProfile.id!!)
+                .collection("DayMoodTracking")
+                .document(currentDay.status?.day!!.toString())
+                .set(moodTracking).await()
+        }catch (e:Exception){
 
+        }
     }
-    fun ffd() {
 
-    }
+
 
     fun getDayTrackingMood(userId: String): Flow<List<DayMoodTracking>?> = callbackFlow {
         val userRef = firestore.collection("Users").document(userId)

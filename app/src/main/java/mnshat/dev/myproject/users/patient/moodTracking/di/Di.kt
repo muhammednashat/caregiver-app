@@ -5,15 +5,13 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.DailyProgramManagerUseCase
-import mnshat.dev.myproject.users.patient.moodTracking.data.MoodRepository
+import mnshat.dev.myproject.users.patient.dailyprogram.data.DailyProgramRepository
+import mnshat.dev.myproject.users.patient.moodTracking.data.MoodTrackingRepository
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetDayTrackingMoodUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetEffectingMoodUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.GetEmojisStatusUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.StoreDayMoodTrackingLocallyUseCase
 import mnshat.dev.myproject.users.patient.moodTracking.domain.useCase.StoreDayMoodTrackingRemotelyUseCase
-import mnshat.dev.myproject.users.patient.moodTracking.presentaion.MoodViewModel
-import mnshat.dev.myproject.util.SharedPreferencesManager
 import javax.inject.Singleton
 
 @Module
@@ -23,47 +21,25 @@ object Di {
 
     @Provides
     @Singleton
-    fun provideMoodRepository(firestore: FirebaseFirestore) = MoodRepository(firestore)
+    fun provideMoodRepository(firestore: FirebaseFirestore , dailyProgramRepository: DailyProgramRepository) = MoodTrackingRepository(firestore, dailyProgramRepository)
 
     @Provides
     @Singleton
-    fun  provideGetEmojisStatusUseCase(moodRepository: MoodRepository) = GetEmojisStatusUseCase(moodRepository)
+    fun  provideGetEmojisStatusUseCase(moodTrackingRepository: MoodTrackingRepository) = GetEmojisStatusUseCase(moodTrackingRepository)
 
     @Provides
     @Singleton
-    fun  provideGetEffectingMoodUseCase(moodRepository: MoodRepository) = GetEffectingMoodUseCase(moodRepository)
+    fun  provideGetEffectingMoodUseCase(moodTrackingRepository: MoodTrackingRepository) = GetEffectingMoodUseCase(moodTrackingRepository)
 
     @Provides
-    fun provideStoreDayMoodTrackingLocallyUseCase(moodRepository: MoodRepository) = StoreDayMoodTrackingLocallyUseCase(moodRepository)
+    fun provideStoreDayMoodTrackingLocallyUseCase(moodTrackingRepository: MoodTrackingRepository) = StoreDayMoodTrackingLocallyUseCase(moodTrackingRepository)
 
     @Provides
-    fun  provideStoreDayMoodTrackingRemotelyUseCase(moodRepository: MoodRepository) = StoreDayMoodTrackingRemotelyUseCase(moodRepository)
+    fun  provideStoreDayMoodTrackingRemotelyUseCase(moodTrackingRepository: MoodTrackingRepository) = StoreDayMoodTrackingRemotelyUseCase(moodTrackingRepository)
 
 
     @Provides
-    fun provideGetDayTrackingMoodUseCase (moodRepository: MoodRepository) = GetDayTrackingMoodUseCase(moodRepository)
-
-    @Provides
-    @Singleton
-    fun provideMoodViewModel(
-        getEmojisStatusUseCase: GetEmojisStatusUseCase,
-        getEffectingMoodUseCase: GetEffectingMoodUseCase,
-        dailyProgramManagerUseCase: DailyProgramManagerUseCase,
-        storeDayMoodTrackingLocallyUseCase: StoreDayMoodTrackingLocallyUseCase,
-        storeDayMoodTrackingRemotelyUseCase: StoreDayMoodTrackingRemotelyUseCase,
-        sharedPreferences: SharedPreferencesManager,
-        getDayTrackingMoodUseCase: GetDayTrackingMoodUseCase,
-    )
-         = MoodViewModel(
-        getEmojisStatusUseCase,
-        getEffectingMoodUseCase,
-        dailyProgramManagerUseCase,
-        sharedPreferences,
-        storeDayMoodTrackingLocallyUseCase,
-        storeDayMoodTrackingRemotelyUseCase,
-        getDayTrackingMoodUseCase
-    )
-
+    fun provideGetDayTrackingMoodUseCase (moodTrackingRepository: MoodTrackingRepository) = GetDayTrackingMoodUseCase(moodTrackingRepository)
 
 
 

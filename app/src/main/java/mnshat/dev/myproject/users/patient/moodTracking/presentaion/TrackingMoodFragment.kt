@@ -4,17 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentTrackingMoodBinding
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.DayMoodTracking
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.adapters.TrackingMoodAdapter
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.viewmodels.MoodTrackingViewModel
 
 @AndroidEntryPoint
 class TrackingMoodFragment : BaseFragment() {
 
-    private val viewModel: MoodViewModel by viewModels()
+    private val viewModel: MoodTrackingViewModel by activityViewModels()
     private lateinit var adapter: TrackingMoodAdapter
     private lateinit var binding: FragmentTrackingMoodBinding
     override fun onCreateView(

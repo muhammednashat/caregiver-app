@@ -27,23 +27,12 @@ class DailyProgramRepository @Inject constructor(
     suspend fun fetchContentDailyProgram(numberOfDay: Int): Boolean {
 
         return try {
-            log("fetchContentDailyProgram() called with: numberOfDay = $numberOfDay")
             var tasks = dao.getAllDayTasks()
              if (tasks?.size == 0){
-                 log("fetchContentDailyProgram() empty")
                  val data = fetchContentDailyProgramRemote()
                  storeDailyProgramListLocally(data)
                }
-
-            val dayTask = dao.getDayTaskById(numberOfDay)
-            log("dayTask = $dayTask")
-
-            val currentDay = filterBasedProfile(dayTask!!, numberOfDay)
-            log("currentDay = $currentDay")
-             updateCurrentDayLocally(currentDay)
-             updateNumberDayInUseProfile(numberOfDay)
-             updateCurrentDayRemotely(currentDay)
-
+            getNextDay(numberOfDay)
             true
         } catch (e: Exception) {
             log(e.message.toString())
@@ -121,22 +110,17 @@ class DailyProgramRepository @Inject constructor(
         }catch (e:Exception){
 
         }
-
-
-
-    //        val firebaseDatabase = FirebaseDatabase.getInstance()
-//        val dailyProgramStates = firebaseDatabase.getReference(DAILY_PROGRAM_STATES)
-//        val userId = sharedPreferences.getString(USER_ID, null.toString())
-//        dailyProgramStates.child(userId).setValue(currentDay)
     }
-//
-//    suspend fun getCurrentDayRemotely(userId: String): CurrentDay {
-//        val firebaseDatabase = FirebaseDatabase.getInstance()
-//        val dailyProgramStates = firebaseDatabase.getReference(DAILY_PROGRAM_STATES)
-////        val userId = sharedPreferences.getString(USER_ID, null.toString())
-//        return dailyProgramStates.child(userId).get().await().value as CurrentDay
-//      }
 
-
+   suspend fun getNextDay(day: Int) {
+       val dayTask = dao.getDayTaskById(day)
+       val currentDay = filterBasedProfile(dayTask!!, day)
+       updateCurrentDayLocally(currentDay)
+       updateNumberDayInUseProfile(day)
+       updateCurrentDayRemotely(currentDay)
+    }
 
 }
+
+
+

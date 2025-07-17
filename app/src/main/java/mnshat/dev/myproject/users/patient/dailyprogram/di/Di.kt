@@ -13,7 +13,7 @@ import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.GetCurrent
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.GetNextDayUseCase
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.UpdateCurrentDayLocallyUseCase
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.useCase.UpdateCurrentDayRemotelyUseCase
-import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DayTaskViewModel
+import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramViewModel
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import javax.inject.Singleton
 
@@ -25,7 +25,7 @@ object Di {
     @Provides
     @Singleton
     fun provideDayTaskViewModel(                                    dailyProgramRepository: DailyProgramRepository,
-                                  sharedPreferences: SharedPreferencesManager)= DayTaskViewModel(dailyProgramRepository,sharedPreferences)
+                                  sharedPreferences: SharedPreferencesManager)= DailyProgramViewModel(dailyProgramRepository,sharedPreferences)
 
     @Provides
     @Singleton

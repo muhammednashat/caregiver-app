@@ -29,11 +29,13 @@ class ProfileViewModel @Inject constructor(
 
 
     fun resetCurrentDay() {
-        CoroutineScope(Dispatchers.IO).launch {
 
-            log(
-                getNextDayUseCase(getCurrentDayLocallyUseCase().status?.day!!).email
-                    .toString())}
+//        CoroutineScope(Dispatchers.IO).launch {
+//
+//            log(
+//                getNextDayUseCase(getCurrentDayLocallyUseCase().status?.day!!).email
+//                    .toString())}
+
     }
 
 

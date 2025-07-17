@@ -20,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.DialogDoCompleteTaskBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
-import mnshat.dev.myproject.users.patient.moodTracking.presentaion.PostMoodTrackingActivity
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.activties.PostMoodTrackingActivity
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.TextToSpeechUtil
 

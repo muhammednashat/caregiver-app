@@ -9,45 +9,43 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.DialogProgressMoodBinding
 import mnshat.dev.myproject.databinding.FragmentCompareResultsBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
-import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
 import mnshat.dev.myproject.users.patient.main.presentaion.UserScreensActivity
-import mnshat.dev.myproject.util.USER_ID
-import mnshat.dev.myproject.util.log
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.viewmodels.MoodTrackingViewModel
 
 @AndroidEntryPoint
 class CompareResultsFragment : BaseFragment() {
 
     private lateinit var binding: FragmentCompareResultsBinding
-    private val viewModel: MoodViewModel by viewModels()
+    private val viewModel: MoodTrackingViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = FragmentCompareResultsBinding.inflate(inflater, container, false)
+        setUpListeners()
+        setUpUi(viewModel.currentDay())
+        viewModel.storeDayMoodTrackingRemotely()
+        viewModel.getNextDay(viewModel.currentDay().status?.day!!+1)
+
+        return  binding.root
+    }
+
+    private fun setUpListeners() {
         binding.btnNext.setOnClickListener {
             showDialog()
         }
-        val currentDay = viewModel.getCurrentDayLocally()
-        viewModel.storeDayMoodTracking(currentDay.toDayMoodTracking(),viewModel.sharedPreferences.getString(USER_ID,null.toString()))
-        setUpUi(currentDay)
-        val day = currentDay.status?.day
-        log("$day gggggggggg")
-        viewModel.getNextDay(day!!+1)
-
-
         binding.icBack.setOnClickListener{
             findNavController().popBackStack()
         }
-
-        return  binding.root
     }
 
     private fun setUpUi(currentDay: CurrentDay) {

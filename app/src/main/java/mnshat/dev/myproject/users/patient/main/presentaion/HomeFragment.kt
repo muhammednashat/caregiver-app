@@ -25,7 +25,7 @@ import mnshat.dev.myproject.databinding.FragmentUserHomeBinding
 import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderActivity
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
-import mnshat.dev.myproject.users.patient.moodTracking.presentaion.MoodTrackingActivity
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.activties.MoodTrackingActivity
 import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
@@ -104,7 +104,6 @@ class HomeFragment : BaseFragment() {
             val status= it.status
             binding.currentDayLevel.text= buildString {
                 append(getString(R.string.day, status?.day))
-                append(" ")
             }
 
         }
@@ -133,7 +132,6 @@ class HomeFragment : BaseFragment() {
         dialogBinding.button.setOnClickListener {
             dialog.dismiss()
             startActivity(Intent(requireContext(), MoodTrackingActivity::class.java))
-            activity?.finish()
         }
         dialog.show()
     }

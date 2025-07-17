@@ -1,7 +1,6 @@
 package mnshat.dev.myproject.users.patient.dailyprogram.presentaion
 
 import android.app.Dialog
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -18,20 +17,17 @@ import com.google.android.exoplayer2.MediaItem
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.databinding.DialogPreMoodSelectionBinding
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.databinding.StaionDescriptionDialogBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.Task
-import mnshat.dev.myproject.users.patient.moodTracking.presentaion.MoodTrackingActivity
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.LANGUAGE
-import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.TextToSpeechUtil
 
 @AndroidEntryPoint
 open class BaseDailyProgramFragment : BaseFragment() {
 
-    val viewModel: DayTaskViewModel by viewModels()
+    val viewModel: DailyProgramViewModel by viewModels()
     lateinit var textToSpeech: TextToSpeechUtil
     lateinit var htmlText: String
 

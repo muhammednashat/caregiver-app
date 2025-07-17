@@ -10,7 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,13 +21,15 @@ import mnshat.dev.myproject.databinding.FragmentShareWhatEffectingMoodBinding
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EffectingMood
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.adapters.EffectingMoodAdapter
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.viewmodels.MoodTrackingViewModel
 import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 class ShareWhatEffectingMoodFragment : BaseFragment(){
 
     private lateinit var binding: FragmentShareWhatEffectingMoodBinding
-    private val viewModel: MoodViewModel by viewModels()
+    private val viewModel: MoodTrackingViewModel by activityViewModels()
     private lateinit var effectingAdapter: EffectingMoodAdapter
 
     override fun onCreateView(
@@ -46,11 +48,14 @@ class ShareWhatEffectingMoodFragment : BaseFragment(){
             findNavController().popBackStack()
         }
         binding.btnNext.setOnClickListener {
-            val chosenReasons = effectingAdapter.getChosenReasons()
-            val extraReasons = binding.editText.text.toString()
+
+
+
             if (isValidToStoreData()) {
-                viewModel.updateCurrentTaskPreMood(chosenReasons.toList() , extraReasons)
-                log("ShareWhatEffectingMoodFragment setUpListener")
+                val chosenReasons = effectingAdapter.getChosenReasons()
+                val extraReasons = binding.editText.text.toString()
+              viewModel.updateCurrentTaskPreMood(chosenReasons.toList() , extraReasons)
+                 log("ShareWhatEffectingMoodFragment setUpListener")
                 showStartDailyProgram()
             } else {
                 log("not valid")

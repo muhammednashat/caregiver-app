@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -14,11 +14,14 @@ import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentPreMoodSelectionBinding
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.adapters.EmojisAdapter
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.adapters.OnEmojiClickListener
+import mnshat.dev.myproject.users.patient.moodTracking.presentaion.viewmodels.MoodTrackingViewModel
 
 @AndroidEntryPoint
-class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
+class PreMoodSelectionFragment : BaseFragment(), OnEmojiClickListener {
 
-    private val viewModel: MoodViewModel by viewModels()
+    private val viewModel: MoodTrackingViewModel by activityViewModels()
     private  lateinit var adapter: EmojisAdapter
     private lateinit var binding: FragmentPreMoodSelectionBinding
     private var canClickingButton = false
@@ -26,16 +29,13 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = FragmentPreMoodSelectionBinding.inflate(inflater,container, false)
         setUpListener()
-//        if (viewModel.getEmoji() != null){
-//            canClickingButton = true
-//            updateUiColor(viewModel.getEmoji()!!)
-//        }
         setUpRecyclerView(viewModel.getEmojisStatus(requireActivity()))
         return  binding.root
     }
+
+
 
     private fun setUpListener() {
 
@@ -73,7 +73,6 @@ class PreMoodSelectionFragment : BaseFragment(),OnEmojiClickListener  {
         binding.btnNext.setBackgroundResource(R.drawable.gradient_orange)
         binding.root.backgroundTintList  = ColorStateList.valueOf(Color.parseColor(emoji.backgroundColor))
         binding.btnNext.backgroundTintList  = ColorStateList.valueOf(Color.parseColor(emoji.buttonColor))
-
     }
 
 

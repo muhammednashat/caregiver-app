@@ -25,10 +25,10 @@
             android:name=".users.patient.tools.coffeeideas.presentaion.CofeActivity"
             android:exported="false" />
         <activity
-            android:name=".users.patient.moodTracking.presentaion.PostMoodTrackingActivity"
+            android:name=".users.patient.moodTracking.presentaion.activties.PostMoodTrackingActivity"
             android:exported="false" />
         <activity
-            android:name=".users.patient.moodTracking.presentaion.MoodTrackingActivity"
+            android:name=".users.patient.moodTracking.presentaion.activties.MoodTrackingActivity"
             android:exported="false" />
         <activity
             android:name=".users.patient.calender.presentaion.CalenderActivity"
