@@ -113,6 +113,8 @@ class DailyProgramRepository @Inject constructor(
     }
 
    suspend fun getNextDay(day: Int) {
+
+
        val dayTask = dao.getDayTaskById(day)
        val currentDay = filterBasedProfile(dayTask!!, day)
        updateCurrentDayLocally(currentDay)

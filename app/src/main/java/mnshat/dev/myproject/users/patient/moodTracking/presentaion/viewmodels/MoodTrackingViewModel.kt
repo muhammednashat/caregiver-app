@@ -75,17 +75,9 @@ class MoodTrackingViewModel @Inject constructor
         viewModelScope.launch {
             moodTrackingRepository.dailyProgramRepository.getNextDay(day)
         }
-
-        CoroutineScope(Dispatchers.IO).launch {
-//            dailyProgramManagerUseCase.getNextDayUseCase(day)
-        }
     }
 
-    fun storeDayMoodTracking(currentDayLocally: DayMoodTracking, userId: String) {
-        CoroutineScope(Dispatchers.IO).launch {
-//            storeDayMoodTrackingLocallyUseCase(currentDayLocally, userId)
-    }
-    }
+
 
     fun getPostMoodIndex(): Int  = postMoodIndex
 

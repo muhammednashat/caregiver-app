@@ -16,19 +16,20 @@ class DailyProgramViewModel @Inject constructor(
     val sharedPreferences: SharedPreferencesManager,
 ) : ViewModel() {
 
-    private var currentDayLocal = dailyProgramRepository.getCurrentDayLocally()
     val userProfile = dailyProgramRepository.getUserProfile()
 
     lateinit var status: StatusDailyProgram
     lateinit var listOfTasks: List<Task>
      var isSyncNeeded = false
 
+    private fun currentDayLocal () = dailyProgramRepository.getCurrentDayLocally()
+
     fun initTasksList(phase:String){
-        status = currentDayLocal.status!!
+        status = currentDayLocal().status!!
         listOfTasks =  when (phase){
-            "educational" ->  currentDayLocal.dayTask?.educational as List<Task>
-            "spiritual" ->  currentDayLocal.dayTask?.spiritual as List<Task>
-             else -> currentDayLocal.dayTask?.behaviorActivation as List<Task>
+            "educational" ->   currentDayLocal().dayTask?.educational as List<Task>
+            "spiritual" ->   currentDayLocal().dayTask?.spiritual as List<Task>
+             else ->  currentDayLocal().dayTask?.behaviorActivation as List<Task>
         }
     }
 
@@ -48,14 +49,15 @@ class DailyProgramViewModel @Inject constructor(
     }
 
     fun updateCurrentTaskLocally() {
-        currentDayLocal.status = status
-        dailyProgramRepository.updateCurrentDayLocally(currentDayLocal)
+       val currentDay = currentDayLocal()
+        currentDay.status = status
+        dailyProgramRepository.updateCurrentDayLocally(currentDay)
         isSyncNeeded = true
     }
 
      fun updateCurrentTaskRemotely() {
          viewModelScope.launch {
-             dailyProgramRepository.updateCurrentDayRemotely(currentDayLocal)
+             dailyProgramRepository.updateCurrentDayRemotely( currentDayLocal())
              isSyncNeeded = false
          }
     }

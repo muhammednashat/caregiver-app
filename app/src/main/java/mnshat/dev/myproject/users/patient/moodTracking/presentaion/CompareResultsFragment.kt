@@ -33,9 +33,10 @@ class CompareResultsFragment : BaseFragment() {
         binding = FragmentCompareResultsBinding.inflate(inflater, container, false)
         setUpListeners()
         setUpUi(viewModel.currentDay())
-        viewModel.storeDayMoodTrackingRemotely()
-        viewModel.getNextDay(viewModel.currentDay().status?.day!!+1)
 
+//        viewModel.getNextDay(1)
+        viewModel.getNextDay(viewModel.currentDay().status?.day!!+1)
+        viewModel.storeDayMoodTrackingRemotely()
         return  binding.root
     }
 
