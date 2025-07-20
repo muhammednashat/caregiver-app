@@ -50,6 +50,9 @@ class EducationalFragment : BaseDailyProgramFragment() {
 
 
     private fun init() {
+        showDescriptionDialog(R.drawable.icon_lamp,
+            getString(R.string.a_step_towards_change),getString(R.string.a_step_towards_change))
+
         textToSpeech = TextToSpeechUtil(TextToSpeech(requireActivity(), null))
         viewModel.initTasksList("educational")
         initializeViews()
@@ -80,10 +83,7 @@ class EducationalFragment : BaseDailyProgramFragment() {
        binding.icBack.setOnClickListener{
            activity?.finish()
        }
-       binding.stationDescription.setOnClickListener {
-           showDescriptionDialog(R.drawable.icon_lamp,
-               getString(R.string.a_step_towards_change),getString(R.string.a_step_towards_change))
-       }
+
         binding.btnNext.setOnClickListener {
             updateStatus()
         }

@@ -113,7 +113,8 @@ class DailyProgramRepository @Inject constructor(
     }
 
    suspend fun getNextDay(day: Int) {
-
+//       val data = fetchContentDailyProgramRemote()
+//       storeDailyProgramListLocally(data)
 
        val dayTask = dao.getDayTaskById(day)
        val currentDay = filterBasedProfile(dayTask!!, day)

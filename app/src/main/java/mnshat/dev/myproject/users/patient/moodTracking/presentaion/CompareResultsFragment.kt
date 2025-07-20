@@ -35,6 +35,7 @@ class CompareResultsFragment : BaseFragment() {
         setUpUi(viewModel.currentDay())
 
 //        viewModel.getNextDay(1)
+
         viewModel.getNextDay(viewModel.currentDay().status?.day!!+1)
         viewModel.storeDayMoodTrackingRemotely()
         return  binding.root

@@ -62,9 +62,7 @@ open class BaseDailyProgramFragment : BaseFragment() {
                 binding.textTitle.text = title
             }
         }
-
         setDescriptionText(description)
-
 
     }
 

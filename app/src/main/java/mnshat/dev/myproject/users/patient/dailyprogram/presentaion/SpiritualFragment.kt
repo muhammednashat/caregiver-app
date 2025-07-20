@@ -51,6 +51,8 @@ class SpiritualFragment : BaseDailyProgramFragment() {
 
 
     private fun init() {
+        showDescriptionDialog(R.drawable.icon_descriptionw,
+            getString(R.string.a_whiff_of_faith),getString(R.string.a_whiff_of_faith))
         textToSpeech =  TextToSpeechUtil(TextToSpeech(requireActivity(), null))
         viewModel.initTasksList("spiritual")
         if ( viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
@@ -76,10 +78,7 @@ class SpiritualFragment : BaseDailyProgramFragment() {
 
           findNavController().popBackStack()
         }
-        binding.stationDescription.setOnClickListener {
-            showDescriptionDialog(R.drawable.icon_descriptionw,
-                getString(R.string.a_whiff_of_faith),getString(R.string.a_whiff_of_faith))
-        }
+
         binding.btnNext.setOnClickListener {
                 updateStatus()
         }

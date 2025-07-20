@@ -20,6 +20,8 @@ package mnshat.dev.myproject
  * check internet connection
  * hundle back button in daily program specially when user click on dialog
  *
+ * نغير السؤال ما الذى يؤثر على
+ *
  */
 
 

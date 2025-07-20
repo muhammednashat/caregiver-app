@@ -62,6 +62,8 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
 
 
     private fun init() {
+        showDescriptionDialog(R.drawable.icon_descriptionww,
+            getString(R.string.time_of_adventure),getString(R.string.time_of_adventure))
         textToSpeech =  TextToSpeechUtil(TextToSpeech(requireActivity(), null))
         viewModel.initTasksList("behaviorActivation")
         if (viewModel.listOfTasks.size > 1) binding.btnRecommend.visibility = View.VISIBLE
@@ -86,10 +88,7 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
             }
         }
 
-        binding.stationDescription.setOnClickListener {
-            showDescriptionDialog(R.drawable.icon_descriptionww,
-                getString(R.string.time_of_adventure),getString(R.string.time_of_adventure))
-        }
+
 
         binding.btnNext.setOnClickListener {
             if (viewModel.status.behavioral != 1){
