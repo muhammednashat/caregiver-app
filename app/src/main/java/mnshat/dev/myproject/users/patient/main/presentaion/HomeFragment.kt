@@ -67,11 +67,10 @@ class HomeFragment : BaseFragment() {
         binding.nameUser.text = viewModel.userProfile.name
     }
 
-
-
      fun setupClickListener() {
 
-        binding.dailyProgram.setOnClickListener() {
+        binding.dailyProgram.setOnClickListener {
+
             if (viewModel.currentTask().status?.preChecked!!){
             startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
             }else{

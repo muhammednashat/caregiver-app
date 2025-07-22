@@ -6,7 +6,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
-
+    id("com.google.firebase.crashlytics")
 }
 android {
     namespace = "mnshat.dev.myproject"
@@ -32,13 +32,10 @@ android {
 
 
     compileOptions {
-//        sourceCompatibility = JavaVersion.VERSION_11
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-//        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-//        jvmTarget = "11"
         jvmTarget = "17"
     }
     buildFeatures {
@@ -92,7 +89,8 @@ dependencies {
     implementation("com.google.firebase:firebase-inappmessaging-display:21.0.2")
     implementation("com.firebaseui:firebase-ui-auth:8.0.2")
     implementation("com.firebaseui:firebase-ui-database:8.0.2")
-
+    implementation("com.google.firebase:firebase-crashlytics-ndk")
+    implementation("com.google.firebase:firebase-analytics")
     //Room
     val room_version = "2.6.1"
     implementation("androidx.room:room-runtime:$room_version")
@@ -113,9 +111,6 @@ dependencies {
 
         //okhttp
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    // define any required OkHttp artifacts without version
-//    implementation("com.squareup.okhttp3:okhttp")
-//    implementation("com.squareup.okhttp3:logging-interceptor")
 
 
 }
