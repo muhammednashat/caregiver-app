@@ -14,12 +14,10 @@ package mnshat.dev.myproject
 
 //Doing
 /**
- * update color  for daily program
- *
- * track recommend more activities current index on firestore
+ * test  speak to speech
  * check internet connection
  * hundle back button in daily program specially when user click on dialog
- * test  speak to speech
+ *
  * نغير السؤال ما الذى يؤثر على
  *
  */
@@ -27,15 +25,15 @@ package mnshat.dev.myproject
 
 //ToDo
 /**
- * Ui enhancement
+ *
  * 
  * * lang at first time
  *  *
  *  * check splash screen
  *  *
- *  * home user
+ *
  *  *
- *  * daily program
+ *
  *  *
  *  * show onboarding screens with each new account
  *  *  check  connect with supporter and it's permission

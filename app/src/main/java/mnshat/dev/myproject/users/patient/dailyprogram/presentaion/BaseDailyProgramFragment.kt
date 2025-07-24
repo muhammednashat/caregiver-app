@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.google.android.exoplayer2.ExoPlayer
@@ -63,7 +64,6 @@ open class BaseDailyProgramFragment : BaseFragment() {
             }
         }
         setDescriptionText(description)
-
     }
 
 // check days
@@ -73,8 +73,12 @@ open class BaseDailyProgramFragment : BaseFragment() {
 
     private fun setDescriptionText(description: String?) {
         val headerColor = "#204167"
+        val formattedHtml = description!!.replace("\$headerColor", headerColor)
+        val spannedText = HtmlCompat.fromHtml(formattedHtml, HtmlCompat.FROM_HTML_MODE_LEGACY)
+        binding.textDescription.text = spannedText
 
-        binding.textDescription.text = Html.fromHtml(description )
+//        binding.textDescription.text = Html.fromHtml(
+//        )
 
 
     }
