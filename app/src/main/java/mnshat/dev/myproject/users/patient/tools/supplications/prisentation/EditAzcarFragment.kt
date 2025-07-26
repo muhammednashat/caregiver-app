@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.tools.supplications
+package mnshat.dev.myproject.users.patient.tools.supplications.prisentation
 
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2

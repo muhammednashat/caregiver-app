@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.tools.supplications
+package mnshat.dev.myproject.users.patient.tools.supplications.prisentation
 
 import android.app.Dialog
 import android.graphics.Color
@@ -34,7 +34,7 @@ import java.util.Locale
 class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>() ,
     OnSendButtonClicked {
 
-    private lateinit var viewModel: SupplicationsViewModel
+    private lateinit var viewModel: SupplicationsViewModel2
     private lateinit var fullTextSupplicationDialog: Dialog
      private lateinit var supplicationText: String
     private var mediaPlayer: MediaPlayer? = null
@@ -179,7 +179,7 @@ class SupplicationsFragment : BasePatientFragment<FragmentSupplicationsBinding>(
     private fun initViewModel() {
         val factory = SupplicationsViewModelFactory(sharedPreferences, activity?.application!!)
         viewModel =
-            ViewModelProvider(requireActivity(), factory)[SupplicationsViewModel::class.java]
+            ViewModelProvider(requireActivity(), factory)[SupplicationsViewModel2::class.java]
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
     }

@@ -14,7 +14,8 @@
         android:layout_height="match_parent"
         android:padding="@dimen/padding_large"
         android:background="@drawable/corner_large"
-        android:backgroundTint="@color/white">
+        android:backgroundTint="@color/white"
+        >
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ic_close"

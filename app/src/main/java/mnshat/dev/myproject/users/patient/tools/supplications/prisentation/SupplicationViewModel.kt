@@ -1,39 +1,35 @@
-package mnshat.dev.myproject.users.patient.tools.supplications
+package mnshat.dev.myproject.users.patient.tools.supplications.prisentation
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import mnshat.dev.myproject.base.BaseViewModel2
+import dagger.hilt.android.lifecycle.HiltViewModel
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.model.Posts
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.model.SupplicationsUser
+import mnshat.dev.myproject.users.patient.tools.supplications.data.SupplicationsRepo
 import mnshat.dev.myproject.util.POSTS
-import mnshat.dev.myproject.util.SharedPreferencesManager
-import mnshat.dev.myproject.util.USER_EMAIL
-import mnshat.dev.myproject.util.USER_ID
 import mnshat.dev.myproject.util.data.getListHands
+import javax.inject.Inject
 
+@HiltViewModel
+class SupplicationViewModel @Inject constructor(
 
-//ToDo Clear Data after onStop called
+    val supplicationsRepo: SupplicationsRepo,
 
-class SupplicationsViewModel(
-    
-    private val sharedPreferences: SharedPreferencesManager,
-                             application: Application
-):BaseViewModel2(sharedPreferences,application) {
+):ViewModel() {
 
     private val firestore = Firebase.firestore
     private var currentIndexListImages = 0
 
     private var mListImages = getListHands()
-
-    //TODo chane the way of getting email
+    val user = supplicationsRepo.getUser()
     private var supplicationsUsersDoc =
-        firestore.collection("supplications").document(sharedPreferences.getString(USER_ID))
+        firestore.collection("supplications").document(user.email!!)
 
     private val _isDismissProgressDialog = MutableLiveData<Boolean>()
     val isDismissProgressDialog: LiveData<Boolean> get() = _isDismissProgressDialog
@@ -143,7 +139,7 @@ class SupplicationsViewModel(
     }
 
     fun getUserSupplications(onResult: (List<Supplication>) -> Unit){
-        getSupplicationsList(sharedPreferences.getString(USER_EMAIL)) { items, exception ->
+        getSupplicationsList(user.email!!) { items, exception ->
             _userSupplications.value = items
             onResult(items)
         }
@@ -191,7 +187,7 @@ class SupplicationsViewModel(
     fun shareContent(post: Post, callback:(String?)->Unit) {
         FirebaseFirestore.getInstance()
             .collection(POSTS)
-            .document(sharedPreferences.getString(USER_EMAIL)).get().addOnSuccessListener {
+            .document(user.email!!).get().addOnSuccessListener {
                 val posts:MutableList<Post> =
                     if (it.exists()) {
                         it.toObject(Posts::class.java)?.posts ?: mutableListOf()
@@ -201,7 +197,7 @@ class SupplicationsViewModel(
                 posts.add(post)
                 FirebaseFirestore.getInstance()
                     .collection(POSTS)
-                    .document(sharedPreferences.getString(USER_EMAIL))
+                    .document(user.email!!)
                     .set(Posts(posts)).addOnCompleteListener {
                         callback(null)
                     } .addOnFailureListener{
@@ -216,5 +212,3 @@ class SupplicationsViewModel(
 
 
 }
-
-

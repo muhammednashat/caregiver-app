@@ -1,16 +1,44 @@
 package mnshat.dev.myproject.users.patient.tools
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.Window
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseFragment2
+import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.databinding.FragmentSupplicationsIntroBinding
 import mnshat.dev.myproject.databinding.FragmentToolsBinding
 import mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion.CofeActivity
+import mnshat.dev.myproject.users.patient.tools.supplications.prisentation.SupplicationViewModel
+import mnshat.dev.myproject.util.LANGUAGE
+import kotlin.getValue
+
+@AndroidEntryPoint
+class ToolsFragment : BaseFragment() {
+
+    private lateinit var binding: FragmentToolsBinding
+    private val viewModel: SupplicationViewModel by viewModels()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentToolsBinding.inflate(inflater, container, false)
+        setupClickListener()
+        return binding.root
+    }
 
 
-class ToolsFragment : BaseFragment2<FragmentToolsBinding>() {
-
-    override fun setupClickListener() {
+    private fun setupClickListener() {
 
         binding.icBack.setOnClickListener {
             findNavController().popBackStack()
@@ -19,7 +47,7 @@ class ToolsFragment : BaseFragment2<FragmentToolsBinding>() {
             startActivity(Intent(requireContext(), CofeActivity::class.java))
         }
         binding.imageSupplications.setOnClickListener {
-            findNavController().navigate(R.id.action_toolsFragment_to_mainSupplicationsFragment)
+                showDialog(R.drawable.supplication_intro)
         }
         binding.imageBreath.setOnClickListener {
             findNavController().navigate(R.id.action_toolsFragment_to_mainBreathFragment)
@@ -31,10 +59,34 @@ class ToolsFragment : BaseFragment2<FragmentToolsBinding>() {
 
     }
 
-    override fun initializeViews() {
 
+    fun showDialog(image: Int) {
+     val  sharedDialog = Dialog(requireContext())
+        sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = FragmentSupplicationsIntroBinding.inflate(layoutInflater)
+         dialogBinding.image.setImageResource(image)
+        sharedDialog.setContentView(dialogBinding.root)
+        sharedDialog.setCanceledOnTouchOutside(true)
+        val window = sharedDialog.window
+        window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            val layoutParams = attributes
+            layoutParams.width = (resources.displayMetrics.widthPixels * 0.9).toInt()
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            attributes = layoutParams
+        }
+        dialogBinding.icClose.setOnClickListener {
+            sharedDialog.dismiss()
+        }
+        dialogBinding.start.setOnClickListener {
+                        findNavController().navigate(R.id.action_toolsFragment_to_mainSupplicationsFragment)
+            sharedDialog.dismiss()
+        }
+
+        sharedDialog.show()
     }
 
-    override fun getLayout() = R.layout.fragment_tools
+
+
 
 }

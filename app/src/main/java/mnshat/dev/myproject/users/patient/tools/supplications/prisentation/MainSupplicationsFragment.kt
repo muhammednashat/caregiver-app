@@ -1,40 +1,66 @@
-package mnshat.dev.myproject.users.patient.tools.supplications
+package mnshat.dev.myproject.users.patient.tools.supplications.prisentation
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.SuggestedSupplicationAdapter
 import mnshat.dev.myproject.adapters.UserSupplicationAdapter
+import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.databinding.FragmentAddSupporterBinding
 import mnshat.dev.myproject.databinding.FragmentMainSupplicationsBinding
-import mnshat.dev.myproject.factories.SupplicationsViewModelFactory
 import mnshat.dev.myproject.interfaces.DataReLoader
 import mnshat.dev.myproject.interfaces.ItemSupplicationClicked
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.users.patient.BasePatientFragment
+import mnshat.dev.myproject.users.patient.supporters.presentation.SupporterViewModel
 import mnshat.dev.myproject.util.ENGLISH_KEY
+import kotlin.getValue
 
-
-class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsBinding>(),
+@AndroidEntryPoint
+class MainSupplicationsFragment : BaseFragment(),
 
     ItemSupplicationClicked,DataReLoader {
 
-    private lateinit var viewModel: SupplicationsViewModel
+        private val viewModel: SupplicationViewModel by viewModels()
 
-    override fun initializeViews() {
-        intiBackgroundBasedOnLang()
+    private lateinit var binding: FragmentMainSupplicationsBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentMainSupplicationsBinding.inflate(inflater, container, false)
+        checkInternetConnection()
+        return binding.root
     }
-
-    private fun intiBackgroundBasedOnLang() {
-        if (currentLang != ENGLISH_KEY) {
-            binding.backArrow.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-            binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
+    private fun checkInternetConnection() {
+        if (isConnected()) {
+            retrieveSupplicationsData()
+            observeViewModel()
+            setupClickListener()
+        } else {
+            showNoInternetDialog()
         }
     }
-
-    override fun setupClickListener() {
-        super.setupClickListener()
+    private fun showNoInternetDialog() {
+        AlertDialog.Builder(requireActivity())
+            .setTitle(getString(R.string.no_internet_connection))
+            .setMessage(getString(R.string.please_check_your_internet_connection_and_try_again))
+            .setPositiveButton(getString(R.string.try_again)) { dialog, _ ->
+                checkInternetConnection()
+                dialog.dismiss()
+            }
+            .setCancelable(false)
+            .show()
+    }
+     fun setupClickListener() {
         binding.fab.setOnClickListener {
             val addFragment = AddSupplicationsFragment()
             addFragment.setDataReLoader(this)
@@ -55,31 +81,13 @@ class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsB
         findNavController().navigate(action)
     }
 
-    override fun getLayout()= R.layout.fragment_main_supplications
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        val factory = SupplicationsViewModelFactory(sharedPreferences, activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[SupplicationsViewModel::class.java]
-        binding.lifecycleOwner = this
-        retrieveSupplicationsData()
-        observeViewModel()
-
-    }
-
     private fun retrieveSupplicationsData() {
         showProgressDialog()
         viewModel.getSuggestedSupplications { items ->
-
             setupSuggestedSupplicationRecyclerView(items)
-
         }
         viewModel.getUserSupplications {
-
-
             setupUserSupplicationRecyclerView(it)
-
-
         }
     }
 
@@ -94,9 +102,7 @@ class MainSupplicationsFragment : BasePatientFragment<FragmentMainSupplicationsB
         userSupplication: List<Supplication>
     ) {
 
-
         if(userSupplication.isNotEmpty()){
-
             val adapterUserSupplication = UserSupplicationAdapter(userSupplication,this)
             binding.userSupplicationRecyclerView.adapter = adapterUserSupplication
             binding.textNoItems.visibility = View.GONE

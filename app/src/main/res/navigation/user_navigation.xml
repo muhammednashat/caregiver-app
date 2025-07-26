@@ -76,7 +76,7 @@
     <fragment
         android:id="@+id/mainSupplicationsFragment"
         tools:layout="@layout/fragment_main_supplications"
-        android:name="mnshat.dev.myproject.users.patient.tools.supplications.MainSupplicationsFragment"
+        android:name="mnshat.dev.myproject.users.patient.tools.supplications.prisentation.MainSupplicationsFragment"
         android:label="MainSupplicationsFragment" >
         <action
             android:id="@+id/action_mainSupplicationsFragment_to_supplicationsFragment"
@@ -90,7 +90,7 @@
     <fragment
         android:id="@+id/supplicationsFragment"
         tools:layout="@layout/fragment_supplications"
-        android:name="mnshat.dev.myproject.users.patient.tools.supplications.SupplicationsFragment"
+        android:name="mnshat.dev.myproject.users.patient.tools.supplications.prisentation.SupplicationsFragment"
         android:label="SupplicationsFragment" >
         <argument
             android:name="supplication"
@@ -100,7 +100,7 @@
     <fragment
         android:id="@+id/userSupplicationsFragment"
          tools:layout="@layout/fragment_user_supplications"
-        android:name="mnshat.dev.myproject.users.patient.tools.supplications.UserSupplicationsFragment"
+        android:name="mnshat.dev.myproject.users.patient.tools.supplications.prisentation.UserSupplicationsFragment"
         android:label="UserSupplicationsFragment" >
 
         <argument

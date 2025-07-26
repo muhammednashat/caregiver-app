@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.tools.supplications
+package mnshat.dev.myproject.users.patient.tools.supplications.prisentation
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -21,7 +21,7 @@ import mnshat.dev.myproject.util.ENGLISH_KEY
 class UserSupplicationsFragment : BasePatientFragment<FragmentUserSupplicationsBinding>(),
     ItemSupplicationClicked, DataReLoader {
 
-    private lateinit var viewModel: SupplicationsViewModel
+    private lateinit var viewModel: SupplicationsViewModel2
 
     override fun initializeViews() {
 
@@ -62,7 +62,7 @@ class UserSupplicationsFragment : BasePatientFragment<FragmentUserSupplicationsB
         val factory = SupplicationsViewModelFactory(sharedPreferences, activity?.application!!)
         retrieveDataFromArguments()
 
-        viewModel = ViewModelProvider(requireActivity(), factory)[SupplicationsViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity(), factory)[SupplicationsViewModel2::class.java]
         binding.lifecycleOwner = this
         observeViewModel()
 

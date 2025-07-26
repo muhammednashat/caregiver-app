@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.tools.supplications
+package mnshat.dev.myproject.users.patient.tools.supplications.prisentation
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
@@ -14,7 +14,7 @@ import mnshat.dev.myproject.util.isValidInput
 
 class AddSupplicationsFragment : BaseBottomSheetDialogFragment2<FragmentAddAzcarBinding>() {
 
-    private lateinit var viewModel: SupplicationsViewModel
+    private lateinit var viewModel: SupplicationsViewModel2
     private lateinit var nameSupplication:String
     private lateinit var dataReLoader: DataReLoader
     private lateinit var numberSupplicationText:String
@@ -111,7 +111,7 @@ class AddSupplicationsFragment : BaseBottomSheetDialogFragment2<FragmentAddAzcar
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val factory = SupplicationsViewModelFactory(sharedPreferences, activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[SupplicationsViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity(), factory)[SupplicationsViewModel2::class.java]
         binding.lifecycleOwner = this
         observeViewModel()
 
