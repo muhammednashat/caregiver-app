@@ -14,6 +14,7 @@ package mnshat.dev.myproject
 
 //Doing
 /**
+ *  create supplications repo method
  * test  speak to speech
  * check internet connection
  * hundle back button in daily program specially when user click on dialog

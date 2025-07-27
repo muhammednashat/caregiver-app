@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.databinding.DialogBreathIntroBinding
 import mnshat.dev.myproject.databinding.FragmentSupplicationsIntroBinding
 import mnshat.dev.myproject.databinding.FragmentToolsBinding
 import mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion.CofeActivity
@@ -47,10 +48,12 @@ class ToolsFragment : BaseFragment() {
             startActivity(Intent(requireContext(), CofeActivity::class.java))
         }
         binding.imageSupplications.setOnClickListener {
-                showDialog(R.drawable.supplication_intro)
+            showDialog(R.drawable.image43)
+
         }
         binding.imageBreath.setOnClickListener {
-            findNavController().navigate(R.id.action_toolsFragment_to_mainBreathFragment)
+            showBreathIntroDialog()
+
         }
         binding.imageGratitude.setOnClickListener {
             findNavController().navigate(R.id.action_toolsFragment_to_gratitudeFragment)
@@ -60,11 +63,10 @@ class ToolsFragment : BaseFragment() {
     }
 
 
-    fun showDialog(image: Int) {
+    fun showBreathIntroDialog() {
      val  sharedDialog = Dialog(requireContext())
         sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        val dialogBinding = FragmentSupplicationsIntroBinding.inflate(layoutInflater)
-         dialogBinding.image.setImageResource(image)
+        val dialogBinding = DialogBreathIntroBinding.inflate(layoutInflater)
         sharedDialog.setContentView(dialogBinding.root)
         sharedDialog.setCanceledOnTouchOutside(true)
         val window = sharedDialog.window
@@ -79,13 +81,40 @@ class ToolsFragment : BaseFragment() {
             sharedDialog.dismiss()
         }
         dialogBinding.start.setOnClickListener {
-                        findNavController().navigate(R.id.action_toolsFragment_to_mainSupplicationsFragment)
+            findNavController().navigate(R.id.action_toolsFragment_to_mainBreathFragment)
             sharedDialog.dismiss()
         }
 
         sharedDialog.show()
     }
 
+
+
+    fun showDialog(image: Int) {
+        val  sharedDialog = Dialog(requireContext())
+        sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = FragmentSupplicationsIntroBinding.inflate(layoutInflater)
+        dialogBinding.image.setImageResource(image)
+        sharedDialog.setContentView(dialogBinding.root)
+        sharedDialog.setCanceledOnTouchOutside(true)
+        val window = sharedDialog.window
+        window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            val layoutParams = attributes
+            layoutParams.width = (resources.displayMetrics.widthPixels * 0.9).toInt()
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            attributes = layoutParams
+        }
+        dialogBinding.icClose.setOnClickListener {
+            sharedDialog.dismiss()
+        }
+        dialogBinding.start.setOnClickListener {
+            findNavController().navigate(R.id.action_toolsFragment_to_mainSupplicationsFragment)
+            sharedDialog.dismiss()
+        }
+
+        sharedDialog.show()
+    }
 
 
 
