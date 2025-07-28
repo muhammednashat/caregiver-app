@@ -19,7 +19,6 @@ import mnshat.dev.myproject.databinding.FragmentSupplicationsIntroBinding
 import mnshat.dev.myproject.databinding.FragmentToolsBinding
 import mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion.CofeActivity
 import mnshat.dev.myproject.users.patient.tools.supplications.prisentation.SupplicationViewModel
-import mnshat.dev.myproject.util.LANGUAGE
 import kotlin.getValue
 
 @AndroidEntryPoint
@@ -48,25 +47,30 @@ class ToolsFragment : BaseFragment() {
             startActivity(Intent(requireContext(), CofeActivity::class.java))
         }
         binding.imageSupplications.setOnClickListener {
-            showDialog(R.drawable.image43)
+            showDialog()
 
         }
         binding.imageBreath.setOnClickListener {
-            showBreathIntroDialog()
+            showBreathIntroDialog(R.drawable.breath_intro){
+                findNavController().navigate(R.id.action_toolsFragment_to_mainBreathFragment)
+            }
 
         }
         binding.imageGratitude.setOnClickListener {
-            findNavController().navigate(R.id.action_toolsFragment_to_gratitudeFragment)
+            showBreathIntroDialog(R.drawable.gratitude_intro){
+                findNavController().navigate(R.id.action_toolsFragment_to_gratitudeFragment)
+            }
 
         }
 
     }
 
 
-    fun showBreathIntroDialog() {
+    fun showBreathIntroDialog(image: Int, function: () -> Unit) {
      val  sharedDialog = Dialog(requireContext())
         sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = DialogBreathIntroBinding.inflate(layoutInflater)
+        dialogBinding.image.setImageResource(image)
         sharedDialog.setContentView(dialogBinding.root)
         sharedDialog.setCanceledOnTouchOutside(true)
         val window = sharedDialog.window
@@ -81,7 +85,7 @@ class ToolsFragment : BaseFragment() {
             sharedDialog.dismiss()
         }
         dialogBinding.start.setOnClickListener {
-            findNavController().navigate(R.id.action_toolsFragment_to_mainBreathFragment)
+            function()
             sharedDialog.dismiss()
         }
 
@@ -90,11 +94,10 @@ class ToolsFragment : BaseFragment() {
 
 
 
-    fun showDialog(image: Int) {
+    fun showDialog() {
         val  sharedDialog = Dialog(requireContext())
         sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = FragmentSupplicationsIntroBinding.inflate(layoutInflater)
-        dialogBinding.image.setImageResource(image)
         sharedDialog.setContentView(dialogBinding.root)
         sharedDialog.setCanceledOnTouchOutside(true)
         val window = sharedDialog.window
