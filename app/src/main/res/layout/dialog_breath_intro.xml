@@ -9,27 +9,28 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/corner_large"
-        android:backgroundTint="#313942"
+        android:background="#313942"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/corner_large"
+            android:layout_marginTop="35dp"
             android:backgroundTint="#313942"
+
+            android:background="@drawable/corner_top_lift_right"
             >
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="match_parent"
                 android:id="@+id/image"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/image43" />
+                app:srcCompat="@drawable/breath_intro_image" />
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ic_close"
                 android:layout_width="50dp"

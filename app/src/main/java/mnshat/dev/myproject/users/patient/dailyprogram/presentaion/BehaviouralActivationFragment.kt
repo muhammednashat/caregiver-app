@@ -23,6 +23,7 @@ import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.users.patient.moodTracking.presentaion.activties.PostMoodTrackingActivity
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.TextToSpeechUtil
+import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 class BehaviouralActivationFragment : BaseDailyProgramFragment(),
@@ -79,9 +80,11 @@ class BehaviouralActivationFragment : BaseDailyProgramFragment(),
     fun setupClickListener() {
         binding.play.setOnClickListener {
             if(textToSpeech.textToSpeech.isSpeaking){
+                log("stop")
                 textToSpeech.textToSpeech.stop()
                 binding.play.setImageResource(R.drawable.icon_stop_sound)
             }else{
+                log("speak")
                 textToSpeech.speakText(htmlText)
                 binding.play.setImageResource(R.drawable.icon_play_sound)
 

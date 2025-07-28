@@ -12,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.LayoutTaskBinding
 import mnshat.dev.myproject.util.TextToSpeechUtil
+import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 class EducationalFragment : BaseDailyProgramFragment() {
@@ -68,12 +69,18 @@ class EducationalFragment : BaseDailyProgramFragment() {
 
 
    private  fun setupClickListener() {
-
+       textToSpeech.debug()
        binding.play.setOnClickListener {
+
            if(textToSpeech.textToSpeech.isSpeaking){
+//               log("stop")
+
                textToSpeech.textToSpeech.stop()
                binding.play.setImageResource(R.drawable.icon_stop_sound)
            }else{
+               log(htmlText)
+//               log("speak")
+
                textToSpeech.speakText(htmlText)
                binding.play.setImageResource(R.drawable.icon_play_sound)
 

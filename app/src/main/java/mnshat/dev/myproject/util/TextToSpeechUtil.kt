@@ -36,9 +36,11 @@ class TextToSpeechUtil ( val  textToSpeech: TextToSpeech) {
 
 
     fun speakText(html: String){
+        log("speakText")
         val plainText = htmlToText(html)
         val parts = plainText.chunked(4000)
         for ((index, part) in parts.withIndex()) {
+            log("speakText", "part: $part")
             textToSpeech.speak(part, TextToSpeech.QUEUE_ADD, null, "chunk_$index")
         }
     }

@@ -66,20 +66,16 @@ open class BaseDailyProgramFragment : BaseFragment() {
         setDescriptionText(description)
     }
 
-// check days
 
 
 
 
     private fun setDescriptionText(description: String?) {
         val headerColor = "#204167"
-        val formattedHtml = description!!.replace("\$headerColor", headerColor)
+        htmlText = description!!
+        val formattedHtml = htmlText.replace("\$headerColor", headerColor)
         val spannedText = HtmlCompat.fromHtml(formattedHtml, HtmlCompat.FROM_HTML_MODE_LEGACY)
         binding.textDescription.text = spannedText
-
-//        binding.textDescription.text = Html.fromHtml(
-//        )
-
 
     }
 
