@@ -64,7 +64,7 @@ class MainSupplicationsFragment : BaseFragment(),
         binding.fab.setOnClickListener {
             val addFragment = AddSupplicationsFragment()
             addFragment.setDataReLoader(this)
-            addFragment.show(childFragmentManager, AddSupplicationsFragment::class.java.name)
+//            addFragment.show(childFragmentManager, AddSupplicationsFragment::class.java.name)
         }
         binding.backArrow.setOnClickListener{
            findNavController().popBackStack()

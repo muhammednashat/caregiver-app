@@ -43,6 +43,7 @@ class ToolsFragment : BaseFragment() {
         binding.icBack.setOnClickListener {
             findNavController().popBackStack()
         }
+
         binding.imageCofe.setOnClickListener {
             startActivity(Intent(requireContext(), CofeActivity::class.java))
         }
@@ -54,8 +55,8 @@ class ToolsFragment : BaseFragment() {
             showBreathIntroDialog(R.drawable.breath_intro){
                 findNavController().navigate(R.id.action_toolsFragment_to_mainBreathFragment)
             }
-
         }
+
         binding.imageGratitude.setOnClickListener {
             showBreathIntroDialog(R.drawable.gratitude_intro){
                 findNavController().navigate(R.id.action_toolsFragment_to_gratitudeFragment)

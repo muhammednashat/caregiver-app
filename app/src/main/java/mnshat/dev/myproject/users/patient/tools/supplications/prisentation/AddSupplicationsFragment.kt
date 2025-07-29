@@ -1,20 +1,31 @@
 package mnshat.dev.myproject.users.patient.tools.supplications.prisentation
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentAddAzcarBinding
+import mnshat.dev.myproject.databinding.FragmentMainSupplicationsBinding
 import mnshat.dev.myproject.factories.SupplicationsViewModelFactory
 import mnshat.dev.myproject.interfaces.DataReLoader
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.isValidInput
+import kotlin.getValue
 
+@AndroidEntryPoint
+class AddSupplicationsFragment : BaseFragment() {
 
-class AddSupplicationsFragment : BaseBottomSheetDialogFragment2<FragmentAddAzcarBinding>() {
+    private val viewModel: SupplicationViewModel by viewModels()
+    private lateinit var binding: FragmentAddAzcarBinding
 
-    private lateinit var viewModel: SupplicationsViewModel2
     private lateinit var nameSupplication:String
     private lateinit var dataReLoader: DataReLoader
     private lateinit var numberSupplicationText:String
@@ -23,15 +34,41 @@ class AddSupplicationsFragment : BaseBottomSheetDialogFragment2<FragmentAddAzcar
     private var numberSupplication:Int = 0
 
 
-    override fun initializeViews() {
-        intiBackgroundBasedOnLang()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentAddAzcarBinding.inflate(inflater, container, false)
+        observeViewModel()
+        setupClickListener()
+        return binding.root
+    }
+    private fun checkInternetConnection() {
+        if (isConnected()) {
+
+        } else {
+            showNoInternetDialog()
+        }
+    }
+    private fun showNoInternetDialog() {
+        AlertDialog.Builder(requireActivity())
+            .setTitle(getString(R.string.no_internet_connection))
+            .setMessage(getString(R.string.please_check_your_internet_connection_and_try_again))
+            .setPositiveButton(getString(R.string.try_again)) { dialog, _ ->
+                checkInternetConnection()
+                dialog.dismiss()
+            }
+            .setCancelable(false)
+            .show()
     }
 
-    override fun setupClickListener() {
-        super.setupClickListener()
+
+    fun setupClickListener() {
+
 
         binding.close.setOnClickListener{
-            dismiss()
+
         }
         binding.addButton.setOnClickListener{
            if (validation()){
@@ -106,22 +143,6 @@ class AddSupplicationsFragment : BaseBottomSheetDialogFragment2<FragmentAddAzcar
         return Supplication(nameSupplication, numberSupplication)
     }
 
-    override fun getLayout()= R.layout.fragment_add_azcar
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        val factory = SupplicationsViewModelFactory(sharedPreferences, activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[SupplicationsViewModel2::class.java]
-        binding.lifecycleOwner = this
-        observeViewModel()
-
-    }
 
 
-    private fun intiBackgroundBasedOnLang() {
-        if (currentLang != ENGLISH_KEY) {
-            binding.close.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-            binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
-        }
-    }
 }
