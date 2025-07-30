@@ -226,7 +226,7 @@
     <string name="suggested_supplications">أذكار مقترحة</string>
     <string name="add">إضافة</string>
     <string name="infinite_repetition">تكرار لا نهائي</string>
-    <string name="write_the_supplication_that_you_want">اكتب الذكر المراد</string>
+    <string name="write_the_supplication_that_you_want">اكتب الذكر/الدعاء المراد</string>
     <string name="write_the_supplication_you_want_and_specify_the_number_of_repetitions_you_can_modify_that_at_any_time_you_want">قم بكتابة الذكر الذي تود و حدد عدد التكرارات للذكر المراد, يمكنك تعديل ذلك في أي وقت تشاء من خلال خانة قائمتك</string>
     <string name="write_the_number_of_repetitions_you_want_to_reach">اكتب عدد التكرارات المراد الوصول اليه</string>
     <string name="enter_the_number_here">أدخل العدد هنا...</string>
@@ -857,4 +857,5 @@
     <string name="supporter_status_changed">تم تغيير حالة الداعم</string>
     <string name="please_check_your_internet_connection_and_try_again">يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى</string>
     <string name="try_again">حاول مرة آخرى</string>
+    <string name="add_to_the_rosary">إضافة الى السبحة</string>
 </resources>
