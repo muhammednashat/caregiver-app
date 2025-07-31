@@ -1,10 +1,14 @@
 package mnshat.dev.myproject.users.patient.tools.supplications.prisentation
 
 import android.app.AlertDialog
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -12,8 +16,10 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.SuggestedSupplicationAdapter
 import mnshat.dev.myproject.adapters.UserSupplicationAdapter
 import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.databinding.FragmentAddAzcarBinding
 import mnshat.dev.myproject.databinding.FragmentAddSupporterBinding
 import mnshat.dev.myproject.databinding.FragmentMainSupplicationsBinding
+import mnshat.dev.myproject.databinding.FragmentSupplicationsIntroBinding
 import mnshat.dev.myproject.interfaces.DataReLoader
 import mnshat.dev.myproject.interfaces.ItemSupplicationClicked
 import mnshat.dev.myproject.model.Supplication
@@ -27,7 +33,7 @@ class MainSupplicationsFragment : BaseFragment(),
 
     ItemSupplicationClicked,DataReLoader {
 
-        private val viewModel: SupplicationViewModel by viewModels()
+   private val viewModel: SupplicationViewModel by viewModels()
 
     private lateinit var binding: FragmentMainSupplicationsBinding
 
@@ -60,11 +66,11 @@ class MainSupplicationsFragment : BaseFragment(),
             .setCancelable(false)
             .show()
     }
+
      fun setupClickListener() {
         binding.fab.setOnClickListener {
-            val addFragment = AddSupplicationsFragment()
-            addFragment.setDataReLoader(this)
-//            addFragment.show(childFragmentManager, AddSupplicationsFragment::class.java.name)
+            showDialog()
+//            findNavController().navigate(R.id.action_mainSupplicationsFragment_to_addSupplicationsFragment)
         }
         binding.backArrow.setOnClickListener{
            findNavController().popBackStack()
@@ -137,5 +143,32 @@ class MainSupplicationsFragment : BaseFragment(),
     override fun reloadData() {
         retrieveSupplicationsData()
     }
+
+
+    fun showDialog() {
+        val  sharedDialog = Dialog(requireContext())
+        sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = FragmentAddAzcarBinding.inflate(layoutInflater)
+        sharedDialog.setContentView(dialogBinding.root)
+        sharedDialog.setCanceledOnTouchOutside(true)
+        val window = sharedDialog.window
+        window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            val layoutParams = attributes
+            layoutParams.width = (resources.displayMetrics.widthPixels * 0.9).toInt()
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            attributes = layoutParams
+        }
+        dialogBinding.icClose.setOnClickListener {
+            sharedDialog.dismiss()
+        }
+//        dialogBinding.start.setOnClickListener {
+//            findNavController().navigate(R.id.action_toolsFragment_to_mainSupplicationsFragment3)
+//            sharedDialog.dismiss()
+//        }
+
+        sharedDialog.show()
+    }
+
 
 }

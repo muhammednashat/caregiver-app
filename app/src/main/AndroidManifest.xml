@@ -19,6 +19,9 @@
         android:theme="@style/Theme.MyProject"
         tools:targetApi="31">
         <activity
+            android:name=".users.patient.tools.UserToolsActivity"
+            android:exported="false" />
+        <activity
             android:name=".users.caregiver.tools.cofe.presintaion.SupportCofeActivity"
             android:exported="false" />
         <activity
@@ -39,7 +42,6 @@
         <activity
             android:name=".commonFeatures.getLibraryContent.presentaion.LibraryActivity"
             android:exported="false" />
-
         <activity
             android:name=".users.patient.dailyprogram.presentaion.DailyProgramActivity"
             android:exported="false" />
@@ -61,7 +63,6 @@
         <activity
             android:name=".auth.presentation.AuthActivity"
             android:exported="false" />
-
         <activity
             android:name=".util.SplashActivity"
             android:exported="true">

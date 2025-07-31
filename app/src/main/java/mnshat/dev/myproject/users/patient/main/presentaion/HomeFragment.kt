@@ -26,6 +26,7 @@ import mnshat.dev.myproject.users.patient.calender.presentaion.CalenderActivity
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.dailyprogram.presentaion.DailyProgramActivity
 import mnshat.dev.myproject.users.patient.moodTracking.presentaion.activties.MoodTrackingActivity
+import mnshat.dev.myproject.users.patient.tools.UserToolsActivity
 import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
@@ -83,7 +84,7 @@ class HomeFragment : BaseFragment() {
         }
 
         binding.rootTools.setOnClickListener{
-            findNavController().navigate(R.id.action_patientHomeFragment_to_mainAzcarFragment)
+            startActivity(Intent(requireActivity(), UserToolsActivity::class.java))
         }
 
         binding.rootEducationalContent.setOnClickListener{

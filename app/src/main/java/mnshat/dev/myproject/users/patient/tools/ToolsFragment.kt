@@ -41,7 +41,8 @@ class ToolsFragment : BaseFragment() {
     private fun setupClickListener() {
 
         binding.icBack.setOnClickListener {
-            findNavController().popBackStack()
+            activity?.finish()
+
         }
 
         binding.imageCofe.setOnClickListener {
@@ -53,13 +54,13 @@ class ToolsFragment : BaseFragment() {
         }
         binding.imageBreath.setOnClickListener {
             showBreathIntroDialog(R.drawable.breath_intro){
-                findNavController().navigate(R.id.action_toolsFragment_to_mainBreathFragment)
+                findNavController().navigate(R.id.action_toolsFragment_to_mainBreathFragment2)
             }
         }
 
         binding.imageGratitude.setOnClickListener {
             showBreathIntroDialog(R.drawable.gratitude_intro){
-                findNavController().navigate(R.id.action_toolsFragment_to_gratitudeFragment)
+                findNavController().navigate(R.id.action_toolsFragment_to_gratitudeFragment2)
             }
 
         }
@@ -94,7 +95,6 @@ class ToolsFragment : BaseFragment() {
     }
 
 
-
     fun showDialog() {
         val  sharedDialog = Dialog(requireContext())
         sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -113,7 +113,7 @@ class ToolsFragment : BaseFragment() {
             sharedDialog.dismiss()
         }
         dialogBinding.start.setOnClickListener {
-            findNavController().navigate(R.id.action_toolsFragment_to_mainSupplicationsFragment)
+            findNavController().navigate(R.id.action_toolsFragment_to_mainSupplicationsFragment3)
             sharedDialog.dismiss()
         }
 

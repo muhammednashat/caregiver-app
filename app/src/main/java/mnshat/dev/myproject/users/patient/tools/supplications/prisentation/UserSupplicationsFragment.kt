@@ -47,7 +47,7 @@ class UserSupplicationsFragment : BasePatientFragment<FragmentUserSupplicationsB
         binding.fab.setOnClickListener {
             val addFragment = AddSupplicationsFragment()
             addFragment.setDataReLoader(this)
-//            addFragment.show(childFragmentManager, AddSupplicationsFragment::class.java.name)
+            findNavController().navigate(R.id.action_mainSupplicationsFragment_to_addSupplicationsFragment)
         }
         binding.backArrow.setOnClickListener{
             findNavController().popBackStack()

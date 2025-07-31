@@ -27,7 +27,7 @@ class AddSupplicationsFragment : BaseFragment() {
     private lateinit var binding: FragmentAddAzcarBinding
 
     private lateinit var nameSupplication:String
-    private lateinit var dataReLoader: DataReLoader
+//    private lateinit var dataReLoader: DataReLoader
     private lateinit var numberSupplicationText:String
     private var isCheckedBox: Boolean = false
     private var isNeedingReload: Boolean = false
@@ -67,9 +67,9 @@ class AddSupplicationsFragment : BaseFragment() {
     fun setupClickListener() {
 
 
-        binding.close.setOnClickListener{
-
-        }
+//        binding.close.setOnClickListener{
+//
+//        }
         binding.addButton.setOnClickListener{
            if (validation()){
                showProgressDialog()
@@ -83,13 +83,13 @@ class AddSupplicationsFragment : BaseFragment() {
     override fun onStop() {
         super.onStop()
         if (isNeedingReload){
-            dataReLoader.reloadData()
+//            dataReLoader.reloadData()
         }
 
     }
 
     fun setDataReLoader(dataReLoader: DataReLoader) {
-        this.dataReLoader = dataReLoader
+//        this.dataReLoader = dataReLoader
     }
     private fun observeViewModel() {
 
@@ -113,7 +113,6 @@ class AddSupplicationsFragment : BaseFragment() {
     private fun clearEditTexts() {
         binding.nameEditText.text.clear()
         binding.numberEditText.text.clear()
-        binding.infiniteRepeatCheckBox.isChecked = false
     }
     private fun validation(): Boolean {
         saveInputDataToVariables()
@@ -134,7 +133,6 @@ class AddSupplicationsFragment : BaseFragment() {
     private fun saveInputDataToVariables() {
         nameSupplication = binding.nameEditText.text.toString()
         numberSupplicationText = binding.numberEditText.text.toString()
-        isCheckedBox = binding.infiniteRepeatCheckBox.isChecked
 
     }
 
