@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.analytics.FirebaseAnalytics
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
@@ -122,6 +123,7 @@ class LoginFragment : BaseFragment() {
 
     private fun navigateBasedUserType() {
         val userType = viewModel.currentUserProfile().typeOfUser
+      val result =   FirebaseAnalytics.getInstance(requireContext()).setUserId(viewModel.currentUserProfile().id);
 
         if (userType == CAREGIVER){
             startActivity(Intent(requireContext(), CaregiverScreenActivity::class.java))

@@ -16,6 +16,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.messaging.Constants
+import com.google.firebase.messaging.Constants.FirelogAnalytics
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
@@ -127,6 +130,8 @@ class HomeFragment : BaseFragment() {
         }
 
         dialogBinding.icClose.setOnClickListener {
+
+
             dialog.dismiss()
         }
         dialogBinding.button.setOnClickListener {
@@ -166,8 +171,24 @@ class HomeFragment : BaseFragment() {
 
             }
         }
+    private var startTime: Long = 0 // 10
 
+    override fun onResume() {
+        super.onResume()
+        startTime = System.currentTimeMillis() // 11
+    }
 
+    override fun onPause() {
+        super.onPause()
+        val timeSpent = System.currentTimeMillis() - startTime
+
+        val bundle = Bundle().apply {
+            putString("screen_name", "HomeScreen") // change per screen
+            putLong("time_spent_ms", timeSpent)
+        }
+
+        FirebaseAnalytics.getInstance(requireContext()).logEvent("screen_time", bundle)
+    }
 
 
 

@@ -14,6 +14,7 @@ import mnshat.dev.myproject.model.SupplicationsUser
 import mnshat.dev.myproject.users.patient.tools.supplications.data.SupplicationsRepo
 import mnshat.dev.myproject.util.POSTS
 import mnshat.dev.myproject.util.data.getListHands
+import mnshat.dev.myproject.util.log
 import javax.inject.Inject
 
 @HiltViewModel
@@ -23,6 +24,8 @@ class SupplicationViewModel @Inject constructor(
 
 ):ViewModel() {
 
+
+
     private val firestore = Firebase.firestore
     private var currentIndexListImages = 0
 
@@ -31,8 +34,7 @@ class SupplicationViewModel @Inject constructor(
     private var supplicationsUsersDoc =
         firestore.collection("supplications").document(user.email!!)
 
-    private val _isDismissProgressDialog = MutableLiveData<Boolean>()
-    val isDismissProgressDialog: LiveData<Boolean> get() = _isDismissProgressDialog
+
 
 
     private val _suggestedSupplication = MutableLiveData<List<Supplication>>()
@@ -145,9 +147,7 @@ class SupplicationViewModel @Inject constructor(
         }
     }
 
-    fun resetIsDismissProgressDialog() {
-        _isDismissProgressDialog.value = false
-    }
+
 
     fun onHandClick() {
         if (supplication.value?.number == 0) {
@@ -209,6 +209,22 @@ class SupplicationViewModel @Inject constructor(
             }
     }
 
+
+
+    // These functions are using
+
+    private val _isDismissProgressDialog = MutableLiveData<Boolean>()
+    val isDismissProgressDialog: LiveData<Boolean> get() = _isDismissProgressDialog
+
+
+    fun resetIsDismissProgressDialog() {
+        _isDismissProgressDialog.value = false
+    }
+
+    fun storeUserSupplication(newSupplication: Supplication){
+      val result =  supplicationsRepo.storeUserSupplication(newSupplication)
+        _isDismissProgressDialog.value = result.isSuccessful
+    }
 
 
 }

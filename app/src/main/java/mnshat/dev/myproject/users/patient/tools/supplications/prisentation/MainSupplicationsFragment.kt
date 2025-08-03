@@ -69,8 +69,7 @@ class MainSupplicationsFragment : BaseFragment(),
 
      fun setupClickListener() {
         binding.fab.setOnClickListener {
-            showDialog()
-//            findNavController().navigate(R.id.action_mainSupplicationsFragment_to_addSupplicationsFragment)
+            AddSupplicationDialog().show(parentFragmentManager, "AddSupplicationDialog")
         }
         binding.backArrow.setOnClickListener{
            findNavController().popBackStack()
@@ -145,30 +144,7 @@ class MainSupplicationsFragment : BaseFragment(),
     }
 
 
-    fun showDialog() {
-        val  sharedDialog = Dialog(requireContext())
-        sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        val dialogBinding = FragmentAddAzcarBinding.inflate(layoutInflater)
-        sharedDialog.setContentView(dialogBinding.root)
-        sharedDialog.setCanceledOnTouchOutside(true)
-        val window = sharedDialog.window
-        window?.apply {
-            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            val layoutParams = attributes
-            layoutParams.width = (resources.displayMetrics.widthPixels * 0.9).toInt()
-            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
-            attributes = layoutParams
-        }
-        dialogBinding.icClose.setOnClickListener {
-            sharedDialog.dismiss()
-        }
-//        dialogBinding.start.setOnClickListener {
-//            findNavController().navigate(R.id.action_toolsFragment_to_mainSupplicationsFragment3)
-//            sharedDialog.dismiss()
-//        }
 
-        sharedDialog.show()
-    }
 
 
 }

@@ -46,7 +46,7 @@ const val VIDEO = "video"
 const val AUDIO = "audio"
 const val COMMON_CONTENT = "commonContent"
 const val Customized_CONTENT = "customizedContent"
-const val MENTAL_HEALTH = "mentalHealth"
+const val SUPPLICATIONS = "Supplications"
 const val HEALTHY_LIVING = "Healthy living"
 
 const val LIBRARY_CONTENTS = "library_contents"
@@ -63,7 +63,6 @@ const val PROGRAM= "program"
 
 const val CHATS = "chats"
 const val LIBRARY = "library"
-const val SUPPLICATIONS = "supplications"
 const val GRATITUDE = "gratitude"
 const val   POSTS = "posts"
 
