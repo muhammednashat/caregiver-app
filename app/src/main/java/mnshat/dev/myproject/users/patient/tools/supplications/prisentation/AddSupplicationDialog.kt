@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.ViewGroup
 import android.view.Window
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
@@ -13,6 +14,8 @@ import mnshat.dev.myproject.base.BaseDialogFragment
 import mnshat.dev.myproject.databinding.DialogAddSupplicationsBinding
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.util.isValidInput
+import mnshat.dev.myproject.util.log
+import kotlin.getValue
 
 @AndroidEntryPoint
 class AddSupplicationDialog : BaseDialogFragment() {
@@ -21,7 +24,7 @@ class AddSupplicationDialog : BaseDialogFragment() {
 
     private lateinit var supplicationText: String
     private lateinit var numberOfRepetitionText: String
-    private val viewModel: SupplicationViewModel by viewModels()
+    private val viewModel: SupplicationViewModel by activityViewModels()
 
 
 
@@ -82,12 +85,13 @@ class AddSupplicationDialog : BaseDialogFragment() {
 
 
     private fun observeViewModel() {
-//        viewModel.isDismissProgressDialog.observe(viewLifecycleOwner) { isDismiss ->
-//            if (isDismiss) {
-//                localDialog.dismiss()
-//                viewModel.resetIsDismissProgressDialog()
-//            }
-//    }
+
+        viewModel.dismissSupplicationDialog.observe(this) { isDismiss ->
+            if (isDismiss) {
+                localDialog.dismiss()
+                viewModel.resetDismissSupplicationDialog()
+            }
+         }
 
     }
 

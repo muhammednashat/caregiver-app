@@ -73,7 +73,6 @@ class AddSupplicationsFragment : BaseFragment() {
         binding.addButton.setOnClickListener{
            if (validation()){
                showProgressDialog()
-               viewModel.onAddSupplicationClick( getInstanceSupplication())
            }
 
         }

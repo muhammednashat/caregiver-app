@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +27,7 @@ import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.users.patient.BasePatientFragment
 import mnshat.dev.myproject.users.patient.supporters.presentation.SupporterViewModel
 import mnshat.dev.myproject.util.ENGLISH_KEY
+import mnshat.dev.myproject.util.log
 import kotlin.getValue
 
 @AndroidEntryPoint
@@ -33,7 +35,7 @@ class MainSupplicationsFragment : BaseFragment(),
 
     ItemSupplicationClicked,DataReLoader {
 
-   private val viewModel: SupplicationViewModel by viewModels()
+   private val viewModel: SupplicationViewModel by activityViewModels()
 
     private lateinit var binding: FragmentMainSupplicationsBinding
 
@@ -70,6 +72,7 @@ class MainSupplicationsFragment : BaseFragment(),
      fun setupClickListener() {
         binding.fab.setOnClickListener {
             AddSupplicationDialog().show(parentFragmentManager, "AddSupplicationDialog")
+
         }
         binding.backArrow.setOnClickListener{
            findNavController().popBackStack()
@@ -91,9 +94,7 @@ class MainSupplicationsFragment : BaseFragment(),
         viewModel.getSuggestedSupplications { items ->
             setupSuggestedSupplicationRecyclerView(items)
         }
-        viewModel.getUserSupplications {
-            setupUserSupplicationRecyclerView(it)
-        }
+     
     }
 
     private fun setupSuggestedSupplicationRecyclerView(
@@ -123,7 +124,9 @@ class MainSupplicationsFragment : BaseFragment(),
     }
 
     private fun observeViewModel() {
-
+        viewModel.userSupplications.observe(viewLifecycleOwner) {
+            setupUserSupplicationRecyclerView(it)
+        }
         viewModel.isDismissProgressDialog.observe(viewLifecycleOwner) { isDismissProgressDialog ->
             if (isDismissProgressDialog) {
                 dismissProgressDialog()

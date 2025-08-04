@@ -1,10 +1,12 @@
 package mnshat.dev.myproject.users.patient.tools.supplications.data
 
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.tasks.await
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.util.SUPPLICATIONS
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USERS
+import mnshat.dev.myproject.util.log
 
 class SupplicationsRepo (
      val firestore: FirebaseFirestore,
@@ -13,11 +15,34 @@ class SupplicationsRepo (
 
      fun getUser() = sharedPreferences.getUserProfile()
 
-     fun storeUserSupplication(newSupplication: Supplication)=
-           firestore.collection(USERS)
+     suspend fun storeUserSupplication(newSupplication: Supplication) {
+
+        firestore.collection(USERS)
                .document(getUser().id!!)
                .collection(SUPPLICATIONS)
-               .add(newSupplication)
+               .add(newSupplication).await()
+         log("Done Successfully")
+     }
+
+
+    fun listenToUserSupplications(onChange: (List<Supplication>) -> Unit) {
+        firestore.collection(USERS)
+            .document(getUser().id!!)
+            .collection(SUPPLICATIONS)
+            .addSnapshotListener { snapshots, e ->
+                if (e != null) {
+                    log("Listen failed: ${e.message}")
+                    onChange(emptyList())
+                    return@addSnapshotListener
+                }
+                val supplications = snapshots?.documents
+                    ?.mapNotNull { it.toObject(Supplication::class.java) } ?: emptyList()
+                log("Real-time update: ${supplications.size} items")
+                onChange(supplications)
+            }
+    }
+
+
 
 
 }

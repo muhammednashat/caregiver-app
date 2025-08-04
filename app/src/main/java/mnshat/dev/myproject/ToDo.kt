@@ -14,6 +14,10 @@ package mnshat.dev.myproject
 
 //Doing
 /**
+ *
+ * change collection of supplications
+ *  listen to app supplications
+ *
  *  create supplications repo method
  * test  speak to speech
  * check internet connection
