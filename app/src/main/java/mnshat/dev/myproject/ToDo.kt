@@ -15,13 +15,15 @@ package mnshat.dev.myproject
 //Doing
 /**
  *
- * change collection of supplications
- *  listen to app supplications
+ * navigate to user supplications
  *
- *  create supplications repo method
- * test  speak to speech
- * check internet connection
- * hundle back button in daily program specially when user click on dialog
+ * start a session
+ *  
+ *
+ *
+ *
+ *
+ *
  *
  * نغير السؤال ما الذى يؤثر على
  *

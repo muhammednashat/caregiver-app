@@ -1,72 +1,54 @@
 package mnshat.dev.myproject.users.patient.tools.supplications.prisentation
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.UserSupplicationAdapter
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentUserSupplicationsBinding
-import mnshat.dev.myproject.factories.SupplicationsViewModelFactory
-import mnshat.dev.myproject.interfaces.DataReLoader
 import mnshat.dev.myproject.interfaces.ItemSupplicationClicked
 import mnshat.dev.myproject.model.Supplication
-import mnshat.dev.myproject.users.patient.BasePatientFragment
-import mnshat.dev.myproject.util.ENGLISH_KEY
+import mnshat.dev.myproject.util.log
+import kotlin.getValue
 
+@AndroidEntryPoint
 
-class UserSupplicationsFragment : BasePatientFragment<FragmentUserSupplicationsBinding>(),
-    ItemSupplicationClicked, DataReLoader {
+class UserSupplicationsFragment : BaseFragment(),
+    ItemSupplicationClicked {
 
-    private lateinit var viewModel: SupplicationsViewModel2
+    private val viewModel: SupplicationViewModel by activityViewModels()
 
-    override fun initializeViews() {
+    private lateinit var binding: FragmentUserSupplicationsBinding
 
-        intiBackgroundBasedOnLang()
-
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentUserSupplicationsBinding.inflate(inflater, container, false)
+        setupClickListener()
+        observeViewModel()
+        return binding.root
     }
 
-    private fun intiBackgroundBasedOnLang() {
-        if (currentLang != ENGLISH_KEY) {
-            binding.backArrow.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-            binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
-        }
-    }
 
-    private fun retrieveDataFromArguments() {
-
-        val args: UserSupplicationsFragmentArgs by navArgs()
-        setupUserSupplicationRecyclerView(args.supplications.toList())
-    }
-
-    override fun setupClickListener() {
-        super.setupClickListener()
+    private fun setupClickListener() {
         binding.fab.setOnClickListener {
-            val addFragment = AddSupplicationsFragment()
-            addFragment.setDataReLoader(this)
-            findNavController().navigate(R.id.action_mainSupplicationsFragment_to_addSupplicationsFragment)
+            AddSupplicationDialog().show(parentFragmentManager, "AddSupplicationDialog")
         }
         binding.backArrow.setOnClickListener{
             findNavController().popBackStack()
         }
-
-
     }
-    override fun getLayout()= R.layout.fragment_user_supplications
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        val factory = SupplicationsViewModelFactory(sharedPreferences, activity?.application!!)
-        retrieveDataFromArguments()
-
-        viewModel = ViewModelProvider(requireActivity(), factory)[SupplicationsViewModel2::class.java]
-        binding.lifecycleOwner = this
-        observeViewModel()
-
-    }
 
 
     private fun setupUserSupplicationRecyclerView(
@@ -78,22 +60,17 @@ class UserSupplicationsFragment : BasePatientFragment<FragmentUserSupplicationsB
 
 
     private fun observeViewModel() {
-
-    }
-    private fun retrieveSupplicationsData() {
-        showProgressDialog()
-        viewModel.getUserSupplications {
+        viewModel.userSupplications.observe(viewLifecycleOwner) {
             setupUserSupplicationRecyclerView(it)
-            dismissProgressDialog()
         }
     }
-    override fun reloadData() {
-        retrieveSupplicationsData()
-    }
+
 
     override fun onItemClicked(view: View,supplication: Supplication) {
         showPopupMenu(view,supplication)
     }
+
+
     private fun showPopupMenu(view: View,supplication:Supplication) {
         val popupMenu = PopupMenu(requireActivity(), view)
         popupMenu.inflate(R.menu.item_supplicaion_menu)

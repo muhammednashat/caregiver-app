@@ -36,9 +36,6 @@
         android:label="UserSupplicationsFragment"
         tools:layout="@layout/fragment_user_supplications">
 
-        <argument
-            android:name="supplications"
-            app:argType="mnshat.dev.myproject.model.Supplication[]" />
         <action
             android:id="@+id/action_userSupplicationsFragment_to_addSupplicationsFragment"
             app:destination="@id/addSupplicationsFragment" />
@@ -47,11 +44,7 @@
         android:id="@+id/supplicationsFragment"
         android:name="mnshat.dev.myproject.users.patient.tools.supplications.prisentation.SupplicationsFragment"
         android:label="SupplicationsFragment"
-        tools:layout="@layout/fragment_supplications">
-        <argument
-            android:name="supplication"
-            app:argType="mnshat.dev.myproject.model.Supplication" />
-    </fragment>
+        tools:layout="@layout/fragment_supplications"/>
     <fragment
         android:id="@+id/gratitudeFragment"
         android:name="mnshat.dev.myproject.users.patient.tools.gratitude.GratitudeFragment"

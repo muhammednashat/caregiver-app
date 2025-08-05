@@ -26,31 +26,13 @@ class SupplicationViewModel @Inject constructor(
 
 ):ViewModel() {
 
-
-
-    private val _isDismissProgressDialog = MutableLiveData<Boolean>()
-    val isDismissProgressDialog: LiveData<Boolean> get() = _isDismissProgressDialog
     private val _dismissSupplicationDialog = MutableLiveData<Boolean>()
     val dismissSupplicationDialog: LiveData<Boolean> get() = _dismissSupplicationDialog
-    private val firestore = Firebase.firestore
     val user = supplicationsRepo.getUser()
-
-
-
-
-
+    var selectedSupplication: Supplication? = null
     private val _suggestedSupplication = MutableLiveData<List<Supplication>>()
     val suggestedSupplication: LiveData<List<Supplication>>
         get() = _suggestedSupplication
-
-
-    private val _supplication = MutableLiveData<Supplication>()
-    val supplication: LiveData<Supplication>
-        get() = _supplication
-
-
-
-
 
     private val _userSupplications = MutableLiveData<List<Supplication>>()
     val userSupplications: LiveData<List<Supplication>>
@@ -61,56 +43,12 @@ class SupplicationViewModel @Inject constructor(
         supplicationsRepo.listenToUserSupplications(){
             _userSupplications.value = it
         }
-    }
-
-
-
-
-
-    private fun getSupplicationsList(
-        document: String,
-        onResult: (List<Supplication>, Exception?) -> Unit
-    ) {
-
-        val supplicationsUsersDoc = firestore.collection("supplications").document(document)
-        supplicationsUsersDoc.get()
-            .addOnSuccessListener { documentSnapshot ->
-                if (documentSnapshot.exists()) {
-                    val supplicationsUser = documentSnapshot.toObject(SupplicationsUser::class.java)
-                    val supplicationsList = supplicationsUser?.supplications ?: emptyList()
-                    onResult(supplicationsList, null)
-                    _isDismissProgressDialog.value = true
-
-                } else {
-                    onResult(emptyList(), null)
-                    _isDismissProgressDialog.value = true
-                }
-            }
-            .addOnFailureListener { exception ->
-                onResult(emptyList(), exception)
-                _isDismissProgressDialog.value = true
-            }
-    }
-
-
-
-    fun getSuggestedSupplications(onResult: (List<Supplication>) -> Unit) {
-        getSupplicationsList("app"
-        ) { items, exception ->
-            items.let {
-                _suggestedSupplication.value = items
-                onResult(items)
-            }
+        supplicationsRepo.listenToAppSupplications{
+            _suggestedSupplication.value = it
         }
     }
 
 
-
-
-
-    fun resetIsDismissProgressDialog() {
-        _isDismissProgressDialog.value = false
-    }
    fun resetDismissSupplicationDialog() {
      _dismissSupplicationDialog.value = false
     }
@@ -126,6 +64,24 @@ class SupplicationViewModel @Inject constructor(
         }
 
     }
+    fun onHandClick() {
+//        if (supplication.value?.number == 0) {
+//            getImage()
+//        }
+//
+//        else {
+//            if (_numberRemaining.value!! < supplication.value?.number!!) {
+//                getImage()
+//            } else {
+//
+//            }
+//        }
 
+    }
+    fun resetCounter(){
+//        _numberRemaining.value = 0
+//        currentIndexListImages = 0
+//        getFirstImage()
+    }
 
 }

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="mnshat.dev.myproject.users.patient.tools.supplications.prisentation.SupplicationsViewModel2" />
+            type="mnshat.dev.myproject.users.patient.tools.supplications.prisentation.SupplicationViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -198,10 +198,10 @@
                 android:layout_height="24dp"
                 android:layout_marginStart="@dimen/margin_medium"
                 android:src="@drawable/ic_refresh2"
-                android:tint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,39 +1,26 @@
 package mnshat.dev.myproject.users.patient.tools.supplications.prisentation
 
 import android.app.AlertDialog
-import android.app.Dialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.SuggestedSupplicationAdapter
 import mnshat.dev.myproject.adapters.UserSupplicationAdapter
 import mnshat.dev.myproject.base.BaseFragment
-import mnshat.dev.myproject.databinding.FragmentAddAzcarBinding
-import mnshat.dev.myproject.databinding.FragmentAddSupporterBinding
 import mnshat.dev.myproject.databinding.FragmentMainSupplicationsBinding
-import mnshat.dev.myproject.databinding.FragmentSupplicationsIntroBinding
-import mnshat.dev.myproject.interfaces.DataReLoader
 import mnshat.dev.myproject.interfaces.ItemSupplicationClicked
 import mnshat.dev.myproject.model.Supplication
-import mnshat.dev.myproject.users.patient.BasePatientFragment
-import mnshat.dev.myproject.users.patient.supporters.presentation.SupporterViewModel
-import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.log
 import kotlin.getValue
 
 @AndroidEntryPoint
 class MainSupplicationsFragment : BaseFragment(),
-
-    ItemSupplicationClicked,DataReLoader {
+    ItemSupplicationClicked {
 
    private val viewModel: SupplicationViewModel by activityViewModels()
 
@@ -50,7 +37,7 @@ class MainSupplicationsFragment : BaseFragment(),
     }
     private fun checkInternetConnection() {
         if (isConnected()) {
-            retrieveSupplicationsData()
+            showProgressDialog()
             observeViewModel()
             setupClickListener()
         } else {
@@ -71,6 +58,7 @@ class MainSupplicationsFragment : BaseFragment(),
 
      fun setupClickListener() {
         binding.fab.setOnClickListener {
+
             AddSupplicationDialog().show(parentFragmentManager, "AddSupplicationDialog")
 
         }
@@ -78,23 +66,9 @@ class MainSupplicationsFragment : BaseFragment(),
            findNavController().popBackStack()
         }
         binding.textShowAll.setOnClickListener{
-            navigateToUserSupplications()
+            findNavController().navigate(R.id.action_mainSupplicationsFragment_to_userSupplicationsFragment)
         }
 
-    }
-
-    private fun navigateToUserSupplications() {
-        val action = MainSupplicationsFragmentDirections
-            .actionMainSupplicationsFragmentToUserSupplicationsFragment(viewModel.userSupplications.value?.toTypedArray()!!)
-        findNavController().navigate(action)
-    }
-
-    private fun retrieveSupplicationsData() {
-        showProgressDialog()
-        viewModel.getSuggestedSupplications { items ->
-            setupSuggestedSupplicationRecyclerView(items)
-        }
-     
     }
 
     private fun setupSuggestedSupplicationRecyclerView(
@@ -112,12 +86,10 @@ class MainSupplicationsFragment : BaseFragment(),
             val adapterUserSupplication = UserSupplicationAdapter(userSupplication,this)
             binding.userSupplicationRecyclerView.adapter = adapterUserSupplication
             binding.textNoItems.visibility = View.GONE
-            binding.textShowAll.visibility = View.VISIBLE
-            binding.userSupplicationRecyclerView.visibility = View.VISIBLE
+            binding.showUserSupplications.visibility = View.VISIBLE
 
         }else{
-            binding.userSupplicationRecyclerView.visibility = View.GONE
-            binding.textShowAll.visibility = View.GONE
+            binding.showUserSupplications.visibility = View.GONE
             binding.textNoItems.visibility = View.VISIBLE
         }
 
@@ -125,26 +97,26 @@ class MainSupplicationsFragment : BaseFragment(),
 
     private fun observeViewModel() {
         viewModel.userSupplications.observe(viewLifecycleOwner) {
+            log("userSupplications ${it.size}")
+            dismissProgressDialog()
+            binding.constraintData.visibility = View.VISIBLE
             setupUserSupplicationRecyclerView(it)
         }
-        viewModel.isDismissProgressDialog.observe(viewLifecycleOwner) { isDismissProgressDialog ->
-            if (isDismissProgressDialog) {
-                dismissProgressDialog()
-                binding.constraintData.visibility = View.VISIBLE
-                viewModel.resetIsDismissProgressDialog()
-            }
+        viewModel.suggestedSupplication.observe(viewLifecycleOwner) {
+            log("suggestedSupplication ${it.size}")
+            dismissProgressDialog()
+            binding.constraintData.visibility = View.VISIBLE
+            binding.suggestedSupplications.visibility = View.VISIBLE
+            setupSuggestedSupplicationRecyclerView(it)
         }
+
     }
 
     override fun onItemClicked(view:View,supplication: Supplication) {
-        val action = MainSupplicationsFragmentDirections
-            .actionMainSupplicationsFragmentToSupplicationsFragment(supplication)
-        findNavController().navigate(action)
+        viewModel.selectedSupplication = supplication
+        findNavController().navigate(R.id.action_mainSupplicationsFragment_to_supplicationsFragment)
     }
 
-    override fun reloadData() {
-        retrieveSupplicationsData()
-    }
 
 
 

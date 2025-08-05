@@ -15,6 +15,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/back_arrow"
             style="@style/ic_back"
+            app:layout_constraintBottom_toTopOf="@+id/line"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_arrow_back_ios" />
@@ -25,15 +26,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="قائمتك"
+            android:layout_marginTop="@dimen/margin_2_super"
+            android:text="@string/your_list"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/back_arrow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/back_arrow"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/back_arrow"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/line"
@@ -67,7 +67,9 @@
             android:id="@+id/fab"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_margin="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="68dp"
+
             android:backgroundTint="@color/shade_orange"
             android:src="@drawable/ic_add2"
             android:tint="@android:color/white"

@@ -56,7 +56,9 @@ open class BaseFragment: Fragment() {
     }
 
     fun dismissProgressDialog() {
-        progressDialog.dismiss()
+        if (progressDialog.isShowing){
+            progressDialog.dismiss()
+        }
     }
 
     fun copyTextToClipboard( text: String) {
