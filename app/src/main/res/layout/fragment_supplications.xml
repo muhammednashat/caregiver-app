@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="viewModel"
-            type="mnshat.dev.myproject.users.patient.tools.supplications.prisentation.SupplicationViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,7 +33,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageViewSebha"
             app:srcCompat="@drawable/ic_arrow_back_ios"
-            app:tint="@color/white" />
+            />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageViewSebha"
@@ -156,7 +154,6 @@
             android:id="@+id/handImageView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:onClick="@{ () -> viewModel.onHandClick()}"
             android:scaleType="fitXY"
             android:src="@drawable/image_hand1"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
@@ -171,7 +168,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/gradient_orange"
 
-            android:onClick="@{() -> viewModel.resetCounter()}"
             android:padding="@dimen/padding_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

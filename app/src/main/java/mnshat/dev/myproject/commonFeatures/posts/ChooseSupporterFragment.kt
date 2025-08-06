@@ -3,20 +3,20 @@ package mnshat.dev.myproject.commonFeatures.posts
 import android.view.View
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.ChooseSupporterAdapter
+import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.databinding.FragmentChooseSupporterBinding
 import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.interfaces.OnSendButtonClicked
-import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.USER_ID
 
-class ChooseSupporterFragment : BaseBottomSheetDialogFragment2<FragmentChooseSupporterBinding>() {
+class ChooseSupporterFragment :
 
+    BaseBottomSheetDialogFragment2<FragmentChooseSupporterBinding>() {
     private lateinit var onSendButtonClicked: OnSendButtonClicked
-
-override fun getLayout() = R.layout.fragment_choose_supporter
-private lateinit var chooseAdapter: ChooseSupporterAdapter
+    override fun getLayout() = R.layout.fragment_choose_supporter
+    private lateinit var chooseAdapter: ChooseSupporterAdapter
     override fun initializeViews() {
         if (currentLang != ENGLISH_KEY) {
             binding.close.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
@@ -30,22 +30,23 @@ private lateinit var chooseAdapter: ChooseSupporterAdapter
         super.setupClickListener()
         binding.send.setOnClickListener {
 
-            if (chooseAdapter.getSelectedSupporters().size == 0){
+            if (chooseAdapter.getSelectedSupporters().size == 0) {
                 showToast("Please Select Supporter")
-            }else{
+            } else {
                 onSendButtonClicked.onSendClicked(chooseAdapter.getSelectedSupporters())
                 dismiss()
             }
         }
     }
-      fun initOnConfirmButtonClicked(onSendButtonClicked: OnSendButtonClicked){
+
+    fun initOnConfirmButtonClicked(onSendButtonClicked: OnSendButtonClicked) {
         this.onSendButtonClicked = onSendButtonClicked
     }
 
     private fun retrieveUsers() {
-        FirebaseService.retrieveUser(sharedPreferences.getString(USER_ID)){ user ->
+        FirebaseService.retrieveUser(sharedPreferences.getString(USER_ID)) { user ->
             user?.storeDataLocally(sharedPreferences)
-            FirebaseService.retrieveUsers(user?.supports){
+            FirebaseService.retrieveUsers(user?.supports) {
                 it?.let {
                     updateUi(it)
                 }
@@ -61,7 +62,8 @@ private lateinit var chooseAdapter: ChooseSupporterAdapter
             layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
                 requireContext(),
                 androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL,
-                false)
+                false
+            )
             binding.loaderProgress.visibility = View.GONE
             binding.send.visibility = View.VISIBLE
             alpha = 1.0f
