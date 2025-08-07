@@ -107,12 +107,14 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/send"
-            style="@style/button_medium"
+           android:layout_height="wrap_content"
             android:layout_width="150dp"
+            android:textColor="@color/white"
+            android:background="@drawable/corner_normal"
             android:layout_marginTop="@dimen/margin_large"
-            android:backgroundTint="#4b4b4b"
-           android:visibility="gone"
+            android:backgroundTint="@color/shade_orange"
             android:text="@string/send"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"

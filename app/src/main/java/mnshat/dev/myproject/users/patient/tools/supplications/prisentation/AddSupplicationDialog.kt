@@ -7,14 +7,12 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseDialogFragment
 import mnshat.dev.myproject.databinding.DialogAddSupplicationsBinding
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.util.isValidInput
-import mnshat.dev.myproject.util.log
 import kotlin.getValue
 
 @AndroidEntryPoint

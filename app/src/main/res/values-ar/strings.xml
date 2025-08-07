@@ -858,4 +858,8 @@
     <string name="please_check_your_internet_connection_and_try_again">يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى</string>
     <string name="try_again">حاول مرة آخرى</string>
     <string name="add_to_the_rosary">إضافة الى السبحة</string>
+    <string name="please_select_supporter">الرجاء تحديد الداعم
+</string>
+    <string name="shared_successfully">تمت المشاركة بنجاح
+</string>
 </resources>

@@ -12,33 +12,19 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.PopupMenu
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.DialogFullTextSupplicationBinding
-import mnshat.dev.myproject.databinding.FragmentMainSupplicationsBinding
 import mnshat.dev.myproject.databinding.FragmentSupplicationsBinding
-import mnshat.dev.myproject.factories.SupplicationsViewModelFactory
-import mnshat.dev.myproject.interfaces.OnSendButtonClicked
-import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.model.Supplication
-import mnshat.dev.myproject.users.patient.BasePatientFragment
-import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.LANGUAGE
-import mnshat.dev.myproject.util.SUPPLICATIONS
-import mnshat.dev.myproject.util.data.getListHands
-import mnshat.dev.myproject.util.data.getListSebha
-import mnshat.dev.myproject.util.log
 import java.util.Locale
-import kotlin.getValue
 
 @AndroidEntryPoint
-class SupplicationsFragment : BaseFragment(),
-    OnSendButtonClicked {
+class SupplicationsFragment : BaseFragment(){
 
 
     private val viewModel: SupplicationViewModel by activityViewModels()
@@ -153,12 +139,14 @@ class SupplicationsFragment : BaseFragment(),
 }
 
     private fun navigateToChooseSupporter() {
-        if (viewModel.supplicationsRepo.getUser().hasPartner!!){
-            val fragment = ChooseSupporterFragment()
-            fragment.initOnConfirmButtonClicked(this)
-            fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
-        }else{
+        if (!viewModel.supplicationsRepo.getUser().hasPartner!!){
             showToast(getString(R.string.no_supporters_text))
+
+        } else if (!isConnected()) {
+            showNoInternetSnackBar(binding.root)
+        } else {
+            val fragment = ChooseSupporterFragment()
+            fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
         }
 
 
@@ -182,27 +170,6 @@ class SupplicationsFragment : BaseFragment(),
     }
 
 
-//    private fun post(list: MutableList<String>) =
-//        Post(
-//            type =  SUPPLICATIONS,
-//            supplication = viewModel.supplication.value!!,
-//            supporters = list
-//        )
-
-//
-    override fun onSendClicked(list: MutableList<String>) {
-//        showProgressDialog()
-//        viewModel.shareContent(post(list)){
-//            if (it == null){
-//                showToast("done")
-//            }else{
-//                showToast(it)
-//            }
-//            dismissProgressDialog()
-//        }
-
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         mediaPlayer?.release()
@@ -213,11 +180,6 @@ class SupplicationsFragment : BaseFragment(),
         mediaPlayer?.release()
         mediaPlayer = MediaPlayer.create(context, R.raw.tick4)
         mediaPlayer?.start()
-    }
-
-    private fun stopTickSound() {
-        mediaPlayer?.release()
-        mediaPlayer = null
     }
 
 

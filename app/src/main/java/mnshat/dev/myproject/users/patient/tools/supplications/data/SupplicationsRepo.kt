@@ -2,18 +2,22 @@ package mnshat.dev.myproject.users.patient.tools.supplications.data
 
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
-import mnshat.dev.myproject.R
+import mnshat.dev.myproject.model.Post
+import mnshat.dev.myproject.model.Posts
 import mnshat.dev.myproject.model.Supplication
+import mnshat.dev.myproject.util.POSTS
 import mnshat.dev.myproject.util.SUPPLICATIONS
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USERS
+import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.data.getListHands
 import mnshat.dev.myproject.util.data.getListSebha
 import mnshat.dev.myproject.util.log
 
 class SupplicationsRepo (
      val firestore: FirebaseFirestore,
-     val sharedPreferences: SharedPreferencesManager
+     val sharedPreferences: SharedPreferencesManager,
+
 ) {
 
      fun getUser() = sharedPreferences.getUserProfile()
@@ -61,7 +65,22 @@ class SupplicationsRepo (
             }
     }
 
-
+   suspend fun shareContent(post:Post): Boolean {
+       try {
+           val result = firestore.collection(POSTS).document(getUser().email!!).get().await()
+           val posts:MutableList<Post> =
+               if (result.exists()) {
+                   result.toObject(Posts::class.java)?.posts ?: mutableListOf()
+               } else{
+                   mutableListOf()
+               }
+           posts.add(post)
+           firestore.collection(POSTS).document(getUser().email!!).set(Posts(posts)).await()
+           return true
+       }catch (e:Exception){
+           return false
+       }
+    }
 
     fun addSupplications() {
         val supplications = listOf(

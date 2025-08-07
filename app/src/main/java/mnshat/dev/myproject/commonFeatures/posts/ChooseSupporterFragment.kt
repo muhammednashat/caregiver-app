@@ -1,40 +1,54 @@
 package mnshat.dev.myproject.commonFeatures.posts
 
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.ChooseSupporterAdapter
-import mnshat.dev.myproject.auth.data.entity.RegistrationData
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
+import mnshat.dev.myproject.auth.data.entity.UserProfile
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentChooseSupporterBinding
-import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.interfaces.OnSendButtonClicked
-import mnshat.dev.myproject.util.ENGLISH_KEY
-import mnshat.dev.myproject.util.USER_ID
+import mnshat.dev.myproject.users.patient.tools.supplications.prisentation.SupplicationViewModel
+import kotlin.getValue
 
-class ChooseSupporterFragment :
+@AndroidEntryPoint
 
-    BaseBottomSheetDialogFragment2<FragmentChooseSupporterBinding>() {
+class ChooseSupporterFragment : BaseBottomSheetDialogFragment() {
+
+    private val viewModel: SupplicationViewModel by activityViewModels()
+    private lateinit var binding: FragmentChooseSupporterBinding
+
     private lateinit var onSendButtonClicked: OnSendButtonClicked
-    override fun getLayout() = R.layout.fragment_choose_supporter
     private lateinit var chooseAdapter: ChooseSupporterAdapter
-    override fun initializeViews() {
-        if (currentLang != ENGLISH_KEY) {
-            binding.close.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-            binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
-        }
 
-        retrieveUsers()
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentChooseSupporterBinding.inflate(inflater,container,false)
+        viewModel.retrieveSupporters()
+        setupClickListener()
+        observeViewModel()
+        return  binding.root
     }
 
-    override fun setupClickListener() {
-        super.setupClickListener()
+
+   private  fun setupClickListener() {
+       binding.close.setOnClickListener {
+           dismiss()
+       }
+
         binding.send.setOnClickListener {
 
             if (chooseAdapter.getSelectedSupporters().size == 0) {
-                showToast("Please Select Supporter")
+                showToast(getString(R.string.please_select_supporter))
             } else {
-                onSendButtonClicked.onSendClicked(chooseAdapter.getSelectedSupporters())
-                dismiss()
+                showProgressDialog()
+                viewModel.shareSupplication(chooseAdapter.getSelectedSupporters())
             }
         }
     }
@@ -43,18 +57,24 @@ class ChooseSupporterFragment :
         this.onSendButtonClicked = onSendButtonClicked
     }
 
-    private fun retrieveUsers() {
-        FirebaseService.retrieveUser(sharedPreferences.getString(USER_ID)) { user ->
-            user?.storeDataLocally(sharedPreferences)
-            FirebaseService.retrieveUsers(user?.supports) {
-                it?.let {
-                    updateUi(it)
-                }
+    private fun observeViewModel(){
+
+        viewModel.statusSharing.observe(this){
+            if (it){
+                dismissProgressDialog()
+                showToast(getString(R.string.shared_successfully))
+                dismiss()
+            }
+        }
+
+        viewModel.supportersProfile.observe (this){
+            it?.let {
+                updateUi(it)
             }
         }
     }
 
-    private fun updateUi(it: List<RegistrationData>) {
+    private fun updateUi(it: List<UserProfile>) {
         chooseAdapter = ChooseSupporterAdapter(requireActivity(), it)
         binding.supportersRecyclerView.apply {
             adapter = chooseAdapter

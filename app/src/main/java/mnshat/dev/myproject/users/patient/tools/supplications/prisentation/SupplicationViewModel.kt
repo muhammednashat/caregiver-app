@@ -13,8 +13,10 @@ import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.model.Posts
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.model.SupplicationsUser
+import mnshat.dev.myproject.users.patient.supporters.data.repos.SupportersRepo
 import mnshat.dev.myproject.users.patient.tools.supplications.data.SupplicationsRepo
 import mnshat.dev.myproject.util.POSTS
+import mnshat.dev.myproject.util.SUPPLICATIONS
 import mnshat.dev.myproject.util.data.getListHands
 import mnshat.dev.myproject.util.log
 import javax.inject.Inject
@@ -23,16 +25,24 @@ import javax.inject.Inject
 class SupplicationViewModel @Inject constructor(
 
     val supplicationsRepo: SupplicationsRepo,
+    private val supportersRepo: SupportersRepo,
 
 ):ViewModel() {
 
     private val _dismissSupplicationDialog = MutableLiveData<Boolean>()
     val dismissSupplicationDialog: LiveData<Boolean> get() = _dismissSupplicationDialog
+
+    private val _statusSharing = MutableLiveData<Boolean>()
+    val statusSharing: LiveData<Boolean> get() = _statusSharing
+
+
     val user = supplicationsRepo.getUser()
     var selectedSupplication: Supplication? = null
     private val _suggestedSupplication = MutableLiveData<List<Supplication>>()
     val suggestedSupplication: LiveData<List<Supplication>>
         get() = _suggestedSupplication
+
+    val supportersProfile = supportersRepo.supportersProfile
 
     private val _userSupplications = MutableLiveData<List<Supplication>>()
     val userSupplications: LiveData<List<Supplication>>
@@ -61,6 +71,12 @@ class SupplicationViewModel @Inject constructor(
         }
     }
 
+    fun retrieveSupporters(){
+     viewModelScope.launch {
+         supportersRepo.retrieveSupportersIds(user.id!!)
+     }
+    }
+
     fun setListImage(listImages: List<Int>) {
         mListImages = listImages
     }
@@ -80,6 +96,28 @@ class SupplicationViewModel @Inject constructor(
         }
 
     }
+
+   private fun post(list: MutableList<String>) =
+        Post(
+            type =  SUPPLICATIONS,
+            supplication = selectedSupplication,
+            supporters = list
+        )
+
+    fun  shareSupplication(emailsList: MutableList<String>){
+        try {
+            viewModelScope.launch {
+                supplicationsRepo.shareContent(post(emailsList))
+                _statusSharing.value = true
+            }
+        }catch (e:Exception){
+            _statusSharing.value = false
+
+        }
+    }
+
+
+
 
     private fun getImage() {
         if (currentIndexListImages == mListImages.size - 1) {
