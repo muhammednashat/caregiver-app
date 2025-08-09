@@ -830,6 +830,9 @@ is too hard. I'll never succeed.</string>
     <string name="add_to_the_rosary">Add to the rosary</string>
     <string name="please_select_supporter">Please Select Supporter</string>
     <string name="shared_successfully">Shared successfully</string>
+    <string name="choose_the_appropriate_settings_for_you_workout">Choose the appropriate settings for you workout</string>
+    <string name="before_starting">Before starting</string>
+    <string name="choose_the_breathing_exercise_duration_that_suits_you">Choose the breathing exercise duration that suits you.</string>
 
 
 </resources>

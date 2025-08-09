@@ -862,4 +862,7 @@
 </string>
     <string name="shared_successfully">تمت المشاركة بنجاح
 </string>
+    <string name="choose_the_appropriate_settings_for_you_workout">اختر الإعدادات المناسبة لتمرينك الخاص.</string>
+    <string name="before_starting">قبل البدء</string>
+    <string name="choose_the_breathing_exercise_duration_that_suits_you">قم باختيار مدة تمرين التنفس المناسبة لك</string>
 </resources>

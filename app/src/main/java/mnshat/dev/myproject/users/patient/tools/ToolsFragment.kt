@@ -54,7 +54,7 @@ class ToolsFragment : BaseFragment() {
         }
         binding.imageBreath.setOnClickListener {
             showBreathIntroDialog(R.drawable.breath_intro){
-                findNavController().navigate(R.id.action_toolsFragment_to_mainBreathFragment2)
+                findNavController().navigate(R.id.action_toolsFragment_to_choosingBreathDurationFragment)
             }
         }
 

@@ -3,7 +3,7 @@ package mnshat.dev.myproject.factories
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import mnshat.dev.myproject.users.patient.tools.breath.BreathViewModel
+import mnshat.dev.myproject.users.patient.tools.breath.presntaion.BreathViewModel
 import mnshat.dev.myproject.util.SharedPreferencesManager
 
 

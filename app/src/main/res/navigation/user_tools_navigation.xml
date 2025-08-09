@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainBreathFragment"
-        android:name="mnshat.dev.myproject.users.patient.tools.breath.MainBreathFragment"
+        android:name="mnshat.dev.myproject.users.patient.tools.breath.presntaion.MainBreathFragment"
         android:label="fragment_main_breath"
         tools:layout="@layout/fragment_main_breath" />
     <fragment
@@ -62,7 +62,25 @@
             android:id="@+id/action_toolsFragment_to_mainSupplicationsFragment3"
             app:destination="@id/mainSupplicationsFragment3" />
         <action
-            android:id="@+id/action_toolsFragment_to_mainBreathFragment2"
+            android:id="@+id/action_toolsFragment_to_choosingBreathDurationFragment"
+            app:destination="@id/choosingBreathDurationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/choosingBreathDurationFragment"
+        android:name="mnshat.dev.myproject.users.patient.tools.breath.presntaion.ChoosingBreathDurationFragment"
+        android:label="fragment_choosing_breath_duration"
+        tools:layout="@layout/fragment_choosing_breath_duration" >
+        <action
+            android:id="@+id/action_choosingBreathDurationFragment_to_choosingSoundFragment"
+            app:destination="@id/choosingSoundFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/choosingSoundFragment"
+        android:name="mnshat.dev.myproject.users.patient.tools.breath.presntaion.ChoosingSoundFragment"
+        android:label="fragment_choosing_sound"
+        tools:layout="@layout/fragment_choosing_sound" >
+        <action
+            android:id="@+id/action_choosingSoundFragment_to_mainBreathFragment"
             app:destination="@id/mainBreathFragment" />
     </fragment>
 </navigation>

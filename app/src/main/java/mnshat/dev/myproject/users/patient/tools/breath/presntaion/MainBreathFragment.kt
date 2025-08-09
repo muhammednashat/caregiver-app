@@ -1,39 +1,54 @@
-package mnshat.dev.myproject.users.patient.tools.breath
+package mnshat.dev.myproject.users.patient.tools.breath.presntaion
 
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentMainBreathBinding
 import mnshat.dev.myproject.factories.BreathViewModelFactory
 import mnshat.dev.myproject.users.patient.BasePatientFragment
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.log
+import androidx.fragment.app.activityViewModels
+import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.databinding.FragmentMainSupplicationsBinding
 
-class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>() {
+@AndroidEntryPoint
+class MainBreathFragment : BaseFragment() {
 
-    private lateinit var viewModel: BreathViewModel
+
+    private  val viewModel : BreathViewModel by activityViewModels()
+    private  lateinit var  binding : FragmentMainBreathBinding
+
     private var selectedSoundResId: Int? = R.raw.rain
     private var mediaPlayer: MediaPlayer? = null
-    override fun initializeViews() {
-        super.initializeViews()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentMainBreathBinding.inflate(inflater, container, false)
+
+//        initializeViews()
+//        setupClickListener()
+//        viewModel.setCurrentDuration(0)
+//        observeViewModel()
+        return binding.root
+    }
+
+     fun initializeViews() {
         binding.remainingTimeFormat.text =
             getString(R.string.remaining_time_format, 0, "ثواني متبقية")
     }
 
 
-    override fun getLayout() = R.layout.fragment_main_breath
-    private fun intiBackgroundBasedOnLang() {
-        if (currentLang != ENGLISH_KEY) {
-            binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-        }
-    }
-
-
-
-    override fun setupClickListener() {
-        super.setupClickListener()
+     fun setupClickListener() {
 
 
         binding.iconChooseDuration.setOnClickListener {
@@ -61,20 +76,6 @@ class MainBreathFragment : BasePatientFragment<FragmentMainBreathBinding>() {
 
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        initViewModel()
-        viewModel.setCurrentDuration(0)
-        observeViewModel()
-
-    }
-
-    private fun initViewModel() {
-        val factory = BreathViewModelFactory(sharedPreferences, activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[BreathViewModel::class.java]
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
-    }
 
     private fun observeViewModel() {
 

@@ -12,7 +12,8 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/image_cofe_54"
+
+        android:background="@drawable/background_cofe6"
         tools:context=".users.patient.tools.coffeeideas.presentaion.Step1Fragment">
 
 
