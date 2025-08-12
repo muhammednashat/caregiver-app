@@ -4,33 +4,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:padding="@dimen/margin_large"
-    android:layout_margin="50dp"
+    android:paddingStart="@dimen/margin_medium"
+    android:paddingEnd="@dimen/margin_medium"
+
+    android:layout_marginEnd="@dimen/margin_medium"
+    android:layout_marginBottom="@dimen/margin_medium"
+    android:id="@+id/root"
     android:backgroundTint="#ddecf4"
-android:background="@drawable/corner_normal"
+   android:background="@drawable/corner_normal"
     android:layout_height="wrap_content">
 
-
-    <TextView
-        android:id="@+id/number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="5"
-        android:textColor="#3d5b7c"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:text="minutes"
+        android:text="5 minutes"
+        android:padding="@dimen/margin_medium"
         android:textColor="#3d5b7c"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/number"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

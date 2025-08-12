@@ -1,17 +1,19 @@
 package mnshat.dev.myproject.users.patient.tools.breath.presntaion
 
-import android.app.Application
+import android.content.Context
 import android.os.CountDownTimer
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import mnshat.dev.myproject.base.BaseViewModel2
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import mnshat.dev.myproject.model.Duration
-import mnshat.dev.myproject.util.SharedPreferencesManager
+import mnshat.dev.myproject.users.patient.tools.breath.data.BreathingRepo
+import javax.inject.Inject
 
-class BreathViewModel(
-    private val sharedPreferences: SharedPreferencesManager,
-    application: Application
-) : BaseViewModel2(sharedPreferences, application) {
+@HiltViewModel
+class BreathViewModel @Inject constructor(
+    private val breathingRepo: BreathingRepo,
+) : ViewModel() {
 
     private var _selectedPosition:Int=0
     private var counter :Int = 0
@@ -61,7 +63,7 @@ class BreathViewModel(
     fun setSelectedPosition(index: Int) {
         _selectedPosition = index
     }
-
+   fun  listOfDurations(context: Context) = breathingRepo.listOfDurations(context)
 
     fun onStartButtonClicked() {
        counter = 0

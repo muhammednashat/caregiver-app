@@ -834,5 +834,12 @@ is too hard. I'll never succeed.</string>
     <string name="before_starting">Before starting</string>
     <string name="choose_the_breathing_exercise_duration_that_suits_you">Choose the breathing exercise duration that suits you.</string>
 
-
+    <string name="minutes_5">5 minutes</string>
+    <string name="minutes_10">10 minutes</string>
+    <string name="minutes_15">15 minutes</string>
+    <string name="minutes_20">20 minutes</string>
+    <string name="minutes_25">25 minutes</string>
+    <string name="minutes_30">30 minutes</string>
+    <string name="minutes_35">35 minutes</string>
+    <string name="minutes_40">40 minutes</string>
 </resources>

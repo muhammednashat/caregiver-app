@@ -865,4 +865,13 @@
     <string name="choose_the_appropriate_settings_for_you_workout">اختر الإعدادات المناسبة لتمرينك الخاص.</string>
     <string name="before_starting">قبل البدء</string>
     <string name="choose_the_breathing_exercise_duration_that_suits_you">قم باختيار مدة تمرين التنفس المناسبة لك</string>
+
+    <string name="minutes_5">٥ دقائق</string>
+    <string name="minutes_10">١٠ دقائق</string>
+    <string name="minutes_15">١٥ دقيقة</string>
+    <string name="minutes_20">٢٠ دقيقة</string>
+    <string name="minutes_25">٢٥ دقيقة</string>
+    <string name="minutes_30">٣٠ دقيقة</string>
+    <string name="minutes_35">٣٥ دقيقة</string>
+    <string name="minutes_40">٤٠ دقيقة</string>
 </resources>

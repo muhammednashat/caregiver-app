@@ -5,18 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentMainBreathBinding
-import mnshat.dev.myproject.factories.BreathViewModelFactory
-import mnshat.dev.myproject.users.patient.BasePatientFragment
-import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.log
 import androidx.fragment.app.activityViewModels
 import mnshat.dev.myproject.base.BaseFragment
-import mnshat.dev.myproject.databinding.FragmentMainSupplicationsBinding
 
 @AndroidEntryPoint
 class MainBreathFragment : BaseFragment() {

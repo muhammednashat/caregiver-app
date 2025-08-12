@@ -1,12 +1,10 @@
 package mnshat.dev.myproject.users.patient.tools.breath.presntaion
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.DurationAdapter
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.databinding.FragmentChooseDurationBreathBinding
-import mnshat.dev.myproject.factories.BreathViewModelFactory
 import mnshat.dev.myproject.model.Duration
 import mnshat.dev.myproject.util.ENGLISH_KEY
 
@@ -57,9 +55,7 @@ class ChooseDurationBreathFragment :
     }
 
     private fun initViewModel() {
-        val factory = BreathViewModelFactory(sharedPreferences, activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[BreathViewModel::class.java]
-        binding.lifecycleOwner = this
+
     }
 
 

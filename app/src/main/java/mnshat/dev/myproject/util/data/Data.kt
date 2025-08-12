@@ -4,6 +4,7 @@ import android.content.Context
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.model.DataPatient
 import mnshat.dev.myproject.model.Step
+import mnshat.dev.myproject.users.patient.tools.breath.data.Duration
 import mnshat.dev.myproject.util.MOOD
 import mnshat.dev.myproject.util.PROGRAM
 import mnshat.dev.myproject.util.SHARING
@@ -16,6 +17,16 @@ fun itemList() = listOf(
         MOOD),
 //    DataPatient(R.drawable.ic_reports6,"التقارير" ,"Reports" ,"يمكنك الاطلاع على نتائج البرنامج اليومى للمستخدم" ,"You can view the results of the user's daily program"),
     DataPatient(R.drawable.ic_posts5,"المشاركات" ,"Posts" ,"رؤية ما تم مشاركته معك" ,"See what has been shared with you",SHARING),
+)
+fun getListOfDurations(context: Context) = listOf(
+    Duration(context.getString(R.string.minutes_5), 5 , R.drawable.min5),
+    Duration(context.getString(R.string.minutes_10), 10, R.drawable.min10),
+    Duration(context.getString(R.string.minutes_15), 15, R.drawable.min15),
+    Duration(context.getString(R.string.minutes_20), 20, R.drawable.min20),
+    Duration(context.getString(R.string.minutes_25), 25, R.drawable.min25),
+    Duration(context.getString(R.string.minutes_30), 30, R.drawable.min30),
+    Duration(context.getString(R.string.minutes_35), 35, R.drawable.min35),
+    Duration(context.getString(R.string.minutes_40), 40, R.drawable.min40),
 )
 
 fun   stepsBuildStrengthList(context: Context) = listOf(
