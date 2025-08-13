@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentMainBreathBinding
-import mnshat.dev.myproject.util.log
 import androidx.fragment.app.activityViewModels
 import mnshat.dev.myproject.base.BaseFragment
 
@@ -30,9 +29,8 @@ class MainBreathFragment : BaseFragment() {
     ): View? {
         binding = FragmentMainBreathBinding.inflate(inflater, container, false)
 
-//        initializeViews()
-//        setupClickListener()
-//        viewModel.setCurrentDuration(0)
+        initializeViews()
+        setupClickListener()
 //        observeViewModel()
         return binding.root
     }
@@ -45,13 +43,7 @@ class MainBreathFragment : BaseFragment() {
 
      fun setupClickListener() {
 
-
         binding.iconChooseDuration.setOnClickListener {
-
-            ChooseDurationBreathFragment().show(
-                childFragmentManager,
-                ChooseDurationBreathFragment::class.java.name
-            )
 
         }
 
@@ -60,7 +52,10 @@ class MainBreathFragment : BaseFragment() {
         }
 
         binding.sound.setOnClickListener {
-            ChooseSuondFragment().show(childFragmentManager, ChooseSuondFragment::class.java.name)
+        }
+
+  binding.startingButton.setOnClickListener {
+      viewModel.onStartButtonClicked()
         }
 
         binding.finishExercise.setOnClickListener {
@@ -82,17 +77,19 @@ class MainBreathFragment : BaseFragment() {
                     it.toDouble().div(selectedDuration).times(100).toInt()
             }
         }
-        viewModel.soundId.observe(viewLifecycleOwner) {
-                selectedSoundResId = it
-            if (selectedSoundResId == null){
-                binding.sound.setImageResource(R.drawable.no_musiz)
 
-            }else{
-                binding.sound.setImageResource(R.drawable.musiz)
-            }
-                playTickSound()
-                log("$it")
-        }
+//        viewModel.soundId.observe(viewLifecycleOwner) {
+//
+//                selectedSoundResId = it
+//            if (selectedSoundResId == null){
+//                binding.sound.setImageResource(R.drawable.no_musiz)
+//
+//            }else{
+//                binding.sound.setImageResource(R.drawable.musiz)
+//            }
+//                playTickSound()
+//                log("$it")
+//        }
 
         viewModel.showDialog.observe(viewLifecycleOwner) {
             it?.let {

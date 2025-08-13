@@ -20,10 +20,8 @@ class BreathViewModel @Inject constructor(
 
     fun getSelectedPosition() = _selectedPosition
 
-
-    private val  _currentDuration = MutableLiveData<String>()
-    val currentDuration: LiveData<String>
-        get() = _currentDuration
+    var currentDuration = 0
+    var soundId = 0
 
 
     private val _progressState = MutableLiveData<Long?>()
@@ -46,25 +44,11 @@ class BreathViewModel @Inject constructor(
     val remainingTime: LiveData<Int>
         get() = _remainingTime
 
-     val soundId = MutableLiveData<Int?>()
 
     private var countdownTimer: CountDownTimer? = null
 
-
-    fun setCurrentDuration(index:Int){
-
-        if (index != _selectedPosition) {
-            setSelectedPosition(index)
-        }
-
-        _currentDuration.value = getListOfDurations()[index].text
-    }
-
-    fun setSelectedPosition(index: Int) {
-        _selectedPosition = index
-    }
    fun  listOfDurations(context: Context) = breathingRepo.listOfDurations(context)
-
+    fun listOfSounds(context: Context) = breathingRepo.listOfSounds(context)
     fun onStartButtonClicked() {
        counter = 0
         if (_isTimerRunning.value == true) {
@@ -81,9 +65,6 @@ class BreathViewModel @Inject constructor(
         return 1 * 60 * 1000L
     }
 
-fun  updateSound (id:Int?){
-    soundId.value = id
-}
     private fun startCountdown(selectedDurationInMillis: Long) {
         counter++  // counter = counter + 1  counter=3
         _progressState.value =  selectedDurationInMillis

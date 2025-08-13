@@ -9,13 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.commonFeatures.getLibraryContent.data.Sound
-import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
-import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
-import mnshat.dev.myproject.util.COMMON_CONTENT
-import mnshat.dev.myproject.util.LANGUAGE
-import mnshat.dev.myproject.util.SharedPreferencesManager
-import mnshat.dev.myproject.util.loadImage
+import mnshat.dev.myproject.users.patient.tools.breath.model.Sound
 
 
 class SoundsAdapter(
@@ -34,7 +28,7 @@ class SoundsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        // card
+
         val sound = sounds?.get(position)!!
          holder.title.text = sound?.name;
 
@@ -48,7 +42,7 @@ class SoundsAdapter(
 
 
     override fun getItemCount(): Int {
-        return sounds.size!!
+        return sounds.size
     }
 
 

@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.commonFeatures.getLibraryContent.data
+package mnshat.dev.myproject.users.patient.tools.breath.model
 
 import android.content.Context
 import mnshat.dev.myproject.R
