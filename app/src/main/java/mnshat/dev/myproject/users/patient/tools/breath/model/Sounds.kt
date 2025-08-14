@@ -15,5 +15,5 @@ listOf(
     Sound(context.getString(R.string.sound_rain) , R.raw.rain , R.drawable.image_rain),
     Sound(context.getString(R.string.sound_air) , R.raw.air , R.drawable.air),
     Sound(context.getString(R.string.sound_birds) , R.raw.bird , R.drawable.birds),
-    Sound(context.getString(R.string.no_sound) , null , R.drawable.no_sound),
+    Sound(context.getString(R.string.no_sound) , 0 , R.drawable.no_sound),
 )

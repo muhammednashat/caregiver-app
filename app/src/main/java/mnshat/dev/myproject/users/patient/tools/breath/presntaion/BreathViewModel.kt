@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import mnshat.dev.myproject.model.Duration
 import mnshat.dev.myproject.users.patient.tools.breath.data.BreathingRepo
 import javax.inject.Inject
 
@@ -15,13 +14,11 @@ class BreathViewModel @Inject constructor(
     private val breathingRepo: BreathingRepo,
 ) : ViewModel() {
 
-    private var _selectedPosition:Int=0
-    private var counter :Int = 0
-
-    fun getSelectedPosition() = _selectedPosition
-
     var currentDuration = 0
     var soundId = 0
+
+    private var counter :Int = 0
+
 
 
     private val _progressState = MutableLiveData<Long?>()
@@ -45,10 +42,11 @@ class BreathViewModel @Inject constructor(
         get() = _remainingTime
 
 
-    private var countdownTimer: CountDownTimer? = null
-
+   private var countdownTimer: CountDownTimer? = null
    fun  listOfDurations(context: Context) = breathingRepo.listOfDurations(context)
-    fun listOfSounds(context: Context) = breathingRepo.listOfSounds(context)
+   fun listOfSounds(context: Context) = breathingRepo.listOfSounds(context)
+
+
     fun onStartButtonClicked() {
        counter = 0
         if (_isTimerRunning.value == true) {
@@ -60,8 +58,6 @@ class BreathViewModel @Inject constructor(
 
 
      fun getSelectedDurationInMillis(): Long {
-        val duration = getListOfDurations()[_selectedPosition].duration
-        println(duration)
         return 1 * 60 * 1000L
     }
 
@@ -80,7 +76,7 @@ class BreathViewModel @Inject constructor(
                 resetProgress()
                 resetRemainingTime()
                 _progressState.value = 0
-                if (counter < getListOfDurations()[_selectedPosition].duration){
+                if (counter < currentDuration){
                     startCountdown(getSelectedDurationInMillis())
                 }
             }
@@ -117,18 +113,7 @@ class BreathViewModel @Inject constructor(
         )
     }
 
-    fun getListOfDurations(): List<Duration> {
-        return listOf(
-            Duration(1,"1.00 دقيقه / دقائق"),
-            Duration(2,"2.00 دقيقه / دقائق"),
-            Duration(3,"3.00 دقيقه / دقائق"),
-            Duration(4,"4.00 دقيقه / دقائق"),
-            Duration(5,"5.00 دقيقه / دقائق"),
-            Duration(6,"6.00 دقيقه / دقائق"),
-            Duration(7,"7.00 دقيقه / دقائق"),
-            Duration(8,"8.00 دقيقه / دقائق"),
-            )
-    }
+
 
     fun resetProgress() {
         _resetProgress.value = true

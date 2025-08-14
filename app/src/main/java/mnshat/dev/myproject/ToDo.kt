@@ -15,9 +15,9 @@ package mnshat.dev.myproject
 //Doing
 /**
  *
- * navigate to user supplications
+ * Handle change duration , sound and design  success screen
  *
- * start a session
+ *
  *  
  *
  *

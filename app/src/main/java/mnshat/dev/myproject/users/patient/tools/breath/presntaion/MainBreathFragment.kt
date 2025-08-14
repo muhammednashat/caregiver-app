@@ -19,7 +19,6 @@ class MainBreathFragment : BaseFragment() {
     private  val viewModel : BreathViewModel by activityViewModels()
     private  lateinit var  binding : FragmentMainBreathBinding
 
-    private var selectedSoundResId: Int? = R.raw.rain
     private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreateView(
@@ -31,7 +30,7 @@ class MainBreathFragment : BaseFragment() {
 
         initializeViews()
         setupClickListener()
-//        observeViewModel()
+        observeViewModel()
         return binding.root
     }
 
@@ -44,7 +43,7 @@ class MainBreathFragment : BaseFragment() {
      fun setupClickListener() {
 
         binding.iconChooseDuration.setOnClickListener {
-
+            ChoosingDurationDialog().show(childFragmentManager, "ChoosingDurationDialog")
         }
 
         binding.icBack.setOnClickListener {
@@ -52,10 +51,11 @@ class MainBreathFragment : BaseFragment() {
         }
 
         binding.sound.setOnClickListener {
+            ChoosingSoundDialog().show(childFragmentManager, "ChoosingSoundDialog")
         }
 
-  binding.startingButton.setOnClickListener {
-      viewModel.onStartButtonClicked()
+      binding.startingButton.setOnClickListener {
+          viewModel.onStartButtonClicked()
         }
 
         binding.finishExercise.setOnClickListener {
@@ -70,13 +70,14 @@ class MainBreathFragment : BaseFragment() {
     private fun observeViewModel() {
 
         viewModel.progressState.observe(viewLifecycleOwner) {
-
             val selectedDuration = viewModel.getSelectedDurationInMillis().toDouble()
             it?.let {
                 binding.progressBar.progress =
                     it.toDouble().div(selectedDuration).times(100).toInt()
             }
         }
+
+
 
 //        viewModel.soundId.observe(viewLifecycleOwner) {
 //
@@ -186,10 +187,7 @@ class MainBreathFragment : BaseFragment() {
 
                 binding.textInstructions.text = getString(R.string.take_rest, phase)
             }
-
-
         }
-
     }
 
     override fun onDestroy() {
@@ -201,12 +199,12 @@ class MainBreathFragment : BaseFragment() {
     }
 
     private fun playTickSound() {
-        if(selectedSoundResId == null){
+        if(viewModel.soundId == 0){
             stopTickSound()
-            return;
+            return
         }
         mediaPlayer?.release()
-        mediaPlayer = MediaPlayer.create(context, selectedSoundResId!!)
+        mediaPlayer = MediaPlayer.create(context, viewModel.soundId)
         mediaPlayer?.start()
     }
 
