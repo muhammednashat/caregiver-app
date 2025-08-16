@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.tools.breath.presntaion
+package mnshat.dev.myproject.users.patient.tools.breathing.presntaion
 
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -11,6 +11,7 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentMainBreathBinding
 import androidx.fragment.app.activityViewModels
 import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 class MainBreathFragment : BaseFragment() {
@@ -35,6 +36,10 @@ class MainBreathFragment : BaseFragment() {
     }
 
      fun initializeViews() {
+
+         if (viewModel.soundId == 0) {
+             binding.sound.setImageResource(R.drawable.no_musiz)
+         }
         binding.remainingTimeFormat.text =
             getString(R.string.remaining_time_format, 0, "ثواني متبقية")
     }
@@ -42,7 +47,7 @@ class MainBreathFragment : BaseFragment() {
 
      fun setupClickListener() {
 
-        binding.iconChooseDuration.setOnClickListener {
+        binding.chooseDuration.setOnClickListener {
             ChoosingDurationDialog().show(childFragmentManager, "ChoosingDurationDialog")
         }
 
@@ -69,6 +74,10 @@ class MainBreathFragment : BaseFragment() {
 
     private fun observeViewModel() {
 
+        viewModel.textDuration.observe(viewLifecycleOwner) {
+            binding.textDuration.text = it
+        }
+
         viewModel.progressState.observe(viewLifecycleOwner) {
             val selectedDuration = viewModel.getSelectedDurationInMillis().toDouble()
             it?.let {
@@ -76,21 +85,18 @@ class MainBreathFragment : BaseFragment() {
                     it.toDouble().div(selectedDuration).times(100).toInt()
             }
         }
+        viewModel.changeSound.observe(viewLifecycleOwner) {
+
+            if (viewModel.soundId == 0){
+                binding.sound.setImageResource(R.drawable.no_musiz)
+
+            }else{
+                binding.sound.setImageResource(R.drawable.musiz)
+            }
+                playTickSound()
+        }
 
 
-
-//        viewModel.soundId.observe(viewLifecycleOwner) {
-//
-//                selectedSoundResId = it
-//            if (selectedSoundResId == null){
-//                binding.sound.setImageResource(R.drawable.no_musiz)
-//
-//            }else{
-//                binding.sound.setImageResource(R.drawable.musiz)
-//            }
-//                playTickSound()
-//                log("$it")
-//        }
 
         viewModel.showDialog.observe(viewLifecycleOwner) {
             it?.let {
@@ -105,8 +111,10 @@ class MainBreathFragment : BaseFragment() {
         viewModel.remainingTime.observe(viewLifecycleOwner) {
             it?.let {
                 if (it == 59) {
+                    log("continue $it")
                     playTickSound()
                 } else if(it == 0){
+                    log("stop $it")
                     stopTickSound()
                 }
                 binding.remainingTimeFormat.text =
@@ -209,6 +217,7 @@ class MainBreathFragment : BaseFragment() {
     }
 
     private fun stopTickSound() {
+        log("stopTickSound")
         mediaPlayer?.release()
         mediaPlayer = null
     }

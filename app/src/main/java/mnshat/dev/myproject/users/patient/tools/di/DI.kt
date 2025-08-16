@@ -4,8 +4,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import mnshat.dev.myproject.users.patient.tools.breath.data.BreathingRepo
+import mnshat.dev.myproject.users.patient.tools.breathing.data.BreathingRepo
 import mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion.CofeViewModel
+import mnshat.dev.myproject.users.patient.tools.gratitude.data.GratitudeRepo
 import mnshat.dev.myproject.users.patient.tools.supplications.data.SupplicationsRepo
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import javax.inject.Singleton
@@ -18,6 +19,11 @@ object DI {
     @Singleton
     fun providerBreathingRepo(
     ) = BreathingRepo()
+
+    @Provides
+    @Singleton
+    fun providerGratitudeRepo(
+    ) = GratitudeRepo()
 
     @Provides
     @Singleton

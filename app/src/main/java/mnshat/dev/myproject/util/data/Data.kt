@@ -4,7 +4,7 @@ import android.content.Context
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.model.DataPatient
 import mnshat.dev.myproject.model.Step
-import mnshat.dev.myproject.users.patient.tools.breath.data.Duration
+import mnshat.dev.myproject.users.patient.tools.breathing.data.Duration
 import mnshat.dev.myproject.util.MOOD
 import mnshat.dev.myproject.util.PROGRAM
 import mnshat.dev.myproject.util.SHARING

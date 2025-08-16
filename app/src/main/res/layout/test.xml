@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:background="#2f3d49"
         android:padding="@dimen/margin_large"
-        tools:context=".users.patient.tools.breath.presntaion.ChoosingBreathDurationFragment">
+        tools:context=".users.patient.tools.breathing.presntaion.ChoosingBreathDurationFragment">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ic_back"

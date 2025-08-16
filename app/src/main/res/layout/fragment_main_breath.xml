@@ -28,21 +28,22 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:padding="12dp"
+            android:layout_marginEnd="32dp"
             android:background="@drawable/circle_blue"
-            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout13"
-            app:layout_constraintEnd_toStartOf="@+id/constraintLayout13"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/constraintLayout13"
+            app:layout_constraintBottom_toBottomOf="@+id/chooseDuration"
+            app:layout_constraintEnd_toStartOf="@+id/chooseDuration"
+            app:layout_constraintTop_toTopOf="@+id/chooseDuration"
             app:srcCompat="@drawable/musiz" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout13"
+            android:id="@+id/chooseDuration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_large"
             android:background="@drawable/corner_four_dark_blue"
             android:backgroundTint="#c2dce6"
-            android:padding="@dimen/margin_small"
+
+            android:padding="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -52,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_medium"
                 android:gravity="center"
-                android:text="مدة التمرين"
+                android:text="@string/exercise_duration"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +61,7 @@
                 app:layout_constraintVertical_bias="0.5" />
 
             <TextView
-                android:id="@+id/textView34"
+                android:id="@+id/textDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -78,8 +79,9 @@
                 android:layout_marginStart="@dimen/margin_large"
                 android:background="@drawable/circle_blue"
                 android:padding="3dp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView34"
+                app:layout_constraintStart_toEndOf="@+id/textDuration"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5"
                 app:srcCompat="@drawable/ic_down"
@@ -95,7 +97,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout13">
+            app:layout_constraintTop_toBottomOf="@+id/chooseDuration">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="250dp"

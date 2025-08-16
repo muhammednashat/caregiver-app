@@ -58,7 +58,7 @@
     <fragment
         android:id="@+id/gratitudeFragment"
         tools:layout="@layout/fragment_gratitude"
-        android:name="mnshat.dev.myproject.users.patient.tools.gratitude.GratitudeFragment"
+        android:name="mnshat.dev.myproject.users.patient.tools.gratitude.presentaion.GratitudeFragment"
         android:label="GratitudeFragment" />
 
     <navigation

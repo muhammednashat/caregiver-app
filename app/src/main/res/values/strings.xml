@@ -843,4 +843,5 @@ is too hard. I'll never succeed.</string>
     <string name="minutes_35">35 minutes</string>
     <string name="minutes_40">40 minutes</string>
     <string name="what_sound_would_you_like_to_hear_while_exercising">What sound would you like to hear while exercising?</string>
+    <string name="exercise_duration">Exercise duration</string>
 </resources>

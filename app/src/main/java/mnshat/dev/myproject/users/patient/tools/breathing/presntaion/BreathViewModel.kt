@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.tools.breath.presntaion
+package mnshat.dev.myproject.users.patient.tools.breathing.presntaion
 
 import android.content.Context
 import android.os.CountDownTimer
@@ -6,7 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import mnshat.dev.myproject.users.patient.tools.breath.data.BreathingRepo
+import mnshat.dev.myproject.users.patient.tools.breathing.data.BreathingRepo
+import mnshat.dev.myproject.util.log
 import javax.inject.Inject
 
 @HiltViewModel
@@ -16,11 +17,7 @@ class BreathViewModel @Inject constructor(
 
     var currentDuration = 0
     var soundId = 0
-
     private var counter :Int = 0
-
-
-
     private val _progressState = MutableLiveData<Long?>()
     val progressState: LiveData<Long?>
         get() = _progressState
@@ -28,6 +25,9 @@ class BreathViewModel @Inject constructor(
     private val _isTimerRunning = MutableLiveData<Boolean>()
     val isTimerRunning: LiveData<Boolean>
         get() = _isTimerRunning
+    private val _changeSound = MutableLiveData<Boolean>()
+    val changeSound: LiveData<Boolean>
+        get() = _changeSound
 
     private val _resetProgress = MutableLiveData<Boolean>()
     val resetProgress: LiveData<Boolean>
@@ -37,10 +37,22 @@ class BreathViewModel @Inject constructor(
     val showDialog: LiveData<Boolean>
         get() = _showDialog
 
+    private val _textDuration = MutableLiveData<String>()
+    val textDuration: LiveData<String>
+        get() = _textDuration
+
     private val _remainingTime = MutableLiveData<Int>()
     val remainingTime: LiveData<Int>
         get() = _remainingTime
 
+    fun setTextDuration(string: String) {
+        _textDuration.value = string
+    }
+
+
+    fun setChangeSound(restart: Boolean){
+        _changeSound.value = restart
+    }
 
    private var countdownTimer: CountDownTimer? = null
    fun  listOfDurations(context: Context) = breathingRepo.listOfDurations(context)
@@ -62,6 +74,7 @@ class BreathViewModel @Inject constructor(
     }
 
     private fun startCountdown(selectedDurationInMillis: Long) {
+        log("startCountdown $counter $$ $currentDuration  $$ $soundId")
         counter++  // counter = counter + 1  counter=3
         _progressState.value =  selectedDurationInMillis
         countdownTimer?.cancel()

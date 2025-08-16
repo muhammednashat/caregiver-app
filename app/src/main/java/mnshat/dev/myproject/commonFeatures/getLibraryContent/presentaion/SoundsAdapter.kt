@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.users.patient.tools.breath.model.Sound
+import mnshat.dev.myproject.users.patient.tools.breathing.model.Sound
 
 
 class SoundsAdapter(

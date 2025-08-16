@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.users.patient.tools.breath.presntaion
+package mnshat.dev.myproject.users.patient.tools.breathing.presntaion
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentChoosingBreathDurationBinding
-import mnshat.dev.myproject.users.patient.tools.breath.data.Duration
+import mnshat.dev.myproject.users.patient.tools.breathing.data.Duration
 import kotlin.getValue
 
 @AndroidEntryPoint
@@ -61,11 +61,13 @@ class ChoosingBreathDurationFragment : BaseFragment(), MinutesListener  {
 
 
     override fun onItemClicked(duration: Duration) {
+
         binding.imageView.setImageResource(duration.image)
         binding.button.isEnabled = true
         viewModel.currentDuration = duration.durationNumber
-
+        viewModel.setTextDuration(duration.durationText)
     }
 
 
 }
+

@@ -1,41 +1,63 @@
-package mnshat.dev.myproject.users.patient.tools.gratitude
+package mnshat.dev.myproject.users.patient.tools.gratitude.presentaion
 
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.DialogShareContentBinding
 import mnshat.dev.myproject.databinding.FragmentGratitudeBinding
-import mnshat.dev.myproject.factories.GratitudeViewModelFactory
 import mnshat.dev.myproject.interfaces.OnConfirmButtonClicked
 import mnshat.dev.myproject.interfaces.OnSendButtonClicked
 import mnshat.dev.myproject.model.Gratitude
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.users.patient.BasePatientFragment
-import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.GRATITUDE
 import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.getGratitudeQuestionsList
 import mnshat.dev.myproject.util.isValidInput
 import mnshat.dev.myproject.util.log
+import kotlin.getValue
 import kotlin.random.Random
 
+@AndroidEntryPoint
 
-class GratitudeFragment : BasePatientFragment<FragmentGratitudeBinding>(), OnConfirmButtonClicked,
-    OnSendButtonClicked {
-    private lateinit var viewModel: GratitudeViewModel
-private lateinit var answer:String
-    override fun getLayout() = R.layout.fragment_gratitude
+class GratitudeFragment : BaseFragment(), OnConfirmButtonClicked, OnSendButtonClicked {
 
+    private val viewModel: GratitudeViewModel by activityViewModels()
+private  lateinit var  binding:FragmentGratitudeBinding
     private lateinit var currentQuestion: String
 
-    override fun initializeViews() {
+    private lateinit var answer:String
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+      binding = FragmentGratitudeBinding.inflate(inflater, container, false)
+        setupClickListener()
+
+        initializeViews()
+        return  binding.root
+
+    }
+
+
+     fun initializeViews() {
+         setText(getRandomQuestion())
+
     }
 
     private fun setText(text: String) {
@@ -53,14 +75,8 @@ private lateinit var answer:String
     }
 
 
-    private fun intiBackgroundBasedOnLang() {
-        if (currentLang != ENGLISH_KEY) {
-            binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-        }
-    }
+    private fun setupClickListener() {
 
-    override fun setupClickListener() {
-        super.setupClickListener()
 
         binding.icBack.setOnClickListener {
             findNavController().popBackStack()
@@ -108,23 +124,8 @@ private fun addGratitude(gratitude: Gratitude) {
         }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        initViewModel()
-        setText(getRandomQuestion())
-
-    }
-
-
-    private fun initViewModel() {
-        val factory = GratitudeViewModelFactory(sharedPreferences, activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[GratitudeViewModel::class.java]
-        binding.lifecycleOwner = this
-    }
-
     override fun onConfirmClicked(text: String) {
         setText(text)
-
     }
 
 
@@ -141,11 +142,13 @@ private fun addGratitude(gratitude: Gratitude) {
         sharedDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         dialogBinding.btOk.setOnClickListener {
-            if (sharedPreferences.getBoolean(HAS_PARTNER)){
-                navigateToChooseSupporter()
-            }else{
-                showToast(getString(R.string.no_supporters_text))
-            }
+//
+//            if (sharedPreferences.getBoolean(HAS_PARTNER)){
+//                navigateToChooseSupporter()
+//            }else{
+//                showToast(getString(R.string.no_supporters_text))
+//            }
+
         }
 
         dialogBinding.icClose.setOnClickListener {

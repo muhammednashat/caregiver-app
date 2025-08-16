@@ -1,7 +1,6 @@
-package mnshat.dev.myproject.users.patient.tools.breath.presntaion
+package mnshat.dev.myproject.users.patient.tools.breathing.presntaion
 
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.users.patient.tools.breath.data.Duration
+import mnshat.dev.myproject.users.patient.tools.breathing.data.Duration
 import androidx.core.graphics.toColorInt
 
 class MinutesAdapter(

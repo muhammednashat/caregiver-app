@@ -1,52 +1,56 @@
-package mnshat.dev.myproject.users.patient.tools.breath.presntaion
+package mnshat.dev.myproject.users.patient.tools.breathing.presntaion
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
-
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import dagger.hilt.android.AndroidEntryPoint
-import mnshat.dev.myproject.R
-import mnshat.dev.myproject.base.BaseFragment
-import mnshat.dev.myproject.users.patient.tools.breath.model.Sound
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.OnItemSoundClicked
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.SoundsAdapter
-import mnshat.dev.myproject.databinding.FragmentChooseSuondBinding
+import mnshat.dev.myproject.databinding.ChoosingSoundDialogBinding
+import mnshat.dev.myproject.users.patient.tools.breathing.model.Sound
 import kotlin.getValue
 
-@AndroidEntryPoint
-
-class ChoosingSoundFragment : BaseFragment()  , OnItemSoundClicked{
+class ChoosingSoundDialog: DialogFragment(), OnItemSoundClicked {
 
     private  val viewModel : BreathViewModel by activityViewModels()
-    private  lateinit var  binding : FragmentChooseSuondBinding
+
+    private lateinit var binding : ChoosingSoundDialogBinding
     private lateinit var soundsAdapter: SoundsAdapter
 
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentChooseSuondBinding.inflate(inflater, container, false)
 
+        binding = ChoosingSoundDialogBinding.inflate(inflater, container, false)
         setSoundsRecycler(viewModel.listOfSounds(requireActivity()))
-
         setUpListeners()
-
         return  binding.root
+    }
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
 
+        val params = dialog?.window?.attributes
+        params?.horizontalMargin = 0.05f
+        dialog?.window?.attributes = params
     }
 
 
     private fun setUpListeners() {
         binding.icBack.setOnClickListener {
-            findNavController().popBackStack()
+           dismiss()
         }
         binding.button.setOnClickListener {
-            findNavController().navigate(R.id.action_choosingSoundFragment_to_mainBreathFragment)
+            viewModel.setChangeSound(true)
+            dismiss()
         }
     }
     private fun setSoundsRecycler(sounds: List<Sound>) {
@@ -56,7 +60,8 @@ class ChoosingSoundFragment : BaseFragment()  , OnItemSoundClicked{
     }
 
     override fun onItemClicked(soundId: Int?) {
-       binding.button.isEnabled = true
+        binding.button.isEnabled = true
         viewModel.soundId = soundId!!
     }
+
 }

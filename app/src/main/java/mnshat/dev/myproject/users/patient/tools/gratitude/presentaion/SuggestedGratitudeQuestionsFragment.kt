@@ -1,21 +1,23 @@
-package mnshat.dev.myproject.users.patient.tools.gratitude
+package mnshat.dev.myproject.users.patient.tools.gratitude.presentaion
 
 import android.os.Bundle
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.SuggestedGratitudeQuestionsAdapter
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
 import mnshat.dev.myproject.databinding.FragmentSuggestedGratitudeQuestionsBinding
-import mnshat.dev.myproject.factories.GratitudeViewModelFactory
 import mnshat.dev.myproject.interfaces.OnConfirmButtonClicked
 import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.getGratitudeQuestionsList
 
 
+@AndroidEntryPoint
 class SuggestedGratitudeQuestionsFragment (private val onConfirmButtonClicked: OnConfirmButtonClicked): BaseBottomSheetDialogFragment2<FragmentSuggestedGratitudeQuestionsBinding>() {
 
    private lateinit var adapter:SuggestedGratitudeQuestionsAdapter
-   private lateinit var viewModel: GratitudeViewModel
+   private val viewModel: GratitudeViewModel by activityViewModels()
 
     override fun getLayout() = R.layout.fragment_suggested_gratitude_questions
 
@@ -50,8 +52,6 @@ class SuggestedGratitudeQuestionsFragment (private val onConfirmButtonClicked: O
 
 
     private fun initViewModel() {
-        val factory = GratitudeViewModelFactory(sharedPreferences, activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[GratitudeViewModel::class.java]
         binding.lifecycleOwner = this
         setUpRecyclerView(getGratitudeQuestionsList(requireActivity()),viewModel.getSelectedPosition())
     }
