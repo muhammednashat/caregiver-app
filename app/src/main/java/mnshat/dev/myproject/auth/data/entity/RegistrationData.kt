@@ -3,7 +3,7 @@ package mnshat.dev.myproject.auth.data.entity
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import mnshat.dev.myproject.model.Gratitude
+import mnshat.dev.myproject.users.patient.tools.gratitude.entity.Gratitude
 import mnshat.dev.myproject.model.Partner
 import mnshat.dev.myproject.model.Permissions
 import mnshat.dev.myproject.users.caregiver.tools.cofe.domain.model.UserIdea

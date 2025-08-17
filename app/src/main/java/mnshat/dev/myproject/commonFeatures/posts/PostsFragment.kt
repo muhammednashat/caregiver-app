@@ -7,9 +7,8 @@ import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.PostsAdapter
 import mnshat.dev.myproject.databinding.FragmentPostsBinding
-import mnshat.dev.myproject.factories.SharingViewModelFactory
 import mnshat.dev.myproject.interfaces.ItemPostsClicked
-import mnshat.dev.myproject.model.Gratitude
+import mnshat.dev.myproject.users.patient.tools.gratitude.entity.Gratitude
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.model.Supplication
@@ -65,9 +64,11 @@ class PostsFragment : BasePatientFragment<FragmentPostsBinding>(), ItemPostsClic
     }
 
     private fun initViewModel() {
-        val factory = SharingViewModelFactory(sharedPreferences, activity?.application!!)
-        viewModel = ViewModelProvider(requireActivity(), factory)[PostsViewModel::class.java]
-        observeViewModel()
+
+//        val factory = SharingViewModelFactory(sharedPreferences, activity?.application!!)
+//        viewModel = ViewModelProvider(requireActivity(), factory)[PostsViewModel::class.java]
+//        observeViewModel()
+
     }
 
     private fun observeViewModel() {

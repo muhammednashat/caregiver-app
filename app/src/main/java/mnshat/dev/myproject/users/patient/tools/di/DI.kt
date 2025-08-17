@@ -1,8 +1,10 @@
 package mnshat.dev.myproject.users.patient.tools.di
+import android.content.Context
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import mnshat.dev.myproject.users.patient.tools.breathing.data.BreathingRepo
 import mnshat.dev.myproject.users.patient.tools.coffeeideas.presentaion.CofeViewModel
@@ -22,8 +24,8 @@ object DI {
 
     @Provides
     @Singleton
-    fun providerGratitudeRepo(
-    ) = GratitudeRepo()
+    fun providerGratitudeRepo(sharedPreferencesManager: SharedPreferencesManager,firestore: FirebaseFirestore
+    ) = GratitudeRepo(sharedPreferencesManager,firestore)
 
     @Provides
     @Singleton

@@ -12,27 +12,33 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.PopupMenu
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
+import mnshat.dev.myproject.commonFeatures.posts.OnSendButtonClicked
+import mnshat.dev.myproject.commonFeatures.posts.PostsViewModel
 import mnshat.dev.myproject.databinding.DialogFullTextSupplicationBinding
 import mnshat.dev.myproject.databinding.FragmentSupplicationsBinding
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.util.LANGUAGE
+import mnshat.dev.myproject.util.log
 import java.util.Locale
+import kotlin.getValue
 
 @AndroidEntryPoint
-class SupplicationsFragment : BaseFragment(){
+class SupplicationsFragment : BaseFragment() , OnSendButtonClicked {
 
 
     private val viewModel: SupplicationViewModel by activityViewModels()
+    private val postsViewModel: PostsViewModel by viewModels()
+
     private lateinit var binding: FragmentSupplicationsBinding
     private lateinit var supplicationText: String
     private lateinit var fullTextSupplicationDialog: Dialog
     private var mediaPlayer: MediaPlayer? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,6 +67,12 @@ class SupplicationsFragment : BaseFragment(){
     }
 
     private fun observeViewModel() {
+            postsViewModel.statusSharing.observe(viewLifecycleOwner){
+                if (it){
+              showToast("shared")
+                }
+                dismissProgressDialog()
+            }
 
         viewModel.newImageSupplication.observe(viewLifecycleOwner) {
             binding.handImageView.setImageResource(it)
@@ -146,6 +158,7 @@ class SupplicationsFragment : BaseFragment(){
             showNoInternetSnackBar(binding.root)
         } else {
             val fragment = ChooseSupporterFragment()
+            fragment.initOnConfirmButtonClicked(this)
             fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
         }
 
@@ -180,6 +193,11 @@ class SupplicationsFragment : BaseFragment(){
         mediaPlayer?.release()
         mediaPlayer = MediaPlayer.create(context, R.raw.tick4)
         mediaPlayer?.start()
+    }
+
+    override fun onSendClicked(supporters: MutableList<String>) {
+        showProgressDialog()
+        postsViewModel.sharePost(viewModel.post(supporters))
     }
 
 

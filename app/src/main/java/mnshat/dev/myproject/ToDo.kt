@@ -15,7 +15,7 @@ package mnshat.dev.myproject
 //Doing
 /**
  *
- * Handle change duration , sound and design  success screen
+ * Test sharing supplications
  *
  *
  *  

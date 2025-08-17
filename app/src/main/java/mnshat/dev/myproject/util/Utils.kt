@@ -51,21 +51,9 @@ fun dateTime(currentTimeMillis:Long):String{
 }
 
 
-fun isUser(preferences: SharedPreferencesManager)=preferences.getString(TYPE_OF_USER)== USER
 
 fun isValidInput(input:String) = input.isNotBlank()
-fun setLocale( lang:String? , context: Context){
-    var  res: android.content.res.Resources? = context.resources
-    var  dm: DisplayMetrics? = res?.displayMetrics
-    var  conf:android.content.res.Configuration? = res?.configuration
-    conf?.setLocale(java.util.Locale(lang))
-    if ((lang == "ar")){
-        conf?.setLayoutDirection(java.util.Locale(lang))
-    } else {
-        conf?.setLayoutDirection(java.util.Locale.ENGLISH)
-    }
-    res?.updateConfiguration(conf, dm)
-}
+
 
 fun loadImage(context:Context,imageURL: String?,imageView: ImageView) {
 

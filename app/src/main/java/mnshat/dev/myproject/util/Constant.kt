@@ -63,7 +63,7 @@ const val PROGRAM= "program"
 
 const val CHATS = "chats"
 const val LIBRARY = "library"
-const val GRATITUDE = "gratitude"
+const val GRATITUDE = "Gratitude"
 const val   POSTS = "posts"
 
 const val ENCOURAGEMENT_CHANNEL_ID ="encouragementChannelId"

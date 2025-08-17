@@ -32,8 +32,7 @@ class SupplicationViewModel @Inject constructor(
     private val _dismissSupplicationDialog = MutableLiveData<Boolean>()
     val dismissSupplicationDialog: LiveData<Boolean> get() = _dismissSupplicationDialog
 
-    private val _statusSharing = MutableLiveData<Boolean>()
-    val statusSharing: LiveData<Boolean> get() = _statusSharing
+
 
 
     val user = supplicationsRepo.getUser()
@@ -42,7 +41,6 @@ class SupplicationViewModel @Inject constructor(
     val suggestedSupplication: LiveData<List<Supplication>>
         get() = _suggestedSupplication
 
-    val supportersProfile = supportersRepo.supportersProfile
 
     private val _userSupplications = MutableLiveData<List<Supplication>>()
     val userSupplications: LiveData<List<Supplication>>
@@ -71,11 +69,7 @@ class SupplicationViewModel @Inject constructor(
         }
     }
 
-    fun retrieveSupporters(){
-     viewModelScope.launch {
-         supportersRepo.retrieveSupportersIds(user.id!!)
-     }
-    }
+
 
     fun setListImage(listImages: List<Int>) {
         mListImages = listImages
@@ -97,26 +91,12 @@ class SupplicationViewModel @Inject constructor(
 
     }
 
-   private fun post(list: MutableList<String>) =
+    fun post(supporters: MutableList<String>) =
         Post(
             type =  SUPPLICATIONS,
             supplication = selectedSupplication,
-            supporters = list
+            supporters = supporters
         )
-
-    fun  shareSupplication(emailsList: MutableList<String>){
-        try {
-            viewModelScope.launch {
-                supplicationsRepo.shareContent(post(emailsList))
-                _statusSharing.value = true
-            }
-        }catch (e:Exception){
-            _statusSharing.value = false
-
-        }
-    }
-
-
 
 
     private fun getImage() {

@@ -11,15 +11,13 @@ import mnshat.dev.myproject.adapters.ChooseSupporterAdapter
 import mnshat.dev.myproject.auth.data.entity.UserProfile
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentChooseSupporterBinding
-import mnshat.dev.myproject.interfaces.OnSendButtonClicked
-import mnshat.dev.myproject.users.patient.tools.supplications.prisentation.SupplicationViewModel
 import kotlin.getValue
 
 @AndroidEntryPoint
 
 class ChooseSupporterFragment : BaseBottomSheetDialogFragment() {
 
-    private val viewModel: SupplicationViewModel by activityViewModels()
+    private val viewModel: PostsViewModel by activityViewModels()
     private lateinit var binding: FragmentChooseSupporterBinding
 
     private lateinit var onSendButtonClicked: OnSendButtonClicked
@@ -47,9 +45,10 @@ class ChooseSupporterFragment : BaseBottomSheetDialogFragment() {
             if (chooseAdapter.getSelectedSupporters().size == 0) {
                 showToast(getString(R.string.please_select_supporter))
             } else {
-                showProgressDialog()
-                viewModel.shareSupplication(chooseAdapter.getSelectedSupporters())
+                onSendButtonClicked.onSendClicked(chooseAdapter.getSelectedSupporters())
+                dismiss()
             }
+
         }
     }
 
@@ -58,15 +57,6 @@ class ChooseSupporterFragment : BaseBottomSheetDialogFragment() {
     }
 
     private fun observeViewModel(){
-
-        viewModel.statusSharing.observe(this){
-            if (it){
-                dismissProgressDialog()
-                showToast(getString(R.string.shared_successfully))
-                dismiss()
-            }
-        }
-
         viewModel.supportersProfile.observe (this){
             it?.let {
                 updateUi(it)

@@ -1,27 +1,54 @@
 package mnshat.dev.myproject.commonFeatures.posts
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.FirebaseFirestore
-import mnshat.dev.myproject.base.BaseViewModel2
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.model.Posts
+import mnshat.dev.myproject.users.patient.supporters.data.repos.SupportersRepo
 import mnshat.dev.myproject.util.POSTS
-import mnshat.dev.myproject.util.SharedPreferencesManager
+import javax.inject.Inject
 
-class PostsViewModel
-    (
-    private val sharedPreferences: SharedPreferencesManager,
-    application: Application
+@HiltViewModel
+class PostsViewModel @Inject constructor (
+    private val supportersRepo: SupportersRepo,
+    private val postsRepo: PostsRepo
+) : ViewModel() {
 
-) : BaseViewModel2(
-    sharedPreferences,
-    application
-) {
+
   private val _posts = MutableLiveData<List<Post>?>()
   val posts : LiveData<List<Post>?>
       get() = _posts
+
+    val supportersProfile = supportersRepo.supportersProfile
+
+    private val _statusSharing = MutableLiveData<Boolean>()
+    val statusSharing: LiveData<Boolean> get() = _statusSharing
+
+
+    fun  sharePost( post: Post){
+        try {
+            viewModelScope.launch {
+                postsRepo.shareContent(post)
+                _statusSharing.value = true
+            }
+        }catch (e:Exception){
+            _statusSharing.value = false
+
+        }
+    }
+
+    fun retrieveSupporters(){
+        viewModelScope.launch {
+            supportersRepo.retrieveSupportersIds(supportersRepo.userProfile().id!!)
+        }
+    }
+
+
 
     fun retrieveSharedList(email:String) {
         FirebaseFirestore.getInstance()

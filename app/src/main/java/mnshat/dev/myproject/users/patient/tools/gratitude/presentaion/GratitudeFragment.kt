@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,13 +19,15 @@ import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.DialogShareContentBinding
 import mnshat.dev.myproject.databinding.FragmentGratitudeBinding
 import mnshat.dev.myproject.interfaces.OnConfirmButtonClicked
-import mnshat.dev.myproject.interfaces.OnSendButtonClicked
-import mnshat.dev.myproject.model.Gratitude
+import mnshat.dev.myproject.commonFeatures.posts.OnSendButtonClicked
+import mnshat.dev.myproject.commonFeatures.posts.PostsViewModel
+import mnshat.dev.myproject.users.patient.tools.gratitude.entity.Gratitude
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.users.patient.BasePatientFragment
 import mnshat.dev.myproject.util.GRATITUDE
 import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.getGratitudeQuestionsList
+import mnshat.dev.myproject.util.isInternetAvailable
 import mnshat.dev.myproject.util.isValidInput
 import mnshat.dev.myproject.util.log
 import kotlin.getValue
@@ -35,9 +38,9 @@ import kotlin.random.Random
 class GratitudeFragment : BaseFragment(), OnConfirmButtonClicked, OnSendButtonClicked {
 
     private val viewModel: GratitudeViewModel by activityViewModels()
-private  lateinit var  binding:FragmentGratitudeBinding
-    private lateinit var currentQuestion: String
+    private val postsViewModel: PostsViewModel by viewModels()
 
+    private  lateinit var  binding:FragmentGratitudeBinding
     private lateinit var answer:String
 
     override fun onCreateView(
@@ -46,34 +49,27 @@ private  lateinit var  binding:FragmentGratitudeBinding
         savedInstanceState: Bundle?
     ): View? {
 
-      binding = FragmentGratitudeBinding.inflate(inflater, container, false)
+        binding = FragmentGratitudeBinding.inflate(inflater, container, false)
+        setText(viewModel.getRandomQuestion(requireActivity()))
         setupClickListener()
-
-        initializeViews()
+        observeViewModel()
         return  binding.root
 
     }
 
-
-     fun initializeViews() {
-         setText(getRandomQuestion())
-
+    private fun observeViewModel() {
+        postsViewModel.statusSharing.observe(viewLifecycleOwner){
+            if (it){
+                showToast("shared")
+            }
+            dismissProgressDialog()
+        }
     }
 
     private fun setText(text: String) {
-        currentQuestion = text
+
         binding.tvQuestion.text = text
     }
-
-
-    private fun getRandomQuestion(): String {
-        val questions = getGratitudeQuestionsList(requireActivity())
-        val randomNumber = Random.nextInt(questions.size.minus(1))
-        log("$randomNumber")
-        viewModel.setSelectedPosition(randomNumber )
-        return questions[randomNumber]
-    }
-
 
     private fun setupClickListener() {
 
@@ -84,10 +80,8 @@ private  lateinit var  binding:FragmentGratitudeBinding
         binding.btnSend.setOnClickListener {
             val answer = binding.edtAnswer.text.toString()
             if ( isValidation(answer)){
-                showProgressDialog()
-                addGratitude(Gratitude(index = viewModel.getSelectedPosition(), answer = answer))
+                checkConnection ()
             }
-
         }
 
         binding.btnRecommend.setOnClickListener {
@@ -98,25 +92,34 @@ private  lateinit var  binding:FragmentGratitudeBinding
         }
     }
 
-private fun addGratitude(gratitude: Gratitude) {
-    viewModel.sendGratitude(gratitude){
-        if (it){
-            showToast(getString(R.string.your_answer_has_been_sent))
-            answer = binding.edtAnswer.text.toString()
-            clearText()
-            showSharingDialog()
+    private fun checkConnection() {
+        if(isConnected()){
+            showProgressDialog()
+            addGratitude(Gratitude(index = viewModel.getSelectedPosition(), answer = binding.edtAnswer.text.toString()))
+
         }else{
+            showNoInternetSnackBar(binding.root)
         }
-        dismissProgressDialog()
     }
 
+    private fun addGratitude(gratitude: Gratitude ) {
+        viewModel.saveGratitudeRemotely(gratitude){
+            if (it){
+                showToast(getString(R.string.your_answer_has_been_sent))
+                answer = binding.edtAnswer.text.toString()
+                clearText()
+                showSharingDialog()
+            }
+            dismissProgressDialog()
+        }
 
-}
- private fun clearText(){
-     binding.edtAnswer.text.clear()
- }
+
+    }
+    private fun clearText(){
+        binding.edtAnswer.text.clear()
+    }
     private fun isValidation(text: String) :Boolean{
-      return   if (!isValidInput(text)) {
+        return   if (!isValidInput(text)) {
             showToast(getString(R.string.should_answer_question))
             false
         } else {
@@ -128,10 +131,7 @@ private fun addGratitude(gratitude: Gratitude) {
         setText(text)
     }
 
-
-
     private fun showSharingDialog() {
-
         sharedDialog = Dialog(requireContext())
         sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = DialogShareContentBinding.inflate(layoutInflater)
@@ -140,14 +140,14 @@ private fun addGratitude(gratitude: Gratitude) {
         val window = sharedDialog.window
         window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         sharedDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
         dialogBinding.btOk.setOnClickListener {
-//
-//            if (sharedPreferences.getBoolean(HAS_PARTNER)){
-//                navigateToChooseSupporter()
-//            }else{
-//                showToast(getString(R.string.no_supporters_text))
-//            }
+            if (viewModel.gratitudeRepo.user.hasPartner!!){
+                navigateToChooseSupporter()
+                sharedDialog.dismiss()
+            }else{
+                showToast(getString(R.string.no_supporters_text))
+                sharedDialog.dismiss()
+            }
 
         }
 
@@ -158,36 +158,26 @@ private fun addGratitude(gratitude: Gratitude) {
     }
 
 
-
-
-
     private fun navigateToChooseSupporter() {
-        sharedDialog.dismiss()
-
         val fragment = ChooseSupporterFragment()
         fragment.initOnConfirmButtonClicked(this)
         fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
     }
 
-    private fun getSharingContent(list: MutableList<String>) =
+    override fun onSendClicked(supporters: MutableList<String>) {
+        log("onSendClicked $supporters")
+        showProgressDialog()
+        postsViewModel.sharePost(post(supporters))
+    }
+
+    private fun post(supporters: MutableList<String>) =
         Post(
             type =  GRATITUDE,
             gratitude = Gratitude(index = viewModel.getSelectedPosition(), answer = answer),
-            supporters = list
+            supporters = supporters
         )
 
-    override fun onSendClicked(list: MutableList<String>) {
-        showProgressDialog()
-        viewModel.shareContent(getSharingContent(list)){
-            if (it == null){
-                showToast("done")
-            }else{
-                showToast(it)
-            }
-            dismissProgressDialog()
-        }
 
-    }
 
 
 }

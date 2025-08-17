@@ -96,7 +96,7 @@
         android:label="DisplayGratitudeFragment" >
         <argument
             android:name="gratitude"
-            app:argType="mnshat.dev.myproject.model.Gratitude" />
+            app:argType="mnshat.dev.myproject.users.patient.tools.gratitude.entity.Gratitude" />
     </fragment>
     <fragment
         android:id="@+id/displaySupplicationFragment"

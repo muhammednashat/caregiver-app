@@ -1,6 +1,5 @@
-package mnshat.dev.myproject.interfaces
+package mnshat.dev.myproject.commonFeatures.posts
 
 interface OnSendButtonClicked {
-
     fun onSendClicked( list:MutableList<String>)
 }

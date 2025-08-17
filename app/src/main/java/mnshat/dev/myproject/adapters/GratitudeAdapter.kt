@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.databinding.ItemGratitudeBinding
-import mnshat.dev.myproject.model.Gratitude
+import mnshat.dev.myproject.users.patient.tools.gratitude.entity.Gratitude
 
 
 class GratitudeAdapter(
