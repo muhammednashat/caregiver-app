@@ -17,14 +17,13 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
-import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
+import mnshat.dev.myproject.commonFeatures.posts.presentation.ChooseSupporterFragment
 import mnshat.dev.myproject.commonFeatures.posts.OnSendButtonClicked
-import mnshat.dev.myproject.commonFeatures.posts.PostsViewModel
+import mnshat.dev.myproject.commonFeatures.posts.presentation.PostsViewModel
 import mnshat.dev.myproject.databinding.DialogFullTextSupplicationBinding
 import mnshat.dev.myproject.databinding.FragmentSupplicationsBinding
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.util.LANGUAGE
-import mnshat.dev.myproject.util.log
 import java.util.Locale
 import kotlin.getValue
 

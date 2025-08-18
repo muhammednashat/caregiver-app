@@ -24,6 +24,7 @@ class TrackingMoodAdapter
     inner class ViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         val day: TextView = itemView.findViewById(R.id.day)
         val text: TextView = itemView.findViewById(R.id.text)
+        val lable: TextView = itemView.findViewById(R.id.textView50)
         val cardText:ConstraintLayout = itemView.findViewById(R.id.cardText)
         val moodBefore: TextView = itemView.findViewById(R.id.moodBefore)
         val moodAfter: TextView = itemView.findViewById(R.id.moodAfter)
@@ -74,12 +75,19 @@ class TrackingMoodAdapter
                 holder.extend.setImageResource(R.drawable.baseline_keyboard_arrow_down_24)
             }
         }
-        if (trackingMood.extraReasons!!.isNotEmpty()){
+        if (trackingMood.extraReasons != null && trackingMood.extraReasons.isNotEmpty()){
+            holder.lable.visibility = View.VISIBLE
+            holder.extend.visibility = View.VISIBLE
             holder.text.text =trackingMood.extraReasons
             holder.cardText.visibility = View.VISIBLE
         }
 
         setUpRecyclerViewEffectingMood(holder,trackingMood)
+        if (trackingMood.reasons == null){
+            holder.lable.visibility = View.GONE
+            holder.extend.visibility = View.GONE
+
+        }
     }
 
     private fun setUpRecyclerViewEffectingMood(holder: ViewHolder, trackingMood: DayMoodTracking) {

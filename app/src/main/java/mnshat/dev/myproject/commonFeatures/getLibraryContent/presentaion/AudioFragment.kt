@@ -10,7 +10,7 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
+import mnshat.dev.myproject.commonFeatures.posts.presentation.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.FragmentAudioBinding
 import mnshat.dev.myproject.commonFeatures.posts.OnSendButtonClicked
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent

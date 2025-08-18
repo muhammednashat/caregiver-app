@@ -2,14 +2,10 @@ package mnshat.dev.myproject.users.patient.moodTracking.presentaion.viewmodels
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import mnshat.dev.myproject.users.patient.moodTracking.data.MoodTrackingRepository
-import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.DayMoodTracking
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
 import mnshat.dev.myproject.util.log
 import javax.inject.Inject
@@ -25,6 +21,10 @@ class MoodTrackingViewModel @Inject constructor
          private var preMoodIndex = -1
          private var postMoodIndex = -1
          private var _emoji: EmojiMood? = null
+
+       val  trackingList = moodTrackingRepository.trackingList
+
+
          fun currentDay() = moodTrackingRepository.currentDayLocally()
 
          fun getEmojisStatus(context: Context)  =  moodTrackingRepository.getEmojisStatus(context)
@@ -68,7 +68,6 @@ class MoodTrackingViewModel @Inject constructor
         viewModelScope.launch {
             moodTrackingRepository.storeDayMoodTrackingRemotely()
         }
-
     }
 
     fun getNextDay(day: Int) {
@@ -77,16 +76,20 @@ class MoodTrackingViewModel @Inject constructor
         }
     }
 
-
-
     fun getPostMoodIndex(): Int  = postMoodIndex
 
-     fun getDayMoodTracking() = liveData<List<DayMoodTracking>?> {
-//         val userId = if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER  ) sharedPreferences.getString(ID_PARTNER, "") else sharedPreferences.getString(USER_ID, "")
-//         log(userId)
-//        getDayTrackingMoodUseCase(userId).collect {
-//                 emit(it)
-//        }
-    }
+   fun retrieveTracingListRemotely() {
+       viewModelScope.launch {
+           try {
+               moodTrackingRepository.retrieveTracingListRemotely()
+           }
+           catch (e:Exception){
+               e.printStackTrace()
+           }
+       }
+
+   }
+
+
 
 }

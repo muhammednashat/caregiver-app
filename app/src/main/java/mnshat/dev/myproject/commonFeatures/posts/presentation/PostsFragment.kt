@@ -1,11 +1,17 @@
-package mnshat.dev.myproject.commonFeatures.posts
+package mnshat.dev.myproject.commonFeatures.posts.presentation
 
+import android.app.AlertDialog
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.PostsAdapter
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentPostsBinding
 import mnshat.dev.myproject.interfaces.ItemPostsClicked
 import mnshat.dev.myproject.users.patient.tools.gratitude.entity.Gratitude
@@ -25,61 +31,62 @@ import mnshat.dev.myproject.util.USER_EMAIL
 import mnshat.dev.myproject.util.VIDEO
 import mnshat.dev.myproject.util.log
 
+@AndroidEntryPoint
+class PostsFragment : BaseFragment(), ItemPostsClicked {
 
-class PostsFragment : BasePatientFragment<FragmentPostsBinding>(), ItemPostsClicked {
+  private val viewModel: PostsViewModel by viewModels()
+ private lateinit var binding: FragmentPostsBinding
 
-    lateinit var viewModel: PostsViewModel
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        binding = FragmentPostsBinding.inflate(inflater, container, false)
+        checkInternetConnection()
+        return binding.root
 
 
-    override fun getLayout() = R.layout.fragment_posts
+    }
 
+    private fun checkInternetConnection() {
+        if (isConnected()) {
+            binding.noItems.visibility = View.GONE
+            viewModel.retrievePostsRemotely()
+            observeViewModel()
+            setupClickListener()
+        } else {
+            showNoInternetDialog()
+        }
+    }
+    private fun showNoInternetDialog() {
+        AlertDialog.Builder(requireActivity())
+            .setTitle(getString(R.string.no_internet_connection))
+            .setMessage(getString(R.string.please_check_your_internet_connection_and_try_again))
+            .setPositiveButton(getString(R.string.try_again)) { dialog, _ ->
+                checkInternetConnection()
+                dialog.dismiss()
+            }
+            .setCancelable(false)
+            .show()
+    }
 
-    override fun setupClickListener() {
-
+    private fun setupClickListener() {
         binding.icBack.setOnClickListener {
             findNavController().popBackStack()
         }
     }
 
-    override fun initializeViews() {
-        initViewModel()
-        if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER){
-            log("caregiver${sharedPreferences.getString(EMAIL_PARTNER)}1")
-            retrieveSharedList(sharedPreferences.getString(EMAIL_PARTNER))
-        }else{
-            log("Patient ${sharedPreferences.getString(USER_EMAIL)}")
-
-            retrieveSharedList(sharedPreferences.getString(USER_EMAIL))
-
-        }
-
-
-
-    }
-
-    private fun retrieveSharedList(email:String ) {
-        binding.noItems.visibility = android.view.View.GONE
-        showProgressDialog()
-        viewModel.retrieveSharedList(email)
-    }
-
-    private fun initViewModel() {
-
-//        val factory = SharingViewModelFactory(sharedPreferences, activity?.application!!)
-//        viewModel = ViewModelProvider(requireActivity(), factory)[PostsViewModel::class.java]
-//        observeViewModel()
-
-    }
 
     private fun observeViewModel() {
+
         viewModel.posts.observe(viewLifecycleOwner) { list ->
          if (list?.size!! > 0){
-             log("list size ${list.size}")
              updateUi(list)
          }else{
              binding.noItems.visibility = View.VISIBLE
-             binding.contentList.visibility = android.view.View.GONE
-             log("list size 0")
+             binding.contentList.visibility = View.GONE
          }
             dismissProgressDialog()
         }
@@ -87,37 +94,14 @@ class PostsFragment : BasePatientFragment<FragmentPostsBinding>(), ItemPostsClic
     }
 
     private fun updateUi(data: List<Post>) {
-        var list = data
-        if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER){
-        list = list.filter {isContainUser(it.supporters!!,sharedPreferences.getString(USER_EMAIL))}
-        log("caregiver")
-        }
-        log("new list size ${list.size}")
-        if (list.isEmpty()){
-            binding.noItems.visibility = View.VISIBLE
-            binding.contentList.visibility = android.view.View.GONE
-        }else{
             binding.recyclerView.adapter =
-                PostsAdapter(list, requireActivity(), sharedPreferences, this)
+            PostsAdapter(data, requireActivity(), viewModel.sharedPreferences, this)
             binding.noItems.visibility = View.GONE
             binding.contentList.visibility = View.VISIBLE
-        }
 
     }
 
-    private fun isContainUser(list: List<String>, email: String): Boolean {
-log("isContainUser $email")
-        list.forEach {
-            if (it == email) {
-                log("isContainUser $it $email")
 
-                return true
-            }
-        }
-        log("isContainUser false")
-
-        return false
-    }
 
 
     override fun onItemClicked(post: Post) {

@@ -2,15 +2,11 @@ package mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion
 
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.os.Build
 import android.speech.tts.TextToSpeech
-import android.speech.tts.UtteranceProgressListener
-import android.text.Html
-import android.text.Spanned
 import androidx.core.text.HtmlCompat
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
+import mnshat.dev.myproject.commonFeatures.posts.presentation.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.FragmentArticleBinding
 import mnshat.dev.myproject.commonFeatures.posts.OnSendButtonClicked
 import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent

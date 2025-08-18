@@ -14,7 +14,9 @@ package mnshat.dev.myproject
 
 //Doing
 /**
- *
+ * test user posts
+ * test caregiver posts
+ * store caregiver and test partner email
  *
  *
  *

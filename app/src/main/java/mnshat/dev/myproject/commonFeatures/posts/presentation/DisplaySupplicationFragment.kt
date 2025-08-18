@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.commonFeatures.posts
+package mnshat.dev.myproject.commonFeatures.posts.presentation
 
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.databinding.FragmentDisplaySupplicationBinding

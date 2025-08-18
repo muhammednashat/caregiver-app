@@ -10,6 +10,7 @@ data class UserProfile(
     var id: String? = null,
     var name: String? = null,
     var email: String? = null,
+    var partnerEmail: String? = null,
     var password: String? = null,
     var imageUser: String? = null,
     var gender: Int? = null,

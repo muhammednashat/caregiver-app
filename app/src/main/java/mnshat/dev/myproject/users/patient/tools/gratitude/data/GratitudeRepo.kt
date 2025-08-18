@@ -34,7 +34,6 @@ class GratitudeRepo (
 
 
      fun retrieveGratitudeListRemotely(){
-
        fireStore.collection(USERS)
             .document(user.id!!)
             .collection(GRATITUDE)

@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import mnshat.dev.myproject.commonFeatures.posts.data.PostsRepo
 import mnshat.dev.myproject.users.patient.supporters.data.repos.SupportersRepo
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import javax.inject.Singleton
@@ -20,7 +21,7 @@ object DI {
     fun providePostsRepo(
         firestore: FirebaseFirestore,
         sharedPreferences: SharedPreferencesManager
-    ) = PostsRepo(firestore,  sharedPreferences)
+    ) = PostsRepo(firestore, sharedPreferences)
 
 
 }

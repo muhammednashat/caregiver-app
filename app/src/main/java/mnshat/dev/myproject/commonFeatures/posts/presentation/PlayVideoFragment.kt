@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.commonFeatures.posts
+package mnshat.dev.myproject.commonFeatures.posts.presentation
 
 import android.net.Uri
 import android.view.View

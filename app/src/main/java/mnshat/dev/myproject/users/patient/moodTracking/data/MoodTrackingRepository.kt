@@ -1,6 +1,7 @@
 package mnshat.dev.myproject.users.patient.moodTracking.data
 
 import android.content.Context
+import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -8,7 +9,6 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.users.patient.dailyprogram.data.DailyProgramRepository
-import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.DayMoodTracking
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EffectingMood
 import mnshat.dev.myproject.users.patient.moodTracking.domain.entity.EmojiMood
@@ -21,8 +21,17 @@ class MoodTrackingRepository @Inject constructor(
      val dailyProgramRepository: DailyProgramRepository
 ){
 
+val  trackingList = MutableLiveData<List<DayMoodTracking>>()
 
      fun currentDayLocally() = dailyProgramRepository.getCurrentDayLocally()
+
+    suspend fun  retrieveTracingListRemotely() {
+      val result =  firestore.collection(USERS).document(dailyProgramRepository
+           .getUserProfile().id!!).collection("DayMoodTracking").get().await()
+        trackingList.value =  result.toObjects(DayMoodTracking::class.java)
+    }
+
+
 
     fun getEmojisStatus(context: Context) = listOf(
         EmojiMood(
@@ -80,7 +89,7 @@ class MoodTrackingRepository @Inject constructor(
             context.getString(R.string.anger_is_a_natural_emotion),
             context.getString(R.string.let_s_redirect_it_in_a_positive_and_constructive_way_to_create_change_and_growth),
             context.getString(R.string.here_are_some_suggestions_to_improve_your_mood),
-           
+
             getSuggestionsForIrritated(context),
             R.drawable.icon_mood4,
             "#f59077",
@@ -116,7 +125,7 @@ class MoodTrackingRepository @Inject constructor(
         SuggestionToDo(context.getString(R.string.call_or_message_someone_you_trust) , ""),
         SuggestionToDo(context.getString(R.string.watch_a_funny_show_movie) , ""),
     )
-    
+
     private fun getSuggestionsForOverwhelmed (context: Context) = listOf(
         SuggestionToDo(context.getString(R.string.practice_deep) ,
             context.getString(R.string.tip_use_the_breathing_tool)),
@@ -124,7 +133,7 @@ class MoodTrackingRepository @Inject constructor(
         SuggestionToDo(context.getString(R.string.organise_your_workstation) , ""),
 
     )
-    
+
     private fun getSuggestionsForIrritated (context: Context) = listOf(
         SuggestionToDo(context.getString(R.string.channel_your_anger_into) , ""),
         SuggestionToDo(context.getString(R.string.grab_a_pen) , ""),

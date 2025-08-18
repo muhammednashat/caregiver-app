@@ -1,15 +1,17 @@
-package mnshat.dev.myproject.commonFeatures.posts
+package mnshat.dev.myproject.commonFeatures.posts.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.ChooseSupporterAdapter
 import mnshat.dev.myproject.auth.data.entity.UserProfile
 import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
+import mnshat.dev.myproject.commonFeatures.posts.OnSendButtonClicked
 import mnshat.dev.myproject.databinding.FragmentChooseSupporterBinding
 import kotlin.getValue
 
@@ -69,9 +71,9 @@ class ChooseSupporterFragment : BaseBottomSheetDialogFragment() {
         binding.supportersRecyclerView.apply {
             adapter = chooseAdapter
             setHasFixedSize(true)
-            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+            layoutManager = LinearLayoutManager(
                 requireContext(),
-                androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL,
+                LinearLayoutManager.HORIZONTAL,
                 false
             )
             binding.loaderProgress.visibility = View.GONE

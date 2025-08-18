@@ -70,7 +70,7 @@
     <fragment
         android:id="@+id/postsFragment2"
         layout="@layout/fragment_posts"
-        android:name="mnshat.dev.myproject.commonFeatures.posts.PostsFragment"
+        android:name="mnshat.dev.myproject.commonFeatures.posts.presentation.PostsFragment"
         android:label="PostsFragment" >
         <action
             android:id="@+id/action_postsFragment2_to_displayGratitudeFragment"
@@ -91,7 +91,7 @@
     <fragment
         android:id="@+id/displayGratitudeFragment"
         layout="@layout/fragment_display_gratitude"
-        android:name="mnshat.dev.myproject.commonFeatures.posts.DisplayGratitudeFragment"
+        android:name="mnshat.dev.myproject.commonFeatures.posts.presentation.DisplayGratitudeFragment"
         android:label="DisplayGratitudeFragment" >
         <argument
             android:name="gratitude"
@@ -99,7 +99,7 @@
     </fragment>
     <fragment
         android:id="@+id/displaySupplicationFragment"
-        android:name="mnshat.dev.myproject.commonFeatures.posts.DisplaySupplicationFragment"
+        android:name="mnshat.dev.myproject.commonFeatures.posts.presentation.DisplaySupplicationFragment"
         android:label="DisplaySupplicationFragment" >
         <argument
             android:name="supplication"
@@ -107,7 +107,7 @@
     </fragment>
     <fragment
         android:id="@+id/displayArticleFragment"
-        android:name="mnshat.dev.myproject.commonFeatures.posts.DisplayArticleFragment"
+        android:name="mnshat.dev.myproject.commonFeatures.posts.presentation.DisplayArticleFragment"
         android:label="DisplayArticleFragment" >
         <argument
             android:name="libraryContent"
@@ -115,7 +115,7 @@
     </fragment>
     <fragment
         android:id="@+id/playAudioFragment"
-        android:name="mnshat.dev.myproject.commonFeatures.posts.PlayAudioFragment"
+        android:name="mnshat.dev.myproject.commonFeatures.posts.presentation.PlayAudioFragment"
         android:label="fragment_play_audio"
         tools:layout="@layout/fragment_play_audio" >
         <argument
@@ -124,7 +124,7 @@
     </fragment>
     <fragment
         android:id="@+id/playVideoFragment"
-        android:name="mnshat.dev.myproject.commonFeatures.posts.PlayVideoFragment"
+        android:name="mnshat.dev.myproject.commonFeatures.posts.presentation.PlayVideoFragment"
         android:label="fragment_play_video"
         tools:layout="@layout/fragment_play_video" >
         <argument

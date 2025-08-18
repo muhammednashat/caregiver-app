@@ -10,28 +10,22 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
-import mnshat.dev.myproject.commonFeatures.posts.ChooseSupporterFragment
+import mnshat.dev.myproject.commonFeatures.posts.presentation.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.DialogShareContentBinding
 import mnshat.dev.myproject.databinding.FragmentGratitudeBinding
 import mnshat.dev.myproject.interfaces.OnConfirmButtonClicked
 import mnshat.dev.myproject.commonFeatures.posts.OnSendButtonClicked
-import mnshat.dev.myproject.commonFeatures.posts.PostsViewModel
+import mnshat.dev.myproject.commonFeatures.posts.presentation.PostsViewModel
 import mnshat.dev.myproject.users.patient.tools.gratitude.entity.Gratitude
 import mnshat.dev.myproject.model.Post
-import mnshat.dev.myproject.users.patient.BasePatientFragment
 import mnshat.dev.myproject.util.GRATITUDE
-import mnshat.dev.myproject.util.HAS_PARTNER
-import mnshat.dev.myproject.util.getGratitudeQuestionsList
-import mnshat.dev.myproject.util.isInternetAvailable
 import mnshat.dev.myproject.util.isValidInput
 import mnshat.dev.myproject.util.log
 import kotlin.getValue
-import kotlin.random.Random
 
 @AndroidEntryPoint
 
