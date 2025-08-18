@@ -69,7 +69,7 @@ class SupplicationsFragment : BaseFragment() , OnSendButtonClicked {
     private fun observeViewModel() {
             postsViewModel.statusSharing.observe(viewLifecycleOwner){
                 if (it){
-              showToast("shared")
+              showToast(getString(R.string.shared_successfully))
                 }
                 dismissProgressDialog()
             }

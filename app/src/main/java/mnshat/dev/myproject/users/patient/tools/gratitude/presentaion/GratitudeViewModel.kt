@@ -15,6 +15,9 @@ class GratitudeViewModel @Inject constructor(
      val  gratitudeRepo: GratitudeRepo,
 ) : ViewModel() {
 
+
+    val gratitudeList = gratitudeRepo.gratitudeList
+
     private var _selectedPosition:Int=0
     fun getSelectedPosition() = _selectedPosition
     fun getRandomQuestion(context: Context): String {
@@ -42,6 +45,15 @@ class GratitudeViewModel @Inject constructor(
                 callBack(true)
             } catch (e: Exception) {
                 callBack(false)
+            }
+        }
+    }
+    fun retrieveGratitudeListRemotely() {
+        viewModelScope.launch {
+            try {
+              gratitudeRepo.retrieveGratitudeListRemotely()
+            } catch (e: Exception) {
+                gratitudeList.value = emptyList()
             }
         }
     }

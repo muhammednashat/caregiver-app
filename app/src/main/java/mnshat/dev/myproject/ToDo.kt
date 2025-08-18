@@ -15,7 +15,7 @@ package mnshat.dev.myproject
 //Doing
 /**
  *
- * Test sharing supplications
+ *
  *
  *
  *  

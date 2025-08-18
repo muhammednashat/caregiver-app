@@ -1,6 +1,7 @@
 package mnshat.dev.myproject.users.patient.tools.gratitude.data
 
 import android.content.Context
+import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import mnshat.dev.myproject.R
@@ -9,7 +10,6 @@ import mnshat.dev.myproject.users.patient.tools.gratitude.entity.Gratitude
 import mnshat.dev.myproject.util.GRATITUDE
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USERS
-import javax.inject.Inject
 
 class GratitudeRepo (
     private val sharedPreferences: SharedPreferencesManager,
@@ -17,6 +17,7 @@ class GratitudeRepo (
 ) {
 
     val user = sharedPreferences.getUserProfile()
+     val gratitudeList = MutableLiveData<List<Gratitude>>()
 
     fun getGratitudeQuestionsList(context: Context): List<String> {
         return listOf(
@@ -29,5 +30,19 @@ class GratitudeRepo (
 
   suspend fun saveGratitudeRemotely(gratitude: Gratitude) {
         fireStore.collection(USERS).document(user.id!!).collection(GRATITUDE).add(gratitude).await()
+    }
+
+
+     fun retrieveGratitudeListRemotely(){
+
+       fireStore.collection(USERS)
+            .document(user.id!!)
+            .collection(GRATITUDE)
+            .addSnapshotListener { value, error ->
+            val data =    value?.toObjects(Gratitude::class.java) ?: emptyList()
+
+                gratitudeList.value  = data
+            }
+
     }
 }

@@ -60,7 +60,7 @@ class GratitudeFragment : BaseFragment(), OnConfirmButtonClicked, OnSendButtonCl
     private fun observeViewModel() {
         postsViewModel.statusSharing.observe(viewLifecycleOwner){
             if (it){
-                showToast("shared")
+                showToast(getString(R.string.shared_successfully))
             }
             dismissProgressDialog()
         }
