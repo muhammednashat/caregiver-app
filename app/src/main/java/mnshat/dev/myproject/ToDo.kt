@@ -14,7 +14,8 @@ package mnshat.dev.myproject
 
 //Doing
 /**
- * test user posts
+ * open contect fragment  after fixing issue
+ * share a library content
  * test caregiver posts
  * store caregiver and test partner email
  *

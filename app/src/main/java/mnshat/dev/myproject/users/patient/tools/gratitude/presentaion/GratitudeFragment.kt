@@ -14,12 +14,12 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
-import mnshat.dev.myproject.commonFeatures.posts.presentation.ChooseSupporterFragment
+import mnshat.dev.myproject.posts.presentation.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.DialogShareContentBinding
 import mnshat.dev.myproject.databinding.FragmentGratitudeBinding
 import mnshat.dev.myproject.interfaces.OnConfirmButtonClicked
-import mnshat.dev.myproject.commonFeatures.posts.OnSendButtonClicked
-import mnshat.dev.myproject.commonFeatures.posts.presentation.PostsViewModel
+import mnshat.dev.myproject.posts.OnSendButtonClicked
+import mnshat.dev.myproject.posts.presentation.PostsViewModel
 import mnshat.dev.myproject.users.patient.tools.gratitude.entity.Gratitude
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.util.GRATITUDE

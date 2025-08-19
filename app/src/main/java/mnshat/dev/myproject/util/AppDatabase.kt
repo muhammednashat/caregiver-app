@@ -6,8 +6,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import mnshat.dev.myproject.commonFeatures.getLibraryContent.data.LibraryDao
-import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
+import  mnshat.dev.myproject.getLibraryContent.domain.entity.LibraryContent
+import  mnshat.dev.myproject.getLibraryContent.data.LibraryDao
 import mnshat.dev.myproject.users.patient.calender.data.daos.DayDao
 import mnshat.dev.myproject.users.patient.calender.data.daos.TaskDao
 import mnshat.dev.myproject.users.patient.calender.domain.entity.DayEntity

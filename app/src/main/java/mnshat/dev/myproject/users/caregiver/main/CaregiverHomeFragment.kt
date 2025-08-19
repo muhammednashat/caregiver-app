@@ -4,7 +4,7 @@ import android.content.Intent
 import android.text.Html
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.LibraryActivity
+import mnshat.dev.myproject.getLibraryContent.presentaion.LibraryActivity
 import mnshat.dev.myproject.databinding.FragmentCaregiverHomeBinding
 import mnshat.dev.myproject.util.USER_IMAGE
 import mnshat.dev.myproject.util.USER_NAME

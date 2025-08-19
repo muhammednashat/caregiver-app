@@ -9,7 +9,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import mnshat.dev.myproject.commonFeatures.getLibraryContent.data.LibraryDao
+import mnshat.dev.myproject.getLibraryContent.data.LibraryDao
 import javax.inject.Singleton
 
 @Module

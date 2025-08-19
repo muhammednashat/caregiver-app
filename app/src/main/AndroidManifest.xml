@@ -40,7 +40,7 @@
             android:name=".commonFeatures.chatting.ChatActivity"
             android:exported="false" />
         <activity
-            android:name=".commonFeatures.getLibraryContent.presentaion.LibraryActivity"
+            android:name=".getLibraryContent.presentaion.LibraryActivity"
             android:exported="false" />
         <activity
             android:name=".users.patient.dailyprogram.presentaion.DailyProgramActivity"

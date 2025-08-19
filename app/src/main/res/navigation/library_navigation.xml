@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/libraryContentFragment"
         tools:layout="@layout/fragment_library_content"
-        android:name="mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.LibraryContentFragment"
+        android:name="mnshat.dev.myproject.getLibraryContent.presentaion.LibraryContentFragment"
         android:label="LibraryContentFragment" >
         <action
             android:id="@+id/action_libraryContentFragment_to_customizedContentFragment"
@@ -26,12 +26,12 @@
     <fragment
         android:id="@+id/customizedContentFragment"
         tools:layout="@layout/fragment_customized_content"
-        android:name="mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.CustomizedContentFragment"
+        android:name="mnshat.dev.myproject.getLibraryContent.presentaion.CustomizedContentFragment"
         android:label="CustomizedContentFragment" >
 
         <argument
             android:name="libraryContentList"
-            app:argType="mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent[]" />
+            app:argType="mnshat.dev.myproject.getLibraryContent.domain.entity.LibraryContent[]" />
 
         <argument
             android:name="textTitle"
@@ -50,17 +50,17 @@
     <fragment
         android:id="@+id/articleFragment"
         tools:layout="@layout/fragment_article"
-        android:name="mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.ArticleFragment"
+        android:name="mnshat.dev.myproject.getLibraryContent.presentaion.ArticleFragment"
         android:label="ArticleFragment" />
     <fragment
         android:id="@+id/audioFragment"
-        android:name="mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.AudioFragment"
+        android:name="mnshat.dev.myproject.getLibraryContent.presentaion.AudioFragment"
         android:label="fragment_audio"
         tools:layout="@layout/fragment_audio" />
     <fragment
         android:id="@+id/videoFragment"
         tools:layout="@layout/fragment_video"
-        android:name="mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.VideoFragment"
+        android:name="mnshat.dev.myproject.getLibraryContent.presentaion.VideoFragment"
         android:label="VideoFragment" >
         <action
             android:id="@+id/action_videoFragment_to_customizedContentFragment"

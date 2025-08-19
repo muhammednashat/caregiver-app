@@ -20,7 +20,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout22"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/corner_bottom_lift_right"
                 android:backgroundTint="#cce3f1"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -32,21 +32,19 @@
                     android:id="@+id/imageView12"
                     android:layout_width="114dp"
                     android:layout_height="114dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="32dp"
                     android:src="@drawable/ic_gratitude12"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_bias="0.542"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_margin="24dp"
-                    android:padding="24dp"
-                    android:src="@drawable/ic_arrow_back_ios"
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ic_back"
+                    style="@style/ic_back"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_arrow_back_ios" />
 
                 <TextView
                     android:id="@+id/textView6"
@@ -56,23 +54,12 @@
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/ic_back"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView12"
-                    app:layout_constraintVertical_bias="0.284" />
+                    app:layout_constraintHorizontal_bias="0.501"
+                    app:layout_constraintStart_toEndOf="@+id/ic_back"
+                    app:layout_constraintTop_toTopOf="@+id/ic_back" />
 
-                <TextView
-                    android:id="@+id/date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="12/5/1993"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:textColor="#65829e"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -94,17 +81,19 @@
 
             <ScrollView
                 android:layout_width="match_parent"
+              android:padding="@dimen/margin_large"
                 android:layout_height="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/imageView13"
+               android:scrollbarSize="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/question">
+                app:layout_constraintTop_toBottomOf="@+id/imageView13">
 
                 <TextView
+                    android:id="@+id/text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/text"
                     android:gravity="center"
                     android:padding="@dimen/margin_large"
                     android:text=" بيل ليبلبي بيلي بيلس يبلبي بلسيبل بلسيبل بلبي بيلسلبي بيلسي بيسب بشسبيي بيشب بsdafdfsdfsddsadfsdafdsfsdafdfsafdsafdsfadsfsdfasdfdfsdafdsfsdaffasdfsdfsdfsdfيبشي بيشب يبش بشdfasdfasdfsdfdsfl;kjdfasdfj;dsklfajsdfjsdfj;kasjdfksjd;fsjdaf;kdjf;lkasdjfl;kdfjasdjfd;sklfjsdalkfjldsfjsd;fjsdafkdsafk;dsfjlsdakfjds;ffsdafdfsdafdsfsdيسب بشسيب بيل ليبلبي بيلي بيلس يبلبي بلسيبل بلسيبل بلبي بيلسلبي بيلسي بيسب بشسبيي بيشب بsdafdfsdfsddsadfsdafdsfsdafdfsafdsafdsfadsfsdfasdfdfsdafdsfsdaffasdfsdfsdfsdfيبشي بييبلبي بيلي بيلس يبلبي بلسيبل بلسيبل بلبي بيلسلبي بيلسي بيسب بشسبيي بيشب بsdafdfsdfsddsadfsdafdsfsdafdfsafdsafdsfadsfsdfasdfdfsdafdsfsdaffasdfsdfsdfsdfيبشي بيشيبلبي بيلي بيلس يبلبي بلسيبل بلسيبل بلبي بيلسلبي بيلسي بيسب بشسبيي بيشب بsdafdfsdfsddsadfsdafdsfsdafdfsafdsafdsfadsfsdfasdfdfsdafdsfsdaffasdfsdfsdfsdfيبشي بيششب يبش بشdfasdfasdfsdfdsfl;kjdfasdfj;dsklfajsdfjsdfj;kasjdfksjd;fsjdaf;kdjf;lkasdjfl;kdfjasdjfd;sklfjsdalkfjldsfjsd;fjsdafkdsafk;dsfjlsdakfjds;ffsdafdfsdafdsfsdيسب بشسيب "
@@ -121,10 +110,10 @@
                 android:layout_height="24dp"
                 android:layout_marginBottom="@dimen/margin_large"
                 android:src="@drawable/icone_hart"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.552"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/question" />
 
             <View
                 android:id="@+id/view3"
@@ -133,7 +122,6 @@
                 android:layout_marginEnd="@dimen/margin_large"
                 android:background="@drawable/line"
                 android:backgroundTint="#395778"
-
                 app:layout_constraintBottom_toBottomOf="@+id/imageView13"
                 app:layout_constraintEnd_toStartOf="@+id/imageView13"
                 app:layout_constraintTop_toTopOf="@+id/imageView13" />

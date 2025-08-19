@@ -8,8 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
-import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.util.COMMON_CONTENT
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.SharedPreferencesManager

@@ -16,7 +16,6 @@ import mnshat.dev.myproject.util.log
 @AndroidEntryPoint
 class MainBreathFragment : BaseFragment() {
 
-
     private  val viewModel : BreathViewModel by activityViewModels()
     private  lateinit var  binding : FragmentMainBreathBinding
 

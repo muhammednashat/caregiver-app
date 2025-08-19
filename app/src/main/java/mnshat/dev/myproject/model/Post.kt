@@ -2,7 +2,7 @@ package mnshat.dev.myproject.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import mnshat.dev.myproject.commonFeatures.getLibraryContent.domain.entity.LibraryContent
+import mnshat.dev.myproject.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.users.patient.tools.gratitude.entity.Gratitude
 
 
