@@ -1,36 +1,48 @@
 package mnshat.dev.myproject.getLibraryContent.presentaion
 
 
-import mnshat.dev.myproject.R
-import mnshat.dev.myproject.adapters.CustomizedContentLibraryAdapter
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentSuggestedContentBinding
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 import mnshat.dev.myproject.getLibraryContent.domain.entity.LibraryContent
-import mnshat.dev.myproject.util.ENGLISH_KEY
+import kotlin.getValue
 
-class SuggestedContentFragment : BaseBottomSheetDialogFragment2<FragmentSuggestedContentBinding>(),
-
+class SuggestedContentFragment : BaseBottomSheetDialogFragment(),
     OnItemLibraryContentClicked {
+
+    private lateinit var binding: FragmentSuggestedContentBinding
     private lateinit var title: String
     private lateinit var type: String
-    private lateinit var viewModel: LibraryViewModel
+    private val viewModel: LibraryViewModel by activityViewModels()
     private lateinit var mOnItemLibraryContentClicked: OnItemLibraryContentClicked
 
-    override fun getLayout() = R.layout.fragment_suggested_content
 
-    override fun initializeViews() {
-        if (currentLang != ENGLISH_KEY) {
-            binding.close.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-            binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
-        }
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+      binding = FragmentSuggestedContentBinding.inflate(inflater, container, false)
+        initializeViews()
+        setupClickListener()
+        return  binding.root
+
+    }
+
+
+
+    private fun initializeViews() {
         binding.title.text = title
-        initViewModel()
         setRecyclerMostCommon(viewModel.getContentsBasedType(type))
     }
 
-    override fun setupClickListener() {
-        super.setupClickListener()
+    private fun setupClickListener() {
         binding.close.setOnClickListener {
             dismiss()
         }
@@ -47,22 +59,15 @@ class SuggestedContentFragment : BaseBottomSheetDialogFragment2<FragmentSuggeste
         return this
     }
 
-    private fun initViewModel() {
-//        val libraryDao = AppDatabase.getDatabase(requireContext()).libraryDao()
-//        val libraryContentRepo = LibraryContentRepo(libraryDao)
-//        val getLibraryContentUseCase = GetLibraryContentUseCase(libraryContentRepo)
-//        val factory = LibraryViewModelFactory(sharedPreferences, getLibraryContentUseCase,activity?.application!!)
-//        viewModel = ViewModelProvider(requireActivity(), factory)[LibraryViewModel::class.java]
-    }
+
 
     private fun setRecyclerMostCommon(libraryContent: List<LibraryContent>?) {
 
         binding.recyclerView.apply {
-
             adapter = CustomizedContentLibraryAdapter(
                 libraryContent,
                 requireActivity(),
-                sharedPreferences,
+                viewModel.sharedPreferences,
                 this@SuggestedContentFragment
             )
         }
@@ -76,7 +81,6 @@ class SuggestedContentFragment : BaseBottomSheetDialogFragment2<FragmentSuggeste
     fun setOnItemLibraryContent(onItemLibraryContentClicked: OnItemLibraryContentClicked): SuggestedContentFragment {
         mOnItemLibraryContentClicked = onItemLibraryContentClicked
         return this
-
     }
 
 }

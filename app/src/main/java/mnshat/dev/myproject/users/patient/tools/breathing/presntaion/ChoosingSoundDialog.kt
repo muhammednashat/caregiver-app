@@ -8,8 +8,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import mnshat.dev.myproject.databinding.ChoosingSoundDialogBinding
-import mnshat.dev.myproject.getLibraryContent.presentaion.OnItemSoundClicked
-import mnshat.dev.myproject.getLibraryContent.presentaion.SoundsAdapter
 import mnshat.dev.myproject.users.patient.tools.breathing.model.Sound
 import kotlin.getValue
 

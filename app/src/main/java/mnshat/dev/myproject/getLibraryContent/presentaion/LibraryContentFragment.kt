@@ -10,16 +10,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
-import mnshat.dev.myproject.adapters.CustomizedContentLibraryAdapter
 import mnshat.dev.myproject.base.BaseFragment
-import mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.LibraryContentFragmentDirections
 import mnshat.dev.myproject.databinding.FragmentLibraryContentBinding
 import mnshat.dev.myproject.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 import mnshat.dev.myproject.util.ARTICLE
-import mnshat.dev.myproject.util.AUDIO
-import mnshat.dev.myproject.util.VIDEO
 
 @AndroidEntryPoint
 class LibraryContentFragment : BaseFragment(),OnItemLibraryContentClicked {
@@ -70,12 +65,14 @@ class LibraryContentFragment : BaseFragment(),OnItemLibraryContentClicked {
         binding.icBack.setOnClickListener {
             activity?.finish()
         }
+
         binding.showAllCustomized.setOnClickListener {
             navigateToCustomizedContent(
                 viewModel.mLibraryContentCustomized.toTypedArray(),
                 getString(R.string.customized_for_you)
             )
         }
+
         binding.showAllCommon.setOnClickListener {
             CommonContentFragment().show(
                 childFragmentManager,
@@ -129,11 +126,10 @@ class LibraryContentFragment : BaseFragment(),OnItemLibraryContentClicked {
     }
 
     override fun onItemClicked(type: String, index: Int, content: String) {
-
+        viewModel.setCurrentContentIndex(index)
+        viewModel.setCurrentContentContent(content)
         when (type) {
             ARTICLE -> findNavController().navigate(R.id.action_libraryContentFragment_to_articleFragment)
-            VIDEO -> findNavController().navigate(R.id.action_libraryContentFragment_to_videoFragment)
-            AUDIO -> findNavController().navigate(R.id.action_libraryContentFragment_to_audioFragment)
         }
     }
 

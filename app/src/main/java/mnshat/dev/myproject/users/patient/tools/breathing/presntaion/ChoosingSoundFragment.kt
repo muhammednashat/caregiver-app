@@ -13,8 +13,6 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.users.patient.tools.breathing.model.Sound
 import mnshat.dev.myproject.databinding.FragmentChooseSuondBinding
-import mnshat.dev.myproject.getLibraryContent.presentaion.OnItemSoundClicked
-import mnshat.dev.myproject.getLibraryContent.presentaion.SoundsAdapter
 import kotlin.getValue
 
 @AndroidEntryPoint

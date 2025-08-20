@@ -1,49 +1,48 @@
 package mnshat.dev.myproject.getLibraryContent.presentaion
 
-import androidx.lifecycle.ViewModelProvider
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.adapters.CommonContentLibraryAdapter
-import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment2
+import mnshat.dev.myproject.getLibraryContent.presentaion.CommonContentLibraryAdapter
+import mnshat.dev.myproject.base.BaseBottomSheetDialogFragment
 import mnshat.dev.myproject.databinding.FragmentCommonContentBinding
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 import mnshat.dev.myproject.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.util.ARTICLE
-import mnshat.dev.myproject.util.ENGLISH_KEY
-import mnshat.dev.myproject.util.VIDEO
+import mnshat.dev.myproject.util.log
 
 
-class CommonContentFragment : BaseBottomSheetDialogFragment2<FragmentCommonContentBinding>(),
+class CommonContentFragment : BaseBottomSheetDialogFragment(),
     OnItemLibraryContentClicked {
 
-    private lateinit var viewModel: LibraryViewModel
+    private val viewModel: LibraryViewModel by activityViewModels()
+    private lateinit var binding: FragmentCommonContentBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentCommonContentBinding.inflate(inflater, container, false)
+        setupClickListener()
+        initializeViews()
+        return binding.root
+    }
 
 
-    override fun getLayout() = R.layout.fragment_common_content
-
-    override fun setupClickListener() {
+    private fun setupClickListener() {
         binding.close.setOnClickListener {
             dismiss()
         }
     }
 
-    override fun initializeViews() {
-        if (currentLang != ENGLISH_KEY) {
-            binding.close.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-            binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
-        }
-        initViewModel()
-
+     private fun initializeViews() {
         setRecyclerMostCommon(viewModel.mLibraryContentMostCommon)
-    }
-
-    private fun initViewModel() {
-//        val libraryDao = AppDatabase.getDatabase(requireContext()).libraryDao()
-//        val libraryContentRepo = LibraryContentRepo(libraryDao)
-//        val getLibraryContentUseCase = GetLibraryContentUseCase(libraryContentRepo)
-//        val factory = LibraryViewModelFactory(sharedPreferences, getLibraryContentUseCase,activity?.application!!)
-//        viewModel = ViewModelProvider(requireActivity(), factory)[LibraryViewModel::class.java]
     }
 
     private fun setRecyclerMostCommon(libraryContent: List<LibraryContent>?) {
@@ -53,7 +52,7 @@ class CommonContentFragment : BaseBottomSheetDialogFragment2<FragmentCommonConte
             adapter = CommonContentLibraryAdapter(
                 libraryContent,
                 requireActivity(),
-                sharedPreferences,
+                viewModel.sharedPreferences,
                 this@CommonContentFragment
             )
         }
@@ -61,12 +60,16 @@ class CommonContentFragment : BaseBottomSheetDialogFragment2<FragmentCommonConte
 
 
     override fun onItemClicked(type: String, index: Int, content: String) {
+//        log("onItemClicked")
+//        log(content)
+//        log("index $index")
+//        log("type $type")
+
         updateCurrentIndex(index)
         updateCurrentContent(content)
         when (type) {
             ARTICLE -> findNavController().navigate(R.id.action_libraryContentFragment_to_articleFragment)
-            VIDEO -> findNavController().navigate(R.id.action_libraryContentFragment_to_videoFragment)
-//            AUDIO -> findNavController().navigate(R.id.action_libraryContentFragment_to_audioFragment)
+
         }
         dismiss()
     }

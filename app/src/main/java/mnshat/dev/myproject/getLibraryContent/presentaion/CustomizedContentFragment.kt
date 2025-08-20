@@ -1,37 +1,43 @@
 package mnshat.dev.myproject.getLibraryContent.presentaion
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.adapters.CustomizedContentLibraryAdapter
-import mnshat.dev.myproject.commonFeatures.getLibraryContent.presentaion.CustomizedContentFragmentArgs
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentCustomizedContentBinding
 import mnshat.dev.myproject.getLibraryContent.domain.entity.LibraryContent
+import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 import mnshat.dev.myproject.util.ARTICLE
-import mnshat.dev.myproject.util.AUDIO
-import mnshat.dev.myproject.util.ENGLISH_KEY
-import mnshat.dev.myproject.util.VIDEO
+import kotlin.getValue
 
 
-class CustomizedContentFragment : BaseLibraryFragment<FragmentCustomizedContentBinding>() {
+class CustomizedContentFragment : BaseFragment(), OnItemLibraryContentClicked {
 
 
-    override fun getLayout() = R.layout.fragment_customized_content
+    private  val viewModel: LibraryViewModel  by activityViewModels()
+    private lateinit var binding: FragmentCustomizedContentBinding
 
-    override fun initializeViews() {
-        super.initializeViews()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        binding = FragmentCustomizedContentBinding.inflate(inflater, container, false)
         retrieveDataFromArguments()
+        setupClickListener()
+        return binding.root
     }
 
 
-    private fun intiBackgroundBasedOnLang() {
-        if (currentLang != ENGLISH_KEY) {
-            binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-        }
-    }
+
 
     private fun retrieveDataFromArguments() {
-
         val args: CustomizedContentFragmentArgs by navArgs()
         binding.textTitle.text = args.textTitle
         setupUserRecyclerView(args.libraryContentList.toList())
@@ -42,15 +48,13 @@ class CustomizedContentFragment : BaseLibraryFragment<FragmentCustomizedContentB
             adapter = CustomizedContentLibraryAdapter(
                 libraryContent,
                 requireActivity(),
-                sharedPreferences,
+                viewModel.sharedPreferences,
                 this@CustomizedContentFragment
             )
         }
     }
 
-    override fun setupClickListener() {
-        super.setupClickListener()
-
+    private fun setupClickListener() {
         binding.icBack.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -58,14 +62,10 @@ class CustomizedContentFragment : BaseLibraryFragment<FragmentCustomizedContentB
     }
 
     override fun onItemClicked(type: String, index: Int, content: String) {
-        super.onItemClicked(type, index, content)
-
+        viewModel.setCurrentContentIndex(index)
+        viewModel.setCurrentContentContent(content)
         when (type) {
             ARTICLE -> findNavController().navigate(R.id.action_customizedContentFragment_to_articleFragment)
-            VIDEO -> findNavController().navigate(R.id.action_customizedContentFragment_to_videoFragment)
-            AUDIO -> findNavController().navigate(R.id.action_customizedContentFragment_to_audioFragment)
-
         }
     }
-
 }

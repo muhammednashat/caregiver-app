@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.getLibraryContent.presentaion
+package mnshat.dev.myproject.users.patient.tools.breathing.presntaion
 
 
 import android.content.Context
@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.users.patient.tools.breathing.model.Sound
-
 
 class SoundsAdapter(
     private val sounds: List<Sound>,

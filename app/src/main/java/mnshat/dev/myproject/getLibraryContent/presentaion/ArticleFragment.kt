@@ -2,13 +2,20 @@ package mnshat.dev.myproject.getLibraryContent.presentaion
 
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.posts.presentation.ChooseSupporterFragment
 import mnshat.dev.myproject.databinding.FragmentArticleBinding
 import mnshat.dev.myproject.getLibraryContent.domain.entity.LibraryContent
+import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 import mnshat.dev.myproject.posts.OnSendButtonClicked
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.util.ARTICLE
@@ -20,33 +27,41 @@ import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
 
-class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendButtonClicked, TextToSpeech.OnInitListener {
+class ArticleFragment : BaseFragment(), OnSendButtonClicked, TextToSpeech.OnInitListener, OnItemLibraryContentClicked {
 
 
-    override fun getLayout() = R.layout.fragment_article
+    private val viewModel: LibraryViewModel by activityViewModels()
+    private lateinit var binding: FragmentArticleBinding
     private lateinit var htmlText: String
     private lateinit var textToSpeech: TextToSpeechUtil
-    override fun initializeViews() {
-        super.initializeViews()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        binding = FragmentArticleBinding.inflate(inflater, container, false)
+        setupClickListener()
         initializeView()
+        return binding.root
+
     }
 
 
     private fun initializeView() {
         textToSpeech =  TextToSpeechUtil(TextToSpeech(requireActivity(), this))
         val content = viewModel.getContent()
-//        content.arText = "#0081bf"
         binding.container.backgroundTintList =
-            ColorStateList.valueOf(Color.parseColor(content.backgroundColor)); // Change to any color
+            ColorStateList.valueOf(Color.parseColor(content.backgroundColor));
         setArticle(content)
         setTitles(content)
         loadImage(requireActivity(), content.imageURL, binding.imageView)
         loadImage(requireActivity(), content.imageURL, binding.imageView2)
-        binding.date.text = content.date
     }
 
     private fun setTitles(content: LibraryContent) {
-        if (sharedPreferences.getString(LANGUAGE) == "en") {
+        if (viewModel.sharedPreferences.getString(LANGUAGE) == "en") {
             binding.title.text = content.enTitle
         } else {
             binding.title.text = content.arTitle
@@ -58,7 +73,7 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
         val textColor = "#204167"
         log(content.arDescription.toString())
 
-        htmlText = if (sharedPreferences.getString(LANGUAGE) == "en") {
+        htmlText = if (viewModel.sharedPreferences.getString(LANGUAGE) == "en") {
             content.enDescription.toString()
         } else {
             log("ar")
@@ -70,8 +85,7 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
 
     }
 
-    override fun setupClickListener() {
-        super.setupClickListener()
+    private fun setupClickListener() {
 
         binding.icBack.setOnClickListener {
             findNavController().popBackStack()
@@ -90,7 +104,7 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
 
 
         binding.share.setOnClickListener {
-            if (sharedPreferences.getBoolean(HAS_PARTNER)) {
+            if (viewModel.sharedPreferences.getBoolean(HAS_PARTNER)) {
                 val fragment = ChooseSupporterFragment()
                 fragment.initOnConfirmButtonClicked(this)
                 fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
@@ -105,11 +119,22 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
 
     }
 
-    override fun onItemClicked(type: String, index: Int, content: String) {
-        super.onItemClicked(type, index, content)
-        initializeView()
-    }
+    fun displaySuggestedContent(
+        onItemLibraryContentClicked: OnItemLibraryContentClicked,
+        title: String,
+        type: String
+    ) {
 
+        val suggestedContentFragment =
+            SuggestedContentFragment()
+                .setType(type)
+                .setOnItemLibraryContent(onItemLibraryContentClicked)
+                .setTitle(title)
+        suggestedContentFragment.show(
+            childFragmentManager,
+            suggestedContentFragment::class.java.name
+        )
+    }
 
     override fun onSendClicked(list: MutableList<String>) {
         showProgressDialog()
@@ -132,11 +157,20 @@ class ArticleFragment : BaseLibraryFragment<FragmentArticleBinding>(), OnSendBut
         )
 
     override fun onInit(p0: Int) {
+
     }
 
     override fun onDestroy() {
         super.onDestroy()
         textToSpeech.release()
     }
+
+    override fun onItemClicked(type: String, index: Int, content: String) {
+        viewModel.setCurrentContentIndex(index)
+        initializeView()
+
+    }
+
+
 
 }

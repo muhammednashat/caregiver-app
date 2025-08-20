@@ -55,7 +55,7 @@ class LibraryViewModel @Inject constructor(
 
     fun getContent(): LibraryContent {
         val list = getCurrentContents()
-        val content = list.get(currentContentIndex)
+        val content = list[currentContentIndex]
         return content
     }
 
