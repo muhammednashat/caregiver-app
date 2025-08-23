@@ -1,15 +1,13 @@
-package mnshat.dev.myproject.adapters
+package mnshat.dev.myproject.chatting.presintation
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.model.Message
+import mnshat.dev.myproject.chatting.entity.Message
 import mnshat.dev.myproject.util.getDateAsString
 
 
@@ -27,7 +25,6 @@ class MessagesAdapter(private val messages: List<Message>,private val userId: St
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
      val message = messages[position]
-
          if (message.senderId == userId){
             setUpSenderMessage(holder,message)
          }else{

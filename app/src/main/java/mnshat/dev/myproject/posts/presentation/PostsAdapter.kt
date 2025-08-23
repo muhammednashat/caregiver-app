@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.adapters
+package mnshat.dev.myproject.posts.presentation
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -16,7 +16,6 @@ import mnshat.dev.myproject.util.LIBRARY
 import mnshat.dev.myproject.util.SUPPLICATIONS
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.getGratitudeQuestionsList
-
 
 class PostsAdapter(
     private val posts: List<Post>,
@@ -39,7 +38,7 @@ class PostsAdapter(
      when(post.type){
             GRATITUDE ->  setUpGratitude(holder,post)
             SUPPLICATIONS -> setUpSupplications(holder,post)
-            LIBRARY-> setUpLibrary(holder,post)
+            LIBRARY -> setUpLibrary(holder,post)
         }
         holder.display.setOnClickListener {
             itemPostsClicked.onItemClicked(post)

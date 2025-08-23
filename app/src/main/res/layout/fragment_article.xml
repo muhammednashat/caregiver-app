@@ -175,6 +175,7 @@ android:scaleType="fitXY"
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:id="@+id/sharing_container"
                 android:background="@drawable/corner_top_lift_right"
                 android:backgroundTint="@color/light_gray"
                 app:layout_constraintBottom_toBottomOf="parent"

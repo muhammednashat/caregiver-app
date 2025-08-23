@@ -1,9 +1,6 @@
-package mnshat.dev.myproject.model
+package mnshat.dev.myproject.chatting.entity
 
-data class Messages(
-
+data class Chatting(
     val meta: MetaDataMessages? = null,
     var messages: MutableList<Message>? = mutableListOf()
-
-
 )

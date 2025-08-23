@@ -1,23 +1,15 @@
 package mnshat.dev.myproject
 
 
-// Done
-/**
- * refactor login and sign up process
- * reviewed  forgot password process
- * saved login in info in shared preferences
- * added comments
- * refactor adding supporters process
- * Ui enhancement
- */
+
 
 
 //Doing
 /**
  *
- * share a library content
+ *
  * test caregiver posts
- * store caregiver and test partner email
+ * store caregiver and test partner email , partner id
  *
  *
  *

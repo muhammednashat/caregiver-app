@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
@@ -18,19 +19,22 @@ import mnshat.dev.myproject.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.interfaces.OnItemLibraryContentClicked
 import mnshat.dev.myproject.posts.OnSendButtonClicked
 import mnshat.dev.myproject.model.Post
+import mnshat.dev.myproject.posts.presentation.PostsViewModel
 import mnshat.dev.myproject.util.ARTICLE
-import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.LIBRARY
 import mnshat.dev.myproject.util.TextToSpeechUtil
 import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
+import kotlin.getValue
 
 
 class ArticleFragment : BaseFragment(), OnSendButtonClicked, TextToSpeech.OnInitListener, OnItemLibraryContentClicked {
 
 
     private val viewModel: LibraryViewModel by activityViewModels()
+    private val postsViewModel: PostsViewModel by viewModels()
+
     private lateinit var binding: FragmentArticleBinding
     private lateinit var htmlText: String
     private lateinit var textToSpeech: TextToSpeechUtil
@@ -44,8 +48,8 @@ class ArticleFragment : BaseFragment(), OnSendButtonClicked, TextToSpeech.OnInit
         binding = FragmentArticleBinding.inflate(inflater, container, false)
         setupClickListener()
         initializeView()
+        observeViewModel()
         return binding.root
-
     }
 
 
@@ -60,6 +64,14 @@ class ArticleFragment : BaseFragment(), OnSendButtonClicked, TextToSpeech.OnInit
         loadImage(requireActivity(), content.imageURL, binding.imageView2)
     }
 
+    private fun observeViewModel() {
+        postsViewModel.statusSharing.observe(viewLifecycleOwner){
+            if (it){
+                showToast(getString(R.string.shared_successfully))
+            }
+            dismissProgressDialog()
+        }
+    }
     private fun setTitles(content: LibraryContent) {
         if (viewModel.sharedPreferences.getString(LANGUAGE) == "en") {
             binding.title.text = content.enTitle
@@ -104,13 +116,7 @@ class ArticleFragment : BaseFragment(), OnSendButtonClicked, TextToSpeech.OnInit
 
 
         binding.share.setOnClickListener {
-            if (viewModel.sharedPreferences.getBoolean(HAS_PARTNER)) {
-                val fragment = ChooseSupporterFragment()
-                fragment.initOnConfirmButtonClicked(this)
-                fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
-            } else {
-                showToast(getString(R.string.no_supporters_text))
-            }
+            navigateToChooseSupporter()
         }
 
         binding.suggest.setOnClickListener {
@@ -118,7 +124,18 @@ class ArticleFragment : BaseFragment(), OnSendButtonClicked, TextToSpeech.OnInit
         }
 
     }
+    private fun navigateToChooseSupporter() {
+        if (!postsViewModel.user.hasPartner!!){
+            showToast(getString(R.string.no_supporters_text))
+        } else if (!isConnected()) {
+            showNoInternetSnackBar(binding.root)
+        } else {
+            val fragment = ChooseSupporterFragment()
+            fragment.initOnConfirmButtonClicked(this)
+            fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
+        }
 
+    }
     fun displaySuggestedContent(
         onItemLibraryContentClicked: OnItemLibraryContentClicked,
         title: String,
@@ -136,24 +153,17 @@ class ArticleFragment : BaseFragment(), OnSendButtonClicked, TextToSpeech.OnInit
         )
     }
 
-    override fun onSendClicked(list: MutableList<String>) {
+    override fun onSendClicked(supporters: MutableList<String>) {
         showProgressDialog()
-        viewModel.shareContent(post(list)) {
-            if (it == null) {
-                showToast("done")
-            } else {
-                showToast(it)
-            }
-            dismissProgressDialog()
-        }
+        postsViewModel.sharePost(post(supporters))
 
     }
 
-    fun post(list: MutableList<String>) =
+  private  fun post(supporters: MutableList<String>) =
         Post(
             type = LIBRARY,
             libraryContent = viewModel.getContent(),
-            supporters = list
+            supporters = supporters
         )
 
     override fun onInit(p0: Int) {

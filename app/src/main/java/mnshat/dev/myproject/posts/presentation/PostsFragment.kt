@@ -10,7 +10,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.adapters.PostsAdapter
+import mnshat.dev.myproject.posts.presentation.PostsAdapter
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentPostsBinding
 import mnshat.dev.myproject.interfaces.ItemPostsClicked
@@ -19,11 +19,9 @@ import mnshat.dev.myproject.getLibraryContent.domain.entity.LibraryContent
 import mnshat.dev.myproject.model.Post
 import mnshat.dev.myproject.model.Supplication
 import mnshat.dev.myproject.util.ARTICLE
-import mnshat.dev.myproject.util.AUDIO
 import mnshat.dev.myproject.util.GRATITUDE
 import mnshat.dev.myproject.util.LIBRARY
 import mnshat.dev.myproject.util.SUPPLICATIONS
-import mnshat.dev.myproject.util.VIDEO
 
 @AndroidEntryPoint
 class PostsFragment : BaseFragment(), ItemPostsClicked {
@@ -115,9 +113,8 @@ class PostsFragment : BaseFragment(), ItemPostsClicked {
     private fun navigateToLibrary(libraryContent: LibraryContent?) {
        lateinit var action:NavDirections
         when(libraryContent!!.type){
-            ARTICLE ->  action = PostsFragmentDirections.actionPostsFragment2ToDisplayArticleFragment(libraryContent)
-            VIDEO -> action = PostsFragmentDirections.actionPostsFragment2ToPlayVideoFragment(libraryContent)
-            AUDIO -> action = PostsFragmentDirections.actionPostsFragment2ToPlayAudioFragment(libraryContent)
+
+//            ARTICLE ->  action = PostsFragmentDirections.actionPostsFragment2ToDisplayArticleFragment(libraryContent)
         }
         findNavController().navigate(action)
     }

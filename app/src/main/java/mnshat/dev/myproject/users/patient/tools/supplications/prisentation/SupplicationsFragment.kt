@@ -161,7 +161,6 @@ class SupplicationsFragment : BaseFragment() , OnSendButtonClicked {
             fragment.show(childFragmentManager, ChooseSupporterFragment::class.java.name)
         }
 
-
     }
 
     private fun showFullTextSupplicationDialog(supplicationText:String) {

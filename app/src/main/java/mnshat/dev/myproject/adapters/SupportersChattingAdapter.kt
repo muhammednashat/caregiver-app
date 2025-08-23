@@ -9,12 +9,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.interfaces.ItemMessagesListClicked
-import mnshat.dev.myproject.auth.data.entity.RegistrationData
+import mnshat.dev.myproject.auth.data.entity.UserProfile
 import mnshat.dev.myproject.util.loadImage
 
 
 class SupportersChattingAdapter(
-    private val itemList: List<RegistrationData>,
+    private val itemList: List<UserProfile>,
     private val context: Context,
     private val itemMessagesListClicked :ItemMessagesListClicked
 ) :

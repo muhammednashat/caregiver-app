@@ -18,32 +18,32 @@ class SupportersRepo (
 
     fun userProfile () = sharedPreferences.getUserProfile()
 
-    suspend fun retrieveSupportersIds(userId: String) {
+
+    suspend fun retrievePartnersIds(userId: String) {
         try {
             val snapShot =
                 firestore.collection(USERS).document(userId).collection("Partners").get().await()
-            val supportersIds = mutableListOf<String>()
+            val partnersIds = mutableListOf<String>()
 
             for (document in snapShot) {
                 val partner = document.toObject(Partner::class.java)
-                supportersIds.add(partner.id!!)
+                partnersIds.add(partner.id!!)
             }
-            retrieveSupporters(supportersIds)
+            retrievePartners(partnersIds)
         } catch (e: Exception) {
             supportersProfile.value = null
         }
     }
 
-    private suspend fun retrieveSupporters(supportersIds: List<String>) {
+    private suspend fun retrievePartners(partnersIds: List<String>) {
         try {
             val supporters = mutableListOf<UserProfile>()
             val snapshotQuery =
-                firestore.collection(USERS).whereIn("id", supportersIds).get().await()
+                firestore.collection(USERS).whereIn("id", partnersIds).get().await()
             for (document in snapshotQuery) {
                 supporters.add(document.toObject(UserProfile::class.java))
             }
             supportersProfile.value = supporters
-
         } catch (e: Exception) {
             supportersProfile.value = null
         }

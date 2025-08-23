@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.model
+package mnshat.dev.myproject.chatting.entity
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

@@ -48,7 +48,7 @@ class PostsViewModel @Inject constructor(
 
     fun retrieveSupporters() {
         viewModelScope.launch {
-            supportersRepo.retrieveSupportersIds(supportersRepo.userProfile().id!!)
+            supportersRepo.retrievePartnersIds(supportersRepo.userProfile().id!!)
         }
     }
 

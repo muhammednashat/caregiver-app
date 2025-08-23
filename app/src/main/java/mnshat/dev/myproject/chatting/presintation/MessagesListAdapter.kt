@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.adapters
+package mnshat.dev.myproject.chatting.presintation
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.interfaces.ItemMessagesListClicked
-import mnshat.dev.myproject.model.Messages
+import mnshat.dev.myproject.chatting.entity.Chatting
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.TYPE_OF_USER
@@ -20,7 +20,7 @@ import java.util.Locale
 
 
 class MessagesListAdapter(
-    private val messages: List<Messages>,
+    private val messages: List<Chatting>,
     private val context: Context,
     private val sharedPreferencesManager: SharedPreferencesManager,
     private val itemMessagesListClicked: ItemMessagesListClicked

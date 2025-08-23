@@ -1,4 +1,4 @@
-package mnshat.dev.myproject.model
+package mnshat.dev.myproject.chatting.entity
 
 data class Message(
     val text: String? = null,

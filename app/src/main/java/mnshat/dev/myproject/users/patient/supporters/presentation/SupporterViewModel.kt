@@ -38,7 +38,7 @@ class SupporterViewModel @Inject constructor(
     fun retrieveSupporters(){
         viewModelScope.launch {
             try {
-                    supportersRepo.retrieveSupportersIds(userProfile().id!!)
+                    supportersRepo.retrievePartnersIds(userProfile().id!!)
             }catch (e:Exception){
                 log("Exception")
                log(e.message.toString())

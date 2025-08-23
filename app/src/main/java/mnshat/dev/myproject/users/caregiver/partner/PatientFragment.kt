@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.ItemClickListener
 import mnshat.dev.myproject.adapters.RecyclerAdapter
-import mnshat.dev.myproject.commonFeatures.chatting.MessagesListFragmentDirections
 import mnshat.dev.myproject.databinding.FragmentPatientBinding
 import mnshat.dev.myproject.users.caregiver.main.BaseCaregiverFragment
 import mnshat.dev.myproject.util.ID_PARTNER

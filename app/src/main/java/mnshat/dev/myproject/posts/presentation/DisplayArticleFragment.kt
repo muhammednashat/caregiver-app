@@ -1,31 +1,61 @@
 package mnshat.dev.myproject.posts.presentation
 
+import android.os.Bundle
+import android.speech.tts.TextToSpeech
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.base.BaseFragment
+import mnshat.dev.myproject.databinding.FragmentArticleBinding
 import mnshat.dev.myproject.databinding.FragmentDisplayArticleBinding
 import mnshat.dev.myproject.getLibraryContent.domain.entity.LibraryContent
-import mnshat.dev.myproject.users.patient.BasePatientFragment
+import mnshat.dev.myproject.getLibraryContent.presentaion.LibraryViewModel
 import mnshat.dev.myproject.util.LANGUAGE
+import mnshat.dev.myproject.util.TextToSpeechUtil
+import mnshat.dev.myproject.util.loadImage
+import mnshat.dev.myproject.util.log
 
-class DisplayArticleFragment : BasePatientFragment<FragmentDisplayArticleBinding>() {
+class DisplayArticleFragment : BaseFragment(), TextToSpeech.OnInitListener {
 
-    override fun getLayout() = R.layout.fragment_display_article
+    private lateinit var binding: FragmentDisplayArticleBinding
+    private val viewModel: LibraryViewModel by activityViewModels()
+    private lateinit var htmlText: String
+    private lateinit var textToSpeech: TextToSpeechUtil
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
 
-    override fun initializeViews() {
-        super.initializeViews()
+        binding = FragmentDisplayArticleBinding.inflate(inflater, container, false)
         initializeView()
+        setupClickListener()
+        return binding.root
+
+
     }
 
+
     private fun initializeView() {
-    val libraryContent = DisplayArticleFragmentArgs.fromBundle(requireArguments()).libraryContent
+        textToSpeech =  TextToSpeechUtil(TextToSpeech(requireActivity(), this))
+
+        val libraryContent =
+            DisplayArticleFragmentArgs.fromBundle(requireArguments()).libraryContent as LibraryContent
         setArticle(libraryContent)
         setTitles(libraryContent)
-//        binding.date.text = libraryContent.date
+        loadImage(requireActivity(), libraryContent.imageURL, binding.imageView)
+        loadImage(requireActivity(), libraryContent.imageURL, binding.imageView2)
 
     }
 
     private fun setTitles(content: LibraryContent) {
-        if (sharedPreferences.getString(LANGUAGE) == "en") {
+        if (viewModel.sharedPreferences.getString(LANGUAGE) == "en") {
             binding.title.text = content.enTitle
         } else {
             binding.title.text = content.arTitle
@@ -33,12 +63,42 @@ class DisplayArticleFragment : BasePatientFragment<FragmentDisplayArticleBinding
     }
 
     private fun setArticle(content: LibraryContent) {
-        if (sharedPreferences.getString(LANGUAGE) == "en") {
-
-            binding.article.text = content.enText?.repeat(100) // repeat the text 100 times
+        val headerColor = "#204167"
+        htmlText = if (viewModel.sharedPreferences.getString(LANGUAGE) == "en") {
+            content.enDescription.toString()
         } else {
-            binding.article.text = content.arTitle?.repeat(100) // repeat the text 100 times
+            log("ar")
+            content.arDescription.toString()
         }
+        val formattedHtml = htmlText.replace("\$headerColor", headerColor)
+        val spannedText = HtmlCompat.fromHtml(formattedHtml, HtmlCompat.FROM_HTML_MODE_LEGACY)
+        binding.article.text = spannedText
+    }
+
+    private fun setupClickListener() {
+
+        binding.icBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        binding.play.setOnClickListener {
+            if(textToSpeech.textToSpeech.isSpeaking){
+                textToSpeech.textToSpeech.stop()
+                binding.play.setImageResource(R.drawable.icon_stop_sound)
+            }else{
+                textToSpeech.speakText(htmlText)
+                binding.play.setImageResource(R.drawable.icon_play_sound)
+
+            }
+        }
+
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        textToSpeech.release()
+    }
+    override fun onInit(p0: Int) {
+
     }
 
 }

@@ -37,7 +37,7 @@
             android:name=".users.patient.calender.presentaion.CalenderActivity"
             android:exported="false" />
         <activity
-            android:name=".commonFeatures.chatting.ChatActivity"
+            android:name=".chatting.presintation.ChatActivity"
             android:exported="false" />
         <activity
             android:name=".getLibraryContent.presentaion.LibraryActivity"

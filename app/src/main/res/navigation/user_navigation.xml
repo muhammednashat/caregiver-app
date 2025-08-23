@@ -80,14 +80,8 @@
             android:id="@+id/action_postsFragment2_to_displaySupplicationFragment"
             app:destination="@id/displaySupplicationFragment" />
         <action
-            android:id="@+id/action_postsFragment2_to_playVideoFragment"
-            app:destination="@id/playVideoFragment" />
-        <action
             android:id="@+id/action_postsFragment2_to_displayArticleFragment"
             app:destination="@id/displayArticleFragment" />
-        <action
-            android:id="@+id/action_postsFragment2_to_playAudioFragment"
-            app:destination="@id/playAudioFragment" />
     </fragment>
     <fragment
         android:id="@+id/displayGratitudeFragment"
@@ -110,24 +104,6 @@
         android:id="@+id/displayArticleFragment"
         android:name="mnshat.dev.myproject.posts.presentation.DisplayArticleFragment"
         android:label="DisplayArticleFragment" >
-        <argument
-            android:name="libraryContent"
-            app:argType="mnshat.dev.myproject.getLibraryContent.domain.entity.LibraryContent" />
-    </fragment>
-    <fragment
-        android:id="@+id/playAudioFragment"
-        android:name="mnshat.dev.myproject.posts.presentation.PlayAudioFragment"
-        android:label="fragment_play_audio"
-        tools:layout="@layout/fragment_play_audio" >
-        <argument
-            android:name="libraryContent"
-            app:argType="mnshat.dev.myproject.getLibraryContent.domain.entity.LibraryContent" />
-    </fragment>
-    <fragment
-        android:id="@+id/playVideoFragment"
-        android:name="mnshat.dev.myproject.posts.presentation.PlayVideoFragment"
-        android:label="fragment_play_video"
-        tools:layout="@layout/fragment_play_video" >
         <argument
             android:name="libraryContent"
             app:argType="mnshat.dev.myproject.getLibraryContent.domain.entity.LibraryContent" />
