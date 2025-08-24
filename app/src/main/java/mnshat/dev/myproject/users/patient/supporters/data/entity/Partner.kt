@@ -7,5 +7,4 @@ import kotlinx.parcelize.Parcelize
 
 data class Partner (
     val id:String? = null,
-) : Parcelable {
-}
+) : Parcelable

@@ -39,6 +39,7 @@ class MainBreathFragment : BaseFragment() {
          if (viewModel.soundId == 0) {
              binding.sound.setImageResource(R.drawable.no_musiz)
          }
+
         binding.remainingTimeFormat.text =
             getString(R.string.remaining_time_format, 0, "ثواني متبقية")
     }

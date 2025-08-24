@@ -71,6 +71,7 @@ class GratitudeFragment : BaseFragment(), OnConfirmButtonClicked, OnSendButtonCl
         binding.icBack.setOnClickListener {
             findNavController().popBackStack()
         }
+
         binding.btnSend.setOnClickListener {
             val answer = binding.edtAnswer.text.toString()
             if ( isValidation(answer)){

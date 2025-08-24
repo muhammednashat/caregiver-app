@@ -19,7 +19,8 @@ class MinutesAdapter(
 ) :
     RecyclerView.Adapter<MinutesAdapter.ViewHolder>() {
 
-        private var selectedPosition = RecyclerView.NO_POSITION
+        private var selectedPosition = RecyclerView.NO_POSITION // -1
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val minuteText: TextView = itemView.findViewById(R.id.text)
         val root: ConstraintLayout = itemView.findViewById(R.id.root)
@@ -32,6 +33,7 @@ class MinutesAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+          // 0 == 0
         if (selectedPosition == position) {
 
             holder.minuteText.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.white))

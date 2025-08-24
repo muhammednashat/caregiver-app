@@ -29,8 +29,10 @@ class GratitudeRepo (
     }
 
   suspend fun saveGratitudeRemotely(gratitude: Gratitude) {
+
         fireStore.collection(USERS).document(user.id!!).collection(GRATITUDE).add(gratitude).await()
-    }
+
+  }
 
 
      fun retrieveGratitudeListRemotely(){

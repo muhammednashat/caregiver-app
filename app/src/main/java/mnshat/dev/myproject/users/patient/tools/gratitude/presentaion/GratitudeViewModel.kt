@@ -20,9 +20,11 @@ class GratitudeViewModel @Inject constructor(
 
     private var _selectedPosition:Int=0
     fun getSelectedPosition() = _selectedPosition
+
+
     fun getRandomQuestion(context: Context): String {
         val questions = gratitudeRepo.getGratitudeQuestionsList(context)
-        val randomNumber = Random.nextInt(questions.size.minus(1))
+        val randomNumber = Random.nextInt(questions.size.minus(1))  //3
         _selectedPosition = randomNumber
         val question = questions[randomNumber]
         return question

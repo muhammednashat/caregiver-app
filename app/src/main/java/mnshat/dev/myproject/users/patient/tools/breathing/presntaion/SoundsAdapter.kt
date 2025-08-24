@@ -29,7 +29,7 @@ class SoundsAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val sound = sounds?.get(position)!!
-         holder.title.text = sound?.name;
+         holder.title.text = sound?.name
 
         holder.imageView.setImageResource(sound.image)
         holder.itemView.setOnClickListener {

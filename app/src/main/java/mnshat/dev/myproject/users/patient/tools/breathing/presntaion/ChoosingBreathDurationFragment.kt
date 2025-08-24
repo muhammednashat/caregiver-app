@@ -16,7 +16,7 @@ import kotlin.getValue
 
 @AndroidEntryPoint
 
-class ChoosingBreathDurationFragment : BaseFragment(), MinutesListener  {
+class ChoosingBreathDurationFragment : BaseFragment(),MinutesListener  {
 
     private  val viewModel : BreathViewModel by activityViewModels()
     private  lateinit var  binding : FragmentChoosingBreathDurationBinding
@@ -60,12 +60,13 @@ class ChoosingBreathDurationFragment : BaseFragment(), MinutesListener  {
 }
 
 
-    override fun onItemClicked(duration: Duration) {
 
+
+    override fun onItemClicked(duration: Duration) {
         binding.imageView.setImageResource(duration.image)
         binding.button.isEnabled = true
-        viewModel.currentDuration = duration.durationNumber
-        viewModel.setTextDuration(duration.durationText)
+        viewModel.currentDuration = duration.durationNumber // 10
+        viewModel.setTextDuration(duration.durationText) // 10 min
     }
 
 
