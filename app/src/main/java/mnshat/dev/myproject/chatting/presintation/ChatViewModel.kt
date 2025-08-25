@@ -4,19 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import mnshat.dev.myproject.auth.data.entity.UserProfile
 import mnshat.dev.myproject.chatting.data.ChattingRepo
-import mnshat.dev.myproject.chatting.entity.Chatting
 import mnshat.dev.myproject.chatting.entity.Message
 import mnshat.dev.myproject.chatting.entity.MetaDataMessages
 import mnshat.dev.myproject.users.patient.supporters.data.repos.SupportersRepo
-import mnshat.dev.myproject.util.CHATS
 import mnshat.dev.myproject.util.SharedPreferencesManager
-import mnshat.dev.myproject.util.log
 import javax.inject.Inject
 
 
@@ -35,7 +29,7 @@ class ChatViewModel @Inject constructor(
     val user = chattingRepo.user
     private val _clearEditText = MutableLiveData<Boolean>()
     val clearEditText:LiveData<Boolean> = _clearEditText
-
+    var partnerId = ""
 
     init {
         chattingRepo.retrieveChattingList()
@@ -47,7 +41,7 @@ class ChatViewModel @Inject constructor(
     fun listenToMessages() {
         viewModelScope.launch {
             try {
-                chattingRepo.listenToMessages()
+                chattingRepo.listenToMessages(partnerId)
             }catch (e:Exception){
 
             }
@@ -65,11 +59,25 @@ class ChatViewModel @Inject constructor(
     }
 
 
+fun sendMessage(message: Message,metaDataMessages: MetaDataMessages){
+    viewModelScope.launch {
+        try {
+            chattingRepo.sendMessage(message,metaDataMessages, partnerId)
+            _clearEditText.value = true
+        }catch (e:Exception){
+
+        }
+}
+}
 
 
 
     fun resetClearEditText(){
         _clearEditText.value = false
+    }
+
+    fun clearMessages() {
+        messages.value = null
     }
 
 }

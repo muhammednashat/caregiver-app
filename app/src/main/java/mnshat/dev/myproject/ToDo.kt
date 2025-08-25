@@ -6,8 +6,8 @@ package mnshat.dev.myproject
 
 //Doing
 /**
- *
- *
+ * edit profile
+ * add extra activities
  * test caregiver posts
  * store caregiver and test partner email , partner id
  *

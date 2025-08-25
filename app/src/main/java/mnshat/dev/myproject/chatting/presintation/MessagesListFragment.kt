@@ -12,9 +12,6 @@ import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentMessagesListBinding
 import mnshat.dev.myproject.interfaces.ItemMessagesListClicked
 import mnshat.dev.myproject.chatting.entity.Chatting
-import mnshat.dev.myproject.util.CAREGIVER
-import mnshat.dev.myproject.util.errorSnackBar
-import mnshat.dev.myproject.util.log
 import kotlin.getValue
 
 
@@ -120,9 +117,9 @@ class MessagesListFragment : BaseFragment(),ItemMessagesListClicked {
     }
 
     override fun onItemClicked(name: String, idPartner: String, urlImage: String) {
-
-//        val action = MessagesListFragmentDirections.actionMessagesListFragmentToChatFragment(idPartner,urlImage,name)
-//        findNavController().navigate(action)
+        viewModel.partnerId = idPartner
+        val action = MessagesListFragmentDirections.actionMessagesListFragmentToChatFragment(idPartner,urlImage,name)
+        findNavController().navigate(action)
 
     }
 

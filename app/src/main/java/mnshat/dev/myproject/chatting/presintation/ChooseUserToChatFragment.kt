@@ -52,6 +52,7 @@ class ChooseUserToChatFragment : BaseBottomSheetDialogFragment() ,
         dismiss()
     }
     private fun navigateToChatFragment(id: String, urlImage: String, name: String) {
+        viewModel.partnerId = id
         val action =
             MessagesListFragmentDirections
                 .actionMessagesListFragmentToChatFragment(

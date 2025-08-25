@@ -26,6 +26,7 @@
             android:id="@+id/ic_more"
             android:layout_width="32dp"
             android:layout_height="24dp"
+            android:visibility="gone"
             android:layout_marginEnd="@dimen/margin_medium"
             app:layout_constraintBottom_toBottomOf="@+id/name"
             app:layout_constraintEnd_toEndOf="parent"

@@ -14,6 +14,7 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentChatBinding
 import mnshat.dev.myproject.chatting.entity.Message
+import mnshat.dev.myproject.chatting.entity.MetaDataMessages
 import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
 
@@ -31,9 +32,7 @@ class ChatFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentChatBinding.inflate(inflater, container, false)
-
         checkInternetConnection()
-
         return binding.root
     }
 
@@ -65,6 +64,7 @@ class ChatFragment : BaseFragment() {
         viewModel.listenToMessages()
         observeViewModel()
         addTextChangedListener()
+        setupClickListener()
     }
 
     private fun retrieveDataFromArguments() {
@@ -81,25 +81,24 @@ class ChatFragment : BaseFragment() {
 
     private fun addTextChangedListener() {
 
-//        binding.messageEditText.addTextChangedListener(object : TextWatcher {
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//            }
-//
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//                val inputText = s.toString()
-//                if (inputText.isNotEmpty()){
-//                    binding.sendButton.visibility = View.VISIBLE
-//                }else{
-//                    binding.sendButton.visibility = View.GONE
-//                }
-//
-//
-//            }
-//
-//            override fun afterTextChanged(s: Editable?) {
-//
-//            }
-//        })
+        binding.messageEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val inputText = s.toString()
+                if (inputText.isNotEmpty()){
+                    binding.sendButton.visibility = View.VISIBLE
+                }else{
+                    binding.sendButton.visibility = View.GONE
+                }
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+        })
     }
 
 
@@ -113,12 +112,12 @@ class ChatFragment : BaseFragment() {
             }
         }
 
-//        viewModel.clearEditText.observe(viewLifecycleOwner) {
-//            if (it) {
-//                binding.messageEditText.text.clear()
-//                viewModel.resetClearEditText()
-//            }
-//        }
+        viewModel.clearEditText.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.messageEditText.text.clear()
+                viewModel.resetClearEditText()
+            }
+        }
     }
 
     private fun updateUIWithMessages(messages: List<Message>) {
@@ -133,8 +132,8 @@ class ChatFragment : BaseFragment() {
 
 
     private fun getNewMessage() = Message(
-//        text = binding.messageEditText.text.toString(),
-//        senderId = sharedPreferences.getString(USER_ID)
+        text = binding.messageEditText.text.toString(),
+        senderId = viewModel.user.id!!
     )
 
     private fun setupClickListener() {
@@ -143,36 +142,39 @@ class ChatFragment : BaseFragment() {
             findNavController().popBackStack()
         }
         binding.sendButton.setOnClickListener {
-//            viewModel.sendMessage(getNewMessage(),getMetaDataMessages(),getChatId())
+            viewModel.sendMessage(getNewMessage(),getMetaDataMessages())
         }
 
     }
 
-//    private fun getMetaDataMessages(): MetaDataMessages {
-//        return if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER) {
-//            MetaDataMessages(
-//                nameCaregiver =sharedPreferences.getString(USER_NAME),
-//                idCaregiver = sharedPreferences.getString(USER_ID),
-//                imageCaregiver = sharedPreferences.getString(USER_IMAGE),
-//
-//                namePatient = namePartner,
-//                idPatient =partnerId,
-//                imagePatient =urlImagePartner,
-//
-//                )
-//        } else {
-//            MetaDataMessages(
-//                nameCaregiver =namePartner,
-//                idCaregiver =partnerId,
-//                imageCaregiver = urlImagePartner,
-//
-//                namePatient =sharedPreferences.getString(USER_NAME),
-//                idPatient = sharedPreferences.getString(USER_ID),
-//                imagePatient =sharedPreferences.getString(USER_IMAGE),
-//            )
-//        }
+    private fun getMetaDataMessages(): MetaDataMessages {
+        return if (viewModel.isUserCaregiver()) {
+            MetaDataMessages(
+                nameCaregiver =viewModel.user.name,
+                idCaregiver = viewModel.user.id!!,
+                imageCaregiver = viewModel.user.imageUser!!,
+                namePatient = namePartner,
+                idPatient =partnerId,
+                imagePatient =urlImagePartner,
 
-//    }
+                )
+        } else {
+            MetaDataMessages(
+                nameCaregiver =namePartner,
+                idCaregiver =partnerId,
+                imageCaregiver = urlImagePartner,
+                namePatient =viewModel.user.name,
+                idPatient = viewModel.user.id!!,
+                imagePatient =viewModel.user.imageUser!!,
+            )
+        }
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+      viewModel.clearMessages()
+    }
 
 
 }

@@ -36,6 +36,7 @@
 
             <TextView
                 android:id="@+id/dateSender"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +52,7 @@
             android:background="@drawable/corner_normal"
             android:padding="@dimen/margin_large"
             android:id="@+id/partner"
+
             android:layout_marginTop="@dimen/margin_large"
             android:layout_marginStart="100dp"
             android:layout_marginEnd="@dimen/margin_large"
@@ -72,8 +74,9 @@
             <TextView
                 android:id="@+id/datePartner"
                 android:layout_width="wrap_content"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/messagePartner"
                 app:layout_constraintTop_toBottomOf="@id/messagePartner"
                 tools:text="10.00 ص" />
 

@@ -2,6 +2,7 @@ package mnshat.dev.myproject.chatting.data
 
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.tasks.await
 import mnshat.dev.myproject.chatting.entity.Chatting
 import mnshat.dev.myproject.chatting.entity.Message
 import mnshat.dev.myproject.chatting.entity.MetaDataMessages
@@ -22,13 +23,11 @@ class ChattingRepo(
      val chattingList = MutableLiveData<List<Chatting>>()
      val messagesList = MutableLiveData<List<Message>>()
 
-    fun chatIdPrefix(): String {
-        return   if (user.typeOfUser == CAREGIVER){
+   private fun chatIdPrefix(): String {
+        return  if (user.typeOfUser == CAREGIVER){
             user.partnerId!!.take(4)
-            "IrSR"
         }else{
              user.id!!.take(4)
-            "aEoc"
         }
     }
 
@@ -59,61 +58,52 @@ class ChattingRepo(
 
     }
 
-     fun listenToMessages(){
-       val chatId = getChatId()
+     fun listenToMessages(partnerId:String){
+       val chatId = getChatId(partnerId)
+         log("chatId => $chatId")
         firestore.collection(CHATS).document(chatId)
             .addSnapshotListener { documentSnapshot, error ->
                 if (error != null) {
                     return@addSnapshotListener
                 }
                 if (documentSnapshot != null && documentSnapshot.exists()) {
+                    log("documentSnapshot => true")
                     val chatting =
                         documentSnapshot.toObject(Chatting::class.java)?.messages ?: mutableListOf()
                     messagesList.value = chatting
-//                    clearEditText.value = true
+
                 } else {
+                    log("documentSnapshot => false")
+                    messagesList.value = emptyList()
 
                 }
             }
     }
 
 
-//    fun sendMessage(newMessage:Message,metaDataMessages: MetaDataMessages,chatId: String) {
-//
-//        val currentMessages = _messages.value?.toMutableList() ?: mutableListOf()
-//
-//        currentMessages.add(newMessage)
-//
-//        db.collection(CHATS).document(chatId).set(
-//            Chatting(
-//                metaDataMessages,
-//                currentMessages
-//            ))
-//            .addOnSuccessListener {
-//                log("Message sent successfully")
-//            }
-//            .addOnFailureListener {
-//                log("Failed to send message: ${it.message}")
-//            }
-//
-//    }
-    private fun getChatId(): String {
 
-        // pat -> aEoc    care -> IrSR
-//        val userId = sharedPreferences.getString(USER_ID).take(4)  //  cur aEoc
-//
-//        var partnerId = ""
-//
-//        return if (sharedPreferences.getString(TYPE_OF_USER) == CAREGIVER){
-//
-//            partnerId = sharedPreferences.getString(ID_PARTNER).take(4) //  aEoc
-//            // aEocIrSR
-//            partnerId + userId
-//        } else {
-//            //aEoc
-//            userId + partnerId
-//        }
-        return "aEocIrSR"
+    private fun getChatId(partnerId:String): String {
+
+        val userId = user.id!!.take(4)
+        var partnerId = partnerId.take(4)
+
+        return if (isUserCaregiver()){
+
+            partnerId = user.partnerId!!.take(4) //  aEoc
+            partnerId + userId
+        } else {
+            userId + partnerId
+        }
+
+    }
+
+   suspend fun sendMessage(message: Message, messages: MetaDataMessages , partnerId:String ) {
+        val chatId = getChatId(partnerId)
+        val messagesList = messagesList.value?.toMutableList() ?: mutableListOf()
+         messagesList.add(message)
+        val chatting = Chatting(messages, messagesList)
+        firestore.collection(CHATS).document(chatId).set(chatting).await()
+
     }
 
 }
