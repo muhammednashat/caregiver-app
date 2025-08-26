@@ -1,29 +1,43 @@
 package mnshat.dev.myproject.users.patient.profile.presentation
 
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentEditGenderBinding
-import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.GENDER
 
 
-class EditGenderFragment : BaseEditProfileFragment<FragmentEditGenderBinding>() {
+class EditGenderFragment : BaseFragment() {
 
     private var  currentIntGender =0
 
-    override fun getLayout()= R.layout.fragment_edit_gender
-    override fun initializeViews() {
-        if (currentLang != ENGLISH_KEY) {
-            binding.close.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-            binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
-        }
-        currentIntGender = sharedPreferences.getInt(GENDER)
+
+    private lateinit var binding: FragmentEditGenderBinding
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        binding = FragmentEditGenderBinding.inflate(inflater, container, false)
+        initializeViews()
+        setupClickListener()
+        return binding.root
+    }
+
+    private fun initializeViews() {
+
+//        currentIntGender = sharedPreferences.getInt(GENDER)
         changeUserUi(currentIntGender)
     }
 
-    override fun setupClickListener() {
+    private fun setupClickListener() {
         binding.male.setOnClickListener {
             currentIntGender = 1
             changeUserUi(currentIntGender)
@@ -68,19 +82,19 @@ class EditGenderFragment : BaseEditProfileFragment<FragmentEditGenderBinding>() 
 
     }
     private fun editGender(key: String, intAge: Int) {
-        showProgressDialog()
-        val map = mapOf<String, Any>(key to intAge)
-        FirebaseService.updateItemsProfileUser(FirebaseService.userId, map) {
-            if (it) {
-                showToast(getString(R.string.gender_changed_successfully))
-                sharedPreferences.storeInt(key, intAge!!)
-                findNavController().popBackStack()
-            } else {
-                showToast(getString(R.string.update_failed))
-            }
-            dismissProgressDialog()
-
-        }
+//        showProgressDialog()
+//        val map = mapOf<String, Any>(key to intAge)
+//        FirebaseService.updateItemsProfileUser(FirebaseService.userId, map) {
+//            if (it) {
+//                showToast(getString(R.string.gender_changed_successfully))
+//                sharedPreferences.storeInt(key, intAge!!)
+//                findNavController().popBackStack()
+//            } else {
+//                showToast(getString(R.string.update_failed))
+//            }
+//            dismissProgressDialog()
+//
+//        }
     }
 
 }

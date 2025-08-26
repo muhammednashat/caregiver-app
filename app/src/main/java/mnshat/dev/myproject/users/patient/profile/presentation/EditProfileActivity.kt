@@ -12,7 +12,6 @@ import mnshat.dev.myproject.databinding.ActivityEditProfileBinding
 class EditProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_edit_profile)
     }
 }

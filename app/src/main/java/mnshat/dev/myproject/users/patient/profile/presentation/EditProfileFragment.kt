@@ -1,5 +1,6 @@
 package mnshat.dev.myproject.users.patient.profile.presentation
 
+import android.app.AlertDialog
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -9,40 +10,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.DialogConfirmUpdateReligionBinding
 import mnshat.dev.myproject.databinding.FragmentEditProfileBinding
 import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.util.AGE_GROUP
-import mnshat.dev.myproject.util.GENDER
-import mnshat.dev.myproject.util.LANGUAGE
 import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
-import mnshat.dev.myproject.util.USER_ID
-import mnshat.dev.myproject.util.USER_IMAGE
-import mnshat.dev.myproject.util.USER_NAME
 import mnshat.dev.myproject.util.loadImage
-import mnshat.dev.myproject.util.log
-import java.util.UUID
 
 @AndroidEntryPoint
 class EditProfileFragment : BaseFragment() {
 
     private lateinit var binding: FragmentEditProfileBinding
     private val viewModel:ProfileViewModel by viewModels()
-    private var currentLang = ""
     private lateinit var sharedPreferences: SharedPreferencesManager
-   private  var canChecked = true
+   private  var canCheck = true
     private var imageUri: Uri? = null
-private  var isPicked = false
+   private  var isPicked = false
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -55,27 +46,20 @@ private  var isPicked = false
         return binding.root
     }
 
-     fun initializeViews() {
-         currentLang = viewModel.sharedPreferences.getString(LANGUAGE)
-//        if (currentLang != ENGLISH_KEY) {
-//            binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-//        }
-
-        if (sharedPreferences.getBoolean(RELIGION)) {
+    private fun initializeViews() {
+        if (viewModel.userProfile.religion!!) {
             binding.metadata.yes.isChecked = true
         }
         else {
             binding.metadata.no.isChecked = true
         }
 
-        loadImage(requireActivity(),sharedPreferences.getString(USER_IMAGE),binding.imageUser)
-        binding.metadata.textName.text = sharedPreferences.getString(USER_NAME)
-        binding.metadata.textAge.text = getTextAge(sharedPreferences.getInt(AGE_GROUP))
-        binding.metadata.textGender.text = getTextGender(sharedPreferences.getInt(GENDER))
+        loadImage(requireActivity(),viewModel.userProfile.imageUser,binding.imageUser)
+
+        binding.metadata.textName.text = viewModel.userProfile.name
+        binding.metadata.textAge.text = getTextAge(viewModel.userProfile.ageGroup)
+        binding.metadata.textGender.text = getTextGender(viewModel.userProfile.gender)
     }
-
-
-
     private fun setupClickListener() {
 
         binding.imageUser.setOnClickListener{
@@ -84,14 +68,14 @@ private  var isPicked = false
 
         binding.updateImage.setOnClickListener {
             if (isPicked){
-                uploadImageToFireStorage(imageUri!!)
+                checkInternetConnection()
             }else{
                 pickImageFromGallery()
             }
         }
 
         binding.metadata.groupRoot.setOnCheckedChangeListener { group, checkedId ->
-            if (canChecked){
+            if (canCheck){
                 when (checkedId) {
                     R.id.yes -> {
                         showDialog(RELIGION,true)
@@ -120,6 +104,16 @@ private  var isPicked = false
             findNavController().navigate(R.id.action_editProfileFragment_to_editGenderFragment)
         }
     }
+    private fun checkInternetConnection() {
+        if (isConnected()) {
+            showProgressDialog()
+            viewModel.uploadImageToFireStorage(imageUri!!)
+
+        } else {
+            showNoInternetSnackBar(binding.root)
+        }
+    }
+
 
 
 
@@ -140,6 +134,7 @@ private  var isPicked = false
         }
     }
     }
+
     fun getTextAge( age: Int?):String? {
         return  when(age){
             1 ->  getString(R.string.young_adulthood)
@@ -158,6 +153,7 @@ private  var isPicked = false
         }
 
     }
+
     fun showDialog(key: String, needReligion: Boolean) {
         sharedDialog = Dialog(requireContext())
         sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -188,14 +184,15 @@ private  var isPicked = false
         sharedDialog.show()
     }
 
+
     private fun resetChecked(boolean: Boolean){
-        canChecked = false
+        canCheck = false
         if (boolean){
             binding.metadata.no.isChecked = true
         }else{
             binding.metadata.yes.isChecked = true
         }
-        canChecked = true
+        canCheck = true
     }
 
 
@@ -212,37 +209,8 @@ private  var isPicked = false
         pickImageLauncher.launch("image/*")
     }
 
-    private fun uploadImageToFireStorage(imageUri: Uri) {
-        showProgressDialog()
-        val storageRef = FirebaseStorage.getInstance().reference.child("users_images/${sharedPreferences.getString(
-            USER_ID)}")
-        storageRef.putFile(imageUri)
-            .addOnSuccessListener {
-                storageRef.downloadUrl.addOnSuccessListener { uri ->
-                    saveImageUrlToFirestore(uri.toString())
-                }
-            }
-            .addOnFailureListener {
-                dismissProgressDialog()
-                showToast("خظأ اثناء حفظ الصورة/n رجاءا المحاولة فى وقت لاحق")
-            }
 
-    }
 
-    private fun saveImageUrlToFirestore(imageUrl: String) {
-        val map = mapOf<String,Any>("imageUser"  to imageUrl)
-      FirebaseService.updateItemsProfileUser(sharedPreferences.getString(USER_ID), map){ resaul ->
-        if(resaul){
-            sharedPreferences.storeString(USER_IMAGE,imageUrl)
-            showToast("تم تغير الصورة بنجاح")
-            binding.updateImage.text = getString(R.string.edit_profile_picture)
-            isPicked = false
-        }else{
-            showToast("خظأ اثناء حفظ الصورة/n رجاءا المحاولة فى وقت لاحق")
 
-        }
-          dismissProgressDialog()
-      }
-    }
 
 }

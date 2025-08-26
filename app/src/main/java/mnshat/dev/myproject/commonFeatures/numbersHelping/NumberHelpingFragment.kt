@@ -1,26 +1,35 @@
 package mnshat.dev.myproject.commonFeatures.numbersHelping
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.adapters.HelpingAdapterAdapter
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentNumberHelpingBinding
-import mnshat.dev.myproject.users.patient.BasePatientFragment
 
 
-class NumberHelpingFragment : BasePatientFragment<FragmentNumberHelpingBinding>() {
-
-    override fun getLayout() = R.layout.fragment_number_helping
+class NumberHelpingFragment : BaseFragment() {
 
 
-    override fun initializeViews() {
-        super.initializeViews()
+private  lateinit var  binding: FragmentNumberHelpingBinding
 
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        binding = FragmentNumberHelpingBinding.inflate(inflater, container, false)
         binding.recyclerView.adapter = HelpingAdapterAdapter(numbersList())
-
+        setupClickListener()
+        return binding.root
     }
 
-    override fun setupClickListener() {
-        super.setupClickListener()
+    private fun setupClickListener() {
         binding.iconBack.setOnClickListener {
             findNavController().popBackStack()
         }

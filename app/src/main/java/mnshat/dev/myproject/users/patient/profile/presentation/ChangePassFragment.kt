@@ -1,27 +1,38 @@
 package mnshat.dev.myproject.users.patient.profile.presentation
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentChangePassBinding
-import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.util.ENGLISH_KEY
-import mnshat.dev.myproject.util.PASSWORD
 import mnshat.dev.myproject.util.isValidInput
 
 
-class ChangePassFragment : BaseEditProfileFragment<FragmentChangePassBinding>() {
+class ChangePassFragment : BaseFragment(){
 
     private lateinit var currentPassword:String
     private lateinit var newPassword:String
     private lateinit var confirmNewPassword:String
-    override fun getLayout() = R.layout.fragment_change_pass
-    override fun initializeViews() {
-        if (currentLang != ENGLISH_KEY) {
-            binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-        }
+   private lateinit var binding: FragmentChangePassBinding
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentChangePassBinding.inflate(inflater, container, false)
+        setupClickListener()
+        return binding.root
+
     }
 
-    override fun setupClickListener() {
+
+
+    private fun setupClickListener() {
         binding.icBack.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -63,17 +74,17 @@ class ChangePassFragment : BaseEditProfileFragment<FragmentChangePassBinding>() 
     }
     private fun changePass() {
         showProgressDialog()
-      FirebaseService.changeCurrentPassword(currentPassword,newPassword,requireActivity()){
-          if (it == null){
-              sharedPreferences.storeString(PASSWORD,newPassword)
-              showToast(getString(R.string.password_changed_successfully))
-              findNavController().popBackStack()
-          }
-          else{
-              showToast(it)
-          }
-          dismissProgressDialog()
-      }
+//      FirebaseService.changeCurrentPassword(currentPassword,newPassword,requireActivity()){
+//          if (it == null){
+//              sharedPreferences.storeString(PASSWORD,newPassword)
+//              showToast(getString(R.string.password_changed_successfully))
+//              findNavController().popBackStack()
+//          }
+//          else{
+//              showToast(it)
+//          }
+//          dismissProgressDialog()
+//      }
 
     }
 

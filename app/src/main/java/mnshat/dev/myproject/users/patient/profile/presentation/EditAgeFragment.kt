@@ -1,23 +1,38 @@
 package mnshat.dev.myproject.users.patient.profile.presentation
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentEditAgeBinding
-import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.util.AGE_GROUP
-import mnshat.dev.myproject.util.ENGLISH_KEY
 
-class EditAgeFragment: BaseEditProfileFragment<FragmentEditAgeBinding>() {
+class EditAgeFragment: BaseFragment() {
 
     private var  currentIntAge =0
+    private lateinit var binding: FragmentEditAgeBinding
 
-    override fun getLayout()=R.layout.fragment_edit_age
-    override fun initializeViews() {
-        if (currentLang != ENGLISH_KEY) {
-            binding.close.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-            binding.root.setBackgroundDrawable(resources.getDrawable(R.drawable.corner_top_lift))
-        }
-        currentIntAge = sharedPreferences.getInt(AGE_GROUP)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentEditAgeBinding.inflate(inflater, container, false)
+
+        initializeViews()
+        setupClickListener()
+        return binding.root
+
+    }
+
+
+
+    private fun initializeViews() {
+
+//        currentIntAge = sharedPreferences.getInt(AGE_GROUP)
         setChoosenAge(currentIntAge)
     }
 
@@ -31,7 +46,7 @@ class EditAgeFragment: BaseEditProfileFragment<FragmentEditAgeBinding>() {
         }
     }
 
-    override fun setupClickListener() {
+    private fun setupClickListener() {
 
         binding.groupRoot.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
@@ -59,19 +74,19 @@ class EditAgeFragment: BaseEditProfileFragment<FragmentEditAgeBinding>() {
 
 
     private fun editAgeGroup(key: String, intAge: Int) {
-        showProgressDialog()
-        val map = mapOf<String, Any>(key to intAge)
-        FirebaseService.updateItemsProfileUser(FirebaseService.userId, map) {
-            if (it) {
-                showToast(getString(R.string.age_group_changed_successfully))
-                sharedPreferences.storeInt(key, intAge!!)
-                findNavController().popBackStack()
-            } else {
-                showToast(getString(R.string.update_failed))
-            }
-            dismissProgressDialog()
-
-        }
+//        showProgressDialog()
+//        val map = mapOf<String, Any>(key to intAge)
+//        FirebaseService.updateItemsProfileUser(FirebaseService.userId, map) {
+//            if (it) {
+//                showToast(getString(R.string.age_group_changed_successfully))
+//                sharedPreferences.storeInt(key, intAge!!)
+//                findNavController().popBackStack()
+//            } else {
+//                showToast(getString(R.string.update_failed))
+//            }
+//            dismissProgressDialog()
+//
+//        }
     }
 
 

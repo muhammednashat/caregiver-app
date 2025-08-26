@@ -1,27 +1,44 @@
 package mnshat.dev.myproject.users.patient.profile.presentation
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
+import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentChangeUserNameBinding
-import mnshat.dev.myproject.firebase.FirebaseService
-import mnshat.dev.myproject.util.ENGLISH_KEY
 import mnshat.dev.myproject.util.NAME
-import mnshat.dev.myproject.util.USER_NAME
 import mnshat.dev.myproject.util.isValidInput
 
 
-class ChangeUserNameFragment : BaseEditProfileFragment<FragmentChangeUserNameBinding>() {
-    override fun initializeViews() {
-        if (currentLang != ENGLISH_KEY) {
-            binding.icBack.setBackgroundDrawable(resources.getDrawable(R.drawable.background_back_right))
-        }
-        binding.edCurrentName.setText(sharedPreferences.getString(USER_NAME))
+class ChangeUserNameFragment : BaseFragment() {
+
+
+    private lateinit var binding: FragmentChangeUserNameBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        binding = FragmentChangeUserNameBinding.inflate(inflater, container, false)
+
+        initializeViews()
+        setupClickListener()
+        return binding.root
+
     }
 
-    override fun getLayout() =
-        R.layout.fragment_change_user_name
 
-    override fun setupClickListener() {
+
+    private fun initializeViews() {
+
+//        binding.edCurrentName.setText(sharedPreferences.getString(USER_NAME))
+    }
+
+    private fun setupClickListener() {
         binding.icBack.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -40,20 +57,20 @@ class ChangeUserNameFragment : BaseEditProfileFragment<FragmentChangeUserNameBin
 
 
     private fun updateName(key: String, name: String) {
-        showProgressDialog()
-
-        val map = mapOf<String, Any>(key to name)
-        FirebaseService.updateItemsProfileUser(FirebaseService.userId, map) {
-            if (it) {
-                showToast(getString(R.string.the_username_has_been_changed_successfully))
-                sharedPreferences.storeString(USER_NAME, name!!)
-                findNavController().popBackStack()
-            } else {
-                showToast(getString(R.string.update_failed))
-            }
-            dismissProgressDialog()
-
-        }
+//        showProgressDialog()
+//
+//        val map = mapOf<String, Any>(key to name)
+//        FirebaseService.updateItemsProfileUser(FirebaseService.userId, map) {
+//            if (it) {
+//                showToast(getString(R.string.the_username_has_been_changed_successfully))
+//                sharedPreferences.storeString(USER_NAME, name!!)
+//                findNavController().popBackStack()
+//            } else {
+//                showToast(getString(R.string.update_failed))
+//            }
+//            dismissProgressDialog()
+//
+//        }
     }
 
     override fun onDestroy() {
