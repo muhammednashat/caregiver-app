@@ -1,6 +1,5 @@
 package mnshat.dev.myproject.users.patient.profile.presentation
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -18,7 +17,6 @@ import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.DialogConfirmUpdateReligionBinding
 import mnshat.dev.myproject.databinding.FragmentEditProfileBinding
-import mnshat.dev.myproject.firebase.FirebaseService
 import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.loadImage
@@ -43,22 +41,24 @@ class EditProfileFragment : BaseFragment() {
         sharedPreferences = viewModel.sharedPreferences
         initializeViews()
         setupClickListener()
+        observeViewModel()
         return binding.root
     }
 
+
     private fun initializeViews() {
-        if (viewModel.userProfile.religion!!) {
+        if (viewModel.userProfile().religion!!) {
             binding.metadata.yes.isChecked = true
         }
         else {
             binding.metadata.no.isChecked = true
         }
 
-        loadImage(requireActivity(),viewModel.userProfile.imageUser,binding.imageUser)
+        loadImage(requireActivity(),viewModel.userProfile().imageUser,binding.imageUser)
 
-        binding.metadata.textName.text = viewModel.userProfile.name
-        binding.metadata.textAge.text = getTextAge(viewModel.userProfile.ageGroup)
-        binding.metadata.textGender.text = getTextGender(viewModel.userProfile.gender)
+        binding.metadata.textName.text = viewModel.userProfile().name
+        binding.metadata.textAge.text = getTextAge(viewModel.userProfile().ageGroup)
+        binding.metadata.textGender.text = getTextGender(viewModel.userProfile().gender)
     }
     private fun setupClickListener() {
 
@@ -116,26 +116,7 @@ class EditProfileFragment : BaseFragment() {
 
 
 
-
-    private fun editReligion(key: String, needReligion: Boolean) {
-        if (needReligion != sharedPreferences.getBoolean(RELIGION)){
-        showProgressDialog()
-        val map = mapOf<String, Any>(key to needReligion)
-        FirebaseService.updateItemsProfileUser(FirebaseService.userId, map) {
-            if (it) {
-                showToast("تم تحديث الحالة الدينية")
-                sharedPreferences.storeBoolean(key, needReligion!!)
-                viewModel.resetCurrentDay()
-
-            } else {
-                showToast(getString(R.string.update_failed))
-            }
-            dismissProgressDialog()
-        }
-    }
-    }
-
-    fun getTextAge( age: Int?):String? {
+   private fun getTextAge( age: Int?):String? {
         return  when(age){
             1 ->  getString(R.string.young_adulthood)
             2 ->  getString(R.string.middle_age)
@@ -145,7 +126,7 @@ class EditProfileFragment : BaseFragment() {
 
     }
 
-    fun getTextGender(gender: Int?) :String? {
+   private fun getTextGender(gender: Int?) :String? {
         return  when(gender){
             1 -> getString(R.string.male)
             2 -> getString(R.string.female)
@@ -154,7 +135,7 @@ class EditProfileFragment : BaseFragment() {
 
     }
 
-    fun showDialog(key: String, needReligion: Boolean) {
+ private   fun showDialog(key: String, needReligion: Boolean) {
         sharedDialog = Dialog(requireContext())
         sharedDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = DialogConfirmUpdateReligionBinding.inflate(layoutInflater)
@@ -173,9 +154,10 @@ class EditProfileFragment : BaseFragment() {
             sharedDialog.dismiss()
             resetChecked(needReligion)
         }
+
         dialogBinding.btnOk.setOnClickListener {
             sharedDialog.dismiss()
-            editReligion(RELIGION,needReligion)
+            updateReligion(key,needReligion)
         }
         dialogBinding.btnCancel.setOnClickListener {
             sharedDialog.dismiss()
@@ -184,6 +166,17 @@ class EditProfileFragment : BaseFragment() {
         sharedDialog.show()
     }
 
+    private fun updateReligion(key: String, needReligion: Boolean) {
+        if (isConnected()) {
+            showProgressDialog()
+            viewModel.updateUserProfileRemotely(key,needReligion)
+            viewModel.resetCurrentDay()
+        } else {
+            resetChecked(needReligion)
+
+            showNoInternetSnackBar(binding.root)
+        }
+    }
 
     private fun resetChecked(boolean: Boolean){
         canCheck = false
@@ -209,6 +202,19 @@ class EditProfileFragment : BaseFragment() {
         pickImageLauncher.launch("image/*")
     }
 
+    private fun observeViewModel(){
+        viewModel.status.observe(viewLifecycleOwner){
+            it?.let{
+                if (it){
+                    showToast(getString(R.string.update_success))
+                }else{
+                    showToast(getString(R.string.update_failed))
+                }
+                viewModel.restStatus()
+                dismissProgressDialog()
+            }
+        }
+    }
 
 
 

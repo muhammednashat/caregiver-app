@@ -30,9 +30,17 @@ data class UserProfile(
     var allowMoodTrackingDetails: Boolean? = null,
     var allowPrivateMessages: Boolean? = null,
 
-
     ): Parcelable {
 
+    fun updateData(key: String, value: Any?){
+        when(key){
+            "imageUser" -> imageUser = value.toString()
+            "name" -> name = value.toString()
+            "gender" -> gender = value as Int?
+            "ageGroup" -> ageGroup = value as Int?
+            "religion" -> religion = value as Boolean?
+        }
+    }
 
     override fun toString(): String {
         return "UserProfile(" +

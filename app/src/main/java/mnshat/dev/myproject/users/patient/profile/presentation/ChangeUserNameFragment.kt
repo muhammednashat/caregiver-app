@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
@@ -16,26 +17,22 @@ class ChangeUserNameFragment : BaseFragment() {
 
 
     private lateinit var binding: FragmentChangeUserNameBinding
+    private val viewModel: ProfileViewModel by activityViewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
         binding = FragmentChangeUserNameBinding.inflate(inflater, container, false)
 
         initializeViews()
         setupClickListener()
+        observeViewModel()
         return binding.root
-
     }
 
-
-
     private fun initializeViews() {
-
-//        binding.edCurrentName.setText(sharedPreferences.getString(USER_NAME))
+        binding.edCurrentName.setText(viewModel.userProfile().name)
     }
 
     private fun setupClickListener() {
@@ -48,29 +45,37 @@ class ChangeUserNameFragment : BaseFragment() {
         binding.confirmation.setOnClickListener {
             val newName = binding.edNewName.text.toString().trim()
             if (isValidInput(newName)) {
-                updateName(NAME, newName)
+                checkInternetConnection(newName)
+
             } else {
                 showToast(getString(R.string.enter_the_new_name))
             }
         }
     }
 
+    private fun checkInternetConnection(newName: String) {
+        if (isConnected()) {
+            showProgressDialog()
+            viewModel.updateUserProfileRemotely(NAME, newName)
+        } else {
+            showNoInternetSnackBar(binding.root)
+        }
+    }
 
-    private fun updateName(key: String, name: String) {
-//        showProgressDialog()
-//
-//        val map = mapOf<String, Any>(key to name)
-//        FirebaseService.updateItemsProfileUser(FirebaseService.userId, map) {
-//            if (it) {
-//                showToast(getString(R.string.the_username_has_been_changed_successfully))
-//                sharedPreferences.storeString(USER_NAME, name!!)
-//                findNavController().popBackStack()
-//            } else {
-//                showToast(getString(R.string.update_failed))
-//            }
-//            dismissProgressDialog()
-//
-//        }
+    private fun observeViewModel() {
+        viewModel.status.observe(viewLifecycleOwner) {
+            it?.let {
+                if (it) {
+                    showToast(getString(R.string.the_username_has_been_changed_successfully))
+                    findNavController().popBackStack()
+
+                } else {
+                    showToast(getString(R.string.update_failed))
+                }
+                viewModel.restStatus()
+                dismissProgressDialog()
+            }
+        }
     }
 
     override fun onDestroy() {

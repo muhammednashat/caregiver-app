@@ -4,16 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentEditAgeBinding
 import mnshat.dev.myproject.util.AGE_GROUP
+import kotlin.getValue
 
 class EditAgeFragment: BaseFragment() {
 
     private var  currentIntAge =0
     private lateinit var binding: FragmentEditAgeBinding
+    private  val viewModel:ProfileViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,6 +27,8 @@ class EditAgeFragment: BaseFragment() {
 
         initializeViews()
         setupClickListener()
+        observeViewModel()
+
         return binding.root
 
     }
@@ -32,7 +37,7 @@ class EditAgeFragment: BaseFragment() {
 
     private fun initializeViews() {
 
-//        currentIntAge = sharedPreferences.getInt(AGE_GROUP)
+        currentIntAge = viewModel.userProfile().ageGroup!!
         setChoosenAge(currentIntAge)
     }
 
@@ -68,26 +73,36 @@ class EditAgeFragment: BaseFragment() {
             findNavController().popBackStack()
         }
         binding.btnConfirm.setOnClickListener {
-            editAgeGroup(AGE_GROUP, currentIntAge)
+           if (currentIntAge == viewModel.userProfile().ageGroup!!){
+               findNavController().popBackStack()
+           }else{
+               checkInternetConnection()
+           }
         }
     }
 
-
-    private fun editAgeGroup(key: String, intAge: Int) {
-//        showProgressDialog()
-//        val map = mapOf<String, Any>(key to intAge)
-//        FirebaseService.updateItemsProfileUser(FirebaseService.userId, map) {
-//            if (it) {
-//                showToast(getString(R.string.age_group_changed_successfully))
-//                sharedPreferences.storeInt(key, intAge!!)
-//                findNavController().popBackStack()
-//            } else {
-//                showToast(getString(R.string.update_failed))
-//            }
-//            dismissProgressDialog()
-//
-//        }
+    private fun checkInternetConnection() {
+        if (isConnected()) {
+            showProgressDialog()
+            viewModel.updateUserProfileRemotely(AGE_GROUP, currentIntAge)
+        } else {
+            showNoInternetSnackBar(binding.root)
+        }
     }
 
+    private fun observeViewModel(){
+        viewModel.status.observe(viewLifecycleOwner){
+            it?.let{
+                if (it){
+                showToast(getString(R.string.age_group_changed_successfully))
+                    findNavController().popBackStack()
+                }else{
+                    showToast(getString(R.string.update_failed))
+                }
+                viewModel.restStatus()
+                dismissProgressDialog()
+            }
+        }
+    }
 
 }

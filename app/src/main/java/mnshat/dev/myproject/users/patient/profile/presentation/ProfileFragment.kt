@@ -35,8 +35,8 @@ class ProfileFragment : BaseFragment() {
 
     override fun onStart() {
         super.onStart()
-        binding.nameUser.text = viwModel.userProfile.name
-        loadImage(requireActivity(),viwModel.userProfile.imageUser,binding.imageUser)
+        binding.nameUser.text = viwModel.userProfile().name
+        loadImage(requireActivity(),viwModel.userProfile().imageUser,binding.imageUser)
     }
 
      fun setupClickListener() {

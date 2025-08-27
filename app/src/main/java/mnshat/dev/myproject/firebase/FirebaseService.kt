@@ -1,13 +1,10 @@
 package mnshat.dev.myproject.firebase
 
-import android.content.Context
-import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import mnshat.dev.myproject.R
 import mnshat.dev.myproject.auth.data.entity.RegistrationData
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.USER_EMAIL
@@ -56,23 +53,7 @@ object FirebaseService {
 
 
 
-    fun changeCurrentPassword(
-        oldPassword: String,
-        newPassword: String,
-        context: Context,
-        callBack: (String?) -> Unit
-    ) {
-        val credential = EmailAuthProvider.getCredential(userEmail!!, oldPassword)
-        currentUser?.reauthenticate(credential)?.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                currentUser.updatePassword(newPassword).addOnCompleteListener { task ->
-                    if (task.isSuccessful) callBack(null)
-                    else callBack(task.exception.toString())
-                }
-            } else callBack(context.getString(R.string.check_entered_password))
 
-        }
-    }
 
 
 

@@ -4,17 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentEditGenderBinding
 import mnshat.dev.myproject.util.GENDER
+import kotlin.getValue
 
 
 class EditGenderFragment : BaseFragment() {
 
-    private var  currentIntGender =0
-
+    private  val viewModel:ProfileViewModel by activityViewModels()
+    private var  currentIntGender = 0
 
     private lateinit var binding: FragmentEditGenderBinding
 
@@ -28,15 +30,22 @@ class EditGenderFragment : BaseFragment() {
         binding = FragmentEditGenderBinding.inflate(inflater, container, false)
         initializeViews()
         setupClickListener()
+        observeViewModel()
         return binding.root
     }
 
     private fun initializeViews() {
-
-//        currentIntGender = sharedPreferences.getInt(GENDER)
+        currentIntGender = viewModel.userProfile().gender!!
         changeUserUi(currentIntGender)
     }
-
+    private fun checkInternetConnection() {
+        if (isConnected()) {
+            showProgressDialog()
+            viewModel.updateUserProfileRemotely(GENDER, currentIntGender)
+        } else {
+            showNoInternetSnackBar(binding.root)
+        }
+    }
     private fun setupClickListener() {
         binding.male.setOnClickListener {
             currentIntGender = 1
@@ -53,7 +62,11 @@ class EditGenderFragment : BaseFragment() {
             findNavController().popBackStack()
         }
         binding.btnConfirm.setOnClickListener {
-            editGender(GENDER, currentIntGender)
+            if (currentIntGender == viewModel.userProfile().gender!!) {
+                findNavController().popBackStack()
+            }else{
+                checkInternetConnection()
+            }
         }
     }
     private fun changeUserUi(type: Int?){
@@ -81,20 +94,23 @@ class EditGenderFragment : BaseFragment() {
         }
 
     }
-    private fun editGender(key: String, intAge: Int) {
-//        showProgressDialog()
-//        val map = mapOf<String, Any>(key to intAge)
-//        FirebaseService.updateItemsProfileUser(FirebaseService.userId, map) {
-//            if (it) {
-//                showToast(getString(R.string.gender_changed_successfully))
-//                sharedPreferences.storeInt(key, intAge!!)
-//                findNavController().popBackStack()
-//            } else {
-//                showToast(getString(R.string.update_failed))
-//            }
-//            dismissProgressDialog()
-//
-//        }
+
+
+    private fun observeViewModel(){
+        viewModel.status.observe(viewLifecycleOwner){
+            it?.let{
+                if (it){
+                    showToast(getString(R.string.gender_changed_successfully))
+                    findNavController().popBackStack()
+
+                }else{
+                    showToast(getString(R.string.update_failed))
+                }
+                viewModel.restStatus()
+                dismissProgressDialog()
+            }
+        }
     }
+
 
 }

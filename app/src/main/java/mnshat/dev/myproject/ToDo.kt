@@ -8,6 +8,7 @@ package mnshat.dev.myproject
 /**
  * edit profile
  * add extra activities
+ * rest day tasks after updating relagion
  * test caregiver posts
  * store caregiver and test partner email , partner id
  *
