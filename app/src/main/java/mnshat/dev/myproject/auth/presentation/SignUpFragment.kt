@@ -137,7 +137,7 @@ class SignUpFragment : BaseFragment(){
                 if (it.isNotEmpty()){
                     showToast(it) // error message
                 }else{
-                    viewModel.updateAuthStatusLocale()
+                    viewModel.updateAuthStatusLocale(true)
                     showToast(getString(R.string.welcome))
                     navigateBasedUserType()
                 }

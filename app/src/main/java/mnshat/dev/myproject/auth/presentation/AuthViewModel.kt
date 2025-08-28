@@ -13,7 +13,8 @@ import mnshat.dev.myproject.auth.data.entity.UserProfile
 import mnshat.dev.myproject.auth.data.repo.AuthRepo
 import mnshat.dev.myproject.users.patient.dailyprogram.data.DailyProgramRepository
 import mnshat.dev.myproject.util.CAREGIVER
-import mnshat.dev.myproject.util.IS_LOGGED
+import mnshat.dev.myproject.util.IS_FIRST_TIME
+import mnshat.dev.myproject.util.IS_USER_LOGGED
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.TYPE_OF_USER
 import mnshat.dev.myproject.util.USER
@@ -307,9 +308,10 @@ class AuthViewModel @Inject constructor(
 
 
 
-    fun updateAuthStatusLocale() {
+    fun updateAuthStatusLocale(isFirstTime: Boolean ) {
         val userType = currentUserProfile().typeOfUser
-        sharedPreferences.storeBoolean(IS_LOGGED,true)
+        sharedPreferences.storeBoolean(IS_FIRST_TIME,isFirstTime)
+        sharedPreferences.storeBoolean(IS_USER_LOGGED,true)
         sharedPreferences.storeString(TYPE_OF_USER, userType)
     }
 

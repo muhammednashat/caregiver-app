@@ -11,6 +11,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import mnshat.dev.myproject.firebase.FirebaseService.userEmail
+import mnshat.dev.myproject.users.patient.dailyprogram.data.DailyProgramRepository
 import mnshat.dev.myproject.users.patient.profile.data.ProfileRepo
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.log
@@ -20,6 +21,8 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(
     val sharedPreferences: SharedPreferencesManager,
     private val profileRepo: ProfileRepo,
+    private val dailyProgramRepo: DailyProgramRepository,
+
 ) : ViewModel() {
 
 
@@ -31,10 +34,6 @@ class ProfileViewModel @Inject constructor(
         _status.value = null
     }
 
-    fun resetCurrentDay() {
-
-
-    }
 
     fun uploadImageToFireStorage(uri: Uri) {
         viewModelScope.launch {
@@ -85,6 +84,30 @@ class ProfileViewModel @Inject constructor(
        }
 
     }
+
+    fun updateReligion(key: String, value: Any) {
+        viewModelScope.launch {
+            try {
+                profileRepo.updateUserProfileRemotely(key, value)
+                log("4")
+                resetCurrentDay()
+                log("7")
+                _status.value = true
+            } catch (e: Exception) {
+                _status.value = false
+            }
+        }
+
+    }
+   private suspend fun resetCurrentDay() {
+        log("5")
+       val userProfile = userProfile()
+       log(userProfile.religion!!.toString())
+       dailyProgramRepo.getNextDay(userProfile.currentDay!!)
+       log("6")
+
+    }
+
 
 
 }

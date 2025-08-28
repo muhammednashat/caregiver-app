@@ -3,8 +3,7 @@ package mnshat.dev.myproject.users.patient.main.data
 import com.google.gson.Gson
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.util.CURRENT_DAY
-import mnshat.dev.myproject.util.IS_LOGGED
-import mnshat.dev.myproject.util.IS_SECOND_TIME
+import mnshat.dev.myproject.util.IS_FIRST_TIME
 import mnshat.dev.myproject.util.SharedPreferencesManager
 
 class UserDataRepository (
@@ -20,9 +19,10 @@ class UserDataRepository (
         return gson.fromJson(string, CurrentDay::class.java)
     }
 
-    fun isLogged() = sharedPreferences.getBoolean(IS_LOGGED)
+    fun isFirstTime() = sharedPreferences.getBoolean(IS_FIRST_TIME)
 
-    fun updateLoggedStatus() { sharedPreferences.storeBoolean(IS_SECOND_TIME,true)  }
+    fun updateLoggedStatus() = sharedPreferences.storeBoolean(IS_FIRST_TIME,false)
+
 
 
 }

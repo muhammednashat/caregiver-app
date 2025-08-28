@@ -6,18 +6,8 @@ import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Handler
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.style.AbsoluteSizeSpan
-import android.text.style.BackgroundColorSpan
-import android.text.style.ForegroundColorSpan
-import android.text.style.ImageSpan
-import android.text.style.StyleSpan
 import android.util.DisplayMetrics
 import android.view.WindowManager
-import android.widget.TextView
-import androidx.core.content.ContextCompat
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.auth.presentation.AuthActivity
 import mnshat.dev.myproject.base.BaseActivity
@@ -52,7 +42,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     }
 
     private fun isLogged() {
-        if (sharedPreferences.getBoolean(IS_LOGGED)) {
+        if (sharedPreferences.getBoolean(IS_USER_LOGGED)) {
             getTypeUser()
         } else {
             startActivity(Intent(this, AuthActivity::class.java))

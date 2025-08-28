@@ -169,11 +169,10 @@ class EditProfileFragment : BaseFragment() {
     private fun updateReligion(key: String, needReligion: Boolean) {
         if (isConnected()) {
             showProgressDialog()
+            viewModel.updateReligion(key,needReligion)
             viewModel.updateUserProfileRemotely(key,needReligion)
-            viewModel.resetCurrentDay()
         } else {
             resetChecked(needReligion)
-
             showNoInternetSnackBar(binding.root)
         }
     }

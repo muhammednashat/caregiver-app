@@ -50,9 +50,9 @@ class HomeFragment : BaseFragment() {
 
     private fun onBoarding() {
 
-        if (viewModel.isUserLogged) {
+        if (viewModel.isFirstTime()) {
             OnBoardingFragment().show(childFragmentManager,null)
-            viewModel.updateLoggedStatus()
+            viewModel.updateFirstTimeState()
         }
 
     }

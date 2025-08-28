@@ -16,7 +16,6 @@ import mnshat.dev.myproject.util.HAS_PARTNER
 import mnshat.dev.myproject.util.ID_PARTNER
 import mnshat.dev.myproject.util.IMAGE_PARTNER
 import mnshat.dev.myproject.util.INVITATION_CODE
-import mnshat.dev.myproject.util.IS_LOGGED
 import mnshat.dev.myproject.util.NAME_PARTNER
 import mnshat.dev.myproject.util.NUMBER_SUPPORTERS
 import mnshat.dev.myproject.util.RELIGION
@@ -61,7 +60,6 @@ data class RegistrationData(
         sharedPreferences.storeBoolean(HAS_PARTNER, hasPartner)
         sharedPreferences.storeInt(GENDER, gender)
         sharedPreferences.storeInt(AGE_GROUP, ageGroup)
-        sharedPreferences.storeBoolean(IS_LOGGED, true)
         sharedPreferences.storeString(USER_ID, id)
         sharedPreferences.storeString(USER_IMAGE, imageUser)
         sharedPreferences.storeString(NAME_PARTNER, partner?.namePartner)

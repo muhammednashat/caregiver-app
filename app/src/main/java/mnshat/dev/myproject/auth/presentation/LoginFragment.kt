@@ -109,7 +109,7 @@ class LoginFragment : BaseFragment() {
                 if (it.isNotEmpty()){
                     showToast(it)
                 }else{
-                viewModel.updateAuthStatusLocale()
+                viewModel.updateAuthStatusLocale(false)
                     updateRegistrationInfoLocally()
                     showToast(getString(R.string.welcome))
                   navigateBasedUserType()

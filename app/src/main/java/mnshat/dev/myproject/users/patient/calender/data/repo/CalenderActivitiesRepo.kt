@@ -3,14 +3,18 @@ package mnshat.dev.myproject.users.patient.calender.data.repo
 import android.content.Context
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.users.patient.calender.domain.entity.CalenderActivity
-import mnshat.dev.myproject.util.GENDER
-import mnshat.dev.myproject.util.RELIGION
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.log
 import javax.inject.Inject
 
-class CalenderActivitiesRepo @Inject constructor(private val sharedPreferences: SharedPreferencesManager) {
+class CalenderActivitiesRepo @Inject constructor(
 
+    private val sharedPreferences: SharedPreferencesManager
+
+) {
+
+
+    val user = sharedPreferences.getUserProfile()
     fun getCalenderActivities(context: Context) : List<CalenderActivity>{
 
         val activities = listOf(
@@ -192,6 +196,38 @@ class CalenderActivitiesRepo @Inject constructor(private val sharedPreferences: 
                 "#4467c4",
                 true
             ),
+
+            CalenderActivity(
+                R.drawable.calender_activity_32,
+                context.getString(R.string.immerse_yourself),
+                "#4467c4",
+            ),
+            CalenderActivity(
+                R.drawable.calender_activity_32,
+                context.getString(R.string.invite_friends),
+                "#4467c4",
+            ),
+            CalenderActivity(
+                R.drawable.calender_activity_32,
+                context.getString(R.string.pair_up),
+                "#4467c4",
+            ),
+            CalenderActivity(
+                R.drawable.calender_activity_32,
+                context.getString(R.string.plan_an_outdoor),
+                "#4467c4",
+            ),
+            CalenderActivity(
+                R.drawable.calender_activity_32,
+                context.getString(R.string.offer_to_teach),
+                "#4467c4",
+            ),
+            CalenderActivity(
+                R.drawable.img33,
+                context.getString(R.string.organise_and_invite),
+                "#4467c4",
+            ),
+
             CalenderActivity(R.drawable.ic_plan_day, context.getString(R.string.special_activity) ,"#4467c4"),
         )
 
@@ -199,8 +235,8 @@ class CalenderActivitiesRepo @Inject constructor(private val sharedPreferences: 
     }
 
     private fun filterBasedProfile(activities: List<CalenderActivity>): List<CalenderActivity>{
-        val isReligious = sharedPreferences.getBoolean(RELIGION)
-        val gender = sharedPreferences.getInt(GENDER)
+        val isReligious = user.religion!!
+        val gender = user.gender!!
         log("$isReligious")
         var activities =
             filterBasedReligion(isReligious, activities)

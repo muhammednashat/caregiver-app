@@ -7,6 +7,7 @@ import kotlinx.coroutines.tasks.await
 import mnshat.dev.myproject.util.SharedPreferencesManager
 import mnshat.dev.myproject.util.USERS
 import mnshat.dev.myproject.util.USER_PROFILE
+import mnshat.dev.myproject.util.log
 
 class ProfileRepo(
     private val firestore: FirebaseFirestore,
@@ -22,21 +23,25 @@ class ProfileRepo(
         storageRef.putFile(imageUri)
             .addOnSuccessListener {
                 storageRef.downloadUrl.addOnSuccessListener { uri ->
-                    updateUserProfileRemotely("imageUser", uri.toString())
+                    firestore.collection(USERS).document(userProfile().id!!).update("imageUser", uri.toString())
+                    updateUserProfileLocally("imageUser", uri.toString())
                 }
             }.await()
 
     }
 
-    fun updateUserProfileRemotely(key: String, value: Any) {
-        firestore.collection(USERS).document(userProfile().id!!).update(key, value)
+   suspend fun updateUserProfileRemotely(key: String, value: Any) {
+        firestore.collection(USERS).document(userProfile().id!!).update(key, value).await()
+        log("1")
         updateUserProfileLocally(key, value)
-    }
+        log("3")
+   }
 
     private fun updateUserProfileLocally(key: String, value: Any) {
         var userProfile = userProfile()
         userProfile.updateData(key, value)
         sharedPreferences.storeObject(USER_PROFILE, userProfile)
+        log("2")
     }
 
 }

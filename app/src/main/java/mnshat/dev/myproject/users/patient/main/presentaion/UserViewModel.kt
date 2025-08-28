@@ -1,9 +1,7 @@
 package mnshat.dev.myproject.users.patient.main.presentaion
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.main.data.UserDataRepository
 import mnshat.dev.myproject.util.log
@@ -26,11 +24,11 @@ import javax.inject.Inject
 
     }
 
-    fun updateLoggedStatus() {
+    fun updateFirstTimeState() {
         userDataRepository.updateLoggedStatus()
     }
 
-    val isUserLogged = userDataRepository.isLogged()
+    fun isFirstTime ()= userDataRepository.isFirstTime()
 
 
 

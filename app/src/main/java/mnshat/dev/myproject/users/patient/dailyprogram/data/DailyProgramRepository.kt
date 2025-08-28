@@ -70,6 +70,8 @@ class DailyProgramRepository @Inject constructor(
 
     }
 
+
+
     private fun filterBasedProfile(dayTask: DayTaskEntity, day: Int): CurrentDay {
         val statusDailyProgram = StatusDailyProgram(day = day)
         val userProfile = sharedPreferences.getUserProfile()
@@ -100,6 +102,7 @@ class DailyProgramRepository @Inject constructor(
     }
 
     suspend fun updateCurrentDayRemotely(currentDay: CurrentDay){
+        log("updateCurrentDayRemotely() called with: currentDay = $currentDay")
         try {
             val userProfile = sharedPreferences.getUserProfile()
             firestore.collection(USERS)
