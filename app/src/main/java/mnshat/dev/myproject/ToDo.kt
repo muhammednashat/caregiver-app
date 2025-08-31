@@ -9,7 +9,7 @@ package mnshat.dev.myproject
  *
  *
  * rest day tasks after updating relagion
- * check filtering activities calender
+ * crash when  try to open a post
  *
  * test caregiver posts
  * store caregiver and test partner email , partner id

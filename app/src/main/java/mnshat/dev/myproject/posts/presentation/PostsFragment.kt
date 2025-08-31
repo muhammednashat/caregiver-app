@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
@@ -111,12 +110,11 @@ class PostsFragment : BaseFragment(), ItemPostsClicked {
     }
 
     private fun navigateToLibrary(libraryContent: LibraryContent?) {
-       lateinit var action:NavDirections
         when(libraryContent!!.type){
 
 //            ARTICLE ->  action = PostsFragmentDirections.actionPostsFragment2ToDisplayArticleFragment(libraryContent)
         }
-        findNavController().navigate(action)
+        findNavController().navigate(PostsFragmentDirections.actionPostsFragment2ToDisplayArticleFragment(libraryContent))
     }
 
     private fun navigateToGratitude(gratitude: Gratitude) {

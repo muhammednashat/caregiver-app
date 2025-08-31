@@ -33,6 +33,7 @@ class ProfileRepo(
    suspend fun updateUserProfileRemotely(key: String, value: Any) {
         firestore.collection(USERS).document(userProfile().id!!).update(key, value).await()
         log("1")
+       // log(lfsda)"
         updateUserProfileLocally(key, value)
         log("3")
    }
