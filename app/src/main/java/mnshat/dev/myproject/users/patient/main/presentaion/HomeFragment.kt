@@ -16,7 +16,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.analytics.FirebaseAnalytics
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
@@ -30,7 +29,12 @@ import mnshat.dev.myproject.users.patient.moodTracking.presentaion.activties.Moo
 import mnshat.dev.myproject.users.patient.tools.UserToolsActivity
 import mnshat.dev.myproject.util.loadImage
 import mnshat.dev.myproject.util.log
-
+import android.os.Parcelable
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.analytics
+import com.google.firebase.analytics.logEvent
+import com.google.firebase.Firebase
 @AndroidEntryPoint
 class HomeFragment : BaseFragment() {
 
@@ -73,11 +77,15 @@ class HomeFragment : BaseFragment() {
 
         binding.dailyProgram.setOnClickListener {
 
-            if (viewModel.currentTask().status?.preChecked!!){
-            startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
-            }else{
-                showMoodTrackingDialog()
-            }
+//            if (viewModel.currentTask().status?.preChecked!!){
+//            startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
+//            }else{
+//                showMoodTrackingDialog()
+//            }
+
+            viewModel.logEvent()
+
+
         }
 
          binding.statistics.setOnClickListener() {
@@ -169,24 +177,8 @@ class HomeFragment : BaseFragment() {
 
             }
         }
-    private var startTime: Long = 0 // 10
 
-    override fun onResume() {
-        super.onResume()
-        startTime = System.currentTimeMillis() // 11
-    }
 
-    override fun onPause() {
-        super.onPause()
-        val timeSpent = System.currentTimeMillis() - startTime
-
-        val bundle = Bundle().apply {
-            putString("screen_name", "HomeScreen") // change per screen
-            putLong("time_spent_ms", timeSpent)
-        }
-
-        FirebaseAnalytics.getInstance(requireContext()).logEvent("screen_time", bundle)
-    }
 
 
 

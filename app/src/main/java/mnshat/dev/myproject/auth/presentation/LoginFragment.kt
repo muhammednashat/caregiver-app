@@ -6,21 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.analytics.FirebaseAnalytics
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
 import mnshat.dev.myproject.base.BaseFragment
 import mnshat.dev.myproject.databinding.FragmentLoginBinding
 import mnshat.dev.myproject.users.caregiver.main.CaregiverScreenActivity
 import mnshat.dev.myproject.users.patient.main.presentaion.UserScreensActivity
-import mnshat.dev.myproject.util.AGE_GROUP
 import mnshat.dev.myproject.util.CAREGIVER
 import mnshat.dev.myproject.util.USER_EMAIL
-import mnshat.dev.myproject.util.GENDER
-import mnshat.dev.myproject.util.PASSWORD
-import mnshat.dev.myproject.util.log
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment() {
@@ -123,7 +117,6 @@ class LoginFragment : BaseFragment() {
 
     private fun navigateBasedUserType() {
         val userType = viewModel.currentUserProfile().typeOfUser
-      val result =   FirebaseAnalytics.getInstance(requireContext()).setUserId(viewModel.currentUserProfile().id);
 
         if (userType == CAREGIVER){
             startActivity(Intent(requireContext(), CaregiverScreenActivity::class.java))

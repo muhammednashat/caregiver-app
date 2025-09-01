@@ -1,6 +1,9 @@
 package mnshat.dev.myproject.util
 
 import android.content.Context
+import com.google.firebase.Firebase
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.analytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessaging
@@ -19,7 +22,14 @@ object AppModule {
 
  @Provides
  @Singleton
- fun provideSharedPreferencesManager(@ApplicationContext context:Context) = SharedPreferencesManager(context)
+ fun provideSharedPreferencesManager(@ApplicationContext context: Context) =
+     SharedPreferencesManager(context)
+
+
+
+ @Provides
+ @Singleton
+ fun provideFirebaseAnalytics() = Firebase.analytics
 
 
  @Provides
@@ -45,7 +55,7 @@ object AppModule {
  @Provides
  @Singleton
  fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
-  return AppDatabase.getDatabase(context)
+  return AppDatabase.Companion.getDatabase(context)
  }
 
  @Provides
