@@ -29,7 +29,11 @@ object AppModule {
 
  @Provides
  @Singleton
- fun provideFirebaseAnalytics() = Firebase.analytics
+ fun provideFirebaseAnalytics():FirebaseAnalytics {
+  val firebaseAnalytics = Firebase.analytics
+   firebaseAnalytics.setUserId("mohammed") // for examble
+   return firebaseAnalytics
+ }
 
 
  @Provides

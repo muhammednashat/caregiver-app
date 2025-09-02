@@ -1,5 +1,6 @@
 package mnshat.dev.myproject.auth.data.repo
 
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessaging
@@ -11,7 +12,9 @@ class AuthRepo(
     private val firestore: FirebaseFirestore,
     private val fireAuth: FirebaseAuth,
     private val firebaseMessaging: FirebaseMessaging,
-    private val sharedPreferences: SharedPreferencesManager
+    private val sharedPreferences: SharedPreferencesManager,
+    private val fireAnalytics: FirebaseAnalytics
+
 ) {
 
     // Registers a new user and stores profile data remotely and locally
@@ -30,6 +33,16 @@ class AuthRepo(
             }
         } catch (e: Exception) {
             e.message.toString()
+        }
+    }
+
+    private fun setUserIdForAnalytics(){
+        val userId = currentUserProfile().id
+        val name = currentUserProfile().name
+        fireAnalytics.setUserProperty("user_id", userId)
+        fireAnalytics.setUserProperty("user_name", name)
+        if (userId != null) {
+            fireAnalytics.setUserId(userId)
         }
     }
 

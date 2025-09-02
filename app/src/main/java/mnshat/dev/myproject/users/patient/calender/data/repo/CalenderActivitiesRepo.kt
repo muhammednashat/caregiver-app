@@ -198,32 +198,32 @@ class CalenderActivitiesRepo @Inject constructor(
             ),
 
             CalenderActivity(
-                R.drawable.calender_activity_32,
+                R.drawable.calender_activity_13,
                 context.getString(R.string.immerse_yourself),
                 "#4467c4",
             ),
             CalenderActivity(
-                R.drawable.calender_activity_32,
+                R.drawable.calender_activity_26,
                 context.getString(R.string.invite_friends),
                 "#4467c4",
             ),
             CalenderActivity(
-                R.drawable.calender_activity_32,
+                R.drawable.calender_activity_26,
                 context.getString(R.string.pair_up),
                 "#4467c4",
             ),
             CalenderActivity(
-                R.drawable.calender_activity_32,
+                R.drawable.calender_activity_8,
                 context.getString(R.string.plan_an_outdoor),
                 "#4467c4",
             ),
             CalenderActivity(
-                R.drawable.calender_activity_32,
+                R.drawable.calender_activity_18,
                 context.getString(R.string.offer_to_teach),
                 "#4467c4",
             ),
             CalenderActivity(
-                R.drawable.img33,
+                R.drawable.calender_activity_16,
                 context.getString(R.string.organise_and_invite),
                 "#4467c4",
             ),

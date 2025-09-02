@@ -27,11 +27,10 @@ import com.google.firebase.analytics.logEvent
     }
 
     fun logEvent(){
-        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
+      val d =   firebaseAnalytics.logEvent("daily_program_clicked") {
             param(FirebaseAnalytics.Param.ITEM_ID, "id")
-            param(FirebaseAnalytics.Param.ITEM_NAME, "name")
-            param(FirebaseAnalytics.Param.CONTENT_TYPE, "image")
         }
+        log("done = $d")
     }
 
     fun updateFirstTimeState() {
