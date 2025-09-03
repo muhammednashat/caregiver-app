@@ -139,6 +139,7 @@ class SignUpFragment : BaseFragment(){
                 }else{
                     viewModel.updateAuthStatusLocale(true)
                     showToast(getString(R.string.welcome))
+                    baseViewModel.updateUserPropertyAnalytics()
                     navigateBasedUserType()
                 }
             }

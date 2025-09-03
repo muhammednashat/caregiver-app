@@ -27,11 +27,12 @@ class LoginFragment : BaseFragment() {
                               savedInstanceState: Bundle?): View? {
         binding = FragmentLoginBinding.inflate(inflater)
         setupClickListener()
+
         return  binding.root
     }
 
 
-  private    fun setupClickListener(){
+    private fun setupClickListener() {
         binding.signUp.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
             viewModel.clearData()
@@ -103,10 +104,11 @@ class LoginFragment : BaseFragment() {
                 if (it.isNotEmpty()){
                     showToast(it)
                 }else{
-                viewModel.updateAuthStatusLocale(false)
+                    viewModel.updateAuthStatusLocale(false)
                     updateRegistrationInfoLocally()
                     showToast(getString(R.string.welcome))
-                  navigateBasedUserType()
+                    baseViewModel.updateUserPropertyAnalytics()
+                    navigateBasedUserType()
                 }
                 viewModel.resetAuthStatus()
 

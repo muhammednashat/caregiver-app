@@ -29,10 +29,13 @@ object AppModule {
 
  @Provides
  @Singleton
- fun provideFirebaseAnalytics():FirebaseAnalytics {
+ fun provideFirebaseAnalytics(sharedPreferencesManager: SharedPreferencesManager): FirebaseAnalytics {
+  val userId = sharedPreferencesManager.getUserProfile().id ?: "idNull"
+  val userName = sharedPreferencesManager.getUserProfile().name ?: "nameNull"
   val firebaseAnalytics = Firebase.analytics
-   firebaseAnalytics.setUserId("mohammed") // for examble
-   return firebaseAnalytics
+  firebaseAnalytics.setUserId(userId)
+  firebaseAnalytics.setUserProperty("user_name", userName)
+  return firebaseAnalytics
  }
 
 

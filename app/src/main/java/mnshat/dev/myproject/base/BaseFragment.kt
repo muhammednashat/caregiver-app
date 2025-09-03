@@ -14,6 +14,7 @@ import android.view.Window
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
@@ -35,6 +36,7 @@ open class BaseFragment: Fragment() {
 
     private lateinit var progressDialog: Dialog
     private lateinit var temporallyDialog: Dialog
+     val baseViewModel: BaseViewModel by viewModels()
     lateinit var sharedDialog: Dialog
 
     override fun onAttach(context: Context) {
@@ -54,6 +56,8 @@ open class BaseFragment: Fragment() {
         progressDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         progressDialog.show()
     }
+
+
 
     fun dismissProgressDialog() {
         if (progressDialog.isShowing){

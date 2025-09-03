@@ -49,6 +49,7 @@ class HomeFragment : BaseFragment() {
         setupClickListener()
         initializeViews()
         isPermissionGranted()
+        baseViewModel.updateUserPropertyAnalytics()
         return binding.root
     }
 
@@ -77,13 +78,13 @@ class HomeFragment : BaseFragment() {
 
         binding.dailyProgram.setOnClickListener {
 
-//            if (viewModel.currentTask().status?.preChecked!!){
-//            startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
-//            }else{
-//                showMoodTrackingDialog()
-//            }
+            if (viewModel.currentTask().status?.preChecked!!){
+            startActivity(Intent(requireActivity(), DailyProgramActivity::class.java))
+            }else{
+                showMoodTrackingDialog()
+            }
 
-            viewModel.logEvent()
+//            viewModel.logEvent()
 
 
         }

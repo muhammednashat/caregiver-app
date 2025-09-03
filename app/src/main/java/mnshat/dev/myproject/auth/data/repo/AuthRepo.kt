@@ -13,7 +13,7 @@ class AuthRepo(
     private val fireAuth: FirebaseAuth,
     private val firebaseMessaging: FirebaseMessaging,
     private val sharedPreferences: SharedPreferencesManager,
-    private val fireAnalytics: FirebaseAnalytics
+//    private val fireAnalytics: FirebaseAnalytics
 
 ) {
 
@@ -36,15 +36,7 @@ class AuthRepo(
         }
     }
 
-    private fun setUserIdForAnalytics(){
-        val userId = currentUserProfile().id
-        val name = currentUserProfile().name
-        fireAnalytics.setUserProperty("user_id", userId)
-        fireAnalytics.setUserProperty("user_name", name)
-        if (userId != null) {
-            fireAnalytics.setUserId(userId)
-        }
-    }
+
 
     // Creates a user in Firebase Auth with email & password
     private suspend fun createUserWithEmailAndPassword(
