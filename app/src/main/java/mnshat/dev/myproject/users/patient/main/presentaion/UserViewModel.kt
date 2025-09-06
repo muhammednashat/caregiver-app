@@ -6,12 +6,9 @@ import mnshat.dev.myproject.users.patient.dailyprogram.domain.entity.CurrentDay
 import mnshat.dev.myproject.users.patient.main.data.UserDataRepository
 import mnshat.dev.myproject.util.log
 import javax.inject.Inject
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.analytics.logEvent
 @HiltViewModel
  class UserViewModel @Inject constructor(
      private  val userDataRepository: UserDataRepository,
-      val firebaseAnalytics: FirebaseAnalytics
 ) : ViewModel() {
 
 
@@ -24,13 +21,6 @@ import com.google.firebase.analytics.logEvent
         return day
 
 
-    }
-
-    fun logEvent(){
-      val d =   firebaseAnalytics.logEvent("daily_program_clicked") {
-            param(FirebaseAnalytics.Param.ITEM_ID, "id")
-        }
-        log("done = $d")
     }
 
     fun updateFirstTimeState() {

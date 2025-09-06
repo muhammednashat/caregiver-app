@@ -84,7 +84,6 @@ class HomeFragment : BaseFragment() {
                 showMoodTrackingDialog()
             }
 
-//            viewModel.logEvent()
 
 
         }

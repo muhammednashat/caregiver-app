@@ -6,14 +6,14 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.logEvent
 import dagger.hilt.android.AndroidEntryPoint
 import mnshat.dev.myproject.R
-import mnshat.dev.myproject.util.log
+import mnshat.dev.myproject.util.SharedPreferencesManager
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class DailyProgramActivity : AppCompatActivity() {
 
-    @Inject lateinit var firebaseAnalytics: FirebaseAnalytics
     private var startTime: Long = 0
+   @Inject lateinit var sharedPreferencesManager: SharedPreferencesManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,13 @@ class DailyProgramActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
+
     private fun logEvent(duration: Long) {
+        val userId = sharedPreferencesManager.getUserProfile().id
+        val userName = sharedPreferencesManager.getUserProfile().name
+        val firebaseAnalytics = FirebaseAnalytics.getInstance(baseContext)
+        firebaseAnalytics.setUserId(userId)
+        firebaseAnalytics.setUserProperty("user_name",userName)
         firebaseAnalytics.logEvent("daily_program_duration") {
             param("duration_ms", duration)
         }
