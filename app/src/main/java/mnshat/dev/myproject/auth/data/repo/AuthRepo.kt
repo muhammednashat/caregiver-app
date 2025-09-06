@@ -77,7 +77,6 @@ class AuthRepo(
             userProfile.allowDailyProgramDetails = true
             userProfile.allowMoodTrackingDetails = true
             userProfile.allowPrivateMessages = true
-            userProfile.partnerEmail = ""
         } else {
             val invitationCode = userId.take(8)
             userProfile.invitationCode = invitationCode

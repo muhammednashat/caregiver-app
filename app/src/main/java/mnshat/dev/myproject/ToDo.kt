@@ -6,17 +6,11 @@ package mnshat.dev.myproject
 
 //Doing
 /**
- *
- *
- * rest day tasks after updating relagion
- *
- *
- * test caregiver posts
- * store caregiver and test partner email , partner id
+ *refactor posts
  *
  *
  *
- * نغير السؤال ما الذى يؤثر على
+ *
  *
  */
 
@@ -24,8 +18,15 @@ package mnshat.dev.myproject
 //ToDo
 /**
  *
- * * lang at first time
- *  * check splash screen
- *
+ * partner
+ * library
+ * tools
+ * helping numbers
+ * profile
+ * messages
+ * rest day tasks after updating relagion
+ * نغير السؤال ما الذى يؤثر على
+ * lang at first time
+ * check splash screen
  *
  */

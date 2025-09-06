@@ -81,7 +81,10 @@ class AuthViewModel @Inject constructor(
         val partner = authRepo.isValidInvitation(invitationCode)
         if (partner != null) {
             this.partner = partner // user  not caregiver
-            caregiverRegistration(userProfile())
+            val userProfile = userProfile()
+            userProfile.partnerId = partner.id
+            userProfile.partnerEmail = partner.email
+            caregiverRegistration(userProfile)
         } else {
             _authStatus.value = context?.getString(R.string.user_not_found)
         }
